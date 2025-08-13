@@ -1,0 +1,4 @@
+.vscode
+__pycache__
+data/pgadmin_data
+data/postgres_data
