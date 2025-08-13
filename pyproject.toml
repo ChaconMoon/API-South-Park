@@ -19,7 +19,6 @@ dependencies = [
 [tool.poetry]
 packages = [
         {include = "src", from = "."},
-        {include = "data", from = "."},
         {include = "img", from = "."},
 ]
 
