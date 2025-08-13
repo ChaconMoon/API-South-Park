@@ -2,3 +2,6 @@
 
 /data/postgres_data
 
+/.git
+
+/.gitignore
