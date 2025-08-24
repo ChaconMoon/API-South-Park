@@ -21,6 +21,79 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
+-- Name: album_songs; Type: TABLE; Schema: public; Owner: southpark
+--
+
+CREATE TABLE public.album_songs (
+    id integer NOT NULL,
+    name text NOT NULL,
+    album integer NOT NULL,
+    lyrics text,
+    song_url text
+);
+
+
+ALTER TABLE public.album_songs OWNER TO southpark;
+
+--
+-- Name: album_songs_id_seq; Type: SEQUENCE; Schema: public; Owner: southpark
+--
+
+CREATE SEQUENCE public.album_songs_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.album_songs_id_seq OWNER TO southpark;
+
+--
+-- Name: album_songs_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: southpark
+--
+
+ALTER SEQUENCE public.album_songs_id_seq OWNED BY public.album_songs.id;
+
+
+--
+-- Name: albums; Type: TABLE; Schema: public; Owner: southpark
+--
+
+CREATE TABLE public.albums (
+    id integer NOT NULL,
+    name text NOT NULL,
+    release_date date,
+    album_cover text
+);
+
+
+ALTER TABLE public.albums OWNER TO southpark;
+
+--
+-- Name: albums_id_seq; Type: SEQUENCE; Schema: public; Owner: southpark
+--
+
+CREATE SEQUENCE public.albums_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.albums_id_seq OWNER TO southpark;
+
+--
+-- Name: albums_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: southpark
+--
+
+ALTER SEQUENCE public.albums_id_seq OWNED BY public.albums.id;
+
+
+--
 -- Name: alter_ego; Type: TABLE; Schema: public; Owner: southpark
 --
 
@@ -204,6 +277,20 @@ CREATE TABLE public.specials (
 ALTER TABLE public.specials OWNER TO southpark;
 
 --
+-- Name: album_songs id; Type: DEFAULT; Schema: public; Owner: southpark
+--
+
+ALTER TABLE ONLY public.album_songs ALTER COLUMN id SET DEFAULT nextval('public.album_songs_id_seq'::regclass);
+
+
+--
+-- Name: albums id; Type: DEFAULT; Schema: public; Owner: southpark
+--
+
+ALTER TABLE ONLY public.albums ALTER COLUMN id SET DEFAULT nextval('public.albums_id_seq'::regclass);
+
+
+--
 -- Name: characters id; Type: DEFAULT; Schema: public; Owner: southpark
 --
 
@@ -232,20 +319,78 @@ ALTER TABLE ONLY public.games ALTER COLUMN id SET DEFAULT nextval('public.games_
 
 
 --
+-- Data for Name: album_songs; Type: TABLE DATA; Schema: public; Owner: southpark
+--
+
+COPY public.album_songs (id, name, album, lyrics, song_url) FROM stdin;
+1	South Park Theme	1	I'm goin' down to South Park, gonna have myself a time\nFriendly faces everywhere humble folks without temptations\n\nGoing down to South Park, gonna leave my woes behind\nAmple parking day or night, people spouting: Howdy, Neighbor\n\nI'm heading down to South Park, gonna see if I can unwind\nI like girls with big vagina, I like girls with big fat titties\nSo coming down to South Park, and meet some fiends' mine	https://music.youtube.com/watch?v=b7uJyw6eXzg&list=OLAK5uy_kjD121b8XN2_RslyLkocpwY0yS6e85W1Y
+2	Nowhere to Run	1	Fuck that shit, you know what I'm sayin'?\nI'm a give a shout out to my niggas\nI ain't givin' a shout to no-fuckin'-body, fuck that\nBig Baby Jesus in the mother fucking house\nKnow what I'm sayin'?\nUnh, come on\nI don't walk, I stalk, livin' foul like pork\nShuttin' down underground streets of New York\nHawk is what them niggas call me, 'cause they all be\nSuckin' my dick and on my mother fucking balls, G\nI know the half, so I laugh wit' 'em\nBlood bath went I let the fuckin' rap hit 'em\nFull clip, but only half did 'em\nThat's all it took, another crook\nTaken out over a dirty look\nI bag game with niggas I leave shot dead\nYou're only taken a piss from me with hot led\nYou know my style faggot, 'cause I'm always schemin'\nIn jail, niggas holdin' a sink screamin'\nPolice, but you got no peace\nYo, was that you big man, and alot mo' grease\nAll I gets is pounds, you ain't want none of this\nBack streets are like track meets 'cause I be runnin' this\nAin't nowhere to run ('cause I be runnin' this)\nAin't nowhere to hide (come on)\nAin't nowhere to go ('cause I be runnin' this)\nReaper saved your soul (come on)\nSurroned by the colors, I see crimson, black and blue (come on)\nLocking open doors again, I'm still afraid of you\n(straight up, mother fucker)\nLight to dark, then light again, I always thought I knew (come on)\nYoung to old and young again, what's left for me to do? (straight up)\nCenter of the universe, collecting me in time (come on)\nI'm falling down upon the earth, and singing truth in rhyme (come on)\nIf I was a rolling stone, I'd roll until I'm through (come on)\nAnd if I was a garden I would bloom in black for you\n(Dirt Dog in effect)\nAin't nowhere to run ('cause I be runnin' this)\nAin't nowhere to hide (come on)\nAin't nowhere to go ('cause I be runnin' this)\nReaper saved your soul (come on)\nahhhh, yi yi yi yi (come on)\nAin't nowhere to run ('cause I be runnin' this)\nAin't nowhere to hide (come on)\nAin't nowhere to go ('cause I be runnin' this)\nReaper saved your soul (come on)\nha ha ha ha ha ha ha\nWhat you mother fuckers invented\nIs the craziest nigga that ever been invented\nha ha ha ha ha\nMost know, don't front on Ol' Dity Bastard\nha ha ha ha\nI call on Jesus\nThere's no obstacles that you have to jump\nThere's no walls that you have to climb\nThis is real, this is elementary dear\nElementary, Watson, Elementary\nahhhhh\nI ain't no pictue on your fore wall, necklace wearin' beard\nYou don't want this money till it's rich\nBuy my album, coded by Dirty, set you free\nGo against the grain, I got the p\nI know you don't recognize me now\nI dunked your tongue\nHow many lightening bulbs do it take to light up a fuck mode?\nBrothers, people, you'd better get the fuck off of me\nWe don't need it, it gets more ugly\nFools tryin' to bust their ass\nTryin' to get away from me when I said my real name\nI call myself in the niggas butthole\nAll the same, all the same, all the same\nAin't nowhere to run\nAin't nowhere to hide\nAin't nowhere to go\nReaper saved your soul\nahhh yi yi yi yi\nWhat, mother fucker?\nDon't try to psychology my shit, mother fucker\n'cause you'll never psychology it, mother fucker\nNever, never, never, mother fucker, never	https://music.youtube.com/watch?v=pSXty-BZ7kc&list=OLAK5uy_kjD121b8XN2_RslyLkocpwY0yS6e85W1Y
+3	Chocolate Salty Balls	1	Two tablespoons of cinnamon,\nand two or three egg whites,\na half a stick of butter, melted.\nStick it all in a bowl baby,\nstir it with a wooden spoon,\nmix in a cup of flour.\nYou'll be in heaven soon.\n\nSay everybody have you seen my balls they're big and salty and brown.\nIf you ever need a quick pick me up, just stick my balls in your mouth.\nOOH! Suck on my chocolate salty balls, stick 'em in your mouth and suck 'em.\nSuck on my chocolate salty balls, they're packed full of vitamins,\nand good for you, so suck on my balls.\n\nPour in a cup of unsweetened chocolate,\nand a half a cup of brandy\nthen throw in a bag or two of sugar,\nand just a pinch of vanilla,\ngrease up the cookie sheet.\n'Cause I hate when my balls stick!\nthen preheat the oven to tree-fiddy, and give that spoon a lick!\n\nSay everybody have you seen my balls they're big and salty and brown.\nIf you ever need a quick pick me up, just stick my balls in your mouth.\nOh! Suck on my chocolate salty balls, put 'em in your mouth and suck 'em.\nSuck on my chocolate salty balls, they're packed full of goodness,\nand high in fiber, so suck on my balls.\n\n(sniff, sniff, sniff)\n\nHey, wait a minute, what's that smell?\nIt smells like something's burning.\nWell, that don't bother me none, as long as I get my rent paid on Friday.\nBaby, you better get back in the kitchen, cause I got a sneakn' suspicion.\nOh man baby, baby, you just burnt my balls.\nMy balls are on fire, come on, my balls are burning, gimme some water pour some water on 'em, o goodness, blow on them, do something\n\nSay everybody have you seen my balls they're big and salty and brown. (They're on fire baby)\nIf you ever need a quick pick me up, just stick my balls in your mouth.\nOOH! Suck on my chocolate salty balls, put 'em in your mouth and suck 'em. (Put 'em out, blow on 'em.)\nsuck on my balls baby,\nsuck on my balls baby,\nsuck on my red hot salty chocolate balls.\nCome on,baby, woo, woo, suck on my balls!\n\n(blow, blow, blow)	https://music.youtube.com/watch?v=7ZBLw-6JAmA&list=OLAK5uy_kjD121b8XN2_RslyLkocpwY0yS6e85W1Y
+4	Brad Logan\t\n	1	California sun has sunk\nBehind the Anaheim Hills, here comes the night\nI was high on junk\nAnd the warm winds of Santa Ana feel all right\n\nWill every crimmin' hood make a bargain with the world\nSeats are successive when you're shot to the curb\nI spend my day in blindness, at night I get my vision\nDodgy, cause there are no one indecision\nCause it's wild, When it's Wild wild wild wild\n\nCalifornia sun has sunk\nBehind the Anaheim Hills, here comes the night\nI was high on junk\nAnd the warm winds of Santa Ana feel all right\n\nI get destructive outside obedience\nI am no longer respected in this new transition\nI put into effect, my long time standard\nDisastrous living, disastrous living!\n\nCause it's wild, When it's Wild wild wild wild\n\nCalifornia sun has sunk\nBehind the Anaheim Hills, here comes the night\nI was high on junk\nAnd the warm winds of Santa Ana feel all right\n\nCause it's wild, When it's Wild wild wild wild\n\nCalifornia sun has sunk\nBehind the Anaheim Hills, here comes the night\nI was high on junk\nAnd the warm winds of Santa Ana feel all right	https://music.youtube.com/watch?v=_bRSZ0m4OtU&list=OLAK5uy_kjD121b8XN2_RslyLkocpwY0yS6e85W1Y
+5	Come Sail Away\t\n	1	(Kyle)\n\nI'm sailing away,\nset an open course for the virgin sea...\n\n(Cartman)\n\nI'm sailing away,\nset an open course for the virgin sea\nI've got to be free,\nfree to face the life that's ahead of me\nOn board, I'm the captain,\nso climb aboard\nWe'll search for tomorrow on every shore\nAnd I'll try, oh Lord,\nI'll try to carry on\n\nI look to the sea,\nreflections in the waves spark my memory\nSome happy, some sad\nI think of childhood friends and the dreams we had\nWe live happily forever, so the story goes\nBut somehow we missed out, on that pot of gold\nBut we'll try best that we can to carry on\n\nA gathering of angels appeared above my head\nThey sang to me this song of hope, and this is what they did\nThey said come sail away, come sail away\nCome sail away with me\nCome sail away, come sail away\nCome sail away with me\nCome sail away, come sail away\ncome sail away with me\nCome sail away, come sail away\ncome sail away with me\n\nI thought that they were angels, but to my surprise\nThey climbed aboard their starship and headed for the skies\n\nSinging come sail away, come sail away\nCome sail away with me\nCome sail away, come sail away\nCome sail away come sail with me\nCome sail away, come sail away\nCome and sail away come sail with me\nCome sail away, come sail away\nCome sail away come sail with me\n\n(Chef)\n\nMake it funky now\nCome sail away, come sail away\nCome sail away with me...\n\n(Cartman)\n\nCome sail away, come sail away\nCome sail away come sail with me\nCome sail away, come sail away\nCome sail away come sail with me\n\nCome sail away... (Cartman singing frantically)\n	https://music.youtube.com/watch?v=prPd0qMuZ3Q&list=OLAK5uy_kjD121b8XN2_RslyLkocpwY0yS6e85W1Y
+6	Kenny's Dead	1	This is Master P, I'm down here in South Park\nAnd I just put a million dollar reward up for any information or anybody who knows who killed Kenny, ya heard!?\n\n[Kenny's Dead] We got to ride tonight\nMy little homie, Kenny died tonight\n[That's What I Said] We got to ride tonight\nMy little homie, Kenny died tonight\n[Kenny's Dead] We got to ride tonight\nMy little homie, Kenny died tonight\n[That's what I said] We got to ride tonight\nMy little homie, Kenny died tonight\n\nKenny started messing up, hanging with the thugs\nCutting class in the fast section, ecstasy, weed and drugs\nAnd I guess that's how it is, when the ghetto's got you trapped\nBut Kenny ain't scared, he seen his pops get his neck snapped\nPeople lie and they cheat on South Park streets\nWhere the hoes chill and everybody run from the police\nBut what I liked about Kenny, he wasn't no Crip or no Blood\nAnd he mumbled when he talked, but he loved that bud..\n\n[Kenny's Dead] We got to ride tonight\nMy little homie, Kenny died tonight\n[That's What I Said] We got to ride tonight\nMy little homie, Kenny died tonight\n[Kenny's Dead] We got to ride tonight\nMy little homie, Kenny died tonight\n[That's what I said] We got to ride tonight\nMy little homie, Kenny died tonight\n\nAlotta hopeless nights chasin' nickels and dimes\nKenny rode the yellow bus to school, but at night he did crimes\n211, 187, it's like a hobby\nKenny slowed his roll, he did 3 years for a robbery\nSome say Kenny was the poorest kid on the street\nBut picture this, Kenny with about 10 Gs and a couple of keys\nServing the dope fiends, standing on the corner\nMoved and worked from New Orleans to Arizona\nBut it was a trip, Kenny I was wondering how you would die\nWould it be a car crash, a plane, a gun, or suicide?!\nHe knew one day that the rats would come\nBut he didn't know they was gonna scream 'bout it!'\nAnd hit him with a shotgun\n\n[Kenny's Dead] We got to ride tonight\nMy little homie, Kenny died tonight\n[That's What I Said] We got to ride tonight\nMy little homie, Kenny died tonight\n[Kenny's Dead] We got to ride tonight\nMy little homie, Kenny died tonight\n[That's what I said] We got to ride tonight\nMy little homie, Kenny died tonight\n\nA lot of wasted deaths\nA lot of senseless crime\nBut everybody think about what you do out there\nBecause uh, Judgment Day is for everybody\nJust remember that we can't take none of this with us\nAnd it's real out here on these streets\nI'd love to live like Kenny\nDie these days, ain't no coming back\nHombre, Master P, no limit to the world, baby\nIt don't get no realer than this	https://music.youtube.com/watch?v=eFQhSRbUYQQ&list=OLAK5uy_kjD121b8XN2_RslyLkocpwY0yS6e85W1Y
+7	Simultaneous	1	Baby, you know, you're the one for me\nAnd all that I want to be is...\n\nYou! And me! And her, simultaneous,\nYou, and me, and you, and you\nSimultaneous lovin', baby, two or three\nSimultaneous, ooh! Come on!\n\nHave an open mind,\nPull my trigger down\nGive me the last, cold turkey brass, make it fast,\nTake my ass to town\nHave an open mind,\nSend my cares away\nRing my bell, ya fat pig, oh well, what the hell,\nToday's your lucky day\n\nYou! And me! and her, simultaneous\nYou, and me, and Winona Ryder\nSimultaneous lovin', baby, two or three\nSimultaneous, ooh! Come on!\n\nHave an open mind,\nIt's a normal thing to do\nDon't be prude, just get nude, oh, you're being rude,\nI would do it for you\nBaby, please have an open mind,\nYou're the only one I love\nThese girls, you see, they don't mean anything,\nLet's all get in the tub!\n\nYou! And me! And her too, simultaneous\nYou, and me, and your momma, and your sister\nSimultaneous lovin', baby, two or three\nSimultaneous, ow! Come on!\n\nEverybody here in the pool!\n\nHave an open mind,\nDon't be so mean to me\nCall your sister, and your mother, and your aunt\nIt's every man's fantasy\nHave an open- Whoa, baby!\nPut that knife away\nDon't be mad, I'll take you back, just relax,\nWe can make love your way\n\nI'm talkin' about you, and me, and some flowers, and some wine, instantaneous!\nYou, and me, and Whitney Houston- On the radio, babe, on the radio!\nSome candles and some good feelings, just the two of us\nOh, fudge it\nNow, I'm talkin' about you, and me! And her, and her, and her, simultaneous!\nYou and me, all the women in the house!\nSimultaneous lovin', three on seven, make it a baker's dozen\nSay the ladies in the house, clap your hands! Woo!\n\nNow, that'd be a party, ladies	https://music.youtube.com/watch?v=3F8aF7Zietc&list=OLAK5uy_kjD121b8XN2_RslyLkocpwY0yS6e85W1Y
+8	Will They Die 4 You\t\n	1	We did dat\nWe did dat\nWe did dat\nWe did dat\nWe did dat\nWe did dat\nWe did dat\nWe did dat\nWe did dat\n\n[Verse 1: Dum Dum]\nAin't no cappin when I'm rappin\nI'm all bout dividends\nPull up in a bigger Benz\nI know you feel adrenaline\nDon't be mad cause ya man made it\nYa ain't dedicated\nIf I'm speakin anotha language than let me translate\nit\nIt was early in the mornin\nRepos got the Volvos\nNow I'm standin at my door\nSmokin them Marlboros\nThinkin my lights be out tomorrow\nAnd I can't beg or borrow\nSo if you ainb't from our side\nIt's day one of that horror\nNow get in where I fit in\nSit down and listen\nI hate startin from the bottom but hea go the new\nmission\nWhen I'm in too deep\nI don't believe my shit stank\nNo if's, and's, or cant's to get back to my old rank\nCan I turn into a robber\nCock back revolver\nTakin what you got\nThan I'm hittin for the border\nCD's, tapes, stereos\nHere we go\nDroppin 16 in the studio\nBut ya don't hear me though\n\n[Chorus: Dum Dum and Trae]\n[Dum Dum]\nOverloaded Wells Fargo\n[Trae]\nWe did dat\n[Dum Dum]\n40,00 at the car show\n[Trae]\nWe did dat\n[Dum Dum]\nDope House Records is my studio\n[Trae]\nWe did dat\n[Dum Dum]\nHouston Hard Hittas video\n[Trae]\nWe did dat\n\n[Verse 2: Lil E aka Da Genius One]\nI think like McGiver jsu to figure things out\nI got these million dolla hands that'll outlast Boy\nScouts\nNow when I'm gone off dat drank I move slower than\nmolasses\nSmart like Urkel without the glasses\nNow undastand how da game go\nIt's the same ol same ol\nMake the crowd dangle\nThan shine like a rainbow\nTake it there\nBring it here\nCause they ain't no damn stallin\nYou put it down\nWe pick it up cause together nigga we ballin\nWe ballin all the time\nGrippin cnady\nLeavin stains\nMy roof popped up\nNow my trunk doin the same\nAnd you ask why these bitches wanna ride wit me\nCause I done did that\nBently\nStreet smarts is in me\nDa Genius baby\nI'm the nigga that approve yo credit\nI'm dat situation that get drastic if you let it\nSo if you been there and done that\nWe da niggas that did dat\nBezatines and baggets\nYellow hoes and flaggets\n\n[Chorus: Dum Dum and Trae]\n[Repeat 2x]\n\n[Verse 3:Trae]\nSpeed racer be the name destroy the rap game\nDividends and benjamins\nConstant flow on pocket change\nGot a nigga facin fame\nSmokin weedies to ease the pain\nTuck yo shit in or get put to shame\nMy whole click shine\nWe bling and blang\nH-Town chop and swang\nGrab yo bitch she feel me maan\nShe see a playa ballin givin thanks\nIf you say I did dat than I did the same\nHuh?\nWhat?\nYeah\nDope House 2000 baby\n\n[Chorus 2: Dum Dum, Lil Papa, Trae]\n[Dum Dum]\nLean harder than the Eiffel Tower\n[Trae]\nWe did dat\n[Dum Dum]\nFlip the big bird and pop my coller\n[Trae]\nWe did dat\n[Dum Dum]\nNow you know bout the Joel Cormona\n[Trae]\nWe did dat\n[Dum Dum]\nWe da shit\nDo you smell the aroma?\n[Trae]\nWe did dat\n[Lil Papa]\nSpittin game on tracks for stacks\n[Trae]\nWe did dat\n[Lil Papa]\nCan't fold my wallet cause that bitch sittin fat\n[Trae]\nWe did dat\n[Lil Papa]\nYou want ya shorty you can have her back\n[Trae]\nWe did dat\n[Lil Papa]\nCalm ya nerves and blow yaself a sack\n[Trae]\nWe did dat\n[Dum Dum]\n30,000 independently owned\n[Trae]\nWe did dat\n[Dum Dum]\nIntroduce blacks and whites to chromes\n[Trae]\nWe did dat\n[Dum Dum]\nBBBBBBOOOOOOOOYYYYYYYY!!!!\n[Trae]\nWe did dat\n[Dum Dum]\nMMMMEEESSAAGGEEE!!!!\n[Trae]\nWe did dat\n\n["we did dat" repeats til fade]	https://music.youtube.com/watch?v=Nl9ZKcQkcVQ&list=OLAK5uy_kjD121b8XN2_RslyLkocpwY0yS6e85W1Y
+9	Hot Lava	1	\nMmmm\nBaby, every time that we kiss\nHot Lava!\nEvery time that we make love, hot lava\nHot Lava!\nLava so hot it makes me sweat\nLava so warm and red and wet\nLava!\nBrrrrrrrrrrrr.\nChef Aid: The South Park Album Version\n\nBaby, every time we kiss, Hot Lava\nAnd every time that we make love, that's Lava, Hot Lava\nIt's lava so hot, it makes me sweat\nAnd lava so warm, it's red and wet\n\nMountain is rumbling, We must find a safer place\nSoon half of Pele, Will fall upon your face\nGreat Nectar of the Gods spews far from Pinatabo\nMixed with a Women's Sweat, it makes the Lava we know\nBaby, every time we kiss, Hot Lava\nAnd every time that we make love, that's Lava, Hot Lava\nIt's lava so hot, it makes me sweat\nAnd lava so warm, it's red and wet\n\nBurnin' through the forest, Where Red hot lava flows\nRolls down the islands body, and into the ocean below\nWhen it meets the cool, cool water, there's a big flow of the living\nRich magma flowing into a sobiquious environment, Produces Pillow Lava\nHydrostatic pressure of sea water\nTends to inhabit the vesical size of the basalt\nBaby, every time we kiss, Hot Lava\nAnd every time that we make love, that's Lava, Hot Lava\nIt's lava so hot, it makes me sweat\nAnd lava so warm, it's red and wet\n\nAnd after the eruption, you lay dormant for a while\nLet's just hold each other and talk, For now, Pele sleeps\nBaby, every time we kiss, Hot Lava\nAnd every time that we make love, that's Lava, Hot Lava\nIt's lava so hot, it makes me sweat\nAnd lava so warm, it's red and wet\nBaby, every time we kiss, Hot Lava\nAnd every time that we make love, that's Lava, Hot Lava\nIt's lava so hot, it's red and wet\nAnd lava so warm it makes me sweat.	https://music.youtube.com/watch?v=D3kreKGXPIA&list=OLAK5uy_kjD121b8XN2_RslyLkocpwY0yS6e85W1Y
+10	Bubblegoose	1	Igo by the name of Wyclef Jean\nWe are the refugee all-stars\nWe salute to soldiers around the world\n\nCartman: Hell, yeah!\n\nThis one's called "Bullet in your Bubblegoose"\n\nCartman: Mac 10!\nKyle: Cartman, this isn't Mac 10!\nCartman: Seriously! Mac 10!\n\nSit right back and hear a tale\nOf a hustler round my way\nWho used to clock around the block\nFrom where my grandma stayed\n\nA black BMW with rims to match\nWindows bullet-proof\nOne night he jumped out the car\nAnd caught a bullet in his Bubblegoose\n\nHe caught a bullet in his Bubblegoose\nHe caught a bullet in his Bubblegoose\nYou can be at a party getting loose\nBut you can catch a bullet in your goose\n \nHe caught a bullet in his Bubblegoose\nHe caught a Bullet in his Bubblegoose\nYou can be at a party getting loose\nBut you can catch a bullet in your goose\n\nSit right back and you hear a tale\nOf a young girl around my way\nWho used to dance around the way\nFrom where my homeboy stayed\n\nBlack BMW with rims to match\nWindows Bullet-proof\nOne night she jumped out the car\nAnd got a Bullet in her Bubblegoose\n\nShe got a bullet in her Bubblegoose\nShe got a bullet in her Bubblegoose\nYou can be at a party getting loose\nBut you can catch a bullet in your goose\n\nShe got a bullet in her Bubblegoose\nShe got a bullet in her Bubblegoose\nYou can be at a party getting loose\nBut you can catch a bullet in your goose\n\nCartman: Mac 10 you guys!\nKyle: This isn't Mac 10, Cartman!\nCartman: It is Mac 10!\n\nCartman: Kenny! Your family's poor, Kenny! Get up, Kenny! Kenny! Your dad's an alcoholic!\nKenny: (Fuck you, Cartman!)\n\nCartman: Yeah, Mac 10 in the big house you guys!\nKyle: Cartman, you're ruining the song.\nCartman: Fuck you guys!\n\nShe got a bullet in her Bubblegoose\nShe got a bullet in her Bubblegoose\nYou can be at a party getting loose\nBut you can catch a bullet in your goose\n\nShe got a bullet in her Bubblegoose\nShe got a bullet in her Bubblegoose\nYou can be at a party getting loose\nBut you can catch a bullet in your goose\n\nCartman: Bubblegoose you guys!\nKyle: Damn that's high, dude.\nCartman: 'Mac 10!\n\nThis one's for the People\n\nCartman: Hell yeah. 	https://music.youtube.com/watch?v=GOrKAWrL0bo&list=OLAK5uy_kjD121b8XN2_RslyLkocpwY0yS6e85W1Y
+11	No Substitute\t\n	1	Nobody could take your place\nNo way they could match your face\nNo, you got it going on in a way so clear\nI just wanna buy you a beer\nOr maybe tonight at seven thirty or something\nI could er... come and er... pick you up in my car\n(No substitute) No substitute for you,\n(No substitute) No baby there's...\n(No substitute) for you girl\n(No substitute) for you now\nYou know that it's true\n(Not substitute) There's just no substitute for you.	https://music.youtube.com/watch?v=iNILtByf68M&list=OLAK5uy_kjD121b8XN2_RslyLkocpwY0yS6e85W1Y
+12	Wake Up Wendy\t\n	1	Got this bug-eyed girl\nCold hand on my knee\nFrozen teeth, chitter, chatter\nShe's dressed up like a cemetery\nLike a cemetery\n\nSnowbound all winter\nBlue lips on my cheek\nLittle tongues, prattlin', rattlin'\nTalkin' about them hometown geeks\nThem hometown geeks\n\nWake up Wendy, smell the coffee\nHelp me into your custom kitchen\nGimme a cup of that old black magic\nI wanna get me some of that old home cookin'\nCan you feel it, it's chilly and a freezin'\nWake up Wendy, moods a changin'\nI got a reason and you got a feelin'\nWake up Wendy, love's in season\n\nFeels like a steam clean\nWhen she washes me\nClouds a bustin', pumps a hissin'\nJust peel me off the ceiling\nOff the ceiling\n\nChill out bug-eyed-girl\nZap me into cinders\nPop the thermal mumbo jumbo\nMelt me with your little fingers\nWith little fingers\n\nWake up Wendy, smell the coffee\nHelp me into your custom kitchen\nGimme a cup of that old black magic\nI wanna get me some of that old home cookin'\nCan you feel it, it's chilly and a freezin'\nWake up Wendy, moods a changin'\nI got a reason, you got a feelin'\nWake up Wendy, love's in season\nWake up Wendy, love's in season\nWake up Wendy, love's in season	https://music.youtube.com/watch?v=T3m6Whj9qik&list=OLAK5uy_kjD121b8XN2_RslyLkocpwY0yS6e85W1Y
+13	Horny	1	I'm horny all night long (x7)\n\nYou got me horny in the morning\nAnd you know uh oh\nI tried to call you\nBut I can't find the telephone\n\nI sent a message through the internet\nBut it rejected\nI wrote a letter and I sent it\nBut uh oh oh\n\nThe postage takes so long\nSo I got to sing this song\nTo let you know how I feel\nWhat's the deal baby\n\nI can't wait for you\nAnd the things you make me do\nMy heart is ringing so I'm singing\nThis song for you\n\nI'm horny, horny, horny, horny\nSo horny\nI'm horny, horny, horny\n\nI search from time to time\nBut I can't find my bedroom\nNow I got so desperate that\nI sent a rocket to the moon\n\nIn New York City, someone said\nThey saw you singing the blues\nBut it was a man from nowhere land\nThat looked like you\n\nNow we'll keep searching' on\nThis feeling's much too strong\nMy heart is ringing and I'm\nSinging this song for you\n\nI'm horny, horny, horny, horny\nSo horny\nI'm horny, horny, horny\n\nThe postage takes so long\nSo I got to sing this song\nTo let you know how I feel\nWhat's the deal baby\n\nI can't wait for you\nAnd the things you make me do\nMy heart is ringing so I'm singing\nThis song for you\n\nI'm horny, horny, horny, horny\nSo horny\nI'm horny, horny, horny	https://music.youtube.com/watch?v=nDEBgXyRIIg&list=OLAK5uy_kjD121b8XN2_RslyLkocpwY0yS6e85W1Y
+14	Huboon Stomp\t\n	1	Well, I'm a huboon baby\nI'm a cross between a human and an ape\nI'm all decked out\nI'm gonna hoot, I'm gonna root, I'm gonna rape\n\nPeople look at me and laugh and make fun of my face\nI laugh right back\nI don't want to be part of the human race\nI did it to myself\nNow somebody's gonna be sorry\n\nWell, I'm a huboon baby\nGonna mess around with all you fools\nI'm all pumped up, gonna romp, bone and stomp\nI'm gonna rule\n\nI had the operation\nNothing else left to do\nWell lookit here, I've been hurt\nGonna hurt you\n\nNow, somebody's gonna be sorry\nLike all you wankers and you slime\nAnd you right-wing pinheads\nWho make screwing a big crime\nYou titty-twisted up my life\nAnd pissed on all my dreams\nYou made me hate myself\nNow come on shoot me\nSet me free\n(Let's go!)\n\nHe's a Huboon Baby, he's really all fudged up! (x4)\n\nI did it to myself\nNow somebody's gonna be sorry\n\nWell, I'm a huboon baby\nI'll grow up to be the president\nI'm upside-in, I'm really tweaked\nI'm really freaked, I'm really bent\nBig town mommas better hurry\nHide your little girls\nI'll jump their bones\nI'll sniff 'em out 'round the world\n\nNow somebody’s gonna be sorry\nLike all you wankers and you slime\nAnd you right-wing pinheads\nWho make screwing a big crime\nYou titty-twisted up my life\nAnd pissed on all my dreams\nYou made me hate myself\nNow come on, shoot me, set me free\n\nI’m a huboon baby\nI’m a cross between a human and an ape\nWell, I’m all decked out\nI’m gonna hoot, I’m gonna root, I’m gonna rape\n\nPeople look at me\nAnd laugh and make fun of my face\nI laugh right back\nI don’t want to be part of the human race	https://music.youtube.com/watch?v=WYWJHeZhFd4&list=OLAK5uy_kjD121b8XN2_RslyLkocpwY0yS6e85W1Y
+15	Love Gravy\t\n	1	MMmmmmmmmmmmmmm!!\nMake Love!\n\nGonna make love to you woman,\ngonna lay you down by the fire,\nand caress your womanly body make you moan and prespire,\nI'm gonna get those juices flownin,\n\nMakin love gravy\nlove gravy love gravy love love love,\n\nGonna make love to you woman,\ngonna lay you down by the fire,\nand caress your womanly body make you moan and prespire,\nI'm gonna get those juices flownin,\n\nMakin love gravy\nlove gravy love gravy love love love,\n\nOwe,\nOpen up a packet of my gravy,\nBaby it's burnin' just for you child,\nwould you like another helping of gravy,\nsay yeah, yeah, yeah, yeah\n\nWatch out, don't let it get in your eyes now!!!\n\nGonna make love to ya' woman\ngonna get a little freaky to,\nwith langeray of leather and a bottle of super glue,\nlet's make a human prezel dip it in\nlove gravy, love gravy, love love love\n\nOpen up a packet of my gravy,\nBaby it's burn in' just for you child,\nwould you like another helping of gravy,\nbaby say yeah, yeah, yeah, yeah\n\nsay yeah, say yeah, say yeah babe\n\nC'mon\n\nI like to....\n\nSay yeah, yeah, yeah, Sure yeah\n\nI'm gonna climb into your cockpit,\nI'm gonna get those rockets firing,\nBlast you into orbit,\nand burn out all your wiring,\nget our asses on the launchpad makin',\nlove gravy, love gravy love love love,\n\nYeah,\n\nOpen up a packet of my gravy,\nBaby its burnin' just for you child,\nwouldn't you like another helping of gravy,\nbaby say yeah, yeah, yeah, yeah\n\nI got a whole look a gravy left baby,\nOh, those are nice,\nwould you like some gravy on those,\nthere's enough gravy to go around for everybody,\n\nOhhhh,\nI'm gonna drown all you b****** in gravy.\n\nChef:\nOh come on Rick, you don't drown b******, dummy, that's not cool!! 	https://music.youtube.com/watch?v=0svA3wcVmBM&list=OLAK5uy_kjD121b8XN2_RslyLkocpwY0yS6e85W1Y
+16	Feel Like Makin' Love\t\n	1	Baby, when I think about you..\nI think about love.\nDarling, can't live without you..\nand your lo-mrrrrrh.\nIf I had those golden dreams\nof my yesterday..\nI would wrap you in the Heavens\nAnd feel it mrrh, mrrh, mrrh, mrrh\n[Feel like makin']\n\nFeel like makin' love..\nFeel like makin' love..\nFeel like makin' love..\nFeel like makin' love to you.\n\nBaby, If I think about you..\nI think about Love!\nDarling, If I live without you..\nI live without Love! [mrrh]\nAnd if I had the sun and the moon..\nmrrh! mgrggh! mrrrh!\nI would give you both night and day\nLove satisfying.. Feel Like, mrh, makin..\n\nFeel Like Making LOVE!\nFeel Like Making, mrgh, love.. Feel Like Making LOVE!\nFeel Like Making, mggh, mrrgh..\nFeel Like Making LOVE!\nFeel Like.. making love..\nFeel Like Making LOVE!\nFeel Like Making Love to yooou!	https://music.youtube.com/watch?v=Zb8vYRkZK0E&list=OLAK5uy_kjD121b8XN2_RslyLkocpwY0yS6e85W1Y
+17	The Rainbow	1	Many colors in the homo rainbow\nDon't be afraid to let your colors shine\nMany colors in the homo rainbow\nShow me yours. I'm gonna show you mine\n\nIf you find a pot of gold\nEvery little thing is gonna work out fine\nIn the homo rainbow\n\nMany colors in the homo rainbow\nYou give me shade from black to yellow\nMany colors in the homo rainbow\nA warm embrace and a kind-a hello\n\nIf you find a pot of gold\nEvery little thing is gonna work out fine\nIn the homo rainbow\n\nIf you find a pot of gold\nEvery little thing is gonna work out fine\nIn the homo rainbow\nEvery single color, every walk of life\nIn & out changin, every day and night\nFrom the golden shores of Kansas, to the middle of Japan\nreach inside your soul and learn your fellow\n\nThere are many colors in the homo rainbow\nDon't be afraid to let your colors shine\nDon't be ashamed of what God made you	https://music.youtube.com/watch?v=z6TPRdkG1-4&list=OLAK5uy_kjD121b8XN2_RslyLkocpwY0yS6e85W1Y
+18	Tonight is Right for Love\t\n	1	\n\nChef:\nTonight is right for love, you know I\nWanna touch you where the lights don't go\nTonight is right for love (with Meredith Baxter-Birney)\n\nExpressing love so sweet,\nI'll keep you burning like a dog in heat\nTonight is right for love (with Meredith Baxter-Birney)\n\nWe had a love that was so magical\nWith Meredith Baxter-Birney burning, burning in my soul\nI'm not talking about Meredith Baxter-Birney today, no\nI'm talking about Meredith Baxter-Birney that was on Family Ties two years ago\n\nMeat Loaf:\nAfter the love comes a darkness in hell,\nA demon inside you like a bottomless well\nNothing is safe and everything is a lie\nLove doesn't last, no matter how hard you try\nBurnin', burnin', through your brain\nI think I'm insane...\n\nChef:\nMeat\n\nMeat Loaf:\nBut when you finally realize that it's all in vein\n\nChef:\nMeat Loaf\n\nMeat Loaf:\nSplinters of wood, they can be forced through your eyes\n\nChef:\nMeat Loaf!!!\n\nMeat Loaf:\nCheese graters of steel being rubbed in your thighs\nYour skin is comin' off and you rollin' in salt!\n\nChef:\nMeat!!! Hey Meat! Meat Loaf!!!\n\nMeat Loaf:\nWhat?\n\nChef:\nWhere are you goin' son?\n\nMeat Loaf:\nOh... gosh...\n\nChef:\nCome back to us, we're over here\n\nMeat Loaf:\nOK, oh, sorry Chef, man. Sorry.\n\nChef:\nIt's alright son, but this song is about Meredith Baxter-Birney,\nnot about splinters of wood in your eyes, you need to calm down man.\n\nMeat Loaf:\nYou're right\n\nChef:\nHere, have a taco\n\nMeat Loaf:\nTaco, great, I need a taco\n\nChef:\nYou're messing up my business with Meredith Baxter-Birney. OK?\n\nMeat Loaf:\nYeah, great\n\nChef & Meat Loaf:\nTonight is right for love\nThe rain is fallen and Jay Leno is on\nLet's turn down the lights, turn up the volume\nAnd go crazy\nI'll touch your body and soul\nAnd change the channels with remote control\n'Cause tonight is right for love with Meredith Baxter-Birney	https://music.youtube.com/watch?v=rG5KT_KOq-s&list=OLAK5uy_kjD121b8XN2_RslyLkocpwY0yS6e85W1Y
+19	It's a Rockin' World\t\n	1	Well it's a rockin' world, make no mistake about it\nIt's a shockin' world, could be what's so great about it\nIt's a rockin' world, there ain't nothin' fake about it\n\nWhoa, whoa, now welcome to this Earth, bro\nWhoa, whoa, we're tryin' to find an answer\nWhoa, whoa, we got a surface module and a belly-dancer\n\nOn the sidewalk earth, a boy is tryin' to show a girl what he is worth\nBoth arms in plaster, but he's still gonna\nGo right up and ask her\n\nWhy is it barbaric, is it biological?\nWhy is it frenetic, is it asophysiological?\nIt's an epidemic, there's nothing logically logical, logical, logical\n\nNow, why do babies cry?\nI asked a crow today but all he did was fly and he took the cynic way\nThe laws of chaos, left us all in disarray\n\nNow take the bumblebee, a lousy rotten bum\nNot a shred of money just a lazy buzzin' hum\nHe takes all our honey and now the Garden of Eden has got to pay, that's who.\n\nWell we go, back to base\nCan't make no head or tale of this place\nBut home we're returnin' back to base, base\n\nCan we be notified when love comes of age\nDoes the cell divide in the initial phase\nIt's all codified in the DNA stage	https://music.youtube.com/watch?v=7NrSLcAkZyU&list=OLAK5uy_kjD121b8XN2_RslyLkocpwY0yS6e85W1Y
+20	Mephesto and Kevin	1	Les Claypool:\nIn 1986 the University of California Davis sought two of the all-time brightest stars: Dr. Alphonse Mephesto, and Dr. Arnie Apesacrappin. Dr. Mephesto worked hard toward his thesis. His goal was to genetically duplicate the DNA structure of asparagus so that all asparagus would grow to the same girth and length, giving asparagus a much more pleasant presentation in the world's supermarket vegetable bins.\n\nDr. Apesacrappin's goal was to genetically create the greatest musical entertainer the world had ever seen. Dr. Apesacrappin knew that if he could assemble the right elements he could theoretically build a DNA structure that would ensure his creation of talent far surpassing the average individual.\n\nAt the time, one subject of urban myth was the story that Michael Jackson, in an effort to retain his youthful look and feminine vocal characteristics, had his testicles surgically removed, thereby making him a modern day Castrato. If such a rumor were true, Michael Jackson more than likely would have some of his semen preserved before the surgery to ensure the future of his name and lineage.\n\nWord came back to Dr. Apesacrappin of a secret cold storage locker deep within the bowels of the UCLA research center, that not only contained four containers of frozen semen, but also held a pair of testicles - each was labeled with the name "Jack Michaelson".\n\nChef:\nI once heard a noise\nIn the night, the most sensual voice\nThe song of love from an angelic boy\nStuck in my head\nAnd this is what he said\n\n"I am gopher boy\nPondering reality\nI am Gopher Boy\nWho will buy my raspberries?"\n\nClaypool:\nThis had to be the seed of the King of Pop. Dr. Apesacrappin was able to use his charm and chiseled gritty features to woo a young lab technician by the name of Jennifer, who of course just happened to have the proper access needed to obtain a small vial of the precious semen.\n\nThe search for the egg was a short one. Dr. Mephesto simply ran an ad in the classifieds section of an LA Music magazine. The ad read, "Wanted: Unfertilized human eggs for genetic experiment. Donors must have musical background."\n\nWith a plethora of young eager wannabe musical starlets, willing to sell their eggs, the two doctors, after rigorous auditioning, picked and purchased. Dr. Apesacrappin felt that it would be far less complicated legally if the foetus was brought to term in the womb of a non-human. He had long since secured the services of the University Volleyball Mascot: a llama by the name of Missy.\n\nWhen the baby was ready, the child was removed via caesarean.\nIt was a healthy baby boy. He was named Kevin.\n\nChef:\nI once heard a noise\nIn the night, the most sensual voice\nThe song of love from an angelic boy\nStuck in my head\nAnd this is what he said\n\n"I am gopher boy\nPondering reality\nI am Gopher Boy\nWho will buy my raspberries?"\n\nClaypool:\nKevin was a beautiful child. Dr. Apesacrappin saw to it that Kevin was trained by the best in all aspects of performing. His voice was golden and had a sweetness to it that most males lacked. He moved with grace and was able to moonwalk by the time he was three.\n\nAs Kevin grew with his talent, Dr. Apesacrappin started noticing odd developments in his physical state. When Kevin lost his baby teeth, his secondaries came in with a vengeance; they were at least twice the size as a normal adult's and the two in front stuck nearly straight out. Also as Kevin reached his eighth year, he was the same height as he was when he was four.\n\nTo top it off, he was growing hair all over and his penis was enormous, even by adult standards. It also dawned on the doctor that even through all the years of hearing Kevin singing, he rarely spoke, often choosing to communicate through various grunts and gurgles.\n\nChef:\nI once heard a noise\nIn the night, the most sensual voice\nThe song of love from an angelic boy\nStuck in my head\nAnd this is what he said\n\n"I am gopher boy\nPondering reality\nI am Gopher Boy\nWho will buy my raspberries?"\n\nClaypool:\nOthers were noticing the changes in Kevin. Children began to tease him, they called him "Gopher Boy". One Day, a bully by the name of Big Roy started throwing bananas at him. Soon a crowd of kids were all throwing bananas. Suddenly, in a fury, Kevin rushed at Big Roy and bit three fingers off on his left hand.\n\nKevin was taken away and placed in the custody of the State. Dr. Apesacrappin's actions were found out, but because there was no legislation concerning the genetic construction of another human being, no criminal charges were brought forth.\n\nThe Medical Association's Board of Ethics stripped him of all his credentials and his reputation was ruined. In fact, his name became so synonymous with failure that for years to come, med students around the world were known to say in times of mishap, "damn, I feel just like Apesacrappin."\n\nDr. Mephesto immediately began proceedings to adopt little Kevin. Being a noted scientist and the creator of the cloned asparagus, it wasn't long before the two were legally united as father and son. They moved to Colorado, where they live in relative obscurity.\n\nKevin is still a boy of few spoken words, sticking mainly to his grunts and gurgles, but on occasion, if you listen closely, you can hear his sweet golden singing voice, ring out into the night, over the small town of South Park...\n\nKevin:\n"I am gopher boy\nPondering reality\nI am Gopher Boy\nWho will buy my raspberries?"	https://music.youtube.com/watch?v=3pctQ9tGMGk&list=OLAK5uy_kjD121b8XN2_RslyLkocpwY0yS6e85W1Y
+21	Mentally Dull (Think Tank Remix)	1	Damien:\nEverybody hates me!\nMr. Mackey:\nWhy do you suppose that is?\nDamien:\nBecause I'm the son of the devil!\nMr. Mackey:\nUh huh that's a good start, why else?\n\nStan:\nDude this is pretty fucked up right here!\n\nStan:\nOh my god they killed Kenny!\nKyle:\nYou bastards!\nStan:\nOh my god they killed Kenny!\nMr. Garrison:\nWhat kind of sick weirdo are you?\nStan:\nOh my god they killed Kenny!\nKyle:\nSay something Mr. Hankey.\nMr Hankey:\nAhh!\nStan:\nOh my god they killed Kenny. Dude, Kenny is dead.\n\nChef:\nHello there children. Let me sing you a little song: I'm gonna make love to you woman.\nBarbrady:\nWell you ain't Fiona Apple, and if you ain't Fiona Apple I don't give a rat's ass.\nReporter:\nWhat would drive a man to such a disgusting act?\nWoman:\nMy god that's disgusting!\nStan:\nWhoa dude, how do you have sex with a chicken?\nBoy:\nDumb asses!\nCartman:\nOw! God damn it!\nStan:\nDude! Sick!\nMr. Hankey:\nAhhhhh!\nCartman:\nYou get your b**** ass back in the kitchen, and make me some pie!\nKyle:\nWhat the hell would you know you fat sweaty mongoloid?!?\nCartman:\nDon't call me fat buttfucker!\nKyle:\nYou're such a fat fuck Cartman, that when you walk down the street people say, God\ndammit that kid's a big fat fuck!!!\nCartman:\nHey!\nMr. Mackey:\nI mean your one screwed up little kid, do you understand?\nCartman:\nHe is a very disturbed little boy.\nLiane:\nYou want some Cheesy Poofs?\nCartman:\nYeah I want Cheesy Poofs!\nLiane:\nYou can have a eensy weensy bit can't you?\nCartman:\nWell?\nLiane:\nJust a weensy eensy woo-woo?\nCartman:\nOkay!\nLiane:\nI bought you some Cheesy Poofs and Happy Tarts.\nCartman:\nGod Damnit!\nLiane:\nJust a weensy eensy woo-woo?\n\nStan:\nOh my god they killed Kenny!\nKyle:\nYou bastards!\nStan:\nOh my god they killed Kenny!\nMr. Garrison:\nWhat kind of sick weirdo are you?\nStan:\nOh my god they killed Kenny!\nKyle:\nSay something Mr. Hankey.\nMr Hankey:\nAhh!\nStan:\nOh my god they killed Kenny. Dude, Kenny is dead.\n\nMr. Garrison:\nDumb ass, what a r*****!\nKyle:\nFatso!\nCartman:\nHey!\nStan:\nDude.\nMr. Garrison:\nDon't be such a little wuss!\nBarbrady:\nFruitcake!\nCartman:\nB****.\nWendy:\nNo, I'm not acting like a freak!\nCartman:\nWell I was standing out in a field and I had this huge satellite dish sticking out of my butt, and then there were hundreds of cows and aliens, and then I went up on the ship, and Scott Baio gave me pinkeye!\nStan:\nWhat the hell are you talking about!\nMr. Garrison:\nThere are no stupid questions, just stupid people!\nWendy:\nBarf is gross!\nCartman:\nNobody gives a rat's ass!\nPip:\nLunchy munchys umm!\nStan:\nAt least my mom isn't on the cover of Crack W**** magazine!\nCartman:\nDon't call me fat, buttfucker!\n\nStan:\nOh my god they killed Kenny!\nKyle:\nYou bastards!\nStan:\nOh my god they killed Kenny!\nStarvin' Marvin:\nYeah I want da cheesy poofs!\nStan:\nOh my god they killed Kenny!\nMr. Hankey:\nHowwwwdy-hoooo.\nStan:\nOh my god they killed Kenny. Holy Shit it's Jesus!\n\nCartman:\nYou Pigfucker!\nStan:\nDude, don't say pigfucker in front of Jesus!\nJesus:\nYay, believe in me, and ye shall find peace!\nRing Announcer:\nWearing very very black shorts... the king of all that is evil...\nTowns People:\nBarbra Streisand, Barbra Streisand!\nBarbra Streisand:\nI'm Barbra Streisand!\nChef:\nBarbra Streisand?\nLeonard Maltin:\nBarbra Streisand.\nKyle:\nKick the baby!\nIke:\nDon't kick the...\nLeonard Maltin:\nLeonard Maltin, yes.\nSidney Poitier:\nSidney Poitier.\nChef:\nSidney Poitier!?!\nStan:\nOh yeah?\nBarbra Streisand:\nPiss ass little hick!\nStan:\nYou ugly s****!\nCartman:\nDamn your black heart, Barbra Streisand!\nHey! Why don't you stop dressin' me up like a mailman, and making me dance for you, while you go and smoke crack in your bedroom and have sex with some guy I don't even know on my dad's bed!\nStan:\nThis is pretty fucked up right here!\nCartman:\nLet us remember the good times, Kenny would have wanted it that way!\n\nStan:\nOh my god they killed Kenny!\nKyle:\nYou bastards!\nStan:\nOh my god they killed Kenny!\nKyle:\nTotal weirdo freak!\nStan:\nOh my god they killed Kenny!\nStan:\nOh my god!\nKyle:\nOh my god!\nStan:\nOh my god they killed Kenny. Dude Kenny is dead!	https://music.youtube.com/watch?v=O3F1_3g3cww&list=OLAK5uy_kjD121b8XN2_RslyLkocpwY0yS6e85W1Y
+22	Kyle's Mom's a Bitch	1	Well...\nKyle's mom is a bitch, she's a big fat bitch\nShe's the biggest bitch in the whole wide world\nShe's a stupid bitch, if there ever was a bitch\nShe's a bitch to all the boys and girls\n\nOn Monday she's a bitch, on Tuesday she's a bitch,\nFrom Wednesday to Saturday she's a bitch\nThen on Sunday, just to be different\nShe's a super King Kamehameha bi-atch\n\nHave you ever met my friend Kyle's mom?\nShe's the biggest bitch in the whole wide world\nShe's a mean old bitch 'cause she has stupid hair\nShe a bitch, bitch, bitch, bitch, bitch, bitch, bitch\nbitch, bitch, bitch, bitch, bitch, bitch, bitch, bitch\nShe's a stupid bitch\nKyle's mom's a bitch and she's just a dirty bitch\nKyle's mom is a bitchh, ah	https://music.youtube.com/watch?v=KqD0CfhSZjY&list=OLAK5uy_kjD121b8XN2_RslyLkocpwY0yS6e85W1Y
+\.
+
+
+--
+-- Data for Name: albums; Type: TABLE DATA; Schema: public; Owner: southpark
+--
+
+COPY public.albums (id, name, release_date, album_cover) FROM stdin;
+1	Chef Aid: The South Park Album	1998-12-08	img/albums/covers/Chef Aid. The South Park Album.jpg
+2	South Park: Bigger, Longer & Uncut (Soundtrack)	1999-06-22	img/albums/covers/South Park. Bigger, Longer & Uncut.jpg
+3	Mr. Hankey's Christmas Classics	1999-11-23	img/albums/covers/Mr. Hankey's Christmas Classics.jpg
+4	Timmy & the Lords of the Underworld	2000-09-05	img/albums/covers/Timmy & the Lords of the Underworld.jpg
+5	San Diego	2012-08-21	img/albums/covers/San Diego.jpg
+\.
+
+
+--
 -- Data for Name: alter_ego; Type: TABLE DATA; Schema: public; Owner: southpark
 --
 
-COPY public.alter_ego  (id, original_character, name, images) FROM stdin;
-1	1	Mysterion	{/img/alteregos/phone_destroyer/Mysterion_PhoneDestroyer.png}
-2	1	Cyborg Kenny	{/img/alteregos/phone_destroyer/Cyborg_Kenny_PhoneDestroyer.png}
-3	1	Inuit Kenny	{/img/alteregos/phone_destroyer/Inuit_Kenny_PhoneDestroyer.png}
-4	1	Hermes Kenny	{/img/alteregos/phone_destroyer/Hermes_Kenny_PhoneDestroyer.png}
-5	1	Princess Kenny	{/img/alteregos/phone_destroyer/Princess_Kenny_PhoneDestroyer.png}
-1	42	Astronaut Butters	{/img/alteregos/phone_destroyer/Astronaut_Butters_PhoneDestroyer.png}
-2	42	Deckhand Butters	{/img/alteregos/phone_destroyer/Deckhand_Butters_PhoneDestroyer.png}
-3	42	Choirboy Butters	{/img/alteregos/phone_destroyer/Choirboy_Butters_PhoneDestroyer.png}
-4	42	Paladin Butters	{/img/alteregos/phone_destroyer/Paladin_Butters_PhoneDestroyer.png}
-5	42	Professor Chaos	{/img/alteregos/phone_destroyer/Profesor_Chaos_PhoneDestroyer.png}
+COPY public.alter_ego (id, original_character, name, images) FROM stdin;
+1	1	Mysterion	{/img/alteregos/phone_destroyer/Mysterion_PhoneDestroyer.png,/img/alteregos/serie/Mysterion.png}
+2	1	Cyborg Kenny	{/img/alteregos/phone_destroyer/Cyborg_Kenny_PhoneDestroyer.png,/img/alteregos/serie/Cyborg_Kenny.png}
+3	1	Inuit Kenny	{/img/alteregos/phone_destroyer/Inuit_Kenny_PhoneDestroyer.png,/img/alteregos/serie/Inuit_Kenny.png}
+4	1	Hermes Kenny	{/img/alteregos/phone_destroyer/Hermes_Kenny_PhoneDestroyer.png,/img/alteregos/serie/Hermes_Kenny.png}
+5	1	Princess Kenny	{/img/alteregos/phone_destroyer/Princess_Kenny_PhoneDestroyer.png,/img/alteregos/serie/Princess_Kenny.png}
+1	42	Astronaut Butters	{/img/alteregos/phone_destroyer/Astronaut_Butters_PhoneDestroyer.png,/img/alteregos/serie/Astronaut_Butters.png}
+2	42	Deckhand Butters	{/img/alteregos/phone_destroyer/Deckhand_Butters_PhoneDestroyer.png,/img/alteregos/serie/Deckhand_Butters.png}
+3	42	Choirboy Butters	{/img/alteregos/phone_destroyer/Choirboy_Butters_PhoneDestroyer.png,/img/alteregos/serie/Choirboy_Butters.png}
+4	42	Paladin Butters	{/img/alteregos/phone_destroyer/Paladin_Butters_PhoneDestroyer.png,/img/alteregos/serie/Paladin_Butters.png}
+5	42	Professor Chaos	{/img/alteregos/phone_destroyer/Profesor_Chaos_PhoneDestroyer.png,/img/alteregos/serie/Professor_Chaos.png}
+5	4	Poseidon Stan	{/img/alteregos/phone_destroyer/Stan_Poseidon_PhoneDestroyer.png,/img/alteregos/serie/Poseidon_Stan.png}
+4	4	Tron Stan / Program Stan	{/img/alteregos/phone_destroyer/Stan_Program_PhoneDestroyer.png,/img/alteregos/serie/Tron_Stan.png}
+3	4	Stan of Many Moons	{/img/alteregos/phone_destroyer/Stan_Of_Many_Moons_PhoneDestroyer.png,/img/alteregos/serie/Stan_of_Many_Moons.png}
+2	4	Stan Marshwalker	{/img/alteregos/phone_destroyer/Stan_MashWalker_PhoneDestroyer.png,/img/alteregos/serie/Stan_Marshwalker.png}
+1	4	Toolshed	{/img/alteregos/phone_destroyer/Toolshed_PhoneDestroyer.png,/img/alteregos/serie/Toolshed.png}
+5	3	Bounty Hunter Kyle	{/img/alteregos/phone_destroyer/Bounty_Hunter_Kyle_PhoneDestroyer.png,/img/alteregos/serie/Bounty_Hunter_Kyle.png}
+4	3	Gunslinger Kyle	{/img/alteregos/phone_destroyer/Gunslinger_Kyle_PhoneDestroyer.png,/img/alteregos/serie/Gunslinger_Kyle.png}
+3	3	The Master Ninjew	{/img/alteregos/phone_destroyer/Master_NinJew_PhoneDestroyer.png,/img/alteregos/serie/The_Master_Ninjew.png}
+2	3	High Jew Elf King	{/img/alteregos/phone_destroyer/High_Jew_Elf_King_PhoneDestroyer.png,/img/alteregos/serie/High_Jew_Elf_King.png}
+1	3	The Human Kite	{/img/alteregos/phone_destroyer/HumanKite_PhoneDestroyer.png,/img/alteregos/serie/Humankite.png}
+5	2	Zen Cartman	{/img/alteregos/phone_destroyer/Cartman_Zen_PhoneDestroyer.png,/img/alteregos/serie/Cartman_Zen.png}
+4	2	Sheriff Cartman	{/img/alteregos/phone_destroyer/Cartman_Sheriff_PhoneDestroyer.png,/img/alteregos/serie/Sheriff_Cartman.png}
+3	2	AWESOMO 4000	{/img/alteregos/phone_destroyer/AWESOMO_4000_PhoneDestroyer.png,/img/alteregos/serie/AWESOMO_4000.png}
+2	2	The Grand Wizard	{/img/alteregos/phone_destroyer/Cartman_Wizard_PhoneDestroyer.png,/img/alteregos/serie/The_Grand_Wizard.png}
+1	2	The Coon	{/img/alteregos/phone_destroyer/The_Coon_PhoneDestroyer.png,/img/alteregos/serie/The_Coon.png}
 \.
 
 
@@ -253,7 +398,7 @@ COPY public.alter_ego  (id, original_character, name, images) FROM stdin;
 -- Data for Name: characters; Type: TABLE DATA; Schema: public; Owner: southpark
 --
 
-COPY public.characters  (id, name, friend_group, family, birthday, age, religion, first_apperance, images, famious_guest) FROM stdin;
+COPY public.characters (id, name, friend_group, family, birthday, age, religion, first_apperance, images, famious_guest) FROM stdin;
 1	Kenneth "Kenny" McCormick	1	4	March 22th	9	{Christianity,"Blaintologist (Temporary)"}	1	{/img/characters/serie/Kenny_McCormick.png}	f
 2	Eric Theodore Cartman	1	2	July 1st	10	{"Roman Catholicism","Blaintologistism (Temporary)","Judaism (Post-Covid)"}	1	{/img/characters/serie/Eric_Cartman.png}	f
 3	Kyle Broflovski	1	1	May 26th	10	{Judaism,"Christianity (Temporary)","Blaintologist (Temporary)","Atheistism (Temporary)"}	1	{/img/characters/serie/Kyle_Broflovski.png}	f
@@ -297,6 +442,7 @@ COPY public.characters  (id, name, friend_group, family, birthday, age, religion
 41	Florence Cartman	\N	2	\N	\N	{"Roman Catholic"}	29	{/img/characters/serie/Florence_Cartman.png}	\N
 42	Leopold "Butters" Stotch	\N	34	September 11th	9	{"Roman Catholic","Blaintology (Temporarily)"}	25	{/img/characters/serie/Butters_Stotch.png}	\N
 43	Kevin McCormick	\N	4	\N	\N	{"Roman Catholic"}	8	{/img/characters/serie/Kevin_McCormick.png}	\N
+96	Mrs. Daniels	\N	13	\N	\N	\N	230	{/img/characters/serie/Mrs_Daniels.png}	\N
 44	Carol McCormick	\N	4	\N	\N	{"Roman Catholic","Cult of Cthulhu (Formerly)"}	8	{/img/characters/serie/Carol_McCormick.png}	\N
 45	Nellie Stotch	\N	34	\N	\N	\N	116	{/img/characters/serie/Nellie_Stotch.png}	\N
 46	Bud Stotch	\N	34	\N	\N	\N	116	{/img/characters/serie/Bud_Stotch.png}	\N
@@ -349,7 +495,6 @@ COPY public.characters  (id, name, friend_group, family, birthday, age, religion
 93	Mrs. Cotswolds	\N	12	\N	\N	\N	43	{/img/characters/serie/Mrs_Cotswolds.png}	\N
 94	Mr. Cotswolds	\N	12	\N	\N	\N	43	{/img/characters/serie/Mr_Cotswolds.png}	\N
 95	Nichole Daniels	\N	13	\N	10	{"Roman Catholic"}	230	{/img/characters/serie/Nichole_Daniels.png}	\N
-96	Mrs. Daniels	\N	13	\N	\N	\N	230	{/img/characters/serie/Mrs_Daniels.png}	\N
 97	William Daniels	\N	13	\N	\N	\N	230	{/img/characters/serie/William_Daniels.png}	\N
 98	Rex	\N	14	\N	\N	\N	4	{/img/characters/serie/Rex.png}	\N
 99	Clyde Donovan	\N	14	April 10th	10	{"Roman Catholic"}	2	{/img/characters/serie/Clyde_Donovan.png}	\N
@@ -471,7 +616,7 @@ COPY public.characters  (id, name, friend_group, family, birthday, age, religion
 -- Data for Name: episodes; Type: TABLE DATA; Schema: public; Owner: southpark
 --
 
-COPY public.episodes  (id, name, season, episode, realese_date, description, view_on_website) FROM stdin;
+COPY public.episodes (id, name, season, episode, realese_date, description, view_on_website) FROM stdin;
 1	Cartman Gets an Anal Probe	1	1	1997-08-13	While the boys are waiting for the school bus, Cartman explains the odd nightmare he had the previous night involving alien visitors.	https://www.southparkstudios.com/episodes/940f8z/south-park-cartman-gets-an-anal-probe-season-1-ep-1
 2	Weight Gain 4000	1	2	1997-08-27	When Cartman's environmental essay wins a national contest, America's sweetheart, Kathie Lee Gifford, comes to South Park to present the award.	https://www.southparkstudios.com/episodes/er4a32/south-park-weight-gain-4000-season-1-ep-2
 3	Volcano	1	3	1997-08-20	A weekend trip to experience the finer points of camping, fishing and blowing animals to smithereens is threatened by an erupting volcano.	https://www.southparkstudios.com/episodes/iuifco/south-park-volcano-season-1-ep-3
@@ -604,6 +749,7 @@ COPY public.episodes  (id, name, season, episode, realese_date, description, vie
 130	The Losing Edge	9	5	2005-04-06	The kids desperately want an end to the boring baseball season. The problem is, they keep winning.	https://www.southparkstudios.com/episodes/6q8det/south-park-the-losing-edge-season-9-ep-5
 131	The Death of Eric Cartman	9	6	2005-04-13	Cartman is sure he's dead and Butters is sure that Eric Cartman's ghost is haunting him. Together they attempt to make amends to all the people Cartman has wronged over the years.	https://www.southparkstudios.com/episodes/a9w7lr/south-park-the-death-of-eric-cartman-season-9-ep-6
 132	Erection Day	9	7	2005-04-20	The South Park Elementary School Talent Show is coming up and Jimmy can't wait to perform his comedy routine, but first he must find a way to gain control of his raging hormones.	https://www.southparkstudios.com/episodes/7fzi8u/south-park-erection-day-season-9-ep-7
+157	The Snuke	11	4	2007-03-28	While Cartman follows a lead on a possible terrorist attack, Hillary Clinton makes a campaign stop in South Park for a big rally.	https://www.southparkstudios.com/episodes/58qtax/south-park-the-snuke-season-11-ep-4
 133	Two Days Before the Day After Tomorrow	9	8	2005-10-19	A Global Warming State of Emergency is declared in South Park as the world's largest beaver dam breaks and floods the adjacent town of Beaverton.	https://www.southparkstudios.com/episodes/evqh3x/south-park-two-days-before-the-day-after-tomorrow-season-9-ep-8
 134	Marjorine	9	9	2005-10-26	Butters must fake his death, dress up as a girl and infiltrate a slumber party, in order to retrieve a future telling device Cartman is convinced the girls have.	https://www.southparkstudios.com/episodes/jy6p4p/south-park-marjorine-season-9-ep-9
 135	Follow That Egg	9	10	2005-11-02	In an effort to thwart her ex-lovers plans to get married, Mrs. Garrison leads the charge against gay marriage.	https://www.southparkstudios.com/episodes/uhtcfl/south-park-follow-that-egg-season-9-ep-10
@@ -628,7 +774,6 @@ COPY public.episodes  (id, name, season, episode, realese_date, description, vie
 154	With Apologies to Jesse Jackson	11	1	2007-03-07	After Randy Marsh experiences an unfortunate incident on national TV, the "N" bomb hits South Park. While Randy seeks forgiveness from Jesse Jackson, South Park Elementary invites a midget by the name of Dr. Nelson to talk about sensitivity.	https://www.southparkstudios.com/episodes/7ug7sr/south-park-with-apologies-to-jesse-jackson-season-11-ep-1
 155	Cartman Sucks	11	2	2007-03-14	When his "ultimate plan" to embarrass Butters backfires, Cartman struggles to keep his classmates from seeing a compromising photograph. Meanwhile, Butters is sent to a special camp where they "Pray the Gay Away."	https://www.southparkstudios.com/episodes/pomjzh/south-park-cartman-sucks-season-11-ep-2
 156	Lice Capades	11	3	2007-03-21	An infestation of head lice plagues South Park Elementary. When Mr. Garrison refuses to name names, Cartman finds a way to detect who has lice in the hopes of making fun of his unfortunate classmate.	https://www.southparkstudios.com/episodes/zjrua8/south-park-lice-capades-season-11-ep-3
-157	The Snuke	11	4	2007-03-28	While Cartman follows a lead on a possible terrorist attack, Hillary Clinton makes a campaign stop in South Park for a big rally.	https://www.southparkstudios.com/episodes/58qtax/south-park-the-snuke-season-11-ep-4
 158	Fantastic Easter Special	11	5	2007-04-04	Determined to get the real story behind why he has to decorate eggs for Easter, Stan falls in with an eccentric society that guards a legendary secret.	https://www.southparkstudios.com/episodes/2n6i47/south-park-fantastic-easter-special-season-11-ep-5
 159	D-Yikes!	11	6	2007-04-11	Ms. Garrison gets dumped again and takes her frustration out on the fourth grade class. However, things start looking up for her when she meets a new friend at the gym and they go out for drink at a local "girl bar."	https://www.southparkstudios.com/episodes/bbubl3/south-park-d-yikes-season-11-ep-6
 160	Night of the Living Homeless	11	7	2007-04-18	As an increasing number of homeless people are begging for change all over South Park, the boys work to solve the homeless problem once and for all.	https://www.southparkstudios.com/episodes/jp51b1/south-park-night-of-the-living-homeless-season-11-ep-7
@@ -795,6 +940,7 @@ COPY public.episodes  (id, name, season, episode, realese_date, description, vie
 321	Spring Break	26	6	2023-03-29	Spring Break is an excuse for Garrison to jump back into his former depraved lifestyle.	https://www.southparkstudios.com/episodes/7ux3j6/south-park-spring-break-season-26-ep-6
 322	Sermon on the ‘Mount	27	1	2025-07-23	When the residents of South Park face their possible demise, Jesus returns to give them an important message.	[EXCLUSIVE ON PARAMOUNT + ] https://www.southparkstudios.com/episodes/bfn06o/south-park-sermon-on-the-mount-season-27-ep-1
 323	Got A Nut	27	2	2025-08-06	When Mr. Mackey loses his job, he desperately tries to find a new way to make a living.	[EXCLUSIVE ON PARAMOUNT + ] https://www.southparkstudios.com/episodes/9756cz/south-park-got-a-nut-season-27-ep-2
+324	Sickofancy	27	3	2025-08-20	Sharon helps Randy come down from his Ketamine bender and the Marsh family sells Tegridy Farms.	[EXCLUSIVE ON PARAMOUNT + ] https://www.southparkstudios.com/episodes/bdoemj/south-park-sickofancy-season-27-ep-3
 \.
 
 
@@ -802,7 +948,7 @@ COPY public.episodes  (id, name, season, episode, realese_date, description, vie
 -- Data for Name: families; Type: TABLE DATA; Schema: public; Owner: southpark
 --
 
-COPY public.families  (id, name, images) FROM stdin;
+COPY public.families (id, name, images) FROM stdin;
 1	The Broflovskis	\N
 2	The Cartmans	\N
 3	The Marshs	\N
@@ -860,7 +1006,7 @@ COPY public.families  (id, name, images) FROM stdin;
 -- Data for Name: games; Type: TABLE DATA; Schema: public; Owner: southpark
 --
 
-COPY public.games  (id, name, developer, platforms, realese_date, images) FROM stdin;
+COPY public.games (id, name, developer, platforms, realese_date, images) FROM stdin;
 1	South Park Imaginationland	Mr. Goodliving	{IOS}	2008-07-10	\N
 2	South Park (Videogame)	Appaloosa Interactive	{PS1}	1999-09-30	\N
 3	South Park Mega Millionaire	GameHouse	{IOS,"Blackberry OS"}	2010-01-26	\N
@@ -901,7 +1047,7 @@ COPY public.games  (id, name, developer, platforms, realese_date, images) FROM s
 -- Data for Name: specials; Type: TABLE DATA; Schema: public; Owner: southpark
 --
 
-COPY public.specials  (id, title, release_date, link, description) FROM stdin;
+COPY public.specials (id, title, release_date, link, description) FROM stdin;
 1	South Park: Post Covid	2021-11-25	https://www.paramountplus.com/movies/video/Ga_vaU8r4h3Ax7aJnrCWG9EV8h0uugvO/	In SOUTH PARK: POST COVID, we’ll find out the answer to the question: what happened to the children who lived through the pandemic? Stan, Kyle, Cartman and Kenny survived, but will never be the same post COVID.
 2	South Park: Post Covid: The Return of Covid	2021-12-16	https://www.paramountplus.com/movies/video/Wnj6RyDK_sWCjm81KIBBZOk_PwsfWnii/	If Stan, Kyle and Cartman could just work together, they could go back in time to make sure Covid never happened and save Kenny's life. In SOUTH PARK: POST COVID: THE RETURN OF COVID, traveling back to the past seems to be the easy answer until they meet Victor Chaos.
 3	South Park: The Streaming Wars	2022-06-01	https://www.paramountplus.com/movies/video/Rc4DHb2MiyJbgO2lJuibS9RigcEfyHc9/	In South Park: The Streaming Wars, Cartman locks horns with his mom in a battle of wills while an epic conflict unfolds that threatens South Park's very existence.
@@ -910,6 +1056,20 @@ COPY public.specials  (id, title, release_date, link, description) FROM stdin;
 6	South Park (Not Suitable For Children)	2023-12-20	https://www.paramountplus.com/movies/video/0glSpjhJpLkp2ZiiJOkXO029GaSLgN_b/	After it's discovered that a teacher at South Park Elementary has an OnlyFans page, Randy is compelled to take a closer look at the seedy underbelly of the world of on-line influencers.
 7	South Park: The End Of Obesity	2024-05-24	https://www.paramountplus.com/movies/video/Cd3Fse6Xve3v7e69nMKZmNchXwEHGvll/	The advent of new weight loss drugs has a huge impact on everyone in South Park. When Cartman is denied access to the life-changing medicine, the kids jump into action.
 \.
+
+
+--
+-- Name: album_songs_id_seq; Type: SEQUENCE SET; Schema: public; Owner: southpark
+--
+
+SELECT pg_catalog.setval('public.album_songs_id_seq', 22, true);
+
+
+--
+-- Name: albums_id_seq; Type: SEQUENCE SET; Schema: public; Owner: southpark
+--
+
+SELECT pg_catalog.setval('public.albums_id_seq', 5, true);
 
 
 --
@@ -938,6 +1098,14 @@ SELECT pg_catalog.setval('public.family_id_seq', 49, true);
 --
 
 SELECT pg_catalog.setval('public.games_id_seq', 50, true);
+
+
+--
+-- Name: albums albums_pkey; Type: CONSTRAINT; Schema: public; Owner: southpark
+--
+
+ALTER TABLE ONLY public.albums
+    ADD CONSTRAINT albums_pkey PRIMARY KEY (id);
 
 
 --
@@ -981,6 +1149,14 @@ ALTER TABLE ONLY public.games
 
 
 --
+-- Name: album_songs id; Type: CONSTRAINT; Schema: public; Owner: southpark
+--
+
+ALTER TABLE ONLY public.album_songs
+    ADD CONSTRAINT id PRIMARY KEY (id);
+
+
+--
 -- Name: specials specials_pkey; Type: CONSTRAINT; Schema: public; Owner: southpark
 --
 
@@ -1002,6 +1178,14 @@ ALTER TABLE ONLY public.characters
 
 ALTER TABLE ONLY public.characters
     ADD CONSTRAINT family_fkey FOREIGN KEY (family) REFERENCES public.families(id) NOT VALID;
+
+
+--
+-- Name: album_songs fk_album; Type: FK CONSTRAINT; Schema: public; Owner: southpark
+--
+
+ALTER TABLE ONLY public.album_songs
+    ADD CONSTRAINT fk_album FOREIGN KEY (album) REFERENCES public.albums(id) NOT VALID;
 
 
 --
