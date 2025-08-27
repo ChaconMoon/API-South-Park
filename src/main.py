@@ -11,6 +11,7 @@ from src.controller.family_controller import get_family_by_id
 from src.controller.character_controller import get_character_by_id
 from src.controller.episodes_controller import get_episode_by_id
 from src.controller.specials_controller import get_special_by_id
+from src.controller.songs_controller import get_song_by_id
 
 app = FastAPI()
 
@@ -20,6 +21,12 @@ app.mount("/img", StaticFiles(directory="img"), name="img")
 @app.get("/")
 def index():
     return test_database()
+
+
+@app.get("/song/{id}")
+def show_song(id: int, request: Request):
+    base_url = str(request.base_url)
+    return get_song_by_id(id, base_url=base_url)
 
 
 @app.get("/special/{id}")
