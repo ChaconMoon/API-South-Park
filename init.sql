@@ -5,7 +5,7 @@ HINT:  Rebuild all objects in this database that use the default collation and r
 -- PostgreSQL database dump
 --
 
-\restrict XcaLIcuuEns747NiwA5tZlQFq04XCcQArJOtnUGVUFfeKlsalyAd9JwEpZku2lI
+\restrict MTFus2B2g9u3mUtvFoGwN9bKgBkpvjLDGbxYGh4dDa0EtuGYv23N3XNy5wSxURr
 
 -- Dumped from database version 15.14 (Debian 15.14-1.pgdg13+1)
 -- Dumped by pg_dump version 15.14 (Debian 15.14-1.pgdg13+1)
@@ -678,7 +678,6 @@ COPY public.characters (id, name, friend_group, family, birthday, age, religion,
 208	Mrs. White	\N	46	\N	\N	\N	287	{/img/characters/serie/Mrs_White.png}	\N
 209	Bob White	\N	46	\N	\N	\N	287	{/img/characters/serie/Bob_White.png}	\N
 210	Carlos	\N	\N	\N	\N	\N	95	{/img/characters/serie/Carlos.png}	\N
-211	34-Year-Old Asian Man Who Looks Strikingly Similar to Ricardo Montalbán	\N	\N	\N	34	\N	24	{/img/characters/serie/23_Year_Asian_Reporter.png}	f
 213	Aaron Hagen	\N	51	\N	7	\N	239	{/img/characters/serie/Aaron_Hagen.png}	f
 214	Abraham Lincoln	\N	\N	February 12th	56	\N	135	{/img/characters/serie/Abraham_Lincoln.png}	t
 217	Adams County Pee-Wee Hockey Team	\N	\N	\N	6	\N	153	{/img/characters/serie/Adams_County_Pee_Wee_Hockey_Team.png}	f
@@ -719,6 +718,7 @@ COPY public.characters (id, name, friend_group, family, birthday, age, religion,
 219	Afro Ninja	\N	\N	\N	\N	\N	171	{/img/characters/serie/Afro_Ninja.png}	t
 215	Adam Borque	\N	\N	\N	\N	\N	281	{/img/characters/serie/Adam_Borque.png}	f
 224	Airport Security Guard	\N	\N	\N	\N	\N	76	{/img/characters/serie/Airport_Security_Guard.png}	f
+211	A 34-Year-Old Asian Man Who Looks Strikingly Similar to Ricardo Montalbán	\N	\N	\N	34	\N	24	{/img/characters/serie/23_Year_Asian_Reporter.png}	f
 259	Angela Merkel	\N	\N	July 17th	71	{Lutheran}	187	{/img/characters/serie/Angela_Merkel.png}	t
 260	Angelina Jolie	\N	\N	June 4th	50	{"Former Roman Catholic"}	156	{/img/characters/serie/Angelina_Jolie_Voight.png}	t
 261	Angus T. Jones	\N	\N	October 8th	31	{Adventist}	203	{/img/characters/serie/Angus_T_Jones.png}	t
@@ -1340,5 +1340,5 @@ ALTER TABLE ONLY public.alter_ego
 -- PostgreSQL database dump complete
 --
 
-\unrestrict XcaLIcuuEns747NiwA5tZlQFq04XCcQArJOtnUGVUFfeKlsalyAd9JwEpZku2lI
+\unrestrict MTFus2B2g9u3mUtvFoGwN9bKgBkpvjLDGbxYGh4dDa0EtuGYv23N3XNy5wSxURr
 
