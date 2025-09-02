@@ -39,7 +39,7 @@ def get_episode_by_id(id: int, add_url=False, base_url="") -> dict:
                     if bool(row[8])
                     else "AVALIBLE ON WEBSITE"
                     if bool(row[7]) is not True
-                    else "CENSURED",
+                    else "CENSORED",
                     "website_url": str(row[6]) if row[6] is not None else "",
                 },
             )
