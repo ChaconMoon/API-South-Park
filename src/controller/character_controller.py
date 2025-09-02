@@ -45,11 +45,15 @@ def get_character_by_id(id: int, add_url=False, base_url="") -> dict:
                 ),
                 famious_guest=bool(row[9]) if row[9] is not None else False,
             )
+        result = dict()
+        if add_url:
+            result["name"] = character.model_dump()["name"]
+            result["url"] = f"{base_url}character/{row[0]}"
+            return result
         # Get the number of characters
         query_result = get_query_result(text("SELECT * FROM public.characters"))
 
         # Create API Response
-        result = dict()
 
         # Add Character Data to Response
         result["character"] = character.model_dump()
@@ -57,8 +61,6 @@ def get_character_by_id(id: int, add_url=False, base_url="") -> dict:
         # Add Metadata to Response
         result["metadata"] = dict()
         result["metadata"]["total_characters_in_database"] = query_result.rowcount
-        if add_url:
-            result["url"] = f"{base_url}character/{row[0]}"
 
         # Return Response
         return result
