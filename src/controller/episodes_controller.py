@@ -29,8 +29,8 @@ def get_episode_by_id(id: int, add_url=False, base_url="") -> dict:
                 id=int(row[0]) if row[0] is not None else 0,
                 name=str(row[1]) if row[1] is not None else "",
                 episode_numbering={
-                    "season": str(row[2]) if row[2] is not None else "",
-                    "episode": str(row[3]) if row[3] is not None else "",
+                    "season": int(row[2]) if row[2] is not None else "",
+                    "episode": int(row[3]) if row[3] is not None else "",
                 },
                 realese_date=str(row[4]) if row[4] is not None else "",
                 description=str(row[5]) if row[5] is not None else "",
