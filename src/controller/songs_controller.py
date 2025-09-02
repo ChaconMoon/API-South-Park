@@ -24,9 +24,10 @@ def get_all_songs_of_a_album(id: int, base_url="", add_url=False):
                 lyrics=lyrics,
                 song_url=str(row[4]) if row[4] is not None else "",
             )
-            result[song_number] = song.model_dump()
             if add_url:
-                result[song_number]["url"] = f"{base_url}song/{int(row[0])}"
+                result[song_number] = dict()
+                result[song_number]["name"] = song.model_dump()["name"]
+                result[song_number]["url"] = f"{base_url}song/{song.model_dump()['id']}"
             song_number += 1
         return result
     except Exception as e:
@@ -53,9 +54,6 @@ def get_song_by_id(id: int, add_url=False, base_url=""):
                 song_url=str(row[4]) if row[4] is not None else "",
             )
         return song.model_dump()
-
-        # Si no se encontró el personaje
-        # return {"error": "Character not found", "status": "not_found"}
 
     except Exception as e:
         return {"error": str(e), "status": "failed"}
