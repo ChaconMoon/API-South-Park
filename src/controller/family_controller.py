@@ -19,10 +19,12 @@ def get_family_by_id(id: int, url=""):
             family_members.append(
                 get_character_by_id(int(row[0]), add_url=True, base_url=url)
             )
+        query_result = get_query_result(text("SELECT * FROM public.families"))
         family = Family(id=id, name=str(rows[0][2]), images=[])
-        result["id"] = family.id
-        result["family"] = family.name
-        result["members"] = family_members
+        result["family"] = family.model_dump()
+        result["family"]["members"] = family_members
+        result["metadata"] = dict()
+        result["metadata"]["total_families_in_database"] = query_result.rowcount
 
         return result
     except Exception as e:
