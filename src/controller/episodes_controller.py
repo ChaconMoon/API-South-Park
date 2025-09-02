@@ -28,11 +28,20 @@ def get_episode_by_id(id: int, add_url=False, base_url="") -> dict:
             episode_info = Episode(
                 id=int(row[0]) if row[0] is not None else 0,
                 name=str(row[1]) if row[1] is not None else "",
-                sesaon=str(row[2]) if row[2] is not None else "",
-                episode=str(row[3]) if row[3] is not None else "",
+                episode_numbering={
+                    "season": str(row[2]) if row[2] is not None else "",
+                    "episode": str(row[3]) if row[3] is not None else "",
+                },
                 realese_date=str(row[4]) if row[4] is not None else "",
                 description=str(row[5]) if row[5] is not None else "",
-                view_on_website=str(row[6]) if row[6] is not None else "",
+                episode_in_website={
+                    "status": "EXCLUSIVE ON PARAMOUNT PLUS"
+                    if bool(row[8])
+                    else "AVALIBLE ON WEBSITE"
+                    if bool(row[7]) is not True
+                    else "CENSURED",
+                    "website_url": str(row[6]) if row[6] is not None else "",
+                },
             )
 
         # Return the result with the URL
@@ -43,7 +52,13 @@ def get_episode_by_id(id: int, add_url=False, base_url="") -> dict:
             return result
 
         # Return Episode info JSON
-        return episode_info.model_dump()
+        query_result = get_query_result(text("SELECT * FROM public.episodes"))
+
+        result = dict()
+        result["episode"] = episode_info.model_dump()
+        result["metadata"] = dict()
+        result["metadata"]["total_episodes_in_database"] = query_result.rowcount
+        return result
 
     except Exception as e:
         return {"error": str(e), "status": "failed"}
