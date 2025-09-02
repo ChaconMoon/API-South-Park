@@ -6,13 +6,27 @@ from src.controller.data_controller import parse_array_to_list
 from src.controller.database_connection import get_query_result
 
 
-# Connection with the database
-def get_character_by_id(id: int, add_url=False, base_url=""):
+# Get a Characters by this ID
+def get_character_by_id(id: int, add_url=False, base_url="") -> dict:
+    """
+    Get one character of the database
+
+    Args:
+        id (int): The id of a Character.
+        add_url (bool): If the response must contain the URL of the API
+        base_url (str): "The URL base of the API
+
+    Returns:
+        The JSON Response
+
+    """
     try:
+        # Get one character from the database using this ID
         query_result = get_query_result(
             text("SELECT * FROM public.characters Where id=:id"), {"id": id}
         )
 
+        # Get the Character info
         for row in query_result:
             character = Character(
                 id=int(row[0]) if row[0] is not None else 0,
@@ -22,16 +36,31 @@ def get_character_by_id(id: int, add_url=False, base_url=""):
                 birthday=str(row[4]) if row[4] is not None else "",
                 age=int(row[5]) if row[5] is not None else 0,
                 religion=parse_array_to_list(row[6]),
-                first_apperance=get_episode_by_id(int(row[7])),
+                first_apperance=get_episode_by_id(
+                    int(row[7]), add_url=True, base_url=base_url
+                ),
                 images=parse_array_to_list(row[8], is_url=True, base_url=base_url),
                 alter_egos=get_all_alteregos_of_a_character(
                     id, add_url=True, base_url=base_url
                 ),
                 famious_guest=bool(row[9]) if row[9] is not None else False,
             )
-        result = character.model_dump()
+        # Get the number of characters
+        query_result = get_query_result(text("SELECT * FROM public.characters"))
+
+        # Create API Response
+        result = dict()
+
+        # Add Character Data to Response
+        result["character"] = character.model_dump()
+
+        # Add Metadata to Response
+        result["metadata"] = dict()
+        result["metadata"]["total_characters_in_database"] = query_result.rowcount
         if add_url:
             result["url"] = f"{base_url}character/{row[0]}"
+
+        # Return Response
         return result
     except Exception as e:
         return {"error": str(e), "status": "failed"}
