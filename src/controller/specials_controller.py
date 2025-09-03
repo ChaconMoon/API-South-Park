@@ -12,7 +12,10 @@ def get_special_by_id(id: int, add_url=False, base_url=""):
                 where id = :id"""),
             {"id": id},
         )
-
+        if query_result is None:
+            return {"error": "Database not avalible", "status": "failed"}
+        if query_result.rowcount == 0:
+            return {"error": "Special not found", "status": "failed"}
         for row in query_result:
             special_info = Special(
                 id=int(row[0]) if row[0] is not None else 0,

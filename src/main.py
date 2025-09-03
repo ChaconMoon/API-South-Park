@@ -59,9 +59,17 @@ def show_song(id: int, request: Request, response: Response):
 
 
 @app.get("/special/{id}")
-def show_special(id: int, request: Request):
+def show_special(id: int, request: Request, response: Response):
     base_url = str(request.base_url)
-    return get_special_by_id(id, base_url=base_url)
+    json = get_special_by_id(id, base_url=base_url)
+    if "error" in json:
+        if json["error"] == "Special not found":
+            response.status_code = status.HTTP_404_NOT_FOUND
+        elif json["error"] == "Database not avalible":
+            response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
+    elif "special" in json:
+        response.status_code = status.HTTP_200_OK
+    return json
 
 
 @app.get("/family/{id}")
