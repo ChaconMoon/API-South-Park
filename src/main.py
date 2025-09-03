@@ -114,11 +114,19 @@ def show_episode(id: int, response: Response):
 
 
 @app.get("/character/{id}/alterego/{alter_id}")
-def show_alterergo(id: int, alter_id: int, request: Request):
+def show_alterergo(id: int, alter_id: int, request: Request, response: Response):
     base_url = str(request.base_url)
-    return get_alter_ego_by_character_and_id(
+    json = get_alter_ego_by_character_and_id(
         id_character=id, id_alter_ego=alter_id, base_url=base_url
     )
+    if "error" in json:
+        if json["error"] == "Alter Ego not found":
+            response.status_code = status.HTTP_404_NOT_FOUND
+        elif json["error"] == "Database not avalible":
+            response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
+        elif "alterego" in json:
+            response.status_code = status.HTTP_200_OK
+    return json
 
 
 @app.get("/character/{id}/alteregos")

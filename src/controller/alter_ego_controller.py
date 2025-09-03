@@ -29,6 +29,10 @@ def get_alter_ego_by_character_and_id(
                         where characters.id = alter_ego.original_character and characters.id = :id_character AND alter_ego.id = :id_alter_ego"""),
             {"id_character": id_character, "id_alter_ego": id_alter_ego},
         )
+        if query_result is None:
+            return {"error": "Database not avalible", "status": "failed"}
+        elif query_result.rowcount == 0:
+            return {"error": "Alter Ego not found", "status": "failed"}
 
         # Get Alter Ego data
         for row in query_result:
@@ -48,7 +52,19 @@ def get_alter_ego_by_character_and_id(
             )
             return result
         # Return Alter_Ego Info
-        return alter_ego.model_dump()
+        query_result = get_query_result(
+            text("""
+                        SELECT * FROM public.alter_ego where original_character = :id_character"""),
+            {"id_character": id_character},
+        )
+        result = dict()
+        result["alterego"] = alter_ego.model_dump()
+        result["metadata"] = dict()
+        result["metadata"]["total_alteregos_of_this_character_in_database"] = (
+            query_result.rowcount
+        )
+
+        return result
 
     except Exception as e:
         return {"error": str(e), "status": "failed"}
