@@ -104,7 +104,7 @@ def show_character(id: int, request: Request, response: Response):
 def show_episode(id: int, response: Response):
     json = get_episode_by_id(id)
     if "error" in json:
-        if json["error"] == "Character not found":
+        if json["error"] == "Episode not found":
             response.status_code = status.HTTP_404_NOT_FOUND
         elif json["error"] == "Database not avalible":
             response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
