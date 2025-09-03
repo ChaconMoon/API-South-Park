@@ -130,9 +130,17 @@ def show_alterergo(id: int, alter_id: int, request: Request, response: Response)
 
 
 @app.get("/character/{id}/alteregos")
-def show_all_alteregos(id: int, request: Request):
+def show_all_alteregos(id: int, request: Request, response: Response):
     base_url = str(request.base_url)
-    return get_all_alteregos_of_a_character(id_character=id, base_url=base_url)
+    json = get_all_alteregos_of_a_character(id_character=id, base_url=base_url)
+    if "error" in json:
+        if json["error"] == "Alter Egos not found":
+            response.status_code = status.HTTP_404_NOT_FOUND
+        elif json["error"] == "Database not avalible":
+            response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
+        elif "alteregos" in json:
+            response.status_code = status.HTTP_200_OK
+    return json
 
 
 if __name__ == "__main__":

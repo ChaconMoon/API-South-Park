@@ -97,14 +97,17 @@ def get_all_alteregos_of_a_character(id_character: int, add_url=False, base_url=
         number_of_alter_egos = query_result.rowcount
 
         # If the number of alter egos is 0 return a empty object
-        if number_of_alter_egos == 0:
-            return {}
+        if query_result is None:
+            return {"error": "Database not avalible", "status": "failed"}
+        elif query_result.rowcount == 0:
+            return {"error": "Alter Egos not found", "status": "failed"}
 
         # Return the list of the alter ego
         alter_ego_id = 1
         result = dict()
+        result["alteregos"] = dict()
         while alter_ego_id != number_of_alter_egos:
-            result[alter_ego_id - 1] = get_alter_ego_by_character_and_id(
+            result["alteregos"][alter_ego_id - 1] = get_alter_ego_by_character_and_id(
                 id_alter_ego=alter_ego_id,
                 id_character=id_character,
                 base_url=base_url,
