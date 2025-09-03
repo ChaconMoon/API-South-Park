@@ -26,6 +26,12 @@ def get_character_by_id(id: int, add_url=False, base_url="") -> dict:
             text("SELECT * FROM public.characters Where id=:id"), {"id": id}
         )
 
+        # Return the errors response
+
+        if query_result is None:
+            return {"error": "Database not avalible", "status": "failed"}
+        elif query_result.rowcount == 0:
+            return {"error": "Character not found", "status": "failed"}
         # Get the Character info
         for row in query_result:
             character = Character(

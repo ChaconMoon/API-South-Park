@@ -81,20 +81,36 @@ def show_family(id: int, request: Request, response: Response):
             response.status_code = status.HTTP_404_NOT_FOUND
         elif json["error"] == "Database not avalible":
             response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
-        elif "special" in json:
+        elif "family" in json:
             response.status_code = status.HTTP_200_OK
         return json
 
 
 @app.get("/character/{id}")
-def show_character(id: int, request: Request):
+def show_character(id: int, request: Request, response: Response):
     base_url = str(request.base_url)
-    return get_character_by_id(id, base_url=base_url)
+    json = get_character_by_id(id, base_url=base_url)
+    if "error" in json:
+        if json["error"] == "Character not found":
+            response.status_code = status.HTTP_404_NOT_FOUND
+        elif json["error"] == "Database not avalible":
+            response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
+        elif "character" in json:
+            response.status_code = status.HTTP_200_OK
+    return json
 
 
 @app.get("/episode/{id}")
-def show_episode(id: int):
-    return get_episode_by_id(id)
+def show_episode(id: int, response: Response):
+    json = get_episode_by_id(id)
+    if "error" in json:
+        if json["error"] == "Character not found":
+            response.status_code = status.HTTP_404_NOT_FOUND
+        elif json["error"] == "Database not avalible":
+            response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
+        elif "episode" in json:
+            response.status_code = status.HTTP_200_OK
+    return json
 
 
 @app.get("/character/{id}/alterego/{alter_id}")
