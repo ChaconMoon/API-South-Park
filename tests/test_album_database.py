@@ -14,7 +14,8 @@ def test_album_database_correct():
             "release_date": "1998-12-08",
             "album_cover": "http://localhost/image.jpg",
             "songs": {"1": {"name": "song name", "url": "http://localhost/song/1"}},
-        }
+        },
+        "metadata": {"total_albums_in_database": 6},
     }
     with patch("src.main.get_album_by_id") as database_response:
         database_response.return_value = fake_response

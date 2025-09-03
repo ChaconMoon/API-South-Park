@@ -40,7 +40,10 @@ def get_song_by_id(id: int, add_url=False, base_url=""):
                 SELECT * FROM public.album_songs where id = :id"""),
             {"id": id},
         )
-
+        if query_result is None:
+            return {"error": "Database not avalible", "status": "failed"}
+        elif query_result.rowcount == 0:
+            return {"error": "Song not found", "status": "failed"}
         for row in query_result:
             # Replace literal \n with actual newlines in lyrics
             lyrics = str(row[3]) if row[3] is not None else ""

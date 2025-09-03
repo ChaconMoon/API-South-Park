@@ -37,17 +37,25 @@ def show_album(id: int, request: Request, response: Response):
     if "error" in json:
         if json["error"] == "Album not found":
             response.status_code = status.HTTP_404_NOT_FOUND
-        else:
+        if json["error"] == "Database not avalible":
             response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
-    else:
-        response.status_code == 200
+    elif "album" in json:
+        response.status_code == status.HTTP_200_OK
     return json
 
 
 @app.get("/song/{id}")
-def show_song(id: int, request: Request):
+def show_song(id: int, request: Request, response: Response):
     base_url = str(request.base_url)
-    return get_song_by_id(id, base_url=base_url)
+    json = get_song_by_id(id, base_url=base_url)
+    if "error" in json:
+        if json["error"] == "Song not found":
+            response.status_code = status.HTTP_404_NOT_FOUND
+        elif json["error"] == "Database not avalible":
+            response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
+    elif "song" in json:
+        response.status_code = status.HTTP_200_OK
+    return json
 
 
 @app.get("/special/{id}")
