@@ -12,7 +12,10 @@ def get_album_by_id(id: int, add_url=False, base_url=""):
                 SELECT * FROM public.albums where id = :id"""),
             {"id": id},
         )
-
+        if query_result is None:
+            return {"error": "Database not avalible", "status": "failed"}
+        if query_result.rowcount == 0:
+            return {"error": "Album not found", "status": "failed"}
         for row in query_result:
             cover_url = str(row[3]) if row[3] is not None else ""
             album = Album(
@@ -35,5 +38,5 @@ def get_album_by_id(id: int, add_url=False, base_url=""):
         result["metadata"]["total_albums_in_database"] = query_result.rowcount
         return result
 
-    except Exception as e:
-        return {"error": str(e), "status": base_url}
+    except TypeError as e:
+        return {"error": str(e), "status": "failed"}

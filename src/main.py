@@ -27,13 +27,21 @@ def index(response: Response):
         response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
     else:
         response.status_code = status.HTTP_200_OK
-    return get_database_status()
+    return json
 
 
 @app.get("/album/{id}")
-def show_album(id: int, request: Request):
+def show_album(id: int, request: Request, response: Response):
     base_url = str(request.base_url)
-    return get_album_by_id(id, base_url=base_url)
+    json = get_album_by_id(id, base_url=base_url)
+    if "error" in json:
+        if json["error"] == "Album not found":
+            response.status_code = status.HTTP_404_NOT_FOUND
+        else:
+            response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
+    else:
+        response.status_code == 200
+    return json
 
 
 @app.get("/song/{id}")
