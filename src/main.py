@@ -1,12 +1,12 @@
 from fastapi import FastAPI
-from fastapi import Request
+from fastapi import Request, Response, status
 from fastapi.staticfiles import StaticFiles
 import uvicorn
 from src.controller.alter_ego_controller import (
     get_alter_ego_by_character_and_id,
     get_all_alteregos_of_a_character,
 )
-from src.controller.database_test import test_database
+from src.controller.database_status import get_database_status
 from src.controller.family_controller import get_family_by_id
 from src.controller.character_controller import get_character_by_id
 from src.controller.episodes_controller import get_episode_by_id
@@ -20,8 +20,14 @@ app.mount("/img", StaticFiles(directory="img"), name="img")
 
 
 @app.get("/")
-def index():
-    return test_database()
+def index(response: Response):
+    json = get_database_status()
+
+    if "error" in json:
+        response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
+    else:
+        response.status_code = status.HTTP_200_OK
+    return get_database_status()
 
 
 @app.get("/album/{id}")
