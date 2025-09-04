@@ -1,7 +1,18 @@
+"""
+Module written by Carlos Chacón
+
+This Module contain the main class of the API and create de operations used by the API
+"""
+
+# Import of FastAPI.
 from fastapi import FastAPI
 from fastapi import Request, Response, status
 from fastapi.staticfiles import StaticFiles
+
+# Import the uvicorn library.
 import uvicorn
+
+# Internal inputs.
 from src.controller.alter_ego_controller import (
     get_alter_ego_by_character_and_id,
     get_all_alteregos_of_a_character,
@@ -14,13 +25,22 @@ from src.controller.specials_controller import get_special_by_id
 from src.controller.songs_controller import get_song_by_id
 from src.controller.album_controller import get_album_by_id
 
+# Create the FastAPI app.
 app = FastAPI()
 
+# Mount the img directory with the images of the database.
 app.mount("/img", StaticFiles(directory="img"), name="img")
 
 
+# Create the basic response of the API with the connection of the API.
 @app.get("/")
-def index(response: Response):
+def index(response: Response) -> dict:
+    """
+    Get the response with the connection of the API.
+
+    Returns:
+    A dict with the response.
+    """
     json = get_database_status()
 
     if "error" in json:
@@ -30,8 +50,15 @@ def index(response: Response):
     return json
 
 
+# Create the operation to get the albums.
 @app.get("/album/{id}")
-def show_album(id: int, request: Request, response: Response):
+def show_album(id: int, request: Request, response: Response) -> dict:
+    """
+    Get the response with the album with a specific id.
+
+    Returns:
+    A dict with the response.
+    """
     base_url = str(request.base_url)
     json = get_album_by_id(id, base_url=base_url)
     if "error" in json:
@@ -44,8 +71,15 @@ def show_album(id: int, request: Request, response: Response):
     return json
 
 
+# Create the operation to get the songs.
 @app.get("/song/{id}")
-def show_song(id: int, request: Request, response: Response):
+def show_song(id: int, request: Request, response: Response) -> dict:
+    """
+    Get the response with the song with a specific id.
+
+    Returns:
+    A dict with the response
+    """
     base_url = str(request.base_url)
     json = get_song_by_id(id, base_url=base_url)
     if "error" in json:
@@ -58,8 +92,15 @@ def show_song(id: int, request: Request, response: Response):
     return json
 
 
+# Create the operation to get the special episodes.
 @app.get("/special/{id}")
-def show_special(id: int, request: Request, response: Response):
+def show_special(id: int, request: Request, response: Response) -> dict:
+    """
+    Get the response with the special with a specific id.
+
+    Returns:
+    A dict with the response
+    """
     base_url = str(request.base_url)
     json = get_special_by_id(id, base_url=base_url)
     if "error" in json:
@@ -72,8 +113,15 @@ def show_special(id: int, request: Request, response: Response):
     return json
 
 
+# Create the operation to get the families.
 @app.get("/family/{id}")
-def show_family(id: int, request: Request, response: Response):
+def show_family(id: int, request: Request, response: Response) -> dict:
+    """
+    Get the response with the family with a specific id.
+
+    Returns:
+    A dict with the response
+    """
     base_url = str(request.base_url)
     json = get_family_by_id(id, url=base_url)
     if "error" in json:
@@ -86,8 +134,15 @@ def show_family(id: int, request: Request, response: Response):
         return json
 
 
+# Create the operation to get the characters.
 @app.get("/character/{id}")
-def show_character(id: int, request: Request, response: Response):
+def show_character(id: int, request: Request, response: Response) -> dict:
+    """
+    Get the response with the character with a specific id.
+
+    Returns:
+    A dict with the response
+    """
     base_url = str(request.base_url)
     json = get_character_by_id(id, base_url=base_url)
     if "error" in json:
@@ -100,8 +155,15 @@ def show_character(id: int, request: Request, response: Response):
     return json
 
 
+# Create the operation to get the episodes.
 @app.get("/episode/{id}")
-def show_episode(id: int, response: Response):
+def show_episode(id: int, response: Response) -> dict:
+    """
+    Get the response with the episode with a specific id.
+
+    Returns:
+    A dict with the response
+    """
     json = get_episode_by_id(id)
     if "error" in json:
         if json["error"] == "Episode not found":
@@ -113,8 +175,17 @@ def show_episode(id: int, response: Response):
     return json
 
 
+# Create the operation to get one alter ego of a character.
 @app.get("/character/{id}/alterego/{alter_id}")
-def show_alterergo(id: int, alter_id: int, request: Request, response: Response):
+def show_alterergo(
+    id: int, alter_id: int, request: Request, response: Response
+) -> dict:
+    """
+    Get the response with the alterego of one espefic ID of one specific character.
+
+    Returns:
+    A dict with the response
+    """
     base_url = str(request.base_url)
     json = get_alter_ego_by_character_and_id(
         id_character=id, id_alter_ego=alter_id, base_url=base_url
@@ -129,8 +200,15 @@ def show_alterergo(id: int, alter_id: int, request: Request, response: Response)
     return json
 
 
+# Create the operation to get all the alteregos of a character.
 @app.get("/character/{id}/alteregos")
-def show_all_alteregos(id: int, request: Request, response: Response):
+def show_all_alteregos(id: int, request: Request, response: Response) -> dict:
+    """
+    Get the response with the all the alteregos of one specific character.
+
+    Returns:
+    A dict with the response
+    """
     base_url = str(request.base_url)
     json = get_all_alteregos_of_a_character(id_character=id, base_url=base_url)
     if "error" in json:
@@ -143,5 +221,6 @@ def show_all_alteregos(id: int, request: Request, response: Response):
     return json
 
 
+# Start the API execution.
 if __name__ == "__main__":
     uvicorn.run(app="main:app", reload=True)

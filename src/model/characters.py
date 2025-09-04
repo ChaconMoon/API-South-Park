@@ -1,7 +1,17 @@
+"""
+Module written by Carlos Chacón
+
+This module defines the Character data model.
+"""
+
+# Import pydantic
 from pydantic import BaseModel
+
+# Import List model
 from typing import List
 
 
+# Create Character class
 class Character(BaseModel):
     id: int
     name: str

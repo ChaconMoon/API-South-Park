@@ -1,3 +1,9 @@
+"""
+Module written by Carlos Chacón.
+
+This module get the param of the API in the get alter ego operations, make the query to the API and return the result.
+"""
+
 from sqlalchemy import text
 from src.controller.database_connection import get_query_result
 from src.model.alter_ego import AlterEgo
@@ -65,7 +71,7 @@ def get_alter_ego_by_character_and_id(
         )
 
         return result
-
+    # Control exceptions
     except Exception as e:
         return {"error": str(e), "status": "failed"}
 
@@ -115,5 +121,6 @@ def get_all_alteregos_of_a_character(id_character: int, add_url=False, base_url=
             )
             alter_ego_id += 1
         return result
+    # Control exceptions
     except Exception:
         return {"message": "error"}

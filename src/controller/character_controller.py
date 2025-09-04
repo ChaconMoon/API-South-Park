@@ -1,3 +1,9 @@
+"""
+Module written by Carlos Chacón.
+
+This module get the param of the API in the get character operations, make the query to the API and return the result.
+"""
+
 from sqlalchemy import text
 from src.controller.alter_ego_controller import get_all_alteregos_of_a_character
 from src.controller.episodes_controller import get_episode_by_id
@@ -70,5 +76,6 @@ def get_character_by_id(id: int, add_url=False, base_url="") -> dict:
 
         # Return Response
         return result
+    # Control exceptions
     except Exception as e:
         return {"error": str(e), "status": "failed"}

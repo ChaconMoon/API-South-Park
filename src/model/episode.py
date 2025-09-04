@@ -1,8 +1,14 @@
-# UPDATED
+"""
+Module written by Carlos Chacón
 
+This module defines the Episode data model.
+"""
+
+# Import pydantic
 from pydantic import BaseModel
 
 
+# Create Episode class
 class Episode(BaseModel):
     id: int
     name: str
