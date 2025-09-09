@@ -1,11 +1,11 @@
 WARNING:  database "southpark_api" has a collation version mismatch
 DETAIL:  The database was created using collation version 2.36, but the operating system provides version 2.41.
 HINT:  Rebuild all objects in this database that use the default collation and run ALTER DATABASE southpark_api REFRESH COLLATION VERSION, or build PostgreSQL with the right library version.
---
+https://www.southparkstudios.com/episodes/7kgkzb/south-park-wok-is-dead-season-27-ep-4--
 -- PostgreSQL database dump
 --
 
-\restrict frmqKbWbggqsrzNpTuNderQImv6pke93E8nqSvxBaRJXyfMKPRtRJZDgN843pmL
+\restrict hLkZINgW5mC0VHYTT9EC0G8zEHCaXkMuZKXNdOhIIZYChsRC3RxzxgdbLebQbim
 
 -- Dumped from database version 15.14 (Debian 15.14-1.pgdg13+1)
 -- Dumped by pg_dump version 15.14 (Debian 15.14-1.pgdg13+1)
@@ -1079,6 +1079,7 @@ COPY public.episodes (id, name, season, episode, realese_date, description, view
 200	200	14	5	2010-04-14	The town of South Park faces a class action lawsuit as every celebrity they've ever ridiculed is out for revenge.	https://www.southparkstudios.com/episodes/uxg9g7/south-park-200-season-14-ep-5	t	f
 201	201	14	6	2010-04-21	Angry celebrities, violent ginger kids and Mecha Streisand are about to destroy South Park and all anyone wants to know is, "Who is Eric Cartman's father?"	https://www.southparkstudios.com/episodes/wrosbx/south-park-201-season-14-ep-6	t	f
 294	Nobody Got Cereal?	22	7	2018-11-14	The boys break out of jail and are on the run from the police and ManBearPig.	https://www.southparkstudios.com/episodes/sagwyy/south-park-nobody-got-cereal-season-22-ep-7	t	f
+325	Wok is Dead	27	4	2025-09-03	Butters experiences the reality of tariffs when he has to buy a Labubu doll for his girlfriend’s birthday.	https://www.southparkstudios.com/episodes/7kgkzb/south-park-wok-is-dead-season-27-ep-4	f	t
 \.
 
 
@@ -1342,5 +1343,5 @@ ALTER TABLE ONLY public.alter_ego
 -- PostgreSQL database dump complete
 --
 
-\unrestrict frmqKbWbggqsrzNpTuNderQImv6pke93E8nqSvxBaRJXyfMKPRtRJZDgN843pmL
+\unrestrict hLkZINgW5mC0VHYTT9EC0G8zEHCaXkMuZKXNdOhIIZYChsRC3RxzxgdbLebQbim
 
