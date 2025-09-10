@@ -1,11 +1,11 @@
 WARNING:  database "southpark_api" has a collation version mismatch
 DETAIL:  The database was created using collation version 2.36, but the operating system provides version 2.41.
 HINT:  Rebuild all objects in this database that use the default collation and run ALTER DATABASE southpark_api REFRESH COLLATION VERSION, or build PostgreSQL with the right library version.
-https://www.southparkstudios.com/episodes/7kgkzb/south-park-wok-is-dead-season-27-ep-4--
+--
 -- PostgreSQL database dump
 --
 
-\restrict hLkZINgW5mC0VHYTT9EC0G8zEHCaXkMuZKXNdOhIIZYChsRC3RxzxgdbLebQbim
+\restrict DGmdNcnL72SNgrJBe5Dub6YWgOmkAgilFpau4p9ZdUvHCRj2N9pTc1AgslzZQNE
 
 -- Dumped from database version 15.14 (Debian 15.14-1.pgdg13+1)
 -- Dumped by pg_dump version 15.14 (Debian 15.14-1.pgdg13+1)
@@ -721,6 +721,14 @@ COPY public.characters (id, name, friend_group, family, birthday, age, religion,
 215	Adam Borque	\N	\N	\N	\N	\N	281	{/img/characters/serie/Adam_Borque.png}	f
 224	Airport Security Guard	\N	\N	\N	\N	\N	76	{/img/characters/serie/Airport_Security_Guard.png}	f
 211	A 34-Year-Old Asian Man Who Looks Strikingly Similar to Ricardo Montalbán	\N	\N	\N	34	\N	24	{/img/characters/serie/23_Year_Asian_Reporter.png}	f
+306	Beth (Dawg's Bitch)	\N	\N	\N	\N	\N	149	{/img/characters/serie/Beth_Bitch.png}	f
+307	Betsy ("D-Yikes!")	\N	\N	\N	\N	\N	159	{/img/characters/serie/Betsy_D_Yikes.png}	f
+308	Betsy MacIntosh	\N	\N	\N	\N	\N	214	{/img/characters/serie/Betsy_MacIntosh.png}	f
+309	Betsy	\N	\N	\N	10	\N	309	{/img/characters/serie/Betsy_Labubu_Girl.png}	f
+310	Big Black Scary Monster	\N	\N	\N	\N	\N	20	{/img/characters/serie/The_Big_Black_Scary_Monster.png}	f
+311	Big Gay Al	\N	49	\N	\N	\N	4	{/img/characters/serie/Big_Gay_Al.png}	f
+312	Big Mesquite Murph	\N	\N	\N	\N	\N	309	{/img/characters/serie/Big_Mesquite_Murph.png}	f
+313	Biggest Douche in the Universe Committee	\N	\N	\N	\N	\N	94	{/img/characters/serie/Biggest_Douche_Judges.png}	f
 259	Angela Merkel	\N	\N	July 17th	71	{Lutheran}	187	{/img/characters/serie/Angela_Merkel.png}	t
 260	Angelina Jolie	\N	\N	June 4th	50	{"Former Roman Catholic"}	156	{/img/characters/serie/Angelina_Jolie_Voight.png}	t
 261	Angus T. Jones	\N	\N	October 8th	31	{Adventist}	203	{/img/characters/serie/Angus_T_Jones.png}	t
@@ -747,6 +755,131 @@ COPY public.characters (id, name, friend_group, family, birthday, age, religion,
 227	Al-Qaeda	\N	\N	\N	\N	\N	74	{/img/characters/serie/Al_Qaeda.png}	t
 230	Alan Jackson	\N	\N	Octuber 17th	66	{Christian}	91	{/img/characters/serie/Al_Jackson.png}	t
 235	Alec Vaughn	\N	\N	\N	\N	\N	294	{/img/characters/serie/Alec_Vaughn.png}	\N
+278	Baby Cows	\N	\N	\N	\N	\N	83	{/img/characters/serie/Baby_Cows.png}	f
+279	Kevern Zaksor (Baby Fark McGee-zax)	\N	\N	\N	\N	\N	187	{/img/characters/serie/Kevern_Zaksor.png}	f
+280	Grogu (Baby Yoda)	\N	\N	\N	\N	\N	306	{/img/characters/serie/Grogu.png}	t
+281	Babylonians	\N	\N	\N	\N	\N	15	{/img/characters/serie/Babylonians.png}	f
+282	Bakery Napoleon Bakers	\N	\N	\N	\N	\N	150	{/img/characters/serie/Bakery_Napoleon_Bakers.png}	f
+283	Barack Hussein Obama II	\N	55	August 4	64	{Protestant}	169	{/img/characters/serie/Barack_Obama.png}	t
+284	Barbara Garthunk	\N	\N	\N	\N	\N	75	{/img/characters/serie/Barbara_Garthunk.png}	f
+285	Barbra Streisand	\N	\N	April 24	83	{Judaism}	12	{/img/characters/serie/Barbra_Streisand.png}	t
+286	Barkley	\N	\N	\N	\N	\N	226	{/img/characters/serie/Barkley.png}	f
+287	Barky	\N	\N	\N	\N	\N	14	{/img/characters/serie/Barky.png}	f
+288	Barry Bonds	\N	\N	July 24	61	\N	113	{/img/characters/serie/Barry_Bonds.png}	t
+289	Bartholomew "Bart" JoJo Simpson	\N	56	April 1 or February 23	10	{Christian}	143	{/img/characters/serie/Bart_Simpson.png}	t
+290	Bartender	\N	\N	\N	\N	\N	4	{/img/characters/serie/Bartender.png}	f
+291	Bartles	\N	\N	\N	\N	\N	25	{/img/characters/serie/Bartles.png}	f
+292	Basketball Coach	\N	\N	\N	\N	\N	126	{/img/characters/serie/Basketball_Coach.png}	f
+293	Beatrice Arthur	\N	\N	May 13	86	{Judaism}	189	{/img/characters/serie/Beatrice_Arthur.png}	t
+294	Beach Family ("Insecurity")	\N	\N	\N	\N	\N	233	{/img/characters/serie/Beach_Family.png}	f
+295	Beast	\N	\N	\N	\N	\N	299	{/img/characters/serie/Beast.png}	t
+296	Beatrice McGullicutty	\N	\N	\N	\N	{"Roman Catholic"}	282	{/img/characters/serie/Beatrice_McGullicutty.png}	f
+297	Belarusian Farmers	\N	\N	\N	\N	\N	236	{/img/characters/serie/Belarusian_Farmers.png}	f
+298	Ben ("Blizzard" Staff)	\N	\N	\N	\N	\N	147	{/img/characters/serie/Ben_Blizzard.png}	f
+299	Benjamin Géza Affleck-Boldt	\N	57	August 15	53	{Methodist}	75	{/img/characters/serie/Ben_Affleck.png}	t
+300	Ben Roethlisberger	\N	\N	March 2	43	{Methodist}	196	{/img/characters/serie/Ben_Roethlisberger.png}	t
+301	Benjamin Franklin	\N	\N	January 17	84	{Deist}	100	{/img/characters/serie/Benjamin_Franklin.png}	t
+302	Benny	\N	\N	\N	\N	\N	184	{/img/characters/serie/Benny.png}	f
+303	Benny Hill	\N	\N	January 21	68	\N	78	{/img/characters/serie/Benny_Hill.png}	t
+304	Best Buy President	\N	\N	\N	\N	\N	210	{/img/characters/serie/Best_Buy_President.png}	f
+305	Beth	\N	\N	\N	10	\N	123	{/img/characters/serie/Beth.png}	f
+314	Bill Allen	\N	\N	\N	10	\N	4	{/img/characters/serie/Bill_Allen.png}	f
+315	William Jefferson "Bill" Clinton	\N	58	August 19	79	{Baptist}	15	{/img/characters/serie/Bill_Clinton.png}	t
+316	Bill Cosby	\N	\N	July 12	88	{Protestant}	77	{/img/characters/serie/Bill_Cosby.png}	t
+317	Bill Cosby (BSM-471)	\N	\N	\N	\N	\N	60	{/img/characters/serie/Bill_Cosby_BSM_471.png}	f
+318	Bill Denkins	\N	\N	\N	\N	\N	1	{/img/characters/serie/Bill_Denkins.png}	f
+319	Bill Donohue	\N	\N	July 18	78	{"Roman Catholic"}	158	{/img/characters/serie/Bill_Donahue.png}	t
+320	Bill Gates	\N	\N	October 28	69	{"Roman Catholic"}	76	{/img/characters/serie/Bill_Gates.png}	t
+321	Bill Norman	\N	\N	\N	\N	\N	264	{/img/characters/serie/Bill_Norman.png}	f
+322	Bill O'Reilly	\N	\N	September 10	76	{"Roman Catholic"}	118	{/img/characters/serie/Bill_Oreilly.png}	t
+323	William Forrester Owens	\N	\N	October 22	74	\N	88	{/img/characters/serie/Bill_Owens.png}	t
+324	Bill Stewart	\N	\N	\N	\N	\N	106	{/img/characters/serie/Bill_Stewart.png}	f
+325	Bill Yellow Hawk	\N	\N	\N	\N	\N	280	{/img/characters/serie/Bill_Yellow_Hawk.png}	f
+326	Billy (Kindergartner)	\N	\N	\N	\N	\N	60	{/img/characters/serie/Kindergartener_Billy.png}	f
+327	Billy ("Sons A Witches")	\N	\N	\N	10	\N	283	{/img/characters/serie/Billy_Sons_A_Witches.png}	f
+328	Billy Bob Thornton	\N	\N	August 4	70	{Agnostic}	196	{/img/characters/serie/Billy_Bob_Thornton.png}	t
+329	Billy Circlovich	\N	\N	\N	\N	\N	49	{/img/characters/serie/Billy_Circlovich.png}	f
+330	Billy Harris	\N	\N	\N	\N	\N	60	{/img/characters/serie/Billy_Harris.png}	f
+331	Billy Martin	\N	\N	\N	10	\N	122	{/img/characters/serie/Billy_Martin.png}	f
+332	William Darrell "Billy" Mays Jr	\N	\N	July 20	50	{Christian}	189	{/img/characters/serie/Billy_Mays.png}	t
+333	Billy Miller	\N	\N	\N	\N	\N	198	{/img/characters/serie/Billy_Miller.png}	f
+334	Billy Thompson	\N	\N	\N	10	\N	205	{/img/characters/serie/Billy_Thompson.png}	f
+335	Billy Turner	\N	\N	\N	9	\N	132	{/img/characters/serie/Billy_Turner.png}	f
+336	Birthday Party Parents	\N	\N	\N	\N	\N	255	{/img/characters/serie/Birthday_Party_Parents.png}	f
+337	Bishop of Banff	\N	\N	\N	\N	\N	212	{/img/characters/serie/Bishop_Of_Banff.png}	f
+338	Black-Haired Scientist	\N	\N	\N	\N	\N	164	{/img/characters/serie/Black_Haired_Scientist.png}	f
+339	Black Panther	\N	\N	\N	\N	\N	299	{/img/characters/serie/Black_Panther.png}	t
+340	Blanket Jackson	\N	59	February 21	2	\N	117	{/img/characters/serie/Blanket_Jackson.png}	t
+341	Blaze	\N	\N	\N	\N	\N	102	{/img/characters/serie/Blaze.png}	f
+342	Blink-182	\N	\N	\N	\N	\N	105	{/img/characters/serie/Blink_182.png}	t
+343	Blinky's Airsoft Referee	\N	\N	\N	\N	\N	314	{/img/characters/serie/Blinky's_Airsoft_Referee.png}	f
+344	Blockbuster Employee's Ghost	\N	\N	\N	\N	\N	235	{/img/characters/serie/Blockbuster_Employee's_Ghost.png}	f
+345	Blonde-Haired Girl ("Erection Day")	\N	\N	\N	\N	\N	132	{/img/characters/serie/Blonde-Haired_Girl.png}	f
+346	Bloods (Gang)	\N	\N	\N	\N	\N	98	{/img/characters/serie/Blonde-The_Bloods.png}	f
+347	Bloody Sunday: The Dangers of Memeing narrator	\N	\N	\N	\N	\N	226	{/img/characters/serie/Bloody_Sunday_The_Dangers_of_Memeing_narrator.png}	f
+348	Bob Denver	\N	\N	January 9	70	\N	19	{/img/characters/serie/Bob_Denver.png}	t
+349	Bob Dole	\N	\N	July 22	98	{Methodist}	33	{/img/characters/serie/Bob_Dole.jpg}	t
+350	Bob Ferrin	\N	\N	\N	\N	\N	78	{/img/characters/serie/Bob_Ferrin.png}	f
+351	Bob Johnson	\N	\N	\N	\N	\N	2	{/img/characters/serie/Bob_Johnson.png}	f
+352	Bob Saget	\N	\N	January 9	65	{Judaism}	13	{/img/characters/serie/Bob_Saget.png}	f
+353	Bob Summers	\N	\N	\N	\N	\N	169	{/img/characters/serie/Bob_Summers.png}	f
+354	Bob Thomas	\N	\N	\N	\N	\N	18	{/img/characters/serie/Bob_Thomas.png}	f
+355	Bobby	\N	\N	\N	\N	\N	226	{/img/characters/serie/Bobby.png}	f
+356	Bobby ("Cartman Joins NAMBLA")	\N	\N	\N	\N	\N	53	{/img/characters/serie/Bobby_Nambla.png}	f
+357	Robert William Flay	\N	\N	December 10	60	{Catholic}	209	{/img/characters/serie/Bobby_Flay.png}	t
+358	Bobby Palmer	\N	60	\N	\N	\N	176	{/img/characters/serie/Bobby_Palmer.png}	f
+359	Bono	\N	\N	May 10	65	{Christian}	162	{/img/characters/serie/Bono.png}	t
+360	Bono's Butler	\N	\N	\N	\N	\N	162	{/img/characters/serie/Bono's_Butler.png}	f
+361	Book Mobile Driver	\N	\N	\N	\N	\N	17	{/img/characters/serie/Booktastic_Bus_Driver.png}	f
+362	Boom Microphone Operator	\N	\N	\N	\N	\N	2	{/img/characters/serie/Boom_Microphone_Operator.png}	f
+363	Boris Johnson	\N	\N	June 19	61	{"'Church of England'"}	275	{/img/characters/serie/Boris_Johnson.png}	t
+364	Boston	\N	\N	\N	\N	\N	269	{/img/characters/serie/Boston.png}	t
+365	Boy in Finn Costume	\N	\N	\N	\N	\N	235	{/img/characters/serie/Boy_in_Finn_Costume.png}	f
+366	Quest for Ratings	\N	\N	\N	\N	\N	122	{/img/characters/serie/Boy_with_Blond_Hair.png}	f
+367	Boy with Brown Hair	\N	\N	\N	\N	\N	223	{/img/characters/serie/Boy_with_Brown_Hair.png}	f
+368	Boy with Brown Hair and Red Shirt	\N	\N	\N	\N	\N	122	{/img/characters/serie/Boy_with_Brown_Hair_and_Red_Shirt.png}	f
+369	Boy with C Cap	\N	\N	\N	\N	\N	34	{/img/characters/serie/Boy_with_C_Cap.png}	f
+370	Boy with Dark Green Shirt and Glasses	\N	\N	\N	\N	\N	36	{/img/characters/serie/Boy_with_Dark_Green_Shirt_and_Glasses.png}	f
+371	Boy with Earmuffs	\N	\N	\N	\N	\N	36	{/img/characters/serie/Boy_with_Earmuffs.png}	f
+372	Boy with Green Shirt	\N	\N	\N	\N	\N	226	{/img/characters/serie/Boy_with_Green_Shirt.png}	f
+373	Boy with Huge Glasses	\N	\N	\N	\N	\N	58	{/img/characters/serie/Boy_with_Huge_Glasses.png}	f
+374	Boy with Olive Shirt and Black Pants	\N	\N	\N	\N	\N	9	{/img/characters/serie/Boy_with_olive_shirt_andb_lack_pants.png}	f
+375	Boy with Orange Shirt	\N	\N	\N	\N	\N	122	{/img/characters/serie/Boy_with_orange_shirt.png}	f
+376	Boy with Red Shirt	\N	\N	\N	\N	\N	20	{/img/characters/serie/Boy_with_red_shirt.png}	f
+377	Boy with Red Shirt and Blue Pants	\N	\N	\N	\N	\N	136	{/img/characters/serie/Boy_with_red_shirt_blue_pants.png}	f
+378	Brad	\N	\N	\N	\N	\N	258	{/img/characters/serie/Brad.png}	f
+379	Brad Davis	\N	\N	July 20	\N	\N	179	{/img/characters/serie/Brad_Davis.png}	t
+380	Brad Morgan	\N	\N	\N	\N	\N	118	{/img/characters/serie/Brad_Morgan.png}	\N
+381	Brad Paisley	\N	\N	October 28	52	\N	230	{/img/characters/serie/Brad_Paisley.png}	t
+382	Bradley	\N	\N	\N	\N	\N	155	{/img/characters/serie/Bradley.png}	f
+383	Brandon Carlile	\N	\N	\N	\N	\N	250	{/img/characters/serie/Brandon_Carlile.png}	f
+384	Brett	\N	\N	\N	\N	\N	166	{/img/characters/serie/Brett.png}	f
+385	Brett Favre	\N	\N	\N	\N	\N	21	{/img/characters/serie/Brett_Favre.png}	f
+386	Brian	\N	\N	\N	\N	\N	143	{/img/characters/serie/Brian.png}	f
+387	Brian ("Free Willzyx")	\N	\N	\N	\N	\N	138	{/img/characters/serie/Brian_Willzyx.png}	f
+388	Brian ("The Losing Edge")	\N	\N	\N	\N	\N	130	{/img/characters/serie/Brian_The_Losing_Edge.png}	f
+389	Brian Boitano	\N	\N	October 22	61	\N	4	{/img/characters/serie/Brian_Boitano.png}	t
+390	Brian Boyant	\N	\N	\N	\N	\N	265	{/img/characters/serie/Brian_Boyant.png}	f
+391	Brian Dennehy	\N	\N	July 9	81	{"Roman Catholic"}	200	{/img/characters/serie/Brian_Dennehy.png}	t
+392	Brian Griffin	\N	\N	\N	8	\N	142	{/img/characters/serie/Brian_Griffin.png}	t
+393	Brian Jeffries	\N	\N	\N	\N	\N	157	{/img/characters/serie/Brian_Jeffries.png}	f
+394	Brian Thompson-Jarvis	\N	\N	\N	\N	\N	141	{/img/characters/serie/Brian_Thompson-Jarvis.png}	f
+395	Brimmy	\N	\N	\N	10	\N	1	{/img/characters/serie/Brimmy.png}	f
+396	Britney Spears	\N	\N	December 2	43	{Baptist}	34	{/img/characters/serie/Britney_Spears.png}	t
+397	Brooke Shields	\N	\N	May 31	60	{"Roman Catholic"}	200	{/img/characters/serie/Brooke_Shields.png}	t
+398	Brobee	\N	\N	\N	\N	\N	242	{/img/characters/serie/Brobee.png}	f
+399	Bruce	\N	\N	\N	\N	\N	65	{/img/characters/serie/Bruce.png}	f
+400	Brunette Nurse	\N	\N	\N	\N	\N	89	{/img/characters/serie/Brunette_Nurse.png}	f
+401	Bryan Adams	\N	\N	November 5	65	\N	212	{/img/characters/serie/Bryan_Adams.png}	t
+402	Bubb Rubb	\N	\N	\N	47	\N	171	{/img/characters/serie/Bubb_Rubb.jpg}	t
+403	Buck	\N	61	\N	\N	\N	31	{/img/characters/serie/Buck.png}	f
+404	Buck Jr	\N	\N	\N	13	\N	31	{/img/characters/serie/Buck_Jr.png}	f
+405	Bucky Bailey	\N	\N	\N	\N	\N	228	{/img/characters/serie/Bucky_Bailey.png}	f
+406	Buddha	\N	\N	\N	2574	\N	68	{/img/characters/serie/Buddha.png}	t
+407	Buddy Ebsen	\N	\N	April 2	95	\N	24	{/img/characters/serie/Buddy_Ebsen.png}	t
+408	Busy Beaver Truck Driver	\N	\N	\N	\N	\N	79	{/img/characters/serie/Busy_Beaver_Truck_Driver.png}	f
+409	Butt Out!	\N	\N	\N	\N	\N	109	{/img/characters/serie/Butt_Out.png}	f
+410	Buzz Lightyear	\N	\N	\N	\N	\N	299	{/img/characters/serie/Buzz_Lightyear.png}	t
 \.
 
 
@@ -1142,6 +1275,13 @@ COPY public.families (id, name, images) FROM stdin;
 52	The Hitlers	\N
 53	Alice's Family	\N
 54	The Varcas	\N
+55	The Obamas	\N
+56	The Simpsons	\N
+57	The Thompsns	\N
+58	The Clintons	\N
+59	The Jacksons	\N
+60	The Palmers	\N
+61	Buck's Family	\N
 \.
 
 
@@ -1343,5 +1483,5 @@ ALTER TABLE ONLY public.alter_ego
 -- PostgreSQL database dump complete
 --
 
-\unrestrict hLkZINgW5mC0VHYTT9EC0G8zEHCaXkMuZKXNdOhIIZYChsRC3RxzxgdbLebQbim
+\unrestrict DGmdNcnL72SNgrJBe5Dub6YWgOmkAgilFpau4p9ZdUvHCRj2N9pTc1AgslzZQNE
 
