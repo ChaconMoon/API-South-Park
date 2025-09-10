@@ -106,7 +106,7 @@ def get_all_alteregos_of_a_character(id_character: int, add_url=False, base_url=
         if query_result is None:
             return {"error": "Database not avalible", "status": "failed"}
         elif query_result.rowcount == 0:
-            return {"error": "Alter Egos not found", "status": "failed"}
+            return {}
 
         # Return the list of the alter ego
         alter_ego_id = 1
