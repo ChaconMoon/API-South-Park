@@ -8,17 +8,17 @@ This module defines the Character data model.
 from pydantic import BaseModel
 
 # Import List model
-from typing import List
+from typing import List, Optional
 
 
 # Create Character class
 class Character(BaseModel):
     id: int
     name: str
-    friend_group: int
-    family: int
-    birthday: str
-    age: int
+    friend_group: Optional[int] = None
+    family: Optional[int] = None
+    birthday: Optional[str] = None
+    age: Optional[int] = None
     religion: List[str]
     images: list[str]
     first_apperance: dict

@@ -43,10 +43,10 @@ def get_character_by_id(id: int, add_url=False, base_url="") -> dict:
             character = Character(
                 id=int(row[0]) if row[0] is not None else 0,
                 name=str(row[1]) if row[1] is not None else "",
-                friend_group=int(row[2]) if row[2] is not None else 0,
-                family=int(row[3]) if row[3] is not None else 0,
-                birthday=str(row[4]) if row[4] is not None else "",
-                age=int(row[5]) if row[5] is not None else 0,
+                friend_group=int(row[2]) if row[2] is not None else None,
+                family=int(row[3]) if row[3] is not None else None,
+                birthday=str(row[4]) if row[4] is not None else None,
+                age=int(row[5]) if row[5] is not None else None,
                 religion=parse_array_to_list(row[6]),
                 first_apperance=get_episode_by_id(
                     int(row[7]), add_url=True, base_url=base_url
