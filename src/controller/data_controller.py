@@ -15,7 +15,7 @@ def parse_array_to_list(values: str, is_url: bool = False, base_url=""):
         base_url (str): The base URL used to create the reference URL
     """
     if not values or values is None:
-        return []
+        return None
 
     # Clean the string
     value_str = str(values).strip()

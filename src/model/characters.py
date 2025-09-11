@@ -19,8 +19,8 @@ class Character(BaseModel):
     family: Optional[int] = None
     birthday: Optional[str] = None
     age: Optional[int] = None
-    religion: List[str]
+    religion: Optional[List[str]] = None
     images: list[str]
     first_apperance: dict
-    alter_egos: dict
+    alter_egos: Optional[dict] = None
     famious_guest: bool
