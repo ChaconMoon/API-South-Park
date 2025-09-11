@@ -5,7 +5,7 @@ HINT:  Rebuild all objects in this database that use the default collation and r
 -- PostgreSQL database dump
 --
 
-\restrict DGmdNcnL72SNgrJBe5Dub6YWgOmkAgilFpau4p9ZdUvHCRj2N9pTc1AgslzZQNE
+\restrict 43zY2MaW6wRfDYCW07Nkkk1YT8ZzdFNDbV6F4NO6KrYtzGPkTYf1kveupgCkYO2
 
 -- Dumped from database version 15.14 (Debian 15.14-1.pgdg13+1)
 -- Dumped by pg_dump version 15.14 (Debian 15.14-1.pgdg13+1)
@@ -462,6 +462,81 @@ COPY public.alter_ego (id, original_character, name, images) FROM stdin;
 3	2	AWESOMO 4000	{/img/alteregos/phone_destroyer/AWESOMO_4000_PhoneDestroyer.png,/img/alteregos/serie/AWESOMO_4000.png}
 2	2	The Grand Wizard	{/img/alteregos/phone_destroyer/Cartman_Wizard_PhoneDestroyer.png,/img/alteregos/serie/The_Grand_Wizard.png}
 1	2	The Coon	{/img/alteregos/phone_destroyer/The_Coon_PhoneDestroyer.png,/img/alteregos/serie/The_Coon.png}
+4	188	Ice Sniper Wendy	{/img/alteregos/phone_destroyer/Ice_Sniper_Wendy.png,/img/alteregos/serie/Ice_Sniper_Wendy.png}
+3	188	Angel Wendy	{/img/alteregos/phone_destroyer/Angel_Wendy.png,/img/alteregos/serie/Angel_Wendy.png}
+2	188	Shieldmaiden Wendy	{/img/alteregos/phone_destroyer/Shieldmaiden_Wendy.png,/img/alteregos/serie/Sheildmaiden_Wendy.png}
+1	188	Call Girl	{/img/alteregos/phone_destroyer/Call_Girl.png,/img/alteregos/serie/Call_Girl.png}
+5	199	Fastpass	{/img/alteregos/phone_destroyer/Fastpass,/img/alteregos/serie/Fastpass.png}
+4	199	Le Bard Jimmy	{/img/alteregos/phone_destroyer/Le_Bard_Jimmy.png,/img/alteregos/serie/Jimmy_The_Bard.png}
+3	199	Friar Jimmy	{/img/alteregos/phone_destroyer/Friar_Jimmy.png,/img/alteregos/serie/Flair_Jimmy.png}
+2	199	Enforcer Jimmy	{/img/alteregos/phone_destroyer/Enforcer_Jimmy.png,/img/alteregos/serie/Enforcer_Jimmy.png}
+1	199	Storyteller Jimmy	{/img/alteregos/phone_destroyer/Storyteller_Jimmy.png,/img/alteregos/serie/Storyteller_Jimmy.png}
+5	78	Shaman Tolkien	{/img/alteregos/phone_destroyer/Shaman_Tolkien.png,/img/alteregos/serie/Shaman_Tolkien.png}
+4	78	Space Warrior Tolkien	{/img/alteregos/phone_destroyer/Space_Warrior_Tolkien.png,/img/alteregos/serie/Space_Warrior_Tolkien.png}
+3	78	Witch Doctor Tolkien	{/img/alteregos/phone_destroyer/Witch_Doctor_Tolkien.png,/img/alteregos/serie/Witch_Doctor_Tolkien.png}
+2	78	Rogue Tolkien	{/img/alteregos/phone_destroyer/Rouge_Tolkien.png,/img/alteregos/serie/Rouge_Tolkien.png}
+1	78	Tupperware	{/img/alteregos/phone_destroyer/Tupperware.png,/img/alteregos/serie/Tupperware.png}
+5	99	Hookhand Clyde	{/img/alteregos/phone_destroyer/Hookhand_Clyde.png,/img/alteregos/serie/Hookhand_Clyde.png}
+4	99	Alien Clyde	{/img/alteregos/phone_destroyer/Alien_Clyde.png,/img/alteregos/serie/Alien_Clyde.png}
+3	99	Hercules Clyde	{/img/alteregos/phone_destroyer/Hercules_Clyde.png}
+2	99	Dwarf King Clyde	{/img/alteregos/phone_destroyer/Dwarf_King_Clyde.png,/img/alteregos/serie/Clyde_Dwarf_King.png}
+1	99	Mosquito	{/img/alteregos/phone_destroyer/Mosquito.png,/img/alteregos/serie/Mosquito.png}
+5	58	Incan Craig	{/img/alteregos/phone_destroyer/Incan_Craig.png}
+4	58	Marine Craig	{/img/alteregos/phone_destroyer/Marine_Craig.png,/img/alteregos/serie/Marine_Craig.png}
+3	58	Youth Pastor Craig	{/img/alteregos/phone_destroyer/Young_Pastor_Craig.png,/img/alteregos/serie/Youth_Paster_Craig.png}
+2	58	Dark Mage Craig	{/img/alteregos/phone_destroyer/Dark_Mage_Craig.png,/img/alteregos/serie/Dark_Mage_Craig.png}
+1	58	Super Craig	{/img/alteregos/phone_destroyer/Super_Craig.png,/img/alteregos/serie/Super_Craig.png}
+5	52	Outlaw Tweek	{/img/alteregos/phone_destroyer/Outlaw_Tweek.png}
+4	52	Warboy Tweek	{/img/alteregos/phone_destroyer/Warboy_Tweek.png}
+3	52	Imp Tweek	{/img/alteregos/phone_destroyer/Imp_Tweek.png,/img/alteregos/serie/IMP_Tweek.png}
+2	52	Robin Tweek	{/img/alteregos/phone_destroyer/Robin_Tweek.png,/img/alteregos/serie/Robin_Tweek.png}
+1	52	Wonder Tweek	{/img/alteregos/phone_destroyer/Wonder_Tweek.png,/img/alteregos/serie/Wonder_Tweek.png}
+5	82	Pirate Ship Timmy	{/img/alteregos/phone_destroyer/Pirate_Ship_Timmy.png,/img/alteregos/serie/Pirate_Ship_Timmy.png}
+4	82	Mecha Timmy	{/img/alteregos/phone_destroyer/Mecha_Timmy.png,/img/alteregos/serie/Mecha_Timmy.png}
+3	82	Pope Timmy	{/img/alteregos/phone_destroyer/Pope_Timmy.png,/img/alteregos/serie/Pope_Timmy.png}
+2	82	Catapult Timmy	{/img/alteregos/phone_destroyer/Catapult_Timmy.png,/img/alteregos/serie/Catapult_Timmy.png}
+1	82	Doctor Timothy	{/img/alteregos/phone_destroyer/Doctor_Timothy.png,/img/alteregos/serie/Doctor_Timothy.png}
+4	171	Buccaneer Bebe	{/img/alteregos/phone_destroyer/Buccaneer_Bebe.png}
+3	171	Robo Bebe	{/img/alteregos/phone_destroyer/Robo_Bebe.png}
+2	171	Medusa Bebe	{/img/alteregos/phone_destroyer/Medusa_Bebe.png}
+1	171	Blood Elf Bebe	{/img/alteregos/phone_destroyer/Blood_Elf_Bebe.png}
+5	151	Swashbuckler Red	{/img/alteregos/phone_destroyer/Swashbukler_Red.png}
+4	151	Alien Queen Red	{/img/alteregos/phone_destroyer/Alien_Queen_Red.png,/img/alteregos/serie/Red_Alien_Queen.png}
+3	151	Dark Angel Red	{/img/alteregos/phone_destroyer/Dark_Angel_Red.png,/img/alteregos/serie/Dark_Angel_Red.png}
+2	151	Dragonslayer Red	{/img/alteregos/phone_destroyer/Dragonslayer_Red.png,/img/alteregos/serie/Red_Dragonslayer.png}
+1	151	Changeling Red	{/img/alteregos/phone_destroyer/Changeling_Red.png}
+1	5	Canadian Knight Ike	{/img/alteregos/phone_destroyer/Canadian_Knight_Ike.png,/img/alteregos/serie/Canadian_Knight_Ike.png}
+4	5	Smuggler Ike	{/img/alteregos/phone_destroyer/Smuggler_Ike.png,/img/alteregos/serie/Smuggler_Ike.png}
+3	5	Gizmo Ike	{/img/alteregos/phone_destroyer/Gizmo_Ike.png,/img/alteregos/serie/Gizmo_Ike.png}
+2	5	Scout Ike	{/img/alteregos/phone_destroyer/Scout_Ike.png,/img/alteregos/serie/Scout_Ike.png}
+5	65	Frontier Bradley	{/img/alteregos/phone_destroyer/Frontier_Bradley.png}
+4	65	Space Pilot Bradley	{/img/alteregos/phone_destroyer/Space_Pilot_Bradley.png}
+3	65	Archangel Bradley	{/img/alteregos/phone_destroyer/Archangel_Bradley.png}
+2	65	Elven King Bradley	{/img/alteregos/phone_destroyer/Elven_King_Bradley.png}
+1	65	Mintberry Crunch	{/img/alteregos/phone_destroyer/Mintberry_Crunch.png,/img/alteregos/serie/Mint_Berry_Crunch.png}
+5	19	Pocahontas Randy	{/img/alteregos/phone_destroyer/Pocahontas_Randy.png,/img/alteregos/serie/Pocahontas_Randy.png}
+4	19	Sixth Element Randy	{/img/alteregos/phone_destroyer/Sixth_Element_Randy.png,/img/alteregos/serie/Sixth_Element_Randy.png}
+3	19	Sexy Nun Randy	{/img/alteregos/phone_destroyer/Sexy_Nun_Randy.png,/img/alteregos/serie/Sexy_Nun_Randy.png}
+2	19	The Amazingly Randy	{/img/alteregos/phone_destroyer/The_Amazingly_Randy.png,/img/alteregos/serie/The_Amazingly_Randy.png}
+1	19	Mary Jane Randy	{/img/alteregos/phone_destroyer/Mary_Jane_Randy.png,/img/alteregos/serie/Mary_Jane_Randy.png}
+4	7	President Garrison	{/img/alteregos/phone_destroyer/President_Garrison.png,/img/alteregos/serie/President_Garrison.png}
+3	7	Swordsman Garrison	{/img/alteregos/phone_destroyer/Swordsman_Garrison.png}
+2	7	Commander Hat	{/img/alteregos/phone_destroyer/Commander_Hat.png}
+1	7	Witch Garrison	{/img/alteregos/phone_destroyer/Witch_Garrison.png}
+2	141	Alchemist Scott	{/img/alteregos/phone_destroyer/Alchemist_Scott.png,/img/alteregos/serie/Ranger_Scott.png}
+1	141	Captain Diabetes	{/img/alteregos/phone_destroyer/Captain_Diabetes.png,/img/alteregos/serie/Captain_Diabetes.png}
+5	188	Captain Wendy	{/img/alteregos/phone_destroyer/Captain_Wendy.png}
+1	61	Alternate Human Kite	{/img/alteregos/phone_destroyer/Alt_Human_Kite.png,/img/alteregos/serie/Alt_Human_Kite.png}
+1	194	Calamity Heidi	{/img/alteregos/phone_destroyer/Calamity_Heidi.png}
+1	43	Infiltrator Kevin	{/img/alteregos/phone_destroyer/Infiltrator_Kevin.jpg,/img/alteregos/serie/Infiltrator_Kevin.png}
+1	95	Nymph Nichole	{/img/alteregos/phone_destroyer/Nymph_Nichole.png}
+1	17	Sharpshooter Shelley	{/img/alteregos/phone_destroyer/Sharpshooter_Shelley.png,/img/alteregos/serie/Sharpshooter_Shelley.png}
+1	33	Sorceress Liane	{/img/alteregos/phone_destroyer/Sorceress_Liane.png,/img/alteregos/serie/Sorceress_Liane.png}
+1	21	War Hero Ned	{/img/alteregos/phone_destroyer/War_Hero_Ned.png}
+1	24	S-WOW Tittybang	{/img/alteregos/phone_destroyer/S-WOW_Tittybang.png,/img/alteregos/serie/S_Wow_Tittybang.png}
+1	16	Medicine Woman Sharon	{/img/alteregos/phone_destroyer/Medicine_Woman_Sharon.png,/img/alteregos/serie/Medicine_Woman_Sharon.png}
+1	39	Sizzler Stuart	{/img/alteregos/phone_destroyer/Sizzler_Stuart.png,/img/alteregos/serie/Sizzler_Stuart.png}
+1	27	Full Moon Sparky	{/img/alteregos/phone_destroyer/Full_Moon_Sparky.png}
 \.
 
 
@@ -1483,5 +1558,5 @@ ALTER TABLE ONLY public.alter_ego
 -- PostgreSQL database dump complete
 --
 
-\unrestrict DGmdNcnL72SNgrJBe5Dub6YWgOmkAgilFpau4p9ZdUvHCRj2N9pTc1AgslzZQNE
+\unrestrict 43zY2MaW6wRfDYCW07Nkkk1YT8ZzdFNDbV6F4NO6KrYtzGPkTYf1kveupgCkYO2
 

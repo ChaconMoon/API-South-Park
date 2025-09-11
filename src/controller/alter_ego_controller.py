@@ -112,7 +112,7 @@ def get_all_alteregos_of_a_character(id_character: int, add_url=False, base_url=
         alter_ego_id = 1
         result = dict()
         result["alteregos"] = dict()
-        while alter_ego_id != number_of_alter_egos:
+        while alter_ego_id != number_of_alter_egos + 1:
             result["alteregos"][alter_ego_id - 1] = get_alter_ego_by_character_and_id(
                 id_alter_ego=alter_ego_id,
                 id_character=id_character,
