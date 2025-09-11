@@ -131,7 +131,7 @@ def show_family(id: int, request: Request, response: Response) -> dict:
             response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
         elif "family" in json:
             response.status_code = status.HTTP_200_OK
-        return json
+    return json
 
 
 # Create the operation to get the characters.
