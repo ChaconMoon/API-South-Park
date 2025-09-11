@@ -24,7 +24,7 @@ This Markdown docemnts shows the progress of the data in the database:
 
 ## Characters
 
-<img src="https://progress-bar.xyz/14/?style=for-the-badge&width=200&title=277%20/%201856&progress_color=ff3300">
+<img src="https://progress-bar.xyz/22/?style=for-the-badge&width=200&title=410%20/%201856&progress_color=ff3300">
 
 ## Episodes 
 
@@ -36,7 +36,7 @@ This Markdown docemnts shows the progress of the data in the database:
 
 ### Characters that starts with B
 
-<img src="https://progress-bar.xyz/5/?style=for-the-badge&width=200&title=9%20/%20155&progress_color=ff3300">
+<img src="https://progress-bar.xyz/91/?style=for-the-badge&width=200&title=142%20/%20155&">
 
 ### Characters that starts with C
 
