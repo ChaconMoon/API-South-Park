@@ -6,6 +6,7 @@ This module get the param of the API in the get album operations, make the query
 
 # Import OS dependecies
 import os
+import time
 
 # Import SQLAlquemy
 from sqlalchemy import create_engine
@@ -35,6 +36,7 @@ def get_database_connection():
         pool_pre_ping=True,  # Verify connection before use the databae
         pool_timeout=30,  # Limit time to get the conection with the databse
     )
+
     # Create the sesion in the database
     _localSesion = sessionmaker(autocommit=False, autoflush=False, bind=_connection)
 
@@ -71,6 +73,12 @@ def get_query_result(statement: str, params: dict = {}):
         session.close()
         return query_result
     except Exception:
-        return None
+        time.sleep(1)
+        try:
+            query_result = session.execute(statement, params)
+            session.close()
+            return query_result
+        except Exception:
+            return None
     finally:
-        session.close
+        session.close()
