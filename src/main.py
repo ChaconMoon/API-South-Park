@@ -17,6 +17,7 @@ from src.controller.alter_ego_controller import (
     get_alter_ego_by_character_and_id,
     get_all_alteregos_of_a_character,
 )
+from src.controller.chinpokomon_controller import get_chinpokomon_by_id
 from src.controller.database_status import get_database_status
 from src.controller.family_controller import get_family_by_id
 from src.controller.character_controller import get_character_by_id
@@ -232,6 +233,12 @@ def get_the_last_episode():
     A dict with the response
     """
     return get_last_episode()
+
+
+@app.get("/chinpokomon/{id}")
+def get_chinpokomon(id: int, request: Request, response: Response):
+    base_url = str(request.base_url)
+    return get_chinpokomon_by_id(id=id, base_url=base_url)
 
 
 # Start the API execution.
