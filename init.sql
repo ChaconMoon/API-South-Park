@@ -5,7 +5,7 @@ HINT:  Rebuild all objects in this database that use the default collation and r
 -- PostgreSQL database dump
 --
 
-\restrict 43zY2MaW6wRfDYCW07Nkkk1YT8ZzdFNDbV6F4NO6KrYtzGPkTYf1kveupgCkYO2
+\restrict KviffHPHEHT08jOyjWPSg7xSHpMl88LRPBwXtIiTitfS1GkNQdhL7zMjK7Qw1Pv
 
 -- Dumped from database version 15.14 (Debian 15.14-1.pgdg13+1)
 -- Dumped by pg_dump version 15.14 (Debian 15.14-1.pgdg13+1)
@@ -153,6 +153,19 @@ ALTER TABLE public.characters_id_seq OWNER TO southpark;
 
 ALTER SEQUENCE public.characters_id_seq OWNED BY public.characters.id;
 
+
+--
+-- Name: chinpokomon; Type: TABLE; Schema: public; Owner: southpark
+--
+
+CREATE TABLE public.chinpokomon (
+    id integer NOT NULL,
+    name text NOT NULL,
+    image text NOT NULL
+);
+
+
+ALTER TABLE public.chinpokomon OWNER TO southpark;
 
 --
 -- Name: episodes; Type: TABLE; Schema: public; Owner: southpark
@@ -959,6 +972,44 @@ COPY public.characters (id, name, friend_group, family, birthday, age, religion,
 
 
 --
+-- Data for Name: chinpokomon; Type: TABLE DATA; Schema: public; Owner: southpark
+--
+
+COPY public.chinpokomon (id, name, image) FROM stdin;
+27	Stegmata	img/chinpokomon/Stegmata.png
+26	Sna-kat	img/chinpokomon/Sna-kat.png
+25	Shoe	img/chinpokomon/Shoe.png
+24	Roo-stor	img/chinpokomon/Roo-stor.png
+23	Roidrat	img/chinpokomon/Roidrat.png
+22	Rabbitech	img/chinpokomon/Rabbitech.png
+21	Pterdaken	img/chinpokomon/Pterdaken.png
+20	Poodlesaurus Rex	img/chinpokomon/Poodlesaurus_Rex.png
+19	Pengin	img/chinpokomon/Pengin.png
+18	Mouse-tik	img/chinpokomon/Mouse-tik.png
+17	Monkay	img/chinpokomon/Monkay.png
+16	Lambtron	img/chinpokomon/Lambtron.png
+15	Gunrilla	img/chinpokomon/Gunrilla.png
+14	Gophermon	img/chinpokomon/Gophermon.png
+13	Gerbitoad	img/chinpokomon/Gerbitoad.png
+12	Furrycat	img/chinpokomon/Furrycat.png
+11	Flowerpotamus	img/chinpokomon/Flowerpotamus.png
+10	Fetuswami	img/chinpokomon/Fetuswami.png
+9	Ferasnarf	img/chinpokomon/Ferasnarf.png
+8	Fatdactyl	img/chinpokomon/Fatdactyl.png
+7	Donkeytron	img/chinpokomon/Donkeytron.png
+6	Cosmonewt	img/chinpokomon/Cosmonewt.png
+5	Chu-Chu Nezumi	img/chinpokomon/Chu-Chu_Nezumi.png
+4	Brocorii	img/chinpokomon/Brocorii.png
+3	Biebersaurus	img/chinpokomon/Biebersaurus.png
+2	Beetlebot	img/chinpokomon/Beetlebot.png
+1	Accountafish	img/chinpokomon/Accountafish.png
+30	Velocirapstar	img/chinpokomon/Velocirapstar.png
+29	Vamporko	img/chinpokomon/Vamporko.png
+28	Terribovine	img/chinpokomon/Terribovine.png
+\.
+
+
+--
 -- Data for Name: episodes; Type: TABLE DATA; Schema: public; Owner: southpark
 --
 
@@ -1483,6 +1534,14 @@ ALTER TABLE ONLY public.characters
 
 
 --
+-- Name: chinpokomon chinpokomon_pkey; Type: CONSTRAINT; Schema: public; Owner: southpark
+--
+
+ALTER TABLE ONLY public.chinpokomon
+    ADD CONSTRAINT chinpokomon_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: episodes episodes_pkey; Type: CONSTRAINT; Schema: public; Owner: southpark
 --
 
@@ -1558,5 +1617,5 @@ ALTER TABLE ONLY public.alter_ego
 -- PostgreSQL database dump complete
 --
 
-\unrestrict 43zY2MaW6wRfDYCW07Nkkk1YT8ZzdFNDbV6F4NO6KrYtzGPkTYf1kveupgCkYO2
+\unrestrict KviffHPHEHT08jOyjWPSg7xSHpMl88LRPBwXtIiTitfS1GkNQdhL7zMjK7Qw1Pv
 
