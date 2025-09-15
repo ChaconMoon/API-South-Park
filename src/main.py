@@ -20,7 +20,7 @@ from src.controller.alter_ego_controller import (
 from src.controller.database_status import get_database_status
 from src.controller.family_controller import get_family_by_id
 from src.controller.character_controller import get_character_by_id
-from src.controller.episodes_controller import get_episode_by_id
+from src.controller.episodes_controller import get_episode_by_id, get_last_episode
 from src.controller.specials_controller import get_special_by_id
 from src.controller.songs_controller import get_song_by_id
 from src.controller.album_controller import get_album_by_id
@@ -221,6 +221,17 @@ def show_all_alteregos(id: int, request: Request, response: Response) -> dict:
         elif "alteregos" in json:
             response.status_code = status.HTTP_200_OK
     return json
+
+
+@app.get("/lastepisode")
+def get_the_last_episode():
+    """
+    Returns the last episode of the serie.
+
+    Returns:
+    A dict with the response
+    """
+    return get_last_episode()
 
 
 # Start the API execution.

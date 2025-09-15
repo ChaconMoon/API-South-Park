@@ -76,3 +76,18 @@ def get_episode_by_id(id: int, add_url=False, base_url="") -> dict:
     # Control Exceptions
     except Exception as e:
         return {"error": str(e), "status": "failed"}
+
+
+def get_last_episode():
+    """
+    Returns the last episode of the series
+
+    Returns:
+        The JSON Response
+
+    """
+    query_result = get_query_result(text("SELECT * FROM public.episodes"))
+
+    episode_id = query_result.rowcount
+
+    return get_episode_by_id(episode_id)
