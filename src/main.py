@@ -211,6 +211,8 @@ def show_all_alteregos(id: int, request: Request, response: Response) -> dict:
     """
     base_url = str(request.base_url)
     json = get_all_alteregos_of_a_character(id_character=id, base_url=base_url)
+    if json is None:
+        json = {"error": "Alter Egos not found", "status": "failed"}
     if "error" in json:
         if json["error"] == "Alter Egos not found":
             response.status_code = status.HTTP_404_NOT_FOUND
