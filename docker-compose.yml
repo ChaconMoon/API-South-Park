@@ -6,7 +6,7 @@ services:
     depends_on:
       - db
     environment:
-      - DATABASE_URL=postgresql://southpark:tegridyfarms@db:5432/southpark_api
+      - SOUTHPARK_DATABASE_URL=postgresql://southpark:tegridyfarms@db:5432/southpark_api
 
   db:
     image: postgres:15

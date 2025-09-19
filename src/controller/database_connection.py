@@ -32,7 +32,9 @@ def get_database_connection():
     global _connection, _localSesion
     load_dotenv()
     _connection = create_engine(
-        os.getenv("DATABASE_URL"),  # Get the Databse URL from the env variables
+        os.getenv(
+            "SOUTHPARK_DATABASE_URL"
+        ),  # Get the Databse URL from the env variables
         pool_size=5,  # Limit of the conecction with the database.
         max_overflow=10,  # Limit of the aditional conections
         pool_recycle=3600,  # Recycle conections per hour

@@ -55,7 +55,7 @@ poetry install
 
 Rename the file `.env_example` to `.env` and add the connection URL for your database:
 ```
-DATABASE_URL="YOUR POSTGRESQL DATABASE URL HERE"
+SOUTHPARK_DATABASE_URL="YOUR POSTGRESQL DATABASE URL HERE"
 ```
 
 Copy the database content to your remote database:
