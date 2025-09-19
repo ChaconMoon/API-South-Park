@@ -8,11 +8,13 @@ This Module contain the main class of the API and create de operations used by t
 from fastapi import FastAPI
 from fastapi import Request, Response, status
 from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
 
 # Import the uvicorn library.
 import uvicorn
 
 # Internal inputs.
+from src.experimental.create_character_card_web import create_character_image_grid
 from src.controller.alter_ego_controller import (
     get_alter_ego_by_character_and_id,
     get_all_alteregos_of_a_character,
@@ -78,15 +80,44 @@ app = FastAPI(
         "email": "carloschaconmolina@gmail.com",
     },
     license_info={"name": "GPL 3.0", "url": "https://www.gnu.org/licenses/gpl-3.0"},
+    redoc_url="/api/redoc",
+    docs_url="/api/docs",
 )
+
+
+# Create Jinja templates directory
+
+templates = Jinja2Templates(directory="templates")
+
 
 # Mount the img directory with the images of the database.
 app.mount("/img", StaticFiles(directory="img"), name="img")
 
 
 # Create the basic response of the API with the connection of the API.
-@app.get("/", tags=["Health Check"])
-def index(response: Response) -> dict:
+@app.get("/")
+def index(response: Response, request: Request) -> dict:
+    """
+    Get the response with the connection of the API.
+
+    Returns:
+    A dict with the response.
+    """
+    return templates.TemplateResponse(
+        "example.html",
+        {
+            "request": request,
+            "base_url": request.base_url,
+            "character_cards": create_character_image_grid(
+                base_url=request.base_url, ids=[1, 2, 3, 4, 52, 58, 78, 99, 175]
+            ),
+        },
+    )
+
+
+# Create the basic response of the API with the connection of the API.
+@app.get("/api/", tags=["Health Check"])
+def api_index(response: Response) -> dict:
     """
     Get the response with the connection of the API.
 
@@ -103,7 +134,7 @@ def index(response: Response) -> dict:
 
 
 # Create the operation to get the albums.
-@app.get("/album/{id}", tags=["Music"])
+@app.get("/api/album/{id}", tags=["Music"])
 def show_album(id: int, request: Request, response: Response) -> dict:
     """
     Get the response with the album with a specific id.
@@ -124,7 +155,7 @@ def show_album(id: int, request: Request, response: Response) -> dict:
 
 
 # Create the operation to get the songs.
-@app.get("/song/{id}", tags=["Music"])
+@app.get("/api/song/{id}", tags=["Music"])
 def show_song(id: int, request: Request, response: Response) -> dict:
     """
     Get the response with the song with a specific id.
@@ -145,7 +176,7 @@ def show_song(id: int, request: Request, response: Response) -> dict:
 
 
 # Create the operation to get the special episodes.
-@app.get("/special/{id}", tags=["TV Show"])
+@app.get("/api/special/{id}", tags=["TV Show"])
 def show_special(id: int, request: Request, response: Response) -> dict:
     """
     Get the response with the special with a specific id.
@@ -166,7 +197,7 @@ def show_special(id: int, request: Request, response: Response) -> dict:
 
 
 # Create the operation to get the families.
-@app.get("/family/{id}", tags=["Characters"])
+@app.get("/api/family/{id}", tags=["Characters"])
 def show_family(id: int, request: Request, response: Response) -> dict:
     """
     Get the response with the family with a specific id.
@@ -187,7 +218,7 @@ def show_family(id: int, request: Request, response: Response) -> dict:
 
 
 # Create the operation to get the characters.
-@app.get("/character/{id}", tags=["Characters"])
+@app.get("/api/character/{id}", tags=["Characters"])
 def show_character(id: int, request: Request, response: Response) -> dict:
     """
     Get the response with the character with a specific id.
@@ -208,7 +239,7 @@ def show_character(id: int, request: Request, response: Response) -> dict:
 
 
 # Create the operation to get the episodes.
-@app.get("/episode/{id}", tags=["TV Show"])
+@app.get("/api/episode/{id}", tags=["TV Show"])
 def show_episode(id: int, response: Response) -> dict:
     """
     Get the response with the episode with a specific id.
@@ -228,7 +259,7 @@ def show_episode(id: int, response: Response) -> dict:
 
 
 # Create the operation to get one alter ego of a character.
-@app.get("/character/{id}/alterego/{alter_id}", tags=["Characters"])
+@app.get("/api/character/{id}/alterego/{alter_id}", tags=["Characters"])
 def show_alterergo(
     id: int, alter_id: int, request: Request, response: Response
 ) -> dict:
@@ -253,7 +284,7 @@ def show_alterergo(
 
 
 # Create the operation to get all the alteregos of a character.
-@app.get("/character/{id}/alteregos", tags=["Characters"])
+@app.get("/api/character/{id}/alteregos", tags=["Characters"])
 def show_all_alteregos(id: int, request: Request, response: Response) -> dict:
     """
     Get the response with the all the alteregos of one specific character.
@@ -275,7 +306,7 @@ def show_all_alteregos(id: int, request: Request, response: Response) -> dict:
     return json
 
 
-@app.get("/lastepisode", tags=["TV Show"])
+@app.get("/api/lastepisode", tags=["TV Show"])
 def get_the_last_episode():
     """
     Returns the last episode of the serie.
@@ -286,7 +317,7 @@ def get_the_last_episode():
     return get_last_episode()
 
 
-@app.get("/chinpokomon/{id}", tags=["Others"])
+@app.get("/api/chinpokomon/{id}", tags=["Others"])
 def get_chinpokomon(id: int, request: Request, response: Response):
     base_url = str(request.base_url)
     return get_chinpokomon_by_id(id=id, base_url=base_url)
