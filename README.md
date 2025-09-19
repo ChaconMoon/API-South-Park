@@ -1,72 +1,119 @@
 # South Park API
 
 <img src="docs/img/Banner API.png">
-An API REST that conatains data from the the episodes, characters, songs and games from the TV show South Park
 
-### Getting Started
+A REST API that contains data from the episodes, characters, songs, and games from the TV show South Park.
 
-Requierements:
+## Getting Started with Docker
 
-Docker: https://www.docker.com/
+Requierements **[Run as Docker Contianer]**:
 
-### Initialize the API
+- Docker: https://www.docker.com/
 
-Open a Command-Line
+### Initialize the API _[As a Docker Container]_
+Open a Command-Line:
 ```powershell
 docker-compose build # Build the API Project Image
 ```
 
-Start the container
+Start the container:
 ```powershell
 docker-compose up -d # Start container with the API and the database
 ```
+**This initializes the API on port 8000 of your computer.**
 
-Stop the container
+Initialize the database with the default data:
+```powershell
+docker exec -it southpark_api-db-1  pg_dump -U southpark southpark_api > init.sql
+```
+
+Stop the container:
 ```powershell
 docker-compose down # Stops and deletes the container
 ```
 
-This intilice the API in the port 8000 of your computer
+## Getting Started with Python
 
-### How to use it
+Requierements **[Run as Python project]**:
 
-To search a character:
+ - Python >=3.13
+ - Poetry >=2.1.1
+ - A PostgreSQL Database, a remote database or a Docker Container with a PostgreSQL database.
+ - A PostgreSQL Client in the CLI.
 
+
+### Initialize the API _[As a Python project]_
+Create and activate the Poetry virtual environment:
+```powershell
+poetry env activate #And activate the created env
+```
+
+Install the dependencies:
+```powershell
+poetry install
+```
+
+Rename the file `.env_example` to `.env` and add the connection URL for your database:
+```
+DATABASE_URL="YOUR POSTGRESQL DATABASE URL HERE"
+```
+
+Copy the database content to your remote database:
+```powershell
+psql "YOUR POSTGRESQL DATABASE URL HERE" < init.sql
+```
+
+
+### Endpoints
+
+To search for a character:
 ```url
 http://localhost:8000/character/{id}
 ```
 
-To search a episode:
-
+To search for an episode:
 ```url
 http://localhost:8000/episode/{id}
 ```
 
-To search a Paramount + Special:
-
+To search for a Paramount+ Special:
 ```url
 http://localhost:8000/special/{id}
 ```
 
-To search a Family:
-
+To search for a Family:
 ```url
 http://localhost:8000/family/{id}
 ```
-To search a one alterego of a character:
 
+To search for an alter ego of a character:
 ```url
 http://localhost:8000/character/{id}/alterego/{alter-ego-id}
 ```
 
-To search a all the alteregos of a character:
-
+To search for all the alter egos of a character:
 ```url
 http://localhost:8000/character/{id}/alteregos
 ```
 
-### Acknowledgments for the inspiration
+To search for a song:
+```url
+http://localhost:8000/song/{id}
+```
 
-The Rick and Morty API: https://rickandmortyapi.com/a
+To search for an album:
+```url
+http://localhost:8000/album/{id}
+```
 
-Other South Park API: https://spapi.dev/
+To search for a Chinpokomon:
+```url
+http://localhost:8000/chinpokomon/{id}
+```
+
+### Acknowledgments
+
+Inspiration for this project was drawn from:
+
+- The Rick and Morty API: https://rickandmortyapi.com/
+- Other South Park API: https://spapi.dev/
