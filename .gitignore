@@ -2,6 +2,8 @@
 __pycache__
 data/pgadmin_data
 data/postgres_data
+.env
+*.pyc
 
 __pycache__/
 *.py[codz]
