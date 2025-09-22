@@ -13,6 +13,9 @@ from dotenv import load_dotenv
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
+# Import load env variables
+from dotenv import load_dotenv
+
 # Declarate Global variables to the connection and the sesion
 _connection = None
 _localSesion = None
