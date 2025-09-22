@@ -7,6 +7,7 @@ This module get the param of the API in the get album operations, make the query
 # Import OS dependecies
 import os
 import time
+from dotenv import load_dotenv
 
 # Import SQLAlquemy
 from sqlalchemy import create_engine
