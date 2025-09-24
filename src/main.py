@@ -93,6 +93,8 @@ templates = Jinja2Templates(directory="templates")
 # Mount the img directory with the images of the database.
 app.mount("/img", StaticFiles(directory="img"), name="img")
 
+app.mount("/styles", StaticFiles(directory="styles"), name="styles")
+
 
 # Create the basic response of the API with the connection of the API.
 @app.get("/")
@@ -104,12 +106,13 @@ def index(response: Response, request: Request) -> dict:
     A dict with the response.
     """
     return templates.TemplateResponse(
-        "example.html",
+        "index.html",
         {
             "request": request,
             "base_url": request.base_url,
             "character_cards": create_character_image_grid(
-                base_url=request.base_url, ids=[1, 2, 3, 4, 52, 58, 78, 99, 175]
+                base_url=request.base_url,
+                ids=[1, 2, 3, 4, 52, 58, 78, 99, 175, 127, 309, 188],
             ),
         },
     )
