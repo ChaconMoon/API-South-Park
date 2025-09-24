@@ -38,7 +38,7 @@ def get_chinpokomon_by_id(id: int, add_url=False, base_url="") -> dict:
         result = dict()
         if add_url:
             result["name"] = chinpokomon.model_dump()["name"]
-            result["url"] = f"{base_url}chinpokomon/{row[0]}"
+            result["url"] = f"{base_url}api/chinpokomon/{row[0]}"
             return result
         # Get the number of characters
         query_result = get_query_result(text("SELECT * FROM public.chinpokomon"))

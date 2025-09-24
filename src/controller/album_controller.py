@@ -54,7 +54,7 @@ def get_album_by_id(id: int, add_url=False, base_url="") -> dict:
         if add_url:
             result = dict()
             result["name"] = album["name"]
-            result["url"] = f"{base_url}album/{album['id']}"
+            result["url"] = f"{base_url}api/album/{album['id']}"
             return result
 
         # Create the complete object with the metadata
