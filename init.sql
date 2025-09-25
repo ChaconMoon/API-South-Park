@@ -5,7 +5,7 @@ HINT:  Rebuild all objects in this database that use the default collation and r
 -- PostgreSQL database dump
 --
 
-\restrict KviffHPHEHT08jOyjWPSg7xSHpMl88LRPBwXtIiTitfS1GkNQdhL7zMjK7Qw1Pv
+\restrict BaARXfcJBQUZEenuhCvvKECSW6Icg5YtVJjLADJfSOCHRVWWSln2Jgi0yQPc9Q2
 
 -- Dumped from database version 15.14 (Debian 15.14-1.pgdg13+1)
 -- Dumped by pg_dump version 15.14 (Debian 15.14-1.pgdg13+1)
@@ -968,6 +968,8 @@ COPY public.characters (id, name, friend_group, family, birthday, age, religion,
 408	Busy Beaver Truck Driver	\N	\N	\N	\N	\N	79	{/img/characters/serie/Busy_Beaver_Truck_Driver.png}	f
 409	Butt Out!	\N	\N	\N	\N	\N	109	{/img/characters/serie/Butt_Out.png}	f
 410	Buzz Lightyear	\N	\N	\N	\N	\N	299	{/img/characters/serie/Buzz_Lightyear.png}	t
+411	Benjamin Netanyahu	\N	\N	October 21th	75	{Judaism}	326	{/img/characters/serie/Benjamin_Netanyahu.png}	t
+412	Brendan Carr	\N	\N	January 5th	46	\N	326	{/img/characters/serie/Brendan_Carr.png}	t
 \.
 
 
@@ -1339,6 +1341,7 @@ COPY public.episodes (id, name, season, episode, realese_date, description, view
 201	201	14	6	2010-04-21	Angry celebrities, violent ginger kids and Mecha Streisand are about to destroy South Park and all anyone wants to know is, "Who is Eric Cartman's father?"	https://www.southparkstudios.com/episodes/wrosbx/south-park-201-season-14-ep-6	t	f
 294	Nobody Got Cereal?	22	7	2018-11-14	The boys break out of jail and are on the run from the police and ManBearPig.	https://www.southparkstudios.com/episodes/sagwyy/south-park-nobody-got-cereal-season-22-ep-7	t	f
 325	Wok is Dead	27	4	2025-09-03	Butters experiences the reality of tariffs when he has to buy a Labubu doll for his girlfriend’s birthday.	https://www.southparkstudios.com/episodes/7kgkzb/south-park-wok-is-dead-season-27-ep-4	f	t
+326	Conflict of Interest	27	5	2025-09-24	Kyle and Cartman are at odds when a prediction markets app gets popular with their fellow students.	\N	f	t
 \.
 
 
@@ -1617,5 +1620,5 @@ ALTER TABLE ONLY public.alter_ego
 -- PostgreSQL database dump complete
 --
 
-\unrestrict KviffHPHEHT08jOyjWPSg7xSHpMl88LRPBwXtIiTitfS1GkNQdhL7zMjK7Qw1Pv
+\unrestrict BaARXfcJBQUZEenuhCvvKECSW6Icg5YtVJjLADJfSOCHRVWWSln2Jgi0yQPc9Q2
 
