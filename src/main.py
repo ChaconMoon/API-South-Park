@@ -5,6 +5,7 @@ This Module contain the main class of the API and create de operations used by t
 """
 
 # Import of FastAPI.
+import json
 from fastapi import FastAPI
 from fastapi import Request, Response, status
 from fastapi.staticfiles import StaticFiles
@@ -95,6 +96,8 @@ app.mount("/img", StaticFiles(directory="img"), name="img")
 
 app.mount("/styles", StaticFiles(directory="styles"), name="styles")
 
+app.mount("/fonts", StaticFiles(directory="fonts"), name="fonts")
+
 
 # Create the basic response of the API with the connection of the API.
 @app.get("/")
@@ -112,7 +115,12 @@ def index(response: Response, request: Request) -> dict:
             "base_url": request.base_url,
             "character_cards": create_character_image_grid(
                 base_url=request.base_url,
-                ids=[1, 2, 3, 4, 52, 58, 78, 99, 175, 127, 309, 188],
+                ids=[4, 3, 2, 1, 58, 52, 99, 78, 42, 382, 141, 107],
+            ),
+            "example_api_response": json.dumps(
+                get_character_by_id(100, base_url=str(request.base_url)),
+                indent=4,
+                ensure_ascii=False,
             ),
         },
     )

@@ -1,3 +1,4 @@
+<!doctype html>
 <html>
 
 <head>
@@ -11,16 +12,24 @@
                 </a>
                 <a href="#" class="menu_item">About</a>
                 <a href="/api/redoc" class="menu_item">Docs</a>
+                <a href="#" class="menu_item">Status</a>
+                </div>
         </nav>
 </head>
 
 <body>
         <h1 class="main_title">
-                South Park API (Development Version)
+                A RESTful API of the universe of South Park
         </h1>
         <h2 class="developer">
                 This website is: {{base_url}}
         </h2>
+        <div class="web_menu">
+                <div class="menu_button" id="menu_button_1">GitHub</div>
+                <div class="menu_button" id="menu_button_2">Dev Blog</div>
+                <div class="menu_button" id="menu_button_3">Quickstart</div>
+                <div class="menu_button" id="menu_button_4">Changelog</div>
+        </div>
         <h3>
                 Characters:
         </h3>
@@ -29,6 +38,38 @@
                         {{ character_cards | safe }}
                 </div>
         </div>
+        <div>
+                <h1 id="try_example">Try it</h1>
+        </div>
+        <pre>
+        <code id="json_response">
+        {{ example_api_response | safe}}
+        </code>
+        </pre>
+
 </body>
+<footer>
+        <div id="footer_what_is_this">
+                <h1>What is this?</h1>
+                <p>
+                        his project is a RESTful API made with FastAPI connected to a database that contains a complete
+                        collection of information about the TV Show South Park
+                </p>
+        </div>
+        <div id="licence">
+                <h1>Licence</h1>
+                <p>
+                        This API was created by Carlos Chacón [https://github.com/ChaconMoon] under a GPL 3.0 license
+                        [https://www.gnu.org/licenses/gpl-3.0.html].
+
+                        All data for the API has been obtained directly from the website: [https://southpark.fandom.com]
+                        under a CC BY-SA license [https://creativecommons.org/licenses/by-sa/4.0/deed.es]. Therefore,
+                        this API can be forked, modified, and distributed as long as the authorship of both the data and
+                        the API is properly attributed.
+                        The characters, episodes, and the South Park brand are owned by Viacom Inc. and South Park
+                        Digital Studios.
+                </p>
+        </div>
+</footer>
 
 </html>

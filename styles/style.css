@@ -1,7 +1,61 @@
+/*
+Global styles
+*/
+@font-face {
+        font-family: "Waffle-Soft";
+        src: url(/fonts/Waffle-Soft.otf);
+}
+
+@font-face {
+        font-family: "OpenSans-Bold";
+        src: url(/fonts/OpenSans-Bold.ttf);
+}
+
+@font-face {
+        font-family: "OpenSans-ExtraBold";
+        src: url(/fonts/OpenSans-ExtraBold.ttf);
+}
+
+@font-face {
+        font-family: "OpenSans-Regular";
+        src: url(/fonts/OpenSans-Regular.ttf);
+}
+
+#menu_button_1 {
+        background-color: #a0665a;
+}
+
+#menu_button_2 {
+        background-color: #5ac829;
+}
+
+#menu_button_3 {
+        background-color: #dc2444;
+}
+
+#menu_button_4 {
+        background-color: #fa6617;
+}
+
+
 /**
 Desktop Version
 **/
 @media screen and (min-width: 1200px) {
+        h1.main_title {
+                margin-top: 5vh;
+                text-align: center;
+                font-family: 'Waffle-Soft';
+                font-size: xx-large;
+        }
+
+        h2.developer {
+                margin-top: 3vh;
+                text-align: center;
+                margin-bottom: 3vh;
+                font-family: "OpenSans-Bold";
+        }
+
         .character_background {
                 background-image: url("../img/website/Character_Background_in_Website.png");
                 display: flex;
@@ -15,17 +69,19 @@ Desktop Version
         .character_card {
                 margin: 5%;
                 border-radius: 5px;
-                border: 2px gray;
+                /*! border-color: black; */
+                /*! border-style: solid; */
+                border: 3px black solid;
                 align-self: end;
-                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+                box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.3);
         }
 
         .character_card:hover {
                 margin: 5%;
                 border-radius: 5px;
-                border: 2px gray;
+                border: 4px black solid;
                 align-self: end;
-                box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+                box-shadow: 0 8px 30px 0 rgba(0, 0, 0, 0.6);
         }
 
         .character_image {
@@ -47,17 +103,18 @@ Desktop Version
 
         }
 
-        .character_name {
-                /* min, preferred, max */
-                font-size: clamp(3px, 1.3vw, 20px);
-                padding-top: 0.5vh
+        p.character_name {
+                padding-top: 0.5vh;
+                display: flex;
+                justify-content: space-between;
         }
 
-        p {
+        character_card p {
                 /* min, preferred, max */
-                font-size: clamp(5px, 1.2vw, 30px);
+                font-size: clamp(5px, 1.1vw, 25px);
                 margin-left: 5%;
-                padding-top: 3%
+                padding-top: 3%;
+                margin-right: 10px;
         }
 
         a.card_link {
@@ -67,7 +124,7 @@ Desktop Version
         }
 
         nav.navegation_menu {
-                background-color: rgb(161, 161, 161);
+                background-color: #d9d9d9;
                 height: 5vh;
                 width: 100%;
                 display: grid;
@@ -77,7 +134,7 @@ Desktop Version
         }
 
         a.menu_item {
-                background-color: black;
+                background-color: #a5a5a5;
                 text-align: center;
                 text-decoration: none;
                 width: 20vw;
@@ -107,12 +164,96 @@ Desktop Version
                 align-items: center;
                 justify-content: center;
         }
+
+        div.web_menu {
+                display: flex;
+                justify-content: center;
+                gap: 20px;
+                /* Ajusta este valor para cambiar el espacio entre elementos */
+                align-items: center;
+        }
+
+        div.menu_button {
+                border-radius: 16px;
+                color: white;
+                font-family: "OpenSans-Bold";
+                width: 20vw;
+                align-self: center;
+                font-size: 3vw;
+                text-align: center;
+
+        }
+        #try_example {
+        font-family: "OpenSans-Bold";
+        text-align: center;
+        font-size: 80px;
+}
+
+#json_response {
+        align-self: center;
+        margin: auto;
+        width: 70%;
+        background-color: #f7f7f7;
+        color: black;
+        /*! height: 40vh; */
+        display: block;
+        font-size: 20px;
+        border-radius: 10px;
+}
+
+footer {
+        background-color: #a5a5a5;
+        width: 100%;
+        /*! height: 25vh; */
+        border-radius: 21px 21px 0px 0px;
+        display: flex;
+        grid-template-columns: auto auto;
+        font-family: "OpenSans-Bold";
+        text-align: center;
+        gap: 10vw;
+        justify-content: center;
+        margin-top: 0;
+}
+
+        #footer_what_is_this p {
+                font-size: 25px;
+                font-family: "OpenSans-Regular";
+        }
+
+        #footer_what_is_this {
+                width: 30vw;
+        }
+
+        #licence {
+                font-size: 13;
+                width: 50vw;
+        }
+
+        #licence p {
+                font-size: 20px;
+                font-family: "OpenSans-Regular";
+        }
 }
 
 /**
 Tablets Version
 **/
 @media screen and (min-width: 800px) and (max-width: 1200px) {
+        h1.main_title {
+                margin-top: 5vh;
+                text-align: center;
+                font-family: 'Waffle-Soft';
+                font-size: 200%;
+        }
+
+        h2.developer {
+                margin-top: 3vh;
+                text-align: center;
+                margin-bottom: 3vh;
+                font-family: "OpenSans-Bold";
+                font-size: 150%;
+        }
+
         .character_background {
                 background-image: url("../img/website/Character_Background_in_Website.png");
                 display: flex;
@@ -126,17 +267,17 @@ Tablets Version
         .character_card {
                 margin: 5%;
                 border-radius: 5px;
-                border: 2px gray;
+                border: 2px black solid;
                 align-self: end;
-                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+                                box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
         }
 
         .character_card:hover {
                 margin: 5%;
                 border-radius: 5px;
-                border: 2px gray;
+                border: 3px black solid;
                 align-self: end;
-                box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+box-shadow: 0 8px 30px 0 rgba(0, 0, 0, 0.6);
         }
 
         .character_image {
@@ -157,18 +298,22 @@ Tablets Version
                 box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.4);
         }
 
-        .character_name {
+        p.character_name {
                 /* min, preferred, max */
-                font-size: clamp(3px, 1.6vw, 20px);
+                font-size: clamp(5px, 1.5vw, 20px);
                 padding-bottom: 1vh;
-                padding-top: 0.5vh
+                padding-top: 0.5vh;
+                display: flex;
+                justify-content: space-between;
+                margin-right: 10px;
         }
 
-        p {
+        character_card p {
                 /* min, preferred, max */
                 font-size: clamp(5px, 1.5vw, 30px);
                 margin-left: 5%;
-                padding-top: 3%
+                padding-top: 3%;
+                margin-right: 8px;
         }
 
         a.card_link {
@@ -179,7 +324,7 @@ Tablets Version
         }
 
         nav.navegation_menu {
-                background-color: rgb(161, 161, 161);
+                background-color: #d9d9d9;
                 height: 5vh;
                 width: 100%;
                 display: grid;
@@ -189,7 +334,7 @@ Tablets Version
         }
 
         a.menu_item {
-                background-color: black;
+                background-color: #a5a5a5;
                 text-align: center;
                 text-decoration: none;
                 width: 20vw;
@@ -219,12 +364,93 @@ Tablets Version
                 align-items: center;
                 justify-content: center;
         }
+
+        div.web_menu {
+                display: grid;
+                grid-template-columns: auto auto auto auto;
+                align-items: center;
+                justify-items: center;
+        }
+
+        div.menu_button {
+                border-radius: 16px;
+                color: white;
+                font-family: "OpenSans-Bold";
+                width: 85%;
+                align-self: center;
+                font-size: 3.5vw;
+                text-align: center;
+
+        }
+        #try_example {
+        font-family: "OpenSans-Bold";
+        text-align: center;
+        font-size: 7vw;
+}
+
+        #json_response {
+                align-self: center;
+                margin: auto;
+                width: 90%;
+                background-color: #f7f7f7;
+                color: black;
+                /*! height: 40vh; */
+                display: block;
+                font-size: 15px;
+                border-radius: 10px;
+        }
+
+        footer {
+                background-color: #a5a5a5;
+                width: 100%;
+                /*! height: 35vh; */
+                border-radius: 21px 21px 0px 0px;
+                display: flex;
+                font-family: "OpenSans-Bold";
+                text-align: center;
+                gap: 10vw;
+                justify-content: center;
+                margin-top: 0;
+        }
+
+        #footer_what_is_this p {
+                font-size: 20px;
+                font-family: "OpenSans-Regular";
+        }
+
+        #footer_what_is_this {
+                width: 30vw;
+        }
+
+        #licence {
+                width: 50vw;
+        }
+
+        #licence p {
+                font-size: 11;
+                font-family: "OpenSans-Regular";
+        }
 }
 
 /**
 Phone Version
 **/
 @media screen and (max-width: 800px) {
+        h1.main_title {
+                text-align: center;
+                font-family: 'Waffle-Soft';
+                font-size: xx-large;
+                margin: 4vh 5vw 0 5vw;
+        }
+
+        h2.developer {
+                margin-top: 3vh;
+                text-align: center;
+                margin-bottom: 3vh;
+                font-family: "OpenSans-Bold";
+                font-size: smaller;
+        }
+
         .character_background {
                 background-image: url("../img/website/Character_Background_in_Website.png");
                 display: flex;
@@ -238,17 +464,17 @@ Phone Version
         .character_card {
                 margin: 5%;
                 border-radius: 5px;
-                border: 2px gray;
+                border: 2px black solid;
                 align-self: end;
-                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+                                box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
         }
 
         .character_card:hover {
                 margin: 5%;
                 border-radius: 5px;
-                border: 2px gray;
+                border: 3px black solid;
                 align-self: end;
-                box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+                box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.4);
         }
 
         .character_image {
@@ -273,10 +499,12 @@ Phone Version
                 /* min, preferred, max */
                 font-size: clamp(3px, 2.3vw, 20px);
                 padding-bottom: 1vh;
-                padding-top: 0.5vh
+                padding-top: 0.5vh;
+                display: flex;
+                justify-content: space-between;
         }
 
-        p {
+        character_card p {
                 /* min, preferred, max */
                 font-size: clamp(5px, 2vw, 30px);
                 margin-left: 5%;
@@ -291,7 +519,7 @@ Phone Version
         }
 
         nav.navegation_menu {
-                background-color: rgb(161, 161, 161);
+                background-color: #d9d9d9;
                 height: 4vh;
                 width: 100%;
                 display: grid;
@@ -302,11 +530,11 @@ Phone Version
         }
 
         a.menu_item {
-                background-color: black;
+                background-color: #a5a5a5;
                 text-align: center;
                 text-decoration: none;
-                width: 20vw;
-                height: 100%;
+                height: 4vh;
+                width: 10vw;
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -323,6 +551,7 @@ Phone Version
                 display: flex;
                 align-items: center;
                 justify-content: center;
+                margin-left: 15px;
         }
 
         #logo {
@@ -333,19 +562,90 @@ Phone Version
         * {
                 margin: 0;
         }
-}
 
-/*
-Global styles
-*/
-h1.main_title {
-        margin-top: 5vh;
-        text-align: center
-}
+        div.web_menu {
+                display: grid;
+                grid-template-columns: auto auto;
+                align-items: center;
+                justify-items: center;
+        }
 
-h2.developer {
-        margin-top: 3vh;
+        div.menu_button {
+                border-radius: 16px;
+                color: white;
+                font-family: "OpenSans-Bold";
+                width: 85%;
+                align-self: center;
+                font-size: 3.5vw;
+                text-align: center;
+
+        }
+
+        div.web_menu {
+                display: grid;
+                grid-template-columns: auto auto;
+                align-items: center;
+                justify-items: center;
+        }
+
+        div.menu_button {
+                border-radius: 16px;
+                color: white;
+                font-family: "OpenSans-Bold";
+                width: 30vw;
+                align-self: center;
+                font-size: 5vw;
+                text-align: center;
+                margin-bottom: 3.5vh;
+                text-align: center;
+
+        }
+        #try_example {
+        font-family: "OpenSans-Bold";
         text-align: center;
-        margin-bottom: 3vh
+        font-size: 7vw;
+}
 
+        #json_response {
+                align-self: center;
+                margin: auto;
+                width: 90%;
+                background-color: #f7f7f7;
+                color: black;
+                /*! height: 40vh; */
+                display: block;
+                font-size: 15px;
+                border-radius: 10px;
+        }
+
+        footer {
+                background-color: #a5a5a5;
+                width: 100%;
+                /*! height: 35vh; */
+                border-radius: 21px 21px 0px 0px;
+                display: flex;
+                font-family: "OpenSans-Bold";
+                text-align: center;
+                gap: 10vw;
+                justify-content: center;
+                margin-top: 0;
+        }
+
+        #footer_what_is_this p {
+                font-size: 20px;
+                font-family: "OpenSans-Regular";
+        }
+
+        #footer_what_is_this {
+                width: 30vw;
+        }
+
+        #licence {
+                width: 50vw;
+        }
+
+        #licence p {
+                font-size: 13px;
+                font-family: "OpenSans-Regular";
+        }
 }
