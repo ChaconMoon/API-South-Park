@@ -91,7 +91,7 @@ Desktop Version
                 align-self: end;
         }
 
-        .character_grid_container {
+        #character_grid_container {
                 display: grid;
                 grid-template-columns: auto auto auto auto;
                 border-style: solid;
@@ -101,15 +101,17 @@ Desktop Version
                 margin: 25px;
                 box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.4);
 
+                margin-top: 12px;
         }
 
         p.character_name {
                 padding-top: 0.5vh;
                 display: flex;
                 justify-content: space-between;
+                margin-right: 10px;
         }
 
-        character_card p {
+        .character_card p {
                 /* min, preferred, max */
                 font-size: clamp(5px, 1.1vw, 25px);
                 margin-left: 5%;
@@ -182,38 +184,40 @@ Desktop Version
                 font-size: 3vw;
                 text-align: center;
 
+                text-decoration: none;
         }
+
         #try_example {
-        font-family: "OpenSans-Bold";
-        text-align: center;
-        font-size: 80px;
-}
+                font-family: "OpenSans-Bold";
+                text-align: center;
+                font-size: 80px;
+        }
 
-#json_response {
-        align-self: center;
-        margin: auto;
-        width: 70%;
-        background-color: #f7f7f7;
-        color: black;
-        /*! height: 40vh; */
-        display: block;
-        font-size: 20px;
-        border-radius: 10px;
-}
+        #json_response {
+                align-self: center;
+                margin: auto;
+                width: 70%;
+                background-color: #f7f7f7;
+                color: black;
+                /*! height: 40vh; */
+                display: block;
+                font-size: 20px;
+                border-radius: 10px;
+        }
 
-footer {
-        background-color: #a5a5a5;
-        width: 100%;
-        /*! height: 25vh; */
-        border-radius: 21px 21px 0px 0px;
-        display: flex;
-        grid-template-columns: auto auto;
-        font-family: "OpenSans-Bold";
-        text-align: center;
-        gap: 10vw;
-        justify-content: center;
-        margin-top: 0;
-}
+        footer {
+                background-color: #a5a5a5;
+                width: 100%;
+                /*! height: 25vh; */
+                border-radius: 21px 21px 0px 0px;
+                display: flex;
+                grid-template-columns: auto auto;
+                font-family: "OpenSans-Bold";
+                text-align: center;
+                gap: 10vw;
+                justify-content: center;
+                margin-top: 0;
+        }
 
         #footer_what_is_this p {
                 font-size: 25px;
@@ -232,6 +236,26 @@ footer {
         #licence p {
                 font-size: 20px;
                 font-family: "OpenSans-Regular";
+        }
+
+        div.submenu_button {
+                border-radius: 16px;
+                color: white;
+                font-family: "OpenSans-Bold";
+                width: 11vw;
+                align-self: center;
+                font-size: 1.75vw;
+                text-align: center;
+                background-color: black;
+                height: 3vw;
+        }
+
+        div.change_submenu_buttons {
+                display: flex;
+                margin-top: 4vh;
+                gap: 19px;
+                justify-content: center;
+                align-items: center;
         }
 }
 
@@ -269,7 +293,7 @@ Tablets Version
                 border-radius: 5px;
                 border: 2px black solid;
                 align-self: end;
-                                box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+                box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
         }
 
         .character_card:hover {
@@ -277,7 +301,7 @@ Tablets Version
                 border-radius: 5px;
                 border: 3px black solid;
                 align-self: end;
-box-shadow: 0 8px 30px 0 rgba(0, 0, 0, 0.6);
+                box-shadow: 0 8px 30px 0 rgba(0, 0, 0, 0.6);
         }
 
         .character_image {
@@ -287,7 +311,7 @@ box-shadow: 0 8px 30px 0 rgba(0, 0, 0, 0.6);
                 align-self: end;
         }
 
-        .character_grid_container {
+        #character_grid_container {
                 display: grid;
                 grid-template-columns: auto auto auto;
                 border-style: solid;
@@ -308,7 +332,7 @@ box-shadow: 0 8px 30px 0 rgba(0, 0, 0, 0.6);
                 margin-right: 10px;
         }
 
-        character_card p {
+        .character_card p {
                 /* min, preferred, max */
                 font-size: clamp(5px, 1.5vw, 30px);
                 margin-left: 5%;
@@ -382,11 +406,12 @@ box-shadow: 0 8px 30px 0 rgba(0, 0, 0, 0.6);
                 text-align: center;
 
         }
+
         #try_example {
-        font-family: "OpenSans-Bold";
-        text-align: center;
-        font-size: 7vw;
-}
+                font-family: "OpenSans-Bold";
+                text-align: center;
+                font-size: 7vw;
+        }
 
         #json_response {
                 align-self: center;
@@ -430,6 +455,32 @@ box-shadow: 0 8px 30px 0 rgba(0, 0, 0, 0.6);
                 font-size: 11;
                 font-family: "OpenSans-Regular";
         }
+
+        div.submenu_button {
+                border-radius: 16px;
+                color: white;
+                font-family: "OpenSans-Bold";
+                width: 85%;
+                align-self: center;
+                font-size: 3.5vw;
+                text-align: center;
+                background-color: black;
+        }
+
+        div.change_submenu_buttons {
+                display: grid;
+                grid-template-columns: auto auto;
+                align-items: center;
+                justify-items: center;
+        }
+
+        .section_grid_container {
+                display: none;
+        }
+
+        #character_grid_container {
+                display: block;
+        }
 }
 
 /**
@@ -466,7 +517,7 @@ Phone Version
                 border-radius: 5px;
                 border: 2px black solid;
                 align-self: end;
-                                box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+                box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
         }
 
         .character_card:hover {
@@ -484,7 +535,7 @@ Phone Version
                 align-self: end;
         }
 
-        .character_grid_container {
+        #character_grid_container {
                 display: grid;
                 grid-template-columns: auto auto;
                 border-style: solid;
@@ -502,9 +553,10 @@ Phone Version
                 padding-top: 0.5vh;
                 display: flex;
                 justify-content: space-between;
+                margin-right: 10px;
         }
 
-        character_card p {
+        .character_card p {
                 /* min, preferred, max */
                 font-size: clamp(5px, 2vw, 30px);
                 margin-left: 5%;
@@ -600,11 +652,12 @@ Phone Version
                 text-align: center;
 
         }
+
         #try_example {
-        font-family: "OpenSans-Bold";
-        text-align: center;
-        font-size: 7vw;
-}
+                font-family: "OpenSans-Bold";
+                text-align: center;
+                font-size: 7vw;
+        }
 
         #json_response {
                 align-self: center;
@@ -647,5 +700,24 @@ Phone Version
         #licence p {
                 font-size: 13px;
                 font-family: "OpenSans-Regular";
+        }
+
+        div.submenu_button {
+                border-radius: 16px;
+                color: white;
+                font-family: "OpenSans-Bold";
+                width: 85%;
+                align-self: center;
+                font-size: 3.5vw;
+                text-align: center;
+                background-color: black;
+
+        }
+
+        div.change_submenu_buttons {
+                display: grid;
+                grid-template-columns: auto auto;
+                align-items: center;
+                justify-items: center;
         }
 }
