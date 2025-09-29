@@ -37,19 +37,6 @@ Global styles
         background-color: #fa6617;
 }
 
-.section_grid_container {
-        display: none;
-}
-
-#character_grid_container {
-        display: grid;
-}
-
-.menu_link {
-        text-decoration: none;
-}
-
-
 /**
 Desktop Version
 **/
@@ -271,7 +258,7 @@ Desktop Version
         }
 
         #episodes_grid_container {
-                display: grid;
+                display: none;
                 grid-template-columns: auto auto;
                 border-style: solid;
                 border-width: 3px;
@@ -298,6 +285,19 @@ Desktop Version
                 color: black;
                 margin-top: 3vh;
                 margin-bottom: 3vh;
+                box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.3);
+        }
+        
+                .episode_card_link:hover {
+                width: 40vw;
+                border-width: 4px;
+                border-style: solid;
+                border-radius: 8px;
+                text-decoration: none;
+                color: black;
+                margin-top: 3vh;
+                margin-bottom: 3vh;
+                box-shadow: 0 8px 30px 0 rgba(0, 0, 0, 0.6);
         }
 
         .episode_card {
@@ -571,7 +571,7 @@ Tablets Version
         }
 
         #episodes_grid_container {
-                display: grid;
+                display: none;
                 grid-template-columns: auto auto;
                 border-style: solid;
                 border-width: 3px;
@@ -598,6 +598,17 @@ Tablets Version
                 color: black;
                 margin-top: 3vh;
                 margin-bottom: 3vh;
+        }
+        .episode_card_link:hover{
+                width: 40vw;
+                border-width: 4px;
+                border-style: solid;
+                border-radius: 8px;
+                text-decoration: none;
+                color: black;
+                margin-top: 3vh;
+                margin-bottom: 3vh;
+                box-shadow: 0 8px 30px 0 rgba(0, 0, 0, 0.6);
         }
 
         .episode_card {
@@ -916,7 +927,7 @@ Phone Version
         }
 
         #episodes_grid_container {
-                display: grid;
+                display: none;
                 grid-template-columns: auto auto;
                 border-style: solid;
                 border-width: 3px;
@@ -943,6 +954,18 @@ Phone Version
                 color: black;
                 margin-top: 3vh;
                 margin-bottom: 3vh;
+        }
+        
+        .episode_card_link:hover{
+                                width: 40vw;
+                border-width: 3px;
+                border-style: solid;
+                border-radius: 8px;
+                text-decoration: none;
+                color: black;
+                margin-top: 3vh;
+                margin-bottom: 3vh;
+                                box-shadow: 0 8px 30px 0 rgba(0, 0, 0, 0.6);
         }
 
         .episode_card {
