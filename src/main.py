@@ -15,7 +15,8 @@ from fastapi.templating import Jinja2Templates
 import uvicorn
 
 # Internal inputs.
-from src.experimental.create_character_card_web import create_character_image_grid
+from src.website_elements.create_character_card_web import create_character_image_grid
+from src.website_elements.create_episode_card_web import create_episode_image_grid
 from src.controller.alter_ego_controller import (
     get_alter_ego_by_character_and_id,
     get_all_alteregos_of_a_character,
@@ -98,6 +99,8 @@ app.mount("/styles", StaticFiles(directory="styles"), name="styles")
 
 app.mount("/fonts", StaticFiles(directory="fonts"), name="fonts")
 
+app.mount("/javascript", StaticFiles(directory="javascript"), name="javascript")
+
 
 # Create the basic response of the API with the connection of the API.
 @app.get("/")
@@ -116,6 +119,9 @@ def index(response: Response, request: Request) -> dict:
             "character_cards": create_character_image_grid(
                 base_url=request.base_url,
                 ids=[4, 3, 2, 1, 58, 52, 99, 78, 42, 382, 141, 107],
+            ),
+            "episode_cards": create_episode_image_grid(
+                base_url=request.base_url, ids=[1, 263, 325, 303, 200, 117]
             ),
             "example_api_response": json.dumps(
                 get_character_by_id(100, base_url=str(request.base_url)),

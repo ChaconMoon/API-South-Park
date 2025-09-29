@@ -23,7 +23,7 @@ def create_character_web_card_to_website(base_url: str, character_id: int) -> st
     )
     character_debut_episode = request_json["character"]["first_apperance"]["name"]
     html_response = f"""
-        <a href="{request_url}" class="card_link">
+        <a href="{request_url}" class="character_card_link">
         <div class="character_card" >
         <div class="character_background">
         <img class="character_image" src="{character_image}" alt="Avatar">
@@ -32,8 +32,8 @@ def create_character_web_card_to_website(base_url: str, character_id: int) -> st
         <b>{character_name}</b> 
         <b>age: {character_age}</b>
         </p>
-        <p class="description">Birthday: {character_birthday}</p>
-        <p class="description">Debut:       {character_debut_episode}</p>
+        <p class="character_description">Birthday: {character_birthday}</p>
+        <p class="character_description">Debut:       {character_debut_episode}</p>
         </div>
         </a>\n
         """

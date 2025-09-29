@@ -37,6 +37,18 @@ Global styles
         background-color: #fa6617;
 }
 
+.section_grid_container {
+        display: none;
+}
+
+#character_grid_container {
+        display: grid;
+}
+
+.menu_link {
+        text-decoration: none;
+}
+
 
 /**
 Desktop Version
@@ -119,7 +131,7 @@ Desktop Version
                 margin-right: 10px;
         }
 
-        a.card_link {
+        a.character_card_link {
                 text-decoration: none;
                 color: black;
                 width: 23.5vw;
@@ -257,6 +269,70 @@ Desktop Version
                 justify-content: center;
                 align-items: center;
         }
+
+        #episodes_grid_container {
+                display: grid;
+                grid-template-columns: auto auto;
+                border-style: solid;
+                border-width: 3px;
+                border-color: gray;
+                border-radius: 10px;
+                margin: 25px;
+                box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.4);
+
+                margin-top: 12px;
+                justify-items: center;
+        }
+
+        .episode_image {
+                width: 40vw;
+                border-radius: 8px;
+        }
+
+        .episode_card_link {
+                width: 40vw;
+                border-width: 3px;
+                border-style: solid;
+                border-radius: 8px;
+                text-decoration: none;
+                color: black;
+                margin-top: 3vh;
+                margin-bottom: 3vh;
+        }
+
+        .episode_card {
+                width: 100%;
+        }
+
+        .episode_card p {
+                margin-top: 0.5vw;
+                font-family: "OpenSans-Regular";
+
+        }
+
+        .episode_name {
+                margin-left: 1vw;
+        }
+
+        .episode_number {
+                margin-left: 1vw;
+        }
+
+        .episode_release {
+                position: relative;
+                width: fit-content;
+                margin-left: 34vw;
+                margin-top: 10vh;
+        }
+
+        .episode_description_text {
+                height: 7vh;
+                margin-left: 1vw;
+        }
+
+        .episode_status {
+                margin-left: 1vw;
+        }
 }
 
 /**
@@ -332,6 +408,26 @@ Tablets Version
                 margin-right: 10px;
         }
 
+        div.web_menu {
+                display: flex;
+                justify-content: center;
+                gap: 40px;
+                /* Ajusta este valor para cambiar el espacio entre elementos */
+                align-items: center;
+        }
+
+        div.menu_button {
+                border-radius: 16px;
+                color: white;
+                font-family: "OpenSans-Bold";
+                width: 20vw;
+                align-self: center;
+                font-size: 3vw;
+                text-align: center;
+
+                text-decoration: none;
+        }
+
         .character_card p {
                 /* min, preferred, max */
                 font-size: clamp(5px, 1.5vw, 30px);
@@ -340,7 +436,7 @@ Tablets Version
                 margin-right: 8px;
         }
 
-        a.card_link {
+        a.character_card_link {
                 text-decoration: none;
                 color: black;
                 width: 31vw;
@@ -400,7 +496,7 @@ Tablets Version
                 border-radius: 16px;
                 color: white;
                 font-family: "OpenSans-Bold";
-                width: 85%;
+                width: 20vw;
                 align-self: center;
                 font-size: 3.5vw;
                 text-align: center;
@@ -474,12 +570,91 @@ Tablets Version
                 justify-items: center;
         }
 
-        .section_grid_container {
-                display: none;
+        #episodes_grid_container {
+                display: grid;
+                grid-template-columns: auto auto;
+                border-style: solid;
+                border-width: 3px;
+                border-color: gray;
+                border-radius: 10px;
+                margin: 25px;
+                box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.4);
+
+                margin-top: 12px;
+                justify-items: center;
         }
 
-        #character_grid_container {
-                display: block;
+        .episode_image {
+                width: 40vw;
+                border-radius: 8px;
+        }
+
+        .episode_card_link {
+                width: 40vw;
+                border-width: 3px;
+                border-style: solid;
+                border-radius: 8px;
+                text-decoration: none;
+                color: black;
+                margin-top: 3vh;
+                margin-bottom: 3vh;
+        }
+
+        .episode_card {
+                width: 100%;
+        }
+
+        .episode_card p {
+                margin-top: 0.75vw;
+                font-family: "OpenSans-Regular";
+                font-size: 15px;
+
+        }
+
+        .episode_name {
+                margin-left: 1vw;
+        }
+
+        .episode_number {
+                margin-left: 1vw;
+        }
+
+        .episode_release {
+                position: relative;
+                width: fit-content;
+                margin-left: 31vw;
+                margin-top: 10vh;
+                margin-bottom: 1vh;
+        }
+
+        .episode_description_text {
+                height: 10vh;
+                margin-left: 1vw;
+        }
+
+        .episode_status {
+                margin-left: 1vw;
+        }
+
+        div.submenu_button {
+                border-radius: 16px;
+                color: white;
+                font-family: "OpenSans-Bold";
+                width: 40vw;
+                align-self: center;
+                font-size: 4vw;
+                text-align: center;
+                background-color: black;
+                height: 6vw;
+        }
+
+        div.change_submenu_buttons {
+                display: grid;
+                grid-auto-columns: auto auto;
+                margin-top: 5vh;
+                gap: 3vw;
+                justify-content: center;
+                align-items: center;
         }
 }
 
@@ -563,7 +738,7 @@ Phone Version
                 padding-top: 3%
         }
 
-        a.card_link {
+        a.character_card_link {
                 text-decoration: none;
                 color: black;
                 width: 45vw;
@@ -650,6 +825,7 @@ Phone Version
                 text-align: center;
                 margin-bottom: 3.5vh;
                 text-align: center;
+                text-decoration: none;
 
         }
 
@@ -719,5 +895,111 @@ Phone Version
                 grid-template-columns: auto auto;
                 align-items: center;
                 justify-items: center;
+        }
+
+        div.submenu_button {
+                border-radius: 16px;
+                color: white;
+                font-family: "OpenSans-Bold";
+                width: 85%;
+                align-self: center;
+                font-size: 3.5vw;
+                text-align: center;
+                background-color: black;
+        }
+
+        div.change_submenu_buttons {
+                display: grid;
+                grid-template-columns: auto auto;
+                align-items: center;
+                justify-items: center;
+        }
+
+        #episodes_grid_container {
+                display: grid;
+                grid-template-columns: auto auto;
+                border-style: solid;
+                border-width: 3px;
+                border-color: gray;
+                border-radius: 10px;
+                margin: 25px;
+                box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.4);
+
+                margin-top: 12px;
+                justify-items: center;
+        }
+
+        .episode_image {
+                width: 40vw;
+                border-radius: 4px;
+        }
+
+        .episode_card_link {
+                width: 40vw;
+                border-width: 3px;
+                border-style: solid;
+                border-radius: 8px;
+                text-decoration: none;
+                color: black;
+                margin-top: 3vh;
+                margin-bottom: 3vh;
+        }
+
+        .episode_card {
+                width: 100%;
+        }
+
+        .episode_card p {
+                margin-top: 1.5vw;
+                font-family: "OpenSans-Regular";
+                font-size: 13px;
+
+                margin-right: 5px;
+        }
+
+        .episode_name {
+                margin-left: 1vw;
+        }
+
+        .episode_number {
+                margin-left: 1vw;
+        }
+
+        .episode_release {
+                position: relative;
+                width: fit-content;
+                margin-left: 30vw;
+                margin-top: 10vh;
+                margin-bottom: 1vh;
+        }
+
+        .episode_description_text {
+                height: 10vh;
+                margin-left: 1vw;
+        }
+
+        .episode_status {
+                margin-left: 1vw;
+        }
+
+        div.submenu_button {
+                border-radius: 16px;
+                color: white;
+                font-family: "OpenSans-Bold";
+                width: 40vw;
+                align-self: center;
+                font-size: 4vw;
+                text-align: center;
+                background-color: black;
+                height: 6vw;
+        }
+
+        div.change_submenu_buttons {
+                display: grid;
+                grid-auto-columns: auto auto;
+                margin-top: 5vh;
+                gap: 3vw;
+                justify-content: center;
+                align-items: center;
         }
 }
