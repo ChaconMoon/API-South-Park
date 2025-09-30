@@ -61,7 +61,7 @@ Desktop Version
                 border-radius: 5px;
                 border: 4px black solid;
                 align-self: end;
-                box-shadow: 0 8px 30px 0 rgba(0, 0, 0, 0.6);
+                box-shadow: 0 8px 30px 0 rgba(0, 0, 0, 0.8);
         }
 
         .character_image {
@@ -278,7 +278,7 @@ Desktop Version
                 color: black;
                 margin-top: 3vh;
                 margin-bottom: 3vh;
-                box-shadow: 0 8px 30px 0 rgba(0, 0, 0, 0.6);
+                box-shadow: 0 8px 30px 0 rgba(0, 0, 0, 0.8);
         }
 
         .episode_card {
@@ -317,4 +317,104 @@ Desktop Version
         .episode_status {
                 margin-left: 1vw;
         }
+        #songs_grid_container {
+                display: grid;
+                grid-template-columns: auto auto auto;
+                border-style: solid;
+                border-width: 3px;
+                border-color: gray;
+                border-radius: 10px;
+                margin: 25px;
+                box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.4);
+                margin-top: 12px;
+                justify-content: center;
+                align-items: center;
+                gap: 1vw;
+        }
+        .album_image{
+                width: 100%;
+                border-radius: 2px;
+        }
+        .album_card {
+                width: 27vw;
+                margin: 2vw;
+                border-style: solid;
+                border-color: black;
+                border-width: 2px;
+                border-radius: 4px;
+                height: 38vw;
+                box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.4);
+                
+        }
+                .album_card:hover {
+                width: 27vw;
+                margin: 2vw;
+                border-style: solid;
+                border-color: black;
+                border-width: 3px;
+                border-radius: 4px;
+                height: 38vw;
+                box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.8);
+                
+        }
+        .album_card_link {
+               text-decoration: none;
+               color: black;
+        }
+        .song_name{
+                display: flex;
+                justify-content: center;
+                font-size: clamp(5px, 1.2vw, 25px);
+                font-family: "OpenSans-Bold";
+        }
+        .album_name{
+                font-family: "OpenSans-Regular";
+                margin-left: 1vw;
+                height: 3vw;
+                font-size: clamp(5px, 1vw, 25px);
+        }
+        .album_release {
+                font-family: "OpenSans-Regular";
+                margin-left: 1vw;
+                font-size: clamp(5px, 1vw, 25px);
+        }
+        .play_button {
+                background-color: gray;
+                width: 9vw;
+                color: black;
+                border-radius: 8px;
+                justify-content: center;
+                align-items: center;
+                display: flex;
+                height: 3vw;
+                font-size: 2vw;
+                text-decoration: none;
+                margin-right: 1vw;
+                margin-left: auto;
+                border-style: dotted;
+                border-width: 2px;
+                                font-family: "OpenSans-Bold";
+                                margin-top: 1vw;
+                
+        }
+        .not_avalible_button {
+                background-color: gray;
+                width: 13vw;
+                color: black;
+                border-radius: 8px;
+                justify-content: center;
+                align-items: center;
+                display: flex;
+                height: 3vw;
+                font-size: 1.5vw;
+                text-decoration: none;
+                margin-right: 1vw;
+                margin-left: auto;
+                border-style: dotted;
+                border-width: 2px;
+                font-family: "OpenSans-Bold";
+                margin-top: 1vw;
+        }
+        
+        
 }
