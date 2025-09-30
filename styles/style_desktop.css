@@ -21,7 +21,7 @@
 /**
 Desktop Version
 **/
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1024px) {
         h1.main_title {
                 margin-top: 5vh;
                 text-align: center;

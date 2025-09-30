@@ -21,7 +21,7 @@
 /**
 Tablets Version
 **/
-@media screen and (min-width: 800px) and (max-width: 1200px) {
+@media screen and (min-width: 641px) and (max-width: 1023px) {
         h1.main_title {
                 margin-top: 5vh;
                 text-align: center;
@@ -99,18 +99,6 @@ Tablets Version
                 align-items: center;
         }
 
-        div.menu_button {
-                border-radius: 16px;
-                color: white;
-                font-family: "OpenSans-Bold";
-                width: 20vw;
-                align-self: center;
-                font-size: 3vw;
-                text-align: center;
-
-                text-decoration: none;
-        }
-
         .character_card p {
                 /* min, preferred, max */
                 font-size: clamp(5px, 1.5vw, 30px);
@@ -184,6 +172,10 @@ Tablets Version
                 font-size: 3.5vw;
                 text-align: center;
 
+                height: 10vw;
+                align-items: center;
+                display: flex;
+                justify-content: center;
         }
 
         #try_example {
@@ -302,7 +294,7 @@ Tablets Version
         .episode_card p {
                 margin-top: 0.75vw;
                 font-family: "OpenSans-Regular";
-                font-size: 2.5vw;
+                font-size: 2vw;
 
         }
 
