@@ -47,7 +47,7 @@ def create_song_web_card_to_website(base_url: str, song_id: int) -> str:
                                         Album: {album_name}
                                 </p>
                                         <p class="album_release">
-                                        Release Date:{album_release}
+                                        Release Date: {album_release}
                                 </p>
                 </a>\n
                 {html_button}

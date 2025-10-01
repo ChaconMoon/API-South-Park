@@ -6,8 +6,6 @@ def create_character_web_card_to_website(base_url: str, character_id: int) -> st
     request = requests.get(request_url)
 
     request_json = request.json()
-    print(request_url)
-    print(request_json)
 
     character_name = request_json["character"]["name"]
     character_image = request_json["character"]["images"][0]
