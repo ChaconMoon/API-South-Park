@@ -18,6 +18,7 @@ import uvicorn
 from src.website_elements.create_character_card_web import create_character_image_grid
 from src.website_elements.create_episode_card_web import create_episode_image_grid
 from src.website_elements.create_song_card_web import create_song_image_grid
+from src.website_elements.create_album_card_web import create_album_image_grid
 from src.controller.alter_ego_controller import (
     get_alter_ego_by_character_and_id,
     get_all_alteregos_of_a_character,
@@ -126,6 +127,9 @@ def index(response: Response, request: Request) -> dict:
             ),
             "song_cards": create_song_image_grid(
                 base_url=request.base_url, ids=[1, 30, 50, 63, 27, 68]
+            ),
+            "album_cards": create_album_image_grid(
+                base_url=request.base_url, ids=[1, 2, 3, 4, 5, 6]
             ),
             "example_api_response": json.dumps(
                 get_character_by_id(100, base_url=str(request.base_url)),

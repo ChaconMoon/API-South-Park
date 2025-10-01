@@ -48,6 +48,7 @@ def get_album_by_id(id: int, add_url=False, base_url="") -> dict:
                 release_date=str(row[2]) if row[2] is not None else None,
                 album_cover=base_url + cover_url,
                 songs=get_all_songs_of_a_album(int(row[0]), base_url, add_url=True),
+                album_url=str(row[4]) if row[4] is not None else "",
             )
 
         # Create the object with the URL

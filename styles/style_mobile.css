@@ -384,7 +384,7 @@ Phone Version
         }
 
         #songs_grid_container {
-                display: grid;
+                display: none;
                 grid-template-columns: auto;
                 border-style: solid;
                 border-width: 3px;
@@ -412,7 +412,7 @@ Phone Version
                 border-color: black;
                 border-width: 2px;
                 border-radius: 4px;
-                height: 94vw;
+                height: 90vw;
                 box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.4);
 
         }
@@ -427,7 +427,55 @@ Phone Version
 
         }
 
-        .album_card_link {
+        .song_card_link {
+                text-decoration: none;
+                color: black;
+        }
+
+        .album_card {
+                width: 65vw;
+                margin: 1vw;
+                border-style: solid;
+                border-color: black;
+                border-width: 2px;
+                border-radius: 4px;
+                height: 90vw;
+                box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.4);
+
+        }
+
+        .song_card {
+                width: 65vw;
+                margin: 1vw;
+                border-style: solid;
+                border-color: black;
+                border-width: 2px;
+                border-radius: 4px;
+                height: 97vw;
+                box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.4);
+
+        }
+
+        .song_card:hover {
+                margin: 1vw;
+                border-style: solid;
+                border-color: black;
+                border-width: 3px;
+                border-radius: 4px;
+                box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.8);
+
+        }
+
+        .album_name {
+                font-family: "OpenSans-Regular";
+                margin-left: 1vw;
+                height: 8vw;
+                font-size: clamp(5px, 3vw, 25px);
+                display: flex;
+                justify-content: center;
+        }
+
+        .song_card_link {
                 text-decoration: none;
                 color: black;
         }
@@ -444,12 +492,20 @@ Phone Version
                 margin-left: 1vw;
                 height: 8vw;
                 font-size: clamp(5px, 3vw, 25px);
+                display: flex;
+                align-content: center;
+                justify-content: center;
+        }
+
+        .album_card_link {
+                text-decoration: none;
+                color: black;
         }
 
         .album_release {
                 font-family: "OpenSans-Regular";
-                margin-left: 1vw;
-                font-size: clamp(5px, 3vw, 25px);
+                margin-left: 3vw;
+                font-size: clamp(5px, 3.7vw, 25px);
         }
 
         .play_button {
@@ -489,6 +545,71 @@ Phone Version
                 border-width: 2px;
                 font-family: "OpenSans-Bold";
                 margin-top: 2vw;
+        }
+
+        #albums_grid_container {
+                display: none;
+                grid-template-columns: auto;
+                border-style: solid;
+                border-width: 3px;
+                border-color: gray;
+                border-radius: 10px;
+                margin: 25px;
+                box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.4);
+                margin-top: 12px;
+                justify-content: center;
+                align-items: center;
+                padding-bottom: 2vw;
+                padding-top: 2vw;
+                gap: 3vw;
+        }
+
+        .album_play_button {
+                background-color: gray;
+                width: 90%;
+                color: black;
+                border-radius: 4px;
+                justify-content: center;
+                align-items: center;
+                display: flex;
+                height: 6vw;
+                font-size: 4vw;
+                text-decoration: none;
+                margin-right: 2vw;
+                margin-left: auto;
+                border-style: dotted;
+                border-width: 2px;
+                font-family: "OpenSans-Bold";
+                margin-top: 2vw;
+
+        }
+
+        .album_not_avalible_button {
+                background-color: gray;
+                width: 90%;
+                color: black;
+                border-radius: 4px;
+                justify-content: center;
+                align-items: center;
+                display: flex;
+                height: 6vw;
+                font-size: 4vw;
+                text-decoration: none;
+                margin-right: 2vw;
+                margin-left: auto;
+                border-style: dotted;
+                border-width: 2px;
+                font-family: "OpenSans-Bold";
+                margin-top: 2vw;
+        }
+
+        .album_name_in_song_menu {
+                font-family: "OpenSans-Bold";
+                margin-left: 3vw;
+                font-size: clamp(5px, 3vw, 25px);
+                margin-bottom: 3vw;
+                height: 8vw;
+                margin-right: 1vw;
         }
 
 }

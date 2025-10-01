@@ -15,3 +15,4 @@ class Album(BaseModel):
     release_date: str
     album_cover: str
     songs: dict
+    album_url: str
