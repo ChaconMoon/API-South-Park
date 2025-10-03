@@ -20,6 +20,7 @@ from src.website_elements.create_episode_card_web import create_episode_image_gr
 from src.website_elements.create_song_card_web import create_song_image_grid
 from src.website_elements.create_album_card_web import create_album_image_grid
 from src.website_elements.create_alter_ego_card_web import create_alter_ego_image_grid
+from src.website_elements.create_families_card_web import create_family_image_grid
 from src.controller.alter_ego_controller import (
     get_alter_ego_by_character_and_id,
     get_all_alteregos_of_a_character,
@@ -135,6 +136,9 @@ def index(response: Response, request: Request) -> dict:
             "alter_ego_cards": create_alter_ego_image_grid(
                 base_url=request.base_url,
                 ids=[[4, 0, 2, 1], [58, 0, 4, 1], [42, 4, 3, 1]],
+            ),
+            "families_cards": create_family_image_grid(
+                base_url=request.base_url, ids=[1, 3, 20, 34, 24, 48]
             ),
             "example_api_response": json.dumps(
                 get_character_by_id(100, base_url=str(request.base_url)),

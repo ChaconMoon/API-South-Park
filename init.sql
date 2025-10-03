@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict wYdtu1ZF8jv7IElzAZePjQ5XdVTNjIDseePcvZiE0ic6A5ziW9LivaX6HaaSnm6
+\restrict rbeQUBq8gGANz3xiZI5KrcfmUmbxzP9POmajB4usPlTlluOcNv9JCubYse3yz0P
 
 -- Dumped from database version 15.14 (Debian 15.14-1.pgdg13+1)
 -- Dumped by pg_dump version 15.14 (Debian 15.14-1.pgdg13+1)
@@ -1349,67 +1349,67 @@ COPY public.episodes (id, name, season, episode, realese_date, description, view
 --
 
 COPY public.families (id, name, images) FROM stdin;
-1	The Broflovskis	\N
-2	The Cartmans	\N
-3	The Marshs	\N
-4	The McCormicks	\N
-5	The Adams-Makowskis	\N
-6	The Andersons / O'Donnells	\N
-7	The Barbradys	\N
-8	The Biggles	\N
-9	The Blacks	\N
-10	The Burchs	\N
-11	The Charlotte's Family	\N
-12	The Cotswolds	\N
-13	The Daniels	\N
-14	The Donovans	\N
-15	The Feegan	\N
-16	The Garrisons	\N
-17	The Grays	\N
-18	The Gueermos	\N
-19	The Hankeys	\N
-20	The Harrisons	\N
-21	The Handlers	\N
-22	The Knitts	\N
-23	The McArthurs	\N
-24	The Malkinsons	\N
-25	The Mackeys	\N
-26	The Larsens	\N
-27	The McElroys	\N
-28	The Nelly's Family	\N
-29	The Michael's Family	\N
-30	The Mephestos	\N
-31	The PC Family	\N
-32	The Nelsons	\N
-33	The Stoots	\N
-34	The Stotchs	\N
-35	The Stoleys	\N
-36	The Stevens	\N
-37	The Rodriguezes	\N
-38	The Petuskis	\N
-39	The Streibels	\N
-40	The Tenormans	\N
-41	The Testaburgers	\N
-42	The Thorns	\N
-43	The Tuckers	\N
-44	The Turners	\N
-45	The Zewiskis	\N
-46	The Whites	\N
-47	The Valmers	\N
-48	The Tweaks	\N
-49	The Slave/Big Gay Al Familiy	\N
-50	The Hakeems	\N
-51	The Hagens	\N
-52	The Hitlers	\N
-53	Alice's Family	\N
-54	The Varcas	\N
-55	The Obamas	\N
-56	The Simpsons	\N
-57	The Thompsns	\N
-58	The Clintons	\N
-59	The Jacksons	\N
-60	The Palmers	\N
-61	Buck's Family	\N
+1	The Broflovskis	{img/families/The_Brofloskis.png}
+2	The Cartmans	{img/families/The_Cartmans.png}
+3	The Marshs	{img/families/The_Marshes.png,img/families/The_Marshes_2.png}
+4	The McCormicks	{img/families/The_McCormicks.png}
+5	The Adams-Makowskis	{img/families/The_Adams-Makowski_Family.png}
+6	The Andersons / O'Donnells	{img/families/The_Andersons_O'Donnells_Family.png}
+7	The Barbradys	{img/families/The_Barbradys.png}
+8	The Biggles	{img/families/The_Biggles.png,img/families/The_Biggles_2.png}
+9	The Blacks	{img/families/The_Blacks.png}
+10	The Burchs	{img/families/The_Bruchs.png,imgfamiliesThe_Bruchs_2.png}
+11	The Charlotte's Family	{img/families/The_Carlotte_Family.png,img/families/The_Carlotte_Family_2.png}
+12	The Cotswolds	{img/families/The_Cotswolds.png}
+20	The Harrisons	{img/families/The_Harrisons.png}
+13	The Daniels	{img/families/The_Daniels.png}
+14	The Donovans	{img/families/The_Donovans.png}
+15	The Feegans	{img/families/The_Feegans.png}
+16	The Garrisons	{img/families/The_Garrisons.png,img/families/The_Garrisons_2.png}
+17	The Grays	{img/families/The_Grays.png}
+18	The Gueermos	{img/families/The_Gueermos.png}
+19	The Hankeys	{img/families/The_Hankeys.png}
+21	The Handlers	{img/families/No_Family_Placeholder.png}
+22	The Knitts	{img/families/The_Knitts.png}
+23	The McArthurs	{img/families/No_Family_Placeholder.png}
+24	The Malkinsons	{img/families/The_Malkinsons.png}
+25	The Mackeys	{img/families/The_Mackeys.png}
+26	The Larsens	{img/families/The_Larsens.png}
+27	The McElroys	{img/families/The_McElroys.png}
+28	The Nelly's Family	{img/families/The_Nelly_Family.png}
+29	The Michael's Family	{img/families/The_Michael_Family.png}
+30	The Mephestos	{img/families/The_Mephestos.png}
+31	The PC Family	{img/families/The_PC_Family.png}
+32	The Nelsons	{img/families/The_Nelsons.png}
+33	The Stoots	{img/families/The_Stoots.png}
+34	The Stotchs	{img/families/The_Stochs.png}
+35	The Stoleys	{img/families/The_Stoleys.png}
+36	The Stevens	{img/families/The_Stevens.png}
+37	The Rodriguezes	{img/families/The_Rodriguezes.png}
+38	The Petuskis	{img/families/The_Petuskis.png}
+39	The Streibels	{img/families/The_Streibels.png}
+40	The Tenormans	{img/families/The_Tenormans.png}
+41	The Testaburgers	{img/families/The_Testaburgers.png}
+42	The Thorns	{img/families/No_Family_Placeholder.png}
+43	The Tuckers	{img/families/The_Tuckers.png}
+44	The Turners	{img/families/The_Turners.png}
+45	The Zewiskis	{img/families/The_Zewiskis.png,img/families/The_Zewiskis_2.png}
+46	The Whites	{img/families/The_Whites.png,img/families/The_Whites_2.png}
+47	The Valmers	{img/families/The_Valmers.png}
+48	The Tweaks	{img/families/The_Tweaks.png}
+49	The Slave/Big Gay Al Familiy	{img/families/The_Big_Gay_Al_and_Mr_Slave_Family.png}
+50	The Hakeems	{img/families/The_Hakeems.png}
+51	The Hagens	{img/families/The_Hagens.png}
+52	The Hitlers	{img/families/The_Hitlers.png}
+53	Alice's Family	{img/families/Alice_Family.png}
+54	The Varcas	{img/families/No_Family_Placeholder.png}
+55	The Obamas	{img/families/The_Obamas.png}
+56	The Simpsons	{img/families/The_Simpsons.png}
+57	The Thompsns	{img/families/The_Thompsns.png}
+58	The Clintons	{img/families/No_Family_Placeholder.png}
+59	The Jacksons	{img/families/The_Jacksons.png}
+60	The Palmers	{img/families/The_Palmers.png}
+61	Buck's Family	{img/families/Buck_Family.png}
 \.
 
 
@@ -1619,5 +1619,5 @@ ALTER TABLE ONLY public.alter_ego
 -- PostgreSQL database dump complete
 --
 
-\unrestrict wYdtu1ZF8jv7IElzAZePjQ5XdVTNjIDseePcvZiE0ic6A5ziW9LivaX6HaaSnm6
+\unrestrict rbeQUBq8gGANz3xiZI5KrcfmUmbxzP9POmajB4usPlTlluOcNv9JCubYse3yz0P
 
