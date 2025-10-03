@@ -16,3 +16,4 @@ class Episode(BaseModel):
     realese_date: str
     description: str
     episode_in_website: dict
+    episode_thumbnail: str

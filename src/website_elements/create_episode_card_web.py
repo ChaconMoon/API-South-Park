@@ -10,7 +10,7 @@ def create_episode_web_card_to_website(base_url: str, episode_id: int) -> str:
     print(request_json)
 
     episode_name = request_json["episode"]["name"]
-    episode_image = f"{base_url}img/episodes/{episode_id}.jpg"
+    episode_image = request_json["episode"]["episode_thumbnail"]
     episode_release_date = request_json["episode"]["realese_date"]
     episode_description = request_json["episode"]["description"]
     episode_status = request_json["episode"]["episode_in_website"]["status"]

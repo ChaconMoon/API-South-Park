@@ -270,14 +270,14 @@ def show_character(id: int, request: Request, response: Response) -> dict:
 
 # Create the operation to get the episodes.
 @app.get("/api/episode/{id}", tags=["TV Show"])
-def show_episode(id: int, response: Response) -> dict:
+def show_episode(id: int, response: Response, request: Request) -> dict:
     """
     Get the response with the episode with a specific id.
 
     Returns:
     A dict with the response
     """
-    json = get_episode_by_id(id)
+    json = get_episode_by_id(id, base_url=str(request.base_url))
     if "error" in json:
         if json["error"] == "Episode not found":
             response.status_code = status.HTTP_404_NOT_FOUND

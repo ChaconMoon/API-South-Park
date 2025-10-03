@@ -55,6 +55,7 @@ def get_episode_by_id(id: int, add_url=False, base_url="") -> dict:
                     else "CENSORED",
                     "website_url": str(row[6]) if row[6] is not None else "",
                 },
+                episode_thumbnail=base_url + str(row[9]) if row[9] is not None else "",
             )
 
         # Return the result with the URL
