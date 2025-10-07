@@ -39,7 +39,7 @@ def test_character_database_correct():
                     "url": "http://localhost:8000/character/42/alterego/4",
                 },
             },
-            "famious_guest": False,
+            "famous_guest": False,
         },
         "metadata": {"total_characters_in_database": 277},
     }
