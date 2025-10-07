@@ -13,7 +13,7 @@ from src.controller.database_connection import get_query_result
 
 
 # Get a Characters by this ID
-def get_character_by_id(id: int, add_url=False, base_url="") -> dict:
+def get_character_by_id(id: int, add_url=False, base_url="", no_metadata=False) -> dict:
     """
     Get one character of the database
 
@@ -68,14 +68,30 @@ def get_character_by_id(id: int, add_url=False, base_url="") -> dict:
         # Create API Response
 
         # Add Character Data to Response
-        result["character"] = character.model_dump()
+        if no_metadata:
+            result = character.model_dump()
+        else:
+            result["character"] = character.model_dump()
 
-        # Add Metadata to Response
-        result["metadata"] = dict()
-        result["metadata"]["total_characters_in_database"] = query_result.rowcount
+            # Add Metadata to Response
+            result["metadata"] = dict()
+            result["metadata"]["total_characters_in_database"] = query_result.rowcount
 
         # Return Response
         return result
     # Control exceptions
     except Exception as e:
         return {"error": str(e), "status": "failed"}
+
+
+def get_character_list(ids: list, add_url=False, base_url="") -> dict:
+    result = dict()
+    result["characters"] = dict()
+    index = 0
+
+    for character_id in ids:
+        result["characters"][index] = get_character_by_id(
+            character_id, base_url=base_url, no_metadata=True
+        )
+        index += 1
+    return result
