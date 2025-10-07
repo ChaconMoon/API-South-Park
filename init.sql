@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict rbeQUBq8gGANz3xiZI5KrcfmUmbxzP9POmajB4usPlTlluOcNv9JCubYse3yz0P
+\restrict tXjZFpWbduHikHSjIq3gTa9oDgMf5BKfcKznmHYZdklTqDKhuM1L4negknfNbZc
 
 -- Dumped from database version 15.14 (Debian 15.14-1.pgdg13+1)
 -- Dumped by pg_dump version 15.14 (Debian 15.14-1.pgdg13+1)
@@ -124,7 +124,7 @@ CREATE TABLE public.characters (
     religion text[],
     first_apperance integer NOT NULL,
     images text[],
-    famious_guest boolean
+    famous_guest boolean
 );
 
 
@@ -556,7 +556,7 @@ COPY public.alter_ego (id, original_character, name, images) FROM stdin;
 -- Data for Name: characters; Type: TABLE DATA; Schema: public; Owner: southpark
 --
 
-COPY public.characters (id, name, friend_group, family, birthday, age, religion, first_apperance, images, famious_guest) FROM stdin;
+COPY public.characters (id, name, friend_group, family, birthday, age, religion, first_apperance, images, famous_guest) FROM stdin;
 1	Kenneth "Kenny" McCormick	1	4	March 22th	9	{Christianity,"Blaintologist (Temporary)"}	1	{/img/characters/serie/Kenny_McCormick.png}	f
 2	Eric Theodore Cartman	1	2	July 1st	10	{"Roman Catholicism","Blaintologistism (Temporary)","Judaism (Post-Covid)"}	1	{/img/characters/serie/Eric_Cartman.png}	f
 3	Kyle Broflovski	1	1	May 26th	10	{Judaism,"Christianity (Temporary)","Blaintologist (Temporary)","Atheistism (Temporary)"}	1	{/img/characters/serie/Kyle_Broflovski.png}	f
@@ -814,7 +814,6 @@ COPY public.characters (id, name, friend_group, family, birthday, age, religion,
 309	Betsy	\N	\N	\N	10	\N	309	{/img/characters/serie/Betsy_Labubu_Girl.png}	f
 310	Big Black Scary Monster	\N	\N	\N	\N	\N	20	{/img/characters/serie/The_Big_Black_Scary_Monster.png}	f
 311	Big Gay Al	\N	49	\N	\N	\N	4	{/img/characters/serie/Big_Gay_Al.png}	f
-312	Big Mesquite Murph	\N	\N	\N	\N	\N	309	{/img/characters/serie/Big_Mesquite_Murph.png}	f
 313	Biggest Douche in the Universe Committee	\N	\N	\N	\N	\N	94	{/img/characters/serie/Biggest_Douche_Judges.png}	f
 259	Angela Merkel	\N	\N	July 17th	71	{Lutheran}	187	{/img/characters/serie/Angela_Merkel.png}	t
 260	Angelina Jolie	\N	\N	June 4th	50	{"Former Roman Catholic"}	156	{/img/characters/serie/Angelina_Jolie_Voight.png}	t
@@ -969,6 +968,7 @@ COPY public.characters (id, name, friend_group, family, birthday, age, religion,
 410	Buzz Lightyear	\N	\N	\N	\N	\N	299	{/img/characters/serie/Buzz_Lightyear.png}	t
 411	Benjamin Netanyahu	\N	\N	October 21th	75	{Judaism}	326	{/img/characters/serie/Benjamin_Netanyahu.png}	t
 412	Brendan Carr	\N	\N	January 5th	46	\N	326	{/img/characters/serie/Brendan_Carr.png}	t
+312	Big Mesquite Murph	\N	\N	\N	\N	\N	300	{/img/characters/serie/Big_Mesquite_Murph.png}	f
 \.
 
 
@@ -1619,5 +1619,5 @@ ALTER TABLE ONLY public.alter_ego
 -- PostgreSQL database dump complete
 --
 
-\unrestrict rbeQUBq8gGANz3xiZI5KrcfmUmbxzP9POmajB4usPlTlluOcNv9JCubYse3yz0P
+\unrestrict tXjZFpWbduHikHSjIq3gTa9oDgMf5BKfcKznmHYZdklTqDKhuM1L4negknfNbZc
 
