@@ -15,6 +15,7 @@ from fastapi.templating import Jinja2Templates
 import uvicorn
 
 # Internal inputs.
+from src.controller.easter_egg_controller import get_easter_egg
 from src.website_elements.create_character_card_web import create_character_image_grid
 from src.website_elements.create_episode_card_web import create_episode_image_grid
 from src.website_elements.create_song_card_web import create_song_image_grid
@@ -355,6 +356,12 @@ def get_the_last_episode():
 def get_chinpokomon(id: int, request: Request, response: Response):
     base_url = str(request.base_url)
     return get_chinpokomon_by_id(id=id, base_url=base_url)
+
+
+@app.get("/api/easteregg/{name}", tags=["Others"])
+def return_easter_egg(name: str, request: Request, response: Response):
+    base_url = str(request.base_url)
+    return get_easter_egg(name=name, base_url=base_url)
 
 
 # Start the API execution.
