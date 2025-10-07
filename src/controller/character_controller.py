@@ -55,7 +55,7 @@ def get_character_by_id(id: int, add_url=False, base_url="") -> dict:
                 alter_egos=get_all_alteregos_of_a_character(
                     id, add_url=True, base_url=base_url
                 ),
-                famious_guest=bool(row[9]) if row[9] is not None else False,
+                famous_guest=bool(row[9]) if row[9] is not None else False,
             )
         result = dict()
         if add_url:

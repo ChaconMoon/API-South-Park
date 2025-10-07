@@ -23,4 +23,4 @@ class Character(BaseModel):
     images: list[str]
     first_apperance: dict
     alter_egos: Optional[dict] = None
-    famious_guest: bool
+    famous_guest: bool
