@@ -633,6 +633,7 @@ Phone Version
         }
         .alter_ego_container img{
                 width: 100%;
+                border-radius:4px;
         }
         .alter_ego_container{
                 width: 25vw;
@@ -677,4 +678,66 @@ Phone Version
         .alter_ego_container:last-child:nth-child(odd) {
             grid-column: span 2;
         }
+        #families_grid_container {
+                display: none;
+                grid-template-columns: auto;
+                border-style: solid;
+                border-width: 3px;
+                border-color: gray;
+                border-radius: 10px;
+                margin: 25px;
+                box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.4);
+                margin-top: 12px;
+                justify-content: center;
+                align-items: center;
+                gap: 2.5vw;
+                padding-bottom: 2vw;
+        }
+        .family_image {
+                width: 100%;
+                border-radius: 4px;
+        }
+
+        .family_card {
+                width: 75vw;
+                border-style: solid;
+                border-color: black;
+                margin-top: 2vw;
+                border-radius: 6px;
+                height: auto;
+                padding-bottom: 2vw;
+        }
+
+                .family_members_container .family_member:last-child:nth-child(odd) {
+            grid-column: span 2;
+                        text-align: center;
+        }
+        .family_name{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 5vw;
+                color: black;
+        }
+        .family_card_link{
+               text-decoration: none;
+                color: black;
+        }
+        .family_number{
+                font-size: 4vw;
+                margin-left: 1.2vw;
+        }
+        .family_members_container{
+                display: grid;
+                grid-template-columns: auto auto;
+                margin-right: auto;
+                font-size: 3vW;
+        }
+        .family_member{
+                margin-top: 3vw;
+                justify-content: center;
+                align-items: center;
+                display: flex;
+        }
+
 }
