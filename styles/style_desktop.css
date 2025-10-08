@@ -590,7 +590,7 @@ Desktop Version
                 margin-top: 12px;
                 justify-content: center;
                 align-items: center;
-                gap: 4vw; 
+                gap: 4vw;
                 padding-bottom: 2vw;
         }
 
@@ -607,10 +607,11 @@ Desktop Version
                 border-radius: 10px;
                 height: 37vw;
                 box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.4);
-                
+
         }
-        .family_card:hover{
-                               box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.6);
+
+        .family_card:hover {
+                box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.6);
                 margin-bottom: 3vw;
                 border-width: 3px;
                 border-radius: 10px;
@@ -619,29 +620,118 @@ Desktop Version
         .family_members_container {
                 display: grid;
         }
-        .family_name{
+
+        .family_name {
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 font-size: 1.5vw;
                 color: black;
         }
-        .family_card_link{
-               text-decoration: none;
+
+        .family_card_link {
+                text-decoration: none;
                 color: black;
         }
-        .family_number{
+
+        .family_number {
                 font-size: 1.2vw;
                 margin-left: 1.2vw;
         }
-        .family_members_container{
+
+        .family_members_container {
                 display: grid;
                 grid-template-columns: auto auto auto;
                 margin-left: 2vw;
                 margin-right: auto;
                 font-size: 1.1vW;
         }
-        .family_member{
+
+        .family_member {
                 margin-top: 1vw;
         }
+
+        #games_grid_container {
+                display: none;
+                grid-template-columns: auto auto auto auto;
+                border-style: solid;
+                border-width: 3px;
+                border-color: gray;
+                border-radius: 10px;
+                margin: 25px;
+                box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.4);
+                margin-top: 12px;
+                justify-content: center;
+                align-items: center;
+                column-gap: 4vw;
+                row-gap: 2vw;
+                padding-bottom: 2vw;
+        }
+
+        .game_card {
+                width: 20vw;
+                border: 2px solid black;
+                border-radius: 4px;
+                margin-top: 1vw;
+                box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.6);
+        }
+        .game_card:hover {
+                box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.8);
+                margin-bottom: 2vw;
+        }
+        .game_card_link {
+                color: black;
+                text-decoration: none;
+        }
+
+        .game_image {
+                width: 100%;
+                height: 20vw;
+        }
+
+        .platform_icon img {
+                width: 3vw;;
+        }
+
+        .platform_icon {
+                width: 3vw;
+        }
+
+        .platforms_grid {
+                display: flex;
+                justify-content: center;
+                column-gap: 3vw;
+                flex-wrap: wrap;
+                height: 7vw;
+                margin-top: 1vw;
+                /* allow wrapping to form multiple rows/columns */
+        }
+
+        /* If there are 4 or more children, make them behave as two columns.
+           Use :has() where supported, and provide a .two-columns class fallback
+           so small JS can toggle it for older browsers. */
+        .platforms_grid:has(> :nth-child(4)),
+        .platforms_grid.two-columns {
+                justify-content: center;
+        }
+
+        /* In two-column mode each child takes ~50% width (account for gap) */
+        .platforms_grid:has(> :nth-child(4))>*,
+        .platforms_grid.two-columns>* {
+                flex: 0 0 calc(20% - 1vw);
+                max-width: calc(20% - 1vw);
+        }
+        .game_name {
+                font-size: 0.9vw;
+                display: flex;
+                justify-content: center;
+                margin-bottom: 1vw;
+                font-family: OpenSans-Bold;
+        }
+        .game_release_date{
+                margin-left: 1vw;
+                font-size: 1vw;
+                font-family: OpenSans-Regular;
+        }
+
 }

@@ -332,11 +332,13 @@ Tablets Version
                 color: white;
                 font-family: "OpenSans-Bold";
                 width: 40vw;
-                align-self: center;
+                align-items: center;
                 font-size: 4vw;
                 text-align: center;
                 background-color: black;
-                height: 6vw;
+                height: 8vw;
+                justify-content: center;
+                display: flex;
         }
 
         div.change_submenu_buttons {
@@ -548,8 +550,8 @@ Tablets Version
                 height: 4vw;
                 margin-right: 1vw;
         }
-        
-        #alter_egos_grid_container{
+
+        #alter_egos_grid_container {
                 display: none;
                 grid-template-columns: auto;
                 border-style: solid;
@@ -560,30 +562,35 @@ Tablets Version
                 box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.4);
                 margin-top: 12px;
                 justify-content: center;
-                gap: 1vw; 
+                gap: 1vw;
         }
+
         .character_and_alterego_grid {
                 display: grid;
                 justify-content: space-between;
                 align-items: center;
                 width: 100%;
         }
-        .alter_ego_container img{
+
+        .alter_ego_container img {
                 width: 100%;
                 border-radius: 8px
         }
-        .alter_ego_container{
+
+        .alter_ego_container {
                 width: 20vw;
                 margin: auto;
                 margin-left: 3vw;
                 border-style: solid;
                 border-radius: 1.4vw 1.4vw 1vw 1vw;
-               box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.4);
+                box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.4);
         }
-        .alter_ego_container:hover{
-               box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.8);
-                margin-top: 1vw; 
+
+        .alter_ego_container:hover {
+                box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.8);
+                margin-top: 1vw;
         }
+
         .alter_ego_name {
                 font-family: "OpenSans-Bold";
                 display: flex;
@@ -593,17 +600,20 @@ Tablets Version
                 text-decoration: none;
                 color: black;
         }
+
         .alter_ego_link {
-            text-decoration: none;
-            color: inherit;
+                text-decoration: none;
+                color: inherit;
         }
-        #alter_egos_grid_container .character_card_link{
+
+        #alter_egos_grid_container .character_card_link {
                 align-self: center;
                 align-content: center;
                 margin: auto;
                 width: 35vw;
-                
+
         }
+
         .alter_egos_container {
                 display: flex;
                 flex-direction: row;
@@ -612,6 +622,7 @@ Tablets Version
                 gap: 5vw;
                 margin-bottom: 2vw;
         }
+
         #families_grid_container {
                 display: none;
                 grid-template-columns: auto auto;
@@ -627,6 +638,7 @@ Tablets Version
                 gap: 2.5vw;
                 padding-bottom: 2vw;
         }
+
         .family_image {
                 width: 100%;
                 border-radius: 4px;
@@ -644,30 +656,119 @@ Tablets Version
         .family_members_container {
                 display: grid;
         }
-        .family_name{
+
+        .family_name {
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 font-size: 2.2vw;
                 color: black;
         }
-        .family_card_link{
-               text-decoration: none;
+
+        .family_card_link {
+                text-decoration: none;
                 color: black;
         }
-        .family_number{
+
+        .family_number {
                 font-size: 1.8vw;
                 margin-left: 1.2vw;
         }
-        .family_members_container{
+
+        .family_members_container {
                 display: grid;
                 grid-template-columns: auto auto auto;
                 margin-left: 2vw;
                 margin-right: auto;
                 font-size: 1.2vW;
         }
-        .family_member{
+
+        .family_member {
                 margin-top: 1vw;
         }
+
+        #games_grid_container {
+                display: none;
+                grid-template-columns: auto auto;
+                border-style: solid;
+                border-width: 3px;
+                border-color: gray;
+                border-radius: 10px;
+                margin: 25px;
+                box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.4);
+                margin-top: 12px;
+                justify-content: center;
+                align-items: center;
+                column-gap: 5vw;
+                row-gap: 1.5vw;
+                padding-bottom: 2vw;
+        }
+
+        .game_card {
+                width: 35vw;
+                border: 3px solid black;
+                border-radius: 10px;
+                margin-top: 2vw;
+                                box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.6);
+        }
+
+        .game_card_link {
+                color: black;
+                text-decoration: none;
+        }
+
+        .game_image {
+                width: 100%;
+                height: 35vw;
+                border-radius: 7px;
+        }
+
+        .platform_icon img {
+                width: 5vw;
+        }
+
+        .platform_icon {
+                width: 5vw;
+        }
+
+        .platforms_grid {
+                display: flex;
+                justify-content: center;
+                column-gap: 3vw;
+                flex-wrap: wrap;
+                height: 12vw;
+                margin-top: 1vw;
+                /* allow wrapping to form multiple rows/columns */
+        }
+
+        /* If there are 4 or more children, make them behave as two columns.
+           Use :has() where supported, and provide a .two-columns class fallback
+           so small JS can toggle it for older browsers. */
+        .platforms_grid:has(> :nth-child(4)),
+        .platforms_grid.two-columns {
+                justify-content: center;
+        }
+
+        /* In two-column mode each child takes ~50% width (account for gap) */
+        .platforms_grid:has(> :nth-child(4))>*,
+        .platforms_grid.two-columns>* {
+                flex: 0 0 calc(20% - 1vw);
+                max-width: calc(20% - 1vw);
+        }
+
+        .game_name {
+                font-size: 1.6vw;
+                display: flex;
+                justify-content: center;
+                margin-bottom: 1vw;
+                font-family: OpenSans-Bold;
+        }
+
+        .game_release_date {
+                margin-left: 1vw;
+                font-size: 1.5vw;
+                font-family: OpenSans-Regular;
+        }
+
 
 }

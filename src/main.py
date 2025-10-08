@@ -1,7 +1,7 @@
 """
 Module written by Carlos Chacón
 
-This Module contain the main class of the API and create de operations used by the API
+This Module contain the main class of the API and create de endpoints used by the API
 """
 
 # Import of FastAPI.
@@ -22,6 +22,8 @@ from src.website_elements.create_song_card_web import create_song_image_grid
 from src.website_elements.create_album_card_web import create_album_image_grid
 from src.website_elements.create_alter_ego_card_web import create_alter_ego_image_grid
 from src.website_elements.create_families_card_web import create_family_image_grid
+from src.website_elements.create_game_card_web import create_game_image_grid
+
 from src.controller.alter_ego_controller import (
     get_alter_ego_by_character_and_id,
     get_all_alteregos_of_a_character,
@@ -34,6 +36,7 @@ from src.controller.episodes_controller import get_episode_by_id, get_last_episo
 from src.controller.specials_controller import get_special_by_id
 from src.controller.songs_controller import get_song_by_id
 from src.controller.album_controller import get_album_by_id
+from src.controller.game_controller import get_game_by_id
 
 
 # Create the description of de API
@@ -141,6 +144,10 @@ def index(response: Response, request: Request) -> dict:
             "families_cards": create_family_image_grid(
                 base_url=request.base_url, ids=[1, 3, 20, 34, 24, 48]
             ),
+            "games_cards": create_game_image_grid(
+                base_url=request.base_url,
+                ids=[19, 20, 21, 22, 2, 14, 13, 28, 17, 10, 27, 33],
+            ),
             "example_api_response": json.dumps(
                 get_character_by_id(100, base_url=str(request.base_url)),
                 indent=4,
@@ -168,7 +175,7 @@ def api_index(response: Response) -> dict:
     return json
 
 
-# Create the operation to get the albums.
+# Create the endpoint to get the albums.
 @app.get("/api/album/{id}", tags=["Music"])
 def show_album(
     id: int, request: Request, response: Response, metadata: bool = False
@@ -191,7 +198,7 @@ def show_album(
     return json
 
 
-# Create the operation to get the songs.
+# Create the endpoint to get the songs.
 @app.get("/api/song/{id}", tags=["Music"])
 def show_song(
     id: int, request: Request, response: Response, metadata: bool = False
@@ -214,7 +221,7 @@ def show_song(
     return json
 
 
-# Create the operation to get the special episodes.
+# Create the endpoint to get the special episodes.
 @app.get("/api/special/{id}", tags=["TV Show"])
 def show_special(
     id: int, request: Request, response: Response, metadata: bool = False
@@ -237,7 +244,7 @@ def show_special(
     return json
 
 
-# Create the operation to get the families.
+# Create the endpoint to get the families.
 @app.get("/api/family/{id}", tags=["Characters"])
 def show_family(
     id: int, request: Request, response: Response, metadata: bool = False
@@ -260,7 +267,7 @@ def show_family(
     return json
 
 
-# Create the operation to get the characters.
+# Create the endpoint to get the characters.
 @app.get("/api/character/{id}", tags=["Characters"])
 async def show_character(
     id: int, request: Request, response: Response, metadata: bool = False
@@ -283,7 +290,7 @@ async def show_character(
     return json
 
 
-# Create the operation to get the episodes.
+# Create the endpoint to get the episodes.
 @app.get("/api/episode/{id}", tags=["TV Show"])
 def show_episode(
     id: int, response: Response, request: Request, metadata: bool = False
@@ -305,7 +312,7 @@ def show_episode(
     return json
 
 
-# Create the operation to get one alter ego of a character.
+# Create the endpoint to get one alter ego of a character.
 @app.get("/api/character/{id}/alterego/{alter_id}", tags=["Characters"])
 def show_alterergo(
     id: int, alter_id: int, request: Request, response: Response, metadata: bool = False
@@ -330,7 +337,7 @@ def show_alterergo(
     return json
 
 
-# Create the operation to get all the alteregos of a character.
+# Create the endpoint to get all the alteregos of a character.
 @app.get("/api/character/{id}/alteregos", tags=["Characters"])
 def show_all_alteregos(id: int, request: Request, response: Response) -> dict:
     """
@@ -345,6 +352,31 @@ def show_all_alteregos(id: int, request: Request, response: Response) -> dict:
         json = {"error": "Alter Egos not found", "status": "failed"}
     if "error" in json:
         if json["error"] == "Alter Egos not found":
+            response.status_code = status.HTTP_404_NOT_FOUND
+        elif json["error"] == "Database not avalible":
+            response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
+        elif "alteregos" in json:
+            response.status_code = status.HTTP_200_OK
+    return json
+
+
+# Create the endpoint to get all the alteregos of a character.
+@app.get("/api/game/{id}/", tags=["Games"])
+def show_game(
+    id: int, request: Request, response: Response, metadata: bool = False
+) -> dict:
+    """
+    Get the response with the all the alteregos of one specific character.
+
+    Returns:
+    A dict with the response
+    """
+    base_url = str(request.base_url)
+    json = get_game_by_id(id=id, base_url=base_url, metadata=metadata)
+    if json is None:
+        json = {"error": "Game not found", "status": "failed"}
+    if "error" in json:
+        if json["error"] == "Game not found":
             response.status_code = status.HTTP_404_NOT_FOUND
         elif json["error"] == "Database not avalible":
             response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
