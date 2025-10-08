@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict T1ORl9Gli71QPuyaFyVQWGVXyel5beeRkI4NVyXXggSKQn51poR4eY7hpQ1DqDH
+\restrict 4xfvbVd9aw7wCPSNbsdYHyAtToZ5azfYPhhzae4MrrJjQiinRMrGGpCYI1wlJRf
 
 -- Dumped from database version 15.14 (Debian 15.14-1.pgdg13+1)
 -- Dumped by pg_dump version 15.14 (Debian 15.14-1.pgdg13+1)
@@ -1418,6 +1418,7 @@ COPY public.families (id, name, images) FROM stdin;
 --
 
 COPY public.games (id, name, developer, platforms, realese_date, images) FROM stdin;
+13	South Park (Gameboy Prototype)	Crawfish Interactive	{GBC}	\N	{/img/games/Gameboy_Game.webp}
 1	South Park Imaginationland	Mr. Goodliving	{IOS}	2008-07-10	{/img/games/ImaginationlandGame.jpg}
 2	South Park (Videogame)	Appaloosa Interactive	{PS1}	1999-09-30	{/img/games/SouthParkTheGame.jpg}
 3	South Park Mega Millionaire	GameHouse	{IOS,"Blackberry OS"}	2010-01-26	{/img/games/South_Park_Mega_Millionare.png}
@@ -1430,7 +1431,6 @@ COPY public.games (id, name, developer, platforms, realese_date, images) FROM st
 10	South Park: The Stick of Truth	Obsidian Entertainment	{PC,X360,PS3}	2014-03-04	{/img/games/StickOfTruth.png}
 11	South Park (Videogame)	Iguana Entertainment	{N64}	1998-12-21	{/img/games/SouthParkTheGame.jpg}
 12	South Park Pinball (Original Realese)	Zen Studios	{PS3,PSVita,PS4}	2014-10-14	{/img/games/South_Park_pinball_Videogames.avif}
-13	South Park (Videogame)	Crawfish Interactive	{GBC}	\N	{/img/games/Gameboy_Game.webp}
 14	South Park (Videogame)	Iguana Entertainment	{PC}	1999-03-01	{/img/games/SouthPark_game_PC.jpg}
 15	South Park (Pinball Machine)	Software: Neil Falconer, Orin Day. Hardware: Joe Balcer, Rob Hurtado	{"Pinball Machine"}	1999-02-01	{/img/games/south-park-pinball-machine.webp}
 16	South Park: Chef's Luv Shack	Acclaim	{PC}	1999-12-01	{/img/games/Chef_Luv_Shack.jpg}
@@ -1619,5 +1619,5 @@ ALTER TABLE ONLY public.alter_ego
 -- PostgreSQL database dump complete
 --
 
-\unrestrict T1ORl9Gli71QPuyaFyVQWGVXyel5beeRkI4NVyXXggSKQn51poR4eY7hpQ1DqDH
+\unrestrict 4xfvbVd9aw7wCPSNbsdYHyAtToZ5azfYPhhzae4MrrJjQiinRMrGGpCYI1wlJRf
 
