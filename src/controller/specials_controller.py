@@ -13,7 +13,7 @@ from src.model.specials import Special
 
 
 # Get one special data from the API and Return it.
-def get_special_by_id(id: int, add_url=False, base_url=""):
+def get_special_by_id(id: int, add_url=False, base_url="", metadata=False):
     """
     Get the ID of a special and returns a dict with the content of this special in the database.
 
@@ -59,9 +59,12 @@ def get_special_by_id(id: int, add_url=False, base_url=""):
         # Create the complete object with the metadata
         query_result = get_query_result(text("SELECT * FROM public.specials"))
         result = dict()
-        result["special"] = special_info.model_dump()
-        result["metadata"] = dict()
-        result["metadata"]["total_specials_in_database"] = query_result.rowcount
+        if not metadata:
+            result = special_info.model_dump()
+        else:
+            result["special"] = special_info.model_dump()
+            result["metadata"] = dict()
+            result["metadata"]["total_specials_in_database"] = query_result.rowcount
         return result
 
     # Control exceptions

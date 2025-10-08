@@ -7,18 +7,18 @@ def create_song_web_card_to_website(base_url: str, song_id: int) -> str:
 
     request_json = request.json()
 
-    song_name = request_json["song"]["name"]
-    album_number = int(request_json["song"]["album_number"])
-    song_url = request_json["song"]["song_url"]
+    song_name = request_json["name"]
+    album_number = int(request_json["album_number"])
+    song_url = request_json["song_url"]
 
     request_url = f"{base_url}api/album/{album_number}"
     request = requests.get(request_url)
     request_album_json = request.json()
 
-    album_name = request_album_json["album"]["name"]
-    album_release = request_album_json["album"]["release_date"]
+    album_name = request_album_json["name"]
+    album_release = request_album_json["release_date"]
 
-    album_cover = request_album_json["album"]["album_cover"]
+    album_cover = request_album_json["album_cover"]
 
     html_button = (
         """

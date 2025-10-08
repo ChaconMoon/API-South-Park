@@ -9,9 +9,9 @@ def create_family_web_card_to_website(base_url: str, family_id: int) -> str:
     print(request_url)
     print(request_json)
 
-    family_name = request_json["family"]["name"]
-    family_images = request_json["family"]["images"]
-    family_members = request_json["family"]["members"]
+    family_name = request_json["name"]
+    family_images = request_json["images"]
+    family_members = request_json["members"]
 
     members_div = ""
 

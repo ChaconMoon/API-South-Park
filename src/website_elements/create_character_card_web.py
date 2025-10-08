@@ -7,19 +7,15 @@ def create_character_web_card_to_website(base_url: str, character_id: int) -> st
 
     request_json = request.json()
 
-    character_name = request_json["character"]["name"]
-    character_image = request_json["character"]["images"][0]
+    character_name = request_json["name"]
+    character_image = request_json["images"][0]
     character_birthday = (
-        request_json["character"]["birthday"]
-        if request_json["character"]["birthday"] is not None
-        else "Unknown"
+        request_json["birthday"] if request_json["birthday"] is not None else "Unknown"
     )
     character_age = (
-        request_json["character"]["age"]
-        if request_json["character"]["age"] is not None
-        else "Unknown"
+        request_json["age"] if request_json["age"] is not None else "Unknown"
     )
-    character_debut_episode = request_json["character"]["first_apperance"]["name"]
+    character_debut_episode = request_json["first_apperance"]["name"]
     html_response = f"""
         <a href="{request_url}" class="character_card_link">
         <div class="character_card" >

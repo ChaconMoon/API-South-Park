@@ -13,3 +13,4 @@ class Family(BaseModel):
     id: int
     name: str
     images: list[str]
+    members: list[dict]

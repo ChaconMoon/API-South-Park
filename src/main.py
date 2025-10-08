@@ -170,7 +170,9 @@ def api_index(response: Response) -> dict:
 
 # Create the operation to get the albums.
 @app.get("/api/album/{id}", tags=["Music"])
-def show_album(id: int, request: Request, response: Response) -> dict:
+def show_album(
+    id: int, request: Request, response: Response, metadata: bool = False
+) -> dict:
     """
     Get the response with the album with a specific id.
 
@@ -178,7 +180,7 @@ def show_album(id: int, request: Request, response: Response) -> dict:
     A dict with the response.
     """
     base_url = str(request.base_url)
-    json = get_album_by_id(id, base_url=base_url)
+    json = get_album_by_id(id, base_url=base_url, metadata=metadata)
     if "error" in json:
         if json["error"] == "Album not found":
             response.status_code = status.HTTP_404_NOT_FOUND
@@ -191,7 +193,9 @@ def show_album(id: int, request: Request, response: Response) -> dict:
 
 # Create the operation to get the songs.
 @app.get("/api/song/{id}", tags=["Music"])
-def show_song(id: int, request: Request, response: Response) -> dict:
+def show_song(
+    id: int, request: Request, response: Response, metadata: bool = False
+) -> dict:
     """
     Get the response with the song with a specific id.
 
@@ -199,7 +203,7 @@ def show_song(id: int, request: Request, response: Response) -> dict:
     A dict with the response
     """
     base_url = str(request.base_url)
-    json = get_song_by_id(id, base_url=base_url)
+    json = get_song_by_id(id, base_url=base_url, metadata=metadata)
     if "error" in json:
         if json["error"] == "Song not found":
             response.status_code = status.HTTP_404_NOT_FOUND
@@ -212,7 +216,9 @@ def show_song(id: int, request: Request, response: Response) -> dict:
 
 # Create the operation to get the special episodes.
 @app.get("/api/special/{id}", tags=["TV Show"])
-def show_special(id: int, request: Request, response: Response) -> dict:
+def show_special(
+    id: int, request: Request, response: Response, metadata: bool = False
+) -> dict:
     """
     Get the response with the special with a specific id.
 
@@ -220,7 +226,7 @@ def show_special(id: int, request: Request, response: Response) -> dict:
     A dict with the response
     """
     base_url = str(request.base_url)
-    json = get_special_by_id(id, base_url=base_url)
+    json = get_special_by_id(id, base_url=base_url, metadata=metadata)
     if "error" in json:
         if json["error"] == "Special not found":
             response.status_code = status.HTTP_404_NOT_FOUND
@@ -233,7 +239,9 @@ def show_special(id: int, request: Request, response: Response) -> dict:
 
 # Create the operation to get the families.
 @app.get("/api/family/{id}", tags=["Characters"])
-def show_family(id: int, request: Request, response: Response) -> dict:
+def show_family(
+    id: int, request: Request, response: Response, metadata: bool = False
+) -> dict:
     """
     Get the response with the family with a specific id.
 
@@ -241,7 +249,7 @@ def show_family(id: int, request: Request, response: Response) -> dict:
     A dict with the response
     """
     base_url = str(request.base_url)
-    json = get_family_by_id(id, url=base_url)
+    json = get_family_by_id(id, url=base_url, metadata=metadata)
     if "error" in json:
         if json["error"] == "Family not found":
             response.status_code = status.HTTP_404_NOT_FOUND
@@ -254,7 +262,9 @@ def show_family(id: int, request: Request, response: Response) -> dict:
 
 # Create the operation to get the characters.
 @app.get("/api/character/{id}", tags=["Characters"])
-def show_character(id: int, request: Request, response: Response) -> dict:
+async def show_character(
+    id: int, request: Request, response: Response, metadata: bool = False
+) -> dict:
     """
     Get the response with the character with a specific id.
 
@@ -262,7 +272,7 @@ def show_character(id: int, request: Request, response: Response) -> dict:
     A dict with the response
     """
     base_url = str(request.base_url)
-    json = get_character_by_id(id, base_url=base_url)
+    json = get_character_by_id(id, base_url=base_url, metadata=metadata)
     if "error" in json:
         if json["error"] == "Character not found":
             response.status_code = status.HTTP_404_NOT_FOUND
@@ -275,14 +285,16 @@ def show_character(id: int, request: Request, response: Response) -> dict:
 
 # Create the operation to get the episodes.
 @app.get("/api/episode/{id}", tags=["TV Show"])
-def show_episode(id: int, response: Response, request: Request) -> dict:
+def show_episode(
+    id: int, response: Response, request: Request, metadata: bool = False
+) -> dict:
     """
     Get the response with the episode with a specific id.
 
     Returns:
     A dict with the response
     """
-    json = get_episode_by_id(id, base_url=str(request.base_url))
+    json = get_episode_by_id(id, base_url=str(request.base_url), metadata=metadata)
     if "error" in json:
         if json["error"] == "Episode not found":
             response.status_code = status.HTTP_404_NOT_FOUND
@@ -296,7 +308,7 @@ def show_episode(id: int, response: Response, request: Request) -> dict:
 # Create the operation to get one alter ego of a character.
 @app.get("/api/character/{id}/alterego/{alter_id}", tags=["Characters"])
 def show_alterergo(
-    id: int, alter_id: int, request: Request, response: Response
+    id: int, alter_id: int, request: Request, response: Response, metadata: bool = False
 ) -> dict:
     """
     Get the response with the alterego of one espefic ID of one specific character.
@@ -306,7 +318,7 @@ def show_alterergo(
     """
     base_url = str(request.base_url)
     json = get_alter_ego_by_character_and_id(
-        id_character=id, id_alter_ego=alter_id, base_url=base_url
+        id_character=id, id_alter_ego=alter_id, base_url=base_url, metadata=metadata
     )
     if "error" in json:
         if json["error"] == "Alter Ego not found":

@@ -6,12 +6,12 @@ def create_album_web_card_to_website(base_url: str, album_id: int) -> str:
     request = requests.get(request_url)
     request_album_json = request.json()
 
-    album_name = request_album_json["album"]["name"]
-    album_release = request_album_json["album"]["release_date"]
+    album_name = request_album_json["name"]
+    album_release = request_album_json["release_date"]
 
-    album_cover = request_album_json["album"]["album_cover"]
+    album_cover = request_album_json["album_cover"]
 
-    album_url = request_album_json["album"]["album_url"]
+    album_url = request_album_json["album_url"]
 
     html_button = (
         """

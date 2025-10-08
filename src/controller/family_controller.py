@@ -15,7 +15,7 @@ from src.model.family import Family
 
 
 # Connection with the database
-def get_family_by_id(id: int, url="") -> dict:
+def get_family_by_id(id: int, url="", metadata=False) -> dict:
     """
     Get the ID of one familiy at return the data of this family and all they members.
 
@@ -52,11 +52,14 @@ def get_family_by_id(id: int, url="") -> dict:
             images=[
                 f"{url}{image_url}" for image_url in parse_array_to_list(rows[0][3])
             ],
+            members=family_members,
         )
-        result["family"] = family.model_dump()
-        result["family"]["members"] = family_members
-        result["metadata"] = dict()
-        result["metadata"]["total_families_in_database"] = query_result.rowcount
+        if not metadata:
+            result = family.model_dump()
+        else:
+            result["family"] = family.model_dump()
+            result["metadata"] = dict()
+            result["metadata"]["total_families_in_database"] = query_result.rowcount
 
         return result
 

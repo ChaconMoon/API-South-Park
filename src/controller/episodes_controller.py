@@ -13,7 +13,7 @@ from src.model.episode import Episode
 
 
 # Get one episode of the database
-def get_episode_by_id(id: int, add_url=False, base_url="") -> dict:
+def get_episode_by_id(id: int, add_url=False, base_url="", metadata=False) -> dict:
     """
     Get one episode of the database
 
@@ -69,9 +69,12 @@ def get_episode_by_id(id: int, add_url=False, base_url="") -> dict:
         query_result = get_query_result(text("SELECT * FROM public.episodes"))
 
         result = dict()
-        result["episode"] = episode_info.model_dump()
-        result["metadata"] = dict()
-        result["metadata"]["total_episodes_in_database"] = query_result.rowcount
+        if not metadata:
+            result = episode_info.model_dump()
+        else:
+            result["episode"] = episode_info.model_dump()
+            result["metadata"] = dict()
+            result["metadata"]["total_episodes_in_database"] = query_result.rowcount
         return result
 
     # Control Exceptions

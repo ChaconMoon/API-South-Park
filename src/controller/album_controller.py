@@ -14,7 +14,7 @@ from src.controller.songs_controller import get_all_songs_of_a_album
 
 
 # Get album by this id
-def get_album_by_id(id: int, add_url=False, base_url="") -> dict:
+def get_album_by_id(id: int, add_url=False, base_url="", metadata=False) -> dict:
     """
     Get the ID of a album and returns a dict with the content of this album in the database.
 
@@ -61,9 +61,12 @@ def get_album_by_id(id: int, add_url=False, base_url="") -> dict:
         # Create the complete object with the metadata
         query_result = get_query_result(text("SELECT * FROM public.albums"))
         result = dict()
-        result["album"] = album.model_dump()
-        result["metadata"] = dict()
-        result["metadata"]["total_albums_in_database"] = query_result.rowcount
+        if not metadata:
+            result = album.model_dump()
+        else:
+            result["album"] = album.model_dump()
+            result["metadata"] = dict()
+            result["metadata"]["total_albums_in_database"] = query_result.rowcount
         return result
 
     # Control exceptions

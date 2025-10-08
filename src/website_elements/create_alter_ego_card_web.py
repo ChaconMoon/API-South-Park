@@ -14,8 +14,8 @@ def create_alter_ego_web_card_to_website(
         print(str(request_url))
         request = requests.get(request_url)
         request_alter_ego_json = request.json()
-        alter_ego_name = request_alter_ego_json["alterego"]["name"]
-        alter_ego_image = request_alter_ego_json["alterego"]["images"][0]
+        alter_ego_name = request_alter_ego_json["name"]
+        alter_ego_image = request_alter_ego_json["images"][0]
 
         alter_ego_containers += f"""<div class="alter_ego_container">
         <a href="{str(request_url)}" class="alter_ego_link">
