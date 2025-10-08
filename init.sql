@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict UoeShqv6golBybMb5jwYyOYjKBdabVxtz2sDaEXRW8bNdZYPsPGsaM8BPTxVQyE
+\restrict T1ORl9Gli71QPuyaFyVQWGVXyel5beeRkI4NVyXXggSKQn51poR4eY7hpQ1DqDH
 
 -- Dumped from database version 15.14 (Debian 15.14-1.pgdg13+1)
 -- Dumped by pg_dump version 15.14 (Debian 15.14-1.pgdg13+1)
@@ -1418,39 +1418,39 @@ COPY public.families (id, name, images) FROM stdin;
 --
 
 COPY public.games (id, name, developer, platforms, realese_date, images) FROM stdin;
-1	South Park Imaginationland	Mr. Goodliving	{IOS}	2008-07-10	{imggamesImaginationlandGame.jpg}
-2	South Park (Videogame)	Appaloosa Interactive	{PS1}	1999-09-30	{imggamesSouthParkTheGame.jpg}
-3	South Park Mega Millionaire	GameHouse	{IOS,"Blackberry OS"}	2010-01-26	{imggamesSouth_Park_Mega_Millionare.png}
-4	South Park Let's Go Tower Defense Play!	South Park Digital Studios	{X360}	2009-10-07	{imggamesSouth_Park_Mega_Millionare.png}
-5	South Park Mega Millionaire	GameHouse	{Android}	2012-07-02	{imggamesSouth_Park_Mega_Millionare.png}
-6	South Park: Tenorman's Revenge	South Park Digital Studios	{X360}	2012-03-30	{imggamesTenorman_Revenge.webp}
-7	South Park: Phone Destroyer	RedLynx	{IOS,Android}	2017-11-09	{imggamesPhone_Destroyer.webp}
-8	South Park: The Stick of Truth	Obsidian Entertainment	{Switch}	2018-09-25	{imggamesStickOfTruth.png}
-9	South Park: The Stick of Truth	Obsidian Entertainment	{PS4,XOne}	2018-02-13	{imggamesStickOfTruth.png}
-10	South Park: The Stick of Truth	Obsidian Entertainment	{PC,X360,PS3}	2014-03-04	{imggamesStickOfTruth.png}
-11	South Park (Videogame)	Iguana Entertainment	{N64}	1998-12-21	{imggamesSouthParkTheGame.jpg}
-12	South Park Pinball (Original Realese)	Zen Studios	{PS3,PSVita,PS4}	2014-10-14	{imggamesSouth_Park_pinball_Videogames.avif}
-13	South Park (Videogame)	Crawfish Interactive	{GBC}	\N	{"imggamesGameboy Game.webp"}
-14	South Park (Videogame)	Iguana Entertainment	{PC}	1999-03-01	{imggamesSouthPark_game_PC.jpg}
-15	South Park (Pinball Machine)	Software: Neil Falconer, Orin Day. Hardware: Joe Balcer, Rob Hurtado	{"Pinball Machine"}	1999-02-01	{imggamessouth-park-pinball-machine.webp}
-16	South Park: Chef's Luv Shack	Acclaim	{PC}	1999-12-01	{"imggamesChef Luv Shack.jpg"}
-17	South Park: Chef's Luv Shack	Acclaim	{PS1,N64}	1999-11-16	{"imggamesChef Luv Shack.jpg"}
-18	South Park: Chef's Luv Shack	Acclaim	{Dreamcast}	1999-09-09	{"imggamesChef Luv Shack.jpg"}
-19	South Park Rally	Tantalus Interactive	{PS1}	2000-01-05	{imggamesSouth_Park_Rally_PS.jpg}
-20	South Park Rally	Tantalus Interactive	{N64}	2000-02-28	{"imggamesSouth Park Rally.webp"}
-21	South Park Rally	Tantalus Interactive	{PC}	2000-01-24	{"imggamesSouth Park Rally.webp"}
-22	South Park Rally	Tantalus Interactive	{Dreamcast}	2000-07-07	{"imggamesSouth Park Rally.webp"}
-23	South Park: Big Wheel Death Rally	South Park Digital Studios	{Web}	2006-01-01	{imggamesSouth_Park_Big_Wheel.webp}
-24	South Park Double Bunny	South Park Digital Studios	{Web}	\N	{imggamesSouth_Park_Double_Bunny.jpg}
-25	South Park Pinball (Original Realese)	Zen Studios	{XOne}	2014-10-16	{imggamesSouth_Park_pinball_Videogames.avif}
-26	South Park Pinball (Original Realese)	Zen Studios	{PC,X360}	2014-10-15	{imggamesSouth_Park_pinball_Videogames.avif}
-27	South Park: The Fractured but Whole	Ubisoft San Francisco	{PC,PS4,XOne}	2017-10-17	{imggamessouth-park-the-fractured-but-whole-artwork.jpg}
-28	South Park Pinball (Re-realese)	Zen Studios	{PC,PS4,XOne,PS5,XSeries,Switch}	2023-10-12	{imggamesSouth_Park_pinball_Videogames.avif}
-29	South Park: The Fractured but Whole	Ubisoft San Francisco	{Switch}	2018-04-24	{imggamessouth-park-the-fractured-but-whole-artwork.jpg}
-30	Cartman's Escape Room (Virtual Game)	South Park Studios & Escape the Room	{Web}	2021-01-01	{imggamesEscapr_Room.jpg}
-31	Cartman's Escape Room (Chichago)	South Park Studios & Escape the Room	{"Escape Room"}	2019-05-15	{imggamesEscapr_Room.jpg}
-32	Cartman's Escape Room (San Diego Comic Con)	South Park Studios & Escape the Room	{"Escape Room"}	2018-07-20	{imggamesEscapr_Room.jpg}
-33	South Park: Snow Day!	Question LLC	{XSeries,PS5,PC,Switch}	2024-03-26	{"imggamesSnow Day Icon.jpg"}
+1	South Park Imaginationland	Mr. Goodliving	{IOS}	2008-07-10	{/img/games/ImaginationlandGame.jpg}
+2	South Park (Videogame)	Appaloosa Interactive	{PS1}	1999-09-30	{/img/games/SouthParkTheGame.jpg}
+3	South Park Mega Millionaire	GameHouse	{IOS,"Blackberry OS"}	2010-01-26	{/img/games/South_Park_Mega_Millionare.png}
+4	South Park Let's Go Tower Defense Play!	South Park Digital Studios	{X360}	2009-10-07	{/img/games/South_Park_Mega_Millionare.png}
+5	South Park Mega Millionaire	GameHouse	{Android}	2012-07-02	{/img/games/South_Park_Mega_Millionare.png}
+6	South Park: Tenorman's Revenge	South Park Digital Studios	{X360}	2012-03-30	{/img/games/Tenorman_Revenge.webp}
+7	South Park: Phone Destroyer	RedLynx	{IOS,Android}	2017-11-09	{/img/games/Phone_Destroyer.webp}
+8	South Park: The Stick of Truth	Obsidian Entertainment	{Switch}	2018-09-25	{/img/games/StickOfTruth.png}
+9	South Park: The Stick of Truth	Obsidian Entertainment	{PS4,XOne}	2018-02-13	{/img/games/StickOfTruth.png}
+10	South Park: The Stick of Truth	Obsidian Entertainment	{PC,X360,PS3}	2014-03-04	{/img/games/StickOfTruth.png}
+11	South Park (Videogame)	Iguana Entertainment	{N64}	1998-12-21	{/img/games/SouthParkTheGame.jpg}
+12	South Park Pinball (Original Realese)	Zen Studios	{PS3,PSVita,PS4}	2014-10-14	{/img/games/South_Park_pinball_Videogames.avif}
+13	South Park (Videogame)	Crawfish Interactive	{GBC}	\N	{/img/games/Gameboy_Game.webp}
+14	South Park (Videogame)	Iguana Entertainment	{PC}	1999-03-01	{/img/games/SouthPark_game_PC.jpg}
+15	South Park (Pinball Machine)	Software: Neil Falconer, Orin Day. Hardware: Joe Balcer, Rob Hurtado	{"Pinball Machine"}	1999-02-01	{/img/games/south-park-pinball-machine.webp}
+16	South Park: Chef's Luv Shack	Acclaim	{PC}	1999-12-01	{/img/games/Chef_Luv_Shack.jpg}
+17	South Park: Chef's Luv Shack	Acclaim	{PS1,N64}	1999-11-16	{/img/games/Chef_Luv_Shack.jpg}
+18	South Park: Chef's Luv Shack	Acclaim	{Dreamcast}	1999-09-09	{/img/games/Chef_Luv_Shack.jpg}
+19	South Park Rally	Tantalus Interactive	{PS1}	2000-01-05	{/img/games/South_Park_Rally_PS.jpg}
+20	South Park Rally	Tantalus Interactive	{N64}	2000-02-28	{/img/games/South_Park_Rally.webp}
+21	South Park Rally	Tantalus Interactive	{PC}	2000-01-24	{/img/games/South_Park_Rally.webp}
+22	South Park Rally	Tantalus Interactive	{Dreamcast}	2000-07-07	{/img/games/South_Park_Rally.webp}
+23	South Park: Big Wheel Death Rally	South Park Digital Studios	{Web}	2006-01-01	{/img/games/South_Park_Big_Wheel.webp}
+24	South Park Double Bunny	South Park Digital Studios	{Web}	\N	{/img/games/South_Park_Double_Bunny.jpg}
+25	South Park Pinball (Original Realese)	Zen Studios	{XOne}	2014-10-16	{/img/games/South_Park_pinball_Videogames.avif}
+26	South Park Pinball (Original Realese)	Zen Studios	{PC,X360}	2014-10-15	{/img/games/South_Park_pinball_Videogames.avif}
+27	South Park: The Fractured but Whole	Ubisoft San Francisco	{PC,PS4,XOne}	2017-10-17	{/img/games/south-park-the-fractured-but-whole-artwork.jpg}
+28	South Park Pinball (Re-realese)	Zen Studios	{PC,PS4,XOne,PS5,XSeries,Switch}	2023-10-12	{/img/games/South_Park_pinball_Videogames.avif}
+29	South Park: The Fractured but Whole	Ubisoft San Francisco	{Switch}	2018-04-24	{/img/games/south-park-the-fractured-but-whole-artwork.jpg}
+30	Cartman's Escape Room (Virtual Game)	South Park Studios & Escape the Room	{Web}	2021-01-01	{/img/games/Escape_Room.jpg}
+31	Cartman's Escape Room (Chichago)	South Park Studios & Escape the Room	{"Escape Room"}	2019-05-15	{/img/games/Escape_Room.jpg}
+32	Cartman's Escape Room (San Diego Comic Con)	South Park Studios & Escape the Room	{"Escape Room"}	2018-07-20	{/img/games/Escape_Room.jpg}
+33	South Park: Snow Day!	Question LLC	{XSeries,PS5,PC,Switch}	2024-03-26	{/img/games/Snow_Day.jpg}
 \.
 
 
@@ -1619,5 +1619,5 @@ ALTER TABLE ONLY public.alter_ego
 -- PostgreSQL database dump complete
 --
 
-\unrestrict UoeShqv6golBybMb5jwYyOYjKBdabVxtz2sDaEXRW8bNdZYPsPGsaM8BPTxVQyE
+\unrestrict T1ORl9Gli71QPuyaFyVQWGVXyel5beeRkI4NVyXXggSKQn51poR4eY7hpQ1DqDH
 
