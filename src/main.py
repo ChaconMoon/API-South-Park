@@ -31,7 +31,10 @@ from src.controller.alter_ego_controller import (
 from src.controller.chinpokomon_controller import get_chinpokomon_by_id
 from src.controller.database_status import get_database_status
 from src.controller.family_controller import get_family_by_id
-from src.controller.character_controller import get_character_by_id
+from src.controller.character_controller import (
+    get_character_by_id,
+    get_characters_by_search,
+)
 from src.controller.episodes_controller import get_episode_by_id, get_last_episode
 from src.controller.specials_controller import get_special_by_id
 from src.controller.songs_controller import get_song_by_id
@@ -155,6 +158,39 @@ def index(response: Response, request: Request) -> dict:
             ),
         },
     )
+
+
+#
+# EXPERIMENTAL
+#
+
+
+@app.get("/api/search/characters/{search_param}", tags=["EXPERIMENTAL"])
+def search_character(
+    response: Response,
+    request: Request,
+    search_param: str,
+    metadata: bool = False,
+    limit: int = 10,
+) -> dict:
+    """
+    TESTING SEARCH IN API.
+    """
+    json = get_characters_by_search(
+        search_param=search_param,
+        add_url=False,
+        metadata=False,
+        base_url=str(request.base_url),
+        limit=limit,
+    )
+    if "error" in json:
+        if json["error"] == "Character not found":
+            response.status_code = status.HTTP_404_NOT_FOUND
+        elif json["error"] == "Database not avalible":
+            response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
+    else:
+        response.status_code = status.HTTP_200_OK
+    return json
 
 
 # Create the basic response of the API with the connection of the API.
@@ -285,8 +321,8 @@ async def show_character(
             response.status_code = status.HTTP_404_NOT_FOUND
         elif json["error"] == "Database not avalible":
             response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
-        elif "character" in json:
-            response.status_code = status.HTTP_200_OK
+    else:
+        response.status_code = status.HTTP_200_OK
     return json
 
 
