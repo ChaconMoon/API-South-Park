@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict 4xfvbVd9aw7wCPSNbsdYHyAtToZ5azfYPhhzae4MrrJjQiinRMrGGpCYI1wlJRf
+\restrict aWxWClqP8Notx6ARjOxHya1dRJjIMqlPVQzU8rS7W7ZBTAvxybB5eCzDtnXO5Pn
 
 -- Dumped from database version 15.14 (Debian 15.14-1.pgdg13+1)
 -- Dumped by pg_dump version 15.14 (Debian 15.14-1.pgdg13+1)
@@ -289,7 +289,8 @@ CREATE TABLE public.specials (
     title text NOT NULL,
     release_date date,
     link text,
-    description text
+    description text,
+    poster text
 );
 
 
@@ -1458,14 +1459,14 @@ COPY public.games (id, name, developer, platforms, realese_date, images) FROM st
 -- Data for Name: specials; Type: TABLE DATA; Schema: public; Owner: southpark
 --
 
-COPY public.specials (id, title, release_date, link, description) FROM stdin;
-1	South Park: Post Covid	2021-11-25	https://www.paramountplus.com/movies/video/Ga_vaU8r4h3Ax7aJnrCWG9EV8h0uugvO/	In SOUTH PARK: POST COVID, we’ll find out the answer to the question: what happened to the children who lived through the pandemic? Stan, Kyle, Cartman and Kenny survived, but will never be the same post COVID.
-2	South Park: Post Covid: The Return of Covid	2021-12-16	https://www.paramountplus.com/movies/video/Wnj6RyDK_sWCjm81KIBBZOk_PwsfWnii/	If Stan, Kyle and Cartman could just work together, they could go back in time to make sure Covid never happened and save Kenny's life. In SOUTH PARK: POST COVID: THE RETURN OF COVID, traveling back to the past seems to be the easy answer until they meet Victor Chaos.
-3	South Park: The Streaming Wars	2022-06-01	https://www.paramountplus.com/movies/video/Rc4DHb2MiyJbgO2lJuibS9RigcEfyHc9/	In South Park: The Streaming Wars, Cartman locks horns with his mom in a battle of wills while an epic conflict unfolds that threatens South Park's very existence.
-4	South Park: The Streaming Wars Part 2	2022-07-13	https://www.paramountplus.com/movies/video/QwiZqWlp0ZW9krpI4h8lyeAn_hLZhNBp/	In South Park: The Streaming Wars Part 2, a drought has brought the town of South Park to the brink of disaster.
-5	South Park: Joining the Panderverse	2023-10-27	https://www.paramountplus.com/movies/video/ke8wS05iuRiq2rYCVU9vgag2de2Ay4_S/	In South Park: Joining the Panderverse, Cartman's deeply disturbing dreams portend the end of the life he knows and loves. The adults in South Park are also wrestling with their own life decisions as the advent of AI is turning their world upside down.
-6	South Park (Not Suitable For Children)	2023-12-20	https://www.paramountplus.com/movies/video/0glSpjhJpLkp2ZiiJOkXO029GaSLgN_b/	After it's discovered that a teacher at South Park Elementary has an OnlyFans page, Randy is compelled to take a closer look at the seedy underbelly of the world of on-line influencers.
-7	South Park: The End Of Obesity	2024-05-24	https://www.paramountplus.com/movies/video/Cd3Fse6Xve3v7e69nMKZmNchXwEHGvll/	The advent of new weight loss drugs has a huge impact on everyone in South Park. When Cartman is denied access to the life-changing medicine, the kids jump into action.
+COPY public.specials (id, title, release_date, link, description, poster) FROM stdin;
+1	South Park: Post Covid	2021-11-25	https://www.paramountplus.com/movies/video/Ga_vaU8r4h3Ax7aJnrCWG9EV8h0uugvO/	In SOUTH PARK: POST COVID, we’ll find out the answer to the question: what happened to the children who lived through the pandemic? Stan, Kyle, Cartman and Kenny survived, but will never be the same post COVID.	img/specials/South_Park_Post_Covid.jpg
+2	South Park: Post Covid: The Return of Covid	2021-12-16	https://www.paramountplus.com/movies/video/Wnj6RyDK_sWCjm81KIBBZOk_PwsfWnii/	If Stan, Kyle and Cartman could just work together, they could go back in time to make sure Covid never happened and save Kenny's life. In SOUTH PARK: POST COVID: THE RETURN OF COVID, traveling back to the past seems to be the easy answer until they meet Victor Chaos.	img/specials/South_Park_Post_Covid_The_Return_of_Covid.jpg
+3	South Park: The Streaming Wars	2022-06-01	https://www.paramountplus.com/movies/video/Rc4DHb2MiyJbgO2lJuibS9RigcEfyHc9/	In South Park: The Streaming Wars, Cartman locks horns with his mom in a battle of wills while an epic conflict unfolds that threatens South Park's very existence.	img/specials/South_Park_The_Streaming_Wars.png
+4	South Park: The Streaming Wars Part 2	2022-07-13	https://www.paramountplus.com/movies/video/QwiZqWlp0ZW9krpI4h8lyeAn_hLZhNBp/	In South Park: The Streaming Wars Part 2, a drought has brought the town of South Park to the brink of disaster.	img/specials/South_Park_The_Streaming_Wars_2.jpg
+5	South Park: Joining the Panderverse	2023-10-27	https://www.paramountplus.com/movies/video/ke8wS05iuRiq2rYCVU9vgag2de2Ay4_S/	In South Park: Joining the Panderverse, Cartman's deeply disturbing dreams portend the end of the life he knows and loves. The adults in South Park are also wrestling with their own life decisions as the advent of AI is turning their world upside down.	img/specials/South_Park_Joining_the_Panderverse.jpg
+6	South Park (Not Suitable For Children)	2023-12-20	https://www.paramountplus.com/movies/video/0glSpjhJpLkp2ZiiJOkXO029GaSLgN_b/	After it's discovered that a teacher at South Park Elementary has an OnlyFans page, Randy is compelled to take a closer look at the seedy underbelly of the world of on-line influencers.	img/specials/South_Park_Not_Suitable_For_Children.jpg
+7	South Park: The End Of Obesity	2024-05-24	https://www.paramountplus.com/movies/video/Cd3Fse6Xve3v7e69nMKZmNchXwEHGvll/	The advent of new weight loss drugs has a huge impact on everyone in South Park. When Cartman is denied access to the life-changing medicine, the kids jump into action.	img/specials/South_Park_The_End_of_Obesity.jpg
 \.
 
 
@@ -1619,5 +1620,5 @@ ALTER TABLE ONLY public.alter_ego
 -- PostgreSQL database dump complete
 --
 
-\unrestrict 4xfvbVd9aw7wCPSNbsdYHyAtToZ5azfYPhhzae4MrrJjQiinRMrGGpCYI1wlJRf
+\unrestrict aWxWClqP8Notx6ARjOxHya1dRJjIMqlPVQzU8rS7W7ZBTAvxybB5eCzDtnXO5Pn
 

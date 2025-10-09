@@ -15,3 +15,4 @@ class Special(BaseModel):
     release_date: str
     description: str
     link: str
+    poster: str

@@ -28,7 +28,7 @@ def get_special_by_id(id: int, add_url=False, base_url="", metadata=False):
         # Make the query to the Database
         query_result = get_query_result(
             text("""
-                SELECT id,title,release_date,description,link FROM public.specials
+                SELECT id,title,release_date,description,link,poster FROM public.specials
                 where id = :id"""),
             {"id": id},
         )
@@ -47,6 +47,7 @@ def get_special_by_id(id: int, add_url=False, base_url="", metadata=False):
                 release_date=str(row[2]) if row[2] is not None else "",
                 description=str(row[3]) if row[3] is not None else "",
                 link=str(row[4]) if row[4] is not None else "",
+                poster=f"{base_url}{str(row[5])}" if row[5] is not None else "",
             )
 
         # Create the object with the URL

@@ -23,6 +23,9 @@ from src.website_elements.create_album_card_web import create_album_image_grid
 from src.website_elements.create_alter_ego_card_web import create_alter_ego_image_grid
 from src.website_elements.create_families_card_web import create_family_image_grid
 from src.website_elements.create_game_card_web import create_game_image_grid
+from src.website_elements.create_specials_card_web import (
+    create_special_image_grid,
+)
 
 from src.controller.alter_ego_controller import (
     get_alter_ego_by_character_and_id,
@@ -150,6 +153,9 @@ def index(response: Response, request: Request) -> dict:
             "games_cards": create_game_image_grid(
                 base_url=request.base_url,
                 ids=[19, 20, 21, 22, 2, 14, 13, 28, 17, 10, 27, 33],
+            ),
+            "specials_cards": create_special_image_grid(
+                base_url=request.base_url, ids=[1, 2, 3, 4, 5, 6, 7]
             ),
             "example_api_response": json.dumps(
                 get_character_by_id(100, base_url=str(request.base_url)),

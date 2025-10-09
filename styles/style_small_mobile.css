@@ -666,6 +666,7 @@ Phone Version
         .alter_ego_container:last-child:nth-child(odd) {
                 grid-column: span 2;
         }
+
         #families_grid_container {
                 display: none;
                 grid-template-columns: auto;
@@ -681,6 +682,7 @@ Phone Version
                 gap: 2.5vw;
                 padding-bottom: 2vw;
         }
+
         .family_image {
                 width: 100%;
                 border-radius: 4px;
@@ -698,38 +700,45 @@ Phone Version
         .family_members_container {
                 display: grid;
         }
-        .family_name{
+
+        .family_name {
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 font-size: 5vw;
                 color: black;
         }
-        .family_card_link{
-               text-decoration: none;
+
+        .family_card_link {
+                text-decoration: none;
                 color: black;
-                                margin-top: 4vw;
+                margin-top: 4vw;
         }
-        .family_number{
+
+        .family_number {
                 font-size: 4vw;
                 margin-left: 1.2vw;
         }
-        .family_members_container{
+
+        .family_members_container {
                 display: grid;
                 grid-template-columns: auto auto;
                 margin-right: auto;
                 font-size: 3vW;
         }
-        .family_member{
+
+        .family_member {
                 margin-top: 3vw;
                 justify-content: center;
                 align-items: center;
                 display: flex;
         }
-                .family_members_container .family_member:last-child:nth-child(odd) {
-            grid-column: span 2;
-                        text-align: center;
+
+        .family_members_container .family_member:last-child:nth-child(odd) {
+                grid-column: span 2;
+                text-align: center;
         }
+
         #games_grid_container {
                 display: none;
                 grid-template-columns: auto;
@@ -752,9 +761,10 @@ Phone Version
                 border: 3px solid black;
                 border-radius: 10px;
                 margin-top: 4vw;
-                                box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.6);
+                box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.6);
         }
-       .game_card_link {
+
+        .game_card_link {
                 color: black;
                 text-decoration: none;
         }
@@ -770,7 +780,7 @@ Phone Version
         }
 
         .platform_icon {
-                width:10vw;
+                width: 10vw;
         }
 
         .platforms_grid {
@@ -797,6 +807,7 @@ Phone Version
                 flex: 0 0 calc(20% - 1vw);
                 max-width: calc(20% - 1vw);
         }
+
         .game_name {
                 font-size: 3.2vw;
                 display: flex;
@@ -804,10 +815,82 @@ Phone Version
                 margin-bottom: 1vw;
                 font-family: OpenSans-Bold;
         }
-        .game_release_date{
+
+        .game_release_date {
                 margin-left: 2vw;
                 font-size: 3.5vw;
                 font-family: OpenSans-Regular;
         }
-        
+
+        #specials_grid_container {
+                display: none;
+                grid-template-columns: auto;
+                border-style: solid;
+                border-width: 3px;
+                border-color: gray;
+                border-radius: 10px;
+                margin: 25px;
+                box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.4);
+                margin-top: 12px;
+                justify-content: center;
+                align-items: center;
+                column-gap: 5vw;
+                row-gap: 1.5vw;
+                padding-bottom: 2vw;
+        }
+        .special_poster{
+                width: 100%;
+                height: auto;
+                border-radius: 2px 2px 8px 8px;
+        }
+        .special_card {
+                border-width: 3px;
+                border-style: solid;
+                border-color: black;
+                border-radius: 4px;
+                width: 100%;
+                height: fit-content;
+                
+        }
+        .special_grid2{
+                display: grid;
+                justify-content: center;
+                column-gap: 10vw;
+                margin-top: 2vw;
+                row-gap: 5vw;
+                width: 100%;
+        }
+        .special_grid3{
+                display: grid;
+                justify-content: center;
+                column-gap: 10vw;
+                margin-top: 2vw;
+                                row-gap: 5vw;
+                                margin-bottom: 2vw;
+                width: 100%;
+        }
+        .special_card_link{
+                width: 60vw;
+                color: black;
+                text-decoration: none;
+        }
+        .special_name{
+                display: flex;
+                justify-content: center;
+                font-size: 2.7vw;
+                margin-left: 0.1vw;
+                                                                font-family: OpenSans-Bold;
+        }
+        .release_date{
+                margin-top: 1vw;
+                margin-left: 0.5vw;
+                                                                font-family: OpenSans-Regular;
+        }
+        .special_description {
+                margin-left: 0.5vw;
+                margin-top: 1vw;
+                margin-bottom: 2vw;
+                font-size: 4vw;
+                font-family: OpenSans-Regular;
+        }
 }
