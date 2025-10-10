@@ -68,47 +68,47 @@ psql "YOUR POSTGRESQL DATABASE URL HERE" < init.sql
 
 To search for a character:
 ```url
-http://localhost:8000/character/{id}
+http://localhost:8000/characters/{id}
 ```
 
 To search for an episode:
 ```url
-http://localhost:8000/episode/{id}
+http://localhost:8000/episodes/{id}
 ```
 
 To search for a Paramount+ Special:
 ```url
-http://localhost:8000/special/{id}
+http://localhost:8000/specials/{id}
 ```
 
 To search for a Family:
 ```url
-http://localhost:8000/family/{id}
+http://localhost:8000/families/{id}
 ```
 
 To search for an alter ego of a character:
 ```url
-http://localhost:8000/character/{id}/alterego/{alter-ego-id}
+http://localhost:8000/characters/{id}/alteregos/{alter-ego-id}
 ```
 
 To search for all the alter egos of a character:
 ```url
-http://localhost:8000/character/{id}/alteregos
+http://localhost:8000/characters/{id}/alteregos
 ```
 
 To search for a song:
 ```url
-http://localhost:8000/song/{id}
+http://localhost:8000/songs/{id}
 ```
 
 To search for an album:
 ```url
-http://localhost:8000/album/{id}
+http://localhost:8000/albums/{id}
 ```
 
 To search for a Chinpokomon:
 ```url
-http://localhost:8000/chinpokomon/{id}
+http://localhost:8000/chinpokomons/{id}
 ```
 
 ### Acknowledgments

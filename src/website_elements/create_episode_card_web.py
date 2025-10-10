@@ -2,7 +2,7 @@ import requests
 
 
 def create_episode_web_card_to_website(base_url: str, episode_id: int) -> str:
-    request_url = f"{base_url}api/episode/{episode_id}"
+    request_url = f"{base_url}api/episodes/{episode_id}"
     request = requests.get(request_url)
 
     request_json = request.json()

@@ -2,7 +2,7 @@ import requests
 
 
 def create_family_web_card_to_website(base_url: str, family_id: int) -> str:
-    request_url = f"{base_url}api/family/{family_id}"
+    request_url = f"{base_url}api/families/{family_id}"
     request = requests.get(request_url)
 
     request_json = request.json()

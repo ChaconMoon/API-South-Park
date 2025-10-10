@@ -24,19 +24,19 @@ def test_character_database_correct():
             "alter_egos": {
                 "0": {
                     "name": "Astronaut Butters",
-                    "url": "http://localhost:8000/character/42/alterego/1",
+                    "url": "http://localhost:8000/character/42/alteregos/1",
                 },
                 "1": {
                     "name": "Deckhand Butters",
-                    "url": "http://localhost:8000/character/42/alterego/2",
+                    "url": "http://localhost:8000/character/42/alteregos/2",
                 },
                 "2": {
                     "name": "Choirboy Butters",
-                    "url": "http://localhost:8000/character/42/alterego/3",
+                    "url": "http://localhost:8000/character/42/alteregos/3",
                 },
                 "3": {
                     "name": "Paladin Butters",
-                    "url": "http://localhost:8000/character/42/alterego/4",
+                    "url": "http://localhost:8000/character/42/alteregos/4",
                 },
             },
             "famous_guest": False,

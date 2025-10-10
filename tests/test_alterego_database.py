@@ -21,7 +21,7 @@ def test_alterego_database_correct():
     }
     with patch("src.main.get_alter_ego_by_character_and_id") as databse_response:
         databse_response.return_value = fake_response
-        response = client.get("/character/1/alterego/1")
+        response = client.get("/character/1/alteregos/1")
         assert response.status_code == 200
 
 
@@ -29,7 +29,7 @@ def test_alterego_object_not_found():
     fake_response = {"error": "Alter Ego not found", "status": "failed"}
     with patch("src.main.get_alter_ego_by_character_and_id") as database_response:
         database_response.return_value = fake_response
-        response = client.get("/character/1/alterego/1")
+        response = client.get("/character/1/alteregos/1")
         assert response.status_code == 404
 
 
@@ -37,7 +37,7 @@ def test_alterego_database_not_avalible():
     fake_response = {"error": "Database not avalible", "status": "failed"}
     with patch("src.main.get_alter_ego_by_character_and_id") as database_response:
         database_response.return_value = fake_response
-        response = client.get("/character/1/alterego/1")
+        response = client.get("/character/1/alteregos/1")
         assert response.status_code == 500
 
 
@@ -45,19 +45,19 @@ def test_all_alteregos_database_correct():
     fake_response = {
         "0": {
             "name": "Astronaut Butters",
-            "url": "http://localhost:8000/character/42/alterego/1",
+            "url": "http://localhost:8000/character/42/alteregos/1",
         },
         "1": {
             "name": "Deckhand Butters",
-            "url": "http://localhost:8000/character/42/alterego/2",
+            "url": "http://localhost:8000/character/42/alteregos/2",
         },
         "2": {
             "name": "Choirboy Butters",
-            "url": "http://localhost:8000/character/42/alterego/3",
+            "url": "http://localhost:8000/character/42/alteregos/3",
         },
         "3": {
             "name": "Paladin Butters",
-            "url": "http://localhost:8000/character/42/alterego/4",
+            "url": "http://localhost:8000/character/42/alteregos/4",
         },
     }
     with patch("src.main.get_all_alteregos_of_a_character") as databse_response:

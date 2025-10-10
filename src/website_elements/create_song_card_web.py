@@ -2,7 +2,7 @@ import requests
 
 
 def create_song_web_card_to_website(base_url: str, song_id: int) -> str:
-    song_request_url = f"{base_url}api/song/{song_id}"
+    song_request_url = f"{base_url}api/songs/{song_id}"
     request = requests.get(song_request_url)
 
     request_json = request.json()
@@ -11,7 +11,7 @@ def create_song_web_card_to_website(base_url: str, song_id: int) -> str:
     album_number = int(request_json["album_number"])
     song_url = request_json["song_url"]
 
-    request_url = f"{base_url}api/album/{album_number}"
+    request_url = f"{base_url}api/albums/{album_number}"
     request = requests.get(request_url)
     request_album_json = request.json()
 

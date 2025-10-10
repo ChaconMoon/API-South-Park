@@ -2,7 +2,7 @@ import requests
 
 
 def create_game_web_card_to_website(base_url: str, song_id: int) -> str:
-    song_request_url = f"{base_url}api/game/{song_id}"
+    song_request_url = f"{base_url}api/games/{song_id}"
     request = requests.get(song_request_url)
 
     request_json = request.json()

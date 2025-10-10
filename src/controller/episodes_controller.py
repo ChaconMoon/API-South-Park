@@ -62,7 +62,7 @@ def get_episode_by_id(id: int, add_url=False, base_url="", metadata=False) -> di
         if add_url:
             result = dict()
             result["name"] = episode_info.model_dump()["name"]
-            result["url"] = f"{base_url}api/episode/{row[0]}"
+            result["url"] = f"{base_url}api/episodes/{row[0]}"
             return result
 
         # Return Episode info JSON

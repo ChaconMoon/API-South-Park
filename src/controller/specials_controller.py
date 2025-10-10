@@ -54,7 +54,7 @@ def get_special_by_id(id: int, add_url=False, base_url="", metadata=False):
         if add_url:
             result = dict()
             result["name"] = special_info.model_dump()["name"]
-            result["url"] = f"{base_url}api/special/{row[0]}"
+            result["url"] = f"{base_url}api/specials/{row[0]}"
             return result
 
         # Create the complete object with the metadata

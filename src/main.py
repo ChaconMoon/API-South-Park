@@ -218,7 +218,7 @@ def api_index(response: Response) -> dict:
 
 
 # Create the endpoint to get the albums.
-@app.get("/api/album/{id}", tags=["Music"])
+@app.get("/api/albums/{id}", tags=["Music"])
 def show_album(
     id: int, request: Request, response: Response, metadata: bool = False
 ) -> dict:
@@ -241,7 +241,7 @@ def show_album(
 
 
 # Create the endpoint to get the songs.
-@app.get("/api/song/{id}", tags=["Music"])
+@app.get("/api/songs/{id}", tags=["Music"])
 def show_song(
     id: int, request: Request, response: Response, metadata: bool = False
 ) -> dict:
@@ -264,7 +264,7 @@ def show_song(
 
 
 # Create the endpoint to get the special episodes.
-@app.get("/api/special/{id}", tags=["TV Show"])
+@app.get("/api/specials/{id}", tags=["TV Show"])
 def show_special(
     id: int, request: Request, response: Response, metadata: bool = False
 ) -> dict:
@@ -287,7 +287,7 @@ def show_special(
 
 
 # Create the endpoint to get the families.
-@app.get("/api/family/{id}", tags=["Characters"])
+@app.get("/api/families/{id}", tags=["Characters"])
 def show_family(
     id: int, request: Request, response: Response, metadata: bool = False
 ) -> dict:
@@ -310,7 +310,7 @@ def show_family(
 
 
 # Create the endpoint to get the characters.
-@app.get("/api/character/{id}", tags=["Characters"])
+@app.get("/api/characters/{id}", tags=["Characters"])
 async def show_character(
     id: int, request: Request, response: Response, metadata: bool = False
 ) -> dict:
@@ -333,7 +333,7 @@ async def show_character(
 
 
 # Create the endpoint to get the episodes.
-@app.get("/api/episode/{id}", tags=["TV Show"])
+@app.get("/api/episodes/{id}", tags=["TV Show"])
 def show_episode(
     id: int, response: Response, request: Request, metadata: bool = False
 ) -> dict:
@@ -355,7 +355,7 @@ def show_episode(
 
 
 # Create the endpoint to get one alter ego of a character.
-@app.get("/api/character/{id}/alterego/{alter_id}", tags=["Characters"])
+@app.get("/api/characters/{id}/alteregos/{alter_id}", tags=["Characters"])
 def show_alterergo(
     id: int, alter_id: int, request: Request, response: Response, metadata: bool = False
 ) -> dict:
@@ -380,7 +380,7 @@ def show_alterergo(
 
 
 # Create the endpoint to get all the alteregos of a character.
-@app.get("/api/character/{id}/alteregos", tags=["Characters"])
+@app.get("/api/characters/{id}/alteregos", tags=["Characters"])
 def show_all_alteregos(id: int, request: Request, response: Response) -> dict:
     """
     Get the response with the all the alteregos of one specific character.
@@ -403,7 +403,7 @@ def show_all_alteregos(id: int, request: Request, response: Response) -> dict:
 
 
 # Create the endpoint to get all the alteregos of a character.
-@app.get("/api/game/{id}/", tags=["Games"])
+@app.get("/api/games/{id}/", tags=["Games"])
 def show_game(
     id: int, request: Request, response: Response, metadata: bool = False
 ) -> dict:

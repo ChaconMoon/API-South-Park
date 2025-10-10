@@ -49,7 +49,7 @@ def get_all_songs_of_a_album(id: int, base_url="", add_url=False) -> dict:
                 result[song_number] = dict()
                 result[song_number]["name"] = song.model_dump()["name"]
                 result[song_number]["url"] = (
-                    f"{base_url}api/song/{song.model_dump()['id']}"
+                    f"{base_url}api/songs/{song.model_dump()['id']}"
                 )
             song_number += 1
         return result

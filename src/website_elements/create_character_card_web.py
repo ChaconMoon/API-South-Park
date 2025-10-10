@@ -2,7 +2,7 @@ import requests
 
 
 def create_character_web_card_to_website(base_url: str, character_id: int) -> str:
-    request_url = f"{base_url}api/character/{character_id}"
+    request_url = f"{base_url}api/characters/{character_id}"
     request = requests.get(request_url)
 
     request_json = request.json()

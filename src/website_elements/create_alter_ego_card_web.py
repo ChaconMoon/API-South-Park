@@ -10,7 +10,7 @@ def create_alter_ego_web_card_to_website(
 ) -> str:
     alter_ego_containers = ""
     for id in alter_egos_ids:
-        request_url = f"{base_url}api/character/{character_id}/alterego/{id + 1}"
+        request_url = f"{base_url}api/characters/{character_id}/alteregos/{id + 1}"
         print(str(request_url))
         request = requests.get(request_url)
         request_alter_ego_json = request.json()

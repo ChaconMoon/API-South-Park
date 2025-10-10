@@ -54,7 +54,7 @@ def get_alter_ego_by_character_and_id(
             result = dict()
             result["name"] = alter_ego.model_dump()["name"]
             result["url"] = (
-                f"{base_url}api/character/{id_character}/alterego/{id_alter_ego}"
+                f"{base_url}api/characters/{id_character}/alteregos/{id_alter_ego}"
             )
             return result
         # Return Alter_Ego Info

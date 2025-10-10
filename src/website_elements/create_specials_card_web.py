@@ -2,7 +2,7 @@ import requests
 
 
 def create_special_web_card_to_website(base_url: str, album_id: int) -> str:
-    request_url = f"{base_url}api/special/{album_id}"
+    request_url = f"{base_url}api/specials/{album_id}"
     request = requests.get(request_url)
     request_album_json = request.json()
 
