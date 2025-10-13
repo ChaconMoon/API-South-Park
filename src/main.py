@@ -12,6 +12,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
 # Import the uvicorn library.
+from markdown import markdown
 import uvicorn
 
 # Internal inputs.
@@ -105,7 +106,12 @@ app = FastAPI(
 
 templates = Jinja2Templates(directory="templates")
 
-
+app.mount(
+    "/blog/images/",
+    StaticFiles(directory="website/posts/thumbnails"),
+    name="posts_images",
+)
+app.mount("/blog/posts/", StaticFiles(directory="website/posts"), name="posts")
 # Mount the img directory with the images of the database.
 app.mount("/img", StaticFiles(directory="img"), name="img")
 
@@ -197,6 +203,24 @@ def search_character(
     else:
         response.status_code = status.HTTP_200_OK
     return json
+
+
+@app.get("/blog/{entry}", tags="Blog")
+def show_blog(request: Request, response: Response, entry: str):
+    with open(f"./website/posts/{entry}.MD", encoding="utf-8") as f:
+        markdown_content = f.read()
+    html_blog_entry = markdown(
+        markdown_content, extensions=["fenced_code", "tables", "attr_list"]
+    )
+    print(html_blog_entry)
+    return templates.TemplateResponse(
+        "blog_page.html",
+        context={
+            "request": request,
+            "blog_items": html_blog_entry,
+            "base_url": request.base_url,
+        },
+    )
 
 
 # Create the basic response of the API with the connection of the API.
