@@ -3,12 +3,12 @@
 
 <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        {{redict_script | safe}}
         <link rel="stylesheet" href="/styles/style.css">
         <link rel="stylesheet" href="/styles/style_desktop.css">
         <link rel="stylesheet" href="/styles/style_tablet.css">
         <link rel="stylesheet" href="/styles/style_mobile.css">
         <link rel="stylesheet" href="/styles/style_small_mobile.css">
+        <script src="./javascript/main.js"></script>
         <title>
                 South Park API (Develop Version)
         </title>
@@ -44,11 +44,8 @@
                 </a>
         </div>
         <div>
-                <div id="blog_items_containers" class="section_grid_container">
-                        {{ blog_posts_grid | safe }}
-                </div>
-                <div id="blog_grid_links">
-                        {{blog_links | safe}}
+                <div id="blog_post_containers" class="section_grid_container">
+                        {{ blog_item | safe }}
                 </div>
         </div>
 

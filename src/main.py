@@ -27,6 +27,11 @@ from src.website_elements.create_game_card_web import create_game_image_grid
 from src.website_elements.create_specials_card_web import (
     create_special_image_grid,
 )
+from src.website_elements.create_post_card_grid import (
+    create_post_grid_in_blog,
+    create_blog_links,
+    get_blog_last_index,
+)
 
 from src.controller.alter_ego_controller import (
     get_alter_ego_by_character_and_id,
@@ -205,22 +210,59 @@ def search_character(
     return json
 
 
-@app.get("/blog/{entry}", tags="Blog")
+@app.get("/blog/article/{entry}", tags="Blog")
 def show_blog(request: Request, response: Response, entry: str):
-    with open(f"./website/posts/{entry}.MD", encoding="utf-8") as f:
-        markdown_content = f.read()
-    html_blog_entry = markdown(
-        markdown_content, extensions=["fenced_code", "tables", "attr_list"]
-    )
-    print(html_blog_entry)
+    try:
+        with open(f"./website/posts/{entry}.MD", encoding="utf-8") as f:
+            markdown_content = f.read()
+        html_blog_entry = markdown(
+            markdown_content, extensions=["fenced_code", "tables", "attr_list"]
+        )
+    except FileNotFoundError as e:
+        response.status_code = status.HTTP_404_NOT_FOUND
+        return templates.TemplateResponse(
+            "blog_page.html",
+            context={
+                "request": request,
+                "base_url": request.base_url,
+                "redict_script": '<meta http-equiv="refresh" content="0; URL=/blog/1">',
+            },
+        )
     return templates.TemplateResponse(
-        "blog_page.html",
+        "blog_page_post.html",
         context={
             "request": request,
-            "blog_items": html_blog_entry,
+            "blog_item": html_blog_entry,
             "base_url": request.base_url,
         },
     )
+
+
+@app.get("/blog/{index}", tags="blog")
+def show_posts_grid(request: Request, response: Response, index: int):
+    grid_elements = create_post_grid_in_blog(
+        start_index=index, base_url=request.base_url
+    )
+    print(grid_elements)
+    if grid_elements != "":
+        return templates.TemplateResponse(
+            "blog_page.html",
+            context={
+                "request": request,
+                "base_url": request.base_url,
+                "blog_posts_grid": grid_elements,
+                "blog_links": create_blog_links(),
+            },
+        )
+    else:
+        return templates.TemplateResponse(
+            "blog_page.html",
+            context={
+                "request": request,
+                "base_url": request.base_url,
+                "redict_script": f'<meta http-equiv="refresh" content="0; URL=/blog/{get_blog_last_index()}">',
+            },
+        )
 
 
 # Create the basic response of the API with the connection of the API.
