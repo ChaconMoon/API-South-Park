@@ -1132,6 +1132,15 @@ Phone Version
                 width: 65vw;
                 font-size: 5vw;
         }
+                .body_image{
+                margin: 0 auto;
+                height: 40vw;
+        }
+        .blog_title{
+                font-size: 4vw;
+                                font-family: "OpenSans-Bold";
+                margin-left: 2vw;
+        }
 
 
 }
