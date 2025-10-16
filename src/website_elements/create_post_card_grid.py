@@ -73,9 +73,8 @@ def create_blog_links():
     link_list = ""
 
     pages = get_blog_last_index()
-
-    for page in range(1, pages + 1, 1):
-        link_list += f"""<a class="blog_link" href="/blog/{page}">{page}</a>"""
+    for page in range(0, pages, 1):
+        link_list += f"""<a class="blog_link" href="/blog/{page + 1}">{page + 1}</a>"""
     return link_list
 
 
@@ -85,4 +84,5 @@ def get_blog_last_index():
 
     if lines % 6 != 0:
         pages += 1
+    print(pages)
     return pages

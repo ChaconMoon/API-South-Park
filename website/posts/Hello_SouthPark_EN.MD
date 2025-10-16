@@ -1,4 +1,4 @@
-![Header](/blog/images/Hello_South_Park.webp){.header_image}
+![](/blog/images/Hello_South_Park.webp){.header_image}
 # Hello, South Park {.blog_entry_tittle}
 
 This is the first entry of the API development blog.

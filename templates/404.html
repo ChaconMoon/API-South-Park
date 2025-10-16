@@ -23,29 +23,20 @@
 </head>
 
 <body>
-        <h1 class="main_title">
-                A RESTful API of the universe of South Park
-        </h1>
-        <h2 class="developer">
-                This website is: {{base_url}}
-        </h2>
-        <div class="web_menu">
-                <a class="menu_link">
-                        <div class="menu_button internal_button" id="menu_button_1">GitHub</div>
-                </a>
-                <a class="menu_link">
-                        <div class="menu_button internal_button" id="menu_button_2">Dev Blog</div>
-                </a>
-                <a class="menu_link">
-                        <div class="menu_button internal_button" id="menu_button_3">Quickstart</div>
-                </a>
-                <a class="menu_link">
-                        <div class="menu_button internal_button" id="menu_button_4">Changelog</div>
-                </a>
-        </div>
         <div>
-                <div id="blog_post_containers" class="section_grid_container">
-                        {{ blog_item | safe }}
+                <div id="Not_Found_Block" class="section_grid_container">
+                        {{image_404 | safe}}
+                        <p class="Subtitle_404">Oh my God you kill this website</p>
+                        <p class="Subtitle_404">You bastard</p>
+                        <p class="Index_Header">Return to the website: </p>
+                        <ul>
+                                <li>
+                                        <a href="/">&#8594; Index</a>
+                                </li>
+                                <li>
+                                        <a href="/blog/1">&#8594; Dev Blog</a>
+                                </li>
+                        </ul>
                 </div>
         </div>
 

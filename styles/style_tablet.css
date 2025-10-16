@@ -846,4 +846,215 @@ Tablets Version
                                 font-size: 2vw;
                                 font-family: OpenSans-Regular;
         }
+                #blog_items_containers {
+                display: grid;
+                grid-template-columns: auto;
+                border-style: solid;
+                border-width: 3px;
+                border-color: gray;
+                border-radius: 10px;
+                margin: 5vw;
+                margin-bottom: 6vw;
+                box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.4);
+                margin-top: 12px;
+                justify-content: center;
+                align-items: center;
+                column-gap: 8vw;
+                padding-bottom: 2vw;
+        }
+
+        .post_in_menu {
+                width: 100%;
+        }
+
+        #blog_items_containers a {
+                width: 75vw;
+                text-decoration: none;
+                color: black;
+                border: black 3px solid;
+                border-radius: 4px;
+                margin-top: 5vw;
+        }
+
+
+        .post_thumbnail {
+                width: 100%;
+        }
+
+        #blog_items_containers h3 {
+                display: flex;
+                justify-content: center;
+                font-size: 5vw;
+                margin-bottom: 2vw;
+        }
+
+        .post_intro {
+                width: 95%;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                text-align: justify;
+                color: gray;
+                margin-bottom: 1vw;
+                font-size: 3vw;
+
+
+        }
+
+        #blog_grid_links {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 2vw;
+
+
+        }
+
+        .blog_link {
+                display: flex;
+                background-color: grey;
+                color: white;
+                font-size: 2vw;
+                text-decoration: none;
+                width: 3vw;
+                height: 3vw;
+                justify-content: center;
+                text-align: center;
+                align-items: center;
+                margin-bottom: 1vw;
+        }
+
+       #Not_Found_Block {
+                display: block;
+                border-style: solid;
+                border-width: 4px;
+                border-color: black;
+                border-radius: 10px;
+                margin: 5vw;
+                margin-bottom: 4vw;
+                box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.4);
+                margin-top: 12px;
+                justify-content: center;
+                align-items: center;
+                column-gap: 8vw;
+                padding-bottom: 2vw;
+        }
+
+        #Not_Found_Image {
+                display: flex;
+                align-content: center;
+                justify-content: center;
+                width: 65vw;
+                margin-left: auto;
+                margin-top: 2vw;
+                margin-right: auto;
+                margin-bottom: 1vw;
+        }
+
+        .Subtitle_404 {
+                margin-left: auto;
+                margin-right: auto;
+                width: fit-content;
+                font-size: 4vw;
+                font-family: "OpenSans-Bold";
+                width: 80vw;
+                text-align: center;
+        }
+
+        #Not_Found_Block li {
+                list-style-type: none;
+
+        }
+
+        #Not_Found_Block ul {
+                width: fit-content;
+                margin-left: auto;
+                margin-right: auto;
+        }
+
+        #Not_Found_Block a {
+                display: block;
+                color: black;
+                margin-right: auto;
+                margin-left: auto;
+                width: 35vw;
+                font-size: 4vw;
+        }
+
+        .Index_Header {
+                margin-left: auto;
+                margin-right: auto;
+                text-align: center;
+                font-size: 4vw;
+        }
+                #blog_post_containers {
+                display: grid;
+                border-style: solid;
+                border-width: 3px;
+                border-color: gray;
+                border-radius: 10px;
+                margin-left: 5vw;
+                margin-right: 5vw;
+                ;
+                margin-bottom: 10vw;
+                box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.4);
+                margin-top: 12px;
+                justify-content: center;
+                gap: 1vw;
+        }
+
+        #blog_post_containers p,
+        ul {
+                width: 80vw;
+                font-size: 2.5vw;
+                font-family: "OpenSans-Regular";
+                margin-left 10vw;
+                
+        }
+
+        #blog_post_containers p {
+                line-height: 4vw;
+                margin-left: 5vw;
+                margin-bottom: 1vw;
+        }
+
+        #blog_post_containers ul {
+                list-style-type: disclosure-closed
+        }
+
+        #blog_post_containers li {
+                margin-top: 7px;
+                margin-left: 4vw;
+        }
+
+        .header_image {
+                display: block;
+                align-self: center;
+                padding-top: 2vw;
+                margin-left: auto;
+                margin-right: auto;
+                width:80vw;
+
+        }
+
+        .blog_entry_tittle {
+                display: block;
+                margin: auto;
+                width: fit-content;
+                font-size: 6vw;
+                font-family: "OpenSans-Bold";
+        }
+
+        .blog_subtitle {
+                display: block;
+                margin: 2vw;
+                width: fit-content;
+                font-size: 4vw;
+                font-family: "OpenSans-Bold";
+        }
+
+        #blog_post_containers:last-child {
+                padding-bottom: 2vw;
+        }
+
 }

@@ -6,8 +6,9 @@ This Module contain the main class of the API and create de endpoints used by th
 
 # Import of FastAPI.
 import json
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi import Request, Response, status
+from fastapi.responses import JSONResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
@@ -32,6 +33,7 @@ from src.website_elements.create_post_card_grid import (
     create_blog_links,
     get_blog_last_index,
 )
+from src.website_elements.create_404_iamge_web import get_404_image
 
 from src.controller.alter_ego_controller import (
     get_alter_ego_by_character_and_id,
@@ -127,6 +129,23 @@ app.mount("/fonts", StaticFiles(directory="fonts"), name="fonts")
 app.mount("/javascript", StaticFiles(directory="javascript"), name="javascript")
 
 
+@app.exception_handler(404)
+async def custom_404_handler(request: Request, exc):
+    path = request.url.path
+
+    if path.startswith("/api/"):
+        return JSONResponse(status_code=404, content={"error": "Not Found"})
+
+    else:
+        return templates.TemplateResponse(
+            "404.html",
+            context={
+                "request": request,
+                "image_404": f'<img id="Not_Found_Image" src="{get_404_image()}">',
+            },
+        )
+
+
 # Create the basic response of the API with the connection of the API.
 @app.get("/")
 def index(response: Response, request: Request) -> dict:
@@ -216,18 +235,13 @@ def show_blog(request: Request, response: Response, entry: str):
         with open(f"./website/posts/{entry}.MD", encoding="utf-8") as f:
             markdown_content = f.read()
         html_blog_entry = markdown(
-            markdown_content, extensions=["fenced_code", "tables", "attr_list"]
+            markdown_content,
+            extensions=["fenced_code", "tables", "attr_list", "md_in_html"],
         )
+        html_blog_entry = html_blog_entry.replace("<p><img", "<img")
+        html_blog_entry = html_blog_entry.replace('webp" /></p>', 'webp" />')
     except FileNotFoundError as e:
-        response.status_code = status.HTTP_404_NOT_FOUND
-        return templates.TemplateResponse(
-            "blog_page.html",
-            context={
-                "request": request,
-                "base_url": request.base_url,
-                "redict_script": '<meta http-equiv="refresh" content="0; URL=/blog/1">',
-            },
-        )
+        raise HTTPException(status_code=404)
     return templates.TemplateResponse(
         "blog_page_post.html",
         context={
@@ -255,14 +269,7 @@ def show_posts_grid(request: Request, response: Response, index: int):
             },
         )
     else:
-        return templates.TemplateResponse(
-            "blog_page.html",
-            context={
-                "request": request,
-                "base_url": request.base_url,
-                "redict_script": f'<meta http-equiv="refresh" content="0; URL=/blog/{get_blog_last_index()}">',
-            },
-        )
+        return RedirectResponse(f"/blog/{get_blog_last_index()}")
 
 
 # Create the basic response of the API with the connection of the API.
