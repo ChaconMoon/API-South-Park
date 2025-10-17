@@ -14,5 +14,6 @@ class Album(BaseModel):
     name: str
     release_date: str
     album_cover: str
+    web_album_cover: str
     songs: dict
     album_url: str

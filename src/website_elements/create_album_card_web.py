@@ -9,7 +9,7 @@ def create_album_web_card_to_website(base_url: str, album_id: int) -> str:
     album_name = request_album_json["name"]
     album_release = request_album_json["release_date"]
 
-    album_cover = request_album_json["album_cover"]
+    album_cover = request_album_json["web_album_cover"]
 
     album_url = request_album_json["album_url"]
 

@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict aWxWClqP8Notx6ARjOxHya1dRJjIMqlPVQzU8rS7W7ZBTAvxybB5eCzDtnXO5Pn
+\restrict ZGzsoKwWuF8l5eiqQRJmSKyJ2hyDRToWug1Y4p3dqEqqqd7eHrHfPVy88ZbF8Eb
 
 -- Dumped from database version 15.14 (Debian 15.14-1.pgdg13+1)
 -- Dumped by pg_dump version 15.14 (Debian 15.14-1.pgdg13+1)
@@ -68,7 +68,8 @@ CREATE TABLE public.albums (
     name text NOT NULL,
     release_date date,
     album_cover text,
-    album_url text
+    album_url text,
+    web_album_cover text
 );
 
 
@@ -435,13 +436,13 @@ COPY public.album_songs (id, name, album, lyrics, song_url) FROM stdin;
 -- Data for Name: albums; Type: TABLE DATA; Schema: public; Owner: southpark
 --
 
-COPY public.albums (id, name, release_date, album_cover, album_url) FROM stdin;
-1	Chef Aid: The South Park Album	1998-12-08	img/albums/covers/Chef_Aid_The_South_Park_Album.jpg	https://music.youtube.com/playlist?list=OLAK5uy_kjD121b8XN2_RslyLkocpwY0yS6e85W1Y&si=wPplSvRUAbq8Fuot
-3	Mr. Hankey's Christmas Classics	1999-11-23	img/albums/covers/Mr_Hankey's_Christmas_Classics.jpg	https://music.youtube.com/playlist?list=OLAK5uy_kFa2oPc-dltGXk5jma5W7rvctxIu_zoEo&si=GLXgEterxWJsMHKa
-4	Timmy & the Lords of the Underworld	2000-09-05	img/albums/covers/Timmy_and_the_Lords_of_the_Underworld.jpg	NOT AVAILABLE
-5	San Diego	2012-08-21	img/albums/covers/San_Diego.jpg	https://music.youtube.com/watch?v=9VPxmXPFOvY&si=lwjsSjC8P2hPJFf1
-6	South Park The 25th Anniversary Concert	2022-09-25	img/albums/covers/South_Park_25th_Aniversary_Concert.jpg	https://music.youtube.com/playlist?list=OLAK5uy_k-XClxCE8I4WTQ97MNO_t652ccER6d958&si=bgU0FHNAR_x9yiTV
-2	South Park: Bigger, Longer & Uncut (Soundtrack)	1999-06-22	img/albums/covers/South_Park_Bigger_Longer_and_Uncut.jpg	NOT AVAILABLE
+COPY public.albums (id, name, release_date, album_cover, album_url, web_album_cover) FROM stdin;
+1	Chef Aid: The South Park Album	1998-12-08	img/albums/covers/Uncompresed/Chef_Aid_The_South_Park_Album.jpg	https://music.youtube.com/playlist?list=OLAK5uy_kjD121b8XN2_RslyLkocpwY0yS6e85W1Y&si=wPplSvRUAbq8Fuot	img/albums/covers/Chef_Aid_The_South_Park_Album.webp
+2	South Park: Bigger, Longer & Uncut (Soundtrack)	1999-06-22	img/albums/covers/Uncompresed/South_Park_Bigger_Longer_and_Uncut.jpg	NOT AVAILABLE	img/albums/covers/South_Park_Bigger_Longer_and_Uncut.webp
+3	Mr. Hankey's Christmas Classics	1999-11-23	img/albums/covers/Uncompresed/Mr_Hankey's_Christmas_Classics.jpg	https://music.youtube.com/playlist?list=OLAK5uy_kFa2oPc-dltGXk5jma5W7rvctxIu_zoEo&si=GLXgEterxWJsMHKa	img/albums/covers/Mr_Hankey's_Christmas_Classics.webp
+4	Timmy & the Lords of the Underworld	2000-09-05	img/albums/covers/Uncompresed/Timmy_and_the_Lords_of_the_Underworld.jpg	NOT AVAILABLE	img/albums/covers/Timmy_and_the_Lords_of_the_Underworld.webp
+5	San Diego	2012-08-21	img/albums/covers/Uncompresed/San_Diego.jpg	https://music.youtube.com/watch?v=9VPxmXPFOvY&si=lwjsSjC8P2hPJFf1	img/albums/covers/San_Diego.webp
+6	South Park The 25th Anniversary Concert	2022-09-25	img/albums/covers/Uncompresed/South_Park_25th_Aniversary_Concert.jpg	https://music.youtube.com/playlist?list=OLAK5uy_k-XClxCE8I4WTQ97MNO_t652ccER6d958&si=bgU0FHNAR_x9yiTV	img/albums/covers/South_Park_25th_Aniversary_Concert.webp
 \.
 
 
@@ -1620,5 +1621,5 @@ ALTER TABLE ONLY public.alter_ego
 -- PostgreSQL database dump complete
 --
 
-\unrestrict aWxWClqP8Notx6ARjOxHya1dRJjIMqlPVQzU8rS7W7ZBTAvxybB5eCzDtnXO5Pn
+\unrestrict ZGzsoKwWuF8l5eiqQRJmSKyJ2hyDRToWug1Y4p3dqEqqqd7eHrHfPVy88ZbF8Eb
 
