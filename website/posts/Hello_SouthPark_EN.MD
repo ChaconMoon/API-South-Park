@@ -38,7 +38,7 @@ This page has 4 designs: 3 designs that have a 33% chance of appearing and one s
 
 ![404 Avatars](/blog/images/404_Avatars.webp){.body_image}
 
-As I like to add some intrigue, you can see it here or if you can't wait for it to appear, hehe: [Secret Avatar](https://github.com/ChaconMoon/API-South-Park/blob/4-user-experience-create-a_example-website/img/website/Cartel%20NOT%20FOUND%20Charlie%20Brown.webp)
+As I like to add some intrigue, you can see it here or if you can't wait for it to appear, hehe: [Secret Avatar](/img/website/Cartel_NOT_FOUND_Charlie_Brown.webp)
 
 Also, you can return to the website or blog directly from here.
 
