@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict P9qx9yXsBdhyj4HVnizuwRFGPSaXTHVirFpz52lGMxujqVkDiCWUTjZ8YGqqZEp
+\restrict nrgwNlef1dQrXkGdrMsbqiBt33kGqyqcTNxLqPdhcZZYcsqbDh6liBrR5ecI826
 
 -- Dumped from database version 15.14 (Debian 15.14-1.pgdg13+1)
 -- Dumped by pg_dump version 15.14 (Debian 15.14-1.pgdg13+1)
@@ -1342,7 +1342,8 @@ COPY public.episodes (id, name, season, episode, realese_date, description, view
 323	Got A Nut	27	2	2025-08-06	When Mr. Mackey loses his job, he desperately tries to find a new way to make a living.	https://www.southparkstudios.com/episodes/9756cz/south-park-got-a-nut-season-27-ep-2	f	t	img/episodes/323.jpg
 324	Sickofancy	27	3	2025-08-20	Sharon helps Randy come down from his Ketamine bender and the Marsh family sells Tegridy Farms.	https://www.southparkstudios.com/episodes/bdoemj/south-park-sickofancy-season-27-ep-3	f	t	img/episodes/324.jpg
 325	Wok is Dead	27	4	2025-09-03	Butters experiences the reality of tariffs when he has to buy a Labubu doll for his girlfriend’s birthday.	https://www.southparkstudios.com/episodes/7kgkzb/south-park-wok-is-dead-season-27-ep-4	f	t	img/episodes/325.jpg
-326	Conflict of Interest	27	5	2025-09-24	Kyle and Cartman are at odds when a prediction markets app gets popular with their fellow students.	\N	f	t	img/episodes/326.jpg
+326	Conflict of Interest	27	5	2025-09-24	Kyle and Cartman are at odds when a prediction markets app gets popular with their fellow students.	https://www.southparkstudios.com/episodes/0v5k4m/south-park-conflict-of-interest-season-27-ep-5	f	t	img/episodes/326.jpg
+327	Twisted Christian	28	1	2025-10-15	Cartman is possessed and may be the key to stopping the Antichrist.	https://www.southparkstudios.com/episodes/5yvj56/south-park-twisted-christian-season-28-ep-1	f	t	img/episodes/327.jpg
 \.
 
 
@@ -1621,5 +1622,5 @@ ALTER TABLE ONLY public.alter_ego
 -- PostgreSQL database dump complete
 --
 
-\unrestrict P9qx9yXsBdhyj4HVnizuwRFGPSaXTHVirFpz52lGMxujqVkDiCWUTjZ8YGqqZEp
+\unrestrict nrgwNlef1dQrXkGdrMsbqiBt33kGqyqcTNxLqPdhcZZYcsqbDh6liBrR5ecI826
 
