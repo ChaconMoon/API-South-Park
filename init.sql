@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict ZGzsoKwWuF8l5eiqQRJmSKyJ2hyDRToWug1Y4p3dqEqqqd7eHrHfPVy88ZbF8Eb
+\restrict P9qx9yXsBdhyj4HVnizuwRFGPSaXTHVirFpz52lGMxujqVkDiCWUTjZ8YGqqZEp
 
 -- Dumped from database version 15.14 (Debian 15.14-1.pgdg13+1)
 -- Dumped by pg_dump version 15.14 (Debian 15.14-1.pgdg13+1)
@@ -721,7 +721,6 @@ COPY public.characters (id, name, friend_group, family, birthday, age, religion,
 160	Harper	\N	31	\N	0	\N	290	{/img/characters/serie/Harper.png}	\N
 161	Emory	\N	31	\N	0	\N	290	{/img/characters/serie/Emory.png}	\N
 162	River	\N	31	\N	0	\N	290	{/img/characters/serie/River.png}	\N
-163	Strong Woman	\N	31	\N	\N	\N	286	{/img/characters/serie/Strong_Woman.png}	\N
 164	Peter "PC Principal" Charles	\N	31	\N	\N	{Christian}	258	{/img/characters/serie/PC_Principal.png}	\N
 165	DogPoo Petuski	\N	38	\N	10	\N	85	{/img/characters/serie/Dog_Poo.png}	\N
 166	Mrs. Petuski	\N	38	\N	\N	\N	33	{/img/characters/serie/Mrs_Petuski.png}	\N
@@ -971,6 +970,7 @@ COPY public.characters (id, name, friend_group, family, birthday, age, religion,
 411	Benjamin Netanyahu	\N	\N	October 21th	75	{Judaism}	326	{/img/characters/serie/Benjamin_Netanyahu.png}	t
 412	Brendan Carr	\N	\N	January 5th	46	\N	326	{/img/characters/serie/Brendan_Carr.png}	t
 312	Big Mesquite Murph	\N	\N	\N	\N	\N	300	{/img/characters/serie/Big_Mesquite_Murph.png}	f
+163	Strong Christian Woman	\N	31	\N	\N	\N	286	{/img/characters/serie/Strong_Woman.png,/img/characters/serie/Strong_Christian_Woman.png}	\N
 \.
 
 
@@ -1621,5 +1621,5 @@ ALTER TABLE ONLY public.alter_ego
 -- PostgreSQL database dump complete
 --
 
-\unrestrict ZGzsoKwWuF8l5eiqQRJmSKyJ2hyDRToWug1Y4p3dqEqqqd7eHrHfPVy88ZbF8Eb
+\unrestrict P9qx9yXsBdhyj4HVnizuwRFGPSaXTHVirFpz52lGMxujqVkDiCWUTjZ8YGqqZEp
 
