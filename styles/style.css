@@ -1,0 +1,26 @@
+/*
+Global styles
+*/
+#menu_button_1 {
+        background-color: #a0665a;
+}
+
+#menu_button_2 {
+        background-color: #5ac829;
+}
+
+#menu_button_3 {
+        background-color: #dc2444;
+}
+
+#menu_button_4 {
+        background-color: #fa6617;
+}
+
+.internal_button {
+        cursor: pointer;
+}
+
+.footer_link {
+        color: blue;
+}

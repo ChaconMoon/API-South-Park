@@ -12,7 +12,7 @@ from src.controller.data_controller import parse_array_to_list
 
 # Get one Alter Ego by the character and id
 def get_alter_ego_by_character_and_id(
-    id_alter_ego: int, id_character: int, add_url=False, base_url=""
+    id_alter_ego: int, id_character: int, add_url=False, base_url="", metadata=False
 ):
     """
     Get one alter ego of the database
@@ -54,7 +54,7 @@ def get_alter_ego_by_character_and_id(
             result = dict()
             result["name"] = alter_ego.model_dump()["name"]
             result["url"] = (
-                f"{base_url}character/{id_character}/alterego/{id_alter_ego}"
+                f"{base_url}api/characters/{id_character}/alteregos/{id_alter_ego}"
             )
             return result
         # Return Alter_Ego Info
@@ -64,11 +64,14 @@ def get_alter_ego_by_character_and_id(
             {"id_character": id_character},
         )
         result = dict()
-        result["alterego"] = alter_ego.model_dump()
-        result["metadata"] = dict()
-        result["metadata"]["total_alteregos_of_this_character_in_database"] = (
-            query_result.rowcount
-        )
+        if not metadata:
+            result = alter_ego.model_dump()
+        else:
+            result["alterego"] = alter_ego.model_dump()
+            result["metadata"] = dict()
+            result["metadata"]["total_alteregos_of_this_character_in_database"] = (
+                query_result.rowcount
+            )
 
         return result
     # Control exceptions

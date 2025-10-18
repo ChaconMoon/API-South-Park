@@ -48,7 +48,9 @@ def get_all_songs_of_a_album(id: int, base_url="", add_url=False) -> dict:
             if add_url:
                 result[song_number] = dict()
                 result[song_number]["name"] = song.model_dump()["name"]
-                result[song_number]["url"] = f"{base_url}song/{song.model_dump()['id']}"
+                result[song_number]["url"] = (
+                    f"{base_url}api/songs/{song.model_dump()['id']}"
+                )
             song_number += 1
         return result
     except Exception as e:
@@ -56,7 +58,7 @@ def get_all_songs_of_a_album(id: int, base_url="", add_url=False) -> dict:
 
 
 # Get one song data
-def get_song_by_id(id: int, add_url=False, base_url=""):
+def get_song_by_id(id: int, add_url=False, base_url="", metadata=False):
     """
     Return a dict a song.
 
@@ -96,9 +98,12 @@ def get_song_by_id(id: int, add_url=False, base_url=""):
             )
         query_result = get_query_result(text("SELECT * FROM public.album_songs"))
         result = dict()
-        result["song"] = song.model_dump()
-        result["metadata"] = dict()
-        result["metadata"]["total_songs_in_database"] = query_result.rowcount
+        if not metadata:
+            result = song.model_dump()
+        else:
+            result["song"] = song.model_dump()
+            result["metadata"] = dict()
+            result["metadata"]["total_songs_in_database"] = query_result.rowcount
         return result
 
     # Control exceptions

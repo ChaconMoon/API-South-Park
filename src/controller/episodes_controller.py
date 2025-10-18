@@ -13,7 +13,7 @@ from src.model.episode import Episode
 
 
 # Get one episode of the database
-def get_episode_by_id(id: int, add_url=False, base_url="") -> dict:
+def get_episode_by_id(id: int, add_url=False, base_url="", metadata=False) -> dict:
     """
     Get one episode of the database
 
@@ -55,22 +55,26 @@ def get_episode_by_id(id: int, add_url=False, base_url="") -> dict:
                     else "CENSORED",
                     "website_url": str(row[6]) if row[6] is not None else "",
                 },
+                episode_thumbnail=base_url + str(row[9]) if row[9] is not None else "",
             )
 
         # Return the result with the URL
         if add_url:
             result = dict()
             result["name"] = episode_info.model_dump()["name"]
-            result["url"] = f"{base_url}episode/{row[0]}"
+            result["url"] = f"{base_url}api/episodes/{row[0]}"
             return result
 
         # Return Episode info JSON
         query_result = get_query_result(text("SELECT * FROM public.episodes"))
 
         result = dict()
-        result["episode"] = episode_info.model_dump()
-        result["metadata"] = dict()
-        result["metadata"]["total_episodes_in_database"] = query_result.rowcount
+        if not metadata:
+            result = episode_info.model_dump()
+        else:
+            result["episode"] = episode_info.model_dump()
+            result["metadata"] = dict()
+            result["metadata"]["total_episodes_in_database"] = query_result.rowcount
         return result
 
     # Control Exceptions

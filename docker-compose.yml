@@ -15,7 +15,7 @@ services:
       POSTGRES_USER: southpark
       POSTGRES_PASSWORD: tegridyfarms
     volumes:
-      - ./data/postgres_data:/var/lib/postgresql/data
+      - ~/data/postgres_data:/var/lib/postgresql/data
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
 
   pgadmin:
@@ -28,7 +28,7 @@ services:
     depends_on:
       - db
     volumes:
-      - ./data/pgadmin_data:/var/lib/pgadmin
+      - ~/data/pgadmin_data:/var/lib/pgadmin
 
 volumes:
   postgres_data:

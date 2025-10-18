@@ -1,0 +1,1069 @@
+@font-face {
+        font-family: "Waffle-Soft";
+        src: url(/fonts/Waffle-Soft.otf);
+}
+
+@font-face {
+        font-family: "OpenSans-Bold";
+        src: url(/fonts/OpenSans-Bold.ttf);
+}
+
+@font-face {
+        font-family: "OpenSans-ExtraBold";
+        src: url(/fonts/OpenSans-ExtraBold.ttf);
+}
+
+@font-face {
+        font-family: "OpenSans-Regular";
+        src: url(/fonts/OpenSans-Regular.ttf);
+}
+
+/**
+Tablets Version
+**/
+@media screen and (min-width: 641px) and (max-width: 1023px) {
+        h1.main_title {
+                margin-top: 5vh;
+                text-align: center;
+                font-family: 'Waffle-Soft';
+                font-size: 200%;
+        }
+
+        h2.developer {
+                margin-top: 3vh;
+                text-align: center;
+                margin-bottom: 3vh;
+                font-family: "OpenSans-Bold";
+                font-size: 150%;
+        }
+
+        .character_background {
+                background-image: url("../img/website/Character_Background_in_Website.png");
+                display: flex;
+                justify-content: center;
+                height: 25vw;
+                border-radius: 5px;
+                background-size: cover;
+
+        }
+
+        .character_card {
+                margin: 5%;
+                border-radius: 5px;
+                border: 2px black solid;
+                align-self: end;
+                box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .character_card:hover {
+                margin: 5%;
+                border-radius: 5px;
+                border: 3px black solid;
+                align-self: end;
+                box-shadow: 0 8px 30px 0 rgba(0, 0, 0, 0.6);
+        }
+
+        .character_image {
+                height: 85%;
+                padding-left: 4px;
+                padding-right: 4px;
+                align-self: end;
+        }
+
+        #character_grid_container {
+                display: grid;
+                grid-template-columns: auto auto auto;
+                border-style: solid;
+                border-width: 3px;
+                border-color: gray;
+                border-radius: 10px;
+                margin: 25px;
+                box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.4);
+        }
+
+        p.character_name {
+                /* min, preferred, max */
+                font-size: clamp(5px, 1.5vw, 20px);
+                padding-bottom: 1vh;
+                padding-top: 0.5vh;
+                display: flex;
+                justify-content: space-between;
+                margin-right: 10px;
+        }
+
+        div.web_menu {
+                display: flex;
+                justify-content: center;
+                gap: 40px;
+                /* Ajusta este valor para cambiar el espacio entre elementos */
+                align-items: center;
+        }
+
+        .character_card p {
+                /* min, preferred, max */
+                font-size: clamp(5px, 1.5vw, 30px);
+                margin-left: 5%;
+                padding-top: 3%;
+                margin-right: 8px;
+        }
+
+        a.character_card_link {
+                text-decoration: none;
+                color: black;
+                width: 31vw;
+
+        }
+
+        nav.navegation_menu {
+                background-color: #d9d9d9;
+                height: 5vh;
+                width: 100%;
+                display: grid;
+                grid-template-columns: auto auto auto auto;
+                justify-items: center;
+                align-items: start;
+        }
+
+        a.menu_item {
+                background-color: #a5a5a5;
+                text-align: center;
+                text-decoration: none;
+                width: 20vw;
+                height: 5vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 4vw;
+                color: white;
+        }
+
+        #logo {
+                height: 5vh;
+        }
+
+        * {
+                margin: 0;
+        }
+
+        a.menu_logo {
+                background-color: black;
+                text-align: center;
+                text-decoration: none;
+                width: 10vw;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+        }
+
+        div.web_menu {
+                display: grid;
+                grid-template-columns: auto auto auto auto;
+                align-items: center;
+                justify-items: center;
+        }
+
+        div.menu_button {
+                border-radius: 16px;
+                color: white;
+                font-family: "OpenSans-Bold";
+                width: 20vw;
+                align-self: center;
+                font-size: 3.5vw;
+                text-align: center;
+
+                height: 10vw;
+                align-items: center;
+                display: flex;
+                justify-content: center;
+        }
+
+        #try_example {
+                font-family: "OpenSans-Bold";
+                text-align: center;
+                font-size: 7vw;
+        }
+
+        #json_response {
+                align-self: center;
+                margin: auto;
+                width: 90%;
+                background-color: #f7f7f7;
+                color: black;
+                /*! height: 40vh; */
+                display: block;
+                font-size: 15px;
+                border-radius: 10px;
+        }
+
+        footer {
+                background-color: #a5a5a5;
+                width: 100%;
+                /*! height: 35vh; */
+                border-radius: 21px 21px 0px 0px;
+                display: flex;
+                font-family: "OpenSans-Bold";
+                text-align: center;
+                gap: 10vw;
+                justify-content: center;
+                margin-top: 0;
+        }
+
+        #footer_what_is_this p {
+                font-size: 20px;
+                font-family: "OpenSans-Regular";
+        }
+
+        #footer_what_is_this {
+                width: 30vw;
+        }
+
+        #licence {
+                width: 50vw;
+        }
+
+        #licence p {
+                font-size: 11;
+                font-family: "OpenSans-Regular";
+        }
+
+        div.submenu_button {
+                border-radius: 16px;
+                color: white;
+                font-family: "OpenSans-Bold";
+                width: 85%;
+                align-self: center;
+                font-size: 3.5vw;
+                text-align: center;
+                background-color: black;
+        }
+
+        div.change_submenu_buttons {
+                display: grid;
+                grid-template-columns: auto auto;
+                align-items: center;
+                justify-items: center;
+        }
+
+        #episodes_grid_container {
+                display: none;
+                grid-template-columns: auto auto;
+                border-style: solid;
+                border-width: 3px;
+                border-color: gray;
+                border-radius: 10px;
+                margin: 25px;
+                box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.4);
+
+                margin-top: 12px;
+                justify-items: center;
+        }
+
+        .episode_image {
+                width: 40vw;
+                border-radius: 8px;
+        }
+
+        .episode_card_link {
+                width: 40vw;
+                border-width: 3px;
+                border-style: solid;
+                border-radius: 8px;
+                text-decoration: none;
+                color: black;
+                margin-top: 3vh;
+                margin-bottom: 3vh;
+        }
+
+        .episode_card_link:hover {
+                width: 40vw;
+                border-width: 4px;
+                border-style: solid;
+                border-radius: 8px;
+                text-decoration: none;
+                color: black;
+                margin-top: 3vh;
+                margin-bottom: 3vh;
+                box-shadow: 0 8px 30px 0 rgba(0, 0, 0, 0.6);
+        }
+
+        .episode_card {
+                width: 100%;
+        }
+
+        .episode_card p {
+                margin-top: 0.75vw;
+                font-family: "OpenSans-Regular";
+                font-size: 2vw;
+
+        }
+
+        .episode_name {
+                margin-left: 1vw;
+                height: 5vw;
+                margin-bottom: 1.5vh;
+        }
+
+        .episode_number {
+                margin-left: 1vw;
+        }
+
+        .episode_release {
+                position: relative;
+                width: fit-content;
+                margin-left: auto;
+                margin-right: 1vw;
+                margin-top: 10vh;
+                margin-bottom: 1vh;
+        }
+
+        .episode_description_text {
+                height: 20vw;
+                margin-left: 1vw;
+        }
+
+        .episode_status {
+                margin-left: 1vw;
+                height: 5vw;
+        }
+
+        div.submenu_button {
+                border-radius: 16px;
+                color: white;
+                font-family: "OpenSans-Bold";
+                width: 40vw;
+                align-items: center;
+                font-size: 4vw;
+                text-align: center;
+                background-color: black;
+                height: 8vw;
+                justify-content: center;
+                display: flex;
+        }
+
+        div.change_submenu_buttons {
+                display: grid;
+                grid-auto-columns: auto auto;
+                margin-top: 5vh;
+                gap: 3vw;
+                justify-content: center;
+                align-items: center;
+        }
+
+        #songs_grid_container {
+                display: none;
+                grid-template-columns: auto auto;
+                border-style: solid;
+                border-width: 3px;
+                border-color: gray;
+                border-radius: 10px;
+                margin: 25px;
+                box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.4);
+                margin-top: 12px;
+                justify-content: center;
+                align-items: center;
+                padding-bottom: 2vw;
+                padding-top: 2vw;
+                gap: 3vw;
+        }
+
+        .album_image {
+                width: 100%;
+                border-radius: 2px;
+        }
+
+        .album_card {
+                width: 37vw;
+                margin: 1vw;
+                border-style: solid;
+                border-color: black;
+                border-width: 2px;
+                border-radius: 4px;
+                height: 51vw;
+                box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.4);
+
+        }
+
+        .album_card:hover {
+                width: 37vw;
+                margin: 1vw;
+                border-style: solid;
+                border-color: black;
+                border-width: 3px;
+                border-radius: 4px;
+                box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.8);
+
+        }
+
+        .album_card_link {
+                text-decoration: none;
+                color: black;
+        }
+
+        .song_card {
+                width: 37vw;
+                margin: 1vw;
+                border-style: solid;
+                border-color: black;
+                border-width: 2px;
+                border-radius: 4px;
+                height: 55vw;
+                box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.4);
+
+        }
+
+        .song_card:hover {
+                width: 37vw;
+                margin: 1vw;
+                border-style: solid;
+                border-color: black;
+                border-width: 3px;
+                border-radius: 4px;
+                box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.8);
+
+        }
+
+        .song_card_link {
+                text-decoration: none;
+                color: black;
+        }
+
+        .song_name {
+                display: flex;
+                justify-content: center;
+                font-size: clamp(5px, 1.8vw, 25px);
+                font-family: "OpenSans-Bold";
+        }
+
+        .album_name {
+                font-family: "OpenSans-Regular";
+                margin-left: 1vw;
+                height: 5vw;
+                font-size: clamp(5px, 1.5vw, 25px);
+        }
+
+        .album_release {
+                font-family: "OpenSans-Regular";
+                margin-left: 1vw;
+                font-size: clamp(5px, 1.7vw, 25px);
+        }
+
+        .play_button {
+                background-color: gray;
+                width: 15vw;
+                color: black;
+                border-radius: 8px;
+                justify-content: center;
+                align-items: center;
+                display: flex;
+                height: 3.5vw;
+                font-size: 2.5vw;
+                text-decoration: none;
+                margin-right: 1vw;
+                margin-left: auto;
+                border-style: dotted;
+                border-width: 2px;
+                font-family: "OpenSans-Bold";
+                margin-top: 1vw;
+
+        }
+
+        .not_avalible_button {
+                background-color: gray;
+                width: 20vw;
+                color: black;
+                border-radius: 8px;
+                justify-content: center;
+                align-items: center;
+                display: flex;
+                height: 3.5vw;
+                font-size: 2.5vw;
+                text-decoration: none;
+                margin-right: 1vw;
+                margin-left: auto;
+                border-style: dotted;
+                border-width: 2px;
+                font-family: "OpenSans-Bold";
+                margin-top: 1vw;
+        }
+
+        #albums_grid_container {
+                display: none;
+                grid-template-columns: auto auto;
+                border-style: solid;
+                border-width: 3px;
+                border-color: gray;
+                border-radius: 10px;
+                margin: 25px;
+                box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.4);
+                margin-top: 12px;
+                justify-content: center;
+                align-items: center;
+                padding-bottom: 2vw;
+                padding-top: 2vw;
+                gap: 3vw;
+        }
+
+        .album_play_button {
+                background-color: gray;
+                width: 90%;
+                color: black;
+                border-radius: 8px;
+                justify-content: center;
+                align-items: center;
+                display: flex;
+                height: 3.5vw;
+                font-size: 2.5vw;
+                text-decoration: none;
+                margin-right: 1vw;
+                margin-left: auto;
+                border-style: dotted;
+                border-width: 2px;
+                font-family: "OpenSans-Bold";
+                margin-top: 1vw;
+
+        }
+
+        .album_not_avalible_button {
+                background-color: gray;
+                width: 90%;
+                color: black;
+                border-radius: 8px;
+                justify-content: center;
+                align-items: center;
+                display: flex;
+                height: 3.5vw;
+                font-size: 2.5vw;
+                text-decoration: none;
+                margin-right: 1vw;
+                margin-left: auto;
+                border-style: dotted;
+                border-width: 2px;
+                font-family: "OpenSans-Bold";
+                margin-top: 1vw;
+        }
+
+        .album_name_in_song_menu {
+                margin-left: 1vw;
+                font-size: clamp(5px, 2vw, 25px);
+                margin-bottom: 3vw;
+                height: 4vw;
+                margin-right: 1vw;
+        }
+
+        #alter_egos_grid_container {
+                display: none;
+                grid-template-columns: auto;
+                border-style: solid;
+                border-width: 3px;
+                border-color: gray;
+                border-radius: 10px;
+                margin: 25px;
+                box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.4);
+                margin-top: 12px;
+                justify-content: center;
+                gap: 1vw;
+        }
+
+        .character_and_alterego_grid {
+                display: grid;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+        }
+
+        .alter_ego_container img {
+                width: 100%;
+                border-radius: 8px
+        }
+
+        .alter_ego_container {
+                width: 20vw;
+                margin: auto;
+                margin-left: 3vw;
+                border-style: solid;
+                border-radius: 1.4vw 1.4vw 1vw 1vw;
+                box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.4);
+        }
+
+        .alter_ego_container:hover {
+                box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.8);
+                margin-top: 1vw;
+        }
+
+        .alter_ego_name {
+                font-family: "OpenSans-Bold";
+                display: flex;
+                justify-content: center;
+                margin-bottom: 0.5vw;
+                font-size: 1.6vw;
+                text-decoration: none;
+                color: black;
+        }
+
+        .alter_ego_link {
+                text-decoration: none;
+                color: inherit;
+        }
+
+        #alter_egos_grid_container .character_card_link {
+                align-self: center;
+                align-content: center;
+                margin: auto;
+                width: 35vw;
+
+        }
+
+        .alter_egos_container {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-content: center;
+                gap: 5vw;
+                margin-bottom: 2vw;
+        }
+
+        #families_grid_container {
+                display: none;
+                grid-template-columns: auto auto;
+                border-style: solid;
+                border-width: 3px;
+                border-color: gray;
+                border-radius: 10px;
+                margin: 25px;
+                box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.4);
+                margin-top: 12px;
+                justify-content: center;
+                align-items: center;
+                gap: 2.5vw;
+                padding-bottom: 2vw;
+        }
+
+        .family_image {
+                width: 100%;
+                border-radius: 4px;
+        }
+
+        .family_card {
+                width: 40vw;
+                border-style: solid;
+                border-color: black;
+                margin-top: 2vw;
+                border-radius: 6px;
+                height: 40vw;
+        }
+
+        .family_members_container {
+                display: grid;
+        }
+
+        .family_name {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 2.2vw;
+                color: black;
+        }
+
+        .family_card_link {
+                text-decoration: none;
+                color: black;
+        }
+
+        .family_number {
+                font-size: 1.8vw;
+                margin-left: 1.2vw;
+        }
+
+        .family_members_container {
+                display: grid;
+                grid-template-columns: auto auto auto;
+                margin-left: 2vw;
+                margin-right: auto;
+                font-size: 1.2vW;
+        }
+
+        .family_member {
+                margin-top: 1vw;
+        }
+
+        #games_grid_container {
+                display: none;
+                grid-template-columns: auto auto;
+                border-style: solid;
+                border-width: 3px;
+                border-color: gray;
+                border-radius: 10px;
+                margin: 25px;
+                box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.4);
+                margin-top: 12px;
+                justify-content: center;
+                align-items: center;
+                column-gap: 5vw;
+                row-gap: 1.5vw;
+                padding-bottom: 2vw;
+        }
+
+        .game_card {
+                width: 35vw;
+                border: 3px solid black;
+                border-radius: 10px;
+                margin-top: 2vw;
+                box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.6);
+        }
+
+        .game_card_link {
+                color: black;
+                text-decoration: none;
+        }
+
+        .game_image {
+                width: 100%;
+                height: 35vw;
+                border-radius: 7px;
+        }
+
+        .platform_icon img {
+                width: 5vw;
+        }
+
+        .platform_icon {
+                width: 5vw;
+        }
+
+        .platforms_grid {
+                display: flex;
+                justify-content: center;
+                column-gap: 3vw;
+                flex-wrap: wrap;
+                height: 12vw;
+                margin-top: 1vw;
+                /* allow wrapping to form multiple rows/columns */
+        }
+
+        /* If there are 4 or more children, make them behave as two columns.
+           Use :has() where supported, and provide a .two-columns class fallback
+           so small JS can toggle it for older browsers. */
+        .platforms_grid:has(> :nth-child(4)),
+        .platforms_grid.two-columns {
+                justify-content: center;
+        }
+
+        /* In two-column mode each child takes ~50% width (account for gap) */
+        .platforms_grid:has(> :nth-child(4))>*,
+        .platforms_grid.two-columns>* {
+                flex: 0 0 calc(20% - 1vw);
+                max-width: calc(20% - 1vw);
+        }
+
+        .game_name {
+                font-size: 1.6vw;
+                display: flex;
+                justify-content: center;
+                margin-bottom: 1vw;
+                font-family: OpenSans-Bold;
+        }
+
+        .game_release_date {
+                margin-left: 1vw;
+                font-size: 1.5vw;
+                font-family: OpenSans-Regular;
+        }
+
+        #specials_grid_container {
+                display: none;
+                grid-template-rows: auto auto auto;
+                border-style: solid;
+                border-width: 3px;
+                border-color: gray;
+                border-radius: 10px;
+                margin: 25px;
+                box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.4);
+                margin-top: 12px;
+                justify-content: center;
+                align-items: center;
+                gap: 1vw;
+        }
+        .special_poster{
+                width: 100%;
+                height: auto;
+                border-radius: 2px 2px 8px 8px;
+        }
+        .special_card {
+                border-width: 3px;
+                border-style: solid;
+                border-color: black;
+                border-radius: 4px;
+                width: 25vw;
+                height: 80vw;
+                
+        }
+        .special_grid3 .special_card {
+                border-width: 3px;
+                border-style: solid;
+                border-color: black;
+                border-radius: 4px;
+                width: 25vw;
+                height: 76vw;
+                
+        }
+        .special_grid2{
+                display: flex;
+                justify-content: center;
+                column-gap: 10vw;
+                margin-top: 2vw;
+                width: 92%;
+        }
+        .special_grid3{
+                display: flex;
+                justify-content: center;
+                column-gap: 10vw;
+                margin-top: 2vw;
+                                margin-bottom: 2vw;
+                width: 92%;
+        }
+        .special_card_link{
+                width: 20vw;
+                color: black;
+                text-decoration: none;
+        }
+        .special_name{
+                display: flex;
+                justify-content: center;
+                font-size: 1.6vw;
+                margin-left: 0.5vw;
+                                font-family: OpenSans-Bold;
+        }
+        .release_date{
+                margin-top: 1vw;
+                margin-left: 0.5vw;
+                                font-family: OpenSans-Regular;
+        }
+        .special_description {
+                margin-left: 0.5vw;
+                margin-right: 0.vw;
+                margin-top: 1vw;
+                                font-size: 2vw;
+                                font-family: OpenSans-Regular;
+        }
+                #blog_items_containers {
+                display: grid;
+                grid-template-columns: auto;
+                border-style: solid;
+                border-width: 3px;
+                border-color: gray;
+                border-radius: 10px;
+                margin: 5vw;
+                margin-bottom: 6vw;
+                box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.4);
+                margin-top: 12px;
+                justify-content: center;
+                align-items: center;
+                column-gap: 8vw;
+                padding-bottom: 2vw;
+        }
+
+        .post_in_menu {
+                width: 100%;
+        }
+
+        #blog_items_containers a {
+                width: 75vw;
+                text-decoration: none;
+                color: black;
+                border: black 3px solid;
+                border-radius: 4px;
+                margin-top: 5vw;
+        }
+
+
+        .post_thumbnail {
+                width: 100%;
+        }
+
+        #blog_items_containers h3 {
+                display: flex;
+                justify-content: center;
+                font-size: 5vw;
+                margin-bottom: 2vw;
+        }
+
+        .post_intro {
+                width: 95%;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                text-align: justify;
+                color: gray;
+                margin-bottom: 1vw;
+                font-size: 3vw;
+
+
+        }
+
+        #blog_grid_links {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 2vw;
+
+
+        }
+
+        .blog_link {
+                display: flex;
+                background-color: grey;
+                color: white;
+                font-size: 2vw;
+                text-decoration: none;
+                width: 3vw;
+                height: 3vw;
+                justify-content: center;
+                text-align: center;
+                align-items: center;
+                margin-bottom: 1vw;
+        }
+
+       #Not_Found_Block {
+                display: block;
+                border-style: solid;
+                border-width: 4px;
+                border-color: black;
+                border-radius: 10px;
+                margin: 5vw;
+                margin-bottom: 4vw;
+                box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.4);
+                margin-top: 12px;
+                justify-content: center;
+                align-items: center;
+                column-gap: 8vw;
+                padding-bottom: 2vw;
+        }
+
+        #Not_Found_Image {
+                display: flex;
+                align-content: center;
+                justify-content: center;
+                width: 65vw;
+                margin-left: auto;
+                margin-top: 2vw;
+                margin-right: auto;
+                margin-bottom: 1vw;
+        }
+
+        .Subtitle_404 {
+                margin-left: auto;
+                margin-right: auto;
+                width: fit-content;
+                font-size: 4vw;
+                font-family: "OpenSans-Bold";
+                width: 80vw;
+                text-align: center;
+        }
+
+        #Not_Found_Block li {
+                list-style-type: none;
+
+        }
+
+        #Not_Found_Block ul {
+                width: fit-content;
+                margin-left: auto;
+                margin-right: auto;
+        }
+
+        #Not_Found_Block a {
+                display: block;
+                color: black;
+                margin-right: auto;
+                margin-left: auto;
+                width: 35vw;
+                font-size: 4vw;
+        }
+
+        .Index_Header {
+                margin-left: auto;
+                margin-right: auto;
+                text-align: center;
+                font-size: 4vw;
+        }
+                #blog_post_containers {
+                display: grid;
+                border-style: solid;
+                border-width: 3px;
+                border-color: gray;
+                border-radius: 10px;
+                margin-left: 5vw;
+                margin-right: 5vw;
+                ;
+                margin-bottom: 10vw;
+                box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.4);
+                margin-top: 12px;
+                justify-content: center;
+                gap: 1vw;
+        }
+
+        #blog_post_containers p,
+        ul {
+                width: 80vw;
+                font-size: 2.5vw;
+                font-family: "OpenSans-Regular";
+                margin-left 10vw;
+                
+        }
+
+        #blog_post_containers p {
+                line-height: 4vw;
+                margin-left: 5vw;
+                margin-bottom: 1vw;
+        }
+
+        #blog_post_containers ul {
+                list-style-type: disclosure-closed
+        }
+
+        #blog_post_containers li {
+                margin-top: 7px;
+                margin-left: 4vw;
+        }
+
+        .header_image {
+                display: block;
+                align-self: center;
+                padding-top: 2vw;
+                margin-left: auto;
+                margin-right: auto;
+                width:80vw;
+
+        }
+
+        .blog_entry_tittle {
+                display: block;
+                margin: auto;
+                width: fit-content;
+                font-size: 6vw;
+                font-family: "OpenSans-Bold";
+        }
+
+        .blog_subtitle {
+                display: block;
+                margin: 2vw;
+                width: fit-content;
+                font-size: 4vw;
+                font-family: "OpenSans-Bold";
+        }
+
+        #blog_post_containers:last-child {
+                padding-bottom: 2vw;
+        }
+                        .body_image{
+                margin: 0 auto;
+                height: 40vw;
+        }
+        .blog_title{
+                font-size: 4vw;
+                                font-family: "OpenSans-Bold";
+                margin-left: 2vw;
+        }
+
+}

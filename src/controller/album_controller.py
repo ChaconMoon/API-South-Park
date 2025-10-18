@@ -14,7 +14,7 @@ from src.controller.songs_controller import get_all_songs_of_a_album
 
 
 # Get album by this id
-def get_album_by_id(id: int, add_url=False, base_url="") -> dict:
+def get_album_by_id(id: int, add_url=False, base_url="", metadata=False) -> dict:
     """
     Get the ID of a album and returns a dict with the content of this album in the database.
 
@@ -42,27 +42,33 @@ def get_album_by_id(id: int, add_url=False, base_url="") -> dict:
         # Create a objet with the result of the query
         for row in query_result:
             cover_url = str(row[3]) if row[3] is not None else ""
+            web_cover_url = str(row[5]) if row[5] is not None else ""
             album = Album(
                 id=int(row[0]) if row[0] is not None else 0,
                 name=str(row[1]) if row[1] is not None else "",
                 release_date=str(row[2]) if row[2] is not None else None,
                 album_cover=base_url + cover_url,
+                web_album_cover=base_url + web_cover_url,
                 songs=get_all_songs_of_a_album(int(row[0]), base_url, add_url=True),
+                album_url=str(row[4]) if row[4] is not None else "",
             )
 
         # Create the object with the URL
         if add_url:
             result = dict()
             result["name"] = album["name"]
-            result["url"] = f"{base_url}album/{album['id']}"
+            result["url"] = f"{base_url}api/albums/{album['id']}"
             return result
 
         # Create the complete object with the metadata
         query_result = get_query_result(text("SELECT * FROM public.albums"))
         result = dict()
-        result["album"] = album.model_dump()
-        result["metadata"] = dict()
-        result["metadata"]["total_albums_in_database"] = query_result.rowcount
+        if not metadata:
+            result = album.model_dump()
+        else:
+            result["album"] = album.model_dump()
+            result["metadata"] = dict()
+            result["metadata"]["total_albums_in_database"] = query_result.rowcount
         return result
 
     # Control exceptions
