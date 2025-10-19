@@ -1043,13 +1043,14 @@ Tablets Version
                 width: fit-content;
                 font-size: 6vw;
                 font-family: "OpenSans-Bold";
+                text-align: center;
         }
 
         .blog_subtitle {
                 display: block;
                 margin: 2vw;
                 width: fit-content;
-                font-size: 4vw;
+                font-size: 3vw;
                 font-family: "OpenSans-Bold";
         }
 
