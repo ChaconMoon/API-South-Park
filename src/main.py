@@ -17,6 +17,7 @@ from markdown import markdown
 import uvicorn
 
 # Internal inputs.
+from src.controller.date_controller import get_today_birthday_character
 from src.controller.easter_egg_controller import get_easter_egg
 from src.website_elements.create_character_card_web import create_character_image_grid
 from src.website_elements.create_episode_card_web import create_episode_image_grid
@@ -498,6 +499,11 @@ def show_game(
         elif "alteregos" in json:
             response.status_code = status.HTTP_200_OK
     return json
+
+
+@app.get("/api/todaybirthday")
+def get_characters_with_birthday_today(request: Request):
+    return get_today_birthday_character(base_url=str(request.base_url))
 
 
 @app.get("/api/lastepisode", tags=["TV Show"])
