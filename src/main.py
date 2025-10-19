@@ -501,7 +501,7 @@ def show_game(
     return json
 
 
-@app.get("/api/todaybirthday")
+@app.get("/api/todaybirthdays")
 def get_characters_with_birthday_today(request: Request):
     return get_today_birthday_character(base_url=str(request.base_url))
 
