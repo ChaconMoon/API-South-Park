@@ -951,7 +951,7 @@ Phone Version
 
         }
 
-        .blog_entry_tittle {
+        .blog_entry_title {
                 display: block;
                 margin: auto;
                 width: fit-content;
@@ -1114,9 +1114,9 @@ Phone Version
                 width: 65vw;
                 font-size: 5vw;
         }
-                .body_image{
+        .body_image{
                 margin: 0 auto;
-                height: 40vw;
+                width: 80vw;
         }
         .blog_title{
                 font-size: 4vw;

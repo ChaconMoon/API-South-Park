@@ -866,7 +866,7 @@ Desktop Version
 
         }
 
-        .blog_entry_tittle {
+        .blog_entry_title {
                 display: block;
                 margin: 0 auto;
                 width: fit-content;
@@ -1027,7 +1027,7 @@ Desktop Version
         }
         .body_image{
                 margin: 0 auto;
-                height: 20vw;
+                width: 60vw;
         }
         .blog_title{
                 font-size: 2vw;
