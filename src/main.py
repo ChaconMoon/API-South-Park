@@ -55,6 +55,7 @@ from src.controller.specials_controller import get_special_by_id
 from src.controller.songs_controller import get_song_by_id
 from src.controller.album_controller import get_album_by_id
 from src.controller.game_controller import get_game_by_id
+from src.website_elements.create_footer_web import create_footer
 
 
 # Create the description of de API
@@ -152,6 +153,7 @@ async def custom_404_handler(request: Request, exc):
             context={
                 "request": request,
                 "image_404": f'<img id="Not_Found_Image" src="{get_404_image()}">',
+                "footer": create_footer(),
             },
         )
 
@@ -202,6 +204,7 @@ def index(response: Response, request: Request) -> dict:
                 indent=4,
                 ensure_ascii=False,
             ),
+            "footer": create_footer(),
         },
     )
 
@@ -262,6 +265,7 @@ def show_blog(request: Request, response: Response, entry: str):
             "articule_description_in_social_media": get_intro_in_menu(f"{entry}.MD"),
             "image_in_social_media": f"{str(request.base_url)[:-1].replace('http://', 'https://')}{get_social_media_thumbnail_in_menu(f'{entry}.MD')}",
             "url_in_social_media": f"{str(request.base_url).replace('http://', 'https://')}blog/article/{entry}",
+            "footer": create_footer(),
         },
     )
 
@@ -280,6 +284,7 @@ def show_posts_grid(request: Request, response: Response, index: int):
                 "base_url": request.base_url,
                 "blog_posts_grid": grid_elements,
                 "blog_links": create_blog_links(),
+                "footer": create_footer(),
             },
         )
     else:
