@@ -86,15 +86,3 @@ def get_blog_last_index():
         pages += 1
     print(pages)
     return pages
-
-
-def get_social_media_thumbnail_in_menu(file_nmae: str):
-    try:
-        with open(f"website/posts/{file_nmae}") as file:
-            return str(
-                re.search(r"(/blog/images/[^)]*)(?=\))", file.readline())[0].replace(
-                    "/blog/images/", "/blog/social_media/images/"
-                )
-            ).replace(".webp", ".jpg")
-    except FileNotFoundError as e:
-        return "/blog/images/Article_Not_Found.webp"
