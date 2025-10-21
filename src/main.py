@@ -33,6 +33,9 @@ from src.website_elements.create_post_card_grid import (
     create_post_grid_in_blog,
     create_blog_links,
     get_blog_last_index,
+    get_intro_in_menu,
+    get_social_media_thumbnail_in_menu,
+    get_title_in_menu,
 )
 from src.website_elements.create_404_iamge_web import get_404_image
 
