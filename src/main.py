@@ -33,6 +33,9 @@ from src.website_elements.create_post_card_grid import (
     create_post_grid_in_blog,
     create_blog_links,
     get_blog_last_index,
+    get_intro_in_menu,
+    get_social_media_thumbnail_in_menu,
+    get_title_in_menu,
 )
 from src.website_elements.create_404_iamge_web import get_404_image
 
@@ -118,6 +121,12 @@ app.mount(
     "/blog/images/",
     StaticFiles(directory="website/posts/thumbnails"),
     name="posts_images",
+)
+
+app.mount(
+    "/blog/social_media/images/",
+    StaticFiles(directory="website/posts/social_media_thumbnails"),
+    name="social_media_images",
 )
 app.mount("/blog/posts/", StaticFiles(directory="website/posts"), name="posts")
 # Mount the img directory with the images of the database.
@@ -249,6 +258,10 @@ def show_blog(request: Request, response: Response, entry: str):
             "request": request,
             "blog_item": html_blog_entry,
             "base_url": request.base_url,
+            "articule_title_in_social_media": get_title_in_menu(f"{entry}.MD"),
+            "articule_description_in_social_media": get_intro_in_menu(f"{entry}.MD"),
+            "image_in_social_media": f"{str(request.base_url)[:-1]}{get_social_media_thumbnail_in_menu(f'{entry}.MD')}",
+            "url_in_social_media": f"{request.base_url}blog/article/{entry}",
         },
     )
 
