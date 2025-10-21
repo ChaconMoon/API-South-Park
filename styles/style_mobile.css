@@ -976,6 +976,7 @@ Phone Version
                 width: fit-content;
                 font-size: 6vw;
                 font-family: "OpenSans-Bold";
+                                text-align: center;
         }
 
         .blog_subtitle {
