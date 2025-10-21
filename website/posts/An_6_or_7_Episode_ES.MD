@@ -12,18 +12,18 @@ Aunque este episodio no aporta demasiado a la API en su estado actual si veo nec
 
 El episodio 327 (Twisted Christian) ha sido añadido dando comienzo a la temporada 28. Puede encontrarse [aqui](/api/episodes/327)
 
-Ademas al añadirse un nuevo episodio el endpoint "last episode" ahora hace referencia al episodio 328. [ultimo episodio](/api/lastepisode)
+Ademas al añadirse un nuevo episodio el endpoint "last episode" ahora hace referencia al episodio 327. [ultimo episodio](/api/lastepisode)
 
 ![Last Episode Screenshot](/blog/images/Last_Episode_327.webp){.body_image}
 
 ### Mujer Fuertemente Cristiana {.blog_subtitle}
 
-Este episodio ha cambiado un personaje "Strong Woman" [ID 163](/api/characters/163) en este episodio ha tenido un cambio de diseño y de nombre pasandose a llamarse "Strong Christian Woman" y un diseño en el que se ve que se ha operado, he considerado que este cambio es lo suficientemente importante como para que pase como Token a Tolkien y considerarlo un cambio de nombre por lo que se ha actualizado su personaje en la API y añadido como segundo diseño el diseño operado.
+Este episodio ha cambiado un personaje "Strong Woman" [ID 163](/api/characters/163) en este episodio ha tenido un cambio de diseño y de nombre pasandose a llamarse "Strong Christian Woman" y un diseño en el que se ve que se han operado, he considerado que este cambio es lo suficientemente importante como para que pase como paso cuando le cambiaron el nombre a Token para llamarlo Tolkien por lo que se ha actualizado su personaje en la API y añadido como segundo diseño el diseño operado.
 
-He hecho esto porque mi finalidad es tener la API actualizada al estado actual de la serie y ello incluye actualizar las fichas.
+He hecho esto porque mi finalidad es tener la API actualizada al estado actual de la serie y ello incluye actualizar las entradas existentes.
 
 Aunque de momento como no se cuanto durara este diseño dejare el diseño de Strong Christian Woman como segundo diseño y el primero su diseño normal, si para el final de la temprada 28 no ha cambiado cambiare el orden de aparición de los diseños porque podria ser temporal y siguiendo esa misma logica si le cambian el diseño a su diseño normal deshare el cambio de nombre.
 
 ## Cambios que afectan a la API a futuro {.blog_title}
 
-El unico personaje nuevo que ha aparecido en este episodio es "Peggy Pockbottom", aunque de momento no tiene entrada en la Wiki por lo que me tocara esperar, la añadire cuando meta a la API los personajes que empiezan con P, ademas con la misma letra "Peter Thiel" ha tenido un rediseño en este episodio por lo que cuando añada el personaje a la base de datos se hara con el diseño de este episodio.
+El unico personaje nuevo que ha aparecido en este episodio es "Peggy Pockbottom" la añadire cuando meta a la API los personajes que empiezan con P, ademas con la misma letra "Peter Thiel" ha tenido un rediseño en este episodio por lo que cuando añada el personaje a la base de datos se hara con el diseño de este episodio.
