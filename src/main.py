@@ -260,8 +260,8 @@ def show_blog(request: Request, response: Response, entry: str):
             "base_url": request.base_url,
             "articule_title_in_social_media": get_title_in_menu(f"{entry}.MD"),
             "articule_description_in_social_media": get_intro_in_menu(f"{entry}.MD"),
-            "image_in_social_media": f"{str(request.base_url)[:-1]}{get_social_media_thumbnail_in_menu(f'{entry}.MD')}",
-            "url_in_social_media": f"{request.base_url}blog/article/{entry}",
+            "image_in_social_media": f"{str(request.base_url)[:-1].replace('http://', 'https://')}{get_social_media_thumbnail_in_menu(f'{entry}.MD')}",
+            "url_in_social_media": f"{str(request.base_url).replace('http://', 'https://')}blog/article/{entry}",
         },
     )
 
