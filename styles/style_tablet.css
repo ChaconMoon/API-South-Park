@@ -784,11 +784,13 @@ Tablets Version
                 align-items: center;
                 gap: 1vw;
         }
-        .special_poster{
+
+        .special_poster {
                 width: 100%;
                 height: auto;
                 border-radius: 2px 2px 8px 8px;
         }
+
         .special_card {
                 border-width: 3px;
                 border-style: solid;
@@ -796,8 +798,9 @@ Tablets Version
                 border-radius: 4px;
                 width: 25vw;
                 height: 80vw;
-                
+
         }
+
         .special_grid3 .special_card {
                 border-width: 3px;
                 border-style: solid;
@@ -805,48 +808,55 @@ Tablets Version
                 border-radius: 4px;
                 width: 25vw;
                 height: 76vw;
-                
+
         }
-        .special_grid2{
+
+        .special_grid2 {
                 display: flex;
                 justify-content: center;
                 column-gap: 10vw;
                 margin-top: 2vw;
                 width: 92%;
         }
-        .special_grid3{
+
+        .special_grid3 {
                 display: flex;
                 justify-content: center;
                 column-gap: 10vw;
                 margin-top: 2vw;
-                                margin-bottom: 2vw;
+                margin-bottom: 2vw;
                 width: 92%;
         }
-        .special_card_link{
+
+        .special_card_link {
                 width: 20vw;
                 color: black;
                 text-decoration: none;
         }
-        .special_name{
+
+        .special_name {
                 display: flex;
                 justify-content: center;
                 font-size: 1.6vw;
                 margin-left: 0.5vw;
-                                font-family: OpenSans-Bold;
+                font-family: OpenSans-Bold;
         }
-        .release_date{
+
+        .release_date {
                 margin-top: 1vw;
                 margin-left: 0.5vw;
-                                font-family: OpenSans-Regular;
+                font-family: OpenSans-Regular;
         }
+
         .special_description {
                 margin-left: 0.5vw;
                 margin-right: 0.vw;
                 margin-top: 1vw;
-                                font-size: 2vw;
-                                font-family: OpenSans-Regular;
+                font-size: 2vw;
+                font-family: OpenSans-Regular;
         }
-                #blog_items_containers {
+
+        #blog_items_containers {
                 display: grid;
                 grid-template-columns: auto;
                 border-style: solid;
@@ -924,7 +934,7 @@ Tablets Version
                 margin-bottom: 1vw;
         }
 
-       #Not_Found_Block {
+        #Not_Found_Block {
                 display: block;
                 border-style: solid;
                 border-width: 4px;
@@ -987,7 +997,8 @@ Tablets Version
                 text-align: center;
                 font-size: 4vw;
         }
-                #blog_post_containers {
+
+        #blog_post_containers {
                 display: grid;
                 border-style: solid;
                 border-width: 3px;
@@ -1009,7 +1020,7 @@ Tablets Version
                 font-size: 2.5vw;
                 font-family: "OpenSans-Regular";
                 margin-left 10vw;
-                
+
         }
 
         #blog_post_containers p {
@@ -1033,11 +1044,11 @@ Tablets Version
                 padding-top: 2vw;
                 margin-left: auto;
                 margin-right: auto;
-                width:80vw;
+                width: 80vw;
 
         }
 
-        .blog_entry_tittle {
+        .blog_entry_title {
                 display: block;
                 margin: auto;
                 width: fit-content;
@@ -1057,13 +1068,15 @@ Tablets Version
         #blog_post_containers:last-child {
                 padding-bottom: 2vw;
         }
-                        .body_image{
+
+        .body_image{
                 margin: 0 auto;
-                height: 40vw;
+                width: 80vw;
         }
-        .blog_title{
+
+        .blog_title {
                 font-size: 4vw;
-                                font-family: "OpenSans-Bold";
+                font-family: "OpenSans-Bold";
                 margin-left: 2vw;
         }
 

@@ -1,5 +1,5 @@
 ![Header](/blog/images/Hello_South_Park.webp){.header_image}
-# Hola, South Park {.blog_entry_tittle}
+# Hola, South Park {.blog_entry_title}
 
 Esta es la primera entrada del blog de desarrollo de la API.
 {.blog_intro}
