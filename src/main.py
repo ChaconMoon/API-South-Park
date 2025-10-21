@@ -36,9 +36,6 @@ from src.website_elements.create_post_card_grid import (
     get_intro_in_menu,
     get_social_media_thumbnail_in_menu,
     get_title_in_menu,
-    get_intro_in_menu,
-    get_social_media_thumbnail_in_menu,
-    get_title_in_menu,
 )
 from src.website_elements.create_404_iamge_web import get_404_image
 
