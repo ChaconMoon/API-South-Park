@@ -1,0 +1,26 @@
+/*
+Global Blog styles
+*/
+#menu_button_1 {
+        background-color: #807f68;
+}
+
+#menu_button_2 {
+        background-color: #5f65a9;
+}
+
+#menu_button_3 {
+        background-color: #c3192e;
+}
+
+#menu_button_4 {
+        background-color: #b469ab;
+}
+
+.internal_button {
+        cursor: pointer;
+}
+
+.footer_link {
+        color: blue;
+}
