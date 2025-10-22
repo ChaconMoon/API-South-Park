@@ -73,18 +73,19 @@ def create_blog_links():
     link_list = ""
 
     pages = get_blog_last_index()
+    print(pages)
     for page in range(0, pages, 1):
         link_list += f"""<a class="blog_link" href="/blog/{page + 1}">{page + 1}</a>"""
     return link_list
 
 
 def get_blog_last_index():
-    lines = sum(1 for line in open("data/post_order.json"))
+    lines = sum(1 for _ in open("data/post_order.json")) - 2  # The two { } of the file
+    print("lineas en el json de post: " + str(lines))
     pages = int(lines / 6)
 
     if lines % 6 != 0:
         pages += 1
-    print(pages)
     return pages
 
 
