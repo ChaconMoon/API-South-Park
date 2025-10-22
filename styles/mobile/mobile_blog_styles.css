@@ -127,4 +127,26 @@
 
 
         }
+                #blog_grid_links {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 4vw;
+
+
+        }
+                .blog_link {
+                display: flex;
+                background-color: grey;
+                color: white;
+                font-size: 2vw;
+                text-decoration: none;
+                width: 10vw;
+                height: 10vw;
+                justify-content: center;
+                text-align: center;
+                align-items: center;
+                margin-bottom: 1vw;
+                font-size: 5vw;
+        }
 }
