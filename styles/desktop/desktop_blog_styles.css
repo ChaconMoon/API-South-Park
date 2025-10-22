@@ -1,4 +1,11 @@
+/**
+        CSS File Written By Carlos Chacón
+        
+        Give Style to the Blog Grid on Desktop Devices
+**/
+
 @media screen and (min-width: 1024px) {
+
         #blog_items_containers {
                 display: grid;
                 grid-template-columns: auto auto;

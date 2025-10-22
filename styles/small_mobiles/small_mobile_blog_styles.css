@@ -1,3 +1,9 @@
+/**
+        CSS File Written By Carlos Chacón
+        
+        Give Style to the Blog Grid on Small Mobile Devices
+**/
+
 @media screen and (max-width: 375px) {
         #blog_items_containers {
                 display: grid;

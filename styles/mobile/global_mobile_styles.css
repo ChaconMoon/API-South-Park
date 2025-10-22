@@ -1,3 +1,8 @@
+/**
+        CSS File Written By Carlos Chacón
+        
+        Give Style to the Global elements in the page on Mobile devices
+**/
 @media screen and (min-width: 376px) and (max-width: 640px) {
         h1.main_title {
                 text-align: center;

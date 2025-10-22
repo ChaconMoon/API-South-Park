@@ -1,5 +1,7 @@
 /**
-Phone Version
+        CSS File Written By Carlos Chacón
+        
+        Give Style to the 404 Page on Mobile Devices
 **/
 @media screen and (min-width: 376px) and (max-width: 640px) {
         #Not_Found_Block {

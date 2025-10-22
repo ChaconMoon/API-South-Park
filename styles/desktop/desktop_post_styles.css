@@ -1,3 +1,9 @@
+/**
+        CSS File Written By Carlos Chacón
+        
+        Give style to the page that contains one post in the devblog on Desktop Devices
+**/
+
 @media screen and (min-width: 1024px) {
         #blog_post_containers {
                 display: grid;

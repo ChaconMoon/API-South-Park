@@ -1,3 +1,9 @@
+/**
+        CSS File Written By Carlos Chacón
+        
+        Give Style to the 404 Page on Desktop Devices
+**/
+
 @media screen and (min-width: 1024px) {
         #Not_Found_Block {
                 display: block;

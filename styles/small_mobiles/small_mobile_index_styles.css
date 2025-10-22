@@ -1,3 +1,8 @@
+/**
+        CSS File Written By Carlos Chacón
+        
+        Give style to the index on Small Mobile Devices
+**/
 @media screen and (max-width: 375px) {
         .character_background {
                 background-image: url("/img/website/Character_Background_in_Website.png");

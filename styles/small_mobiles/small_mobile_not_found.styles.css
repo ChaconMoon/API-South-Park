@@ -1,3 +1,8 @@
+/**
+        CSS File Written By Carlos Chacón
+        
+        Give Style to the Global elements in the page on Small Mobile Devices
+**/
 @media screen and (max-width: 375px) {
         #Not_Found_Block {
                 display: block;
