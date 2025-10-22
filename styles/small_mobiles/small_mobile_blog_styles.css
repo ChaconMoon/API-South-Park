@@ -1,4 +1,4 @@
-@media screen and (min-width: 641px) and (max-width: 1023px) {
+@media screen and (max-width: 375px) {
         #blog_items_containers {
                 display: grid;
                 grid-template-columns: auto;
@@ -21,7 +21,7 @@
         }
 
         #blog_items_containers a {
-                width: 75vw;
+                width: 80vw;
                 text-decoration: none;
                 color: black;
                 border: black 3px solid;
@@ -37,7 +37,7 @@
         #blog_items_containers h3 {
                 display: flex;
                 justify-content: center;
-                font-size: 5vw;
+                font-size: 6vw;
                 margin-bottom: 2vw;
         }
 
@@ -49,7 +49,7 @@
                 text-align: justify;
                 color: gray;
                 margin-bottom: 1vw;
-                font-size: 3vw;
+                font-size: 4vw;
 
 
         }
@@ -77,9 +77,4 @@
                 margin-bottom: 1vw;
         }
 
-        .blog_title {
-                font-size: 4vw;
-                font-family: "OpenSans-Bold";
-                margin-left: 2vw;
-        }
 }

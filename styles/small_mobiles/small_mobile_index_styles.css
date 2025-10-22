@@ -1,10 +1,9 @@
-@media screen and (min-width: 641px) and (max-width: 1023px) {
-
+@media screen and (max-width: 375px) {
         .character_background {
                 background-image: url("/img/website/Character_Background_in_Website.png");
                 display: flex;
                 justify-content: center;
-                height: 25vw;
+                height: 70vw;
                 border-radius: 5px;
                 background-size: cover;
 
@@ -16,6 +15,7 @@
                 border: 2px black solid;
                 align-self: end;
                 box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+                width: 80vw;
         }
 
         .character_card:hover {
@@ -23,11 +23,12 @@
                 border-radius: 5px;
                 border: 3px black solid;
                 align-self: end;
-                box-shadow: 0 8px 30px 0 rgba(0, 0, 0, 0.6);
+                box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.4);
+                width: 80vw;
         }
 
         .character_image {
-                height: 85%;
+                height: 90%;
                 padding-left: 4px;
                 padding-right: 4px;
                 align-self: end;
@@ -35,18 +36,19 @@
 
         #character_grid_container {
                 display: grid;
-                grid-template-columns: auto auto auto;
+                grid-template-columns: auto;
                 border-style: solid;
                 border-width: 3px;
                 border-color: gray;
                 border-radius: 10px;
-                margin: 25px;
+                margin: 15px;
                 box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.4);
+                align-content: center;
         }
 
-        p.character_name {
+        .character_name {
                 /* min, preferred, max */
-                font-size: clamp(5px, 1.5vw, 20px);
+                font-size: clamp(3px, 2.3vw, 20px);
                 padding-bottom: 1vh;
                 padding-top: 0.5vh;
                 display: flex;
@@ -56,17 +58,18 @@
 
         .character_card p {
                 /* min, preferred, max */
-                font-size: clamp(5px, 1.5vw, 30px);
+                font-size: clamp(5px, 3.5vw, 30px);
                 margin-left: 5%;
-                padding-top: 3%;
-                margin-right: 8px;
+                padding-top: 3%
         }
 
         a.character_card_link {
                 text-decoration: none;
                 color: black;
-                width: 31vw;
-
+                width: 100%;
+                justify-content: center;
+                display: flex;
+                align-items: center;
         }
 
         #try_example {
@@ -83,8 +86,27 @@
                 color: black;
                 /*! height: 40vh; */
                 display: block;
-                font-size: 15px;
+                font-size: 2vw;
                 border-radius: 10px;
+        }
+
+        div.submenu_button {
+                border-radius: 16px;
+                color: white;
+                font-family: "OpenSans-Bold";
+                width: 85%;
+                align-self: center;
+                font-size: 3.5vw;
+                text-align: center;
+                background-color: black;
+
+        }
+
+        div.change_submenu_buttons {
+                display: grid;
+                grid-template-columns: auto auto;
+                align-items: center;
+                justify-items: center;
         }
 
         div.submenu_button {
@@ -107,7 +129,7 @@
 
         #episodes_grid_container {
                 display: none;
-                grid-template-columns: auto auto;
+                grid-template-columns: auto;
                 border-style: solid;
                 border-width: 3px;
                 border-color: gray;
@@ -120,12 +142,12 @@
         }
 
         .episode_image {
-                width: 40vw;
-                border-radius: 8px;
+                width: 100%;
+                border-radius: 4px;
         }
 
         .episode_card_link {
-                width: 40vw;
+                width: 80%;
                 border-width: 3px;
                 border-style: solid;
                 border-radius: 8px;
@@ -133,11 +155,12 @@
                 color: black;
                 margin-top: 3vh;
                 margin-bottom: 3vh;
+                box-shadow: 0 7px 20px 0 rgba(0, 0, 0, 0.4);
+
         }
 
         .episode_card_link:hover {
-                width: 40vw;
-                border-width: 4px;
+                border-width: 3px;
                 border-style: solid;
                 border-radius: 8px;
                 text-decoration: none;
@@ -152,16 +175,14 @@
         }
 
         .episode_card p {
-                margin-top: 0.75vw;
+                margin-top: 1.5vw;
                 font-family: "OpenSans-Regular";
-                font-size: 2vw;
+                font-size: 3.3vw;
 
         }
 
         .episode_name {
                 margin-left: 1vw;
-                height: 5vw;
-                margin-bottom: 1.5vh;
         }
 
         .episode_number {
@@ -172,19 +193,19 @@
                 position: relative;
                 width: fit-content;
                 margin-left: auto;
-                margin-right: 1vw;
                 margin-top: 10vh;
                 margin-bottom: 1vh;
+                margin-right: 1vw;
         }
 
         .episode_description_text {
-                height: 20vw;
+                height: 30vw;
                 margin-left: 1vw;
         }
 
         .episode_status {
                 margin-left: 1vw;
-                height: 5vw;
+                height: 5.4vw;
         }
 
         div.submenu_button {
@@ -192,13 +213,15 @@
                 color: white;
                 font-family: "OpenSans-Bold";
                 width: 40vw;
-                align-items: center;
-                font-size: 4vw;
+                align-self: center;
+                font-size: 5vw;
                 text-align: center;
                 background-color: black;
-                height: 8vw;
-                justify-content: center;
+                height: 6vw;
+                height: 5vh;
                 display: flex;
+                justify-content: center;
+                align-items: center;
         }
 
         div.change_submenu_buttons {
@@ -212,7 +235,7 @@
 
         #songs_grid_container {
                 display: none;
-                grid-template-columns: auto auto;
+                grid-template-columns: auto;
                 border-style: solid;
                 border-width: 3px;
                 border-color: gray;
@@ -233,19 +256,18 @@
         }
 
         .album_card {
-                width: 37vw;
+                width: 65vw;
                 margin: 1vw;
                 border-style: solid;
                 border-color: black;
                 border-width: 2px;
                 border-radius: 4px;
-                height: 51vw;
+                height: 90vw;
                 box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.4);
 
         }
 
         .album_card:hover {
-                width: 37vw;
                 margin: 1vw;
                 border-style: solid;
                 border-color: black;
@@ -261,19 +283,18 @@
         }
 
         .song_card {
-                width: 37vw;
+                width: 65vw;
                 margin: 1vw;
                 border-style: solid;
                 border-color: black;
                 border-width: 2px;
                 border-radius: 4px;
-                height: 55vw;
+                height: 99vw;
                 box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.4);
 
         }
 
         .song_card:hover {
-                width: 37vw;
                 margin: 1vw;
                 border-style: solid;
                 border-color: black;
@@ -291,65 +312,68 @@
         .song_name {
                 display: flex;
                 justify-content: center;
-                font-size: clamp(5px, 1.8vw, 25px);
+                font-size: clamp(5px, 3vw, 25px);
                 font-family: "OpenSans-Bold";
+                height: 6vw;
         }
 
         .album_name {
                 font-family: "OpenSans-Regular";
                 margin-left: 1vw;
-                height: 5vw;
-                font-size: clamp(5px, 1.5vw, 25px);
+                height: 8vw;
+                font-size: clamp(5px, 3vw, 25px);
+                display: flex;
+                justify-content: center;
         }
 
         .album_release {
                 font-family: "OpenSans-Regular";
-                margin-left: 1vw;
-                font-size: clamp(5px, 1.7vw, 25px);
+                margin-left: 2vw;
+                font-size: clamp(5px, 3.7vw, 25px);
         }
 
         .play_button {
                 background-color: gray;
-                width: 15vw;
+                width: 25vw;
                 color: black;
-                border-radius: 8px;
+                border-radius: 4px;
                 justify-content: center;
                 align-items: center;
                 display: flex;
-                height: 3.5vw;
-                font-size: 2.5vw;
+                height: 6vw;
+                font-size: 4vw;
                 text-decoration: none;
-                margin-right: 1vw;
+                margin-right: 2vw;
                 margin-left: auto;
                 border-style: dotted;
                 border-width: 2px;
                 font-family: "OpenSans-Bold";
-                margin-top: 1vw;
+                margin-top: 2vw;
 
         }
 
         .not_avalible_button {
                 background-color: gray;
-                width: 20vw;
+                width: 40vw;
                 color: black;
-                border-radius: 8px;
+                border-radius: 4px;
                 justify-content: center;
                 align-items: center;
                 display: flex;
-                height: 3.5vw;
-                font-size: 2.5vw;
+                height: 6vw;
+                font-size: 4vw;
                 text-decoration: none;
-                margin-right: 1vw;
+                margin-right: 2vw;
                 margin-left: auto;
                 border-style: dotted;
                 border-width: 2px;
                 font-family: "OpenSans-Bold";
-                margin-top: 1vw;
+                margin-top: 2vw;
         }
 
         #albums_grid_container {
                 display: none;
-                grid-template-columns: auto auto;
+                grid-template-columns: auto;
                 border-style: solid;
                 border-width: 3px;
                 border-color: gray;
@@ -368,19 +392,19 @@
                 background-color: gray;
                 width: 90%;
                 color: black;
-                border-radius: 8px;
+                border-radius: 4px;
                 justify-content: center;
                 align-items: center;
                 display: flex;
-                height: 3.5vw;
-                font-size: 2.5vw;
+                height: 6vw;
+                font-size: 4vw;
                 text-decoration: none;
-                margin-right: 1vw;
+                margin-right: 2vw;
                 margin-left: auto;
                 border-style: dotted;
                 border-width: 2px;
                 font-family: "OpenSans-Bold";
-                margin-top: 1vw;
+                margin-top: 2vw;
 
         }
 
@@ -388,26 +412,34 @@
                 background-color: gray;
                 width: 90%;
                 color: black;
-                border-radius: 8px;
+                border-radius: 4px;
                 justify-content: center;
                 align-items: center;
                 display: flex;
-                height: 3.5vw;
-                font-size: 2.5vw;
+                height: 6vw;
+                font-size: 4vw;
                 text-decoration: none;
-                margin-right: 1vw;
+                margin-right: 2vw;
                 margin-left: auto;
                 border-style: dotted;
                 border-width: 2px;
                 font-family: "OpenSans-Bold";
-                margin-top: 1vw;
+                margin-top: 2vw;
         }
 
         .album_name_in_song_menu {
                 margin-left: 1vw;
-                font-size: clamp(5px, 2vw, 25px);
+                font-size: clamp(5px, 3.7vw, 25px);
                 margin-bottom: 3vw;
-                height: 4vw;
+                height: 8vw;
+        }
+
+        .album_name_in_song_menu {
+                font-family: "OpenSans-Bold";
+                margin-left: 3vw;
+                font-size: clamp(5px, 3vw, 25px);
+                margin-bottom: 3vw;
+                height: 8vw;
                 margin-right: 1vw;
         }
 
@@ -434,15 +466,13 @@
 
         .alter_ego_container img {
                 width: 100%;
-                border-radius: 8px
+                border-radius: 1.6vw 1.6vw 1vw 1vw;
         }
 
         .alter_ego_container {
-                width: 20vw;
-                margin: auto;
-                margin-left: 3vw;
+                width: 25vw;
                 border-style: solid;
-                border-radius: 1.4vw 1.4vw 1vw 1vw;
+                border-radius: 2.3vw 2.3vw 1vw 1vw;
                 box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.4);
         }
 
@@ -470,22 +500,30 @@
                 align-self: center;
                 align-content: center;
                 margin: auto;
-                width: 35vw;
+                width: 70vw;
 
         }
 
         .alter_egos_container {
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-                align-content: center;
-                gap: 5vw;
-                margin-bottom: 2vw;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 15px;
+                justify-items: center;
+                align-items: start;
+                margin-bottom: 3vw;
+        }
+
+        #alter_egos_grid_container .character_background {
+                height: 50vw;
+        }
+
+        .alter_ego_container:last-child:nth-child(odd) {
+                grid-column: span 2;
         }
 
         #families_grid_container {
                 display: none;
-                grid-template-columns: auto auto;
+                grid-template-columns: auto;
                 border-style: solid;
                 border-width: 3px;
                 border-color: gray;
@@ -505,12 +543,12 @@
         }
 
         .family_card {
-                width: 40vw;
+                width: 75vw;
                 border-style: solid;
                 border-color: black;
-                margin-top: 2vw;
                 border-radius: 6px;
-                height: 40vw;
+                height: auto;
+                padding-bottom: 2vw;
         }
 
         .family_members_container {
@@ -521,35 +559,43 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                font-size: 2.2vw;
+                font-size: 5vw;
                 color: black;
         }
 
         .family_card_link {
                 text-decoration: none;
                 color: black;
+                margin-top: 4vw;
         }
 
         .family_number {
-                font-size: 1.8vw;
+                font-size: 4vw;
                 margin-left: 1.2vw;
         }
 
         .family_members_container {
                 display: grid;
-                grid-template-columns: auto auto auto;
-                margin-left: 2vw;
+                grid-template-columns: auto auto;
                 margin-right: auto;
-                font-size: 1.2vW;
+                font-size: 3vW;
         }
 
         .family_member {
-                margin-top: 1vw;
+                margin-top: 3vw;
+                justify-content: center;
+                align-items: center;
+                display: flex;
+        }
+
+        .family_members_container .family_member:last-child:nth-child(odd) {
+                grid-column: span 2;
+                text-align: center;
         }
 
         #games_grid_container {
                 display: none;
-                grid-template-columns: auto auto;
+                grid-template-columns: auto;
                 border-style: solid;
                 border-width: 3px;
                 border-color: gray;
@@ -565,10 +611,10 @@
         }
 
         .game_card {
-                width: 35vw;
+                width: 65vw;
                 border: 3px solid black;
                 border-radius: 10px;
-                margin-top: 2vw;
+                margin-top: 4vw;
                 box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.6);
         }
 
@@ -579,24 +625,24 @@
 
         .game_image {
                 width: 100%;
-                height: 35vw;
-                border-radius: 7px;
+                height: 65vw;
+                border-radius: 8px;
         }
 
         .platform_icon img {
-                width: 5vw;
+                width: 10vw;
         }
 
         .platform_icon {
-                width: 5vw;
+                width: 10vw;
         }
 
         .platforms_grid {
                 display: flex;
                 justify-content: center;
-                column-gap: 3vw;
+                column-gap: 4vw;
                 flex-wrap: wrap;
-                height: 12vw;
+                height: fit-content;
                 margin-top: 1vw;
                 /* allow wrapping to form multiple rows/columns */
         }
@@ -617,7 +663,7 @@
         }
 
         .game_name {
-                font-size: 1.6vw;
+                font-size: 3.2vw;
                 display: flex;
                 justify-content: center;
                 margin-bottom: 1vw;
@@ -625,14 +671,14 @@
         }
 
         .game_release_date {
-                margin-left: 1vw;
-                font-size: 1.5vw;
+                margin-left: 2vw;
+                font-size: 3.5vw;
                 font-family: OpenSans-Regular;
         }
 
         #specials_grid_container {
                 display: none;
-                grid-template-rows: auto auto auto;
+                grid-template-columns: auto;
                 border-style: solid;
                 border-width: 3px;
                 border-color: gray;
@@ -642,7 +688,9 @@
                 margin-top: 12px;
                 justify-content: center;
                 align-items: center;
-                gap: 1vw;
+                column-gap: 5vw;
+                row-gap: 1.5vw;
+                padding-bottom: 2vw;
         }
 
         .special_poster {
@@ -656,40 +704,32 @@
                 border-style: solid;
                 border-color: black;
                 border-radius: 4px;
-                width: 25vw;
-                height: 80vw;
-
-        }
-
-        .special_grid3 .special_card {
-                border-width: 3px;
-                border-style: solid;
-                border-color: black;
-                border-radius: 4px;
-                width: 25vw;
-                height: 76vw;
+                width: 100%;
+                height: fit-content;
 
         }
 
         .special_grid2 {
-                display: flex;
+                display: grid;
                 justify-content: center;
                 column-gap: 10vw;
                 margin-top: 2vw;
-                width: 92%;
+                row-gap: 5vw;
+                width: 100%;
         }
 
         .special_grid3 {
-                display: flex;
+                display: grid;
                 justify-content: center;
                 column-gap: 10vw;
                 margin-top: 2vw;
+                row-gap: 5vw;
                 margin-bottom: 2vw;
-                width: 92%;
+                width: 100%;
         }
 
         .special_card_link {
-                width: 20vw;
+                width: 60vw;
                 color: black;
                 text-decoration: none;
         }
@@ -697,8 +737,8 @@
         .special_name {
                 display: flex;
                 justify-content: center;
-                font-size: 1.6vw;
-                margin-left: 0.5vw;
+                font-size: 2.7vw;
+                margin-left: 0.1vw;
                 font-family: OpenSans-Bold;
         }
 
@@ -710,10 +750,9 @@
 
         .special_description {
                 margin-left: 0.5vw;
-                margin-right: 0.vw;
                 margin-top: 1vw;
-                font-size: 2vw;
+                margin-bottom: 2vw;
+                font-size: 4vw;
                 font-family: OpenSans-Regular;
         }
-
 }

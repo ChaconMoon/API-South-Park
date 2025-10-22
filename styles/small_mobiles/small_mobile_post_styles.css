@@ -1,4 +1,4 @@
-@media screen and (min-width: 641px) and (max-width: 1023px) {
+@media screen and (max-width: 375px) {
         #blog_post_containers {
                 display: grid;
                 border-style: solid;
@@ -18,14 +18,14 @@
         #blog_post_containers p,
         ul {
                 width: 80vw;
-                font-size: 2.5vw;
+                font-size: 3.5vw;
                 font-family: "OpenSans-Regular";
 
         }
 
         #blog_post_containers p {
-                line-height: 4vw;
-                margin-left: 5vw;
+                line-height: 5.5vw;
+                margin-left: 7vw;
                 margin-bottom: 1vw;
         }
 
@@ -35,7 +35,7 @@
 
         #blog_post_containers li {
                 margin-top: 7px;
-                margin-left: 4vw;
+                margin-left: 2vw;
         }
 
         .header_image {
@@ -60,8 +60,8 @@
         .blog_subtitle {
                 display: block;
                 margin: 2vw;
-                width: fit-content;
-                font-size: 3vw;
+                margin-left: 3vw;
+                font-size: 4vw;
                 font-family: "OpenSans-Bold";
         }
 
@@ -71,6 +71,6 @@
 
         .body_image {
                 margin: 0 auto;
-                width: 80vw;
+                width: 70vw;
         }
 }

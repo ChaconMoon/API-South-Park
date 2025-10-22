@@ -1,0 +1,106 @@
+@media screen and (min-width: 1024px) {
+        h1.main_title {
+                margin-top: 5vh;
+                text-align: center;
+                font-family: 'Waffle-Soft';
+                font-size: xx-large;
+        }
+
+        h2.developer {
+                margin-top: 3vh;
+                text-align: center;
+                margin-bottom: 3vh;
+                font-family: "OpenSans-Bold";
+        }
+
+        footer {
+                background-color: #a5a5a5;
+                width: 100%;
+                /*! height: 25vh; */
+                border-radius: 21px 21px 0px 0px;
+                display: flex;
+                grid-template-columns: auto auto;
+                font-family: "OpenSans-Bold";
+                text-align: center;
+                gap: 10vw;
+                justify-content: center;
+                margin-top: 0;
+        }
+
+        #footer_what_is_this p {
+                font-size: 25px;
+                font-family: "OpenSans-Regular";
+        }
+
+        #footer_what_is_this {
+                width: 30vw;
+        }
+
+        #licence {
+                font-size: 13;
+                width: 50vw;
+        }
+
+        #licence p {
+                font-size: 20px;
+                font-family: "OpenSans-Regular";
+        }
+
+        nav.navegation_menu {
+                background-color: #d9d9d9;
+                height: 5vh;
+                width: 100%;
+                display: grid;
+                grid-template-columns: auto auto auto auto;
+                justify-items: center;
+                align-items: start;
+        }
+
+        a.menu_item {
+                background-color: #a5a5a5;
+                text-align: center;
+                text-decoration: none;
+                width: 20vw;
+                height: 5vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 3vw;
+                color: white;
+        }
+
+        #logo {
+                height: 5vh;
+        }
+
+        a.menu_logo {
+                background-color: black;
+                text-align: center;
+                text-decoration: none;
+                width: 10vw;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+        }
+
+        div.web_menu {
+                display: flex;
+                justify-content: center;
+                gap: 20px;
+                /* Ajusta este valor para cambiar el espacio entre elementos */
+                align-items: center;
+        }
+
+        div.menu_button {
+                border-radius: 16px;
+                color: white;
+                font-family: "OpenSans-Bold";
+                width: 20vw;
+                align-self: center;
+                font-size: 3vw;
+                text-align: center;
+
+                text-decoration: none;
+        }
+}

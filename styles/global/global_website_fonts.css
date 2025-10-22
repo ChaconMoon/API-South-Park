@@ -1,0 +1,19 @@
+@font-face {
+        font-family: "Waffle-Soft";
+        src: url(/fonts/Waffle-Soft.otf);
+}
+
+@font-face {
+        font-family: "OpenSans-Bold";
+        src: url(/fonts/OpenSans-Bold.ttf);
+}
+
+@font-face {
+        font-family: "OpenSans-ExtraBold";
+        src: url(/fonts/OpenSans-ExtraBold.ttf);
+}
+
+@font-face {
+        font-family: "OpenSans-Regular";
+        src: url(/fonts/OpenSans-Regular.ttf);
+}

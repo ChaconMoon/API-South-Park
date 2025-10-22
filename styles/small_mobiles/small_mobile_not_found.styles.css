@@ -1,8 +1,4 @@
-/**
-Tablets Version
-**/
-@media screen and (min-width: 641px) and (max-width: 1023px) {
-
+@media screen and (max-width: 375px) {
         #Not_Found_Block {
                 display: block;
                 border-style: solid;
@@ -10,7 +6,7 @@ Tablets Version
                 border-color: black;
                 border-radius: 10px;
                 margin: 5vw;
-                margin-bottom: 4vw;
+                margin-bottom: 8vw;
                 box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.4);
                 margin-top: 12px;
                 justify-content: center;
@@ -34,9 +30,9 @@ Tablets Version
                 margin-left: auto;
                 margin-right: auto;
                 width: fit-content;
-                font-size: 4vw;
+                font-size: 5vw;
                 font-family: "OpenSans-Bold";
-                width: 80vw;
+                width: 70vw;
                 text-align: center;
         }
 
@@ -49,6 +45,7 @@ Tablets Version
                 width: fit-content;
                 margin-left: auto;
                 margin-right: auto;
+
         }
 
         #Not_Found_Block a {
@@ -57,16 +54,14 @@ Tablets Version
                 margin-right: auto;
                 margin-left: auto;
                 width: 35vw;
-                font-size: 4vw;
+                font-size: 5vw;
         }
 
         .Index_Header {
                 margin-left: auto;
                 margin-right: auto;
                 text-align: center;
-                font-size: 4vw;
+                width: 65vw;
+                font-size: 5vw;
         }
-
-
-
 }

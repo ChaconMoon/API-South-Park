@@ -1,0 +1,105 @@
+@media screen and (min-width: 376px) and (max-width: 640px) {
+        #blog_post_containers {
+                display: grid;
+                border-style: solid;
+                border-width: 3px;
+                border-color: gray;
+                border-radius: 10px;
+                margin-left: 5vw;
+                margin-right: 5vw;
+                ;
+                margin-bottom: 10vw;
+                box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.4);
+                margin-top: 12px;
+                justify-content: center;
+                gap: 1vw;
+        }
+
+        #blog_post_containers p,
+        ul {
+                width: 80vw;
+                font-size: 3.5vw;
+                font-family: "OpenSans-Regular";
+
+        }
+
+        #blog_post_containers p {
+                line-height: 5.5vw;
+                margin-left: 5vw;
+                margin-bottom: 1vw;
+        }
+
+        #blog_post_containers ul {
+                list-style-type: disclosure-closed
+        }
+
+        #blog_post_containers li {
+                margin-top: 7px;
+        }
+
+        .header_image {
+                display: block;
+                align-self: center;
+                padding-top: 2vw;
+                margin-left: auto;
+                margin-right: auto;
+                width: 80vw;
+
+        }
+
+        .blog_entry_title {
+                display: block;
+                margin: auto;
+                width: fit-content;
+                font-size: 6vw;
+                font-family: "OpenSans-Bold";
+                text-align: center;
+        }
+
+        .blog_subtitle {
+                display: block;
+                margin: 2vw;
+                width: fit-content;
+                font-size: 4vw;
+                font-family: "OpenSans-Bold";
+        }
+
+        #blog_post_containers:last-child {
+                padding-bottom: 2vw;
+        }
+
+        #blog_grid_links {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 2vw;
+
+
+        }
+
+        .blog_link {
+                display: flex;
+                background-color: grey;
+                color: white;
+                font-size: 2vw;
+                text-decoration: none;
+                width: 3vw;
+                height: 3vw;
+                justify-content: center;
+                text-align: center;
+                align-items: center;
+                margin-bottom: 1vw;
+        }
+
+        .body_image {
+                margin: 0 auto;
+                width: 80vw;
+        }
+
+        .blog_title {
+                font-size: 4vw;
+                font-family: "OpenSans-Bold";
+                margin-left: 2vw;
+        }
+
+}

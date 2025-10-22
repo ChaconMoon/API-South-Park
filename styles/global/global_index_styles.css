@@ -24,3 +24,7 @@ Global Index styles
 .footer_link {
         color: blue;
 }
+
+* {
+        margin: 0;
+}

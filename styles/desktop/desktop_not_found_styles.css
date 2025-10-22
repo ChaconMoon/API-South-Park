@@ -1,0 +1,66 @@
+@media screen and (min-width: 1024px) {
+        #Not_Found_Block {
+                display: block;
+                border-style: solid;
+                border-width: 4px;
+                border-color: black;
+                border-radius: 10px;
+                margin: 5vw;
+                margin-bottom: 2vw;
+                box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.4);
+                margin-top: 12px;
+                justify-content: center;
+                align-items: center;
+                column-gap: 8vw;
+                padding-bottom: 2vw;
+        }
+
+        #Not_Found_Image {
+                display: flex;
+                align-content: center;
+                justify-content: center;
+                width: 35vw;
+                margin-left: auto;
+                margin-top: 2vw;
+                margin-right: auto;
+                margin-bottom: 1vw;
+        }
+
+        .Subtitle_404 {
+                margin-left: auto;
+                margin-right: auto;
+                width: fit-content;
+                font-size: 2vw;
+                font-family: "OpenSans-Bold";
+                width: 35vw;
+                text-align: center;
+        }
+
+        #Not_Found_Block li {
+                list-style-type: none;
+
+        }
+
+        #Not_Found_Block ul {
+                width: fit-content;
+                margin-left: auto;
+                margin-right: auto;
+        }
+
+        #Not_Found_Block a {
+                display: block;
+                color: black;
+                margin-right: auto;
+                margin-left: auto;
+                width: 35vw;
+                font-size: 1.5vw;
+                margin-top: 0.5vw;
+        }
+
+        .Index_Header {
+                margin-left: auto;
+                margin-right: auto;
+                width: 35vw;
+                font-size: 1.5vw;
+        }
+}

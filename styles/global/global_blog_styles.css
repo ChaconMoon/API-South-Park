@@ -24,3 +24,7 @@ Global Blog styles
 .footer_link {
         color: blue;
 }
+
+* {
+        margin: 0;
+}

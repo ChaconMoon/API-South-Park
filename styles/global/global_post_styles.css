@@ -2,19 +2,19 @@
 Global Blog styles
 */
 #menu_button_1 {
-        background-color: #807f68;
+        background-color: #b465b6;
 }
 
 #menu_button_2 {
-        background-color: #5f65a9;
+        background-color: #f01f43;
 }
 
 #menu_button_3 {
-        background-color: #c3192e;
+        background-color: #7ca92e;
 }
 
 #menu_button_4 {
-        background-color: #b469ab;
+        background-color: #393453;
 }
 
 .internal_button {
@@ -23,4 +23,8 @@ Global Blog styles
 
 .footer_link {
         color: blue;
+}
+
+* {
+        margin: 0;
 }
