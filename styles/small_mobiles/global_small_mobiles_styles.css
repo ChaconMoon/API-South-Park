@@ -1,0 +1,125 @@
+/**
+        CSS File Written By Carlos Chacón
+        
+        Give Style to the Global elements in the page on Small Mobile Devices
+**/
+@media screen and (max-width: 375px) {
+        h1.main_title {
+                text-align: center;
+                font-family: 'Waffle-Soft';
+                font-size: xx-large;
+                margin: 4vh 5vw 0 5vw;
+        }
+
+        h2.developer {
+                margin-top: 3vh;
+                text-align: center;
+                margin-bottom: 3vh;
+                font-family: "OpenSans-Bold";
+                font-size: smaller;
+        }
+
+        nav.navegation_menu {
+                background-color: #d9d9d9;
+                height: 4vh;
+                width: 100%;
+                display: grid;
+                grid-template-columns: auto auto auto auto;
+                justify-items: center;
+                align-items: start;
+
+        }
+
+        a.menu_item {
+                background-color: #a5a5a5;
+                text-align: center;
+                text-decoration: none;
+                height: 4vh;
+                width: 10vw;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 4vw;
+                color: white;
+        }
+
+        a.menu_logo {
+                background-color: black;
+                text-align: center;
+                text-decoration: none;
+                width: 10vw;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-left: 15px;
+        }
+
+        #logo {
+                height: 4vh;
+
+        }
+
+        div.web_menu {
+                display: grid;
+                grid-template-columns: auto auto;
+                align-items: center;
+                justify-items: center;
+        }
+
+        div.web_menu {
+                display: grid;
+                grid-template-columns: auto auto;
+                align-items: center;
+                justify-items: center;
+        }
+
+        div.menu_button {
+                border-radius: 16px;
+                color: white;
+                font-family: "OpenSans-Bold";
+                width: 30vw;
+                align-self: center;
+                font-size: 5vw;
+                margin-bottom: 3.5vh;
+                text-align: center;
+                text-decoration: none;
+
+                height: 15vw;
+                justify-content: center;
+                display: flex;
+                align-items: center;
+        }
+
+        footer {
+                background-color: #a5a5a5;
+                width: 100%;
+                /*! height: 35vh; */
+                border-radius: 21px 21px 0px 0px;
+                display: grid;
+                font-family: "OpenSans-Bold";
+                text-align: center;
+                gap: 10vw;
+                justify-content: center;
+                margin-top: 0;
+        }
+
+        #footer_what_is_this p {
+                font-size: 3.5vw;
+                font-family: "OpenSans-Regular";
+        }
+
+        #footer_what_is_this {
+                width: 80vw;
+        }
+
+        #licence {
+                width: 80vw;
+                margin-bottom: 5vw;
+        }
+
+        #licence p {
+                font-size: 13px;
+                font-family: "OpenSans-Regular";
+        }
+}
