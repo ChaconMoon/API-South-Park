@@ -4,11 +4,16 @@
 <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         {{redict_script | safe}}
-        <link rel="stylesheet" href="/styles/style.css">
-        <link rel="stylesheet" href="/styles/style_desktop.css">
-        <link rel="stylesheet" href="/styles/style_tablet.css">
-        <link rel="stylesheet" href="/styles/style_mobile.css">
-        <link rel="stylesheet" href="/styles/style_small_mobile.css">
+        <link rel="stylesheet" href="/styles/global/global_post_styles.css">
+        <link rel="stylesheet" href="/styles/global/global_website_fonts.css">
+        <link rel="stylesheet" href="/styles/desktop/global_desktop_styles.css">
+        <link rel="stylesheet" href="/styles/desktop/desktop_blog_styles.css">
+        <link rel="stylesheet" href="/styles/tablet/global_tablet_styles.css">
+        <link rel="stylesheet" href="/styles/tablet/tablet_blog_styles.css">
+        <link rel="stylesheet" href="/styles/mobile/mobile_blog_styles.css">
+        <link rel="stylesheet" href="/styles/mobile/global_mobile_styles.css">
+        <link rel="stylesheet" href="/styles/small_mobiles/global_small_mobiles_styles.css">
+        <link rel="stylesheet" href="/styles/small_mobiles/small_mobile_blog_styles.css">
         <title>
                 South Park API (Develop Version)
         </title>
@@ -61,27 +66,7 @@
                         collection of information about the TV Show South Park
                 </p>
         </div>
-        <div id="licence">
-                <h1>Licence</h1>
-                <p>
-                        This API was created by Carlos Chacón <a href="https://github.com/ChaconMoon"
-                                class="footer_link">[https://github.com/ChaconMoon]</a> under a GPL 3.0
-                        license
-                        <a href="https://www.gnu.org/licenses/gpl-3.0.html"
-                                class="footer_link">[https://www.gnu.org/licenses/gpl-3.0.html]</a>.
-
-                        All data for the API has been obtained directly from the website: <a
-                                href="https://southpark.fandom.com"
-                                class="footer_link">[https://southpark.fandom.com]></a>
-                        under a CC BY-SA license <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"
-                                class="footer_link">[https://creativecommons.org/licenses/by-sa/4.0/deed.es]</a>.
-                        Therefore,
-                        this API can be forked, modified, and distributed as long as the authorship of both the data and
-                        the API is properly attributed.
-                        The characters, episodes, and the South Park brand are owned by Viacom Inc. and South Park
-                        Digital Studios.
-                </p>
-        </div>
+        {{footer | safe}}
 </footer>
 
 </html>

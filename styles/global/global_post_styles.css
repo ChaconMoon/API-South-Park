@@ -1,0 +1,32 @@
+/**
+        CSS File Written By Carlos Chacón
+        
+        Give Style to the Global elements in the Post Page
+**/
+#menu_button_1 {
+        background-color: #b465b6;
+}
+
+#menu_button_2 {
+        background-color: #f01f43;
+}
+
+#menu_button_3 {
+        background-color: #7ca92e;
+}
+
+#menu_button_4 {
+        background-color: #393453;
+}
+
+.internal_button {
+        cursor: pointer;
+}
+
+.footer_link {
+        color: blue;
+}
+
+* {
+        margin: 0;
+}
