@@ -155,6 +155,7 @@ async def custom_404_handler(request: Request, exc):
                 "image_404": f'<img id="Not_Found_Image" src="{get_404_image()}">',
                 "footer": create_footer(),
             },
+            status_code=404,
         )
 
 
