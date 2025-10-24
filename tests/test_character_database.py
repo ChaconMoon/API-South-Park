@@ -16,7 +16,7 @@ def test_character_database_correct():
             "birthday": "September 11th",
             "age": 9,
             "religion": ["Roman Catholic", "Blaintology (Temporarily)"],
-            "images": ["http://localhost:8000/img/characters/serie/Butters_Stotch.png"],
+            "images": ["http://localhost:8000/img/characters/show/Butters_Stotch.png"],
             "first_apperance": {
                 "name": "Clubhouses",
                 "url": "http://localhost:8000/episode/25",
