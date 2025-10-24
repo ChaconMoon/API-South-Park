@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict aTlP5ZrFdWGrw2kve912BH3J8na044wjhKIV6fWvPchSWHlYLk1quTmYtnPbgGB
+\restrict PfvQF440UxYBok4wcuJuOknR9Iyic2RZVeK1gHx5dclvLUjnnyYFLAQEggPKtTk
 
 -- Dumped from database version 15.14 (Debian 15.14-1.pgdg13+1)
 -- Dumped by pg_dump version 15.14 (Debian 15.14-1.pgdg13+1)
@@ -601,7 +601,6 @@ COPY public.characters (id, name, friend_group, family, birthday, age, religion,
 47	Grandma Stotch	\N	34	\N	\N	\N	228	{/img/characters/serie/Grandma_Stotch.png}	\N
 48	Linda Stotch	\N	34	\N	\N	{"Roman Catholic"}	64	{/img/characters/serie/Linda_Stotch.png}	\N
 49	Stephen Willis Stotch	\N	34	\N	\N	{"Roman Catholic"}	17	{/img/characters/serie/Stephen_Stotch.png}	\N
-50	Karen McCormick	\N	4	\N	6	{"Roman Catholic"}	129	{/img/characters/serie/Karol_McCormick.png}	\N
 51	Richard Tweak	\N	48	\N	\N	{Buddhist,"Roman Catholic (Formerly)","Atheist (Formerly)"}	30	{/img/characters/serie/Richard_Tweak.png}	\N
 52	Tweek Tweak	\N	48	\N	10	{Buddhist,"Roman Catholic (Formerly)","Atheist (Formerly)"}	30	{/img/characters/serie/Tweek_Tweak.png}	\N
 53	Stripe	\N	43	\N	\N	\N	36	{/img/characters/serie/Stripe.png}	\N
@@ -646,6 +645,7 @@ COPY public.characters (id, name, friend_group, family, birthday, age, religion,
 94	Mr. Cotswolds	\N	12	\N	\N	\N	43	{/img/characters/serie/Mr_Cotswolds.png}	\N
 95	Nichole Daniels	\N	13	\N	10	{"Roman Catholic"}	230	{/img/characters/serie/Nichole_Daniels.png}	\N
 74	Rosie O'Donnell	\N	6	March 21st	63	{"Roman Catholic"}	60	{/img/characters/serie/Rosie_Odonnell.png}	t
+50	Karen McCormick	\N	4	\N	6	{"Roman Catholic"}	129	{/img/characters/serie/Karen_McCormick.png}	\N
 97	William Daniels	\N	13	\N	\N	\N	230	{/img/characters/serie/William_Daniels.png}	\N
 98	Rex	\N	14	\N	\N	\N	4	{/img/characters/serie/Rex.png}	\N
 99	Clyde Donovan	\N	14	April 10th	10	{"Roman Catholic"}	2	{/img/characters/serie/Clyde_Donovan.png}	\N
@@ -669,8 +669,6 @@ COPY public.characters (id, name, friend_group, family, birthday, age, religion,
 117	Cornwallis Hankey	\N	19	\N	\N	\N	65	{/img/characters/serie/Cornwallis_Hankey.png}	\N
 118	Autumn Hankey	\N	19	\N	\N	\N	65	{/img/characters/serie/Autumn_Hankey.png}	\N
 119	Mr. Hankey	\N	19	\N	\N	\N	9	{/img/characters/serie/Mr_Hankey.png}	\N
-120	Chad Handler	\N	21	\N	10	{Judaism}	113	{/img/characters/serie/Chad_Harrison.png}	\N
-121	Louis Handler	\N	21	\N	10	{Judaism}	42	{/img/characters/serie/Louse_Handler.png}	\N
 122	Mrs. Handler	\N	21	\N	\N	{Judaism}	22	{/img/characters/serie/Mrs_Handler.png}	\N
 123	Mr. Handler	\N	21	\N	\N	{Judaism}	66	{/img/characters/serie/Mr_Handler.png}	\N
 124	Amanda Harrison	\N	20	\N	\N	{Mormon}	108	{/img/characters/serie/Amanda_Harrison.png}	\N
@@ -699,6 +697,7 @@ COPY public.characters (id, name, friend_group, family, birthday, age, religion,
 147	Thomas McElroy	\N	27	\N	\N	\N	34	{/img/characters/serie/Thomas_McElroy.png}	\N
 148	Nellie McElroy	\N	27	\N	\N	\N	34	{/img/characters/serie/Nellie_McElroy.png}	\N
 149	Mr. McArthur	\N	23	\N	\N	{"Roman Catholic"}	184	{/img/characters/serie/Mr_McArthur.png}	\N
+121	Louis Handler	\N	21	\N	10	{Judaism}	42	{/img/characters/serie/Louis_Handler.png}	\N
 150	Moira McArthur	\N	23	\N	\N	{"Roman Catholic"}	177	{/img/characters/serie/Moira_McArthur.png}	\N
 151	Red McArthur	\N	23	\N	10	{"Roman Catholic"}	10	{/img/characters/serie/Red_McArthur.png}	\N
 152	Nelly's Mom	\N	28	\N	\N	{"Roman Catholic"}	240	{/img/characters/serie/Nelly_Dad.png}	\N
@@ -873,7 +872,6 @@ COPY public.characters (id, name, friend_group, family, birthday, age, religion,
 343	Blinky's Airsoft Referee	\N	\N	\N	\N	\N	314	{/img/characters/serie/Blinky's_Airsoft_Referee.png}	f
 344	Blockbuster Employee's Ghost	\N	\N	\N	\N	\N	235	{/img/characters/serie/Blockbuster_Employee's_Ghost.png}	f
 345	Blonde-Haired Girl ("Erection Day")	\N	\N	\N	\N	\N	132	{/img/characters/serie/Blonde-Haired_Girl.png}	f
-346	Bloods (Gang)	\N	\N	\N	\N	\N	98	{/img/characters/serie/Blonde-The_Bloods.png}	f
 347	Bloody Sunday: The Dangers of Memeing narrator	\N	\N	\N	\N	\N	226	{/img/characters/serie/Bloody_Sunday_The_Dangers_of_Memeing_narrator.png}	f
 350	Bob Ferrin	\N	\N	\N	\N	\N	78	{/img/characters/serie/Bob_Ferrin.png}	f
 351	Bob Johnson	\N	\N	\N	\N	\N	2	{/img/characters/serie/Bob_Johnson.png}	f
@@ -890,6 +888,7 @@ COPY public.characters (id, name, friend_group, family, birthday, age, religion,
 366	Quest for Ratings	\N	\N	\N	\N	\N	122	{/img/characters/serie/Boy_with_Blond_Hair.png}	f
 367	Boy with Brown Hair	\N	\N	\N	\N	\N	223	{/img/characters/serie/Boy_with_Brown_Hair.png}	f
 368	Boy with Brown Hair and Red Shirt	\N	\N	\N	\N	\N	122	{/img/characters/serie/Boy_with_Brown_Hair_and_Red_Shirt.png}	f
+346	Bloods (Gang)	\N	\N	\N	\N	\N	98	{/img/characters/serie/The_Bloods.png}	f
 369	Boy with C Cap	\N	\N	\N	\N	\N	34	{/img/characters/serie/Boy_with_C_Cap.png}	f
 370	Boy with Dark Green Shirt and Glasses	\N	\N	\N	\N	\N	36	{/img/characters/serie/Boy_with_Dark_Green_Shirt_and_Glasses.png}	f
 371	Boy with Earmuffs	\N	\N	\N	\N	\N	36	{/img/characters/serie/Boy_with_Earmuffs.png}	f
@@ -967,7 +966,6 @@ COPY public.characters (id, name, friend_group, family, birthday, age, religion,
 418	Calvin	\N	61	\N	8	\N	31	{/img/characters/serie/Calvin.png}	f
 417	Cajun Shrimp Merchant	\N	\N	\N	\N	\N	206	{/img/characters/serie/Cajun_Shrimp_Merchant.png}	f
 416	Caitlyn Jenner	\N	\N	October 28th	75	{Christianity}	197	{/img/characters/serie/Caitlyn_Jenner.png}	t
-415	Caine	\N	\N	\N	\N	\N	184	{/img/characters/serie/Caine}	f
 414	Cable Company President	\N	\N	\N	\N	\N	239	{/img/characters/serie/Cable_Company_President.png}	f
 413	Cab Driver ("Erection Day")	\N	\N	\N	\N	\N	54	{/img/characters/serie/Cab_Driver.png}	f
 426	Canadian Judge	\N	\N	\N	\N	\N	14	{/img/characters/serie/Canadian_Judge.png}	f
@@ -986,6 +984,7 @@ COPY public.characters (id, name, friend_group, family, birthday, age, religion,
 459	Chamber of Commerce Representative	\N	\N	\N	\N	\N	123	{/img/characters/serie/Chamber_of_Commerce_Representative.png}	f
 458	Chad	\N	\N	\N	\N	\N	63	{/img/characters/serie/Chad.png}	f
 457	Cesar Millan	\N	\N	August 27th	55	\N	146	{/img/characters/serie/Cesar_Milan.png}	t
+415	Caine	\N	\N	\N	\N	\N	184	{/img/characters/serie/Caine.png}	f
 456	Celine Dion	\N	33	March 30th	57	{"Roman Catholic"}	14	{/img/characters/serie/Celine_Dion.png}	t
 455	Cee Lo Green	\N	\N	May 30th	51	{Christian}	231	{/img/characters/serie/Cee_Lo_Green.png}	t
 454	Catholic Cleanup Crew	\N	\N	\N	\N	\N	289	{/img/characters/serie/Catholic_Cleanup_Crew.png}	f
@@ -1077,7 +1076,6 @@ COPY public.characters (id, name, friend_group, family, birthday, age, religion,
 517	Cody	\N	\N	\N	\N	\N	242	{/img/characters/serie/Cody.png}	f
 516	Cock Magic Promoter	\N	\N	\N	\N	\N	255	{/img/characters/serie/Cock_Magic_Promoter.png}	f
 515	Cock Magic Ring Announcer	\N	\N	\N	\N	\N	255	{/img/characters/serie/Cock_Magic_Announcer.png}	f
-514	Coach Miles	\N	\N	\N	\N	\N	241	{/img/characters/Coach_Miles.png}	f
 540	Cthulhu	\N	\N	\N	\N	{"Cult of Cthulhu"}	206	{/img/characters/serie/Cthulu.png}	\N
 539	Crips (Gang)	\N	\N	\N	\N	\N	98	{/img/characters/serie/Crips.png}	\N
 538	Crippled Girl with Brown Hair	\N	\N	\N	\N	\N	113	{/img/characters/serie/Crippled_Girl_with_Brown_Hair.png}	\N
@@ -1094,6 +1092,8 @@ COPY public.characters (id, name, friend_group, family, birthday, age, religion,
 532	Cowboy Doctors	\N	\N	\N	\N	\N	300	{/img/characters/serie/Cowboy_Doctors.png}	\N
 531	Count Ravyncrowe	\N	\N	\N	\N	\N	181	{/img/characters/serie/Rayvencrowe.png}	\N
 542	Cupid Me	\N	\N	\N	\N	\N	230	{/img/characters/serie/Cupid_Me.png,/img/characters/serie/Cupid_Ye.png}	\N
+120	Chad Handler	\N	21	\N	10	{Judaism}	113	{/img/characters/serie/Chad_Handler.png}	\N
+514	Coach Miles	\N	\N	\N	\N	\N	241	{/img/characters/serie/Coach_Miles.png}	f
 \.
 
 
@@ -1751,5 +1751,5 @@ ALTER TABLE ONLY public.alter_ego
 -- PostgreSQL database dump complete
 --
 
-\unrestrict aTlP5ZrFdWGrw2kve912BH3J8na044wjhKIV6fWvPchSWHlYLk1quTmYtnPbgGB
+\unrestrict PfvQF440UxYBok4wcuJuOknR9Iyic2RZVeK1gHx5dclvLUjnnyYFLAQEggPKtTk
 
