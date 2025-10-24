@@ -14,7 +14,7 @@ def test_alterego_database_correct():
             "name": "Mysterion",
             "images": [
                 "http://localhost:8000/img/alteregos/phone_destroyer/Mysterion_PhoneDestroyer.png",
-                "http://localhost:8000/img/alteregos/serie/Mysterion.png",
+                "http://localhost:8000/img/alteregos/show/Mysterion.png",
             ],
         },
         "metadata": {"total_alteregos_of_this_character_in_database": 5},
