@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict LzhX3ZO5RD3gz5BHYweeGWeVNMMbGg8oGEQgVWbYlIgfyhvgYBbakWwhMKraS0l
+\restrict aTlP5ZrFdWGrw2kve912BH3J8na044wjhKIV6fWvPchSWHlYLk1quTmYtnPbgGB
 
 -- Dumped from database version 15.14 (Debian 15.14-1.pgdg13+1)
 -- Dumped by pg_dump version 15.14 (Debian 15.14-1.pgdg13+1)
@@ -1053,18 +1053,47 @@ COPY public.characters (id, name, friend_group, family, birthday, age, religion,
 492	Chris Holt	\N	\N	\N	\N	\N	73	{/img/characters/serie/Chris_Holt.png}	f
 491	Chris Hansen	\N	\N	September 13th	66	\N	161	{/img/characters/serie/Chris_Hansen.png}	t
 501	Christophe	\N	66	\N	9	{Misotheism}	39	{/img/characters/serie/Christophe_Mole.png}	f
-515	Clyde Frog	\N	\N	\N	\N	\N	13	{/img/characters/serie/Clyde_Frog.png}	f
-514	Clucky	\N	\N	\N	\N	\N	225	{/img/characters/serie/Clucky.png}	f
-513	Cliff Barackman	\N	\N	November 28th	54	\N	227	{/img/characters/serie/Cliff_Barackman.png}	t
-512	Cleo Broflovski	\N	\N	\N	71	{Judaism}	41	{/img/characters/serie/Cleo_Broflovski.png}	f
-511	Classi	\N	\N	\N	\N	\N	267	{/img/characters/serie/Classi.png}	f
-510	Clark	\N	\N	\N	11	\N	132	{/img/characters/serie/Clark_Erection_Day.png}	f
 507	Citizen with Blond Hair and Blue Shirt	\N	\N	\N	\N	\N	6	{/img/characters/serie/Guy_With_Blonde_Hair.png}	f
 506	Cindy McCain	\N	67	May 20th	71	\N	179	{/img/characters/serie/Cindy_McCain.png}	t
 505	Cinderella	\N	\N	\N	\N	\N	163	{/img/characters/serie/Cinderella.png}	t
 504	Chuck E. Cheese	\N	\N	\N	\N	\N	282	{/img/characters/serie/Chuck_E_Cheese.png}	t
-503	Christopher Wallace (Biggie Smalls)	\N	\N	May 21th	24	\N	150	{/img/characters/serie/Bigee_Smalls.png}	t
 502	Christopher Reeve	\N	\N	September 25th	52	{"Unitarian Universalist"}	98	{/img/characters/serie/Christopher_Reeve.png}	t
+508	Clark	\N	\N	\N	11	\N	132	{/img/characters/serie/Clark_Erection_Day.png}	f
+509	Classi	\N	\N	\N	\N	\N	267	{/img/characters/serie/Classi.png}	f
+510	Cleo Broflovski	\N	\N	\N	71	{Judaism}	41	{/img/characters/serie/Cleo_Broflovski.png}	f
+511	Cliff Barackman	\N	\N	November 28th	54	\N	227	{/img/characters/serie/Cliff_Barackman.png}	t
+512	Clucky	\N	\N	\N	\N	\N	225	{/img/characters/serie/Clucky.png}	f
+513	Clyde Frog	\N	\N	\N	\N	\N	13	{/img/characters/serie/Clyde_Frog.png}	f
+503	Christopher Wallace (Biggie Smalls)	\N	\N	May 21st	24	\N	150	{/img/characters/serie/Bigee_Smalls.png}	t
+526	Construction Workers	\N	\N	\N	\N	\N	32	{/img/characters/serie/Builders.png}	f
+525	Connor	\N	\N	\N	10	\N	104	{/img/characters/serie/Connor.png}	f
+524	Conner Davis	\N	\N	\N	6	\N	255	{/img/characters/serie/Conner.png}	f
+523	Condoleezza Rice	\N	\N	November 14th	70	{Presbyterian}	91	{/img/characters/serie/Condoleezza_Rice.png}	t
+522	Conan O'Brien	\N	\N	April 18th	62	{"Roman Catholic"}	57	{/img/characters/serie/Conan_O'brien.png}	t
+521	Colorado Avalanche	\N	\N	\N	\N	\N	153	{/img/characters/serie/Colorado_Avalance.png}	f
+520	Colonel Sanders	\N	\N	December 9th	90	{"Disciples of Christ"}	198	{/img/characters/serie/Harlan_Sanders.png}	t
+519	Colin Kaepernick	\N	\N	November 3rd	37	{Christianity}	268	{/img/characters/serie/Colin_Kaepernick.png}	t
+518	Colette Francis	\N	\N	\N	10	\N	113	{/img/characters/serie/Colette_Francis.png}	f
+517	Cody	\N	\N	\N	\N	\N	242	{/img/characters/serie/Cody.png}	f
+516	Cock Magic Promoter	\N	\N	\N	\N	\N	255	{/img/characters/serie/Cock_Magic_Promoter.png}	f
+515	Cock Magic Ring Announcer	\N	\N	\N	\N	\N	255	{/img/characters/serie/Cock_Magic_Announcer.png}	f
+514	Coach Miles	\N	\N	\N	\N	\N	241	{/img/characters/Coach_Miles.png}	f
+540	Cthulhu	\N	\N	\N	\N	{"Cult of Cthulhu"}	206	{/img/characters/serie/Cthulu.png}	\N
+539	Crips (Gang)	\N	\N	\N	\N	\N	98	{/img/characters/serie/Crips.png}	\N
+538	Crippled Girl with Brown Hair	\N	\N	\N	\N	\N	113	{/img/characters/serie/Crippled_Girl_with_Brown_Hair.png}	\N
+537	Crack Babies	\N	\N	\N	\N	\N	214	{/img/characters/serie/Crab_People.png}	\N
+536	Crab People	\N	\N	\N	\N	\N	104	{/img/characters/serie/Crab_People.png}	\N
+527	Corey Hart	\N	\N	May 31st	63	{Christianity}	212	{/img/characters/serie/Cory_Hart.png}	t
+530	Costa Rican President	\N	\N	\N	\N	\N	32	{/img/characters/serie/Costa_rican_President.png}	f
+529	Cosette	\N	\N	\N	\N	\N	24	{/img/characters/serie/Cosette.png}	f
+528	Corey Lanskin	\N	\N	\N	\N	\N	239	{/img/characters/serie/Corey_Lanskin.png}	f
+541	Cthulhu Cult Leader	\N	\N	\N	\N	{"Cult of Cthulhu"}	207	{/img/characters/serie/Jim_Mcelroy.png}	\N
+535	CPS Agents	\N	\N	\N	\N	\N	180	{/img/characters/serie/CPS_Agents.png}	\N
+534	Coyote Brown	\N	\N	\N	\N	\N	154	{/img/characters/serie/Coyote_Brown.png}	\N
+533	Cows	\N	\N	\N	\N	\N	1	{/img/characters/serie/Cows.png}	\N
+532	Cowboy Doctors	\N	\N	\N	\N	\N	300	{/img/characters/serie/Cowboy_Doctors.png}	\N
+531	Count Ravyncrowe	\N	\N	\N	\N	\N	181	{/img/characters/serie/Rayvencrowe.png}	\N
+542	Cupid Me	\N	\N	\N	\N	\N	230	{/img/characters/serie/Cupid_Me.png,/img/characters/serie/Cupid_Ye.png}	\N
 \.
 
 
@@ -1722,5 +1751,5 @@ ALTER TABLE ONLY public.alter_ego
 -- PostgreSQL database dump complete
 --
 
-\unrestrict LzhX3ZO5RD3gz5BHYweeGWeVNMMbGg8oGEQgVWbYlIgfyhvgYBbakWwhMKraS0l
+\unrestrict aTlP5ZrFdWGrw2kve912BH3J8na044wjhKIV6fWvPchSWHlYLk1quTmYtnPbgGB
 
