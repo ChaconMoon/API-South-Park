@@ -1,4 +1,4 @@
-![Header](/blog/images/Birthday_Update.webp){.header_image}
+![Header](/blog/images/Birthday_Update_ES.webp){.header_image}
 # Actualización de cumpleaños {.blog_entry_tittle}
 
 Esta es una actualización "especial" lanzada el 19 de octubre de 2025, cumpleaños de Stan Marsh [ID 4](/api/characters/4) y de Trey Parker, uno de los dos creadores de la serie.
