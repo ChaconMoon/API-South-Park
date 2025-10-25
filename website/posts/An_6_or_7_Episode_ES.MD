@@ -1,4 +1,4 @@
-![Header](/blog/images/6_7_Episode.webp){.header_image}
+![Header](/blog/images/6_7_Episode_ES.webp){.header_image}
 # La actualización 6-7 {.blog_entry_title}
 
 Este el el blog de desarrollo sobre la actualización del epsodio 1 de la temporada 28, el episodio 327 de la serie.
