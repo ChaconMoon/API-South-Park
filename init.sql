@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict oORYOnaoQ989aYARV1Z1DIVCy45H5azVe1s8loFAneVBHy1b0G9tEQRKobD9pJa
+\restrict AOzXtzZdK1cvMvYUWQrdTZxHGEP4mgWyfw45gtbXOPxX1mRdKmKoQ4nAqCd0Hab
 
 -- Dumped from database version 15.14 (Debian 15.14-1.pgdg13+1)
 -- Dumped by pg_dump version 15.14 (Debian 15.14-1.pgdg13+1)
@@ -1011,7 +1011,6 @@ COPY public.characters (id, name, friend_group, family, birthday, age, religion,
 432	Canadian Prime Minister ("Sermon on the 'Mount")	\N	\N	\N	\N	\N	237	{/img/characters/show/Canadian_Prime_Minister_Sermon_on_the_Mount.png}	f
 431	Canadian Prime Minister ("Original")	\N	\N	\N	\N	\N	212	{/img/characters/show/Canadian_Prime_Minister_Original.png}	f
 430	Canadian President	\N	\N	\N	\N	\N	259	{/img/characters/show/Canadian_President.png}	f
-210	Charlie Brown	\N	63	September 30th	10	\N	65	{/img/characters/show/Charlie_Brown.png}	t
 479	Chinese Customs Officers	\N	\N	\N	\N	\N	299	{/img/characters/show/Chinese_Customs_Officers.png}	f
 478	Chinese Court Judges	\N	\N	\N	\N	\N	299	{/img/characters/show/Chinese_Court_Judges.png}	f
 477	Chinese Commentators	\N	\N	\N	\N	\N	18	{/img/characters/show/Chinese_Commentators.png}	f
@@ -1094,6 +1093,7 @@ COPY public.characters (id, name, friend_group, family, birthday, age, religion,
 542	Cupid Me	\N	\N	\N	\N	\N	230	{/img/characters/show/Cupid_Me.png,/img/characters/show/Cupid_Ye.png}	\N
 120	Chad Handler	\N	21	\N	10	{Judaism}	113	{/img/characters/show/Chad_Handler.png}	\N
 514	Coach Miles	\N	\N	\N	\N	\N	241	{/img/characters/show/Coach_Miles.png}	f
+210	Charlie Brown	\N	63	October 30th	10	\N	65	{/img/characters/show/Charlie_Brown.png}	t
 \.
 
 
@@ -1751,5 +1751,5 @@ ALTER TABLE ONLY public.alter_ego
 -- PostgreSQL database dump complete
 --
 
-\unrestrict oORYOnaoQ989aYARV1Z1DIVCy45H5azVe1s8loFAneVBHy1b0G9tEQRKobD9pJa
+\unrestrict AOzXtzZdK1cvMvYUWQrdTZxHGEP4mgWyfw45gtbXOPxX1mRdKmKoQ4nAqCd0Hab
 
