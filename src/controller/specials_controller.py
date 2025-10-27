@@ -35,7 +35,7 @@ def get_special_by_id(id: int, add_url=False, base_url="", metadata=False):
 
         # If the is a error in the query returns the error
         if query_result is None:
-            return {"error": "Database not avalible", "status": "failed"}
+            return {"error": "Database not avalible, try press F5", "status": "failed"}
         if query_result.rowcount == 0:
             return {"error": "Special not found", "status": "failed"}
 

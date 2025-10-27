@@ -58,7 +58,7 @@ def test_character_object_not_found():
 
 
 def test_character_database_not_avalible():
-    fake_response = {"error": "Database not avalible", "status": "failed"}
+    fake_response = {"error": "Database not avalible, try press F5", "status": "failed"}
     with patch("src.main.get_character_by_id") as database_response:
         database_response.return_value = fake_response
         response = client.get("/character/1")

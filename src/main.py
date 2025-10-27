@@ -236,7 +236,7 @@ def search_character(
     if "error" in json:
         if json["error"] == "Character not found":
             response.status_code = status.HTTP_404_NOT_FOUND
-        elif json["error"] == "Database not avalible":
+        elif json["error"] == "Database not avalible, try press F5":
             response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
     else:
         response.status_code = status.HTTP_200_OK
@@ -326,7 +326,7 @@ def show_album(
     if "error" in json:
         if json["error"] == "Album not found":
             response.status_code = status.HTTP_404_NOT_FOUND
-        if json["error"] == "Database not avalible":
+        if json["error"] == "Database not avalible, try press F5":
             response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
     elif "album" in json:
         response.status_code == status.HTTP_200_OK
@@ -349,7 +349,7 @@ def show_song(
     if "error" in json:
         if json["error"] == "Song not found":
             response.status_code = status.HTTP_404_NOT_FOUND
-        elif json["error"] == "Database not avalible":
+        elif json["error"] == "Database not avalible, try press F5":
             response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
     elif "song" in json:
         response.status_code = status.HTTP_200_OK
@@ -372,7 +372,7 @@ def show_special(
     if "error" in json:
         if json["error"] == "Special not found":
             response.status_code = status.HTTP_404_NOT_FOUND
-        elif json["error"] == "Database not avalible":
+        elif json["error"] == "Database not avalible, try press F5":
             response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
     elif "special" in json:
         response.status_code = status.HTTP_200_OK
@@ -395,7 +395,7 @@ def show_family(
     if "error" in json:
         if json["error"] == "Family not found":
             response.status_code = status.HTTP_404_NOT_FOUND
-        elif json["error"] == "Database not avalible":
+        elif json["error"] == "Database not avalible, try press F5":
             response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
         elif "family" in json:
             response.status_code = status.HTTP_200_OK
@@ -418,7 +418,7 @@ async def show_character(
     if "error" in json:
         if json["error"] == "Character not found":
             response.status_code = status.HTTP_404_NOT_FOUND
-        elif json["error"] == "Database not avalible":
+        elif json["error"] == "Database not avalible, try press F5":
             response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
     else:
         response.status_code = status.HTTP_200_OK
@@ -440,7 +440,7 @@ def show_episode(
     if "error" in json:
         if json["error"] == "Episode not found":
             response.status_code = status.HTTP_404_NOT_FOUND
-        elif json["error"] == "Database not avalible":
+        elif json["error"] == "Database not avalible, try press F5":
             response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
         elif "episode" in json:
             response.status_code = status.HTTP_200_OK
@@ -465,7 +465,7 @@ def show_alterergo(
     if "error" in json:
         if json["error"] == "Alter Ego not found":
             response.status_code = status.HTTP_404_NOT_FOUND
-        elif json["error"] == "Database not avalible":
+        elif json["error"] == "Database not avalible, try press F5":
             response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
         elif "alterego" in json:
             response.status_code = status.HTTP_200_OK
@@ -488,7 +488,7 @@ def show_all_alteregos(id: int, request: Request, response: Response) -> dict:
     if "error" in json:
         if json["error"] == "Alter Egos not found":
             response.status_code = status.HTTP_404_NOT_FOUND
-        elif json["error"] == "Database not avalible":
+        elif json["error"] == "Database not avalible, try press F5":
             response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
         elif "alteregos" in json:
             response.status_code = status.HTTP_200_OK
@@ -513,7 +513,7 @@ def show_game(
     if "error" in json:
         if json["error"] == "Game not found":
             response.status_code = status.HTTP_404_NOT_FOUND
-        elif json["error"] == "Database not avalible":
+        elif json["error"] == "Database not avalible, try press F5":
             response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
         elif "alteregos" in json:
             response.status_code = status.HTTP_200_OK

@@ -36,7 +36,7 @@ def get_alter_ego_by_character_and_id(
             {"id_character": id_character, "id_alter_ego": id_alter_ego},
         )
         if query_result is None:
-            return {"error": "Database not avalible", "status": "failed"}
+            return {"error": "Database not avalible, try press F5", "status": "failed"}
         elif query_result.rowcount == 0:
             return {"error": "Alter Ego not found", "status": "failed"}
 
@@ -107,7 +107,7 @@ def get_all_alteregos_of_a_character(id_character: int, add_url=False, base_url=
 
         # If the number of alter egos is 0 return a empty object
         if query_result is None:
-            return {"error": "Database not avalible", "status": "failed"}
+            return {"error": "Database not avalible, try press F5", "status": "failed"}
         elif query_result.rowcount == 0:
             return None
 

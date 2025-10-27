@@ -34,7 +34,7 @@ def test_alterego_object_not_found():
 
 
 def test_alterego_database_not_avalible():
-    fake_response = {"error": "Database not avalible", "status": "failed"}
+    fake_response = {"error": "Database not avalible, try press F5", "status": "failed"}
     with patch("src.main.get_alter_ego_by_character_and_id") as database_response:
         database_response.return_value = fake_response
         response = client.get("/character/1/alteregos/1")
@@ -75,7 +75,7 @@ def test_all_alteregos_object_not_found():
 
 
 def test_all_alteregos_database_not_avalible():
-    fake_response = {"error": "Database not avalible", "status": "failed"}
+    fake_response = {"error": "Database not avalible, try press F5", "status": "failed"}
     with patch("src.main.get_all_alteregos_of_a_character") as database_response:
         database_response.return_value = fake_response
         response = client.get("/character/42/alteregos")

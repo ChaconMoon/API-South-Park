@@ -32,7 +32,7 @@ def get_episode_by_id(id: int, add_url=False, base_url="", metadata=False) -> di
             text("SELECT * FROM public.episodes where id=:id"), {"id": id}
         )
         if query_result is None:
-            return {"error": "Database not avalible", "status": "failed"}
+            return {"error": "Database not avalible, try press F5", "status": "failed"}
         elif query_result.rowcount == 0:
             return {"error": "Character not found", "status": "failed"}
 

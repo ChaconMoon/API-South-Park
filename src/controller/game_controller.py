@@ -38,7 +38,7 @@ def get_game_by_id(
         # Return the errors response
 
         if query_result is None:
-            return {"error": "Database not avalible", "status": "failed"}
+            return {"error": "Database not avalible, try press F5", "status": "failed"}
         elif query_result.rowcount == 0:
             return {"error": "Game not found", "status": "failed"}
         # Get the Character info
