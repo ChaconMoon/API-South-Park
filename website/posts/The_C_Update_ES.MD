@@ -1,4 +1,4 @@
-![Header](/blog/images/C_Update_ES.webp){.header_image}
+![Header](/blog/images/The_C_Update_ES.webp){.header_image}
 # La actualización C {.blog_entry_title}
 
 Esta es la primera actualización de datos tras la creación de la web, la actualización C (No sé cómo llamar a las actualizaciones de personajes, de momento se queda con la inicial hasta que se me ocurra algo mejor.) 
@@ -11,7 +11,7 @@ El principal cambio que trae esta actualización es la adición de todos los per
 - Adición de los personajes de la serie cuyo nombre empieza por C
 - Cambio en las miniaturas del blog de desarrollo. Ahora muestran su título en la miniatura, como en este caso.
 
-![Thumbnail Example](/blog/images/C_Update_ES.webp){.body_image}
+![Thumbnail Example](/blog/images/The_C_Update_ES.webp){.body_image}
 
 - Reordenamiento de los artículos del blog de desarrollo, antes estaban de antiguo a nuevo y ahora de nuevo a antiguo.
 

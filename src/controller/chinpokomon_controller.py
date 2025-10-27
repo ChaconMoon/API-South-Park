@@ -25,7 +25,7 @@ def get_chinpokomon_by_id(id: int, add_url=False, base_url="") -> dict:
         # Return the errors response
 
         if query_result is None:
-            return {"error": "Database not avalible", "status": "failed"}
+            return {"error": "Database not avalible, try press F5", "status": "failed"}
         elif query_result.rowcount == 0:
             return {"error": "Character not found", "status": "failed"}
         # Get the Character info

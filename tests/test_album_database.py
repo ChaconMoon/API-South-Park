@@ -32,7 +32,7 @@ def test_album_object_not_found():
 
 
 def test_album_database_not_avalible():
-    fake_response = {"error": "Database not avalible", "status": "failed"}
+    fake_response = {"error": "Database not avalible, try press F5", "status": "failed"}
     with patch("src.main.get_album_by_id") as database_response:
         database_response.return_value = fake_response
         response = client.get("/album/1")

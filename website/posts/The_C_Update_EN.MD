@@ -1,4 +1,4 @@
-![Header](/blog/images/C_Update.webp){.header_image}
+![Header](/blog/images/The_C_Update.webp){.header_image}
 # The C Update {.blog_entry_title}
 
 This is the first data update since the website's creation, the C update (I don't know how to name character updates, for now it stays with the initial until I come up with something better.)
@@ -11,7 +11,7 @@ The main change in this update is the addition of all characters from the TV sho
 - Addition of show characters whose names begin with C
 - Change in development blog thumbnails. They now display their title in the thumbnail, as shown in this case.
 
-![Thumbnail Example](/blog/images/C_Update.webp){.body_image}
+![Thumbnail Example](/blog/images/The_C_Update.webp){.body_image}
 
 - Reordering of development blog articles, previously sorted from oldest to newest, now from newest to oldest.
 

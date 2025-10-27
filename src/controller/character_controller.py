@@ -12,6 +12,27 @@ from src.controller.data_controller import parse_array_to_list
 from src.controller.database_connection import get_query_result
 
 
+def create_character(character_row: list, base_url: str):
+    character = Character(
+        id=int(character_row[0]) if character_row[0] is not None else 0,
+        name=str(character_row[1]) if character_row[1] is not None else "",
+        friend_group=int(character_row[2]) if character_row[2] is not None else None,
+        family=int(character_row[3]) if character_row[3] is not None else None,
+        birthday=str(character_row[4]) if character_row[4] is not None else None,
+        age=int(character_row[5]) if character_row[5] is not None else None,
+        religion=parse_array_to_list(character_row[6]),
+        first_apperance=get_episode_by_id(
+            int(character_row[7]), add_url=True, base_url=base_url
+        ),
+        images=parse_array_to_list(character_row[8], is_url=True, base_url=base_url),
+        alter_egos=get_all_alteregos_of_a_character(
+            int(character_row[0]), add_url=True, base_url=base_url
+        ),
+        famous_guest=bool(character_row[9]) if character_row[9] is not None else False,
+    )
+    return character
+
+
 def get_characters_by_search(
     search_param: str,
     add_url=False,
@@ -30,7 +51,7 @@ def get_characters_by_search(
         # Return the errors response
 
         if query_result is None:
-            return {"error": "Database not avalible", "status": "failed"}
+            return {"error": "Database not avalible, try press F5", "status": "failed"}
         elif query_result.rowcount == 0:
             return {"error": "Character not found", "status": "failed"}
 
@@ -38,23 +59,7 @@ def get_characters_by_search(
         index = 0
         result["characters"] = dict()
         for row in query_result:
-            character = Character(
-                id=int(row[0]) if row[0] is not None else 0,
-                name=str(row[1]) if row[1] is not None else "",
-                friend_group=int(row[2]) if row[2] is not None else None,
-                family=int(row[3]) if row[3] is not None else None,
-                birthday=str(row[4]) if row[4] is not None else None,
-                age=int(row[5]) if row[5] is not None else None,
-                religion=parse_array_to_list(row[6]),
-                first_apperance=get_episode_by_id(
-                    int(row[7]), add_url=True, base_url=base_url
-                ),
-                images=parse_array_to_list(row[8], is_url=True, base_url=base_url),
-                alter_egos=get_all_alteregos_of_a_character(
-                    int(row[0]), add_url=True, base_url=base_url
-                ),
-                famous_guest=bool(row[9]) if row[9] is not None else False,
-            )
+            character = character = create_character(row, base_url)
             result["characters"][index] = character.model_dump()
             index += 1
         return result
@@ -91,35 +96,17 @@ def get_character_by_id(
         # Return the errors response
 
         if query_result is None:
-            return {"error": "Database not avalible", "status": "failed"}
+            return {"error": "Database not avalible, try press F5", "status": "failed"}
         elif query_result.rowcount == 0:
             return {"error": "Character not found", "status": "failed"}
         # Get the Character info
         for row in query_result:
-            character = Character(
-                id=int(row[0]) if row[0] is not None else 0,
-                name=str(row[1]) if row[1] is not None else "",
-                friend_group=int(row[2]) if row[2] is not None else None,
-                family=int(row[3]) if row[3] is not None else None,
-                birthday=str(row[4]) if row[4] is not None else None,
-                age=int(row[5]) if row[5] is not None else None,
-                religion=parse_array_to_list(row[6]),
-                first_apperance=get_episode_by_id(
-                    int(row[7]), add_url=True, base_url=base_url
-                ),
-                images=parse_array_to_list(row[8], is_url=True, base_url=base_url),
-                alter_egos=get_all_alteregos_of_a_character(
-                    id, add_url=True, base_url=base_url
-                ),
-                famous_guest=bool(row[9]) if row[9] is not None else False,
-            )
+            character = create_character(row, base_url)
         result = dict()
         if add_url:
             result["name"] = character.model_dump()["name"]
             result["url"] = f"{base_url}api/characters/{row[0]}"
             return result
-        # Get the number of characters
-        query_result = get_query_result(text("SELECT * FROM public.characters"))
 
         # Create API Response
 
@@ -130,6 +117,8 @@ def get_character_by_id(
             result["character"] = character.model_dump()
 
             # Add Metadata to Response
+            # Get the number of characters
+            query_result = get_query_result(text("SELECT * FROM public.characters"))
             result["metadata"] = dict()
             result["metadata"]["total_characters_in_database"] = query_result.rowcount
 

@@ -1,9 +1,6 @@
 from datetime import datetime
 from sqlalchemy import text
-from src.controller.alter_ego_controller import get_all_alteregos_of_a_character
-from src.controller.episodes_controller import get_episode_by_id
-from src.model.characters import Character
-from src.controller.data_controller import parse_array_to_list
+from src.controller.character_controller import create_character
 from src.controller.database_connection import get_query_result
 
 
@@ -48,35 +45,18 @@ def get_today_birthday_character(base_url="") -> dict:
         # Return the errors response
 
         if query_result is None:
-            return {"error": "Database not avalible", "status": "failed"}
+            return {"error": "Database not avalible, try press F5", "status": "failed"}
         elif query_result.rowcount == 0:
             return {"message": "No one has they bithday today", "status": "failed"}
         # Get the Character info
         result = dict()
         result["characters"] = list(dict())
         for row in query_result:
-            id = int(row[0]) if row[0] is not None else 0
-            character = Character(
-                id=id,
-                name=str(row[1]) if row[1] is not None else "",
-                friend_group=int(row[2]) if row[2] is not None else None,
-                family=int(row[3]) if row[3] is not None else None,
-                birthday=str(row[4]) if row[4] is not None else None,
-                age=int(row[5]) if row[5] is not None else None,
-                religion=parse_array_to_list(row[6]),
-                first_apperance=get_episode_by_id(
-                    int(row[7]), add_url=True, base_url=base_url
-                ),
-                images=parse_array_to_list(row[8], is_url=True, base_url=base_url),
-                alter_egos=get_all_alteregos_of_a_character(
-                    id, add_url=True, base_url=base_url
-                ),
-                famous_guest=bool(row[9]) if row[9] is not None else False,
-            )
             # Create API Response
+            character = create_character(row, base_url)
 
             # Add Character Data to Response
-        result["characters"].append(character.model_dump())
+            result["characters"].append(character.model_dump())
         # Return Response
         return result
     # Control exceptions
