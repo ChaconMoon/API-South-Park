@@ -1,0 +1,60 @@
+@media screen and (min-width: 1024px) {
+        * {
+                margin: 0;
+        }
+
+        #albums_grid_container {
+                display: grid;
+                grid-template-columns: auto auto auto;
+                border-style: solid;
+                border-width: 3px;
+                border-color: gray;
+                border-radius: 10px;
+                margin: 25px;
+                box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.4);
+                margin-top: 12px;
+                justify-content: center;
+                align-items: center;
+                gap: 1vw;
+        }
+
+        .album_play_button {
+                background-color: gray;
+                width: 90%;
+                color: black;
+                border-radius: 8px;
+                justify-content: center;
+                align-items: center;
+                display: flex;
+                height: 3vw;
+                font-size: 2vw;
+                text-decoration: none;
+                margin-right: 1vw;
+                margin-left: auto;
+                border-style: dotted;
+                border-width: 2px;
+                font-family: "OpenSans-Bold";
+                margin-top: 1vw;
+
+        }
+
+        .album_not_avalible_button {
+                background-color: gray;
+                width: 90%;
+                color: black;
+                border-radius: 8px;
+                justify-content: center;
+                align-items: center;
+                display: flex;
+                height: 3vw;
+                font-size: 1.5vw;
+                text-decoration: none;
+                margin-right: 1vw;
+                margin-left: auto;
+                border-style: dotted;
+                border-width: 2px;
+                font-family: "OpenSans-Bold";
+                margin-top: 1vw;
+        }
+
+}

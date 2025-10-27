@@ -1,0 +1,66 @@
+@media screen and (min-width: 1024px) {
+        * {
+                margin: 0;
+        }
+
+        #alter_egos_grid_container {
+                display: grid;
+                grid-template-columns: auto;
+                border-style: solid;
+                border-width: 3px;
+                border-color: gray;
+                border-radius: 10px;
+                margin: 25px;
+                box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.4);
+                margin-top: 12px;
+                justify-content: center;
+                align-items: center;
+                gap: 1vw;
+        }
+
+        .alter_egos_container {
+                display: flex;
+        }
+
+        .character_and_alterego_grid {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+        }
+
+        .alter_ego_container img {
+                width: 100%;
+                border-radius: 20px
+        }
+
+        .alter_ego_container {
+                width: 16vw;
+                margin: auto;
+                margin-left: 3vw;
+                border-style: solid;
+                border-radius: 1.4vw 1.4vw 1vw 1vw;
+                box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.4);
+        }
+
+        .alter_ego_container:hover {
+                box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.8);
+                margin-bottom: 1vw;
+        }
+
+        .alter_ego_name {
+                font-family: "OpenSans-Bold";
+                display: flex;
+                justify-content: center;
+                margin-bottom: 0.5vw;
+                font-size: 1.3vw;
+                text-decoration: none;
+                color: black;
+        }
+
+        .alter_ego_link {
+                text-decoration: none;
+                color: inherit;
+        }
+
+}
