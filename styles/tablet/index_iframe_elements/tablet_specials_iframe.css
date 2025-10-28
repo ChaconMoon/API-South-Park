@@ -1,11 +1,11 @@
-@media screen and (max-width: 375px) {
+@media screen and (min-width: 641px) and (max-width: 1023px) {
         * {
                 margin: 0;
         }
 
         #specials_grid_container {
                 display: grid;
-                grid-template-columns: auto;
+                grid-template-rows: auto auto auto;
                 border-style: solid;
                 border-width: 3px;
                 border-color: gray;
@@ -15,9 +15,7 @@
                 margin-top: 12px;
                 justify-content: center;
                 align-items: center;
-                column-gap: 5vw;
-                row-gap: 1.5vw;
-                padding-bottom: 2vw;
+                gap: 1vw;
         }
 
         .special_poster {
@@ -31,32 +29,40 @@
                 border-style: solid;
                 border-color: black;
                 border-radius: 4px;
-                width: 100%;
-                height: fit-content;
+                width: 25vw;
+                height: 80vw;
+
+        }
+
+        .special_grid3 .special_card {
+                border-width: 3px;
+                border-style: solid;
+                border-color: black;
+                border-radius: 4px;
+                width: 25vw;
+                height: 76vw;
 
         }
 
         .special_grid2 {
-                display: grid;
+                display: flex;
                 justify-content: center;
                 column-gap: 10vw;
                 margin-top: 2vw;
-                row-gap: 5vw;
-                width: 100%;
+                width: 92%;
         }
 
         .special_grid3 {
-                display: grid;
+                display: flex;
                 justify-content: center;
                 column-gap: 10vw;
                 margin-top: 2vw;
-                row-gap: 5vw;
                 margin-bottom: 2vw;
-                width: 100%;
+                width: 92%;
         }
 
         .special_card_link {
-                width: 60vw;
+                width: 20vw;
                 color: black;
                 text-decoration: none;
         }
@@ -64,8 +70,8 @@
         .special_name {
                 display: flex;
                 justify-content: center;
-                font-size: 2.7vw;
-                margin-left: 0.1vw;
+                font-size: 1.6vw;
+                margin-left: 0.5vw;
                 font-family: OpenSans-Bold;
         }
 
@@ -77,9 +83,10 @@
 
         .special_description {
                 margin-left: 0.5vw;
+                margin-right: 0.vw;
                 margin-top: 1vw;
-                margin-bottom: 2vw;
-                font-size: 4vw;
+                font-size: 2vw;
                 font-family: OpenSans-Regular;
         }
+
 }

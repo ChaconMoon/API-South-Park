@@ -4,7 +4,7 @@
         }
 
         #episodes_grid_container {
-                display: none;
+                display: grid;
                 grid-template-columns: auto;
                 border-style: solid;
                 border-width: 3px;
@@ -29,21 +29,10 @@
                 border-radius: 8px;
                 text-decoration: none;
                 color: black;
-                margin-top: 3vh;
-                margin-bottom: 3vh;
+                margin-top: 5vw;
+                margin-bottom: 5vw;
                 box-shadow: 0 7px 20px 0 rgba(0, 0, 0, 0.4);
 
-        }
-
-        .episode_card_link:hover {
-                border-width: 3px;
-                border-style: solid;
-                border-radius: 8px;
-                text-decoration: none;
-                color: black;
-                margin-top: 3vh;
-                margin-bottom: 3vh;
-                box-shadow: 0 8px 30px 0 rgba(0, 0, 0, 0.6);
         }
 
         .episode_card {
@@ -69,8 +58,8 @@
                 position: relative;
                 width: fit-content;
                 margin-left: auto;
-                margin-top: 10vh;
-                margin-bottom: 1vh;
+                margin-top: 10vw;
+                margin-bottom: 1vw;
                 margin-right: 1vw;
         }
 
