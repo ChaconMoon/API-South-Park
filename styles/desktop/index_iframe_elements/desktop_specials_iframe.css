@@ -1,0 +1,87 @@
+@media screen and (min-width: 1024px) {
+        * {
+                margin: 0;
+        }
+
+        #specials_grid_container {
+                display: grid;
+                grid-template-rows: auto auto auto;
+                border-style: solid;
+                border-width: 3px;
+                border-color: gray;
+                border-radius: 10px;
+                margin: 25px;
+                box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.4);
+                margin-top: 12px;
+                justify-content: center;
+                align-items: center;
+                gap: 1vw;
+        }
+
+        .special_poster {
+                width: 100%;
+                height: auto;
+                border-radius: 2px 2px 8px 8px;
+        }
+
+        .special_card {
+                border-width: 3px;
+                border-style: solid;
+                border-color: black;
+                border-radius: 4px;
+                width: 20vw;
+                height: 45.5vw;
+
+        }
+
+        .special_grid2 {
+                display: flex;
+                justify-content: center;
+                column-gap: 10vw;
+                margin-top: 2vw;
+                width: 100%;
+        }
+
+        .special_grid3 {
+                display: flex;
+                justify-content: center;
+                column-gap: 10vw;
+                margin-top: 2vw;
+                margin-bottom: 2vw;
+                width: 100%;
+        }
+
+        .special_card_link {
+                width: 20vw;
+                color: black;
+                text-decoration: none;
+        }
+
+        .special_name {
+                display: flex;
+                justify-content: center;
+                font-size: 0.8vw;
+                font-family: "OpenSans-Bold";
+        }
+
+        .release_date {
+                margin-top: 1vw;
+                margin-left: 0.5vw;
+                font-family: OpenSans-Regular;
+        }
+
+        .special_description {
+                margin-left: 0.5vw;
+                margin-right: 0.vw;
+                ;
+                margin-top: 1vw;
+                font-size: 1vw;
+                font-family: OpenSans-Regular;
+        }
+
+        .special_grid3 .special_card {
+
+                height: 45vw;
+
+        }
+}

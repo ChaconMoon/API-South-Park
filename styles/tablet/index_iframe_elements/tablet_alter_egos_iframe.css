@@ -1,0 +1,77 @@
+@media screen and (min-width: 641px) and (max-width: 1023px) {
+        * {
+                margin: 0;
+        }
+
+        #alter_egos_grid_container {
+                display: grid;
+                grid-template-columns: auto;
+                border-style: solid;
+                border-width: 3px;
+                border-color: gray;
+                border-radius: 10px;
+                margin: 25px;
+                box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.4);
+                margin-top: 12px;
+                justify-content: center;
+                gap: 1vw;
+        }
+
+        .character_and_alterego_grid {
+                display: grid;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+        }
+
+        .alter_ego_container img {
+                width: 100%;
+                border-radius: 8px
+        }
+
+        .alter_ego_container {
+                width: 20vw;
+                margin: auto;
+                margin-left: 3vw;
+                border-style: solid;
+                border-radius: 1.4vw 1.4vw 1vw 1vw;
+                box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.4);
+        }
+
+        .alter_ego_container:hover {
+                box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.8);
+                margin-top: 1vw;
+        }
+
+        .alter_ego_name {
+                font-family: "OpenSans-Bold";
+                display: flex;
+                justify-content: center;
+                margin-bottom: 0.5vw;
+                font-size: 1.6vw;
+                text-decoration: none;
+                color: black;
+        }
+
+        .alter_ego_link {
+                text-decoration: none;
+                color: inherit;
+        }
+
+        #alter_egos_grid_container .character_card_link {
+                align-self: center;
+                align-content: center;
+                margin: auto;
+                width: 35vw;
+
+        }
+
+        .alter_egos_container {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-content: center;
+                gap: 5vw;
+                margin-bottom: 2vw;
+        }
+}
