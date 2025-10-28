@@ -1,0 +1,78 @@
+@media screen and (max-width: 375px) {
+        * {
+                margin: 0;
+        }
+
+        .character_background {
+                background-image: url("/img/website/Character_Background_in_Website.png");
+                display: flex;
+                justify-content: center;
+                height: 70vw;
+                border-radius: 5px;
+                background-size: cover;
+
+        }
+
+        .character_card {
+                margin: 5%;
+                border-radius: 5px;
+                border: 2px black solid;
+                align-self: end;
+                box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+                width: 80vw;
+        }
+
+        .character_card:hover {
+                margin: 5%;
+                border-radius: 5px;
+                border: 3px black solid;
+                align-self: end;
+                box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.4);
+                width: 80vw;
+        }
+
+        .character_image {
+                height: 90%;
+                padding-left: 4px;
+                padding-right: 4px;
+                align-self: end;
+        }
+
+        #character_grid_container {
+                display: grid;
+                grid-template-columns: auto;
+                border-style: solid;
+                border-width: 3px;
+                border-color: gray;
+                border-radius: 10px;
+                margin: 15px;
+                box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.4);
+                align-content: center;
+        }
+
+        .character_name {
+                /* min, preferred, max */
+                font-size: clamp(3px, 2.3vw, 20px);
+                padding-bottom: 0.5vh;
+                padding-top: 0.5vh;
+                display: flex;
+                justify-content: space-between;
+                margin-right: 10px;
+        }
+
+        .character_card p {
+                /* min, preferred, max */
+                font-size: clamp(5px, 3.5vw, 30px);
+                margin-left: 5%;
+                padding-top: 3%
+        }
+
+        a.character_card_link {
+                text-decoration: none;
+                color: black;
+                width: 100%;
+                justify-content: center;
+                display: flex;
+                align-items: center;
+        }
+}

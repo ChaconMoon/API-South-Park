@@ -1,0 +1,79 @@
+@media screen and (min-width: 1024px) {
+        * {
+                margin: 0;
+        }
+
+        #families_grid_container {
+                display: grid;
+                grid-template-columns: auto auto;
+                border-style: solid;
+                border-width: 3px;
+                border-color: gray;
+                border-radius: 10px;
+                margin: 25px;
+                box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.4);
+                margin-top: 12px;
+                justify-content: center;
+                align-items: center;
+                gap: 4vw;
+                padding-bottom: 2vw;
+        }
+
+        .family_image {
+                width: 100%;
+                border-radius: 8px;
+        }
+
+        .family_card {
+                width: 40vw;
+                border-style: solid;
+                border-color: black;
+                margin-top: 2vw;
+                border-radius: 10px;
+                height: 37vw;
+                box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.4);
+
+        }
+
+        .family_card:hover {
+                box-shadow: 10px 10px 10px 1px rgba(0.2, 0.2, 0.3, 0.6);
+                margin-bottom: 3vw;
+                border-width: 3px;
+                border-radius: 10px;
+        }
+
+        .family_members_container {
+                display: grid;
+        }
+
+        .family_name {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 1.5vw;
+                color: black;
+        }
+
+        .family_card_link {
+                text-decoration: none;
+                color: black;
+        }
+
+        .family_number {
+                font-size: 1.2vw;
+                margin-left: 1.2vw;
+        }
+
+        .family_members_container {
+                display: grid;
+                grid-template-columns: auto auto auto;
+                margin-left: 2vw;
+                margin-right: auto;
+                font-size: 1.1vW;
+        }
+
+        .family_member {
+                margin-top: 1vw;
+        }
+
+}
