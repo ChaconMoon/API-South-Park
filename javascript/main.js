@@ -8,6 +8,7 @@ function display_iframe_grid(iframe_name) {
         if (existingIframe) {
                 existingIframe.remove();
         }
+        create_loading_gif()
 
         // Create new iframe
         const iframe = document.createElement("iframe");
@@ -36,6 +37,11 @@ function display_iframe_grid(iframe_name) {
         iframe.addEventListener('load', () => {
                 // Trigger a resize message after load
                 setTimeout(() => {
+                        const loadingBar = document.getElementById("loading_bar");
+                        if (loadingBar != null) {
+                                loadingBar.remove();
+                        }
+                        iframe.style.display = "block"
                         iframe.contentWindow.postMessage({ type: "requestResize" }, "*");
                 }, 100);
         });
@@ -48,6 +54,7 @@ function display_iframe_grid(iframe_name) {
         });
 
         // Insert the iframe into the container
+        iframe.style.display = "none"
         container.appendChild(iframe);
 }
 
@@ -59,3 +66,15 @@ window.addEventListener('resize', () => {
 display_iframe_grid(actualPageIframe)
 
 
+function create_loading_gif() {
+        const loadingBar = document.getElementById("loading_bar");
+        if (loadingBar != null) {
+                loadingBar.remove();
+        }
+        const newLoadingBar = document.createElement("img");
+        newLoadingBar.id = "loading_bar";
+        newLoadingBar.src = "/img/website/API_Loading.gif";
+        const container = document.getElementById("iframe_container");
+        container.appendChild(newLoadingBar);
+
+}
