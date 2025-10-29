@@ -114,7 +114,7 @@ def create_game_web_card_to_website(base_url: str, song_id: int) -> str:
                          """
 
     html_response = f"""
-        <a href="{song_request_url}" class="game_card_link">
+        <a href="{song_request_url}" target="blanck" class="game_card_link">
                 <div class="game_card" >
                                         <img class="game_image" src="{game_cover}" alt="Cover">
                                         <p class="game_name">

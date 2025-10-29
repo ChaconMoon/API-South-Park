@@ -16,7 +16,7 @@ def create_special_web_card_to_website(base_url: str, album_id: int) -> str:
     link = request_album_json["link"]
 
     html_response = f"""
-        <a href="{request_url}" class="special_card_link">
+        <a href="{request_url}" target="blanck" class="special_card_link">
                 <div class="special_card" >
                                 <img class="special_poster" src="{poster_special}" alt="Cover">
                                 <p class="special_name">

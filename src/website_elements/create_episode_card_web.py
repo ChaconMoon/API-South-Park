@@ -17,7 +17,7 @@ def create_episode_web_card_to_website(base_url: str, episode_id: int) -> str:
     episode_url = request_json["episode_in_website"]["website_url"]
 
     html_response = f"""
-        <a href="{request_url}" class="episode_card_link">
+        <a href="{request_url}" target="blanck" class="episode_card_link">
         <div class="episode_card">
         <img class="episode_image" src="{episode_image}" alt="Avatar">
         <p class="episode_number">

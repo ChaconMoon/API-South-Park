@@ -38,7 +38,7 @@ def create_song_web_card_to_website(base_url: str, song_id: int) -> str:
     print(html_button)
     html_response = f"""
         <div class="song_card" >
-                <a href="{song_request_url}" class="song_card_link">
+                <a href="{song_request_url}" target="blanck" class="song_card_link">
                                 <img class="album_image" src="{album_cover}" alt="Cover">
                                 <p class="song_name">
                                         <b>{song_name}</b>

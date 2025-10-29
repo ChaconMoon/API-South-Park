@@ -21,7 +21,7 @@ def create_family_web_card_to_website(base_url: str, family_id: int) -> str:
         </div>\n"""
 
     html_response = f"""
-        <a href="{request_url}" class="family_card_link">
+        <a href="{request_url}" target="blanck" class="family_card_link">
                 <div class="family_card">
                         <img class="family_image" src="{family_images[0]}" alt="Avatar"/>
                         <p class="family_name">

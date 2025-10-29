@@ -21,7 +21,7 @@ def create_album_web_card_to_website(base_url: str, album_id: int) -> str:
         """
         if album_url == "NOT AVAILABLE"
         else f"""
-        <a href="{album_url}" class="album_play_button">
+        <a href="{album_url}" target="blanck" class="album_play_button">
         <div>
         Play ▶
         </div>
@@ -31,7 +31,7 @@ def create_album_web_card_to_website(base_url: str, album_id: int) -> str:
     print(html_button)
     html_response = f"""
         <div class="album_card" >
-                <a href="{request_url}" class="album_card_link">
+                <a href="{request_url}" target="blanck" class="album_card_link">
                                 <img class="album_image" src="{album_cover}" alt="Cover">
                                 <p class="album_name">
                                         <b>{album_name}</b>
