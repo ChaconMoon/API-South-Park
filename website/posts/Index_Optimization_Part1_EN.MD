@@ -1,4 +1,4 @@
-![Header](/blog/images/Index_Optimization_Part1_ES.webp){.header_image}
+![Header](/blog/images/Index_Optimization_Part1.webp){.header_image}
 # Index Optimization — Part 1 {.blog_entry_title}
 
 This development blog entry is about an update I made to the website's index. Since its creation, I knew it loaded very slowly; this was because the page loaded entirely from the beginning and, moreover, it's dynamic with the API: all character cards are generated on the fly. The problem was that it made about 50 requests at once. This caused the website to load slowly because it wouldn't finish until processing all 50 requests.
