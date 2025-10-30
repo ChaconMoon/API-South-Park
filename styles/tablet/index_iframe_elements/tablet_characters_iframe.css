@@ -4,7 +4,7 @@
         }
 
         .character_background {
-                background-image: url("/img/website/Character_Background_in_Website.png");
+                background-image: url("/img/website/Character_Background_in_Website.webp");
                 display: flex;
                 justify-content: center;
                 height: 25vw;
