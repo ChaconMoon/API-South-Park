@@ -58,9 +58,47 @@ function display_iframe_grid(iframe_name) {
         container.appendChild(iframe);
 }
 
-// Add window resize event listener
+// Add window resize event listener (debounced + ignore small height changes on mobile)
+let lastInnerWidth = window.innerWidth;
+let lastInnerHeight = window.innerHeight;
+let resizeTimeout = null;
+const RESIZE_DEBOUNCE_MS = 150;
+// threshold in px to consider a real resize on mobile (address bar hide/show often < 150px)
+const HEIGHT_THRESHOLD = 120;
+
+function handleResizeEvent() {
+    const w = window.innerWidth;
+    const h = window.innerHeight;
+
+    // If only a small height change (likely address bar show/hide on mobile) and width didn't change, ignore
+    if (w === lastInnerWidth && Math.abs(h - lastInnerHeight) < HEIGHT_THRESHOLD) {
+        lastInnerWidth = w;
+        lastInnerHeight = h;
+        return;
+    }
+
+    lastInnerWidth = w;
+    lastInnerHeight = h;
+
+    display_iframe_grid(actualPageIframe);
+}
+
+// Debounced resize listener
 window.addEventListener('resize', () => {
+    if (resizeTimeout) {
+        clearTimeout(resizeTimeout);
+    }
+    resizeTimeout = setTimeout(handleResizeEvent, RESIZE_DEBOUNCE_MS);
+});
+
+// Also respond to orientation changes (immediate)
+window.addEventListener('orientationchange', () => {
+    // small timeout to let dimensions settle
+    setTimeout(() => {
+        lastInnerWidth = window.innerWidth;
+        lastInnerHeight = window.innerHeight;
         display_iframe_grid(actualPageIframe);
+    }, 200);
 });
 
 display_iframe_grid(actualPageIframe)

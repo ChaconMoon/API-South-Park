@@ -165,10 +165,11 @@ def create_characters_iframe(response: Response, request: Request):
         "characters.html",
         {
             "request": request,
-            "character_cards": create_character_image_grid(
-                base_url=request.base_url,
-                ids=[4, 3, 2, 1, 58, 52, 99, 78, 42, 382, 141, 107],
-            ),
+            # NOW DISABLED
+            # "character_cards": create_character_image_grid(
+            #    base_url=request.base_url,
+            #     ids=[4, 3, 2, 1, 58, 52, 99, 78, 42, 382, 141, 107],
+            # ),
         },
     )
 
@@ -179,9 +180,10 @@ def create_episodes_iframe(response: Response, request: Request):
         "episodes.html",
         {
             "request": request,
-            "episode_cards": create_episode_image_grid(
-                base_url=request.base_url, ids=[1, 263, 325, 303, 200, 117]
-            ),
+            # NOW DISABLED
+            # "episode_cards": create_episode_image_grid(
+            #    base_url=request.base_url, ids=[1, 263, 325, 303, 200, 117]
+            # ),
         },
     )
 
@@ -192,9 +194,10 @@ def create_songs_iframe(response: Response, request: Request):
         "songs.html",
         {
             "request": request,
-            "song_cards": create_song_image_grid(
-                base_url=request.base_url, ids=[1, 30, 50, 63, 27, 68]
-            ),
+            # NOW DISABLED
+            # "song_cards": create_song_image_grid(
+            #    base_url=request.base_url, ids=[1, 30, 50, 63, 27, 68]
+            # ),
         },
     )
 
@@ -205,9 +208,10 @@ def create_albums_iframe(response: Response, request: Request):
         "albums.html",
         {
             "request": request,
-            "album_cards": create_album_image_grid(
-                base_url=request.base_url, ids=[1, 2, 3, 4, 5, 6]
-            ),
+            # NOW DISABLED
+            # "album_cards": create_album_image_grid(
+            #    base_url=request.base_url, ids=[1, 2, 3, 4, 5, 6]
+            # ),
         },
     )
 
@@ -218,10 +222,11 @@ def create_alter_egos_iframe(response: Response, request: Request):
         "alter_egos.html",
         {
             "request": request,
-            "alter_ego_cards": create_alter_ego_image_grid(
-                base_url=request.base_url,
-                ids=[[4, 0, 2, 1], [58, 0, 4, 1], [42, 4, 3, 1]],
-            ),
+            # NOW DISABLED
+            # "alter_ego_cards": create_alter_ego_image_grid(
+            #    base_url=request.base_url,
+            #    ids=[[4, 0, 2, 1], [58, 0, 4, 1], [42, 4, 3, 1]],
+            # ),
         },
     )
 
@@ -232,9 +237,10 @@ def create_fmilies_iframe(response: Response, request: Request):
         "families.html",
         {
             "request": request,
-            "families_cards": create_family_image_grid(
-                base_url=request.base_url, ids=[1, 3, 20, 34, 24, 48]
-            ),
+            # NOW DISABLED
+            # "families_cards": create_family_image_grid(
+            #    base_url=request.base_url, ids=[1, 3, 20, 34, 24, 48]
+            # ),
         },
     )
 
@@ -245,10 +251,11 @@ def create_games_iframe(response: Response, request: Request):
         "games.html",
         {
             "request": request,
-            "games_cards": create_game_image_grid(
-                base_url=request.base_url,
-                ids=[19, 20, 21, 22, 2, 14, 13, 28, 17, 10, 27, 33],
-            ),
+            # NOW DISABLED
+            # "games_cards": create_game_image_grid(
+            #    base_url=request.base_url,
+            #    ids=[19, 20, 21, 22, 2, 14, 13, 28, 17, 10, 27, 33],
+            # ),
         },
     )
 
@@ -259,9 +266,10 @@ def create_specials_iframe(response: Response, request: Request):
         "specials.html",
         {
             "request": request,
-            "specials_cards": create_special_image_grid(
-                base_url=request.base_url, ids=[1, 2, 3, 4, 5, 6, 7]
-            ),
+            # NOW DISABLED
+            # "specials_cards": create_special_image_grid(
+            #    base_url=request.base_url, ids=[1, 2, 3, 4, 5, 6, 7]
+            # ),
         },
     )
 
