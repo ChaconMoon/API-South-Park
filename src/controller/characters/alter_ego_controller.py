@@ -42,12 +42,7 @@ def get_alter_ego_by_character_and_id(
 
         # Get Alter Ego data
         for row in query_result:
-            alter_ego = AlterEgo(
-                id=int(row[0]) if row[0] is not None else 0,
-                original_character=str(row[1]) if row[1] is not None else "",
-                name=str(row[2]) if row[2] is not None else "",
-                images=parse_array_to_list(row[3], is_url=True, base_url=base_url),
-            )
+            alter_ego = AlterEgo(row, base_url)
 
         # Return the result with the URL
         if add_url:
@@ -63,17 +58,8 @@ def get_alter_ego_by_character_and_id(
                         SELECT * FROM public.alter_ego where original_character = :id_character"""),
             {"id_character": id_character},
         )
-        result = dict()
-        if not metadata:
-            result = alter_ego.model_dump()
-        else:
-            result["alterego"] = alter_ego.model_dump()
-            result["metadata"] = dict()
-            result["metadata"]["total_alteregos_of_this_character_in_database"] = (
-                query_result.rowcount
-            )
 
-        return result
+        return alter_ego.toJSON(metadata, query_result.rowcount)
     # Control exceptions
     except Exception as e:
         return {"error": str(e), "status": "failed"}

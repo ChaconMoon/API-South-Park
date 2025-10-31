@@ -30,13 +30,9 @@ def get_chinpokomon_by_id(id: int, add_url=False, base_url="") -> dict:
             return {"error": "Character not found", "status": "failed"}
         # Get the Character info
         for row in query_result:
-            chinpokomon = Chinpokomon(
-                id=int(row[0]) if row[0] is not None else 0,
-                name=str(row[1]) if row[1] is not None else "",
-                image=(base_url + str(row[2])) if row[1] is not None else "",
-            )
-        result = dict()
+            chinpokomon = Chinpokomon(row, base_url)
         if add_url:
+            result = dict()
             result["name"] = chinpokomon.model_dump()["name"]
             result["url"] = f"{base_url}api/chinpokomon/{row[0]}"
             return result
@@ -46,13 +42,8 @@ def get_chinpokomon_by_id(id: int, add_url=False, base_url="") -> dict:
         # Create API Response
 
         # Add Character Data to Response
-        result["chinpokomon"] = chinpokomon.model_dump()
-
-        # Add Metadata to Response
-        result["metadata"] = dict()
-        result["metadata"]["total_chinpokomons_in_database"] = query_result.rowcount
 
         # Return Response
-        return result
+        return chinpokomon.toJSON()
     except Exception as e:
         return {"error": str(e), "status": "failed"}

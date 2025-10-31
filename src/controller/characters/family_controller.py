@@ -9,7 +9,7 @@ from sqlalchemy import text
 
 # Interal Inputs
 from src.controller.data_controller import parse_array_to_list
-from src.controller.character_controller import get_character_by_id
+from src.controller.characters.characters_controller import get_character_by_id
 from src.controller.database_connection import get_query_result
 from src.model.family import Family
 
@@ -27,7 +27,6 @@ def get_family_by_id(id: int, url="", metadata=False) -> dict:
     """
     # Create variable to store the result data.
     result = dict()
-    family_members = []
     try:
         # Get the result of the query to the databse.
         query_result = get_query_result(
@@ -41,27 +40,9 @@ def get_family_by_id(id: int, url="", metadata=False) -> dict:
 
         # Add all the family members to the array.
         for row in rows:
-            family_members.append(
-                get_character_by_id(int(row[0]), add_url=True, base_url=url)
-            )
-        # Create de dict with the response.
-        query_result = get_query_result(text("SELECT * FROM public.families"))
-        family = Family(
-            id=id,
-            name=str(rows[0][2]),
-            images=[
-                f"{url}{image_url}" for image_url in parse_array_to_list(rows[0][3])
-            ],
-            members=family_members,
-        )
-        if not metadata:
-            result = family.model_dump()
-        else:
-            result["family"] = family.model_dump()
-            result["metadata"] = dict()
-            result["metadata"]["total_families_in_database"] = query_result.rowcount
+            family = Family(rows, url, id)
 
-        return result
+        return family.toJSON(metadata, total_results=query_result.rowcount)
 
     # Control exceptions
     except Exception as e:

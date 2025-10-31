@@ -5,17 +5,12 @@ This module get the param of the API in the get character operations, make the q
 """
 
 from sqlalchemy import text
-from src.controller.alter_ego_controller import get_all_alteregos_of_a_character
-from src.controller.episodes_controller import get_episode_by_id
 from src.model.characters import Character
-from src.controller.data_controller import parse_array_to_list
 from src.controller.database_connection import get_query_result
 
 
 def get_characters_by_search(
     search_param: str,
-    add_url=False,
-    metadata=False,
     base_url="",
     limit=10,
 ) -> dict:
@@ -38,28 +33,13 @@ def get_characters_by_search(
         index = 0
         result["characters"] = dict()
         for row in query_result:
-            character = Character(
-                id=int(row[0]) if row[0] is not None else 0,
-                name=str(row[1]) if row[1] is not None else "",
-                friend_group=int(row[2]) if row[2] is not None else None,
-                family=int(row[3]) if row[3] is not None else None,
-                birthday=str(row[4]) if row[4] is not None else None,
-                age=int(row[5]) if row[5] is not None else None,
-                religion=parse_array_to_list(row[6]),
-                first_apperance=get_episode_by_id(
-                    int(row[7]), add_url=True, base_url=base_url
-                ),
-                images=parse_array_to_list(row[8], is_url=True, base_url=base_url),
-                alter_egos=get_all_alteregos_of_a_character(
-                    int(row[0]), add_url=True, base_url=base_url
-                ),
-                famous_guest=bool(row[9]) if row[9] is not None else False,
-            )
+            character = Character(row, base_url)
             result["characters"][index] = character.model_dump()
             index += 1
         return result
 
     except Exception as e:
+        print(e)
         return None
 
 
@@ -96,23 +76,8 @@ def get_character_by_id(
             return {"error": "Character not found", "status": "failed"}
         # Get the Character info
         for row in query_result:
-            character = Character(
-                id=int(row[0]) if row[0] is not None else 0,
-                name=str(row[1]) if row[1] is not None else "",
-                friend_group=int(row[2]) if row[2] is not None else None,
-                family=int(row[3]) if row[3] is not None else None,
-                birthday=str(row[4]) if row[4] is not None else None,
-                age=int(row[5]) if row[5] is not None else None,
-                religion=parse_array_to_list(row[6]),
-                first_apperance=get_episode_by_id(
-                    int(row[7]), add_url=True, base_url=base_url
-                ),
-                images=parse_array_to_list(row[8], is_url=True, base_url=base_url),
-                alter_egos=get_all_alteregos_of_a_character(
-                    id, add_url=True, base_url=base_url
-                ),
-                famous_guest=bool(row[9]) if row[9] is not None else False,
-            )
+            character = Character(row, base_url)
+            print(character)
         result = dict()
         if add_url:
             result["name"] = character.model_dump()["name"]
@@ -121,20 +86,8 @@ def get_character_by_id(
         # Get the number of characters
         query_result = get_query_result(text("SELECT * FROM public.characters"))
 
-        # Create API Response
-
-        # Add Character Data to Response
-        if not metadata:
-            result = character.model_dump()
-        else:
-            result["character"] = character.model_dump()
-
-            # Add Metadata to Response
-            result["metadata"] = dict()
-            result["metadata"]["total_characters_in_database"] = query_result.rowcount
-
         # Return Response
-        return result
+        return character.toJSON(metadata, query_result.rowcount)
     # Control exceptions
     except Exception as e:
         return {"error": str(e), "status": "failed"}

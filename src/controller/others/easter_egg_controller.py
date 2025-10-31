@@ -1,6 +1,6 @@
 from enum import Enum
 
-from src.controller.character_controller import get_character_list
+from src.controller.characters.characters_controller import get_character_list
 
 
 class EasterEggType(Enum):

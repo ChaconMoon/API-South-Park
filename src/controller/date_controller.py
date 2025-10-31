@@ -1,7 +1,9 @@
 from datetime import datetime
 from sqlalchemy import text
-from src.controller.alter_ego_controller import get_all_alteregos_of_a_character
-from src.controller.episodes_controller import get_episode_by_id
+from src.controller.characters.alter_ego_controller import (
+    get_all_alteregos_of_a_character,
+)
+from src.controller.tvshow.episodes_controller import get_episode_by_id
 from src.model.characters import Character
 from src.controller.data_controller import parse_array_to_list
 from src.controller.database_connection import get_query_result
