@@ -23,7 +23,7 @@ from src.website_elements.create_post_card_grid import (
 router = APIRouter(tags=["Blog"])
 
 
-@router.get("/blog/article/{entry}", tags="Blog")
+@router.get("/blog/article/{entry}")
 def show_blog(request: Request, response: Response, entry: str) -> dict:
     """
     Render a specific blog post article.
@@ -79,7 +79,7 @@ def show_blog(request: Request, response: Response, entry: str) -> dict:
     )
 
 
-@router.get("/blog/{index}", tags="blog")
+@router.get("/blog/{index}")
 def show_posts_grid(request: Request, response: Response, index: int) -> dict:
     """
     Render the blog posts grid page with pagination.

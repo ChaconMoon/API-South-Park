@@ -62,17 +62,20 @@ The Paramount + specials: **7 records** __(Update at: 15/09/2025 [They won't mak
 
 # API Tags - Define and document endpoint categories
 api_tags = [
-    {"name": "Heath_Check", "description": "Get the status of the database"},
+    {"name": "Health Check", "description": "Get the status of the database"},
     {
         "name": "Characters",
         "description": "Get data about the characters and their families",
     },
-    {"name": "Episodes", "description": "Get data about the episodes of the TV show"},
+    {"name": "TV Show", "description": "Get data about the episodes of the TV show"},
     {
         "name": "Music",
         "description": "Get data about the albums and songs and they URL to listen it.",
     },
-    {"name": "Other", "description": "Data of other items"},
+    {"name": "Others", "description": "Data of other items"},
+    {"name": "Iframes", "description": "Generates the iframes of the index"},
+    {"name": "Web", "description": "Endpoints of the web"},
+    {"name": "Blog", "description": "Endpoints of the DevBlog"},
 ]
 
 # Initialize FastAPI application with metadata

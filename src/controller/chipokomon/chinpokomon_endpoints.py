@@ -14,7 +14,7 @@ router = APIRouter(tags=["Chinpokomon"])
 
 
 @router.get("/api/chinpokomon/{id}")
-def get_chinpokomon(id: int, request: Request, response: Response) -> dict:
+def show_chinpokomon(id: int, request: Request, response: Response) -> dict:
     """
     Get a specific Chinpokomon by ID.
 
