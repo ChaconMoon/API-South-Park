@@ -1,7 +1,8 @@
 """
 Module written by Carlos Chacón.
 
-This module get the param of the API in the get album operations, make the query to the API and return the result.
+This module get the param of the API in the get album operations,
+make the query to the API and return the result.
 """
 
 # Import SQLAlquemy to make the query
@@ -15,14 +16,16 @@ from src.model.album import Album
 # Get album by this id
 def get_album_by_id(id: int, add_url=False, base_url="", metadata=False) -> dict:
     """
-    Get the ID of a album and returns a dict with the content of this album in the database.
+    Get the ID of a album and returns a dict with the content of this album.
 
     Params:
         id (int): The id of the album in the database.
         add_url (bool): Define is the query must return the URL.
         base_url (str): The url used to create the URL API.
+
     Returns:
         A dict with the response or a dict with the error.
+
     """
     try:
         # Make the query to the Database

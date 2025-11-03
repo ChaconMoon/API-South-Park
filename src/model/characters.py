@@ -1,25 +1,49 @@
 """
-Module written by Carlos Chacón
+Module written by Carlos Chacón.
 
-This module defines the Character data model.
+This module defines the Character data model used to represent South Park characters
+in the API responses. Each Character instance contains information about a specific
+South Park character including their ID, name, group affiliations, personal details,
+appearances, and alternate personas.
 """
-
-# Import pydantic
-from pydantic import BaseModel
 
 # Import List model
 from typing import List, Optional
 
+from pydantic import BaseModel, ValidationError
+
 from src.controller.characters.alter_ego_controller import (
     get_all_alteregos_of_a_character,
 )
-from src.controller.tvshow.episodes_controller import get_episode_by_id
 from src.controller.data_controller import parse_array_to_list
+from src.controller.tvshow.episodes_controller import get_episode_by_id
 from src.model.ApiObject import ApiObject
 
 
 # Create Character class
 class Character(BaseModel, ApiObject):
+    """
+    Represents a South Park character.
+
+    Inherits from:
+        BaseModel: Pydantic model for data validation
+        ApiObject: Base interface for API response objects
+
+    Attributes:
+        id (int): Unique identifier for the character
+        name (str): Name of the character
+        friend_group (Optional[int]): ID of character's friend group
+        family (Optional[int]): ID of character's family
+        birthday (Optional[str]): Character's birthday
+        age (Optional[int]): Character's age
+        religion (Optional[List[str]]): Character's religious affiliations
+        images (list[str]): List of URLs to character images
+        first_apperance (dict): Details about character's first episode
+        alter_egos (Optional[dict]): Character's alternate personas
+        famous_guest (bool): Whether character is based on a celebrity
+
+    """
+
     id: int
     name: str
     friend_group: Optional[int] = None
@@ -32,7 +56,18 @@ class Character(BaseModel, ApiObject):
     alter_egos: Optional[dict] = None
     famous_guest: bool
 
-    def toJSON(self, metadata=False, total_results=0) -> dict:
+    def toJSON(self, metadata: bool = False, total_results: int = 0) -> dict:
+        """
+        Convert the Character object to a JSON-compatible dictionary.
+
+        Args:
+            metadata (bool): Whether to include metadata in the response
+            total_results (int): Total number of characters in database
+
+        Returns:
+            dict: JSON-compatible dictionary with character data
+
+        """
         # Create API Response
 
         # Add Character Data to Response
@@ -46,16 +81,21 @@ class Character(BaseModel, ApiObject):
             result["metadata"]["total_characters_in_database"] = total_results
         return result
 
-    def __init__(self, row: list, base_url: str = "", id=0) -> "Character":
+    def __init__(self, row: list, base_url: str = "", id: int = 0) -> "Character":
         """
-        Builder method to create a Character instance from a database row
+        Initialize a Character instance from database row data.
 
         Args:
-            row (list): Database row with character data
-            base_url (str): Base URL for images and links
+            row (list): Database row containing character data
+            base_url (str): Base URL for image paths
+            id (int): Character identifier (optional)
 
         Returns:
             Character: New Character instance
+
+        Raises:
+            ValueError: If there's an error building the Character object
+
         """
         try:
             data = {
@@ -76,5 +116,5 @@ class Character(BaseModel, ApiObject):
                 "famous_guest": bool(row[9]) if row[9] is not None else False,
             }
             return super().__init__(**data)
-        except Exception as e:
-            raise ValueError(f"Error building Character: {str(e)}")
+        except ValidationError as e:
+            raise ValueError(f"Error building Character: {str(e)}") from e

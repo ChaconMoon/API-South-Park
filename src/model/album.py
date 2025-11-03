@@ -1,18 +1,36 @@
 """
-Module written by Carlos Chacón
+Module written by Carlos Chacón.
 
-This module defines the Album data model.
+This module defines the Album data model used to represent South Park music albums
+in the API responses. Each Album instance contains information about a specific
+South Park album including its ID, name, release date, cover images, songs and URL.
 """
 
-# Import pydantic
 from pydantic import BaseModel
 
 from src.controller.music.songs_controller import get_all_songs_of_a_album
 from src.model.ApiObject import ApiObject
 
 
-# Create Album class
 class Album(BaseModel, ApiObject):
+    """
+    Represents a South Park music album.
+
+    Inherits from:
+        BaseModel: Pydantic model for data validation
+        ApiObject: Base interface for API response objects
+
+    Attributes:
+        id (int): Unique identifier for the album
+        name (str): Name of the album
+        release_date (str): Release date of the album
+        album_cover (str): URL to album cover image
+        web_album_cover (str): URL to web-optimized album cover
+        songs (dict): Dictionary of songs in the album
+        album_url (str): External URL to album page
+
+    """
+
     id: int
     name: str
     release_date: str
@@ -21,7 +39,18 @@ class Album(BaseModel, ApiObject):
     songs: dict
     album_url: str
 
-    def toJSON(self, metadata=False, total_results=0):
+    def toJSON(self, metadata: bool = False, total_results: int = 0) -> dict:
+        """
+        Convert the Album object to a JSON-compatible dictionary.
+
+        Args:
+            metadata (bool): Whether to include metadata in the response
+            total_results (int): Total number of albums in database
+
+        Returns:
+            dict: JSON-compatible dictionary with album data
+
+        """
         if not metadata:
             result = self.model_dump()
         else:
@@ -31,6 +60,17 @@ class Album(BaseModel, ApiObject):
         return result
 
     def __init__(self, row: list, base_url: str = "") -> "Album":
+        """
+        Initialize an Album instance from database row data.
+
+        Args:
+            row (list): Database row containing album data
+            base_url (str): Base URL for image paths
+
+        Returns:
+            Album: New Album instance
+
+        """
         cover_url = str(row[3]) if row[3] is not None else ""
         web_cover_url = str(row[5]) if row[5] is not None else ""
         data = {

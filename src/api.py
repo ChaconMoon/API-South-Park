@@ -1,31 +1,49 @@
+"""
+Module written by Carlos Chacón.
+
+This module configures and initializes the FastAPI application for the South Park API.
+It sets up routing, static file serving, error handling, and API documentation.
+
+The API provides comprehensive data about the South Park universe including:
+- Characters and their alter egos
+- Episodes and specials
+- Music albums and songs
+- Video games
+- Family relationships
+- Chinpokomon creatures
+
+All data is served through RESTful endpoints with proper documentation
+and consistent error handling.
+"""
+
 # Create the FastAPI app.
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 
 from src.controller.characters import characters_endpoints
-from src.controller.iframes import iframes_endpoints
-from src.controller.handlers.not_found_handler import custom_404_handler
-from src.controller.structure import (
-    web_endpoints,
-    blog_endpoints,
-    health_check_endpoints,
-)
 from src.controller.chipokomon import chinpokomon_endpoints
 from src.controller.games import games_endpoint
+from src.controller.handlers.not_found_handler import custom_404_handler
+from src.controller.iframes import iframes_endpoints
 from src.controller.music import music_endpoints
 from src.controller.others import easter_egg_endpoint
+from src.controller.structure import (
+    blog_endpoints,
+    health_check_endpoints,
+    web_endpoints,
+)
 from src.controller.tvshow import tv_show_endpoint
 
-# Create the description of de API
-
+# API Description - Lists available data and update status
 description = """
 The South Park API allows you to search all the info that you need about the universe of South Park
 
-## Items.
+## Items
 
 You can search information about:
 
-The songs of the Albums of the show: **85 records** __(Updated at: 15/09/2025 [South Park The 25th Anniversary Concert])__
+The songs of the Albums of the show: **85 records**
+__(Updated at: 15/09/2025 [South Park The 25th Anniversary Concert])__
 
 The albums of the show: **6 records** __(Updated at: 15/09/2025 [South Park The 25th Anniversary Concert])__
 
@@ -40,7 +58,9 @@ The families of the show: **61 records** __(Updated at: 15/09/2025 [Table in pro
 The South Park games / videogames: **33 records** __(Updated at: 15/09/2025 [South Park: Snow Day])__
 
 The Paramount + specials: **7 records** __(Update at: 15/09/2025 [They won't make more specials, database table finished])__
-"""
+"""  # noqa: E501
+
+# API Tags - Define and document endpoint categories
 api_tags = [
     {"name": "Heath_Check", "description": "Get the status of the database"},
     {
@@ -54,6 +74,8 @@ api_tags = [
     },
     {"name": "Other", "description": "Data of other items"},
 ]
+
+# Initialize FastAPI application with metadata
 app = FastAPI(
     title="South Park API",
     description=description,
@@ -69,6 +91,8 @@ app = FastAPI(
     docs_url="/api/docs",
     openapi_tags=api_tags,
 )
+
+# Register all route handlers
 app.include_router(characters_endpoints.router)
 app.include_router(iframes_endpoints.router)
 app.include_router(web_endpoints.router)
@@ -79,25 +103,26 @@ app.include_router(music_endpoints.router)
 app.include_router(easter_egg_endpoint.router)
 app.include_router(health_check_endpoints.router)
 app.include_router(tv_show_endpoint.router)
+
+# Configure custom 404 handler
 app.add_exception_handler(404, custom_404_handler)
 
+# Mount static file directories
+# Blog related files
 app.mount(
     "/blog/images/",
     StaticFiles(directory="website/posts/thumbnails"),
     name="posts_images",
 )
-
 app.mount(
     "/blog/social_media/images/",
     StaticFiles(directory="website/posts/social_media_thumbnails"),
     name="social_media_images",
 )
 app.mount("/blog/posts/", StaticFiles(directory="website/posts"), name="posts")
-# Mount the img directory with the images of the database.
+
+# Asset directories
 app.mount("/img", StaticFiles(directory="img"), name="img")
-
 app.mount("/styles", StaticFiles(directory="styles"), name="styles")
-
 app.mount("/fonts", StaticFiles(directory="fonts"), name="fonts")
-
 app.mount("/javascript", StaticFiles(directory="javascript"), name="javascript")

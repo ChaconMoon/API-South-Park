@@ -1,6 +1,17 @@
-from fastapi import APIRouter, Response, Request
+"""
+Module written by Carlos Chacón.
+
+This module defines the iframe endpoints for the South Park API website.
+It provides routes to render template responses for different content sections
+like characters, episodes, songs, etc. Currently using static content instead
+of dynamic API calls for performance reasons.
+"""
+
+from fastapi import APIRouter, Request, Response
+
 from src.controller.structure.web_templates_controller import templates
 
+# Commented imports for dynamic content (currently disabled)
 # from src.website_elements.create_character_card_web import create_character_image_grid
 # from src.website_elements.create_episode_card_web import create_episode_image_grid
 # from src.website_elements.create_song_card_web import create_song_image_grid
@@ -16,7 +27,18 @@ router = APIRouter(tags=["IFrames"])
 
 
 @router.get("/iframe/characters")
-def create_characters_iframe(response: Response, request: Request):
+def create_characters_iframe(response: Response, request: Request) -> dict:
+    """
+    Render the characters section iframe template.
+
+    Args:
+        response (Response): FastAPI response object
+        request (Request): FastAPI request object
+
+    Returns:
+        dict: Template response for characters section
+
+    """
     return templates.TemplateResponse(
         "characters.html",
         {
@@ -31,7 +53,18 @@ def create_characters_iframe(response: Response, request: Request):
 
 
 @router.get("/iframe/episodes")
-def create_episodes_iframe(response: Response, request: Request):
+def create_episodes_iframe(response: Response, request: Request) -> dict:
+    """
+    Render the episodes section iframe template.
+
+    Args:
+        response (Response): FastAPI response object
+        request (Request): FastAPI request object
+
+    Returns:
+        dict: Template response for episodes section
+
+    """
     return templates.TemplateResponse(
         "episodes.html",
         {
@@ -45,7 +78,18 @@ def create_episodes_iframe(response: Response, request: Request):
 
 
 @router.get("/iframe/songs")
-def create_songs_iframe(response: Response, request: Request):
+def create_songs_iframe(response: Response, request: Request) -> dict:
+    """
+    Render the songs section iframe template.
+
+    Args:
+        response (Response): FastAPI response object
+        request (Request): FastAPI request object
+
+    Returns:
+        dict: Template response for songs section
+
+    """
     return templates.TemplateResponse(
         "songs.html",
         {
@@ -59,7 +103,18 @@ def create_songs_iframe(response: Response, request: Request):
 
 
 @router.get("/iframe/albums")
-def create_albums_iframe(response: Response, request: Request):
+def create_albums_iframe(response: Response, request: Request) -> dict:
+    """
+    Render the albums section iframe template.
+
+    Args:
+        response (Response): FastAPI response object
+        request (Request): FastAPI request object
+
+    Returns:
+        dict: Template response for albums section
+
+    """
     return templates.TemplateResponse(
         "albums.html",
         {
@@ -73,7 +128,18 @@ def create_albums_iframe(response: Response, request: Request):
 
 
 @router.get("/iframe/alter_egos")
-def create_alter_egos_iframe(response: Response, request: Request):
+def create_alter_egos_iframe(response: Response, request: Request) -> dict:
+    """
+    Render the alter egos section iframe template.
+
+    Args:
+        response (Response): FastAPI response object
+        request (Request): FastAPI request object
+
+    Returns:
+        dict: Template response for alter egos section
+
+    """
     return templates.TemplateResponse(
         "alter_egos.html",
         {
@@ -88,7 +154,18 @@ def create_alter_egos_iframe(response: Response, request: Request):
 
 
 @router.get("/iframe/families")
-def create_fmilies_iframe(response: Response, request: Request):
+def create_fmilies_iframe(response: Response, request: Request) -> dict:
+    """
+    Render the families section iframe template.
+
+    Args:
+        response (Response): FastAPI response object
+        request (Request): FastAPI request object
+
+    Returns:
+        dict: Template response for families section
+
+    """
     return templates.TemplateResponse(
         "families.html",
         {
@@ -102,7 +179,18 @@ def create_fmilies_iframe(response: Response, request: Request):
 
 
 @router.get("/iframe/games")
-def create_games_iframe(response: Response, request: Request):
+def create_games_iframe(response: Response, request: Request) -> dict:
+    """
+    Render the games section iframe template.
+
+    Args:
+        response (Response): FastAPI response object
+        request (Request): FastAPI request object
+
+    Returns:
+        dict: Template response for games section
+
+    """
     return templates.TemplateResponse(
         "games.html",
         {
@@ -117,7 +205,18 @@ def create_games_iframe(response: Response, request: Request):
 
 
 @router.get("/iframe/specials")
-def create_specials_iframe(response: Response, request: Request):
+def create_specials_iframe(response: Response, request: Request) -> dict:
+    """
+    Render the specials section iframe template.
+
+    Args:
+        response (Response): FastAPI response object
+        request (Request): FastAPI request object
+
+    Returns:
+        dict: Template response for specials section
+
+    """
     return templates.TemplateResponse(
         "specials.html",
         {

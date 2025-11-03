@@ -1,72 +1,89 @@
 """
 Module written by Carlos Chacón.
 
-This module get the param of the API in the get episode operations, make the query to the API and return the result.
+This module handles the database operations for retrieving South Park episodes.
+It provides functions to fetch specific episodes by ID and get the latest episode
+from the database.
 """
 
-# Import SQLAlchemy
 from sqlalchemy import text
 
-# Internal Imports
 from src.controller.database_connection import get_query_result
 from src.model.episode import Episode
 
 
-# Get one episode of the database
-def get_episode_by_id(id: int, add_url=False, base_url="", metadata=False) -> dict:
+def get_episode_by_id(
+    id: int, add_url: bool = False, base_url: str = "", metadata: bool = False
+) -> dict:
     """
-    Get one episode of the database
+    Retrieve a specific episode from the database by its ID.
 
     Args:
-        id (int): The id of a Episode.
-        add_url (bool): If the response must contain the URL of the API
-        base_url (str): "The URL base of the API
+        id (int): The unique identifier of the episode
+        add_url (bool): Whether to include API URLs in the response
+        base_url (str): The base URL for API endpoints
+        metadata (bool): Whether to include metadata in the response
 
     Returns:
-        The JSON Response
+        dict: JSON response containing either:
+            - Episode data if found
+            - Error message if not found or database error occurred
+
+    Response Format:
+        Success:
+            With add_url=True:
+                {"name": str, "url": str}
+            With add_url=False:
+                {episode_data} or {"episode": episode_data, "metadata": {...}}
+
+    Error:
+            {"error": str, "status": "failed"}
 
     """
     try:
-        # Get One Episode with this ID
         query_result = get_query_result(
             text("SELECT * FROM public.episodes where id=:id"), {"id": id}
         )
         if query_result is None:
-            return {"error": "Database not avalible", "status": "failed"}
+            return {"error": "Database not available", "status": "failed"}
         elif query_result.rowcount == 0:
-            return {"error": "Character not found", "status": "failed"}
+            return {"error": "Episode not found", "status": "failed"}
 
         for row in query_result:
-            # Get Episode info
             episode = Episode(row, base_url)
 
-        # Return the result with the URL
         if add_url:
-            result = dict()
-            result["name"] = episode.model_dump()["name"]
-            result["url"] = f"{base_url}api/episodes/{row[0]}"
-            return result
+            return {
+                "name": episode.model_dump()["name"],
+                "url": f"{base_url}api/episodes/{row[0]}",
+            }
 
-        # Return Episode info JSON
         query_result = get_query_result(text("SELECT * FROM public.episodes"))
-
         return episode.toJSON(metadata, query_result.rowcount)
 
-    # Control Exceptions
     except Exception as e:
         return {"error": str(e), "status": "failed"}
 
 
-def get_last_episode():
+def get_last_episode() -> dict:
     """
-    Returns the last episode of the series
+    Retrieve the most recent episode from the database.
 
     Returns:
-        The JSON Response
+        dict: JSON response containing either:
+            - Latest episode data if found
+            - Error message if database error occurred
+
+    Response Format:
+        Success:
+            {episode_data}
+
+    Error:
+            {"error": str, "status": "failed"}
 
     """
     query_result = get_query_result(text("SELECT * FROM public.episodes"))
-
+    if query_result is None:
+        return {"error": "Database not available", "status": "failed"}
     episode_id = query_result.rowcount
-
     return get_episode_by_id(episode_id)

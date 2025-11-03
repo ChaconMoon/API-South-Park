@@ -1,15 +1,14 @@
 """
 Module written by Carlos Chacón.
 
-This module get the param of the API in the get family operations, make the query to the API and return the result.
+This module get the param of the API in the get family operations,
+make the query to the API and return the result.
 """
 
 # Import SQLAlchemy
 from sqlalchemy import text
 
 # Interal Inputs
-from src.controller.data_controller import parse_array_to_list
-from src.controller.characters.characters_controller import get_character_by_id
 from src.controller.database_connection import get_query_result
 from src.model.family import Family
 
@@ -26,12 +25,13 @@ def get_family_by_id(id: int, url="", metadata=False) -> dict:
         A dict with the data of the family.
     """
     # Create variable to store the result data.
-    result = dict()
     try:
         # Get the result of the query to the databse.
         query_result = get_query_result(
-            text("""SELECT characters.id,characters.name,families.name, families.images FROM public.characters,public.families
-                                        Where characters.family = families.id And families.id = :id order by characters.id asc"""),
+            text("""SELECT characters.id,characters.name,families.name, families.images
+                    FROM public.characters,public.families
+                    Where characters.family = families.id And families.id = :id
+                    order by characters.id asc"""),
             {"id": id},
         )
 
@@ -39,7 +39,7 @@ def get_family_by_id(id: int, url="", metadata=False) -> dict:
         rows = query_result.fetchall()
 
         # Add all the family members to the array.
-        for row in rows:
+        for _row in rows:
             family = Family(rows, url, id)
 
         return family.toJSON(metadata, total_results=query_result.rowcount)

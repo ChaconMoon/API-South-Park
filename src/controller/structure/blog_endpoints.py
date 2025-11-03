@@ -1,6 +1,14 @@
-from fastapi import APIRouter, HTTPException, Response, Request
+"""
+Module written by Carlos Chacón.
+
+This module defines the blog interface endpoints for the South Park API.
+It provides routes for rendering blog posts and the blog grid page with pagination.
+"""
+
+from fastapi import APIRouter, HTTPException, Request, Response
 from fastapi.responses import RedirectResponse
 from markdown import markdown
+
 from src.controller.structure.web_templates_controller import templates
 from src.website_elements.create_footer_web import create_footer
 from src.website_elements.create_post_card_grid import (
@@ -16,7 +24,35 @@ router = APIRouter(tags=["Blog"])
 
 
 @router.get("/blog/article/{entry}", tags="Blog")
-def show_blog(request: Request, response: Response, entry: str):
+def show_blog(request: Request, response: Response, entry: str) -> dict:
+    """
+    Render a specific blog post article.
+
+    Args:
+        request (Request): FastAPI request object
+        response (Response): FastAPI response object
+        entry (str): Blog post filename without extension
+
+    Returns:
+        dict: Template response containing:
+            - Rendered HTML blog content
+            - Social media metadata
+            - Page footer
+
+    Raises:
+        HTTPException: 404 if blog post file not found
+
+    Template Context:
+        request: FastAPI request object
+        blog_item: Rendered HTML content of the blog post
+        base_url: Base URL for assets
+        articule_title_in_social_media: Post title for social media
+        articule_description_in_social_media: Post description for social media
+        image_in_social_media: Social media preview image URL
+        url_in_social_media: Social media sharing URL
+        footer: HTML content for page footer
+
+    """
     try:
         with open(f"./website/posts/{entry}.MD", encoding="utf-8") as f:
             markdown_content = f.read()
@@ -26,8 +62,8 @@ def show_blog(request: Request, response: Response, entry: str):
         )
         html_blog_entry = html_blog_entry.replace("<p><img", "<img")
         html_blog_entry = html_blog_entry.replace('webp" /></p>', 'webp" />')
-    except FileNotFoundError as e:
-        raise HTTPException(status_code=404)
+    except FileNotFoundError:
+        raise HTTPException(status_code=404) from None  # Investigate exception chaining
     return templates.TemplateResponse(
         "blog_page_post.html",
         context={
@@ -44,11 +80,31 @@ def show_blog(request: Request, response: Response, entry: str):
 
 
 @router.get("/blog/{index}", tags="blog")
-def show_posts_grid(request: Request, response: Response, index: int):
-    grid_elements = create_post_grid_in_blog(
-        start_index=index, base_url=request.base_url
-    )
-    print(grid_elements)
+def show_posts_grid(request: Request, response: Response, index: int) -> dict:
+    """
+    Render the blog posts grid page with pagination.
+
+    Args:
+        request (Request): FastAPI request object
+        response (Response): FastAPI response object
+        index (int): Page number for pagination
+
+    Returns:
+        dict: Template response containing:
+            - Grid of blog post cards
+            - Navigation links
+            - Page footer
+        RedirectResponse: Redirects to last valid page if index is out of range
+
+    Template Context:
+        request: FastAPI request object
+        base_url: Base URL for assets
+        blog_posts_grid: HTML grid of blog post cards
+        blog_links: HTML navigation links
+        footer: HTML content for page footer
+
+    """
+    grid_elements = create_post_grid_in_blog(start_index=index, base_url=request.base_url)
     if grid_elements != "":
         return templates.TemplateResponse(
             "blog_page.html",

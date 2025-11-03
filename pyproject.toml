@@ -18,8 +18,45 @@ dependencies = [
     "requests (>=2.32.5,<3.0.0)",
     "dotenv (>=0.9.9,<0.10.0)",
     "markdown (>=3.9,<4.0)",
-    "pytest (>=8.4.2,<9.0.0)"
+    "pytest (>=8.4.2,<9.0.0)",
+    "pre-commit (>=4.3.0,<5.0.0)",
+    "ruff (>=0.14.3,<0.15.0)"
 ]
+
+[tool.ruff]
+line-length = 90
+indent-width = 4
+target-version = "py313"
+
+[tool.ruff.lint]
+select = [
+        "D", # Document Code
+        "E", # Indentation Errors
+        "W", # Import Errors
+        "F", # Errors in Code
+        "I", # Force Imports
+        "S", # Vulnerabilty Scan
+        "B", # Logic Bugs
+        "C90", # Control Complex
+        "PERF", # Impove Code
+        "T20", # Not use Print
+        "ICN", # Use standart import name
+        "UP032", # Use F Strings
+        "FAST", # FastAPi Corrections
+]
+
+ignore = [
+  "D203",   # Empty line between class declaration and docstring
+  "D212",   # Docstring summary in first line
+  "ICN003", # Prohibit 'from' in import
+  "COM812", # Conflict with ISC001 | Checks for absensce of trailing commas
+  "TD002",
+  "TD003",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
 
 [tool.poetry]
 packages = [

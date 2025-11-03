@@ -1,5 +1,13 @@
-from fastapi.testclient import TestClient
+"""
+Module written by Carlos Chacón.
+
+This Module define the tests to the responses in album databse.
+"""
+
 from unittest.mock import patch
+
+from fastapi.testclient import TestClient
+from requests import RequestException
 
 from src.main import app
 
@@ -7,6 +15,7 @@ client = TestClient(app)
 
 
 def test_album_database_correct():
+    """Test A Correct Response in Album Endpoint."""
     fake_response = {
         "album": {
             "id": 1,
@@ -20,20 +29,25 @@ def test_album_database_correct():
     with patch("src.main.get_album_by_id") as database_response:
         database_response.return_value = fake_response
         response = client.get("/album/1")
-        assert response.status_code == 200
+        if response.status_code != 200:
+            raise RequestException("Expected Found Response")
 
 
 def test_album_object_not_found():
+    """Test A Not Found Response in Album Endpoint."""
     fake_response = {"error": "Album not found", "status": "failed"}
     with patch("src.main.get_album_by_id") as database_response:
         database_response.return_value = fake_response
         response = client.get("/album/1")
-        assert response.status_code == 404
+        if response.status_code != 404:
+            raise RequestException("Expected Not Found Response")
 
 
 def test_album_database_not_avalible():
+    """Test A Not Avalible Response in Album Endpoint."""
     fake_response = {"error": "Database not avalible", "status": "failed"}
     with patch("src.main.get_album_by_id") as database_response:
         database_response.return_value = fake_response
         response = client.get("/album/1")
-        assert response.status_code == 500
+        if response.status_code != 500:
+            raise RequestException("Expected Not Avalible Response")

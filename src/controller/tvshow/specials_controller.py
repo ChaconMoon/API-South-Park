@@ -1,7 +1,8 @@
 """
 Module written by Carlos Chacón.
 
-This module get the param of the API in the get special operations, make the query to the API and return the result.
+This module get the param of the API in the get special operations,
+ make the query to the API and return the result.
 """
 
 # Import SQLAlchemy
@@ -15,14 +16,16 @@ from src.model.specials import Special
 # Get one special data from the API and Return it.
 def get_special_by_id(id: int, add_url=False, base_url="", metadata=False):
     """
-    Get the ID of a special and returns a dict with the content of this special in the database.
+    Get the ID of a special and returns a dict with the content of this special.
 
     Params:
         id (int): The id of the special in the database.
         add_url (bool): Define is the query must return the URL.
         base_url (str): The url used to create the URL API.
+
     Returns:
         A dict with the response or a dict with the error.
+
     """
     try:
         # Make the query to the Database

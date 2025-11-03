@@ -1,7 +1,8 @@
 """
 Module written by Carlos Chacón.
 
-This module get the param of the API in the get song operations, make the query to the API and return the result.
+This module get the param of the API in the get song operations,
+make the query to the API and return the result.
 """
 
 # Import SQLAlchemy
@@ -21,8 +22,10 @@ def get_all_songs_of_a_album(id: int, base_url="", add_url=False) -> dict:
         id (int): The ID of the album.
         base_url (str): The base URL to create the reference URL.
         add_url (bool): If the result must contain the URL.
+
     Returns:
         A dict with all the songs of the album.
+
     """
     # Create the object to store the result
     result = dict()
@@ -30,7 +33,7 @@ def get_all_songs_of_a_album(id: int, base_url="", add_url=False) -> dict:
         # Make the query to the database.
         query_result = get_query_result(
             text("""
-                        SELECT * FROM public.album_songs where album = :id order by id asc"""),
+                SELECT * FROM public.album_songs where album = :id order by id asc"""),
             {"id": id},
         )
         song_number = 1
@@ -59,10 +62,11 @@ def get_song_by_id(id: int, add_url=False, base_url="", metadata=False):
         id (int): The ID of the song.
         base_url (str): The base URL to create the reference URL.
         add_url (bool): If the result must contain the URL.
+
     Returns:
         A dict with all the songs of the album.
-    """
 
+    """
     # Get the query result
     try:
         # Make the query to the Database
