@@ -5,7 +5,6 @@ This module get the param of the API in the get character operations, make the q
 """
 
 from sqlalchemy import text
-from src.controller.data_controller import parse_array_to_list
 from src.controller.database_connection import get_query_result
 from src.model.game import Game
 
@@ -43,14 +42,7 @@ def get_game_by_id(
             return {"error": "Game not found", "status": "failed"}
         # Get the Character info
         for row in query_result:
-            game = Game(
-                id=int(row[0]) if row[0] is not None else 0,
-                name=str(row[1]) if row[1] is not None else "",
-                developer=str(row[2]) if row[2] is not None else "",
-                platforms=parse_array_to_list(str(row[3])),
-                release_date=str(row[4]) if row[4] is not None else "Not Released",
-                images=parse_array_to_list(str(row[5]), is_url=True, base_url=base_url),
-            )
+            game = Game(row, base_url)
         result = dict()
         if add_url:
             result["name"] = game.model_dump()["name"]
@@ -59,20 +51,8 @@ def get_game_by_id(
         # Get the number of characters
         query_result = get_query_result(text("SELECT * FROM public.games"))
 
-        # Create API Response
-
-        # Add Character Data to Response
-        if not metadata:
-            result = game.model_dump()
-        else:
-            result["game"] = game.model_dump()
-
-            # Add Metadata to Response
-            result["metadata"] = dict()
-            result["metadata"]["total_characters_in_database"] = query_result.rowcount
-
         # Return Response
-        return result
+        return game.toJSON(metadata, query_result.rowcount)
     # Control exceptions
     except Exception as e:
         return {"error": str(e), "status": "failed"}
