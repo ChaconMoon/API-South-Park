@@ -47,13 +47,13 @@ __(Updated at: 15/09/2025 [South Park The 25th Anniversary Concert])__
 
 The albums of the show: **6 records** __(Updated at: 15/09/2025 [South Park The 25th Anniversary Concert])__
 
-The characters of the TV Show: **410 records** __(Updated at: 15/09/2025 [Table in progress])__
+The characters of the TV Show: **542 records** __(Updated at: 04/11/2025 [Table in progress])__
 
 The alter egos of the characters of the show: **100 records** __(Updated at: 15/09/2025 [Missing: Dougie / General Disarray and Mr. Slave])__
 
-The episodes of the show: **325 records** __(Updated at: 15/09/2025 [Wok is Dead S27E04])__
+The episodes of the show: **328 records** __(Updated at: 04/11/2025 [The Woman In The Hat S28E02])__
 
-The families of the show: **61 records** __(Updated at: 15/09/2025 [Table in progress])__
+The families of the show: **67 records** __(Updated at: 04/11/2025 [Table in progress])__
 
 The South Park games / videogames: **33 records** __(Updated at: 15/09/2025 [South Park: Snow Day])__
 

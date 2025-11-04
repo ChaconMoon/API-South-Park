@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict AOzXtzZdK1cvMvYUWQrdTZxHGEP4mgWyfw45gtbXOPxX1mRdKmKoQ4nAqCd0Hab
+\restrict ekvRAccNaYLtNacul3DX9fBFcMaeKe3nr9dNMU7MtGvMwA8UBD5OiaS2yhJgVrJ
 
 -- Dumped from database version 15.14 (Debian 15.14-1.pgdg13+1)
 -- Dumped by pg_dump version 15.14 (Debian 15.14-1.pgdg13+1)
@@ -554,7 +554,6 @@ COPY public.alter_ego (id, original_character, name, images) FROM stdin;
 COPY public.characters (id, name, friend_group, family, birthday, age, religion, first_apperance, images, famous_guest) FROM stdin;
 2	Eric Theodore Cartman	1	2	July 1st	10	{"Roman Catholicism","Blaintologistism (Temporary)","Judaism (Post-Covid)"}	1	{/img/characters/show/Eric_Cartman.png}	f
 3	Kyle Broflovski	1	1	May 26th	10	{Judaism,"Christianity (Temporary)","Blaintologist (Temporary)","Atheistism (Temporary)"}	1	{/img/characters/show/Kyle_Broflovski.png}	f
-4	Stanley "Stan" Marsh	1	3	October 19th	10	{Christian,"Atheist (Temporariry)","Mormon (Temporariry)","Scientologist (Temporariry)","Blaintologist (Temporarily)"}	1	{/img/characters/show/Stan_Marsh.png}	f
 5	Sir Ike Moisha Broflovski	\N	1	December 17th	3	{Judaism}	1	{/img/characters/show/Ike_Broflovski.png}	f
 6	Jerome McElroy "The Chef"	\N	27	\N	\N	{Christianity,"Islam (Temporary)"}	1	{/img/characters/show/Chef.png}	f
 7	Herbert Garrison	\N	16	\N	41	{"Roman Catholic","Atheist (Temporary)"}	1	{/img/characters/show/Herbert_Garrison.png}	f
@@ -1094,6 +1093,7 @@ COPY public.characters (id, name, friend_group, family, birthday, age, religion,
 120	Chad Handler	\N	21	\N	10	{Judaism}	113	{/img/characters/show/Chad_Handler.png}	\N
 514	Coach Miles	\N	\N	\N	\N	\N	241	{/img/characters/show/Coach_Miles.png}	f
 210	Charlie Brown	\N	63	October 30th	10	\N	65	{/img/characters/show/Charlie_Brown.png}	t
+4	Stanley "Stan" Marsh	1	3	October 19th	9	{Christian,"Atheist (Temporariry)","Mormon (Temporariry)","Scientologist (Temporariry)","Blaintologist (Temporarily)"}	1	{/img/characters/show/Stan_Marsh.png}	f
 \.
 
 
@@ -1467,6 +1467,7 @@ COPY public.episodes (id, name, season, episode, realese_date, description, view
 325	Wok is Dead	27	4	2025-09-03	Butters experiences the reality of tariffs when he has to buy a Labubu doll for his girlfriend’s birthday.	https://www.southparkstudios.com/episodes/7kgkzb/south-park-wok-is-dead-season-27-ep-4	f	t	img/episodes/325.jpg
 326	Conflict of Interest	27	5	2025-09-24	Kyle and Cartman are at odds when a prediction markets app gets popular with their fellow students.	https://www.southparkstudios.com/episodes/0v5k4m/south-park-conflict-of-interest-season-27-ep-5	f	t	img/episodes/326.jpg
 327	Twisted Christian	28	1	2025-10-15	Cartman is possessed and may be the key to stopping the Antichrist.	https://www.southparkstudios.com/episodes/5yvj56/south-park-twisted-christian-season-28-ep-1	f	t	img/episodes/327.jpg
+328	The Woman In The Hat	28	2	2025-10-31	The White House deals with a disruptive spirit from the east wing. While Stan worries that South Park has become too political.	https://www.southparkstudios.com/episodes/xgd7ik/south-park-the-woman-in-the-hat-season-28-ep-2	f	t	img/episodes/328.jpg
 \.
 
 
@@ -1751,5 +1752,5 @@ ALTER TABLE ONLY public.alter_ego
 -- PostgreSQL database dump complete
 --
 
-\unrestrict AOzXtzZdK1cvMvYUWQrdTZxHGEP4mgWyfw45gtbXOPxX1mRdKmKoQ4nAqCd0Hab
+\unrestrict ekvRAccNaYLtNacul3DX9fBFcMaeKe3nr9dNMU7MtGvMwA8UBD5OiaS2yhJgVrJ
 
