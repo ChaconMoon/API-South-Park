@@ -1,13 +1,31 @@
+"""
+Module written by Carlos Chacón.
+
+This module handles date-related operations for the South Park API.
+It provides functions to check birthdays and retrieve characters that have
+their birthday on the current date.
+"""
+
 from datetime import datetime
+
 from sqlalchemy import text
-from src.controller.alter_ego_controller import get_all_alteregos_of_a_character
-from src.controller.episodes_controller import get_episode_by_id
-from src.model.characters import Character
-from src.controller.data_controller import parse_array_to_list
+
 from src.controller.database_connection import get_query_result
+from src.model.characters import Character
 
 
-def get_today_birthday():
+def get_today_birthday() -> str:
+    """
+    Get today's date formatted as 'Month Day' with proper ordinal suffix.
+
+    Returns:
+        str: Formatted date string (e.g., 'November 3rd')
+
+    Example:
+        If today is November 3rd:
+            get_today_birthday() -> 'November 3rd'
+
+    """
     actual_date = datetime.now()
     month = actual_date.strftime("%B")
     day = actual_date.strftime("%d")
@@ -25,60 +43,58 @@ def get_today_birthday():
     return f"{month} {day}"
 
 
-def get_today_birthday_character(base_url="") -> dict:
+def get_today_birthday_character(base_url: str = "") -> dict:
     """
-    Get one character of the database
+    Get all characters that have their birthday on the current date.
 
     Args:
-        id (int): The id of a Character.
-        add_url (bool): If the response must contain the URL of the API
-        base_url (str): "The URL base of the API
+        base_url (str): Base URL for API endpoints and assets
 
     Returns:
-        The JSON Response
+        dict: JSON response containing either:
+            - List of characters with today's birthday
+            - Message if no birthdays today
+            - Error message if database error
+
+    Response Format:
+        Success:
+            {
+                "characters": [
+                    {character_data},
+                    {character_data},
+                    ...
+                ]
+            }
+        No Birthdays:
+            {
+                "message": "No one has their birthday today",
+                "status": "failed"
+            }
+
+    Error:
+            {
+                "error": str,
+                "status": "failed"
+            }
 
     """
     try:
-        # Get one character from the database using this ID
         query_result = get_query_result(
             text("SELECT * FROM public.characters where birthday =:birthday"),
             {"birthday": get_today_birthday()},
         )
 
-        # Return the errors response
-
         if query_result is None:
-            return {"error": "Database not avalible", "status": "failed"}
+            return {"error": "Database not available", "status": "failed"}
         elif query_result.rowcount == 0:
-            return {"message": "No one has they bithday today", "status": "failed"}
-        # Get the Character info
-        result = dict()
-        result["characters"] = list(dict())
-        for row in query_result:
-            id = int(row[0]) if row[0] is not None else 0
-            character = Character(
-                id=id,
-                name=str(row[1]) if row[1] is not None else "",
-                friend_group=int(row[2]) if row[2] is not None else None,
-                family=int(row[3]) if row[3] is not None else None,
-                birthday=str(row[4]) if row[4] is not None else None,
-                age=int(row[5]) if row[5] is not None else None,
-                religion=parse_array_to_list(row[6]),
-                first_apperance=get_episode_by_id(
-                    int(row[7]), add_url=True, base_url=base_url
-                ),
-                images=parse_array_to_list(row[8], is_url=True, base_url=base_url),
-                alter_egos=get_all_alteregos_of_a_character(
-                    id, add_url=True, base_url=base_url
-                ),
-                famous_guest=bool(row[9]) if row[9] is not None else False,
-            )
-            # Create API Response
+            return {"message": "No one has their birthday today", "status": "failed"}
 
-            # Add Character Data to Response
-        result["characters"].append(character.model_dump())
-        # Return Response
+        result = {"characters": []}
+        for row in query_result:
+            character = Character(row, base_url)
+            result["characters"].append(character.model_dump())
+
         return result
-    # Control exceptions
+
     except Exception as e:
         return {"error": str(e), "status": "failed"}

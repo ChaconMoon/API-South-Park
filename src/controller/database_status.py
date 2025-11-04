@@ -1,21 +1,44 @@
 """
 Module written by Carlos Chacón.
 
-This module make a query to verify if the Databse is avalible.
+This module provides functionality to check the database connection status
+and retrieve the PostgreSQL version information.
 """
 
-# Import SQLAlchemy
 from sqlalchemy import text
 
-# Internal Imports
 from src.controller.database_connection import get_query_result
 
 
-# Get the status of the database
-def get_database_status():
+def get_database_status() -> dict:
     """
-    Retruns:
-        A dict with the version and the status of the databse.
+    Check database connectivity and get version information.
+
+    Returns:
+        dict: JSON response containing either:
+            - Database version and connection status if successful
+            - Error message if connection fails
+
+    Response Format:
+        Success:
+            {
+                "version": str,
+                "status": "connected"
+            }
+
+    Error:
+            {
+                "error": str,
+                "status": "failed"
+            }
+
+    Example:
+        Success:
+            {
+                "version": "PostgreSQL 15.4",
+                "status": "connected"
+            }
+
     """
     rows = dict()
     try:

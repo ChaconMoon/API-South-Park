@@ -1,9 +1,26 @@
+"""
+Module written by Carlos Chacón.
+
+This Module define the crators of functions to create the
+ web cards of the songs in the index.
+"""
+
 import requests
 
 
 def create_song_web_card_to_website(base_url: str, song_id: int) -> str:
+    """
+    Create a web card that contain a Songs in the Index Website.
+
+    Params:
+            base_url: The URL used to create the API Call.
+            song_id: The ID of the song to create the card.
+
+    Retruns:
+            ``str``: The string that defines the HTML code of the card.
+    """
     song_request_url = f"{base_url}api/songs/{song_id}"
-    request = requests.get(song_request_url)
+    request = requests.get(song_request_url, timeout=10)
 
     request_json = request.json()
 
@@ -12,7 +29,7 @@ def create_song_web_card_to_website(base_url: str, song_id: int) -> str:
     song_url = request_json["song_url"]
 
     request_url = f"{base_url}api/albums/{album_number}"
-    request = requests.get(request_url)
+    request = requests.get(request_url, timeout=10)
     request_album_json = request.json()
 
     album_name = request_album_json["name"]
@@ -35,7 +52,6 @@ def create_song_web_card_to_website(base_url: str, song_id: int) -> str:
         </a>
     """
     )
-    print(html_button)
     html_response = f"""
         <div class="song_card" >
                 <a href="{song_request_url}" target="blanck" class="song_card_link">
@@ -57,6 +73,16 @@ def create_song_web_card_to_website(base_url: str, song_id: int) -> str:
 
 
 def create_song_image_grid(ids: list[int], base_url: str) -> str:
+    """
+    Create a grid of the web card that contain the Songs in the Index Website.
+
+    Params:
+            base_url: The URL used to create the API Call.
+            ids: A list of the IDs of the songs to create the card.
+
+    Retruns:
+           ``str``: The string that defines the HTML code of the card.
+    """
     divs_containers = ""
     for id in ids:
         divs_containers += create_song_web_card_to_website(base_url, id)

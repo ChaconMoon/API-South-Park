@@ -1,9 +1,26 @@
+"""
+Module written by Carlos Chacón.
+
+This Module define the crators of functions to create the web cards of the characters
+ in the index.
+"""
+
 import requests
 
 
 def create_special_web_card_to_website(base_url: str, album_id: int) -> str:
+    """
+    Create a web card that contain a Character in the Index Website.
+
+    Params:
+            base_url: The URL used to create the API Call.
+            album_id: The ID of the album to create the card.
+
+    Retruns:
+            ``str``: The string that defines the HTML code of the card.
+    """
     request_url = f"{base_url}api/specials/{album_id}"
-    request = requests.get(request_url)
+    request = requests.get(request_url, timeout=10)
     request_album_json = request.json()
 
     title = request_album_json["title"]
@@ -13,16 +30,14 @@ def create_special_web_card_to_website(base_url: str, album_id: int) -> str:
 
     poster_special = request_album_json["poster"]
 
-    link = request_album_json["link"]
-
     html_response = f"""
         <a href="{request_url}" target="blanck" class="special_card_link">
                 <div class="special_card" >
-                                <img class="special_poster" src="{poster_special}" alt="Cover">
+                                <img class="special_poster" src="{poster_special}"
+                                 alt="Cover">
                                 <p class="special_name">
                                         <b>{title}</b>
                                 </p>
-                                
                                 <p class="release_date">
                                         Release Date: {release_date}
                                 </p>
@@ -30,7 +45,6 @@ def create_special_web_card_to_website(base_url: str, album_id: int) -> str:
                                 <p class="special_description">
                                         {description}
                                 </p>
-                                
                 </div>
         </a>\n
         """
@@ -38,6 +52,16 @@ def create_special_web_card_to_website(base_url: str, album_id: int) -> str:
 
 
 def create_special_image_grid(ids: list[int], base_url: str) -> str:
+    """
+    Create a grid of the web card that contain the Characters in the Index Website.
+
+    Params:
+            base_url: The URL used to create the API Call.
+            ids: A list of the IDs of the album to create the card.
+
+    Retruns:
+           ``str``: The string that defines the HTML code of the card.
+    """
     divs_containers = ""
     index = 0
     for id in ids:
