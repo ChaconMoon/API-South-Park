@@ -25,9 +25,9 @@ def test_song_database_correct():
         },
         "metadata": {"total_songs_in_database": 85},
     }
-    with patch("src.main.get_song_by_id") as databse_response:
+    with patch("src.controller.music.music_endpoints.get_song_by_id") as databse_response:
         databse_response.return_value = fake_response
-        response = client.get("/song/2")
+        response = client.get("/api/songs/2")
         if response.status_code != 200:
             raise ValueError("Expected Found Response")
 
@@ -35,9 +35,11 @@ def test_song_database_correct():
 def test_song_object_not_found():
     """Test a not found Response in Episode Endpoint."""
     fake_response = {"error": "Song not found", "status": "failed"}
-    with patch("src.main.get_song_by_id") as database_response:
+    with patch(
+        "src.controller.music.music_endpoints.get_song_by_id"
+    ) as database_response:
         database_response.return_value = fake_response
-        response = client.get("/song/2")
+        response = client.get("/api/songs/2")
         if response.status_code != 404:
             raise ValueError("Expected Not Found Response")
 
@@ -45,8 +47,10 @@ def test_song_object_not_found():
 def test_song_database_not_avalible():
     """Test a not avalible Response in Episode Endpoint."""
     fake_response = {"error": "Database not avalible", "status": "failed"}
-    with patch("src.main.get_song_by_id") as database_response:
+    with patch(
+        "src.controller.music.music_endpoints.get_song_by_id"
+    ) as database_response:
         database_response.return_value = fake_response
-        response = client.get("/song/2")
+        response = client.get("/api/songs/2")
         if response.status_code != 500:
             raise ValueError("Expected Internal Server Error Response")

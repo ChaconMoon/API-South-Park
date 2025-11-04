@@ -63,7 +63,7 @@ def test_if_image_exist_in_characters():
                 actual_character[str(alter_ego_number)]["url"], timeout=10
             ).json()["images"]
             for image in alter_ego_images:
-                if requests.get(image, timeout=10).status_code == 200:
+                if requests.get(image, timeout=10).status_code != 200:
                     raise requests.RequestException(
                         f"""Character: {character} Image: {alter_ego_number},
                         URL: {image} NOT AVALIBLE """

@@ -52,9 +52,11 @@ def test_character_database_correct():
         },
         "metadata": {"total_characters_in_database": 277},
     }
-    with patch("src.main.get_character_by_id") as databse_response:
+    with patch(
+        "src.controller.characters.characters_endpoints.get_character_by_id"
+    ) as databse_response:
         databse_response.return_value = fake_response
-        response = client.get("/character/1")
+        response = client.get("api/characters/1")
         if response.status_code != 200:
             raise RequestException("Expected Found Response")
 
@@ -62,9 +64,11 @@ def test_character_database_correct():
 def test_character_object_not_found():
     """Test A Not Found Response in Character Endpoint."""
     fake_response = {"error": "Character not found", "status": "failed"}
-    with patch("src.main.get_character_by_id") as database_response:
+    with patch(
+        "src.controller.characters.characters_endpoints.get_character_by_id"
+    ) as database_response:
         database_response.return_value = fake_response
-        response = client.get("/character/1")
+        response = client.get("api/characters/1")
         if response.status_code != 404:
             raise RequestException("Expected Not Found Response")
 
@@ -72,8 +76,10 @@ def test_character_object_not_found():
 def test_character_database_not_avalible():
     """Test A Not Avalible Response in Character Endpoint."""
     fake_response = {"error": "Database not avalible", "status": "failed"}
-    with patch("src.main.get_character_by_id") as database_response:
+    with patch(
+        "src.controller.characters.characters_endpoints.get_character_by_id"
+    ) as database_response:
         database_response.return_value = fake_response
-        response = client.get("/character/1")
+        response = client.get("api/characters/1")
         if response.status_code != 500:
             raise RequestException("Expected Not Avalible Response")

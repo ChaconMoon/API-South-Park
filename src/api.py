@@ -32,7 +32,7 @@ from src.controller.structure import (
     health_check_endpoints,
     web_endpoints,
 )
-from src.controller.tvshow import tv_show_endpoint
+from src.controller.tvshow import tv_show_endpoints
 
 # API Description - Lists available data and update status
 description = """
@@ -105,7 +105,7 @@ app.include_router(games_endpoint.router)
 app.include_router(music_endpoints.router)
 app.include_router(easter_egg_endpoint.router)
 app.include_router(health_check_endpoints.router)
-app.include_router(tv_show_endpoint.router)
+app.include_router(tv_show_endpoints.router)
 
 # Configure custom 404 handler
 app.add_exception_handler(404, custom_404_handler)
