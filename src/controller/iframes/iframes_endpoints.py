@@ -23,7 +23,7 @@ from src.controller.structure.web_templates_controller import templates
 #     create_special_image_grid,
 # )
 
-router = APIRouter(tags=["IFrames"])
+router = APIRouter(tags=["Iframes"])
 
 
 @router.get("/iframe/characters")

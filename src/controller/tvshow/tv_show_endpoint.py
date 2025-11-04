@@ -14,7 +14,7 @@ from src.controller.tvshow.specials_controller import get_special_by_id
 router = APIRouter(tags=["TV Show"])
 
 
-@router.get("/api/lastepisode", tags=["TV Show"])
+@router.get("/api/lastepisode")
 def get_the_last_episode() -> dict:
     """
     Get the most recent episode of South Park.
@@ -26,7 +26,7 @@ def get_the_last_episode() -> dict:
     return get_last_episode()
 
 
-@router.get("/api/specials/{id}", tags=["TV Show"])
+@router.get("/api/specials/{id}")
 def show_special(
     id: int, request: Request, response: Response, metadata: bool = False
 ) -> dict:
@@ -60,7 +60,7 @@ def show_special(
     return json
 
 
-@router.get("/api/episodes/{id}", tags=["TV Show"])
+@router.get("/api/episodes/{id}")
 def show_episode(
     id: int, response: Response, request: Request, metadata: bool = False
 ) -> dict:

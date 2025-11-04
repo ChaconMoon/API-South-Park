@@ -138,7 +138,7 @@ def search_character(
 
 
 # Create the endpoint to get the families.
-@router.get("/api/families/{id}", tags=["Characters"])
+@router.get("/api/families/{id}")
 def show_family(
     id: int, request: Request, response: Response, metadata: bool = False
 ) -> dict:
@@ -173,7 +173,7 @@ def show_family(
 
 
 # Create the endpoint to get the characters.
-@router.get("/api/characters/{id}", tags=["Characters"])
+@router.get("/api/characters/{id}")
 async def show_character(
     id: int, request: Request, response: Response, metadata: bool = False
 ) -> dict:

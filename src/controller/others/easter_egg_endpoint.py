@@ -13,7 +13,7 @@ from src.controller.others.easter_egg_controller import get_easter_egg
 router = APIRouter(tags=["Others"])
 
 
-@router.get("/api/easteregg/{name}", tags=["Others"])
+@router.get("/api/easteregg/{name}")
 def return_easter_egg(name: str, request: Request, response: Response) -> dict:
     """
     Return a special easter egg response based on the provided name.

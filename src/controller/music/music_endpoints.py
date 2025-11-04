@@ -13,7 +13,7 @@ from src.controller.music.songs_controller import get_song_by_id
 router = APIRouter(tags=["Music"])
 
 
-@router.get("/api/albums/{id}", tags=["Music"])
+@router.get("/api/albums/{id}")
 def show_album(
     id: int, request: Request, response: Response, metadata: bool = False
 ) -> dict:
@@ -49,7 +49,7 @@ def show_album(
     return json
 
 
-@router.get("/api/songs/{id}", tags=["Music"])
+@router.get("/api/songs/{id}")
 def show_song(
     id: int, request: Request, response: Response, metadata: bool = False
 ) -> dict:
