@@ -42,10 +42,10 @@ class Chinpokomon(BaseModel, ApiObject):
             dict: JSON-compatible dictionary with Chinpokomon data
 
         """
-        result = dict()
         if not metadata:
             return self.model_dump()
         else:
+            result = dict()
             result["chinpokomon"] = self.model_dump()
             result["metadata"] = dict()
             result["metadata"]["total_chinpokomons_in_database"] = total_results

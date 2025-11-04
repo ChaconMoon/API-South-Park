@@ -50,8 +50,9 @@ class Special(BaseModel, ApiObject):
 
         """
         if not metadata:
-            result = self.model_dump()
+            return self.model_dump()
         else:
+            result = dict()
             result["special"] = self.model_dump()
             result["metadata"] = dict()
             result["metadata"]["total_specials_in_database"] = total_results

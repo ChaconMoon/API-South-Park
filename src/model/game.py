@@ -50,8 +50,9 @@ class Game(BaseModel, ApiObject):
 
         """
         if not metadata:
-            result = self.model_dump()
+            return self.model_dump()
         else:
+            result = dict()
             result["game"] = self.model_dump()
             result["metadata"] = dict()
             result["metadata"]["total_characters_in_database"] = total_results
