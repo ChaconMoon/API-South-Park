@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict eHF9bl98vISaBYW30hIMjSvcPzyh3WeqS5LGmnt9VctqusGEYZewqKbOWr8lzWf
+\restrict ekvRAccNaYLtNacul3DX9fBFcMaeKe3nr9dNMU7MtGvMwA8UBD5OiaS2yhJgVrJ
 
 -- Dumped from database version 15.14 (Debian 15.14-1.pgdg13+1)
 -- Dumped by pg_dump version 15.14 (Debian 15.14-1.pgdg13+1)
@@ -554,7 +554,6 @@ COPY public.alter_ego (id, original_character, name, images) FROM stdin;
 COPY public.characters (id, name, friend_group, family, birthday, age, religion, first_apperance, images, famous_guest) FROM stdin;
 2	Eric Theodore Cartman	1	2	July 1st	10	{"Roman Catholicism","Blaintologistism (Temporary)","Judaism (Post-Covid)"}	1	{/img/characters/show/Eric_Cartman.png}	f
 3	Kyle Broflovski	1	1	May 26th	10	{Judaism,"Christianity (Temporary)","Blaintologist (Temporary)","Atheistism (Temporary)"}	1	{/img/characters/show/Kyle_Broflovski.png}	f
-4	Stanley "Stan" Marsh	1	3	October 19th	10	{Christian,"Atheist (Temporariry)","Mormon (Temporariry)","Scientologist (Temporariry)","Blaintologist (Temporarily)"}	1	{/img/characters/show/Stan_Marsh.png}	f
 5	Sir Ike Moisha Broflovski	\N	1	December 17th	3	{Judaism}	1	{/img/characters/show/Ike_Broflovski.png}	f
 6	Jerome McElroy "The Chef"	\N	27	\N	\N	{Christianity,"Islam (Temporary)"}	1	{/img/characters/show/Chef.png}	f
 7	Herbert Garrison	\N	16	\N	41	{"Roman Catholic","Atheist (Temporary)"}	1	{/img/characters/show/Herbert_Garrison.png}	f
@@ -1094,6 +1093,7 @@ COPY public.characters (id, name, friend_group, family, birthday, age, religion,
 120	Chad Handler	\N	21	\N	10	{Judaism}	113	{/img/characters/show/Chad_Handler.png}	\N
 514	Coach Miles	\N	\N	\N	\N	\N	241	{/img/characters/show/Coach_Miles.png}	f
 210	Charlie Brown	\N	63	October 30th	10	\N	65	{/img/characters/show/Charlie_Brown.png}	t
+4	Stanley "Stan" Marsh	1	3	October 19th	9	{Christian,"Atheist (Temporariry)","Mormon (Temporariry)","Scientologist (Temporariry)","Blaintologist (Temporarily)"}	1	{/img/characters/show/Stan_Marsh.png}	f
 \.
 
 
@@ -1752,5 +1752,5 @@ ALTER TABLE ONLY public.alter_ego
 -- PostgreSQL database dump complete
 --
 
-\unrestrict eHF9bl98vISaBYW30hIMjSvcPzyh3WeqS5LGmnt9VctqusGEYZewqKbOWr8lzWf
+\unrestrict ekvRAccNaYLtNacul3DX9fBFcMaeKe3nr9dNMU7MtGvMwA8UBD5OiaS2yhJgVrJ
 
