@@ -26,9 +26,11 @@ def test_specials_database_correct():
         },
         "metadata": {"total_songs_in_datbase": 7},
     }
-    with patch("src.main.get_special_by_id") as database_response:
+    with patch(
+        "src.controller.tvshow.tv_show_endpoints.get_special_by_id"
+    ) as database_response:
         database_response.return_value = fake_response
-        response = client.get("/special/1")
+        response = client.get("/api/specials/1")
         if response.status_code != 200:
             raise RequestException("Expected Found Response")
 
@@ -36,9 +38,11 @@ def test_specials_database_correct():
 def test_specials_object_not_found():
     """Test A Not Found Response in Special Endpoint."""
     fake_response = {"error": "Special not found", "status": "failed"}
-    with patch("src.main.get_special_by_id") as database_response:
+    with patch(
+        "src.controller.tvshow.tv_show_endpoints.get_special_by_id"
+    ) as database_response:
         database_response.return_value = fake_response
-        response = client.get("/special/1")
+        response = client.get("/api/specials/1")
         if response.status_code != 404:
             raise RequestException("Expected Not Found Response")
 
@@ -46,8 +50,10 @@ def test_specials_object_not_found():
 def test_specials_database_not_avalible():
     """Test A Not Avalible Response in Special Endpoint."""
     fake_response = {"error": "Database not avalible", "status": "failed"}
-    with patch("src.main.get_special_by_id") as database_response:
+    with patch(
+        "src.controller.tvshow.tv_show_endpoints.get_special_by_id"
+    ) as database_response:
         database_response.return_value = fake_response
-        response = client.get("/special/1")
+        response = client.get("/api/specials/1")
         if response.status_code != 500:
             raise RequestException("Expected Not Avalible Response")

@@ -47,8 +47,9 @@ class Family(BaseModel, ApiObject):
 
         """
         if not metadata:
-            result = self.model_dump()
+            return self.model_dump()
         else:
+            result = dict()
             result["family"] = self.model_dump()
             result["metadata"] = dict()
             result["metadata"]["total_families_in_database"] = total_results

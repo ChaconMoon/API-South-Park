@@ -46,8 +46,9 @@ class AlterEgo(BaseModel, ApiObject):
 
         """
         if not metadata:
-            result = self.model_dump()
+            return self.model_dump()
         else:
+            result = dict()
             result["alterego"] = self.model_dump()
             result["metadata"] = dict()
             result["metadata"]["total_alteregos_of_this_character_in_database"] = (

@@ -72,8 +72,9 @@ class Character(BaseModel, ApiObject):
 
         # Add Character Data to Response
         if not metadata:
-            result = self.model_dump()
+            return self.model_dump()
         else:
+            result = dict()
             result["character"] = self.model_dump()
 
             # Add Metadata to Response

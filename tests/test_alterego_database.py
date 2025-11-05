@@ -28,9 +28,11 @@ def test_alterego_database_correct():
         },
         "metadata": {"total_alteregos_of_this_character_in_database": 5},
     }
-    with patch("src.main.get_alter_ego_by_character_and_id") as databse_response:
+    with patch(
+        "src.controller.characters.characters_endpoints.get_alter_ego_by_character_and_id"
+    ) as databse_response:
         databse_response.return_value = fake_response
-        response = client.get("/character/1/alteregos/1")
+        response = client.get("/api/characters/1/alteregos/1")
         if response.status_code != 200:
             raise RequestException("Expected Found Response")
 
@@ -38,9 +40,11 @@ def test_alterego_database_correct():
 def test_alterego_object_not_found():
     """Test A Not Found Response in Alter Ego Endpoint."""
     fake_response = {"error": "Alter Ego not found", "status": "failed"}
-    with patch("src.main.get_alter_ego_by_character_and_id") as database_response:
+    with patch(
+        "src.controller.characters.characters_endpoints.get_alter_ego_by_character_and_id"
+    ) as database_response:
         database_response.return_value = fake_response
-        response = client.get("/character/1/alteregos/1")
+        response = client.get("/api/characters/1/alteregos/1")
         if response.status_code != 404:
             raise RequestException("Expected Not Found Response")
 
@@ -48,9 +52,11 @@ def test_alterego_object_not_found():
 def test_alterego_database_not_avalible():
     """Test A Not Avalible Response in Alter Ego Endpoint."""
     fake_response = {"error": "Database not avalible", "status": "failed"}
-    with patch("src.main.get_alter_ego_by_character_and_id") as database_response:
+    with patch(
+        "src.controller.characters.characters_endpoints.get_alter_ego_by_character_and_id"
+    ) as database_response:
         database_response.return_value = fake_response
-        response = client.get("/character/1/alteregos/1")
+        response = client.get("/api/characters/1/alteregos/1")
         if response.status_code != 500:
             raise RequestException("Expected Not Avalible Response")
 
@@ -75,9 +81,11 @@ def test_all_alteregos_database_correct():
             "url": "http://localhost:8000/character/42/alteregos/4",
         },
     }
-    with patch("src.main.get_all_alteregos_of_a_character") as databse_response:
+    with patch(
+        "src.controller.characters.characters_endpoints.get_all_alteregos_of_a_character"
+    ) as databse_response:
         databse_response.return_value = fake_response
-        response = client.get("/character/42/alteregos")
+        response = client.get("/api/characters/42/alteregos")
         if response.status_code != 200:
             raise RequestException("Expected Found Response")
 
@@ -85,9 +93,11 @@ def test_all_alteregos_database_correct():
 def test_all_alteregos_object_not_found():
     """Test a not found response in complete Response in Alter Ego Endpoint."""
     fake_response = {"error": "Alter Egos not found", "status": "failed"}
-    with patch("src.main.get_all_alteregos_of_a_character") as database_response:
+    with patch(
+        "src.controller.characters.characters_endpoints.get_all_alteregos_of_a_character"
+    ) as database_response:
         database_response.return_value = fake_response
-        response = client.get("/character/42/alteregos")
+        response = client.get("/api/characters/42/alteregos")
         if response.status_code != 404:
             raise RequestException("Expected Not Found Response")
 
@@ -95,8 +105,10 @@ def test_all_alteregos_object_not_found():
 def test_all_alteregos_database_not_avalible():
     """Test a not avalible response in complete Response in Alter Ego Endpoint."""
     fake_response = {"error": "Database not avalible", "status": "failed"}
-    with patch("src.main.get_all_alteregos_of_a_character") as database_response:
+    with patch(
+        "src.controller.characters.characters_endpoints.get_all_alteregos_of_a_character"
+    ) as database_response:
         database_response.return_value = fake_response
-        response = client.get("/character/42/alteregos")
+        response = client.get("/api/characters/42/alteregos")
         if response.status_code != 500:
             raise RequestException("Expected Not Avalible Response")

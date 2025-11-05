@@ -14,11 +14,17 @@ from dotenv import load_dotenv
 def test_if_image_exist_in_characters():
     """Test all images in Characters database."""
     load_dotenv()
+
+    logging.info(f"Request URL: {os.getenv('TESTING_SOUTH_PARK_API_URL')}/api/")
+
     healh_check_request = requests.get(
         f"{os.getenv('TESTING_SOUTH_PARK_API_URL')}/api/", timeout=10
     )
     if healh_check_request.status_code != 200:
         raise requests.RequestException("API Not Avalible Error")
+
+    logging.info("API Avalible")
+
     total_characters = requests.get(
         f"{os.getenv('TESTING_SOUTH_PARK_API_URL')}/api/characters/1?metadata=true",
         timeout=10,
@@ -26,6 +32,8 @@ def test_if_image_exist_in_characters():
     logging.info(f"\n\nCharacters to test: {total_characters}")
 
     for i in range(1, total_characters + 1, 1):
+        logging.info(f"Testing Character: {i}")
+
         image_urls = requests.get(
             f"{os.getenv('TESTING_SOUTH_PARK_API_URL')}/api/characters/{i}", timeout=5
         ).json()["images"]

@@ -50,8 +50,9 @@ class Song(BaseModel, ApiObject):
         """
         result = dict()
         if not metadata:
-            result = self.model_dump()
+            return self.model_dump()
         else:
+            result = dict()
             result["song"] = self.model_dump()
             result["metadata"] = dict()
             result["metadata"]["total_songs_in_database"] = total_results

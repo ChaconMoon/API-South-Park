@@ -52,8 +52,9 @@ class Episode(BaseModel, ApiObject):
 
         """
         if not metadata:
-            result = self.model_dump()
+            return self.model_dump()
         else:
+            result = dict()
             result["episode"] = self.model_dump()
             result["metadata"] = dict()
             result["metadata"]["total_episodes_in_database"] = total_results

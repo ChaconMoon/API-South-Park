@@ -4,6 +4,7 @@ Module written by Carlos Chacón.
 This Module define the tests to the responses in album databse.
 """
 
+import logging
 from unittest.mock import patch
 
 from fastapi.testclient import TestClient
@@ -26,9 +27,12 @@ def test_album_database_correct():
         },
         "metadata": {"total_albums_in_database": 6},
     }
-    with patch("src.main.get_album_by_id") as database_response:
+    with patch(
+        "src.controller.music.music_endpoints.get_album_by_id"
+    ) as database_response:
         database_response.return_value = fake_response
-        response = client.get("/album/1")
+        response = client.get("/api/albums/1")
+        logging.info(response)
         if response.status_code != 200:
             raise RequestException("Expected Found Response")
 
@@ -36,9 +40,12 @@ def test_album_database_correct():
 def test_album_object_not_found():
     """Test A Not Found Response in Album Endpoint."""
     fake_response = {"error": "Album not found", "status": "failed"}
-    with patch("src.main.get_album_by_id") as database_response:
+    with patch(
+        "src.controller.music.music_endpoints.get_album_by_id"
+    ) as database_response:
         database_response.return_value = fake_response
-        response = client.get("/album/1")
+        response = client.get("/api/albums/1")
+        logging.info(response)
         if response.status_code != 404:
             raise RequestException("Expected Not Found Response")
 
@@ -46,8 +53,11 @@ def test_album_object_not_found():
 def test_album_database_not_avalible():
     """Test A Not Avalible Response in Album Endpoint."""
     fake_response = {"error": "Database not avalible", "status": "failed"}
-    with patch("src.main.get_album_by_id") as database_response:
+    with patch(
+        "src.controller.music.music_endpoints.get_album_by_id"
+    ) as database_response:
         database_response.return_value = fake_response
-        response = client.get("/album/1")
+        response = client.get("/api/albums/1")
+        logging.info(response.content)
         if response.status_code != 500:
             raise RequestException("Expected Not Avalible Response")

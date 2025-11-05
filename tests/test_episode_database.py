@@ -29,9 +29,11 @@ def test_episode_database_correct():
         },
         "metadata": {"total_episodes_in_database": 324},
     }
-    with patch("src.main.get_episode_by_id") as databse_response:
+    with patch(
+        "src.controller.tvshow.tv_show_endpoints.get_episode_by_id"
+    ) as databse_response:
         databse_response.return_value = fake_response
-        response = client.get("/episode/1")
+        response = client.get("/api/episodes/1")
         if response.status_code != 200:
             raise ValueError("Expected Found Response")
 
@@ -39,9 +41,11 @@ def test_episode_database_correct():
 def test_episode_object_not_found():
     """Test A Not Found Response in Episode Endpoint."""
     fake_response = {"error": "Episode not found", "status": "failed"}
-    with patch("src.main.get_episode_by_id") as database_response:
+    with patch(
+        "src.controller.tvshow.tv_show_endpoints.get_episode_by_id"
+    ) as database_response:
         database_response.return_value = fake_response
-        response = client.get("/episode/1")
+        response = client.get("/api/episodes/1")
         if response.status_code != 404:
             raise ValueError("Expected Not Found Response")
 
@@ -49,8 +53,10 @@ def test_episode_object_not_found():
 def test_episode_database_not_avalible():
     """Test A Not Avalible Response in Episode Endpoint."""
     fake_response = {"error": "Database not avalible", "status": "failed"}
-    with patch("src.main.get_episode_by_id") as database_response:
+    with patch(
+        "src.controller.tvshow.tv_show_endpoints.get_episode_by_id"
+    ) as database_response:
         database_response.return_value = fake_response
-        response = client.get("/episode/1")
+        response = client.get("/api/episodes/1")
         if response.status_code != 500:
             raise ValueError("Expected Internal Server Error Response")

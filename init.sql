@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict ekvRAccNaYLtNacul3DX9fBFcMaeKe3nr9dNMU7MtGvMwA8UBD5OiaS2yhJgVrJ
+\restrict 3KVscoTeFiC3tUh86powz9KhwLLRxpGFrkkMZQfq1pVVlN2Z310laWnm0YV4aOj
 
 -- Dumped from database version 15.14 (Debian 15.14-1.pgdg13+1)
 -- Dumped by pg_dump version 15.14 (Debian 15.14-1.pgdg13+1)
@@ -1089,11 +1089,125 @@ COPY public.characters (id, name, friend_group, family, birthday, age, religion,
 533	Cows	\N	\N	\N	\N	\N	1	{/img/characters/show/Cows.png}	\N
 532	Cowboy Doctors	\N	\N	\N	\N	\N	300	{/img/characters/show/Cowboy_Doctors.png}	\N
 531	Count Ravyncrowe	\N	\N	\N	\N	\N	181	{/img/characters/show/Rayvencrowe.png}	\N
-542	Cupid Me	\N	\N	\N	\N	\N	230	{/img/characters/show/Cupid_Me.png,/img/characters/show/Cupid_Ye.png}	\N
 120	Chad Handler	\N	21	\N	10	{Judaism}	113	{/img/characters/show/Chad_Handler.png}	\N
 514	Coach Miles	\N	\N	\N	\N	\N	241	{/img/characters/show/Coach_Miles.png}	f
 210	Charlie Brown	\N	63	October 30th	10	\N	65	{/img/characters/show/Charlie_Brown.png}	t
 4	Stanley "Stan" Marsh	1	3	October 19th	9	{Christian,"Atheist (Temporariry)","Mormon (Temporariry)","Scientologist (Temporariry)","Blaintologist (Temporarily)"}	1	{/img/characters/show/Stan_Marsh.png}	f
+542	Cupid Me	\N	\N	\N	\N	\N	230	{/img/characters/show/Cupid_Me.png,/img/characters/show/Cupid_Ye.png}	f
+552	Daniel Tanner	\N	\N	\N	\N	\N	176	{/img/characters/show/Daniel_Tanner.png}	\N
+548	Dan Banks	\N	\N	\N	\N	\N	184	{/img/characters/show/Dan_Banks.png}	\N
+547	Dan ("Sarcastaball")	\N	\N	\N	\N	\N	231	{/img/characters/show/Dan_Sarcastaball.png}	\N
+546	Damla Jones	\N	\N	\N	\N	\N	82	{/img/characters/show/Dalma_Jones.png}	\N
+545	Dallas Cowboys	\N	\N	\N	\N	\N	248	{/img/characters/show/Dallas_Cowboys.png}	\N
+544	Dale Earnhardt Jr.	\N	\N	October 10th	51	\N	203	{/img/characters/show/Dale_Earnhardt_Jr.png}	t
+543	Dairy Gold Milk Company President	\N	\N	\N	\N	\N	75	{/img/characters/show/Dairy_Gold_Milk_Company_president.png}	f
+551	Danica Patrick	\N	\N	March 25th	43	\N	203	{/img/characters/show/Danica_Patrick.png}	t
+550	Dane Cook	\N	\N	March 18th	53	\N	211	{/img/characters/show/Dane_Cook.png}	t
+549	Dan Snyder	\N	\N	November 23rd	60	{Judaism}	248	{/img/characters/show/Dan_Snyder.png}	t
+560	Davey Solokov	\N	69	\N	\N	\N	313	{/img/characters/show/Davey_Solokov.png}	\N
+559	Dave Fitzsimmons	\N	68	\N	\N	\N	278	{/img/characters/show/Dave_Fitzsimmons.png}	\N
+558	Dave Beckett	\N	\N	\N	\N	\N	277	{/img/characters/show/Dave_Beckett.png}	\N
+557	Darryl Weathers	\N	\N	\N	\N	\N	118	{/img/characters/show/Darryl_Weathers.png}	\N
+556	Danny Ray Johnson	\N	\N	\N	\N	\N	300	{/img/characters/show/Danny_Ray_Johnson.png}	\N
+555	Danny Ganz	\N	\N	\N	\N	\N	39	{/img/characters/show/Danny_Ganz.png}	\N
+554	Danielle Staub	\N	\N	July 29th	63	\N	204	{/img/characters/show/Danielle_Staub.png}	t
+553	Daniel ("T.M.I.")	\N	\N	\N	\N	\N	213	{/img/characters/show/Daniel_T_M_I.png}	\N
+580	Delivery Express Man	\N	\N	\N	\N	\N	308	{/img/characters/show/Delivery_Express_Man.png}	\N
+578	Death	\N	\N	\N	\N	\N	6	{/img/characters/show/Death.png}	\N
+576	Dean Howland	\N	\N	\N	\N	\N	214	{/img/characters/show/Dean_Howland.png}	\N
+575	Dean	\N	\N	\N	\N	\N	225	{/img/characters/show/Dean.png}	\N
+574	DEA Agents	\N	\N	\N	\N	\N	170	{/img/characters/show/DEA_Agents.png}	\N
+573	Davin Miller	\N	\N	\N	\N	\N	243	{/img/characters/show/Davin_Miller.png}	\N
+572	David Weatherhead	\N	70	\N	10	{Agnostic}	223	{/img/characters/show/David_Weatherhead.png}	\N
+571	David Spade	\N	\N	July 22nd	61	\N	211	{/img/characters/show/David_Spade.png}	t
+570	David Sawitzky	\N	\N	\N	\N	\N	222	{/img/characters/show/David_Sawitsky.png}	\N
+569	David Satcher	\N	\N	March 2nd	84	\N	87	{/img/characters/show/David_Satcher.png}	t
+568	David Quincy	\N	\N	May 22nd	\N	\N	179	{/img/characters/show/David_Quincy.png}	f
+567	David Perry	\N	\N	\N	\N	\N	304	{/img/characters/show/David_Perry.png}	f
+566	David Palmer	\N	\N	April 15th	46	\N	174	{/img/characters/show/David_Palmer.png}	f
+565	David Letterman	\N	\N	April 12th	78	{Lutheran}	186	{/img/characters/show/David_Letterman.png}	t
+564	David Hasselhoff	\N	\N	July 17th	73	{Lutheran}	11	{/img/characters/show/David_Haselhoff.png}	t
+563	David Duchovny	\N	\N	August 7th	65	{Judaism}	196	{/img/characters/show/David_Duchovny.png}	t
+562	David Carradine	\N	\N	December 8th	72	{Scientology}	189	{/img/characters/show/David_Carradine.png}	t
+561	David Blaine	\N	\N	April 4th	52	{"Blaintology (South Park)","Judaism (real life)"}	68	{/img/characters/show/Blaine.png}	t
+579	Deborah Carroll	\N	\N	December 1st	61	\N	146	{/img/characters/show/Deborah_Carroll.png}	t
+590	Derek Smalls	\N	\N	\N	\N	\N	29	{/img/characters/show/Derek_Smalls.png}	\N
+589	Denver Sea Park Security Guard	\N	\N	\N	\N	\N	138	{/img/characters/show/Denver_Sea_Park_security_guard.png}	\N
+588	Denver Sea Park Boss	\N	\N	\N	\N	\N	138	{/img/characters/show/Denver_Sea_Park_Boss.png}	\N
+587	Denver Nuggets	\N	\N	\N	\N	\N	230	{/img/characters/show/Denver_Nuggets.png}	\N
+586	Denver Broncos	\N	\N	\N	\N	\N	13	{/img/characters/show/Denver_Broncos.png}	\N
+585	Denver Archbishop	\N	\N	\N	\N	\N	289	{/img/characters/show/Denver_Archbishop.png}	\N
+584	Dental Floss	\N	\N	\N	\N	\N	212	{/img/characters/show/Dental_Floss.png}	\N
+583	Dennis Murray	\N	\N	\N	8	\N	113	{/img/characters/show/Dennis_Murray.png}	\N
+582	Dennis ("Night of the Living Homeless")	\N	\N	\N	\N	\N	160	{/img/characters/show/Denis_Homeless.png}	\N
+581	Dennis	\N	\N	\N	\N	\N	191	{/img/characters/show/Dennis.png}	\N
+600	Diego Márquez	\N	\N	\N	\N	\N	323	{/img/characters/show/Diego_(Dora).png}	\N
+599	Diego	\N	\N	\N	\N	\N	159	{/img/characters/show/Diego.png}	\N
+598	Dick Cheney	\N	\N	January 30th	84	{Methodist}	91	{/img/characters/show/Dick_Cheney.png}	t
+597	Diane Choksondik	\N	\N	\N	\N	\N	59	{/img/characters/show/Diane_Chokdondik.png}	\N
+596	Diana, Princess of Wales	\N	\N	July 1st	36	{"Church of England"}	46	{/img/characters/show/Princess_Diana.png}	t
+595	Dick Dastardly	\N	\N	\N	\N	\N	251	{/img/characters/show/Dick_Dastardly.png}	\N
+594	Devitzen's Tolerance Camp Warden	\N	\N	\N	\N	\N	93	{/img/characters/show/Devitzen's_Tolerance_Camp_Warden.png}	\N
+593	Detroit Red Wings	\N	\N	\N	\N	\N	153	{/img/characters/show/Detroit_Redwings.png}	\N
+592	Detective Jarvis	\N	\N	\N	\N	\N	140	{/img/characters/show/Detective_Jarvis.png}	\N
+591	Detectives Hyde and Richardson	\N	\N	\N	\N	\N	98	{/img/characters/show/Detectives_Hyde_and_Richardson.png}	\N
+577	Dean Martin	\N	\N	June 7th	78	\N	57	{/img/characters/show/Dean_Martin.png}	t
+608	Doctor Tom	\N	\N	\N	\N	\N	11	{/img/characters/show/Doctor_Tom.png}	\N
+607	Doctor Lindsay	\N	\N	\N	\N	\N	131	{/img/characters/show/Doctor_Lindsay.png}	\N
+606	DMV Workers	\N	\N	\N	\N	\N	238	{/img/characters/show/DMV_Workers.png}	\N
+605	DJ Hippo	\N	\N	\N	\N	\N	102	{/img/characters/show/Hippo_DJ.png}	\N
+604	DJ AM	\N	\N	August 28th	36	\N	189	{/img/characters/show/DJ_AM.png}	t
+603	DJ ("Korn's Groovy Pirate Ghost Mystery")	\N	\N	\N	\N	\N	41	{/img/characters/show/Korn_DJ.png}	\N
+602	Dio	\N	\N	\N	\N	\N	43	{/img/characters/show/Dio.png}	t
+601	Dildo Shwaggins	\N	\N	\N	\N	\N	271	{/img/characters/show/Dildo_Schwaggins.png}	\N
+610	Dom DeLuise	\N	\N	August 1st	75	{"Roman Catholic"}	189	{/img/characters/show/Dom_Deluise.png}	t
+609	DOI Agents	\N	\N	\N	\N	\N	35	{/img/characters/show/DOI_Workers.png}	\N
+628	Dr. David Nelson	\N	\N	\N	\N	\N	154	{/img/characters/show/David_Nelson.png}	\N
+627	Dr. Cornwallis	\N	\N	\N	\N	\N	119	{/img/characters/show/Dr_Cornwalis.png}	\N
+626	Dr. Chinstrap	\N	\N	\N	\N	\N	205	{/img/characters/show/Dr_Chinstrap.png}	\N
+625	Dr. Carroll	\N	\N	\N	\N	\N	168	{/img/characters/show/Doctor_Carrol.png}	\N
+624	Dr. Biber	\N	\N	\N	\N	\N	126	{/img/characters/show/Dr_Biber.png}	\N
+623	Douglas	\N	\N	\N	10	{"Roman Catholic"}	176	{/img/characters/show/Douglas.png}	\N
+622	Dougie O'Connell	\N	\N	\N	8	\N	39	{/img/characters/show/Dougie.png}	\N
+621	Dotty Applegate	\N	\N	\N	\N	\N	251	{/img/characters/show/Miss_Applegate.png}	\N
+620	Dorky Girl	\N	\N	\N	\N	\N	81	{/img/characters/show/Dorky_Girl.png}	\N
+619	Dora Márquez	\N	\N	\N	\N	\N	242	{/img/characters/show/Dora.png}	\N
+618	Donna Reed	\N	\N	\N	64	{Methodist}	29	{/img/characters/show/Donna_Reed.png}	t
+617	Donald Trump Jr.	\N	\N	December 31th	47	\N	326	{/img/characters/show/Donald_Trump_Jr.png}	t
+616	Donald Trump	\N	\N	June 14th	79	{Presbyterian}	76	{/img/characters/show/President_Trump.png,/img/characters/show/President_Trump_Old.png}	t
+615	Donald Rumsfeld	\N	\N	July 9th	88	{Presbyterian}	91	{/img/characters/show/Donald_Rumsfeld.png}	t
+614	Donald	\N	\N	\N	\N	\N	25	{/img/characters/show/Donald.png}	\N
+613	Don King	\N	\N	August 20th	94	{Baptist}	10	{/img/characters/show/Don_King.png}	t
+612	Don Heisman	\N	\N	\N	\N	\N	128	{/img/characters/show/Don_Heisman.png}	\N
+611	Domino	\N	\N	\N	\N	\N	174	{/img/characters/show/Domino.png}	\N
+643	Dr. Roberts	\N	\N	\N	\N	\N	49	{/img/characters/show/Dr_Roberts.png}	\N
+642	Dr. Pinkerton	\N	\N	\N	\N	\N	205	{/img/characters/show/Dr_Pinkerton.png}	\N
+641	Dr. Phillips	\N	\N	\N	\N	\N	189	{/img/characters/show/Dr_Phillips.png}	\N
+640	Dr. Phil	\N	\N	September 1st	75	{Christian}	210	{/img/characters/show/Dr_Phil.png}	t
+639	Dr. Pal	\N	\N	\N	\N	\N	132	{/img/characters/show/Dr_Pal.png}	\N
+638	Dr. Neeland	\N	\N	\N	\N	\N	140	{/img/characters/show/Dr_Neeland.png}	\N
+637	Dr. Mehmet Oz	\N	\N	June 11th	65	{Islam}	228	{/img/characters/show/Dr_Oz.png}	t
+636	Dr. Matlock	\N	\N	\N	\N	\N	168	{/img/characters/show/Dr_Matlock.png}	\N
+635	Dr. Lout	\N	\N	\N	\N	\N	34	{/img/characters/show/Dr_Lout.png}	\N
+634	Dr. Larry	\N	\N	\N	\N	\N	78	{/img/characters/show/Dr_Larry.png}	\N
+633	Dr. Land	\N	\N	\N	\N	\N	189	{/img/characters/show/Dr_Land.png}	\N
+632	Dr. Katz	\N	\N	\N	\N	\N	21	{/img/characters/show/Dr_Jonathan_Katz.png}	\N
+631	Dr. Hallis	\N	\N	\N	\N	\N	89	{/img/characters/show/Dr_Hallis.png}	\N
+629	Dr. Doctor	\N	\N	\N	\N	\N	15	{/img/characters/show/Dr_Doctor.png}	\N
+651	Dramatic Look Gopher	\N	\N	\N	\N	\N	171	{/img/characters/show/Dramatic_Look_Gopher.png}	\N
+647	Dr. Spookalot	\N	\N	\N	\N	\N	41	{/img/characters/show/Dr_Spookalot.png}	\N
+646	Dr. Sheltair	\N	\N	\N	\N	\N	318	{/img/characters/show/Dr_Sheltair.png}	\N
+645	Dr. Shay	\N	\N	\N	\N	\N	51	{/img/characters/show/Dr_Shay.png}	\N
+644	Dr. Schwartz	\N	\N	\N	\N	{Judaism}	16	{/img/characters/show/Rabbi_Schwartz.png}	\N
+630	Dr. Gauche	\N	\N	\N	\N	\N	286	{/img/characters/show/Dr_Gauche.png}	\N
+648	Dr. Tristan Adams	\N	\N	\N	\N	\N	24	{/img/characters/show/Tristan_Adams.png}	\N
+649	Dr. Wayne Schroeder	\N	\N	\N	\N	\N	269	{/img/characters/show/Dr_Wayne_Schroeder.png}	\N
+650	Dr. Zonder	\N	\N	\N	\N	\N	161	{/img/characters/show/Dr_Zonder.png}	\N
+652	Drew Carey	\N	\N	May 23rd	67	\N	66	{/img/characters/show/Drew_Carey.png}	\N
+653	Droopy Dog	\N	\N	\N	\N	\N	202	{/img/characters/show/Droopy_Dog.png}	\N
+654	Duck President	\N	\N	\N	\N	\N	216	{/img/characters/show/Duck_President.png}	\N
+655	Dwight Schultz	\N	\N	\N	\N	\N	16	{/img/characters/show/Dwight_Schultz.png}	\N
+656	Dylan and Sarah	\N	\N	\N	\N	\N	142	{/img/characters/show/Dylan_and_Sarah.png}	\N
 \.
 
 
@@ -1543,6 +1657,9 @@ COPY public.families (id, name, images) FROM stdin;
 65	Christine / Dennis Family	\N
 66	Christophe Family	\N
 67	The McCains	\N
+68	The Fitzsimmons	\N
+69	The Solokovs	\N
+70	The Weatherhead foster family	\N
 \.
 
 
@@ -1752,5 +1869,5 @@ ALTER TABLE ONLY public.alter_ego
 -- PostgreSQL database dump complete
 --
 
-\unrestrict ekvRAccNaYLtNacul3DX9fBFcMaeKe3nr9dNMU7MtGvMwA8UBD5OiaS2yhJgVrJ
+\unrestrict 3KVscoTeFiC3tUh86powz9KhwLLRxpGFrkkMZQfq1pVVlN2Z310laWnm0YV4aOj
 
