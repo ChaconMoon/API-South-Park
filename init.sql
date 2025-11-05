@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict ZnHe8cKheyCsSWDy5gFDAda1R7y1tyokjOLJh0VxefVo8ZnFtOmgL5Kd0zMILIc
+\restrict 3KVscoTeFiC3tUh86powz9KhwLLRxpGFrkkMZQfq1pVVlN2Z310laWnm0YV4aOj
 
 -- Dumped from database version 15.14 (Debian 15.14-1.pgdg13+1)
 -- Dumped by pg_dump version 15.14 (Debian 15.14-1.pgdg13+1)
@@ -1152,6 +1152,62 @@ COPY public.characters (id, name, friend_group, family, birthday, age, religion,
 592	Detective Jarvis	\N	\N	\N	\N	\N	140	{/img/characters/show/Detective_Jarvis.png}	\N
 591	Detectives Hyde and Richardson	\N	\N	\N	\N	\N	98	{/img/characters/show/Detectives_Hyde_and_Richardson.png}	\N
 577	Dean Martin	\N	\N	June 7th	78	\N	57	{/img/characters/show/Dean_Martin.png}	t
+608	Doctor Tom	\N	\N	\N	\N	\N	11	{/img/characters/show/Doctor_Tom.png}	\N
+607	Doctor Lindsay	\N	\N	\N	\N	\N	131	{/img/characters/show/Doctor_Lindsay.png}	\N
+606	DMV Workers	\N	\N	\N	\N	\N	238	{/img/characters/show/DMV_Workers.png}	\N
+605	DJ Hippo	\N	\N	\N	\N	\N	102	{/img/characters/show/Hippo_DJ.png}	\N
+604	DJ AM	\N	\N	August 28th	36	\N	189	{/img/characters/show/DJ_AM.png}	t
+603	DJ ("Korn's Groovy Pirate Ghost Mystery")	\N	\N	\N	\N	\N	41	{/img/characters/show/Korn_DJ.png}	\N
+602	Dio	\N	\N	\N	\N	\N	43	{/img/characters/show/Dio.png}	t
+601	Dildo Shwaggins	\N	\N	\N	\N	\N	271	{/img/characters/show/Dildo_Schwaggins.png}	\N
+610	Dom DeLuise	\N	\N	August 1st	75	{"Roman Catholic"}	189	{/img/characters/show/Dom_Deluise.png}	t
+609	DOI Agents	\N	\N	\N	\N	\N	35	{/img/characters/show/DOI_Workers.png}	\N
+628	Dr. David Nelson	\N	\N	\N	\N	\N	154	{/img/characters/show/David_Nelson.png}	\N
+627	Dr. Cornwallis	\N	\N	\N	\N	\N	119	{/img/characters/show/Dr_Cornwalis.png}	\N
+626	Dr. Chinstrap	\N	\N	\N	\N	\N	205	{/img/characters/show/Dr_Chinstrap.png}	\N
+625	Dr. Carroll	\N	\N	\N	\N	\N	168	{/img/characters/show/Doctor_Carrol.png}	\N
+624	Dr. Biber	\N	\N	\N	\N	\N	126	{/img/characters/show/Dr_Biber.png}	\N
+623	Douglas	\N	\N	\N	10	{"Roman Catholic"}	176	{/img/characters/show/Douglas.png}	\N
+622	Dougie O'Connell	\N	\N	\N	8	\N	39	{/img/characters/show/Dougie.png}	\N
+621	Dotty Applegate	\N	\N	\N	\N	\N	251	{/img/characters/show/Miss_Applegate.png}	\N
+620	Dorky Girl	\N	\N	\N	\N	\N	81	{/img/characters/show/Dorky_Girl.png}	\N
+619	Dora Márquez	\N	\N	\N	\N	\N	242	{/img/characters/show/Dora.png}	\N
+618	Donna Reed	\N	\N	\N	64	{Methodist}	29	{/img/characters/show/Donna_Reed.png}	t
+617	Donald Trump Jr.	\N	\N	December 31th	47	\N	326	{/img/characters/show/Donald_Trump_Jr.png}	t
+616	Donald Trump	\N	\N	June 14th	79	{Presbyterian}	76	{/img/characters/show/President_Trump.png,/img/characters/show/President_Trump_Old.png}	t
+615	Donald Rumsfeld	\N	\N	July 9th	88	{Presbyterian}	91	{/img/characters/show/Donald_Rumsfeld.png}	t
+614	Donald	\N	\N	\N	\N	\N	25	{/img/characters/show/Donald.png}	\N
+613	Don King	\N	\N	August 20th	94	{Baptist}	10	{/img/characters/show/Don_King.png}	t
+612	Don Heisman	\N	\N	\N	\N	\N	128	{/img/characters/show/Don_Heisman.png}	\N
+611	Domino	\N	\N	\N	\N	\N	174	{/img/characters/show/Domino.png}	\N
+643	Dr. Roberts	\N	\N	\N	\N	\N	49	{/img/characters/show/Dr_Roberts.png}	\N
+642	Dr. Pinkerton	\N	\N	\N	\N	\N	205	{/img/characters/show/Dr_Pinkerton.png}	\N
+641	Dr. Phillips	\N	\N	\N	\N	\N	189	{/img/characters/show/Dr_Phillips.png}	\N
+640	Dr. Phil	\N	\N	September 1st	75	{Christian}	210	{/img/characters/show/Dr_Phil.png}	t
+639	Dr. Pal	\N	\N	\N	\N	\N	132	{/img/characters/show/Dr_Pal.png}	\N
+638	Dr. Neeland	\N	\N	\N	\N	\N	140	{/img/characters/show/Dr_Neeland.png}	\N
+637	Dr. Mehmet Oz	\N	\N	June 11th	65	{Islam}	228	{/img/characters/show/Dr_Oz.png}	t
+636	Dr. Matlock	\N	\N	\N	\N	\N	168	{/img/characters/show/Dr_Matlock.png}	\N
+635	Dr. Lout	\N	\N	\N	\N	\N	34	{/img/characters/show/Dr_Lout.png}	\N
+634	Dr. Larry	\N	\N	\N	\N	\N	78	{/img/characters/show/Dr_Larry.png}	\N
+633	Dr. Land	\N	\N	\N	\N	\N	189	{/img/characters/show/Dr_Land.png}	\N
+632	Dr. Katz	\N	\N	\N	\N	\N	21	{/img/characters/show/Dr_Jonathan_Katz.png}	\N
+631	Dr. Hallis	\N	\N	\N	\N	\N	89	{/img/characters/show/Dr_Hallis.png}	\N
+629	Dr. Doctor	\N	\N	\N	\N	\N	15	{/img/characters/show/Dr_Doctor.png}	\N
+651	Dramatic Look Gopher	\N	\N	\N	\N	\N	171	{/img/characters/show/Dramatic_Look_Gopher.png}	\N
+647	Dr. Spookalot	\N	\N	\N	\N	\N	41	{/img/characters/show/Dr_Spookalot.png}	\N
+646	Dr. Sheltair	\N	\N	\N	\N	\N	318	{/img/characters/show/Dr_Sheltair.png}	\N
+645	Dr. Shay	\N	\N	\N	\N	\N	51	{/img/characters/show/Dr_Shay.png}	\N
+644	Dr. Schwartz	\N	\N	\N	\N	{Judaism}	16	{/img/characters/show/Rabbi_Schwartz.png}	\N
+630	Dr. Gauche	\N	\N	\N	\N	\N	286	{/img/characters/show/Dr_Gauche.png}	\N
+648	Dr. Tristan Adams	\N	\N	\N	\N	\N	24	{/img/characters/show/Tristan_Adams.png}	\N
+649	Dr. Wayne Schroeder	\N	\N	\N	\N	\N	269	{/img/characters/show/Dr_Wayne_Schroeder.png}	\N
+650	Dr. Zonder	\N	\N	\N	\N	\N	161	{/img/characters/show/Dr_Zonder.png}	\N
+652	Drew Carey	\N	\N	May 23rd	67	\N	66	{/img/characters/show/Drew_Carey.png}	\N
+653	Droopy Dog	\N	\N	\N	\N	\N	202	{/img/characters/show/Droopy_Dog.png}	\N
+654	Duck President	\N	\N	\N	\N	\N	216	{/img/characters/show/Duck_President.png}	\N
+655	Dwight Schultz	\N	\N	\N	\N	\N	16	{/img/characters/show/Dwight_Schultz.png}	\N
+656	Dylan and Sarah	\N	\N	\N	\N	\N	142	{/img/characters/show/Dylan_and_Sarah.png}	\N
 \.
 
 
@@ -1813,5 +1869,5 @@ ALTER TABLE ONLY public.alter_ego
 -- PostgreSQL database dump complete
 --
 
-\unrestrict ZnHe8cKheyCsSWDy5gFDAda1R7y1tyokjOLJh0VxefVo8ZnFtOmgL5Kd0zMILIc
+\unrestrict 3KVscoTeFiC3tUh86powz9KhwLLRxpGFrkkMZQfq1pVVlN2Z310laWnm0YV4aOj
 
