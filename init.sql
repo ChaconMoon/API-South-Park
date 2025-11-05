@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict 3KVscoTeFiC3tUh86powz9KhwLLRxpGFrkkMZQfq1pVVlN2Z310laWnm0YV4aOj
+\restrict bhlaIEAiejSZJ6xnvNeaUvDpwaqY0Gb5JQNeBP4wYiiCIFeDVekpZ0hTSMhDK1u
 
 -- Dumped from database version 15.14 (Debian 15.14-1.pgdg13+1)
 -- Dumped by pg_dump version 15.14 (Debian 15.14-1.pgdg13+1)
@@ -1208,6 +1208,7 @@ COPY public.characters (id, name, friend_group, family, birthday, age, religion,
 654	Duck President	\N	\N	\N	\N	\N	216	{/img/characters/show/Duck_President.png}	\N
 655	Dwight Schultz	\N	\N	\N	\N	\N	16	{/img/characters/show/Dwight_Schultz.png}	\N
 656	Dylan and Sarah	\N	\N	\N	\N	\N	142	{/img/characters/show/Dylan_and_Sarah.png}	\N
+657	Dan Scavino	\N	\N	January 14th	49	\N	328	{/img/characters/show/Dan_Scavino.png}	\N
 \.
 
 
@@ -1869,5 +1870,5 @@ ALTER TABLE ONLY public.alter_ego
 -- PostgreSQL database dump complete
 --
 
-\unrestrict 3KVscoTeFiC3tUh86powz9KhwLLRxpGFrkkMZQfq1pVVlN2Z310laWnm0YV4aOj
+\unrestrict bhlaIEAiejSZJ6xnvNeaUvDpwaqY0Gb5JQNeBP4wYiiCIFeDVekpZ0hTSMhDK1u
 
