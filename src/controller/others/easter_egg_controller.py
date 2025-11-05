@@ -30,6 +30,23 @@ class EasterEggType(Enum):
     CUSTOM = 3
 
 
+class EasterEggName(Enum):
+    """
+    Enumeration of the avalible easteregg with their ID.
+
+    Values:
+        IHAVEDIABETES (0): Returns the two kids of the school that have diabetes:
+        (Scott Malkinson and Sophie Gray)
+
+        THEWHITEHOUSE (1): Returns all the characters that are
+        in the White House at the moment
+    """
+
+    IHAVEDIABETES = 0
+    THEWHITEHOUSE = 1
+    # OTHER = 2
+
+
 def get_easter_egg(name: str, base_url: str) -> dict:
     """
     Process a keyword and return corresponding easter egg content.
@@ -59,9 +76,12 @@ def get_easter_egg(name: str, base_url: str) -> dict:
     """
     items = list()
     type = EasterEggType.NONE
-    match name.lower():
-        case "ihavediabetes":
+    match name.upper():
+        case EasterEggName.IHAVEDIABETES.name:
             items = [141, 107]
+            type = EasterEggType.CHARACTERS
+        case EasterEggName.THEWHITEHOUSE.name:
+            items = [616, 617, 412, 657, 193]
             type = EasterEggType.CHARACTERS
 
     logging.info(items)
