@@ -954,6 +954,21 @@ files = [
 cli = ["click (>=5.0)"]
 
 [[package]]
+name = "python-toon"
+version = "0.1.3"
+description = "TOON (Token-Oriented Object Notation) encoder/decoder for Python - Bidirectional JSON-to-TOON converter optimized for LLMs"
+optional = false
+python-versions = ">=3.8"
+groups = ["main"]
+files = [
+    {file = "python_toon-0.1.3-py3-none-any.whl", hash = "sha256:a27b0ee4a729e730d1037d0a63eb8b344b3e5a26e3dc9a173067b6c31a868ee6"},
+    {file = "python_toon-0.1.3.tar.gz", hash = "sha256:ca348b214c4f1cdad3579fd83dd60032d9eb87eb349c2d430ad9eb6371f174bf"},
+]
+
+[package.extras]
+dev = ["mypy (>=1.8.0)", "pytest (>=8.0.0)", "pytest-cov (>=4.1.0)", "ruff (>=0.8.0)"]
+
+[[package]]
 name = "pyyaml"
 version = "6.0.3"
 description = "YAML parser and emitter for Python"
@@ -1301,4 +1316,4 @@ test = ["covdefaults (>=2.3)", "coverage (>=7.2.7)", "coverage-enable-subprocess
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.13"
-content-hash = "9de1e541da6db003e0703536beb1f5f86ee6cd715b053b4a4a3725ba109ef681"
+content-hash = "4af71771dd4e90244f6424f85592b35be2e55ac0044ba148d9f88aab9cbd886e"
