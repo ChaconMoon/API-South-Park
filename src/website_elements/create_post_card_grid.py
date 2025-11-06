@@ -5,8 +5,10 @@ This Module defines the functions to create post cards for the Dev Blog website.
 Each function handles different aspects of post card generation and grid layout.
 """
 
-import json
+import logging
 import re
+
+import toon
 
 
 def create_post_grid_in_blog(start_index: int, base_url=str) -> str:
@@ -23,27 +25,27 @@ def create_post_grid_in_blog(start_index: int, base_url=str) -> str:
     """
     divcontainer = ""
     markdown_files = []
-    post_dict: dict = {}
     size_per_page = 6
     if start_index == 1:
         index = 0
     else:
         index = (start_index - 1) * size_per_page
-    with open("data/post_order.json") as file:
-        post_dict = json.load(file)
+    with open("data/post_order.toon") as file:
+        toon_file = toon.decode(file.read())
+        logging.info(toon_file["posts"])
 
-    markdown_files = list(post_dict.items())[index : index + size_per_page]
+    markdown_files = toon_file["posts"][index : index + size_per_page]
 
     for index in range(0, len(markdown_files), 1):
         divcontainer += f"""
-        <a href="{base_url}blog/article/{str(markdown_files[index][1]).strip(".MD")}">
+        <a href="{base_url}blog/article/{str(markdown_files[index]).removesuffix(".MD")}">
         <div class="post_in_menu">
         <img class="post_thumbnail"
-         src="{get_thumbnail_in_menu(str(markdown_files[index][1]))}">
-        <h3>{get_title_in_menu(str(markdown_files[index][1]))}</h3>
-        <p class="post_intro">{get_intro_in_menu(str(markdown_files[index][1]))}</p>
+         src="{get_thumbnail_in_menu(str(markdown_files[index]))}">
+        <h3>{get_title_in_menu(str(markdown_files[index]))}</h3>
+        <p class="post_intro">{get_intro_in_menu(str(markdown_files[index]))}</p>
         </div>
-        </a>"""
+        </a>"""  # Fixed URL, delete the M, D, . at the start.
     return divcontainer
 
 
@@ -134,7 +136,7 @@ def get_blog_last_index() -> int:
         int: Total number of pages needed to display all posts
 
     """
-    lines = sum(1 for _ in open("data/post_order.json")) - 2  # The two { } of the file
+    lines = sum(1 for _ in open("data/post_order.toon")) - 1  # The start line
     pages = int(lines / 6)
 
     if lines % 6 != 0:
