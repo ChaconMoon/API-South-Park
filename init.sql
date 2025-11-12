@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict bhlaIEAiejSZJ6xnvNeaUvDpwaqY0Gb5JQNeBP4wYiiCIFeDVekpZ0hTSMhDK1u
+\restrict aVjNhWyzhcjKuILaZiP9wUgrH4RYjpIqW8W0M5lZXvksypj1hAUI7a4DHz3mWi5
 
 -- Dumped from database version 15.14 (Debian 15.14-1.pgdg13+1)
 -- Dumped by pg_dump version 15.14 (Debian 15.14-1.pgdg13+1)
@@ -1208,7 +1208,44 @@ COPY public.characters (id, name, friend_group, family, birthday, age, religion,
 654	Duck President	\N	\N	\N	\N	\N	216	{/img/characters/show/Duck_President.png}	\N
 655	Dwight Schultz	\N	\N	\N	\N	\N	16	{/img/characters/show/Dwight_Schultz.png}	\N
 656	Dylan and Sarah	\N	\N	\N	\N	\N	142	{/img/characters/show/Dylan_and_Sarah.png}	\N
-657	Dan Scavino	\N	\N	January 14th	49	\N	328	{/img/characters/show/Dan_Scavino.png}	\N
+678	Emir Hadi	\N	\N	\N	\N	\N	159	{/img/characters/show/Emir_Hadi.png}	\N
+657	Dan Scavino	\N	\N	January 14th	49	\N	328	{/img/characters/show/Dan_Scavino.png}	t
+666	Elderly Woman with Blue-Gray Blouse	\N	\N	\N	\N	\N	290	{/img/characters/show/Un-named-townsfolk-elderly-grocery-shopper-female.png}	\N
+665	Elderly Woman in Wheelchair	\N	\N	\N	\N	\N	309	{/img/characters/show/Elderly_Extortionist.png}	\N
+664	Elaine	\N	\N	\N	\N	\N	76	{/img/characters/show/Elaine.png}	\N
+663	El Pollo Loco Workers	\N	\N	\N	\N	\N	218	{/img/characters/show/El_Pollo_Loco_Workers.png}	\N
+662	Eduardo Hernandez	\N	\N	\N	\N	\N	275	{/img/characters/show/Eduardo_Hernandez.png}	\N
+661	Edge	\N	\N	October 30th	52	{Christian}	191	{/img/characters/show/Edge.png}	t
+660	Edgar Allan Poe	\N	\N	January 19th	40	{Christian}	241	{/img/characters/show/Edgar_Allen_Poe.png}	t
+659	Ed McMahon	\N	\N	March 6th	86	{Catholic}	189	{/img/characters/show/Ed_McMahon.png}	t
+658	E.T.	\N	\N	\N	\N	\N	88	{/img/characters/show/ET.png}	\N
+676	Elvis Presley	\N	\N	January 8th	42	{Pentecostal}	234	{/img/characters/show/Elvis.png}	t
+675	Elton John	\N	\N	March 25th	78	\N	5	{/img/characters/show/Elton_John_New.png,/img/characters/show/Elton_John_Old.png}	t
+674	Elsa	\N	\N	\N	\N	\N	299	{/img/characters/show/Elsa.png}	\N
+673	Elon Musk	\N	\N	June 28th	54	{Agnostic}	251	{/img/characters/show/Elon_Musk_New.png,/img/characters/show/Elon_Musk_Old.png}	t
+672	Elmer Fudd	\N	\N	\N	\N	\N	202	{/img/characters/show/Elmer_Fudd.png}	\N
+671	Ellen DeGeneres	\N	\N	January 26th	67	{Christian}	186	{/img/characters/show/Ellen_Degeneres.png}	\N
+670	Elise Gintz	\N	\N	\N	\N	\N	111	{/img/characters/show/Elise_Gintz.png}	\N
+669	Elise Garrett	\N	\N	\N	\N	\N	41	{/img/characters/show/Elise_garrett.png}	\N
+668	Eliot Spitzer	\N	\N	June 10th	66	\N	196	{/img/characters/show/Eliot_Spitzer.png}	t
+667	Elin Nordegren	\N	\N	January 1st	45	\N	196	{/img/characters/show/Elin_Nordegren.png}	t
+686	Enrique	\N	\N	\N	\N	\N	4	{/img/characters/show/Enrique.png}	\N
+685	Enchorito Mark	\N	\N	\N	\N	\N	93	{/img/characters/show/Enchorito_Mark.png}	\N
+684	Emperor Hirohito	\N	72	January 7th	87	{Shinto}	42	{/img/characters/show/Emperor_Hirohito_Uniform.png,/img/characters/show/Emperor_Hirohito_Armor.png}	t
+683	Emperor Akihito	\N	72	December 23rd	91	{Shinto}	192	{/img/characters/show/Emperor_Akihito.png}	t
+682	Emo Kids	\N	\N	\N	\N	\N	241	{/img/characters/show/Emo_Kids.png}	\N
+681	Emily Marx	\N	\N	\N	9	\N	134	{/img/characters/show/Emily_Marx.png}	\N
+680	Emmett Hollis	\N	71	\N	\N	\N	187	{/img/characters/show/Emmett_Hollis.png}	f
+679	Emmanuel Lewis	\N	\N	March 9th	54	\N	193	{/img/characters/show/Emmanuel_Lewis.png}	t
+677	Elvis Presley Hologram	\N	\N	\N	\N	\N	257	{/img/characters/show/Elvis_Presley_Hologram.png}	\N
+694	Excalibur Sorcerer	\N	\N	\N	\N	\N	66	{/img/characters/show/Excalibur_Sorcerer.png}	\N
+693	Excalibur Barker	\N	\N	\N	\N	\N	66	{/img/characters/show/Excalibur_Barker.png}	\N
+692	Eugene Levy	\N	\N	December 17th	78	\N	211	{/img/characters/show/Eugene_Levy.png}	\N
+691	Ethiopian Tribe	\N	\N	\N	\N	\N	8	{/img/characters/show/Ethiopians.png}	\N
+690	Esther	\N	\N	\N	10	{"Roman Catholic"}	32	{/img/characters/show/Esther.png}	\N
+689	Estella Havisham	\N	\N	\N	10	\N	62	{/img/characters/show/Estella.png}	\N
+688	Escaped Convict	\N	\N	\N	\N	\N	62	{/img/characters/show/Escaped_Convict.png}	\N
+687	Eric Roberts	\N	\N	April 18th	69	{Christian}	15	{/img/characters/show/Eric_Roberts.png}	t
 \.
 
 
@@ -1661,6 +1698,8 @@ COPY public.families (id, name, images) FROM stdin;
 68	The Fitzsimmons	\N
 69	The Solokovs	\N
 70	The Weatherhead foster family	\N
+71	The Hollis	\N
+72	Japanese Imperial Family	\N
 \.
 
 
@@ -1870,5 +1909,5 @@ ALTER TABLE ONLY public.alter_ego
 -- PostgreSQL database dump complete
 --
 
-\unrestrict bhlaIEAiejSZJ6xnvNeaUvDpwaqY0Gb5JQNeBP4wYiiCIFeDVekpZ0hTSMhDK1u
+\unrestrict aVjNhWyzhcjKuILaZiP9wUgrH4RYjpIqW8W0M5lZXvksypj1hAUI7a4DHz3mWi5
 
