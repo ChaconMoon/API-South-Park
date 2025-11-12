@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict aVjNhWyzhcjKuILaZiP9wUgrH4RYjpIqW8W0M5lZXvksypj1hAUI7a4DHz3mWi5
+\restrict pOdhNJKFDuygTcWxwNfdCyuQlQI3TMf3PVTsNuTRBCxgBCcdzoIqCWjPdb65swX
 
 -- Dumped from database version 15.14 (Debian 15.14-1.pgdg13+1)
 -- Dumped by pg_dump version 15.14 (Debian 15.14-1.pgdg13+1)
@@ -1689,17 +1689,17 @@ COPY public.families (id, name, images) FROM stdin;
 59	The Jacksons	{img/families/The_Jacksons.png}
 60	The Palmers	{img/families/The_Palmers.png}
 61	Buck's Family	{img/families/Buck_Family.png}
-62	Joline / Chantal Family	\N
-63	The Browns	\N
-64	Runs With Premise Family	\N
-65	Christine / Dennis Family	\N
-66	Christophe Family	\N
-67	The McCains	\N
-68	The Fitzsimmons	\N
-69	The Solokovs	\N
-70	The Weatherhead foster family	\N
-71	The Hollis	\N
-72	Japanese Imperial Family	\N
+62	Joline / Chantal Family	{img/families/Joline_Family.png}
+63	The Browns	{img/families/The_Browns.png}
+64	Runs With Premise Family	{img/families/Runs_With_Promis_Family.png}
+65	Christine / Dennis Family	{img/families/Christine_Dennis_Family.png}
+66	Christophe Family	{img/families/Christophe_Family.png}
+67	The McCains	{img/families/The_McCains.png}
+68	The Fitzsimmons	{img/families/The_Fitzsimmons.png}
+69	The Solokovs	{img/families/The_Solokovs.png}
+70	The Weatherhead foster family	{img/families/The_Weatherheads.png}
+71	The Hollis	{img/families/The_Hollis.png}
+72	Japanese Imperial Family	{img/families/Japanese_Imperial_Family.png}
 \.
 
 
@@ -1909,5 +1909,5 @@ ALTER TABLE ONLY public.alter_ego
 -- PostgreSQL database dump complete
 --
 
-\unrestrict aVjNhWyzhcjKuILaZiP9wUgrH4RYjpIqW8W0M5lZXvksypj1hAUI7a4DHz3mWi5
+\unrestrict pOdhNJKFDuygTcWxwNfdCyuQlQI3TMf3PVTsNuTRBCxgBCcdzoIqCWjPdb65swX
 
