@@ -11,7 +11,9 @@ from src.controller.database_connection import get_query_result
 from src.model.chinpokomon import Chinpokomon
 
 
-def get_chinpokomon_by_id(id: int, add_url: bool = False, base_url: str = "") -> dict:
+def get_chinpokomon_by_id(
+    id: int, add_url: bool = False, base_url: str = "", metadata: bool = False
+) -> dict:
     """
     Retrieve a specific Chinpokomon from the database by its ID.
 
@@ -19,6 +21,7 @@ def get_chinpokomon_by_id(id: int, add_url: bool = False, base_url: str = "") ->
         id (int): The unique identifier of the Chinpokomon
         add_url (bool): Whether to include API URLs in the response
         base_url (str): The base URL for API endpoints
+        metadata (bool): Whether to include metadata in response
 
     Returns:
         dict: JSON response containing either:
@@ -64,8 +67,9 @@ def get_chinpokomon_by_id(id: int, add_url: bool = False, base_url: str = "") ->
                 "name": chinpokomon.model_dump()["name"],
                 "url": f"{base_url}api/chinpokomon/{row[0]}",
             }
+        query_result = get_query_result(text("SELECT * FROM public.chinpokomon"))
 
-        return chinpokomon.toJSON()
+        return chinpokomon.toJSON(metadata, total_results=query_result.rowcount)
 
     except Exception as e:
         return {"error": str(e), "status": "failed"}
