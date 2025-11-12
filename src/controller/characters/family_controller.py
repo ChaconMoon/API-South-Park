@@ -42,6 +42,9 @@ def get_family_by_id(id: int, url="", metadata=False) -> dict:
         for _row in rows:
             family = Family(rows, url, id)
 
+        # Get the result of the query to the databse.
+        query_result = get_query_result(text("""SELECT * FROM public.families"""))
+
         return family.toJSON(metadata, total_results=query_result.rowcount)
 
     # Control exceptions
