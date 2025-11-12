@@ -19,6 +19,9 @@ def test_if_images_exists_in_families():
     )
     if healh_check_request.status_code != 200:
         raise requests.RequestException("API Not Avalible Error")
+
+    logging.info("API Avalible")
+
     total_families = requests.get(
         f"{os.getenv('TESTING_SOUTH_PARK_API_URL')}/api/families/1?metadata=true",
         timeout=10,
