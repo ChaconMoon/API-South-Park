@@ -6,9 +6,9 @@ It provides routes to access information about Chinpokomon creatures that appear
 in the South Park series.
 """
 
-from fastapi import APIRouter, Request, Response
+from fastapi import APIRouter, Request, Response, status
 
-from src.controller.chipokomon.chinpokomon_controller import get_chinpokomon_by_id
+from src.controller.chinpokomon.chinpokomon_controller import get_chinpokomon_by_id
 
 router = APIRouter(tags=["Chinpokomon"])
 
@@ -47,4 +47,10 @@ def show_chinpokomon(
 
     """
     base_url = str(request.base_url)
-    return get_chinpokomon_by_id(id=id, base_url=base_url, metadata=metadata)
+    json = get_chinpokomon_by_id(id=id, base_url=base_url, metadata=metadata)
+    if "error" in json:
+        if json["error"] == "Chinpokomon not found":
+            response.status_code = status.HTTP_404_NOT_FOUND
+        elif json["error"] == "Database not avalible":
+            response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
+    return json
