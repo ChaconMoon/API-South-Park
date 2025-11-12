@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict rMyNjdgev3QfSTZcJT4bQVKlgyBzjIDZ3nNLpWCJOJ1IoeGcMB5GTqdp0s6SsoP
+\restrict QOZkFnuGAcS5PJ72OavchkzK4vlTaDsNz4KGLivamvjDneffMBGp4DkxqmbP4X2
 
 -- Dumped from database version 15.14 (Debian 15.14-1.pgdg13+1)
 -- Dumped by pg_dump version 15.14 (Debian 15.14-1.pgdg13+1)
@@ -722,10 +722,6 @@ COPY public.characters (id, name, friend_group, family, birthday, age, religion,
 168	David Rodriguez	\N	37	\N	10	\N	261	{/img/characters/show/David_Rodriguez.png}	\N
 169	Mrs. Rodriguez	\N	37	\N	\N	\N	261	{/img/characters/show/Mrs_Rodriguez.png}	\N
 170	Mr. Rodriguez	\N	37	\N	\N	\N	261	{/img/characters/show/Mr_Rodriguez.png}	\N
-171	Bebe Stevens	\N	38	August 13th	10	{"Roman Catholic"}	2	{/img/characters/show/Bebe_Stevens.png}	\N
-172	Thumper	\N	38	\N	\N	\N	170	{/img/characters/show/Thumper.png}	\N
-173	Mrs. Stevens	\N	38	\N	\N	{"Roman Catholic"}	16	{/img/characters/show/Mrs_Stevens.png}	\N
-174	Mr. Stevens	\N	38	\N	\N	{"Roman Catholic"}	123	{/img/characters/show/Mr_Stevens.png}	\N
 175	Kevin Stoley	\N	35	\N	10	{"Roman Catholic"}	18	{/img/characters/show/Kevin_Stoley.png}	\N
 176	Mrs. Stoley	\N	35	\N	\N	{"Roman Catholic"}	95	{/img/characters/show/Mrs_Stoley.png}	\N
 177	Mr. Stoley	\N	35	\N	\N	{"Roman Catholic"}	95	{/img/characters/show/Mr_Stoley.png}	\N
@@ -762,6 +758,7 @@ COPY public.characters (id, name, friend_group, family, birthday, age, religion,
 208	Mrs. White	\N	46	\N	\N	\N	287	{/img/characters/show/Mrs_White.png}	\N
 209	Bob White	\N	46	\N	\N	\N	287	{/img/characters/show/Bob_White.png}	\N
 213	Aaron Hagen	\N	51	\N	7	\N	239	{/img/characters/show/Aaron_Hagen.png}	f
+172	Thumper	\N	36	\N	\N	\N	170	{/img/characters/show/Thumper.png}	\N
 214	Abraham Lincoln	\N	\N	February 12th	56	\N	135	{/img/characters/show/Abraham_Lincoln.png}	t
 217	Adams County Pee-Wee Hockey Team	\N	\N	\N	6	\N	153	{/img/characters/show/Adams_County_Pee_Wee_Hockey_Team.png}	f
 218	Adolf Hitler	\N	52	April 20th	56	\N	7	{/img/characters/show/Adolf_Hitler.png}	t
@@ -1251,6 +1248,9 @@ COPY public.characters (id, name, friend_group, family, birthday, age, religion,
 689	Estella Havisham	\N	\N	\N	10	\N	62	{/img/characters/show/Estella.png}	\N
 688	Escaped Convict	\N	\N	\N	\N	\N	62	{/img/characters/show/Escaped_Convict.png}	\N
 687	Eric Roberts	\N	\N	April 18th	69	{Christian}	15	{/img/characters/show/Eric_Roberts.png}	t
+171	Bebe Stevens	\N	36	August 13th	10	{"Roman Catholic"}	2	{/img/characters/show/Bebe_Stevens.png}	\N
+173	Mrs. Stevens	\N	36	\N	\N	{"Roman Catholic"}	16	{/img/characters/show/Mrs_Stevens.png}	\N
+174	Mr. Stevens	\N	36	\N	\N	{"Roman Catholic"}	123	{/img/characters/show/Mr_Stevens.png}	\N
 \.
 
 
@@ -1642,7 +1642,6 @@ COPY public.families (id, name, images) FROM stdin;
 7	The Barbradys	{img/families/The_Barbradys.png}
 8	The Biggles	{img/families/The_Biggles.png,img/families/The_Biggles_2.png}
 9	The Blacks	{img/families/The_Blacks.png}
-10	The Burchs	{img/families/The_Bruchs.png,imgfamiliesThe_Bruchs_2.png}
 11	The Charlotte's Family	{img/families/The_Carlotte_Family.png,img/families/The_Carlotte_Family_2.png}
 12	The Cotswolds	{img/families/The_Cotswolds.png}
 20	The Harrisons	{img/families/The_Harrisons.png}
@@ -1701,6 +1700,7 @@ COPY public.families (id, name, images) FROM stdin;
 66	Christophe Family	{img/families/Christophe_Family.png}
 67	The McCains	{img/families/The_McCains.png}
 68	The Fitzsimmons	{img/families/The_Fitzsimmons.png}
+10	The Burchs	{img/families/The_Bruchs.png,img/families/The_Bruchs_2.png}
 69	The Solokovs	{img/families/The_Solokovs.png}
 70	The Weatherhead foster family	{img/families/The_Weatherheads.png}
 71	The Hollis	{img/families/The_Hollis.png}
@@ -1914,5 +1914,5 @@ ALTER TABLE ONLY public.alter_ego
 -- PostgreSQL database dump complete
 --
 
-\unrestrict rMyNjdgev3QfSTZcJT4bQVKlgyBzjIDZ3nNLpWCJOJ1IoeGcMB5GTqdp0s6SsoP
+\unrestrict QOZkFnuGAcS5PJ72OavchkzK4vlTaDsNz4KGLivamvjDneffMBGp4DkxqmbP4X2
 
