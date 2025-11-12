@@ -11,7 +11,7 @@ import requests
 from dotenv import load_dotenv
 
 
-def test_if_exists_image_in_episode():
+def test_if_exists_image_in_specials():
     """Test if all the specials have their image."""
     load_dotenv()
 

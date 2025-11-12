@@ -13,7 +13,7 @@ from src.main import app
 client = TestClient(app)
 
 
-def test_episode_database_correct():
+def test_last_episode_database_correct():
     """Test A Correct Response in Last Episode Endpoint."""
     fake_response = {
         "episode": {
@@ -38,7 +38,7 @@ def test_episode_database_correct():
             raise ValueError("Expected Found Response")
 
 
-def test_episode_object_not_found():
+def test_last_episode_object_not_found():
     """Test A Not Found Response in Last Episode Endpoint."""
     fake_response = {"error": "Episode not found", "status": "failed"}
     with patch(
@@ -50,7 +50,7 @@ def test_episode_object_not_found():
             raise ValueError("Expected Not Found Response")
 
 
-def test_episode_database_not_avalible():
+def test_last_episode_database_not_avalible():
     """Test A Not Avalible Response in Last Episode Endpoint."""
     fake_response = {"error": "Database not avalible", "status": "failed"}
     with patch(
