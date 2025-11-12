@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict pOdhNJKFDuygTcWxwNfdCyuQlQI3TMf3PVTsNuTRBCxgBCcdzoIqCWjPdb65swX
+\restrict rMyNjdgev3QfSTZcJT4bQVKlgyBzjIDZ3nNLpWCJOJ1IoeGcMB5GTqdp0s6SsoP
 
 -- Dumped from database version 15.14 (Debian 15.14-1.pgdg13+1)
 -- Dumped by pg_dump version 15.14 (Debian 15.14-1.pgdg13+1)
@@ -544,6 +544,11 @@ COPY public.alter_ego (id, original_character, name, images) FROM stdin;
 1	39	Sizzler Stuart	{/img/alteregos/phone_destroyer/Sizzler_Stuart.png,/img/alteregos/show/Sizzler_Stuart.png}
 1	27	Full Moon Sparky	{/img/alteregos/phone_destroyer/Full_Moon_Sparky.png}
 5	199	Fastpass	{/img/alteregos/phone_destroyer/Fastpass.png,/img/alteregos/show/Fastpass.png}
+5	622	General Disarray	{/img/alteregos/phone_destroyer/General_Disarray.png,/img/alteregos/show/General_Disarray.png}
+4	622	Dwarf Engineer Dougie	{/img/alteregos/phone_destroyer/Dwarf_Engineer_Dougie.png,/img/alteregos/show/Dougie_Dwarf_Engineer.png}
+3	622	Prophet Dougie	{/img/alteregos/phone_destroyer/Prophet_Dougie.png}
+2	622	Powerfist Dougie	{/img/alteregos/phone_destroyer/Powerfist_Dougie.png}
+1	622	Barrel Dougie	{/img/alteregos/phone_destroyer/Barrel_Dougie.png}
 \.
 
 
@@ -1909,5 +1914,5 @@ ALTER TABLE ONLY public.alter_ego
 -- PostgreSQL database dump complete
 --
 
-\unrestrict pOdhNJKFDuygTcWxwNfdCyuQlQI3TMf3PVTsNuTRBCxgBCcdzoIqCWjPdb65swX
+\unrestrict rMyNjdgev3QfSTZcJT4bQVKlgyBzjIDZ3nNLpWCJOJ1IoeGcMB5GTqdp0s6SsoP
 
