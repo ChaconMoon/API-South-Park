@@ -24,7 +24,7 @@ def test_chinopokon_database_correct():
         "src.controller.chinpokomon.chinpokomon_endpoints.get_chinpokomon_by_id"
     ) as databse_response:
         databse_response.return_value = fake_response
-        response = client.get("/api/chinpokomon/1")
+        response = client.get("/api/chinpokomons/1")
         if response.status_code != 200:
             raise ValueError("Expected Found Response")
 
@@ -36,7 +36,7 @@ def test_chinpokomon_object_not_found():
         "src.controller.chinpokomon.chinpokomon_endpoints.get_chinpokomon_by_id"
     ) as database_response:
         database_response.return_value = fake_response
-        response = client.get("/api/chinpokomon/1")
+        response = client.get("/api/chinpokomons/1")
         if response.status_code != 404:
             raise ValueError("Expected Not Found Response")
 
@@ -48,6 +48,6 @@ def test_chinpokomon_database_not_avalible():
         "src.controller.chinpokomon.chinpokomon_endpoints.get_chinpokomon_by_id"
     ) as database_response:
         database_response.return_value = fake_response
-        response = client.get("/api/chinpokomon/1")
+        response = client.get("/api/chinpokomons/1")
         if response.status_code != 500:
             raise ValueError("Expected Internal Server Error Response")

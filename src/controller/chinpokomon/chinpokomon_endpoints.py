@@ -13,7 +13,7 @@ from src.controller.chinpokomon.chinpokomon_controller import get_chinpokomon_by
 router = APIRouter(tags=["Chinpokomon"])
 
 
-@router.get("/api/chinpokomon/{id}")
+@router.get("/api/chinpokomons/{id}")
 def show_chinpokomon(
     id: int, request: Request, response: Response, metadata: bool = False
 ) -> dict:
