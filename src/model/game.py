@@ -55,7 +55,7 @@ class Game(BaseModel, ApiObject):
             result = dict()
             result["game"] = self.model_dump()
             result["metadata"] = dict()
-            result["metadata"]["total_characters_in_database"] = total_results
+            result["metadata"]["total_games_in_database"] = total_results
         return result
 
     def __init__(self, row: list, base_url: str = "") -> "Game":
