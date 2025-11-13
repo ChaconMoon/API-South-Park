@@ -162,3 +162,46 @@ def get_character_list(ids: list[int], add_url: bool = False, base_url: str = ""
             character_id, base_url=base_url, metadata=False
         )
     return result
+
+
+def get_all_characters_with_alterego(base_url: str = ""):
+    """
+    Return characters that have at least one alter ego.
+
+    Queries the alter_ego table for distinct original_character IDs (ascending)
+    and returns each character using get_character_by_id(..., add_url=True).
+
+    Args:
+        base_url (str): Optional base URL to prepend to character URLs.
+
+    Returns:
+        dict: On success: {"characters_with_alterego": [ ... ]}.
+              On error: {"error": str, "status": "failed"} or {"message": "error"}.
+
+    """
+    try:
+        # Get the result of the query
+        query_result = get_query_result(
+            text(
+                """SELECT original_character FROM public.alter_ego
+                    group by original_character
+                    ORDER BY original_character ASC"""
+            )
+        )
+
+        # If the number of alter egos is 0 return a empty object
+        if query_result is None:
+            return {"error": "Database not avalible", "status": "failed"}
+        elif query_result.rowcount == 0:
+            return {"error": "Query error. No Alteregos in database", "status": "failed"}
+        result = dict()
+        result["characters_with_alterego"] = list()
+
+        for _row in query_result:
+            result["characters_with_alterego"].append(
+                get_character_by_id(int(_row[0]), add_url=True, base_url=base_url)
+            )
+        return result
+    except Exception as e:
+        logging.error(e)
+        return {"message": "error"}
