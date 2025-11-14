@@ -37,6 +37,10 @@
                 align-items: start;
 
         }
+        
+        #version_text{
+                display: none;
+        }
 
         a.menu_item {
                 background-color: #a5a5a5;
