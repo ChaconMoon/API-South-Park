@@ -3,12 +3,12 @@
 Changes in version 0.2
 {.blog_intro}
 ## New Endpoint {.blog_title}
-- Added the Endpoint [All Characters with alteregos](/api/characterswithalteregos) Retruns all the characters that have a alterego.
+- Added the Endpoint [All Characters with alteregos](/api/characterswithalterego) Retruns all the characters that have a alterego.
 
 ## Changes in Endpoints {.blog_title}
 
 - The Chinpokomon Endpoint has been renamed: "/chinpokomon/" to "/chinpokomons/"
-- The Chinpokomon endpoint now can send metadata: [link](/api/chinpokomon/1?metadata=true)
+- The Chinpokomon endpoint now can send metadata: [link](/api/chinpokomons/1?metadata=true)
 
 ## Items added to the Database [Database Update]: {.blog_title}
 
@@ -22,7 +22,7 @@ Changes in version 0.2
 - The Characters of the TV Show that their name starts with E has been added: [ID: 658](/api/characters/658) -> [ID: 694](/api/characters/694)
 
 ### [FAMILIES] {.blog_subtitle}
-- Added two new families: [Family 71 (The Hollis)](/api/families/71) and [Family 72 (Japanese Imperial Family)](/api/families/71)
+- Added two new families: [Family 71 (The Hollis)](/api/families/71) and [Family 72 (Japanese Imperial Family)](/api/families/72)
 
 ### [ALTEREGOS] {.blog_subtitle}
 
@@ -50,7 +50,7 @@ Now ["Dougie O'Connell"](/api/characters/622) has his alteregos in the database:
 
 ### Fixes of wrong data: {.blog_subtitle}
 
-- The Characters of [The Burch Family](/api/families/36) have a incorrect ID in the family ID, this is now fixed.
+- The Characters of [The Stevens](/api/families/36) have a incorrect ID in the family ID, this is now fixed.
 - [The Burch Family](/api/families/10) second image name has been fixed.
 - The image's name of [Chinpokomon 2](/api/chinpokomons/2) and [Chinpokomon 26](/api/chinpokomons/26) has been fixed
 
