@@ -1,0 +1,17 @@
+@media screen and (min-width: 1024px) {
+        #changelog_grid_links {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 4vw;
+        }
+
+        .endpoint_link {
+                background-color: gray;
+                color: white;
+                font-weight: bold;
+                padding: 0.3vw;
+                font-size: 1.2vw;
+                margin-bottom: 3vw;
+        }
+}
