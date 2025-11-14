@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict QOZkFnuGAcS5PJ72OavchkzK4vlTaDsNz4KGLivamvjDneffMBGp4DkxqmbP4X2
+\restrict wJ2RO3pXwHY6Hbxn74KiSBXgVORRwyx48gpF9PX4UsjIULP1rm0autL2gj7wAaI
 
 -- Dumped from database version 15.14 (Debian 15.14-1.pgdg13+1)
 -- Dumped by pg_dump version 15.14 (Debian 15.14-1.pgdg13+1)
@@ -1251,6 +1251,8 @@ COPY public.characters (id, name, friend_group, family, birthday, age, religion,
 171	Bebe Stevens	\N	36	August 13th	10	{"Roman Catholic"}	2	{/img/characters/show/Bebe_Stevens.png}	\N
 173	Mrs. Stevens	\N	36	\N	\N	{"Roman Catholic"}	16	{/img/characters/show/Mrs_Stevens.png}	\N
 174	Mr. Stevens	\N	36	\N	\N	{"Roman Catholic"}	123	{/img/characters/show/Mr_Stevens.png}	\N
+695	Bluey Heeler	\N	\N	\N	\N	\N	329	{/img/characters/show/Bluey.png}	\N
+696	Droopy Dog (Cartoon)	\N	\N	\N	\N	\N	329	{/img/characters/show/Droop_Dog_Cartoon.png}	\N
 \.
 
 
@@ -1625,6 +1627,7 @@ COPY public.episodes (id, name, season, episode, realese_date, description, view
 326	Conflict of Interest	27	5	2025-09-24	Kyle and Cartman are at odds when a prediction markets app gets popular with their fellow students.	https://www.southparkstudios.com/episodes/0v5k4m/south-park-conflict-of-interest-season-27-ep-5	f	t	img/episodes/326.jpg
 327	Twisted Christian	28	1	2025-10-15	Cartman is possessed and may be the key to stopping the Antichrist.	https://www.southparkstudios.com/episodes/5yvj56/south-park-twisted-christian-season-28-ep-1	f	t	img/episodes/327.jpg
 328	The Woman In The Hat	28	2	2025-10-31	The White House deals with a disruptive spirit from the east wing. While Stan worries that South Park has become too political.	https://www.southparkstudios.com/episodes/xgd7ik/south-park-the-woman-in-the-hat-season-28-ep-2	f	t	img/episodes/328.jpg
+329	Sora Not Sorry	28	3	2025-11-13	Butters' AI revenge plan backfires, igniting an epidemic of fake videos at school that leaves Detective Harris struggling to tell fantasy from reality	\N	f	t	img/episodes/329.jpg
 \.
 
 
@@ -1914,5 +1917,5 @@ ALTER TABLE ONLY public.alter_ego
 -- PostgreSQL database dump complete
 --
 
-\unrestrict QOZkFnuGAcS5PJ72OavchkzK4vlTaDsNz4KGLivamvjDneffMBGp4DkxqmbP4X2
+\unrestrict wJ2RO3pXwHY6Hbxn74KiSBXgVORRwyx48gpF9PX4UsjIULP1rm0autL2gj7wAaI
 
