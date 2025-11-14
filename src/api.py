@@ -124,6 +124,12 @@ app.mount(
 )
 app.mount("/blog/posts/", StaticFiles(directory="website/posts"), name="posts")
 
+app.mount(
+    "/changeblog/posts/",
+    StaticFiles(directory="docs/changelog_posts/"),
+    name="changeblog",
+)
+
 # Asset directories
 app.mount("/img", StaticFiles(directory="img"), name="img")
 app.mount("/styles", StaticFiles(directory="styles"), name="styles")

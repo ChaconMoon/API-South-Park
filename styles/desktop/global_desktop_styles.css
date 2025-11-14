@@ -103,7 +103,22 @@
                 /* Ajusta este valor para cambiar el espacio entre elementos */
                 align-items: center;
         }
-
+        #version_text{
+                display: block;
+                position: absolute;
+                color: white;
+                background-color: black;
+                font-size: 1.3vw;
+                width: fit-content;
+                padding: 0.5vw;
+                margin-top: 1vw;
+                text-decoration: none;
+                margin-right: 1vw;
+                margin-left: 90%;
+                border-radius: 8px;
+                font-family: "Waffle-Soft";
+                line-height: 2vw;
+        }
         div.menu_button {
                 border-radius: 16px;
                 color: white;
