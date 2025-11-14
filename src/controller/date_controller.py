@@ -6,6 +6,7 @@ It provides functions to check birthdays and retrieve characters that have
 their birthday on the current date.
 """
 
+import logging
 from datetime import datetime
 
 from sqlalchemy import text
@@ -97,4 +98,5 @@ def get_today_birthday_character(base_url: str = "") -> dict:
         return result
 
     except Exception as e:
+        logging.error(e)
         return {"error": str(e), "status": "failed"}

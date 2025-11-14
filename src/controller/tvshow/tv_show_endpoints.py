@@ -15,7 +15,7 @@ router = APIRouter(tags=["TV Show"])
 
 
 @router.get("/api/lastepisode")
-def get_the_last_episode() -> dict:
+def get_the_last_episode(response: Response) -> dict:
     """
     Get the most recent episode of South Park.
 
@@ -23,7 +23,15 @@ def get_the_last_episode() -> dict:
         dict: JSON response containing the latest episode data
 
     """
-    return get_last_episode()
+    json = get_last_episode()
+    if "error" in json:
+        if json["error"] == "Episode not found":
+            response.status_code = status.HTTP_404_NOT_FOUND
+        elif json["error"] == "Database not avalible":
+            response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
+    elif "episode" in json:
+        response.status_code = status.HTTP_200_OK
+    return json
 
 
 @router.get("/api/specials/{id}")
