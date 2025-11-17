@@ -19,10 +19,9 @@
                 gap: 1vw;
         }
 
-        #blog_post_containers p,
-        ul {
-                width: 80vw;
-                font-size: 3.5vw;
+        #blog_post_containers ul p {
+                width: 60vw;
+                font-size: 3vw;
                 font-family: "OpenSans-Regular";
 
         }
