@@ -13,6 +13,7 @@ from src.controller.characters.alter_ego_controller import (
     get_alter_ego_by_character_and_id,
 )
 from src.controller.characters.characters_controller import (
+    get_all_characters_with_alterego,
     get_character_by_id,
     get_characters_by_search,
 )
@@ -208,15 +209,59 @@ async def show_character(
 
 
 @router.get("/api/todaybirthdays")
-def get_characters_with_birthday_today(request: Request) -> dict:
+def get_characters_with_birthday_today(request: Request, response: Response) -> dict:
     """
     Get all characters whose birthday is today.
 
     Args:
         request (Request): FastAPI request object
+        response (Response): FastAPI response object
 
     Returns:
         dict: JSON response with characters having birthdays today
 
+    Response Codes:
+        200: Character found
+        404: No one has their birthday today
+        500: Database error
+
     """
-    return get_today_birthday_character(base_url=str(request.base_url))
+    json = get_today_birthday_character(base_url=str(request.base_url))
+    if "error" in json:
+        if json["error"] == "Database not avalible":
+            response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
+    elif "message" in json:
+        if json["message"] == "No one has their birthday today":
+            response.status_code = status.HTTP_404_NOT_FOUND
+    else:
+        response.status_code = status.HTTP_200_OK
+    return json
+
+
+@router.get("/api/characterswithalterego")
+def get_characters_on_alterego_table(request: Request, response: Response) -> dict:
+    """
+    Get all characters that have a alter ego.
+
+    Args:
+        request (Request): FastAPI request object
+        response (Response): FastAPI response object
+
+    Returns:
+        dict: JSON response with characters with alterego
+
+    Response Codes:
+        200: Character found
+        404: Empty alterego database found
+        500: Database not avalible error
+
+    """
+    json = get_all_characters_with_alterego(base_url=str(request.base_url))
+    if "error" in json:
+        if json["error"] == "Query error. No Alteregos in database":
+            response.status_code = status.HTTP_404_NOT_FOUND
+        elif json["error"] == "Database not avalible":
+            response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
+    else:
+        response.status_code = status.HTTP_200_OK
+    return json

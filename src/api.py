@@ -21,7 +21,7 @@ from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 
 from src.controller.characters import characters_endpoints
-from src.controller.chipokomon import chinpokomon_endpoints
+from src.controller.chinpokomon import chinpokomon_endpoints
 from src.controller.games import games_endpoint
 from src.controller.handlers.not_found_handler import custom_404_handler
 from src.controller.iframes import iframes_endpoints
@@ -123,6 +123,12 @@ app.mount(
     name="social_media_images",
 )
 app.mount("/blog/posts/", StaticFiles(directory="website/posts"), name="posts")
+
+app.mount(
+    "/changeblog/posts/",
+    StaticFiles(directory="docs/changelog_posts/"),
+    name="changeblog",
+)
 
 # Asset directories
 app.mount("/img", StaticFiles(directory="img"), name="img")

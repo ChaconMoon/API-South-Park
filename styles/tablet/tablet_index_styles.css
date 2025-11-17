@@ -2,6 +2,9 @@
         * {
                 margin: 0;
         }
+        #version_text{
+                display: none
+        }
 
         #try_example {
                 font-family: "OpenSans-Bold";

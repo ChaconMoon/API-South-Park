@@ -103,6 +103,9 @@
                 justify-content: center;
                 margin-top: 0;
         }
+           #version_text{
+                display: none;
+        }
 
         #footer_what_is_this p {
                 font-size: 3.5vw;

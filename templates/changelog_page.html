@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+
+<head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="{{articule_title_in_social_media}}">
+        <meta property="og:description" content="{{articule_description_in_social_media}}">
+        <meta property="og:url" content="{{url_in_social_media}}">
+        <meta property="og:type" content="article">
+        <meta property="og:site_name" content="South Park API">
+
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="{{articule_title_in_social_media}}">
+        <meta name="twitter:description" content="{{articule_description_in_social_media}}">
+        <meta name="twitter:site" content="@ChaconMoon">
+        <meta name="twitter:url" content="{{url_in_social_media}}">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/styles/global/global_blog_styles.css?v=1.1">
+        <link rel="stylesheet" href="/styles/global/global_website_fonts.css?v=1.1">
+        <link rel="stylesheet" href="/styles/desktop/desktop_post_styles.css?v=1.1">
+        <link rel="stylesheet" href="/styles/desktop/desktop_changelog_styles.css?v=1.0">
+        <link rel="stylesheet" href="/styles/desktop/global_desktop_styles.css?v=1.2">
+        <link rel="stylesheet" href="/styles/tablet/global_tablet_styles.css?v=1.2">
+        <link rel="stylesheet" href="/styles/tablet/tablet_post_styles.css?v=1.1">
+        <link rel="stylesheet" href="/styles/tablet/tablet_changelog_styles.css?v=1.0">
+        <link rel="stylesheet" href="/styles/mobile/mobile_post_styles.css?v=1.1">
+        <link rel="stylesheet" href="/styles/mobile/mobile_changelog_styles.css?v=1.0">
+        <link rel="stylesheet" href="/styles/mobile/global_mobile_styles.css?v=1.2">
+        <link rel="stylesheet" href="/styles/small_mobiles/global_small_mobiles_styles.css?v=1.2">
+        <link rel="stylesheet" href="/styles/small_mobiles/small_mobile_post_styles.css?v=1.1">
+        <link rel="stylesheet" href="/styles/small_mobiles/small_mobile_changelog_styles.css?v=1.0">
+        <script src="./javascript/main.js"></script>
+        <title>
+                South Park API (Develop Version)
+        </title>
+        <nav class="navegation_menu">
+                <a href="/" class="menu_logo">
+                        <img id="logo" src="/img/website/logo.png" alt="logo">
+                </a>
+                <a href="#" class="menu_item">About</a>
+                <a href="/api/redoc" class="menu_item">Docs</a>
+                <a href="#" class="menu_item">Status</a>
+        </nav>
+</head>
+
+<body>
+        <h1 class="main_title">
+                A RESTful API of the universe of South Park
+        </h1>
+        <div class="web_menu">
+                <a class="menu_link" href="https://github.com/ChaconMoon/API-South-Park">
+                        <div class="menu_button internal_button" id="menu_button_1">GitHub</div>
+                </a>
+                <a class="menu_link" href="/blog/1">
+                        <div class="menu_button internal_button" id="menu_button_2">Dev Blog</div>
+                </a>
+                <a class="menu_link">
+                        <div class="menu_button internal_button" id="menu_button_3">Quickstart</div>
+                </a>
+                <a class="menu_link" href="/">
+                        <div class="menu_button internal_button" id="menu_button_4">Index</div>
+                </a>
+        </div>
+        <div>
+                <div id="blog_post_containers" class="section_grid_container">
+                        {{ changelog_item | safe }}
+                </div>
+                <div id="changelog_grid_links">
+                        {{changelog_links | safe}}
+                </div>
+        </div>
+
+</body>
+<footer>
+        <div id="footer_what_is_this">
+                <h1>What is this?</h1>
+                <p>
+                        his project is a RESTful API made with FastAPI connected to a database that contains a complete
+                        collection of information about the TV Show South Park
+                </p>
+        </div>
+        {{footer | safe}}
+</footer>
+
+</html>
