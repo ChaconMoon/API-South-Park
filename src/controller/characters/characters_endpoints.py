@@ -16,11 +16,50 @@ from src.controller.characters.characters_controller import (
     get_all_characters_with_alterego,
     get_character_by_id,
     get_characters_by_search,
+    get_random_character,
 )
 from src.controller.characters.family_controller import get_family_by_id
 from src.controller.date_controller import get_today_birthday_character
 
 router = APIRouter(tags=["Characters"])
+
+
+# Create the Endpoint that returns a random character
+@router.get("/api/characters/random")
+def show_random_character(
+    request: Request,
+    response: Response,
+    exclude_famous_guests: bool = False,
+):
+    """
+    Get a random character's information.
+
+    Args:
+        request (Request): FastAPI request object
+        response (Response): FastAPI response object
+        exclude_famous_guests: If true excludes the famous guests from the random search
+
+    Returns:
+        dict: JSON response with character data or error
+
+    Response Codes:
+        200: Character found
+        404: Character not found
+        500: Database error
+
+    """
+    json = get_random_character(
+        exclude_famous_guests=exclude_famous_guests, base_url=str(request.base_url)
+    )
+    if "error" in json:
+        if json["error"] == "Character not found":
+            response.status_code = status.HTTP_404_NOT_FOUND
+        elif json["error"] == "Database not avalible":
+            response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
+    else:
+        response.status_code = status.HTTP_200_OK
+
+    return json
 
 
 # Create the endpoint to get one alter ego of a character.
