@@ -1,4 +1,4 @@
-![Header](/blog/images/The_E_Update.webp){.header_image}
+![Header](/blog/images/The_E_Update_ES.webp){.header_image}
 # La actualización E {.blog_entry_title}
 
 Lee la nueva entrada de este blog de desarrollo, esta vez hablando sobre la actualización E, la versión 0.2.

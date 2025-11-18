@@ -87,3 +87,44 @@ def get_last_episode() -> dict:
         return {"error": "Database not available", "status": "failed"}
     episode_id = query_result.rowcount
     return get_episode_by_id(episode_id)
+
+
+def get_random_episode(
+    paramount_plus_exclusive: bool = False, censured: bool = False, base_url=""
+):
+    """
+    Get a random episode.
+
+    Args:
+        response (Response): FastAPI response object for status codes.
+        request (Request): FastAPI request object containing base URL.
+        paramount_plus_exclusive (Boolean): If True excludes the Paramount+ episodes.
+        censured (Boolean): If True excludes the Censured episodes.
+        base_url (str): The base URL for API endpoints
+
+    Returns:
+        dict: JSON response containing the episode data
+
+    Response Format:
+        Success:
+            With add_url=False:
+                {episode_data} or {"episode": episode_data, "metadata": {...}}
+
+    Error:
+            {"error": str, "status": "failed"}
+
+    """
+    query_result = get_query_result(
+        text("""
+            SELECT *
+            FROM public.episodes
+            WHERE (not :censured OR censured = false)
+            AND (not :paramount_plus OR paramount_plus_exclusive = false)
+            ORDER BY RANDOM()
+            LIMIT 1;"""),
+        {"censured": censured, "paramount_plus": paramount_plus_exclusive},
+    )
+
+    for row in query_result:
+        episode = Episode(row, base_url=base_url)
+    return episode.toJSON()
