@@ -11,13 +11,16 @@ from fastapi import APIRouter, Request, Response, status
 from src.controller.characters.alter_ego_controller import (
     get_all_alteregos_of_a_character,
     get_alter_ego_by_character_and_id,
+    get_random_alterego,
 )
 from src.controller.characters.characters_controller import (
     get_all_characters_with_alterego,
     get_character_by_id,
     get_characters_by_search,
 )
-from src.controller.characters.family_controller import get_family_by_id
+from src.controller.characters.family_controller import (
+    get_family_by_id,
+)
 from src.controller.date_controller import get_today_birthday_character
 
 router = APIRouter(tags=["Characters"])
@@ -135,6 +138,38 @@ def search_character(
             response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
     else:
         response.status_code = status.HTTP_200_OK
+    return json
+
+
+@router.get("/api/alteregos/random")
+def show_random_alterego(request: Request, response: Response, character: int = 0):
+    """
+    Get a specific alter ego of a character.
+
+    Args:
+        character (int): If is not 0, return limits the search to one character
+        request (Request): FastAPI request object
+        response (Response): FastAPI response object
+
+    Returns:
+        dict: JSON response with alter ego data or error
+
+
+    Response Codes:
+        200: Alter ego found
+        404: Alter ego not found
+        500: Database error
+
+    """
+    base_url = str(request.base_url)
+    json = get_random_alterego(character, base_url)
+    if "error" in json:
+        if json["error"] == "Alter Ego not found":
+            response.status_code = status.HTTP_404_NOT_FOUND
+        elif json["error"] == "Database not avalible":
+            response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
+        else:
+            response.status_code = status.HTTP_200_OK
     return json
 
 
