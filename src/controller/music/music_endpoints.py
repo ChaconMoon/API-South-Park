@@ -8,7 +8,7 @@ It provides routes to access albums and songs from the South Park series.
 from fastapi import APIRouter, Request, Response, status
 
 from src.controller.music.album_controller import get_album_by_id, get_random_album
-from src.controller.music.songs_controller import get_song_by_id
+from src.controller.music.songs_controller import get_random_song, get_song_by_id
 
 router = APIRouter(tags=["Music"])
 
@@ -80,6 +80,41 @@ def show_album(
         if json["error"] == "Database not avalible":
             response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
     elif "album" in json:
+        response.status_code = status.HTTP_200_OK
+    return json
+
+
+@router.get("/api/songs/random")
+def show_random_song(
+    request: Request, response: Response, exclude_not_available: bool = False
+):
+    """
+    Get a specific random song from south park's albums.
+
+    Args:
+        request (Request): FastAPI request object containing base URL
+        response (Response): FastAPI response object for status codes
+        exclude_not_available (boolean): If True excludes the not avalible songs.
+
+    Returns:
+        dict: JSON response containing either:
+            - Song data if found
+            - Error message if not found or database error
+
+    Response Codes:
+        200: Song found and returned successfully
+        404: Song not found
+        500: Database error
+
+    """
+    base_url = str(request.base_url)
+    json = get_random_song(exclude_not_available, base_url)
+    if "error" in json:
+        if json["error"] == "Song not found":
+            response.status_code = status.HTTP_404_NOT_FOUND
+        elif json["error"] == "Database not avalible":
+            response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
+    else:
         response.status_code = status.HTTP_200_OK
     return json
 
