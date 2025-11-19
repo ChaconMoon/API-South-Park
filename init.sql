@@ -2,10 +2,10 @@
 -- PostgreSQL database dump
 --
 
-\restrict CF0CSs2qaiTWhl7H8AHES7fKHTcHiQ2nZ5xHC40kbyyHUqplkm38qHEEULWeLw5
+\restrict wJ2RO3pXwHY6Hbxn74KiSBXgVORRwyx48gpF9PX4UsjIULP1rm0autL2gj7wAaI
 
--- Dumped from database version 15.15 (Debian 15.15-1.pgdg13+1)
--- Dumped by pg_dump version 15.15 (Debian 15.15-1.pgdg13+1)
+-- Dumped from database version 15.14 (Debian 15.14-1.pgdg13+1)
+-- Dumped by pg_dump version 15.14 (Debian 15.14-1.pgdg13+1)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -654,7 +654,6 @@ COPY public.characters (id, name, friend_group, family, birthday, age, religion,
 98	Rex	\N	14	\N	\N	\N	4	{/img/characters/show/Rex.png}	\N
 99	Clyde Donovan	\N	14	April 10th	10	{"Roman Catholic"}	2	{/img/characters/show/Clyde_Donovan.png}	\N
 100	Betsy Donovan	\N	14	\N	\N	{"Roman Catholic"}	136	{/img/characters/show/Betsy_Donovan.png}	\N
-221	Agent Fields	\N	\N	\N	\N	\N	44	{/img/characters/show/Agent_Fields.png}	f
 101	Roger Donovan	\N	14	\N	\N	{"Roman Catholic"}	87	{/img/characters/show/Roger_Donovan.png}	\N
 102	Larry Feegan	\N	15	\N	13	\N	220	{/img/characters/show/Larry_Feegan.png}	\N
 103	Mrs. Feegan	\N	15	\N	\N	\N	220	{/img/characters/show/Mrs_Feegan.png}	\N
@@ -764,6 +763,7 @@ COPY public.characters (id, name, friend_group, family, birthday, age, religion,
 217	Adams County Pee-Wee Hockey Team	\N	\N	\N	6	\N	153	{/img/characters/show/Adams_County_Pee_Wee_Hockey_Team.png}	f
 218	Adolf Hitler	\N	52	April 20th	56	\N	7	{/img/characters/show/Adolf_Hitler.png}	t
 220	Agent Connelly	\N	\N	\N	\N	\N	44	{/img/characters/show/Agent_Connelly.png}	f
+221	Agent Fields	\N	\N	\N	\N	\N	44	{/img/characters/show/Agent_Fields.png}	f
 222	"Agent" Tucker	\N	\N	\N	\N	\N	102	{/img/characters/show/Agent_Tucker.png}	f
 223	Aging Hippie Liberal Douche	\N	\N	\N	\N	\N	118	{/img/characters/show/AGING_HIPPIE_LIBERAL_DOUCHE.png}	f
 228	Al Pacino	\N	\N	April 25th	85	{Catholic}	257	{/img/characters/show/Al_Pacino.png}	t
@@ -819,7 +819,6 @@ COPY public.characters (id, name, friend_group, family, birthday, age, religion,
 270	Apple Replacement Friend	\N	\N	\N	\N	\N	210	{/img/characters/show/Apple_Replacement_Friend.png}	\N
 271	Dr. Apu Nahasapeemapetilon, Ph.D. Jr.	\N	\N	\N	38	{Hinduism}	290	{/img/characters/show/Apu.png}	\N
 272	Archangel Michael	\N	\N	\N	\N	\N	129	{/img/characters/show/Archangel_Michael.png}	f
-355	Bobby	\N	\N	\N	\N	\N	226	{/img/characters/show/Bobby.png}	f
 273	Arnold Schwarzenegger	\N	\N	July 30th	78	{"Roman Catholic"}	204	{/img/characters/show/Arnold_Schwarzenegger.png}	t
 274	"Ash Ketchum"	\N	\N	\N	10	\N	42	{/img/characters/show/Ash_Ketchum.png}	\N
 275	Ashley	\N	\N	\N	10	\N	190	{/img/characters/show/Ashley.png}	\N
@@ -879,6 +878,7 @@ COPY public.characters (id, name, friend_group, family, birthday, age, religion,
 351	Bob Johnson	\N	\N	\N	\N	\N	2	{/img/characters/show/Bob_Johnson.png}	f
 353	Bob Summers	\N	\N	\N	\N	\N	169	{/img/characters/show/Bob_Summers.png}	f
 354	Bob Thomas	\N	\N	\N	\N	\N	18	{/img/characters/show/Bob_Thomas.png}	f
+355	Bobby	\N	\N	\N	\N	\N	226	{/img/characters/show/Bobby.png}	f
 356	Bobby ("Cartman Joins NAMBLA")	\N	\N	\N	\N	\N	53	{/img/characters/show/Bobby_Nambla.png}	f
 358	Bobby Palmer	\N	60	\N	\N	\N	176	{/img/characters/show/Bobby_Palmer.png}	f
 360	Bono's Butler	\N	\N	\N	\N	\N	162	{/img/characters/show/Bono's_Butler.png}	f
@@ -1676,6 +1676,7 @@ COPY public.families (id, name, images) FROM stdin;
 39	The Streibels	{img/families/The_Streibels.png}
 40	The Tenormans	{img/families/The_Tenormans.png}
 41	The Testaburgers	{img/families/The_Testaburgers.png}
+42	The Thorns	{img/families/No_Family_Placeholder.png}
 43	The Tuckers	{img/families/The_Tuckers.png}
 44	The Turners	{img/families/The_Turners.png}
 45	The Zewiskis	{img/families/The_Zewiskis.png,img/families/The_Zewiskis_2.png}
@@ -1691,6 +1692,7 @@ COPY public.families (id, name, images) FROM stdin;
 55	The Obamas	{img/families/The_Obamas.png}
 56	The Simpsons	{img/families/The_Simpsons.png}
 57	The Thompsns	{img/families/The_Thompsns.png}
+58	The Clintons	{img/families/No_Family_Placeholder.png}
 59	The Jacksons	{img/families/The_Jacksons.png}
 60	The Palmers	{img/families/The_Palmers.png}
 61	Buck's Family	{img/families/Buck_Family.png}
@@ -1706,8 +1708,6 @@ COPY public.families (id, name, images) FROM stdin;
 70	The Weatherhead foster family	{img/families/The_Weatherheads.png}
 71	The Hollis	{img/families/The_Hollis.png}
 72	Japanese Imperial Family	{img/families/Japanese_Imperial_Family.png}
-42	The Thorns	{img/families/Satan_Family.png}
-58	The Clintons	{img/families/The_Clintons.png}
 \.
 
 
@@ -1917,5 +1917,5 @@ ALTER TABLE ONLY public.alter_ego
 -- PostgreSQL database dump complete
 --
 
-\unrestrict CF0CSs2qaiTWhl7H8AHES7fKHTcHiQ2nZ5xHC40kbyyHUqplkm38qHEEULWeLw5
+\unrestrict wJ2RO3pXwHY6Hbxn74KiSBXgVORRwyx48gpF9PX4UsjIULP1rm0autL2gj7wAaI
 
