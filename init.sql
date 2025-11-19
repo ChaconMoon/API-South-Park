@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict HfZt0tDoyYnA1zfTrbadebCEWdSJDnL3zoGIUVn3DH5ejJjkwfGncnbeAFiOuCp
+\restrict CF0CSs2qaiTWhl7H8AHES7fKHTcHiQ2nZ5xHC40kbyyHUqplkm38qHEEULWeLw5
 
 -- Dumped from database version 15.15 (Debian 15.15-1.pgdg13+1)
 -- Dumped by pg_dump version 15.15 (Debian 15.15-1.pgdg13+1)
@@ -571,6 +571,98 @@ COPY public.characters (id, name, friend_group, family, birthday, age, religion,
 15	Roy	\N	3	\N	\N	\N	25	{/img/characters/show/Roy.png}	f
 16	Sharon Marsh	\N	3	December 16th	\N	{Christian,"Atheist (Temporariry)","Mormon (Temporariry)"}	5	{/img/characters/show/Sharon_Marsh.png}	f
 74	Rosie O'Donnell	\N	6	March 21st	63	{"Roman Catholic"}	60	{/img/characters/show/Rosie_Odonnell.png}	t
+50	Karen McCormick	\N	4	\N	6	{"Roman Catholic"}	129	{/img/characters/show/Karen_McCormick.png}	\N
+97	William Daniels	\N	13	\N	\N	\N	230	{/img/characters/show/William_Daniels.png}	\N
+98	Rex	\N	14	\N	\N	\N	4	{/img/characters/show/Rex.png}	\N
+99	Clyde Donovan	\N	14	April 10th	10	{"Roman Catholic"}	2	{/img/characters/show/Clyde_Donovan.png}	\N
+100	Betsy Donovan	\N	14	\N	\N	{"Roman Catholic"}	136	{/img/characters/show/Betsy_Donovan.png}	\N
+221	Agent Fields	\N	\N	\N	\N	\N	44	{/img/characters/show/Agent_Fields.png}	f
+101	Roger Donovan	\N	14	\N	\N	{"Roman Catholic"}	87	{/img/characters/show/Roger_Donovan.png}	\N
+102	Larry Feegan	\N	15	\N	13	\N	220	{/img/characters/show/Larry_Feegan.png}	\N
+103	Mrs. Feegan	\N	15	\N	\N	\N	220	{/img/characters/show/Mrs_Feegan.png}	\N
+104	Mr. Feegan	\N	15	\N	\N	\N	220	{/img/characters/show/Mr_Feegan.png}	\N
+105	Mrs. Garrison Senior	\N	16	\N	\N	\N	48	{/img/characters/show/Mrs_Garrison.png}	\N
+106	Mr. Garrison Senior	\N	16	\N	\N	\N	48	{/img/characters/show/Mr_Garrison.png}	\N
+107	Sophie Gray	\N	17	\N	10	\N	306	{/img/characters/show/Sophie_Gray.png}	\N
+108	Mrs. Gray	\N	17	\N	\N	\N	306	{/img/characters/show/Mrs_Gray.png}	\N
+109	Mr. Hakeem	\N	50	\N	\N	{Islam}	157	{/img/characters/show/Mr_Hakeem.png}	\N
+110	Bridon Gueermo	\N	18	\N	9	\N	180	{/img/characters/show/Bridon_Gueermo.png}	\N
+111	Mrs. Gueermo	\N	18	\N	\N	\N	180	{/img/characters/show/Mrs_Gueermo.png}	\N
+112	Mr. Gueermo	\N	18	\N	\N	\N	180	{/img/characters/show/Mr_Gueermo.png}	\N
+113	Baahir Hassan Abdul Hakeem	\N	50	\N	8	{Islam}	157	{/img/characters/show/Baahir.png}	\N
+114	Mrs. Hakeem	\N	50	\N	\N	{Islam}	157	{/img/characters/show/Mrs_Hakeem.png}	\N
+115	Simon Hankey	\N	19	\N	\N	\N	65	{/img/characters/show/Simon_Hankey.png}	\N
+116	Amber Hankey	\N	19	\N	\N	\N	65	{/img/characters/show/Amber_Hankey.png}	\N
+117	Cornwallis Hankey	\N	19	\N	\N	\N	65	{/img/characters/show/Cornwallis_Hankey.png}	\N
+118	Autumn Hankey	\N	19	\N	\N	\N	65	{/img/characters/show/Autumn_Hankey.png}	\N
+119	Mr. Hankey	\N	19	\N	\N	\N	9	{/img/characters/show/Mr_Hankey.png}	\N
+122	Mrs. Handler	\N	21	\N	\N	{Judaism}	22	{/img/characters/show/Mrs_Handler.png}	\N
+123	Mr. Handler	\N	21	\N	\N	{Judaism}	66	{/img/characters/show/Mr_Handler.png}	\N
+124	Amanda Harrison	\N	20	\N	\N	{Mormon}	108	{/img/characters/show/Amanda_Harrison.png}	\N
+125	Dave Harrison	\N	20	\N	\N	{Mormon}	108	{/img/characters/show/Dave_Harrison.png}	\N
+126	Jenny Harrison	\N	20	\N	\N	{Mormon}	108	{/img/characters/show/Jenny_Harrison.png}	\N
+127	Gary Harrison	\N	20	\N	10	{Mormon}	108	{/img/characters/show/Gary_Harrison.png}	\N
+128	Mark Harrison	\N	20	\N	\N	{Mormon}	108	{/img/characters/show/Mark_Harrison.png}	\N
+129	Mrs. Harrison	\N	20	\N	\N	{Mormon}	108	{/img/characters/show/Mrs_Harrison.png}	\N
+130	Mr. Harrison	\N	20	\N	\N	{Mormon}	108	{/img/characters/show/Mr_Harrison.png}	\N
+131	Mrs. Larsen	\N	26	\N	\N	{"Roman Catholic"}	77	{/img/characters/show/Mrs_Larsen.png}	\N
+132	Flora Larsen	\N	26	\N	5	{"Roman Catholic"}	60	{/img/characters/show/Flora_Larsen.png}	\N
+133	Millie Larsen	\N	26	\N	10	{"Roman Catholic"}	77	{/img/characters/show/Millie_Larsen.png}	\N
+134	Mrs. Knitts	\N	22	\N	\N	{"Roman Catholic"}	123	{/img/characters/show/Mrs_Knitts.png}	\N
+135	Annie Knitts	\N	22	\N	10	{"Roman Catholic"}	36	{/img/characters/show/Annie_Knitts.png}	\N
+136	Mr. Mackey Senior	\N	25	\N	\N	\N	313	{/img/characters/show/Mrs_Mackey_Senior.png}	\N
+137	Mrs. Mackey Senior	\N	25	\N	\N	\N	90	{/img/characters/show/Mr_Mackey_Senior.png}	\N
+138	Mr. Mackey	\N	25	\N	50	{"Roman Catholic"}	9	{/img/characters/show/Mr_Mackey.png}	\N
+139	Clark Malkinson	\N	24	\N	\N	\N	306	{/img/characters/show/Clark_Malkinson.png}	\N
+140	Ellen Malkinson	\N	24	\N	\N	\N	306	{/img/characters/show/Ellen_Malkinson.png}	\N
+141	Scott Malkinson	\N	24	\N	10	\N	117	{/img/characters/show/Scott_Malkinson.png}	\N
+142	Michael's Mom	\N	29	\N	\N	\N	241	{/img/characters/show/Michael_Dad.png}	\N
+143	Michael	\N	29	\N	11	{Unconfirmed,"Cult of Cthulhu (Formerly)"}	110	{/img/characters/show/Michael.png}	\N
+144	Dr. Alphonse Mephesto	\N	30	\N	\N	\N	5	{/img/characters/show/Dr_Mephesto.png}	\N
+145	Kevin Mephesto	\N	30	\N	\N	\N	5	{/img/characters/show/Kevin_Mephesto.png}	\N
+146	Terrance Mephesto	\N	30	\N	9	\N	5	{/img/characters/show/Terrance_Mephesto.png}	\N
+147	Thomas McElroy	\N	27	\N	\N	\N	34	{/img/characters/show/Thomas_McElroy.png}	\N
+148	Nellie McElroy	\N	27	\N	\N	\N	34	{/img/characters/show/Nellie_McElroy.png}	\N
+149	Mr. McArthur	\N	23	\N	\N	{"Roman Catholic"}	184	{/img/characters/show/Mr_McArthur.png}	\N
+121	Louis Handler	\N	21	\N	10	{Judaism}	42	{/img/characters/show/Louis_Handler.png}	\N
+150	Moira McArthur	\N	23	\N	\N	{"Roman Catholic"}	177	{/img/characters/show/Moira_McArthur.png}	\N
+151	Red McArthur	\N	23	\N	10	{"Roman Catholic"}	10	{/img/characters/show/Red_McArthur.png}	\N
+152	Nelly's Mom	\N	28	\N	\N	{"Roman Catholic"}	240	{/img/characters/show/Nelly_Dad.png}	\N
+153	Nelly	\N	28	\N	10	{"Roman Catholic"}	167	{/img/characters/show/Nelly.png}	\N
+154	Michael's Dad	\N	29	\N	\N	\N	241	{/img/characters/show/Michael_Mom.png}	\N
+155	Margaret Nelson	\N	32	June 18th	35	{"Roman Catholic"}	260	{/img/characters/show/Liza_Nelson.png}	\N
+156	Liza Nelson	\N	32	\N	10	{"Roman Catholic"}	260	{/img/characters/show/Margaret_Nelson.png}	\N
+157	Matt	\N	28	\N	\N	{"Roman Catholic"}	215	{/img/characters/show/Nelly_Mom.png}	\N
+158	Riley	\N	31	\N	0	\N	290	{/img/characters/show/Riley.png}	\N
+159	Bailey	\N	31	\N	0	\N	290	{/img/characters/show/Bailey.png}	\N
+160	Harper	\N	31	\N	0	\N	290	{/img/characters/show/Harper.png}	\N
+161	Emory	\N	31	\N	0	\N	290	{/img/characters/show/Emory.png}	\N
+162	River	\N	31	\N	0	\N	290	{/img/characters/show/River.png}	\N
+164	Peter "PC Principal" Charles	\N	31	\N	\N	{Christian}	258	{/img/characters/show/PC_Principal.png}	\N
+165	DogPoo Petuski	\N	38	\N	10	\N	85	{/img/characters/show/Dog_Poo.png}	\N
+166	Mrs. Petuski	\N	38	\N	\N	\N	33	{/img/characters/show/Mrs_Petuski.png}	\N
+167	Mr. Petuski	\N	38	\N	\N	\N	9	{/img/characters/show/Mr_Petuski.png}	\N
+168	David Rodriguez	\N	37	\N	10	\N	261	{/img/characters/show/David_Rodriguez.png}	\N
+169	Mrs. Rodriguez	\N	37	\N	\N	\N	261	{/img/characters/show/Mrs_Rodriguez.png}	\N
+170	Mr. Rodriguez	\N	37	\N	\N	\N	261	{/img/characters/show/Mr_Rodriguez.png}	\N
+175	Kevin Stoley	\N	35	\N	10	{"Roman Catholic"}	18	{/img/characters/show/Kevin_Stoley.png}	\N
+176	Mrs. Stoley	\N	35	\N	\N	{"Roman Catholic"}	95	{/img/characters/show/Mrs_Stoley.png}	\N
+177	Mr. Stoley	\N	35	\N	\N	{"Roman Catholic"}	95	{/img/characters/show/Mr_Stoley.png}	\N
+178	Chaos Hamsters	\N	34	\N	\N	\N	85	{/img/characters/show/Chaos_Hamsters.png}	\N
+179	Terrance Henry Stoot	\N	33	Octuber 20th	54	\N	6	{/img/characters/show/Terrance.png}	\N
+180	Sally Dion	\N	33	\N	\N	\N	14	{/img/characters/show/Sally_Dion.png}	\N
+181	Katie Queef	\N	33	\N	\N	\N	185	{/img/characters/show/Katie_Queef.png}	\N
+182	Streibel Daughters	\N	39	\N	\N	\N	99	{/img/characters/show/Streibel_Daughters.png}	\N
+183	Mrs. Streibel	\N	39	\N	\N	\N	99	{/img/characters/show/Mrs_Streibel.png}	\N
+184	Mr. Streibel	\N	39	\N	\N	\N	99	{/img/characters/show/Mr_Streibel.png}	\N
+185	Scott Tenorman	\N	40	\N	15	\N	69	{/img/characters/show/Scott_Tenorman.png}	\N
+186	Mrs. Tenorman	\N	40	\N	41	\N	69	{/img/characters/show/Mrs_Tenorman.png}	\N
+187	Jack Tenorman	\N	40	\N	43	\N	69	{/img/characters/show/Jack_Tenorman.png}	\N
+188	Wendy Testaburger	\N	41	\N	10	\N	1	{/img/characters/show/Wendy_Testaburger.png}	\N
+189	Grandma Testaburger	\N	41	\N	\N	\N	176	{/img/characters/show/Grandma_Testaburger.png}	\N
+190	Alexis Testaburger	\N	41	\N	\N	\N	89	{/img/characters/show/Alexis_Testaburger.png}	\N
+191	Mr. Testaburger	\N	41	\N	\N	\N	123	{/img/characters/show/Mr_Testaburger.png}	\N
+192	Damien Thorn	\N	42	\N	9	{Satanism}	10	{/img/characters/show/Damien_Thorn.png}	\N
 193	Satan	\N	42	\N	\N	{Satanism}	10	{/img/characters/show/Satan.png}	t
 213	Aaron Hagen	\N	51	\N	7	\N	239	{/img/characters/show/Aaron_Hagen.png}	f
 154	Michael's Dad	\N	29	\N	\N	\N	241	{/img/characters/show/Michael_Mom.png}	f
@@ -580,7 +672,6 @@ COPY public.characters (id, name, friend_group, family, birthday, age, religion,
 217	Adams County Pee-Wee Hockey Team	\N	\N	\N	6	\N	153	{/img/characters/show/Adams_County_Pee_Wee_Hockey_Team.png}	f
 218	Adolf Hitler	\N	52	April 20th	56	\N	7	{/img/characters/show/Adolf_Hitler.png}	t
 220	Agent Connelly	\N	\N	\N	\N	\N	44	{/img/characters/show/Agent_Connelly.png}	f
-221	Agent Fields	\N	\N	\N	\N	\N	44	{/img/characters/show/Agent_Fields.png}	f
 222	"Agent" Tucker	\N	\N	\N	\N	\N	102	{/img/characters/show/Agent_Tucker.png}	f
 223	Aging Hippie Liberal Douche	\N	\N	\N	\N	\N	118	{/img/characters/show/AGING_HIPPIE_LIBERAL_DOUCHE.png}	f
 228	Al Pacino	\N	\N	April 25th	85	{Catholic}	257	{/img/characters/show/Al_Pacino.png}	t
@@ -609,6 +700,7 @@ COPY public.characters (id, name, friend_group, family, birthday, age, religion,
 261	Angus T. Jones	\N	\N	October 8th	31	{Adventist}	203	{/img/characters/show/Angus_T_Jones.png}	t
 263	Ann Curry	\N	\N	November 19th	68	\N	197	{/img/characters/show/Ann_Curry.png}	t
 272	Archangel Michael	\N	\N	\N	\N	\N	129	{/img/characters/show/Archangel_Michael.png}	f
+355	Bobby	\N	\N	\N	\N	\N	226	{/img/characters/show/Bobby.png}	f
 273	Arnold Schwarzenegger	\N	\N	July 30th	78	{"Roman Catholic"}	204	{/img/characters/show/Arnold_Schwarzenegger.png}	t
 212	Aaron Brown	\N	\N	November 10th	76	\N	118	{/img/characters/show/Aaron_brown.png}	t
 216	Adam Sandler	\N	\N	September 9th	58	{Judaism}	211	{/img/characters/show/Adam_Sandler.png}	t
@@ -662,7 +754,6 @@ COPY public.characters (id, name, friend_group, family, birthday, age, religion,
 351	Bob Johnson	\N	\N	\N	\N	\N	2	{/img/characters/show/Bob_Johnson.png}	f
 353	Bob Summers	\N	\N	\N	\N	\N	169	{/img/characters/show/Bob_Summers.png}	f
 354	Bob Thomas	\N	\N	\N	\N	\N	18	{/img/characters/show/Bob_Thomas.png}	f
-355	Bobby	\N	\N	\N	\N	\N	226	{/img/characters/show/Bobby.png}	f
 356	Bobby ("Cartman Joins NAMBLA")	\N	\N	\N	\N	\N	53	{/img/characters/show/Bobby_Nambla.png}	f
 358	Bobby Palmer	\N	60	\N	\N	\N	176	{/img/characters/show/Bobby_Palmer.png}	f
 360	Bono's Butler	\N	\N	\N	\N	\N	162	{/img/characters/show/Bono's_Butler.png}	f
@@ -1676,7 +1767,6 @@ COPY public.families (id, name, images) FROM stdin;
 39	The Streibels	{img/families/The_Streibels.png}
 40	The Tenormans	{img/families/The_Tenormans.png}
 41	The Testaburgers	{img/families/The_Testaburgers.png}
-42	The Thorns	{img/families/No_Family_Placeholder.png}
 43	The Tuckers	{img/families/The_Tuckers.png}
 44	The Turners	{img/families/The_Turners.png}
 45	The Zewiskis	{img/families/The_Zewiskis.png,img/families/The_Zewiskis_2.png}
@@ -1692,7 +1782,6 @@ COPY public.families (id, name, images) FROM stdin;
 55	The Obamas	{img/families/The_Obamas.png}
 56	The Simpsons	{img/families/The_Simpsons.png}
 57	The Thompsns	{img/families/The_Thompsns.png}
-58	The Clintons	{img/families/No_Family_Placeholder.png}
 59	The Jacksons	{img/families/The_Jacksons.png}
 60	The Palmers	{img/families/The_Palmers.png}
 61	Buck's Family	{img/families/Buck_Family.png}
@@ -1708,6 +1797,8 @@ COPY public.families (id, name, images) FROM stdin;
 70	The Weatherhead foster family	{img/families/The_Weatherheads.png}
 71	The Hollis	{img/families/The_Hollis.png}
 72	Japanese Imperial Family	{img/families/Japanese_Imperial_Family.png}
+42	The Thorns	{img/families/Satan_Family.png}
+58	The Clintons	{img/families/The_Clintons.png}
 \.
 
 
@@ -1917,5 +2008,5 @@ ALTER TABLE ONLY public.alter_ego
 -- PostgreSQL database dump complete
 --
 
-\unrestrict HfZt0tDoyYnA1zfTrbadebCEWdSJDnL3zoGIUVn3DH5ejJjkwfGncnbeAFiOuCp
+\unrestrict CF0CSs2qaiTWhl7H8AHES7fKHTcHiQ2nZ5xHC40kbyyHUqplkm38qHEEULWeLw5
 

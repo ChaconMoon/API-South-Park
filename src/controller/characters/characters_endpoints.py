@@ -22,6 +22,10 @@ from src.controller.characters.characters_controller import (
 from src.controller.characters.family_controller import (
     get_family_by_id,
 )
+from src.controller.characters.family_controller import (
+    get_family_by_id,
+    get_random_family,
+)
 from src.controller.date_controller import get_today_birthday_character
 
 router = APIRouter(tags=["Characters"])
@@ -180,6 +184,34 @@ def search_character(
     return json
 
 
+
+@router.get("/api/families/random")
+def show_random_family(response: Response, request: Request):
+    """
+    Get a random family's information.
+
+    Args:
+        request (Request): FastAPI request object
+        response (Response): FastAPI response object
+    Returns:
+        dict: JSON response with family data or error
+
+    Response Codes:
+        200: Family found
+        404: Family not found
+        500: Database error
+
+    """
+    json = get_random_family(base_url=str(request.base_url))
+    if "error" in json:
+        if json["error"] == "Family not found":
+            response.status_code = status.HTTP_404_NOT_FOUND
+        elif json["error"] == "Database not avalible":
+            response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
+        else:
+            response.status_code = status.HTTP_200_OK
+    return json
+ 
 @router.get("/api/alteregos/random")
 def show_random_alterego(request: Request, response: Response, character: int = 0):
     """
@@ -189,8 +221,6 @@ def show_random_alterego(request: Request, response: Response, character: int = 
         character (int): If is not 0, return limits the search to one character
         request (Request): FastAPI request object
         response (Response): FastAPI response object
-
-    Returns:
         dict: JSON response with alter ego data or error
 
 
