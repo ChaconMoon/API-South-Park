@@ -41,9 +41,9 @@ def test_random_chinpokomon_object_not_found():
             raise ValueError("Expected Not Found Response")
 
 
-def test_random_chinpokomon_database_not_avalible():
-    """Test a not avalible Response in Episode Endpoint."""
-    fake_response = {"error": "Database not avalible", "status": "failed"}
+def test_random_chinpokomon_database_not_available():
+    """Test a not available Response in Episode Endpoint."""
+    fake_response = {"error": "Database not available", "status": "failed"}
     with patch(
         "src.controller.chinpokomon.chinpokomon_endpoints.get_chinpokomon_by_id"
     ) as database_response:

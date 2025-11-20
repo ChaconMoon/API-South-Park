@@ -50,7 +50,7 @@ def show_random_chinpokomon(request: Request, response: Response):
     if "error" in json:
         if json["error"] == "Chinpokomon not found":
             response.status_code = status.HTTP_404_NOT_FOUND
-        elif json["error"] == "Database not avalible":
+        elif json["error"] == "Database not available":
             response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
     return json
 
@@ -93,6 +93,6 @@ def show_chinpokomon(
     if "error" in json:
         if json["error"] == "Chinpokomon not found":
             response.status_code = status.HTTP_404_NOT_FOUND
-        elif json["error"] == "Database not avalible":
+        elif json["error"] == "Database not available":
             response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
     return json

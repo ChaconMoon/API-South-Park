@@ -21,9 +21,9 @@ def test_if_exists_image_in_specials():
         f"{os.getenv('TESTING_SOUTH_PARK_API_URL')}/api/", timeout=10
     )
     if healh_check_request.status_code != 200:
-        raise requests.RequestException("API Not Avalible Error")
+        raise requests.RequestException("API Not Available Error")
 
-    logging.info("API Avalible")
+    logging.info("API Available")
 
     total_specials = requests.get(
         f"{os.getenv('TESTING_SOUTH_PARK_API_URL')}/api/specials/1?metadata=true",

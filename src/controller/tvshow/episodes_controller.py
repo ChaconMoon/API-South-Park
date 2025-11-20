@@ -45,7 +45,7 @@ def get_episode_by_id(
             text("SELECT * FROM public.episodes where id=:id"), {"id": id}
         )
         if query_result is None:
-            return {"error": "Database not avalible", "status": "failed"}
+            return {"error": "Database not available", "status": "failed"}
         elif query_result.rowcount == 0:
             return {"error": "Episode not found", "status": "failed"}
 

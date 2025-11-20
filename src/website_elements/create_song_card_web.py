@@ -39,8 +39,8 @@ def create_song_web_card_to_website(base_url: str, song_id: int) -> str:
 
     html_button = (
         """
-        <div class="not_avalible_button">
-        Not Avalible
+        <div class="not_available_button">
+        Not Available
         </div>
         """
         if song_url == "[NOT AVAILABLE IN STREAMING SERVICES]"

@@ -34,7 +34,7 @@ def get_the_last_episode(response: Response) -> dict:
     if "error" in json:
         if json["error"] == "Episode not found":
             response.status_code = status.HTTP_404_NOT_FOUND
-        elif json["error"] == "Database not avalible":
+        elif json["error"] == "Database not available":
             response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
     elif "episode" in json:
         response.status_code = status.HTTP_200_OK
@@ -63,7 +63,7 @@ def show_random_special(request: Request, response: Response):
     if "error" in json:
         if json["error"] == "Special not found":
             response.status_code = status.HTTP_404_NOT_FOUND
-        elif json["error"] == "Database not avalible":
+        elif json["error"] == "Database not available":
             response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
     else:
         response.status_code = status.HTTP_200_OK
@@ -104,7 +104,7 @@ def show_random_episode(
     if "error" in json:
         if json["error"] == "Episode not found":
             response.status_code = status.HTTP_404_NOT_FOUND
-        elif json["error"] == "Database not avalible":
+        elif json["error"] == "Database not available":
             response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
     else:
         response.status_code = status.HTTP_200_OK
@@ -138,7 +138,7 @@ def show_special(
     if "error" in json:
         if json["error"] == "Special not found":
             response.status_code = status.HTTP_404_NOT_FOUND
-        elif json["error"] == "Database not avalible":
+        elif json["error"] == "Database not available":
             response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
     elif "special" in json:
         response.status_code = status.HTTP_200_OK
@@ -171,7 +171,7 @@ def show_episode(
     if "error" in json:
         if json["error"] == "Episode not found":
             response.status_code = status.HTTP_404_NOT_FOUND
-        elif json["error"] == "Database not avalible":
+        elif json["error"] == "Database not available":
             response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
     elif "episode" in json:
         response.status_code = status.HTTP_200_OK

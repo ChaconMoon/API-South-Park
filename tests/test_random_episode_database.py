@@ -50,9 +50,9 @@ def test_random_episode_object_not_found():
             raise ValueError("Expected Not Found Response")
 
 
-def test_random_episode_database_not_avalible():
-    """Test A Not Avalible Response in Random Episode Endpoint."""
-    fake_response = {"error": "Database not avalible", "status": "failed"}
+def test_random_episode_database_not_available():
+    """Test A Not Available Response in Random Episode Endpoint."""
+    fake_response = {"error": "Database not available", "status": "failed"}
     with patch(
         "src.controller.tvshow.tv_show_endpoints.get_random_episode"
     ) as database_response:

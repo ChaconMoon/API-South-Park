@@ -41,7 +41,7 @@ def show_random_album(
     if "error" in json:
         if json["error"] == "Album not found":
             response.status_code = status.HTTP_404_NOT_FOUND
-        if json["error"] == "Database not avalible":
+        if json["error"] == "Database not available":
             response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
     else:
         response.status_code = status.HTTP_200_OK
@@ -77,7 +77,7 @@ def show_album(
     if "error" in json:
         if json["error"] == "Album not found":
             response.status_code = status.HTTP_404_NOT_FOUND
-        if json["error"] == "Database not avalible":
+        if json["error"] == "Database not available":
             response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
     elif "album" in json:
         response.status_code = status.HTTP_200_OK
@@ -94,7 +94,7 @@ def show_random_song(
     Args:
         request (Request): FastAPI request object containing base URL
         response (Response): FastAPI response object for status codes
-        exclude_not_available (boolean): If True excludes the not avalible songs.
+        exclude_not_available (boolean): If True excludes the not available songs.
 
     Returns:
         dict: JSON response containing either:
@@ -112,7 +112,7 @@ def show_random_song(
     if "error" in json:
         if json["error"] == "Song not found":
             response.status_code = status.HTTP_404_NOT_FOUND
-        elif json["error"] == "Database not avalible":
+        elif json["error"] == "Database not available":
             response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
     else:
         response.status_code = status.HTTP_200_OK
@@ -148,7 +148,7 @@ def show_song(
     if "error" in json:
         if json["error"] == "Song not found":
             response.status_code = status.HTTP_404_NOT_FOUND
-        elif json["error"] == "Database not avalible":
+        elif json["error"] == "Database not available":
             response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
     elif "song" in json:
         response.status_code = status.HTTP_200_OK

@@ -1,7 +1,7 @@
 """
 Module written by Carlos Chacón.
 
-This module define the tests to test if all the EasterEgg are avalible.
+This module define the tests to test if all the EasterEgg are available.
 
 """
 
@@ -15,7 +15,7 @@ from src.controller.others.easter_egg_controller import EasterEggName
 
 
 def test_easter_eggs():
-    """Test If All Define Eastereggs are Avalible."""
+    """Test If All Define Eastereggs are Available."""
     load_dotenv()
     values = list(EasterEggName.__members__.values())
 
@@ -26,7 +26,7 @@ def test_easter_eggs():
         ).json()
         if "message" in response.keys():
             raise requests.RequestException(
-                f"""Easter Egg ( {easteregg.name} ) not avalible """
+                f"""Easter Egg ( {easteregg.name} ) not available """
             )
         else:
-            logging.info(f"EasterEgg ( {easteregg.name} ) is avalible")
+            logging.info(f"EasterEgg ( {easteregg.name} ) is available")

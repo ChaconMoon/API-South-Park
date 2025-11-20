@@ -45,7 +45,7 @@ def test_random_game_database_not_found():
             raise RequestException("Expected Not Found Response")
 
 
-def test_random_game_database_not_avalible():
+def test_random_game_database_not_available():
     """Test a not available response in Random Game Endpont."""
     fake_response = {"error": "Database not available", "status": "failed"}
     with patch(
@@ -54,4 +54,4 @@ def test_random_game_database_not_avalible():
         database_response.return_value = fake_response
         response = client.get("api/games/random")
         if response.status_code != 500:
-            raise RequestException("Expected Not Avalible Response")
+            raise RequestException("Expected Not Available Response")

@@ -41,11 +41,11 @@ def test_game_database_not_found():
             raise RequestException("Expected Not Found Response")
 
 
-def test_game_database_not_avalible():
+def test_game_database_not_available():
     """Test a not available response in Game Endpont."""
     fake_response = {"error": "Database not available", "status": "failed"}
     with patch("src.controller.games.games_endpoint.get_game_by_id") as database_response:
         database_response.return_value = fake_response
         response = client.get("api/games/28")
         if response.status_code != 500:
-            raise RequestException("Expected Not Avalible Response")
+            raise RequestException("Expected Not Available Response")
