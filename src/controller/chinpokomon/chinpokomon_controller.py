@@ -65,11 +65,59 @@ def get_chinpokomon_by_id(
         if add_url:
             return {
                 "name": chinpokomon.model_dump()["name"],
-                "url": f"{base_url}api/chinpokomon/{row[0]}",
+                "url": f"{base_url}api/chinpokomons/{row[0]}",
             }
         query_result = get_query_result(text("SELECT * FROM public.chinpokomon"))
 
         return chinpokomon.toJSON(metadata, total_results=query_result.rowcount)
 
+    except Exception as e:
+        return {"error": str(e), "status": "failed"}
+
+
+def get_random_chinpokomon(base_url=""):
+    """
+    Get a Random Chinpokomon from the Database.
+
+    Args:
+        base_url (str): The base URL for API endpoints
+
+    Returns:
+        dict: JSON response containing either:
+            - Chinpokomon data if found
+            - Error message if not found or database error
+
+    Response Format:
+
+    Success:
+            {
+                "id": int,
+                "name": str,
+                "image": str
+            }
+
+    Error:
+            {
+                "error": str,
+                "status": "failed"
+            }
+
+    """
+    try:
+        query_result = get_query_result(
+            text("""
+                SELECT * FROM public.chinpokomon
+                ORDER BY RANDOM()
+                limit 1
+                """)
+        )
+
+        if query_result is None:
+            return {"error": "Database not available", "status": "failed"}
+        elif query_result.rowcount == 0:
+            return {"error": "Chinpokomon not found", "status": "failed"}
+        for row in query_result:
+            chinpokomon = Chinpokomon(row, base_url)
+        return chinpokomon.toJSON()
     except Exception as e:
         return {"error": str(e), "status": "failed"}

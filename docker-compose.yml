@@ -9,7 +9,7 @@ services:
       - SOUTHPARK_DATABASE_URL=postgresql://southpark:tegridyfarms@db:5432/southpark_api
 
   db:
-    image: postgres:15
+    image: postgres:15.15
     environment:
       POSTGRES_DB: southpark_api
       POSTGRES_USER: southpark
@@ -19,7 +19,7 @@ services:
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
 
   pgadmin:
-    image: dpage/pgadmin4:latest
+    image: dpage/pgadmin4:9.10
     environment:
       PGADMIN_DEFAULT_EMAIL: admin@southparkapi.com
       PGADMIN_DEFAULT_PASSWORD: admin123
