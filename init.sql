@@ -2,10 +2,10 @@
 -- PostgreSQL database dump
 --
 
-\restrict wJ2RO3pXwHY6Hbxn74KiSBXgVORRwyx48gpF9PX4UsjIULP1rm0autL2gj7wAaI
+\restrict SSA4NCHGw6fagMRCBpk6uzPgOLw8YHLtZ3S7dsXxj45vVlRP5uDEBahsWKqwMPG
 
--- Dumped from database version 15.14 (Debian 15.14-1.pgdg13+1)
--- Dumped by pg_dump version 15.14 (Debian 15.14-1.pgdg13+1)
+-- Dumped from database version 15.15 (Debian 15.15-1.pgdg13+1)
+-- Dumped by pg_dump version 15.15 (Debian 15.15-1.pgdg13+1)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -654,6 +654,7 @@ COPY public.characters (id, name, friend_group, family, birthday, age, religion,
 98	Rex	\N	14	\N	\N	\N	4	{/img/characters/show/Rex.png}	\N
 99	Clyde Donovan	\N	14	April 10th	10	{"Roman Catholic"}	2	{/img/characters/show/Clyde_Donovan.png}	\N
 100	Betsy Donovan	\N	14	\N	\N	{"Roman Catholic"}	136	{/img/characters/show/Betsy_Donovan.png}	\N
+221	Agent Fields	\N	\N	\N	\N	\N	44	{/img/characters/show/Agent_Fields.png}	f
 101	Roger Donovan	\N	14	\N	\N	{"Roman Catholic"}	87	{/img/characters/show/Roger_Donovan.png}	\N
 102	Larry Feegan	\N	15	\N	13	\N	220	{/img/characters/show/Larry_Feegan.png}	\N
 103	Mrs. Feegan	\N	15	\N	\N	\N	220	{/img/characters/show/Mrs_Feegan.png}	\N
@@ -763,7 +764,6 @@ COPY public.characters (id, name, friend_group, family, birthday, age, religion,
 217	Adams County Pee-Wee Hockey Team	\N	\N	\N	6	\N	153	{/img/characters/show/Adams_County_Pee_Wee_Hockey_Team.png}	f
 218	Adolf Hitler	\N	52	April 20th	56	\N	7	{/img/characters/show/Adolf_Hitler.png}	t
 220	Agent Connelly	\N	\N	\N	\N	\N	44	{/img/characters/show/Agent_Connelly.png}	f
-221	Agent Fields	\N	\N	\N	\N	\N	44	{/img/characters/show/Agent_Fields.png}	f
 222	"Agent" Tucker	\N	\N	\N	\N	\N	102	{/img/characters/show/Agent_Tucker.png}	f
 223	Aging Hippie Liberal Douche	\N	\N	\N	\N	\N	118	{/img/characters/show/AGING_HIPPIE_LIBERAL_DOUCHE.png}	f
 228	Al Pacino	\N	\N	April 25th	85	{Catholic}	257	{/img/characters/show/Al_Pacino.png}	t
@@ -819,6 +819,7 @@ COPY public.characters (id, name, friend_group, family, birthday, age, religion,
 270	Apple Replacement Friend	\N	\N	\N	\N	\N	210	{/img/characters/show/Apple_Replacement_Friend.png}	\N
 271	Dr. Apu Nahasapeemapetilon, Ph.D. Jr.	\N	\N	\N	38	{Hinduism}	290	{/img/characters/show/Apu.png}	\N
 272	Archangel Michael	\N	\N	\N	\N	\N	129	{/img/characters/show/Archangel_Michael.png}	f
+355	Bobby	\N	\N	\N	\N	\N	226	{/img/characters/show/Bobby.png}	f
 273	Arnold Schwarzenegger	\N	\N	July 30th	78	{"Roman Catholic"}	204	{/img/characters/show/Arnold_Schwarzenegger.png}	t
 274	"Ash Ketchum"	\N	\N	\N	10	\N	42	{/img/characters/show/Ash_Ketchum.png}	\N
 275	Ashley	\N	\N	\N	10	\N	190	{/img/characters/show/Ashley.png}	\N
@@ -878,7 +879,6 @@ COPY public.characters (id, name, friend_group, family, birthday, age, religion,
 351	Bob Johnson	\N	\N	\N	\N	\N	2	{/img/characters/show/Bob_Johnson.png}	f
 353	Bob Summers	\N	\N	\N	\N	\N	169	{/img/characters/show/Bob_Summers.png}	f
 354	Bob Thomas	\N	\N	\N	\N	\N	18	{/img/characters/show/Bob_Thomas.png}	f
-355	Bobby	\N	\N	\N	\N	\N	226	{/img/characters/show/Bobby.png}	f
 356	Bobby ("Cartman Joins NAMBLA")	\N	\N	\N	\N	\N	53	{/img/characters/show/Bobby_Nambla.png}	f
 358	Bobby Palmer	\N	60	\N	\N	\N	176	{/img/characters/show/Bobby_Palmer.png}	f
 360	Bono's Butler	\N	\N	\N	\N	\N	162	{/img/characters/show/Bono's_Butler.png}	f
@@ -1231,8 +1231,6 @@ COPY public.characters (id, name, friend_group, family, birthday, age, religion,
 669	Elise Garrett	\N	\N	\N	\N	\N	41	{/img/characters/show/Elise_garrett.png}	\N
 668	Eliot Spitzer	\N	\N	June 10th	66	\N	196	{/img/characters/show/Eliot_Spitzer.png}	t
 667	Elin Nordegren	\N	\N	January 1st	45	\N	196	{/img/characters/show/Elin_Nordegren.png}	t
-686	Enrique	\N	\N	\N	\N	\N	4	{/img/characters/show/Enrique.png}	\N
-685	Enchorito Mark	\N	\N	\N	\N	\N	93	{/img/characters/show/Enchorito_Mark.png}	\N
 684	Emperor Hirohito	\N	72	January 7th	87	{Shinto}	42	{/img/characters/show/Emperor_Hirohito_Uniform.png,/img/characters/show/Emperor_Hirohito_Armor.png}	t
 683	Emperor Akihito	\N	72	December 23rd	91	{Shinto}	192	{/img/characters/show/Emperor_Akihito.png}	t
 682	Emo Kids	\N	\N	\N	\N	\N	241	{/img/characters/show/Emo_Kids.png}	\N
@@ -1253,6 +1251,53 @@ COPY public.characters (id, name, friend_group, family, birthday, age, religion,
 174	Mr. Stevens	\N	36	\N	\N	{"Roman Catholic"}	123	{/img/characters/show/Mr_Stevens.png}	\N
 695	Bluey Heeler	\N	\N	\N	\N	\N	329	{/img/characters/show/Bluey.png}	\N
 696	Droopy Dog (Cartoon)	\N	\N	\N	\N	\N	329	{/img/characters/show/Droop_Dog_Cartoon.png}	\N
+705	Felipe	\N	\N	\N	\N	\N	95	{/img/characters/show/Felipe.png}	\N
+704	Federal Bureau of Investigation	\N	\N	\N	\N	\N	8	{/img/characters/show/FBI_Agents.png}	\N
+703	Father Maxi	\N	\N	\N	\N	\N	9	{/img/characters/show/Father_Maxi.png}	\N
+702	Father and Handicapped Daughter	\N	\N	\N	\N	\N	273	{/img/characters/show/Fortcollins_Mann_And_Daughter.png}	\N
+701	Fat Abbott	\N	\N	\N	\N	\N	25	{/img/characters/show/Fat_Abbott.png}	\N
+700	Fast Food Executives	\N	\N	\N	\N	\N	217	{/img/characters/show/Fast_food_executives.png}	\N
+699	Farty O'Cool	\N	\N	\N	\N	\N	315	{/img/characters/show/Farty_O'Cool.png}	\N
+698	Faith Records CEO	\N	\N	\N	\N	\N	105	{/img/characters/show/Faith_Records_CEO.png}	\N
+697	The "FAGS" Boys	\N	\N	\N	\N	\N	191	{/img/characters/show/FAGS_boys.png}	\N
+685	Enchorito Mark	\N	\N	\N	\N	\N	93	{/img/characters/show/Enchorito_Mark.png}	f
+686	Enrique	\N	\N	\N	\N	\N	4	{/img/characters/show/Enrique.png}	f
+706	Felipe Calderón	\N	\N	August 18th	63	\N	187	{/img/characters/show/Felipe_Calderon.png}	t
+715	Foghorn Leghorn	\N	\N	\N	\N	\N	202	{/img/characters/show/Foghorn_Leghorn.png}	\N
+714	Fluffy ("Cock Magic")	\N	\N	\N	\N	\N	255	{/img/characters/show/Fluffy_(Cock_Magic).png}	\N
+713	Firkle Smith	\N	\N	\N	\N	\N	110	{/img/characters/show/Firkle.png}	\N
+712	Fifi	\N	\N	\N	\N	\N	4	{/img/characters/show/Fifi.png}	\N
+710	Ferrari	\N	\N	\N	10	\N	110	{/img/characters/show/Ferrari_Raisins.png}	\N
+709	Fenton Hardly	\N	\N	\N	\N	\N	148	{/img/characters/show/Fenton_Hardly.png}	\N
+708	Female Thief	\N	\N	\N	\N	\N	174	{/img/characters/show/Female_Thief.png}	\N
+707	Female QAnon Tutor	\N	\N	\N	\N	\N	309	{/img/characters/show/Female_QAnon_Tutor.png}	\N
+724	Francis (Special Kid)	\N	\N	\N	\N	\N	113	{/img/characters/show/Francis_(Special_Kid).png}	\N
+723	Francis (4th Grade)	\N	\N	\N	\N	\N	58	{/img/characters/show/Francis_(4th_Grade).png}	\N
+722	Frances Velman	\N	\N	\N	\N	\N	86	{/img/characters/show/Frances_Velman.png}	\N
+721	Four-Assed Monkey	\N	\N	\N	\N	\N	5	{/img/characters/show/Four_Assed_Monkey.png}	\N
+720	Fosse McDonald	\N	73	\N	9	\N	4	{/img/characters/show/Fossie_Mcdonald.png}	\N
+719	Foreman	\N	\N	\N	\N	\N	32	{/img/characters/show/Rainforest_Logger.png}	\N
+718	Foofa	\N	\N	\N	\N	\N	242	{/img/characters/show/Foofa.png}	\N
+717	Fonics Monkey	\N	\N	\N	\N	\N	43	{/img/characters/show/Fonics_Monkey.png}	\N
+716	The Foley Kids	\N	\N	\N	8	\N	136	{/img/characters/show/The_Foley_Kids.png}	\N
+711	Fidel Castro	\N	\N	August 13th	90	{Atheism}	64	{/img/characters/show/Fidel_Castro.png}	t
+725	Francis Ford Coppola	\N	\N	April 7th	86	\N	88	{/img/characters/show/Francis_Ford_Coppola.png}	t
+735	French Canadian Mime	\N	\N	\N	\N	\N	111	{/img/characters/show/French_Canadian_Mime.png}	\N
+734	Freja Ollegard	\N	\N	\N	\N	\N	269	{/img/characters/show/Freja_Ollegard.png}	\N
+733	Frederick Johnson	\N	\N	\N	\N	\N	90	{/img/characters/show/Frederick_Johnson.png}	\N
+732	Freddy Krueger	\N	\N	\N	\N	\N	164	{/img/characters/show/Freddy_Krueger.png}	\N
+731	Fred Savage	\N	\N	July 9th	49	{Judaism}	22	{/img/characters/show/Fred_Savage.png}	\N
+730	Franz	\N	\N	\N	\N	\N	174	{/img/characters/show/Franz.png}	\N
+729	Frank Waters	\N	\N	\N	\N	\N	157	{/img/characters/show/Frank_Waters.png}	\N
+728	Frank Sinatra	\N	\N	December 12th	82	{"Roman Catholic"}	57	{/img/characters/show/Frank_Sinatra.png}	t
+727	Frank Hammond and Phil	\N	\N	\N	\N	\N	4	{/img/characters/show/Frank_Hammond_And_Phil.png}	\N
+726	Frank Fun	\N	\N	\N	\N	\N	71	{/img/characters/show/Frank_Foon.png}	\N
+741	Future Stan	\N	\N	\N	\N	\N	95	{/img/characters/show/Stan_Fake_Future.png}	\N
+740	Future Humans	\N	\N	\N	\N	\N	118	{/img/characters/show/Goobacks.png}	\N
+739	Future Butters	\N	\N	\N	\N	\N	95	{/img/characters/show/Butters_Fake_Future.png}	\N
+738	Funnybot	\N	\N	\N	\N	\N	211	{/img/characters/show/Funnybot.png}	\N
+737	Frog King	\N	\N	\N	\N	\N	93	{/img/characters/show/Frog_King.png}	\N
+736	Frida	\N	\N	\N	\N	\N	23	{/img/characters/show/Frida.png}	\N
 \.
 
 
@@ -1676,7 +1721,6 @@ COPY public.families (id, name, images) FROM stdin;
 39	The Streibels	{img/families/The_Streibels.png}
 40	The Tenormans	{img/families/The_Tenormans.png}
 41	The Testaburgers	{img/families/The_Testaburgers.png}
-42	The Thorns	{img/families/No_Family_Placeholder.png}
 43	The Tuckers	{img/families/The_Tuckers.png}
 44	The Turners	{img/families/The_Turners.png}
 45	The Zewiskis	{img/families/The_Zewiskis.png,img/families/The_Zewiskis_2.png}
@@ -1692,7 +1736,6 @@ COPY public.families (id, name, images) FROM stdin;
 55	The Obamas	{img/families/The_Obamas.png}
 56	The Simpsons	{img/families/The_Simpsons.png}
 57	The Thompsns	{img/families/The_Thompsns.png}
-58	The Clintons	{img/families/No_Family_Placeholder.png}
 59	The Jacksons	{img/families/The_Jacksons.png}
 60	The Palmers	{img/families/The_Palmers.png}
 61	Buck's Family	{img/families/Buck_Family.png}
@@ -1708,6 +1751,9 @@ COPY public.families (id, name, images) FROM stdin;
 70	The Weatherhead foster family	{img/families/The_Weatherheads.png}
 71	The Hollis	{img/families/The_Hollis.png}
 72	Japanese Imperial Family	{img/families/Japanese_Imperial_Family.png}
+42	The Thorns	{img/families/Satan_Family.png}
+58	The Clintons	{img/families/The_Clintons.png}
+73	The McDonalds	{img/families/No_Family_Placeholder.png}
 \.
 
 
@@ -1917,5 +1963,5 @@ ALTER TABLE ONLY public.alter_ego
 -- PostgreSQL database dump complete
 --
 
-\unrestrict wJ2RO3pXwHY6Hbxn74KiSBXgVORRwyx48gpF9PX4UsjIULP1rm0autL2gj7wAaI
+\unrestrict SSA4NCHGw6fagMRCBpk6uzPgOLw8YHLtZ3S7dsXxj45vVlRP5uDEBahsWKqwMPG
 
