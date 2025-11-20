@@ -33,7 +33,8 @@ def get_special_by_id(id: int, add_url=False, base_url="", metadata=False):
             text("""
                 SELECT id,title,release_date,description,link,poster FROM public.specials
                 where id = :id
-                """)
+                """),
+            {"id": id},
         )
 
         # If the is a error in the query returns the error
