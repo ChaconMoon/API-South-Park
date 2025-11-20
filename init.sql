@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict 9OSyMP0wiNvfOrxjCP0YzlphMC8T97adNTFzIgradImjdNI3dFrYcMecXb2WkNs
+\restrict XfT1g3VP5eNrYoStO0LrOgZ2Is4PJnUCawYP3vC8bY9isqdmY1Ick2cxMWMUufn
 
 -- Dumped from database version 15.15 (Debian 15.15-1.pgdg13+1)
 -- Dumped by pg_dump version 15.15 (Debian 15.15-1.pgdg13+1)
@@ -178,7 +178,7 @@ CREATE TABLE public.episodes (
     realese_date date,
     description text,
     view_on_website text,
-    censured boolean DEFAULT false,
+    censored boolean DEFAULT false,
     paramount_plus_exclusive boolean DEFAULT false,
     image text
 );
@@ -1343,7 +1343,7 @@ COPY public.chinpokomon (id, name, image) FROM stdin;
 -- Data for Name: episodes; Type: TABLE DATA; Schema: public; Owner: southpark
 --
 
-COPY public.episodes (id, name, season, episode, realese_date, description, view_on_website, censured, paramount_plus_exclusive, image) FROM stdin;
+COPY public.episodes (id, name, season, episode, realese_date, description, view_on_website, censored, paramount_plus_exclusive, image) FROM stdin;
 17	Chickenlover	2	4	1998-05-27	When Barbrady resigns, anarchy ensues and the boys pitch in to help.	https://www.southparkstudios.com/episodes/c1m717/south-park-chickenlover-season-2-ep-4	f	f	img/episodes/17.jpg
 20	City on the Edge of Forever (Flashbacks)	2	7	1998-06-17	A freak accident leaves the South Park Elementary School Bus teetering precariously on the edge of a cliff.	https://www.southparkstudios.com/episodes/k5278s/south-park-city-on-the-edge-of-forever-season-2-ep-7	f	f	img/episodes/20.jpg
 21	Summer Sucks	2	8	1998-06-24	The entire town is gearing up for the annual 4 July celebration when a ban on fireworks is imposed.	https://www.southparkstudios.com/episodes/3wdzae/south-park-summer-sucks-season-2-ep-8	f	f	img/episodes/21.jpg
@@ -1963,5 +1963,5 @@ ALTER TABLE ONLY public.alter_ego
 -- PostgreSQL database dump complete
 --
 
-\unrestrict 9OSyMP0wiNvfOrxjCP0YzlphMC8T97adNTFzIgradImjdNI3dFrYcMecXb2WkNs
+\unrestrict XfT1g3VP5eNrYoStO0LrOgZ2Is4PJnUCawYP3vC8bY9isqdmY1Ick2cxMWMUufn
 
