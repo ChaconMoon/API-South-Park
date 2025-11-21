@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict XfT1g3VP5eNrYoStO0LrOgZ2Is4PJnUCawYP3vC8bY9isqdmY1Ick2cxMWMUufn
+\restrict nNCRJk6BRKt0pB13rIgjChbZPpWQWd56iPmvfASseS1yhZ94qStQGKUI1d0dfir
 
 -- Dumped from database version 15.15 (Debian 15.15-1.pgdg13+1)
 -- Dumped by pg_dump version 15.15 (Debian 15.15-1.pgdg13+1)
@@ -564,11 +564,26 @@ COPY public.characters (id, name, friend_group, family, birthday, age, religion,
 7	Herbert Garrison	\N	16	\N	41	{"Roman Catholic","Atheist (Temporary)"}	1	{/img/characters/show/Herbert_Garrison.png}	f
 8	Kathie Lee Gifford	\N	\N	August 16th	71	{Evangelicalism}	2	{/img/characters/show/Kathie_Lee.png}	t
 9	Geraldo Rivera	\N	\N	July 4th	82	{"Reform Judaism"}	2	{/img/characters/show/Geraldo_Rivera.png}	t
+239	Ali Khamenei	\N	\N	July 16th	86	{"Shia Islam"}	243	{/img/characters/show/Ali_Khamenei.png}	t
+243	Allen Ginsberg	\N	\N	June 23rd	70	{Buddhist}	57	{/img/characters/show/Allen_Ginsberg.png}	t
+274	"Ash Ketchum"	\N	\N	\N	10	\N	42	{/img/characters/show/Ash_Ketchum.png}	t
+276	Aslan the Lion	\N	\N	\N	\N	\N	77	{/img/characters/show/Aslan.png}	t
+651	Dramatic Look Gopher	\N	\N	\N	\N	\N	171	{/img/characters/show/Dramatic_Look_Gopher.png}	t
+652	Drew Carey	\N	\N	May 23rd	67	\N	66	{/img/characters/show/Drew_Carey.png}	t
+655	Dwight Schultz	\N	\N	\N	\N	\N	16	{/img/characters/show/Dwight_Schultz.png}	t
+658	E.T.	\N	\N	\N	\N	\N	88	{/img/characters/show/ET.png}	t
+671	Ellen DeGeneres	\N	\N	January 26th	67	{Christian}	186	{/img/characters/show/Ellen_Degeneres.png}	t
 20	Patrick Duffy	\N	\N	March 17th	76	{Buddhism}	3	{/img/characters/show/Patrick_Duffy.png}	t
+692	Eugene Levy	\N	\N	December 17th	78	\N	211	{/img/characters/show/Eugene_Levy.png}	t
+695	Bluey Heeler	\N	\N	\N	\N	\N	329	{/img/characters/show/Bluey.png}	t
+696	Droopy Dog (Cartoon)	\N	\N	\N	\N	\N	329	{/img/characters/show/Droop_Dog_Cartoon.png}	t
+595	Dick Dastardly	\N	\N	\N	\N	\N	251	{/img/characters/show/Dick_Dastardly.png}	t
+600	Diego Márquez	\N	\N	\N	\N	\N	323	{/img/characters/show/Diego_(Dora).png}	t
+619	Dora Márquez	\N	\N	\N	\N	\N	242	{/img/characters/show/Dora.png}	t
 11	Mr. Hat	\N	16	\N	\N	\N	1	{/img/characters/show/Mr_Hat.png}	f
 74	Rosie O'Donnell	\N	6	March 21st	63	{"Roman Catholic"}	60	{/img/characters/show/Rosie_Odonnell.png}	t
 221	Agent Fields	\N	\N	\N	\N	\N	44	{/img/characters/show/Agent_Fields.png}	f
-193	Satan	\N	42	\N	\N	{Satanism}	10	{/img/characters/show/Satan.png}	t
+193	Satan	\N	42	\N	\N	{Satanism}	10	{/img/characters/show/Satan.png}	f
 213	Aaron Hagen	\N	51	\N	7	\N	239	{/img/characters/show/Aaron_Hagen.png}	f
 214	Abraham Lincoln	\N	\N	February 12th	56	\N	135	{/img/characters/show/Abraham_Lincoln.png}	t
 217	Adams County Pee-Wee Hockey Team	\N	\N	\N	6	\N	153	{/img/characters/show/Adams_County_Pee_Wee_Hockey_Team.png}	f
@@ -829,7 +844,6 @@ COPY public.characters (id, name, friend_group, family, birthday, age, religion,
 501	Christophe	\N	66	\N	9	{Misotheism}	39	{/img/characters/show/Christophe_Mole.png}	f
 507	Citizen with Blond Hair and Blue Shirt	\N	\N	\N	\N	\N	6	{/img/characters/show/Guy_With_Blonde_Hair.png}	f
 506	Cindy McCain	\N	67	May 20th	71	\N	179	{/img/characters/show/Cindy_McCain.png}	t
-505	Cinderella	\N	\N	\N	\N	\N	163	{/img/characters/show/Cinderella.png}	t
 504	Chuck E. Cheese	\N	\N	\N	\N	\N	282	{/img/characters/show/Chuck_E_Cheese.png}	t
 502	Christopher Reeve	\N	\N	September 25th	52	{"Unitarian Universalist"}	98	{/img/characters/show/Christopher_Reeve.png}	t
 508	Clark	\N	\N	\N	11	\N	132	{/img/characters/show/Clark_Erection_Day.png}	f
@@ -851,6 +865,7 @@ COPY public.characters (id, name, friend_group, family, birthday, age, religion,
 517	Cody	\N	\N	\N	\N	\N	242	{/img/characters/show/Cody.png}	f
 516	Cock Magic Promoter	\N	\N	\N	\N	\N	255	{/img/characters/show/Cock_Magic_Promoter.png}	f
 515	Cock Magic Ring Announcer	\N	\N	\N	\N	\N	255	{/img/characters/show/Cock_Magic_Announcer.png}	f
+505	Cinderella	\N	\N	\N	\N	\N	163	{/img/characters/show/Cinderella.png}	t
 527	Corey Hart	\N	\N	May 31st	63	{Christianity}	212	{/img/characters/show/Cory_Hart.png}	t
 530	Costa Rican President	\N	\N	\N	\N	\N	32	{/img/characters/show/Costa_rican_President.png}	f
 529	Cosette	\N	\N	\N	\N	\N	24	{/img/characters/show/Cosette.png}	f
@@ -859,6 +874,7 @@ COPY public.characters (id, name, friend_group, family, birthday, age, religion,
 210	Charlie Brown	\N	63	October 30th	10	\N	65	{/img/characters/show/Charlie_Brown.png}	t
 4	Stanley "Stan" Marsh	1	3	October 19th	9	{Christian,"Atheist (Temporariry)","Mormon (Temporariry)","Scientologist (Temporariry)","Blaintologist (Temporarily)"}	1	{/img/characters/show/Stan_Marsh.png}	f
 542	Cupid Me	\N	\N	\N	\N	\N	230	{/img/characters/show/Cupid_Me.png,/img/characters/show/Cupid_Ye.png}	f
+568	David Quincy	\N	\N	May 22nd	\N	\N	179	{/img/characters/show/David_Quincy.png}	t
 544	Dale Earnhardt Jr.	\N	\N	October 10th	51	\N	203	{/img/characters/show/Dale_Earnhardt_Jr.png}	t
 543	Dairy Gold Milk Company President	\N	\N	\N	\N	\N	75	{/img/characters/show/Dairy_Gold_Milk_Company_president.png}	f
 551	Danica Patrick	\N	\N	March 25th	43	\N	203	{/img/characters/show/Danica_Patrick.png}	t
@@ -867,7 +883,6 @@ COPY public.characters (id, name, friend_group, family, birthday, age, religion,
 554	Danielle Staub	\N	\N	July 29th	63	\N	204	{/img/characters/show/Danielle_Staub.png}	t
 571	David Spade	\N	\N	July 22nd	61	\N	211	{/img/characters/show/David_Spade.png}	t
 569	David Satcher	\N	\N	March 2nd	84	\N	87	{/img/characters/show/David_Satcher.png}	t
-568	David Quincy	\N	\N	May 22nd	\N	\N	179	{/img/characters/show/David_Quincy.png}	f
 567	David Perry	\N	\N	\N	\N	\N	304	{/img/characters/show/David_Perry.png}	f
 566	David Palmer	\N	\N	April 15th	46	\N	174	{/img/characters/show/David_Palmer.png}	f
 565	David Letterman	\N	\N	April 12th	78	{Lutheran}	186	{/img/characters/show/David_Letterman.png}	t
@@ -878,11 +893,11 @@ COPY public.characters (id, name, friend_group, family, birthday, age, religion,
 579	Deborah Carroll	\N	\N	December 1st	61	\N	146	{/img/characters/show/Deborah_Carroll.png}	t
 598	Dick Cheney	\N	\N	January 30th	84	{Methodist}	91	{/img/characters/show/Dick_Cheney.png}	t
 596	Diana, Princess of Wales	\N	\N	July 1st	36	{"Church of England"}	46	{/img/characters/show/Princess_Diana.png}	t
+618	Donna Reed	\N	\N	January 27th	64	{Methodist}	29	{/img/characters/show/Donna_Reed.png}	t
 577	Dean Martin	\N	\N	June 7th	78	\N	57	{/img/characters/show/Dean_Martin.png}	t
 604	DJ AM	\N	\N	August 28th	36	\N	189	{/img/characters/show/DJ_AM.png}	t
 602	Dio	\N	\N	\N	\N	\N	43	{/img/characters/show/Dio.png}	t
 610	Dom DeLuise	\N	\N	August 1st	75	{"Roman Catholic"}	189	{/img/characters/show/Dom_Deluise.png}	t
-618	Donna Reed	\N	\N	\N	64	{Methodist}	29	{/img/characters/show/Donna_Reed.png}	t
 617	Donald Trump Jr.	\N	\N	December 31th	47	\N	326	{/img/characters/show/Donald_Trump_Jr.png}	t
 616	Donald Trump	\N	\N	June 14th	79	{Presbyterian}	76	{/img/characters/show/President_Trump.png,/img/characters/show/President_Trump_Old.png}	t
 615	Donald Rumsfeld	\N	\N	July 9th	88	{Presbyterian}	91	{/img/characters/show/Donald_Rumsfeld.png}	t
@@ -1103,7 +1118,6 @@ COPY public.characters (id, name, friend_group, family, birthday, age, religion,
 208	Mrs. White	\N	46	\N	\N	\N	287	{/img/characters/show/Mrs_White.png}	f
 209	Bob White	\N	46	\N	\N	\N	287	{/img/characters/show/Bob_White.png}	f
 237	Alex Hart	\N	\N	\N	\N	\N	166	{/img/characters/show/Alex_Hart.png}	f
-239	Ali Khamenei	\N	\N	July 16th	86	{"Shia Islam"}	243	{/img/characters/show/Ali_Khamenei.png}	f
 240	Alice	\N	53	\N	\N	\N	63	{/img/characters/show/Alice.png}	f
 241	Alice's Parents	\N	53	\N	\N	\N	63	{/img/characters/show/Alice's_Parents.png}	f
 242	Alinicia	\N	\N	\N	\N	\N	61	{/img/characters/show/Alinicia.png}	f
@@ -1129,16 +1143,12 @@ COPY public.characters (id, name, friend_group, family, birthday, age, religion,
 269	Anti-Christ	\N	\N	\N	\N	{Satanism}	125	{/img/characters/show/Anti_Christ.png}	f
 270	Apple Replacement Friend	\N	\N	\N	\N	\N	210	{/img/characters/show/Apple_Replacement_Friend.png}	f
 271	Dr. Apu Nahasapeemapetilon, Ph.D. Jr.	\N	\N	\N	38	{Hinduism}	290	{/img/characters/show/Apu.png}	f
-274	"Ash Ketchum"	\N	\N	\N	10	\N	42	{/img/characters/show/Ash_Ketchum.png}	f
 275	Ashley	\N	\N	\N	10	\N	190	{/img/characters/show/Ashley.png}	f
-276	Aslan the Lion	\N	\N	\N	\N	\N	77	{/img/characters/show/Aslan.png}	f
 277	Aunt Jemima	\N	\N	\N	\N	\N	249	{/img/characters/show/Aunt_Jemima.png}	f
 225	Airsoft Armory Salesman	\N	\N	\N	\N	\N	314	{/img/characters/show/Airsoft_Armory_Salesman.png}	f
 235	Alec Vaughn	\N	\N	\N	\N	\N	294	{/img/characters/show/Alec_Vaughn.png}	f
 163	Strong Christian Woman	\N	31	\N	\N	\N	286	{/img/characters/show/Strong_Woman.png,/img/characters/show/Strong_Christian_Woman.png}	f
-243	Allen Ginsberg	\N	\N	June 23rd	70	{Buddhist}	57	{/img/characters/show/Allen_Ginsberg.png}	f
 58	Craig Tucker	\N	43	Octuber 23rd	10	{"Roman Catholic"}	9	{/img/characters/show/Craig_Tucker.png}	f
-540	Cthulhu	\N	\N	\N	\N	{"Cult of Cthulhu"}	206	{/img/characters/show/Cthulu.png}	f
 539	Crips (Gang)	\N	\N	\N	\N	\N	98	{/img/characters/show/Crips.png}	f
 538	Crippled Girl with Brown Hair	\N	\N	\N	\N	\N	113	{/img/characters/show/Crippled_Girl_with_Brown_Hair.png}	f
 537	Crack Babies	\N	\N	\N	\N	\N	214	{/img/characters/show/Crab_People.png}	f
@@ -1147,6 +1157,7 @@ COPY public.characters (id, name, friend_group, family, birthday, age, religion,
 535	CPS Agents	\N	\N	\N	\N	\N	180	{/img/characters/show/CPS_Agents.png}	f
 534	Coyote Brown	\N	\N	\N	\N	\N	154	{/img/characters/show/Coyote_Brown.png}	f
 533	Cows	\N	\N	\N	\N	\N	1	{/img/characters/show/Cows.png}	f
+540	Cthulhu	\N	\N	\N	\N	{"Cult of Cthulhu"}	206	{/img/characters/show/Cthulu.png}	t
 532	Cowboy Doctors	\N	\N	\N	\N	\N	300	{/img/characters/show/Cowboy_Doctors.png}	f
 531	Count Ravyncrowe	\N	\N	\N	\N	\N	181	{/img/characters/show/Rayvencrowe.png}	f
 120	Chad Handler	\N	21	\N	10	{Judaism}	113	{/img/characters/show/Chad_Handler.png}	f
@@ -1180,10 +1191,8 @@ COPY public.characters (id, name, friend_group, family, birthday, age, religion,
 583	Dennis Murray	\N	\N	\N	8	\N	113	{/img/characters/show/Dennis_Murray.png}	f
 582	Dennis ("Night of the Living Homeless")	\N	\N	\N	\N	\N	160	{/img/characters/show/Denis_Homeless.png}	f
 581	Dennis	\N	\N	\N	\N	\N	191	{/img/characters/show/Dennis.png}	f
-600	Diego Márquez	\N	\N	\N	\N	\N	323	{/img/characters/show/Diego_(Dora).png}	f
 599	Diego	\N	\N	\N	\N	\N	159	{/img/characters/show/Diego.png}	f
 597	Diane Choksondik	\N	\N	\N	\N	\N	59	{/img/characters/show/Diane_Chokdondik.png}	f
-595	Dick Dastardly	\N	\N	\N	\N	\N	251	{/img/characters/show/Dick_Dastardly.png}	f
 594	Devitzen's Tolerance Camp Warden	\N	\N	\N	\N	\N	93	{/img/characters/show/Devitzen's_Tolerance_Camp_Warden.png}	f
 593	Detroit Red Wings	\N	\N	\N	\N	\N	153	{/img/characters/show/Detroit_Redwings.png}	f
 592	Detective Jarvis	\N	\N	\N	\N	\N	140	{/img/characters/show/Detective_Jarvis.png}	f
@@ -1204,7 +1213,6 @@ COPY public.characters (id, name, friend_group, family, birthday, age, religion,
 622	Dougie O'Connell	\N	\N	\N	8	\N	39	{/img/characters/show/Dougie.png}	f
 621	Dotty Applegate	\N	\N	\N	\N	\N	251	{/img/characters/show/Miss_Applegate.png}	f
 620	Dorky Girl	\N	\N	\N	\N	\N	81	{/img/characters/show/Dorky_Girl.png}	f
-619	Dora Márquez	\N	\N	\N	\N	\N	242	{/img/characters/show/Dora.png}	f
 614	Donald	\N	\N	\N	\N	\N	25	{/img/characters/show/Donald.png}	f
 612	Don Heisman	\N	\N	\N	\N	\N	128	{/img/characters/show/Don_Heisman.png}	f
 611	Domino	\N	\N	\N	\N	\N	174	{/img/characters/show/Domino.png}	f
@@ -1220,7 +1228,6 @@ COPY public.characters (id, name, friend_group, family, birthday, age, religion,
 632	Dr. Katz	\N	\N	\N	\N	\N	21	{/img/characters/show/Dr_Jonathan_Katz.png}	f
 631	Dr. Hallis	\N	\N	\N	\N	\N	89	{/img/characters/show/Dr_Hallis.png}	f
 629	Dr. Doctor	\N	\N	\N	\N	\N	15	{/img/characters/show/Dr_Doctor.png}	f
-651	Dramatic Look Gopher	\N	\N	\N	\N	\N	171	{/img/characters/show/Dramatic_Look_Gopher.png}	f
 647	Dr. Spookalot	\N	\N	\N	\N	\N	41	{/img/characters/show/Dr_Spookalot.png}	f
 646	Dr. Sheltair	\N	\N	\N	\N	\N	318	{/img/characters/show/Dr_Sheltair.png}	f
 645	Dr. Shay	\N	\N	\N	\N	\N	51	{/img/characters/show/Dr_Shay.png}	f
@@ -1229,27 +1236,21 @@ COPY public.characters (id, name, friend_group, family, birthday, age, religion,
 648	Dr. Tristan Adams	\N	\N	\N	\N	\N	24	{/img/characters/show/Tristan_Adams.png}	f
 649	Dr. Wayne Schroeder	\N	\N	\N	\N	\N	269	{/img/characters/show/Dr_Wayne_Schroeder.png}	f
 650	Dr. Zonder	\N	\N	\N	\N	\N	161	{/img/characters/show/Dr_Zonder.png}	f
-652	Drew Carey	\N	\N	May 23rd	67	\N	66	{/img/characters/show/Drew_Carey.png}	f
 653	Droopy Dog	\N	\N	\N	\N	\N	202	{/img/characters/show/Droopy_Dog.png}	f
 654	Duck President	\N	\N	\N	\N	\N	216	{/img/characters/show/Duck_President.png}	f
-655	Dwight Schultz	\N	\N	\N	\N	\N	16	{/img/characters/show/Dwight_Schultz.png}	f
 656	Dylan and Sarah	\N	\N	\N	\N	\N	142	{/img/characters/show/Dylan_and_Sarah.png}	f
 678	Emir Hadi	\N	\N	\N	\N	\N	159	{/img/characters/show/Emir_Hadi.png}	f
 664	Elaine	\N	\N	\N	\N	\N	76	{/img/characters/show/Elaine.png}	f
 663	El Pollo Loco Workers	\N	\N	\N	\N	\N	218	{/img/characters/show/El_Pollo_Loco_Workers.png}	f
 662	Eduardo Hernandez	\N	\N	\N	\N	\N	275	{/img/characters/show/Eduardo_Hernandez.png}	f
-658	E.T.	\N	\N	\N	\N	\N	88	{/img/characters/show/ET.png}	f
 674	Elsa	\N	\N	\N	\N	\N	299	{/img/characters/show/Elsa.png}	f
 672	Elmer Fudd	\N	\N	\N	\N	\N	202	{/img/characters/show/Elmer_Fudd.png}	f
-671	Ellen DeGeneres	\N	\N	January 26th	67	{Christian}	186	{/img/characters/show/Ellen_Degeneres.png}	f
 670	Elise Gintz	\N	\N	\N	\N	\N	111	{/img/characters/show/Elise_Gintz.png}	f
 669	Elise Garrett	\N	\N	\N	\N	\N	41	{/img/characters/show/Elise_garrett.png}	f
 682	Emo Kids	\N	\N	\N	\N	\N	241	{/img/characters/show/Emo_Kids.png}	f
 681	Emily Marx	\N	\N	\N	9	\N	134	{/img/characters/show/Emily_Marx.png}	f
-677	Elvis Presley Hologram	\N	\N	\N	\N	\N	257	{/img/characters/show/Elvis_Presley_Hologram.png}	f
 694	Excalibur Sorcerer	\N	\N	\N	\N	\N	66	{/img/characters/show/Excalibur_Sorcerer.png}	f
 693	Excalibur Barker	\N	\N	\N	\N	\N	66	{/img/characters/show/Excalibur_Barker.png}	f
-692	Eugene Levy	\N	\N	December 17th	78	\N	211	{/img/characters/show/Eugene_Levy.png}	f
 691	Ethiopian Tribe	\N	\N	\N	\N	\N	8	{/img/characters/show/Ethiopians.png}	f
 690	Esther	\N	\N	\N	10	{"Roman Catholic"}	32	{/img/characters/show/Esther.png}	f
 689	Estella Havisham	\N	\N	\N	10	\N	62	{/img/characters/show/Estella.png}	f
@@ -1257,8 +1258,6 @@ COPY public.characters (id, name, friend_group, family, birthday, age, religion,
 171	Bebe Stevens	\N	36	August 13th	10	{"Roman Catholic"}	2	{/img/characters/show/Bebe_Stevens.png}	f
 173	Mrs. Stevens	\N	36	\N	\N	{"Roman Catholic"}	16	{/img/characters/show/Mrs_Stevens.png}	f
 174	Mr. Stevens	\N	36	\N	\N	{"Roman Catholic"}	123	{/img/characters/show/Mr_Stevens.png}	f
-695	Bluey Heeler	\N	\N	\N	\N	\N	329	{/img/characters/show/Bluey.png}	f
-696	Droopy Dog (Cartoon)	\N	\N	\N	\N	\N	329	{/img/characters/show/Droop_Dog_Cartoon.png}	f
 705	Felipe	\N	\N	\N	\N	\N	95	{/img/characters/show/Felipe.png}	f
 704	Federal Bureau of Investigation	\N	\N	\N	\N	\N	8	{/img/characters/show/FBI_Agents.png}	f
 703	Father Maxi	\N	\N	\N	\N	\N	9	{/img/characters/show/Father_Maxi.png}	f
@@ -1268,6 +1267,7 @@ COPY public.characters (id, name, friend_group, family, birthday, age, religion,
 699	Farty O'Cool	\N	\N	\N	\N	\N	315	{/img/characters/show/Farty_O'Cool.png}	f
 698	Faith Records CEO	\N	\N	\N	\N	\N	105	{/img/characters/show/Faith_Records_CEO.png}	f
 697	The "FAGS" Boys	\N	\N	\N	\N	\N	191	{/img/characters/show/FAGS_boys.png}	f
+677	Elvis Presley Hologram	\N	\N	\N	\N	\N	257	{/img/characters/show/Elvis_Presley_Hologram.png}	t
 713	Firkle Smith	\N	\N	\N	\N	\N	110	{/img/characters/show/Firkle.png}	f
 712	Fifi	\N	\N	\N	\N	\N	4	{/img/characters/show/Fifi.png}	f
 710	Ferrari	\N	\N	\N	10	\N	110	{/img/characters/show/Ferrari_Raisins.png}	f
@@ -1286,8 +1286,6 @@ COPY public.characters (id, name, friend_group, family, birthday, age, religion,
 735	French Canadian Mime	\N	\N	\N	\N	\N	111	{/img/characters/show/French_Canadian_Mime.png}	f
 734	Freja Ollegard	\N	\N	\N	\N	\N	269	{/img/characters/show/Freja_Ollegard.png}	f
 733	Frederick Johnson	\N	\N	\N	\N	\N	90	{/img/characters/show/Frederick_Johnson.png}	f
-732	Freddy Krueger	\N	\N	\N	\N	\N	164	{/img/characters/show/Freddy_Krueger.png}	f
-731	Fred Savage	\N	\N	July 9th	49	{Judaism}	22	{/img/characters/show/Fred_Savage.png}	f
 730	Franz	\N	\N	\N	\N	\N	174	{/img/characters/show/Franz.png}	f
 729	Frank Waters	\N	\N	\N	\N	\N	157	{/img/characters/show/Frank_Waters.png}	f
 727	Frank Hammond and Phil	\N	\N	\N	\N	\N	4	{/img/characters/show/Frank_Hammond_And_Phil.png}	f
@@ -1298,6 +1296,8 @@ COPY public.characters (id, name, friend_group, family, birthday, age, religion,
 738	Funnybot	\N	\N	\N	\N	\N	211	{/img/characters/show/Funnybot.png}	f
 737	Frog King	\N	\N	\N	\N	\N	93	{/img/characters/show/Frog_King.png}	f
 736	Frida	\N	\N	\N	\N	\N	23	{/img/characters/show/Frida.png}	f
+731	Fred Savage	\N	\N	July 9th	49	{Judaism}	22	{/img/characters/show/Fred_Savage.png}	t
+732	Freddy Krueger	\N	\N	\N	\N	\N	164	{/img/characters/show/Freddy_Krueger.png}	t
 \.
 
 
@@ -1700,9 +1700,7 @@ COPY public.families (id, name, images) FROM stdin;
 17	The Grays	{img/families/The_Grays.png}
 18	The Gueermos	{img/families/The_Gueermos.png}
 19	The Hankeys	{img/families/The_Hankeys.png}
-21	The Handlers	{img/families/No_Family_Placeholder.png}
 22	The Knitts	{img/families/The_Knitts.png}
-23	The McArthurs	{img/families/No_Family_Placeholder.png}
 24	The Malkinsons	{img/families/The_Malkinsons.png}
 25	The Mackeys	{img/families/The_Mackeys.png}
 26	The Larsens	{img/families/The_Larsens.png}
@@ -1732,7 +1730,6 @@ COPY public.families (id, name, images) FROM stdin;
 51	The Hagens	{img/families/The_Hagens.png}
 52	The Hitlers	{img/families/The_Hitlers.png}
 53	Alice's Family	{img/families/Alice_Family.png}
-54	The Varcas	{img/families/No_Family_Placeholder.png}
 55	The Obamas	{img/families/The_Obamas.png}
 56	The Simpsons	{img/families/The_Simpsons.png}
 57	The Thompsns	{img/families/The_Thompsns.png}
@@ -1752,8 +1749,11 @@ COPY public.families (id, name, images) FROM stdin;
 71	The Hollis	{img/families/The_Hollis.png}
 72	Japanese Imperial Family	{img/families/Japanese_Imperial_Family.png}
 42	The Thorns	{img/families/Satan_Family.png}
+21	The Handlers	{img/families/The_Handlers.png}
+23	The McArthurs	{img/families/The_McArthurs.png}
+54	The Varcas	{img/families/The_Varcas.png}
 58	The Clintons	{img/families/The_Clintons.png}
-73	The McDonalds	{img/families/No_Family_Placeholder.png}
+73	The McDonalds	{img/families/The_McDonalds.png}
 \.
 
 
@@ -1963,5 +1963,5 @@ ALTER TABLE ONLY public.alter_ego
 -- PostgreSQL database dump complete
 --
 
-\unrestrict XfT1g3VP5eNrYoStO0LrOgZ2Is4PJnUCawYP3vC8bY9isqdmY1Ick2cxMWMUufn
+\unrestrict nNCRJk6BRKt0pB13rIgjChbZPpWQWd56iPmvfASseS1yhZ94qStQGKUI1d0dfir
 
