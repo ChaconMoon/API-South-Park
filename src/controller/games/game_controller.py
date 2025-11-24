@@ -11,6 +11,34 @@ from src.controller.database_connection import get_query_result
 from src.model.game import Game
 
 
+def get_random_game(base_url="") -> dict:
+    """
+    Get a Random Game from the databse.
+
+    base_url (str): The base URL used to create the url in the response
+
+    Retruns:
+    A dict with the response.
+    """
+    query_result = get_query_result(
+        text(
+            """
+        SELECT * FROM public.games
+        ORDER BY RANDOM()
+        limit 1
+        """
+        ),
+    )
+    if query_result is None:
+        return {"error": "Database not available", "status": "failed"}
+    elif query_result.rowcount == 0:
+        return {"error": "Game not found", "status": "failed"}
+    for row in query_result:
+        game = Game(row, base_url)
+
+    return game.toJSON()
+
+
 def get_game_by_id(
     id: int,
     metadata: bool = False,

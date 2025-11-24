@@ -41,7 +41,7 @@ def get_alter_ego_by_character_and_id(
             {"id_character": id_character, "id_alter_ego": id_alter_ego},
         )
         if query_result is None:
-            return {"error": "Database not avalible", "status": "failed"}
+            return {"error": "Database not available", "status": "failed"}
         elif query_result.rowcount == 0:
             return {"error": "Alter Ego not found", "status": "failed"}
 
@@ -100,7 +100,7 @@ def get_all_alteregos_of_a_character(id_character: int, add_url=False, base_url=
 
         # If the number of alter egos is 0 return a empty object
         if query_result is None:
-            return {"error": "Database not avalible", "status": "failed"}
+            return {"error": "Database not available", "status": "failed"}
         elif query_result.rowcount == 0:
             return None
 
@@ -120,3 +120,39 @@ def get_all_alteregos_of_a_character(id_character: int, add_url=False, base_url=
     # Control exceptions
     except Exception:
         return {"message": "error"}
+
+
+def get_random_alterego(character: int = 0, base_url=""):
+    """
+    Get one random alter ego of the database.
+
+    Args:
+        character (int): If is not 0, limit the response to One Character
+        base_url (str): "The URL base of the API.
+
+    Returns:
+        The JSON Response
+
+    """
+    query_result = get_query_result(
+        text("""
+                SELECT *
+                FROM public.alter_ego
+                WHERE original_character = :character
+                OR NOT EXISTS (
+                    SELECT 1 FROM public.alter_ego WHERE original_character = :character
+                    )
+                ORDER BY RANDOM()
+                LIMIT 1;
+                """),
+        {"character": character},
+    )
+    if query_result is None:
+        return {"error": "Database not available", "status": "failed"}
+    elif query_result.rowcount == 0:
+        return {"error": "Alter Ego not found", "status": "failed"}
+
+    # Add all the family members to the array.
+    for row in query_result:
+        alterego = AlterEgo(row, base_url)
+    return alterego.toJSON()

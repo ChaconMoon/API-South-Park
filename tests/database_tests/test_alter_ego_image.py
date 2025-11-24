@@ -50,7 +50,7 @@ def test_if_image_exist_in_characters():
         f"{os.getenv('TESTING_SOUTH_PARK_API_URL')}/api/", timeout=10
     )
     if healh_check_request.status_code != 200:
-        raise requests.RequestException("API Not Avalible Error")
+        raise requests.RequestException("API Not Available Error")
     for character in list_characters_with_alteregos:
         logging.info(f"Actual Character: {character}")
         actual_character = requests.get(
@@ -66,5 +66,5 @@ def test_if_image_exist_in_characters():
                 if requests.get(image, timeout=10).status_code != 200:
                     raise requests.RequestException(
                         f"""Character: {character} Image: {alter_ego_number},
-                        URL: {image} NOT AVALIBLE """
+                        URL: {image} NOT AVAILABLE """
                     )

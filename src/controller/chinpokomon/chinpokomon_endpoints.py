@@ -8,9 +8,51 @@ in the South Park series.
 
 from fastapi import APIRouter, Request, Response, status
 
-from src.controller.chinpokomon.chinpokomon_controller import get_chinpokomon_by_id
+from src.controller.chinpokomon.chinpokomon_controller import (
+    get_chinpokomon_by_id,
+    get_random_chinpokomon,
+)
 
 router = APIRouter(tags=["Chinpokomon"])
+
+
+@router.get("/api/chinpokomons/random")
+def show_random_chinpokomon(request: Request, response: Response):
+    """
+    Get a random Chinpokomon from the database.
+
+    Args:
+        request (Request): FastAPI request object containing base URL
+        response (Response): FastAPI response object for status codes
+
+    Returns:
+        dict: JSON response containing either:
+            - Chinpokomon data if found
+            - Error message if not found or database error
+
+    Response Format:
+    Success:
+            {
+                "id": int,
+                "name": str,
+                "image": str
+            }
+
+    Error:
+            {
+                "error": str,
+                "status": "failed"
+            }
+
+    """
+    base_url = str(request.base_url)
+    json = get_random_chinpokomon(base_url)
+    if "error" in json:
+        if json["error"] == "Chinpokomon not found":
+            response.status_code = status.HTTP_404_NOT_FOUND
+        elif json["error"] == "Database not available":
+            response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
+    return json
 
 
 @router.get("/api/chinpokomons/{id}")
@@ -51,6 +93,6 @@ def show_chinpokomon(
     if "error" in json:
         if json["error"] == "Chinpokomon not found":
             response.status_code = status.HTTP_404_NOT_FOUND
-        elif json["error"] == "Database not avalible":
+        elif json["error"] == "Database not available":
             response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
     return json

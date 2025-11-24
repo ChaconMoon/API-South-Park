@@ -47,13 +47,13 @@ def test_specials_object_not_found():
             raise RequestException("Expected Not Found Response")
 
 
-def test_specials_database_not_avalible():
-    """Test A Not Avalible Response in Special Endpoint."""
-    fake_response = {"error": "Database not avalible", "status": "failed"}
+def test_specials_database_not_available():
+    """Test A Not Available Response in Special Endpoint."""
+    fake_response = {"error": "Database not available", "status": "failed"}
     with patch(
         "src.controller.tvshow.tv_show_endpoints.get_special_by_id"
     ) as database_response:
         database_response.return_value = fake_response
         response = client.get("/api/specials/1")
         if response.status_code != 500:
-            raise RequestException("Expected Not Avalible Response")
+            raise RequestException("Expected Not Available Response")

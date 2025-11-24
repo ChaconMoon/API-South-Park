@@ -11,16 +11,59 @@ from fastapi import APIRouter, Request, Response, status
 from src.controller.characters.alter_ego_controller import (
     get_all_alteregos_of_a_character,
     get_alter_ego_by_character_and_id,
+    get_random_alterego,
 )
 from src.controller.characters.characters_controller import (
     get_all_characters_with_alterego,
     get_character_by_id,
     get_characters_by_search,
+    get_random_character,
 )
-from src.controller.characters.family_controller import get_family_by_id
+from src.controller.characters.family_controller import (
+    get_family_by_id,
+    get_random_family,
+)
 from src.controller.date_controller import get_today_birthday_character
 
 router = APIRouter(tags=["Characters"])
+
+
+# Create the Endpoint that returns a random character
+@router.get("/api/characters/random")
+def show_random_character(
+    request: Request,
+    response: Response,
+    exclude_famous_guests: bool = False,
+):
+    """
+    Get a random character's information.
+
+    Args:
+        request (Request): FastAPI request object
+        response (Response): FastAPI response object
+        exclude_famous_guests: If true excludes the famous guests from the random search
+
+    Returns:
+        dict: JSON response with character data or error
+
+    Response Codes:
+        200: Character found
+        404: Character not found
+        500: Database error
+
+    """
+    json = get_random_character(
+        exclude_famous_guests=exclude_famous_guests, base_url=str(request.base_url)
+    )
+    if "error" in json:
+        if json["error"] == "Character not found":
+            response.status_code = status.HTTP_404_NOT_FOUND
+        elif json["error"] == "Database not available":
+            response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
+    else:
+        response.status_code = status.HTTP_200_OK
+
+    return json
 
 
 # Create the endpoint to get one alter ego of a character.
@@ -55,7 +98,7 @@ def show_alterergo(
     if "error" in json:
         if json["error"] == "Alter Ego not found":
             response.status_code = status.HTTP_404_NOT_FOUND
-        elif json["error"] == "Database not avalible":
+        elif json["error"] == "Database not available":
             response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
         elif "alterego" in json:
             response.status_code = status.HTTP_200_OK
@@ -89,7 +132,7 @@ def show_all_alteregos(id: int, request: Request, response: Response) -> dict:
     if "error" in json:
         if json["error"] == "Alter Egos not found":
             response.status_code = status.HTTP_404_NOT_FOUND
-        elif json["error"] == "Database not avalible":
+        elif json["error"] == "Database not available":
             response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
         elif "alteregos" in json:
             response.status_code = status.HTTP_200_OK
@@ -131,10 +174,68 @@ def search_character(
     if "error" in json:
         if json["error"] == "Character not found":
             response.status_code = status.HTTP_404_NOT_FOUND
-        elif json["error"] == "Database not avalible":
+        elif json["error"] == "Database not available":
             response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
     else:
         response.status_code = status.HTTP_200_OK
+    return json
+
+
+@router.get("/api/families/random")
+def show_random_family(response: Response, request: Request):
+    """
+    Get a random family's information.
+
+    Args:
+        request (Request): FastAPI request object
+        response (Response): FastAPI response object
+    Returns:
+        dict: JSON response with family data or error
+
+    Response Codes:
+        200: Family found
+        404: Family not found
+        500: Database error
+
+    """
+    json = get_random_family(base_url=str(request.base_url))
+    if "error" in json:
+        if json["error"] == "Family not found":
+            response.status_code = status.HTTP_404_NOT_FOUND
+        elif json["error"] == "Database not available":
+            response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
+        else:
+            response.status_code = status.HTTP_200_OK
+    return json
+
+
+@router.get("/api/alteregos/random")
+def show_random_alterego(request: Request, response: Response, character: int = 0):
+    """
+    Get a specific alter ego of a character.
+
+    Args:
+        character (int): If is not 0, return limits the search to one character
+        request (Request): FastAPI request object
+        response (Response): FastAPI response object
+        dict: JSON response with alter ego data or error
+
+
+    Response Codes:
+        200: Alter ego found
+        404: Alter ego not found
+        500: Database error
+
+    """
+    base_url = str(request.base_url)
+    json = get_random_alterego(character, base_url)
+    if "error" in json:
+        if json["error"] == "Alter Ego not found":
+            response.status_code = status.HTTP_404_NOT_FOUND
+        elif json["error"] == "Database not available":
+            response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
+        else:
+            response.status_code = status.HTTP_200_OK
     return json
 
 
@@ -166,7 +267,7 @@ def show_family(
     if "error" in json:
         if json["error"] == "Family not found":
             response.status_code = status.HTTP_404_NOT_FOUND
-        elif json["error"] == "Database not avalible":
+        elif json["error"] == "Database not available":
             response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
         elif "family" in json:
             response.status_code = status.HTTP_200_OK
@@ -201,7 +302,7 @@ async def show_character(
     if "error" in json:
         if json["error"] == "Character not found":
             response.status_code = status.HTTP_404_NOT_FOUND
-        elif json["error"] == "Database not avalible":
+        elif json["error"] == "Database not available":
             response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
     else:
         response.status_code = status.HTTP_200_OK
@@ -228,7 +329,7 @@ def get_characters_with_birthday_today(request: Request, response: Response) -> 
     """
     json = get_today_birthday_character(base_url=str(request.base_url))
     if "error" in json:
-        if json["error"] == "Database not avalible":
+        if json["error"] == "Database not available":
             response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
     elif "message" in json:
         if json["message"] == "No one has their birthday today":
@@ -253,14 +354,14 @@ def get_characters_on_alterego_table(request: Request, response: Response) -> di
     Response Codes:
         200: Character found
         404: Empty alterego database found
-        500: Database not avalible error
+        500: Database not available error
 
     """
     json = get_all_characters_with_alterego(base_url=str(request.base_url))
     if "error" in json:
         if json["error"] == "Query error. No Alteregos in database":
             response.status_code = status.HTTP_404_NOT_FOUND
-        elif json["error"] == "Database not avalible":
+        elif json["error"] == "Database not available":
             response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
     else:
         response.status_code = status.HTTP_200_OK

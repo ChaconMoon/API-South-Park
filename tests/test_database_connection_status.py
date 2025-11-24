@@ -39,4 +39,4 @@ def test_database_connection_error():
         database_status.return_value = fake_response
         response = client.get("/api")
         if response.status_code != 500:
-            raise RequestException("Expected Not Avalible Response")
+            raise RequestException("Expected Not Available Response")

@@ -77,7 +77,7 @@ def get_song_by_id(id: int, add_url=False, base_url="", metadata=False):
         )
         # If the is a error in the query returns the error
         if query_result is None:
-            return {"error": "Database not avalible", "status": "failed"}
+            return {"error": "Database not available", "status": "failed"}
         elif query_result.rowcount == 0:
             return {"error": "Song not found", "status": "failed"}
 
@@ -91,3 +91,41 @@ def get_song_by_id(id: int, add_url=False, base_url="", metadata=False):
     # Control exceptions
     except Exception as e:
         return {"error": str(e), "status": "failed"}
+
+
+def get_random_song(exclude_not_available: bool = False, base_url="") -> dict:
+    """
+    Get a specific random song from south park's albums.
+
+    Args:
+        base_url (str): The URL used to create the URL from the response.
+        exclude_not_available (boolean): If True excludes the not available songs.
+
+    Returns:
+        dict: JSON response containing either:
+            - Song data if found
+            - Error message if not found or database error
+
+    """
+    try:
+        query_result = get_query_result(
+            text("""
+            SELECT * FROM public.album_songs
+            WHERE (not :exclude_not_available OR song_url != '[NOT AVAILABLE IN STREAMING SERVICES]')
+            ORDER BY RANDOM()
+            Limit 1
+            """),  # noqa: E501
+            {"exclude_not_available": exclude_not_available},
+        )
+        # If the is a error in the query returns the error
+        if query_result is None:
+            return {"error": "Database not available", "status": "failed"}
+        elif query_result.rowcount == 0:
+            return {"error": "Song not found", "status": "failed"}
+
+        for row in query_result:
+            song = Song(row, base_url)
+    # Control exceptions
+    except Exception as e:
+        return {"error": str(e), "status": "failed"}
+    return song.toJSON()

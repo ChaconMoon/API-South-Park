@@ -191,7 +191,7 @@ def get_all_characters_with_alterego(base_url: str = ""):
 
         # If the number of alter egos is 0 return a empty object
         if query_result is None:
-            return {"error": "Database not avalible", "status": "failed"}
+            return {"error": "Database not available", "status": "failed"}
         elif query_result.rowcount == 0:
             return {"error": "Query error. No Alteregos in database", "status": "failed"}
         result = dict()
@@ -205,3 +205,34 @@ def get_all_characters_with_alterego(base_url: str = ""):
     except Exception as e:
         logging.error(e)
         return {"message": "error"}
+
+
+def get_random_character(exclude_famous_guests: bool = False, base_url: str = "") -> dict:
+    """
+    Get a random character's information.
+
+    Args:
+        exclude_famous_guests (bool): If True excludes the famous guest from the search.
+        base_url (str): the base url used to create the URL from the API.
+
+    Returns:
+        dict: JSON response with character data or error
+
+    """
+    query_result = get_query_result(
+        text("""
+                    SELECT * FROM public.characters
+                    WHERE (not :exclude_famous_guests OR famous_guest = false)
+                    ORDER BY RANDOM()
+                    Limit 1
+            """),
+        {"exclude_famous_guests": exclude_famous_guests},
+    )
+
+    if query_result is None:
+        return {"error": "Database not available", "status": "failed"}
+    elif query_result.rowcount == 0:
+        return {"error": "Character not found", "status": "failed"}
+    for row in query_result:
+        character = Character(row, base_url)
+    return character.toJSON()
