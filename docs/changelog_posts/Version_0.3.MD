@@ -1,4 +1,4 @@
-# Update 0.3 (F Update) {.blog_entry_title}
+# Update 0.3 (The Force of chance) {.blog_entry_title}
 
 Changes in Version 0.3
 {.blog_intro}
@@ -77,9 +77,28 @@ All the characters from the TV show whose names start with F [ID 697](/api/chara
 - [The Clintons](/api/families/58): The image now shows Hillary and Bill Clinton.  
   *Note: Hillary Clinton is not in the database yet.*
 
-*Note: All placeholder images in the family table will be fixed in a future update. I need to find a photo of the family in the show, and in some cases, this is very difficult.*
+- [The Handlers](/api/families/21): The image has been added.
+*Note: This image has a low resolution, is the best image that I found.*
 
-### Typographical Errors fixed:
+- [The McArthurs](/api/families/23): The image has been added.
+
+- [The McDonalds](/api/families/54): The Image has been added.
+
+### Change in character classification criteria {.blog_subtitle}
+
+Previously, it wasn’t very clear which characters should be considered famous guests and which should not. I’ve finally unified the criteria, and this will be the definitive rule: **any real person or real entity, any copyrighted fictional character, or any religious figure will be classified as a famous guest**, except for those who, in the series, have meaningful character development or a long-standing presence. Some examples follow:
+
+→ Jesus, [Satan](/api/characters/193), Santa Claus, Moses, and God will **not** be considered famous guests because they have their own personalities and character development within the series, and God’s design is original to South Park.
+
+→ Characters like [Buddha](/api/characters/406) and the remaining members of the “Super Best Friends” who were not mentioned in the first point **are considered famous guests**, as they do not have character development in the show.
+
+→ The holograms of Michael Jackson, [Elvis Presley (Hologram)](/api/characters/677), and the Tupac hologram will be considered famous guests because they are based on real holograms.
+
+→ Any character seen in [Imaginationland](/api/episodes/163) will be considered a famous guest, except for those listed in the first point.
+
+→ Characters based on internet memes are considered famous guests.
+
+### Typographical Errors fixed: {.blog_subtitle}
 
 - censured has been corrected to censored.
 - avalible has been corrected to available.
