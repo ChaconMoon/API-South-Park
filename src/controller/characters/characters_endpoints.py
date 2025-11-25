@@ -23,9 +23,27 @@ from src.controller.characters.family_controller import (
     get_family_by_id,
     get_random_family,
 )
+from src.controller.characters.groups_controller import get_group_by_id
 from src.controller.date_controller import get_today_birthday_character
 
 router = APIRouter(tags=["Characters"])
+
+
+@router.get("/api/group/{id}")
+def show_group(request: Request, response: Response, id):
+    """
+    Get a group from the database.
+
+    Args:
+        request (Request): FastAPI request object
+        response (Response): FastAPI response object
+        id (int): id of the group
+
+    Returns:
+        dict: Json response with the group data.
+
+    """
+    return get_group_by_id(id, str(request.base_url))
 
 
 # Create the Endpoint that returns a random character
