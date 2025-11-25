@@ -102,19 +102,19 @@ class Character(BaseModel, ApiObject):
             data = {
                 "id": int(row[0]) if row[0] is not None else 0,
                 "name": str(row[1]) if row[1] is not None else "",
-                "friend_group": int(row[2]) if row[2] is not None else None,
-                "family": int(row[3]) if row[3] is not None else None,
-                "birthday": str(row[4]) if row[4] is not None else None,
-                "age": int(row[5]) if row[5] is not None else None,
-                "religion": parse_array_to_list(row[6]),
+                # "friend_group": int(row[2]) if row[2] is not None else None,
+                "family": int(row[2]) if row[2] is not None else None,
+                "birthday": str(row[3]) if row[3] is not None else None,
+                "age": int(row[4]) if row[4] is not None else None,
+                "religion": parse_array_to_list(row[5]),
                 "first_apperance": get_episode_by_id(
-                    int(row[7]), add_url=True, base_url=base_url
+                    int(row[6]), add_url=True, base_url=base_url
                 ),
-                "images": parse_array_to_list(row[8], is_url=True, base_url=base_url),
+                "images": parse_array_to_list(row[7], is_url=True, base_url=base_url),
                 "alter_egos": get_all_alteregos_of_a_character(
                     int(row[0]), add_url=True, base_url=base_url
                 ),
-                "famous_guest": bool(row[9]) if row[9] is not None else False,
+                "famous_guest": bool(row[8]) if row[8] is not None else False,
             }
             return super().__init__(**data)
         except ValidationError as e:
