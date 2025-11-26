@@ -70,7 +70,7 @@ def show_group(request: Request, response: Response, id, metadata=False):
         dict: Json response with the group data.
 
     """
-    json = get_group_by_id(id, str(request.base_url))
+    json = get_group_by_id(id, str(request.base_url), metadata)
 
     if "error" in json:
         if json["error"] == "Group not found":
