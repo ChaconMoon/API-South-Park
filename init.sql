@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict 3oXex7depVB8rfgstXxxvJiEoGo2EIrCOsvaelhBnvFl13oImTigUCdbpd8PlrX
+\restrict H1vvb2O6MB2nXX6Tht2SWv8fgTzqB1mqZU9YqpngiDK2Jshe8Tw92WHtgoctiph
 
 -- Dumped from database version 15.15 (Debian 15.15-1.pgdg13+1)
 -- Dumped by pg_dump version 15.15 (Debian 15.15-1.pgdg13+1)
@@ -2145,102 +2145,102 @@ COPY public.games (id, name, developer, platforms, realese_date, images) FROM st
 --
 
 COPY public.groups ("ID", name, image) FROM stdin;
-1	The Boys	/img/groups/The_Boys.png
-2	Craig's Gang	/img/groups/Craig_Gang.png
-10	Purity Ring Kids	/img/groups/Purity_Ring_Kids.png
-9	Goth Kids	/img/groups/Goth_Kids.png
-8	Glee Club Kids	/img/groups/Glee_Club_kinds.png
-7	Federation Kids	/img/groups/Federation_Kids.png
-6	Emo Kids	/img/groups/Emo_Kids.png
-5	Cartman's New Bros	/img/groups/Cartman_New_Bros.png
-4	Blue Team	/img/groups/Blue_Team.png
-3	Asian Girls	/img/groups/Asian_Girls.png
-20	Cred Affinity Group	/img/groups/Cred_Affinity_Group.png
-19	Crack Baby Athletic Association (CBAA)	/img/groups/CBAAGroup.png
-18	Vampire Kids	/img/groups/Vampire_Kids.png
-17	The Ugly Kids	/img/groups/The_Ugly_Kids.png
-16	The Melvins	/img/groups/Melvins.png
-15	The Evil Boys	/img/groups/The_Evil_Boys.png
-14	The Afghan Boys	/img/groups/Afghan_Boys.png
-13	Street Skater Boys	/img/groups/Skater_boys.png
-12	Special Ed Kids	/img/groups/Special_Ed_Kids.png
-11	Red Team	/img/groups/Red_Team.png
-30	Raisins Girls	/img/groups/Raisins_Girls.png
-29	Pleases and Sparkles Club	/img/groups/Pleases_Sparkles_Club.png
-28	Pirate Club	/img/groups/Pirate_Club.png
-27	Lil' Qties	/img/groups/Lil_Qties.png
-26	La Resistance	/img/groups/La_Resistance.png
-25	Kommunity Kidz	/img/groups/Kommunity_Kidz.png
-24	Jew Scouts	/img/groups/Jew_Scouts.png
-23	Ginger Separatist Movement	/img/groups/Ginger_Kids.png
-22	FBI Kids	/img/groups/FBI_Kids.png
-21	Distracted Driving Awareness	/img/groups/Distracted_Driving_Awareness.png
-41	Teenagers	/img/groups/Teens.png
-40	Jim Davis High School Students	/img/groups/High_Schhol_Students.png
-39	Airsoft Teenagers	/img/groups/Airsoft_Teenagers.png
-38	Wrestling Takedown Federation	/img/groups/World_Takedown_Federation.png
-37	Wieners Out	/img/groups/Weiners_Out.png
-36	Washington Redskins	/img/groups/Washington_Redskins.png
-35	Tourette's Tolerance and Understanding Foundation	/img/groups/Tourettes_Kids.png
-34	Super Awesome Talent Agency	/img/groups/Super_Awesome_Talent_Agency.png
-33	South Park Crime Unit	/img/groups/SouthPark_Junior_Detectives.png
-32	South Park Compounding Pharmacy	/img/groups/SouthPark_Compounding_Pharmacy.png
-31	SoDoSoPa Ninjas	/img/groups/Ninjas_Sodosopa.png
-47	Porta-Potty Girls	/img/groups/Porto_Potty_Girls.png
-46	Immigrant Kids	/img/groups/Immigrant_Kids.png
-45	Hopeful Hills Campers	/img/groups/Fat_Camp_Kids.png
-44	Child Labor Force	/img/groups/Child_Labor.png
-43	Tween Wave Fans	/img/groups/Tween_Wave_Fans.png
-42	The 9th Graders	/img/groups/9th_grade_boys.png
-48	Therapy Kids	/img/groups/Therapy_Kids.png
-58	Hare Club for Men	/img/groups/Hare_Club_For_Men.png
-57	Yelpers	/img/groups/Yelpers.png
-56	Women With Fake Titties	/img/groups/Women_With_Fake_Titties.png
-55	Sam, David, and Chris	/img/groups/Sam_David_Chris.png
-54	Randy's Friends	/img/groups/Randy's_Friends.png
-53	Mr. Garrison Senior's Drinking Buddies	/img/groups/Mr._Garrison_Senior's_Drinking_Buddies.png
-52	Internet Refugees	/img/groups/Internet_Refugees.png
-51	Homeless People	/img/groups/Homeless_People.png
-50	City People	/img/groups/City_People.png
-49	Chinese Clubbers	/img/groups/Chinese_Clubbers.png
-60	PC Bros	/img/groups/FC_Bros.png
-59	North American Marlon Brando Look-Alikes	/img/groups/Marlon_Brando_Look_Alikes.png
-70	Rob Reiner's Smoke Stoppers	/img/groups/Smoke_Stoppers.png
-69	QAnon	/img/groups/QAnon.png
-68	People for the Ethical Treatment of Animals	/img/groups/PETA.png
-67	Mothers Against Canada	/img/groups/Moms_Against_Canada.png
-66	Millennials Against Canada	/img/groups/Millenials_Against_Canada.png
-65	Hippies	/img/groups/Hippies.png
-64	Earth Day Committee	/img/groups/Earth_Day_Committee.png
-63	Belarusian Farmers	/img/groups/Farmers_Of_Belarus.png
-62	Animal Liberation Front	/img/groups/ALF_Members.png
-61	American Association of Retired Persons	/img/groups/Aarp.png
-72	Tutornon	/img/groups/Tutornon.png
-71	True Freaks Union	/img/groups/True_Freaks_Union.png
-83	Yo Gabba Gabba!	/img/groups/Yo_Gabba_Gabba.png
-82	Katherine and Katie Queef	/img/groups/Queef_Sisters.png
-81	Terrance and Phillip	/img/groups/Terrance_And_Philip.png
-80	Dawg's Crew	/img/groups/Dawg's_Crew.png
-79	America's Most Wanted Actors	/img/groups/America's_Most_Wanted.png
-78	The Llama Brothers	/img/groups/The_Llama_Brothers.png
-77	Moop	/img/groups/Moop.png
-76	Fingerbang	/img/groups/Fingerbang.png
-75	Faith + 1	/img/groups/Faith_plus_1.png
-74	Crimson Dawn	/img/groups/Crimson_Dawn.png
-73	Barbershop Quartet	/img/groups/Barbershop_Quartet.png
-93	South Park Soccer Team	/img/groups/Cows_Soccer.png
-92	South Park Sarcastaball Team	/img/groups/Cows_Sarcastaball.png
-91	South Park Little League Baseball Team	/img/groups/South_Park_Baseball_Team.png
-90	South Park Junior Wrestling Team	/img/groups/South_Park_Wrestling.png
-89	South Park Football Team	/img/groups/Cows_Football.png
-88	South Park Girls' Volleyball Team	/img/groups/Cows_Volleyball.png
-87	South Park Dodgeball Team	/img/groups/Cows_Dodgeball.png
-86	South Park Cheerleading Squad	/img/groups/Cows_Cheerleading.png
-85	South Park Basketball Team	/img/groups/Cows_Basketball.png
-84	Park County Pee-Wee Hockey Team	/img/groups/Pee_Wee_Hocky_Team.png
-94	City Council	/img/groups/City_Council.png
-95	The Council of Nine	/img/groups/The_Council_Of_Nine.png
-96	Woodland Critters	/img/groups/Woodland_Critters.png
+1	The Boys	img/groups/The_Boys.png
+2	Craig's Gang	img/groups/Craig_Gang.png
+3	Asian Girls	img/groups/Asian_Girls.png
+4	Blue Team	img/groups/Blue_Team.png
+5	Cartman's New Bros	img/groups/Cartman_New_Bros.png
+6	Emo Kids	img/groups/Emo_Kids.png
+7	Federation Kids	img/groups/Federation_Kids.png
+8	Glee Club Kids	img/groups/Glee_Club_kinds.png
+9	Goth Kids	img/groups/Goth_Kids.png
+10	Purity Ring Kids	img/groups/Purity_Ring_Kids.png
+11	Red Team	img/groups/Red_Team.png
+12	Special Ed Kids	img/groups/Special_Ed_Kids.png
+13	Street Skater Boys	img/groups/Skater_boys.png
+14	The Afghan Boys	img/groups/Afghan_Boys.png
+15	The Evil Boys	img/groups/The_Evil_Boys.png
+16	The Melvins	img/groups/Melvins.png
+17	The Ugly Kids	img/groups/The_Ugly_Kids.png
+18	Vampire Kids	img/groups/Vampire_Kids.png
+19	Crack Baby Athletic Association (CBAA)	img/groups/CBAAGroup.png
+20	Cred Affinity Group	img/groups/Cred_Affinity_Group.png
+21	Distracted Driving Awareness	img/groups/Distracted_Driving_Awareness.png
+22	FBI Kids	img/groups/FBI_Kids.png
+23	Ginger Separatist Movement	img/groups/Ginger_Kids.png
+24	Jew Scouts	img/groups/Jew_Scouts.png
+25	Kommunity Kidz	img/groups/Kommunity_Kidz.png
+26	La Resistance	img/groups/La_Resistance.png
+27	Lil' Qties	img/groups/Lil_Qties.png
+28	Pirate Club	img/groups/Pirate_Club.png
+29	Pleases and Sparkles Club	img/groups/Pleases_Sparkles_Club.png
+30	Raisins Girls	img/groups/Raisins_Girls.png
+31	SoDoSoPa Ninjas	img/groups/Ninjas_Sodosopa.png
+32	South Park Compounding Pharmacy	img/groups/SouthPark_Compounding_Pharmacy.png
+33	South Park Crime Unit	img/groups/SouthPark_Junior_Detectives.png
+34	Super Awesome Talent Agency	img/groups/Super_Awesome_Talent_Agency.png
+35	Tourette's Tolerance and Understanding Foundation	img/groups/Tourettes_Kids.png
+36	Washington Redskins	img/groups/Washington_Redskins.png
+37	Wieners Out	img/groups/Weiners_Out.png
+38	Wrestling Takedown Federation	img/groups/World_Takedown_Federation.png
+39	Airsoft Teenagers	img/groups/Airsoft_Teenagers.png
+40	Jim Davis High School Students	img/groups/High_Schhol_Students.png
+41	Teenagers	img/groups/Teens.png
+42	The 9th Graders	img/groups/9th_grade_boys.png
+43	Tween Wave Fans	img/groups/Tween_Wave_Fans.png
+44	Child Labor Force	img/groups/Child_Labor.png
+45	Hopeful Hills Campers	img/groups/Fat_Camp_Kids.png
+46	Immigrant Kids	img/groups/Immigrant_Kids.png
+47	Porta-Potty Girls	img/groups/Porto_Potty_Girls.png
+48	Therapy Kids	img/groups/Therapy_Kids.png
+49	Chinese Clubbers	img/groups/Chinese_Clubbers.png
+50	City People	img/groups/City_People.png
+51	Homeless People	img/groups/Homeless_People.png
+52	Internet Refugees	img/groups/Internet_Refugees.png
+53	Mr. Garrison Senior's Drinking Buddies	img/groups/Mr._Garrison_Senior's_Drinking_Buddies.png
+54	Randy's Friends	img/groups/Randy's_Friends.png
+55	Sam, David, and Chris	img/groups/Sam_David_Chris.png
+56	Women With Fake Titties	img/groups/Women_With_Fake_Titties.png
+57	Yelpers	img/groups/Yelpers.png
+58	Hare Club for Men	img/groups/Hare_Club_For_Men.png
+59	North American Marlon Brando Look-Alikes	img/groups/Marlon_Brando_Look_Alikes.png
+60	PC Bros	img/groups/FC_Bros.png
+61	American Association of Retired Persons	img/groups/Aarp.png
+62	Animal Liberation Front	img/groups/ALF_Members.png
+63	Belarusian Farmers	img/groups/Farmers_Of_Belarus.png
+64	Earth Day Committee	img/groups/Earth_Day_Committee.png
+65	Hippies	img/groups/Hippies.png
+66	Millennials Against Canada	img/groups/Millenials_Against_Canada.png
+67	Mothers Against Canada	img/groups/Moms_Against_Canada.png
+68	People for the Ethical Treatment of Animals	img/groups/PETA.png
+69	QAnon	img/groups/QAnon.png
+70	Rob Reiner's Smoke Stoppers	img/groups/Smoke_Stoppers.png
+71	True Freaks Union	img/groups/True_Freaks_Union.png
+72	Tutornon	img/groups/Tutornon.png
+73	Barbershop Quartet	img/groups/Barbershop_Quartet.png
+74	Crimson Dawn	img/groups/Crimson_Dawn.png
+75	Faith + 1	img/groups/Faith_plus_1.png
+76	Fingerbang	img/groups/Fingerbang.png
+77	Moop	img/groups/Moop.png
+78	The Llama Brothers	img/groups/The_Llama_Brothers.png
+79	America's Most Wanted Actors	img/groups/America's_Most_Wanted.png
+80	Dawg's Crew	img/groups/Dawg's_Crew.png
+81	Terrance and Phillip	img/groups/Terrance_And_Philip.png
+82	Katherine and Katie Queef	img/groups/Queef_Sisters.png
+83	Yo Gabba Gabba!	img/groups/Yo_Gabba_Gabba.png
+84	Park County Pee-Wee Hockey Team	img/groups/Pee_Wee_Hocky_Team.png
+85	South Park Basketball Team	img/groups/Cows_Basketball.png
+86	South Park Cheerleading Squad	img/groups/Cows_Cheerleading.png
+87	South Park Dodgeball Team	img/groups/Cows_Dodgeball.png
+88	South Park Girls' Volleyball Team	img/groups/Cows_Volleyball.png
+89	South Park Football Team	img/groups/Cows_Football.png
+90	South Park Junior Wrestling Team	img/groups/South_Park_Wrestling.png
+91	South Park Little League Baseball Team	img/groups/South_Park_Baseball_Team.png
+92	South Park Sarcastaball Team	img/groups/Cows_Sarcastaball.png
+93	South Park Soccer Team	img/groups/Cows_Soccer.png
+94	City Council	img/groups/City_Council.png
+95	The Council of Nine	img/groups/The_Council_Of_Nine.png
+96	Woodland Critters	img/groups/Woodland_Critters.png
 \.
 
 
@@ -2441,5 +2441,5 @@ ALTER TABLE ONLY public.alter_ego
 -- PostgreSQL database dump complete
 --
 
-\unrestrict 3oXex7depVB8rfgstXxxvJiEoGo2EIrCOsvaelhBnvFl13oImTigUCdbpd8PlrX
+\unrestrict H1vvb2O6MB2nXX6Tht2SWv8fgTzqB1mqZU9YqpngiDK2Jshe8Tw92WHtgoctiph
 
