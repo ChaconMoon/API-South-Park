@@ -45,7 +45,7 @@ def get_episode_by_id(
             text("SELECT * FROM public.episodes where id=:id"), {"id": id}
         )
         if query_result is None:
-            return {"error": "Database not avalible", "status": "failed"}
+            return {"error": "Database not available", "status": "failed"}
         elif query_result.rowcount == 0:
             return {"error": "Episode not found", "status": "failed"}
 
@@ -90,7 +90,7 @@ def get_last_episode() -> dict:
 
 
 def get_random_episode(
-    paramount_plus_exclusive: bool = False, censured: bool = False, base_url=""
+    paramount_plus_exclusive: bool = False, censored: bool = False, base_url=""
 ):
     """
     Get a random episode.
@@ -99,7 +99,7 @@ def get_random_episode(
         response (Response): FastAPI response object for status codes.
         request (Request): FastAPI request object containing base URL.
         paramount_plus_exclusive (Boolean): If True excludes the Paramount+ episodes.
-        censured (Boolean): If True excludes the Censured episodes.
+        censored (Boolean): If True excludes the censored episodes.
         base_url (str): The base URL for API endpoints
 
     Returns:
@@ -118,11 +118,11 @@ def get_random_episode(
         text("""
             SELECT *
             FROM public.episodes
-            WHERE (not :censured OR censured = false)
+            WHERE (not :censored OR censored = false)
             AND (not :paramount_plus OR paramount_plus_exclusive = false)
             ORDER BY RANDOM()
             LIMIT 1;"""),
-        {"censured": censured, "paramount_plus": paramount_plus_exclusive},
+        {"censored": censored, "paramount_plus": paramount_plus_exclusive},
     )
 
     for row in query_result:

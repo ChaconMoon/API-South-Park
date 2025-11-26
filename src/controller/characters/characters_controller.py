@@ -191,7 +191,7 @@ def get_all_characters_with_alterego(base_url: str = ""):
 
         # If the number of alter egos is 0 return a empty object
         if query_result is None:
-            return {"error": "Database not avalible", "status": "failed"}
+            return {"error": "Database not available", "status": "failed"}
         elif query_result.rowcount == 0:
             return {"error": "Query error. No Alteregos in database", "status": "failed"}
         result = dict()

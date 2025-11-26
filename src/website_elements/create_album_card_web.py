@@ -31,7 +31,7 @@ def create_album_web_card_to_website(base_url: str, album_id: int) -> str:
 
     html_button = (
         """
-        <div class="album_not_avalible_button">
+        <div class="album_not_available_button">
         Not Available
         </div>
         """

@@ -32,7 +32,7 @@ class EasterEggType(Enum):
 
 class EasterEggName(Enum):
     """
-    Enumeration of the avalible easteregg with their ID.
+    Enumeration of the available easteregg with their ID.
 
     Values:
         IHAVEDIABETES (0): Returns the two kids of the school that have diabetes:

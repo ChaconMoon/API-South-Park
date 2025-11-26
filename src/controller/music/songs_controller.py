@@ -42,11 +42,7 @@ def get_all_songs_of_a_album(id: int, base_url="", add_url=False) -> dict:
         for row in query_result:
             song = Song(row, base_url)
             if add_url:
-                result[song_number] = dict()
-                result[song_number]["name"] = song.model_dump()["name"]
-                result[song_number]["url"] = (
-                    f"{base_url}api/songs/{song.model_dump()['id']}"
-                )
+                result[song_number] = song.toJSON(compacted=True, base_url=base_url)
             song_number += 1
         return result
     except Exception as e:
@@ -77,7 +73,7 @@ def get_song_by_id(id: int, add_url=False, base_url="", metadata=False):
         )
         # If the is a error in the query returns the error
         if query_result is None:
-            return {"error": "Database not avalible", "status": "failed"}
+            return {"error": "Database not available", "status": "failed"}
         elif query_result.rowcount == 0:
             return {"error": "Song not found", "status": "failed"}
 
@@ -99,7 +95,7 @@ def get_random_song(exclude_not_available: bool = False, base_url="") -> dict:
 
     Args:
         base_url (str): The URL used to create the URL from the response.
-        exclude_not_available (boolean): If True excludes the not avalible songs.
+        exclude_not_available (boolean): If True excludes the not available songs.
 
     Returns:
         dict: JSON response containing either:
@@ -119,7 +115,7 @@ def get_random_song(exclude_not_available: bool = False, base_url="") -> dict:
         )
         # If the is a error in the query returns the error
         if query_result is None:
-            return {"error": "Database not avalible", "status": "failed"}
+            return {"error": "Database not available", "status": "failed"}
         elif query_result.rowcount == 0:
             return {"error": "Song not found", "status": "failed"}
 

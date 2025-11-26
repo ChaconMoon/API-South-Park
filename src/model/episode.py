@@ -84,7 +84,7 @@ class Episode(BaseModel, ApiObject):
             "episode_in_website": {
                 "status": "EXCLUSIVE ON PARAMOUNT PLUS"
                 if bool(row[8])
-                else "AVALIBLE ON WEBSITE"
+                else "AVAILABLE ON WEBSITE"
                 if bool(row[7]) is not True
                 else "CENSORED",
                 "website_url": str(row[6]) if row[6] is not None else "",

@@ -33,12 +33,13 @@ def get_special_by_id(id: int, add_url=False, base_url="", metadata=False):
             text("""
                 SELECT id,title,release_date,description,link,poster FROM public.specials
                 where id = :id
-                """)
+                """),
+            {"id": id},
         )
 
         # If the is a error in the query returns the error
         if query_result is None:
-            return {"error": "Database not avalible", "status": "failed"}
+            return {"error": "Database not available", "status": "failed"}
         if query_result.rowcount == 0:
             return {"error": "Special not found", "status": "failed"}
 
@@ -84,7 +85,7 @@ def get_random_special(base_url=""):
         )
         # If the is a error in the query returns the error
         if query_result is None:
-            return {"error": "Database not avalible", "status": "failed"}
+            return {"error": "Database not available", "status": "failed"}
         if query_result.rowcount == 0:
             return {"error": "Special not found", "status": "failed"}
         for row in query_result:

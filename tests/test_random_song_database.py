@@ -46,9 +46,9 @@ def test_random_song_object_not_found():
             raise ValueError("Expected Not Found Response")
 
 
-def test_random_song_database_not_avalible():
-    """Test a not avalible Response in Random Episode Endpoint."""
-    fake_response = {"error": "Database not avalible", "status": "failed"}
+def test_random_song_database_not_available():
+    """Test a not available Response in Random Episode Endpoint."""
+    fake_response = {"error": "Database not available", "status": "failed"}
     with patch(
         "src.controller.music.music_endpoints.get_random_song"
     ) as database_response:

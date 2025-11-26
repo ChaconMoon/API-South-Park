@@ -19,7 +19,7 @@ def get_random_album(base_url="", exclude_not_available: bool = False):
 
     Params:
         base_url (str): The url used to create the URL API.
-        exclude_not_available (bool): If true excludes the not avalible albums.
+        exclude_not_available (bool): If true excludes the not available albums.
 
     Returns:
         A dict with the response or a dict with the error.
@@ -38,7 +38,7 @@ def get_random_album(base_url="", exclude_not_available: bool = False):
 
         # If the is a error in the query returns the error
         if query_result is None:
-            return {"error": "Database not avalible", "status": "failed"}
+            return {"error": "Database not available", "status": "failed"}
         if query_result.rowcount == 0:
             return {"error": "Album not found", "status": "failed"}
         # Control exceptions
@@ -74,7 +74,7 @@ def get_album_by_id(id: int, add_url=False, base_url="", metadata=False) -> dict
 
         # If the is a error in the query returns the error
         if query_result is None:
-            return {"error": "Database not avalible", "status": "failed"}
+            return {"error": "Database not available", "status": "failed"}
         if query_result.rowcount == 0:
             return {"error": "Album not found", "status": "failed"}
 

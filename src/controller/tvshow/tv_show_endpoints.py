@@ -8,14 +8,14 @@ and special episodes from the South Park API.
 
 from fastapi import APIRouter, Request, Response, status
 
-from src.controller.tvshow.specials_controller import (
-    get_random_special,
-    get_special_by_id,
-)
 from src.controller.tvshow.episodes_controller import (
     get_episode_by_id,
     get_last_episode,
     get_random_episode,
+)
+from src.controller.tvshow.specials_controller import (
+    get_random_special,
+    get_special_by_id,
 )
 
 router = APIRouter(tags=["TV Show"])
@@ -34,7 +34,7 @@ def get_the_last_episode(response: Response) -> dict:
     if "error" in json:
         if json["error"] == "Episode not found":
             response.status_code = status.HTTP_404_NOT_FOUND
-        elif json["error"] == "Database not avalible":
+        elif json["error"] == "Database not available":
             response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
     elif "episode" in json:
         response.status_code = status.HTTP_200_OK
@@ -63,18 +63,20 @@ def show_random_special(request: Request, response: Response):
     if "error" in json:
         if json["error"] == "Special not found":
             response.status_code = status.HTTP_404_NOT_FOUND
-        elif json["error"] == "Database not avalible":
+        elif json["error"] == "Database not available":
             response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
     else:
         response.status_code = status.HTTP_200_OK
     return json
+
+
 # The Standard Endpoints must be defined before the param endpoints
 @router.get("/api/episodes/random")
 def show_random_episode(
     request: Request,
     response: Response,
     exclude_paramount_plus: bool = False,
-    exclude_censured: bool = False,
+    exclude_censored: bool = False,
 ):
     """
     Get a random episode.
@@ -83,7 +85,7 @@ def show_random_episode(
         response (Response): FastAPI response object for status codes.
         request (Request): FastAPI request object containing base URL.
         exclude_paramount_plus (Boolean): If True excludes the Paramount+ episodes.
-        exclude_censured (Boolean): If True excludes the Censured episodes.
+        exclude_censored (Boolean): If True excludes the censored episodes.
 
     Returns:
         dict: JSON response containing the episode data
@@ -96,13 +98,13 @@ def show_random_episode(
     """
     json = get_random_episode(
         paramount_plus_exclusive=exclude_paramount_plus,
-        censured=exclude_censured,
+        censored=exclude_censored,
         base_url=str(request.base_url),
     )
     if "error" in json:
         if json["error"] == "Episode not found":
             response.status_code = status.HTTP_404_NOT_FOUND
-        elif json["error"] == "Database not avalible":
+        elif json["error"] == "Database not available":
             response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
     else:
         response.status_code = status.HTTP_200_OK
@@ -136,7 +138,7 @@ def show_special(
     if "error" in json:
         if json["error"] == "Special not found":
             response.status_code = status.HTTP_404_NOT_FOUND
-        elif json["error"] == "Database not avalible":
+        elif json["error"] == "Database not available":
             response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
     elif "special" in json:
         response.status_code = status.HTTP_200_OK
@@ -169,7 +171,7 @@ def show_episode(
     if "error" in json:
         if json["error"] == "Episode not found":
             response.status_code = status.HTTP_404_NOT_FOUND
-        elif json["error"] == "Database not avalible":
+        elif json["error"] == "Database not available":
             response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
     elif "episode" in json:
         response.status_code = status.HTTP_200_OK

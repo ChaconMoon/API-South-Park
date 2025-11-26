@@ -50,9 +50,9 @@ def test_album_object_not_found():
             raise RequestException("Expected Not Found Response")
 
 
-def test_album_database_not_avalible():
-    """Test A Not Avalible Response in Album Endpoint."""
-    fake_response = {"error": "Database not avalible", "status": "failed"}
+def test_album_database_not_available():
+    """Test A Not Available Response in Album Endpoint."""
+    fake_response = {"error": "Database not available", "status": "failed"}
     with patch(
         "src.controller.music.music_endpoints.get_album_by_id"
     ) as database_response:
@@ -60,4 +60,4 @@ def test_album_database_not_avalible():
         response = client.get("/api/albums/1")
         logging.info(response.content)
         if response.status_code != 500:
-            raise RequestException("Expected Not Avalible Response")
+            raise RequestException("Expected Not Available Response")

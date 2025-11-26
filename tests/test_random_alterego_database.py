@@ -49,13 +49,13 @@ def test_random_alterego_object_not_found():
             raise RequestException("Expected Not Found Response")
 
 
-def test_random_alterego_database_not_avalible():
-    """Test A Not Avalible Response in Alter Ego Endpoint."""
-    fake_response = {"error": "Database not avalible", "status": "failed"}
+def test_random_alterego_database_not_available():
+    """Test A Not Available Response in Alter Ego Endpoint."""
+    fake_response = {"error": "Database not available", "status": "failed"}
     with patch(
         "src.controller.characters.characters_endpoints.get_random_alterego"
     ) as database_response:
         database_response.return_value = fake_response
         response = client.get("/api/alteregos/random")
         if response.status_code != 500:
-            raise RequestException("Expected Not Avalible Response")
+            raise RequestException("Expected Not Available Response")
