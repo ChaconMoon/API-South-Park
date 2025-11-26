@@ -29,7 +29,7 @@ from src.controller.date_controller import get_today_birthday_character
 router = APIRouter(tags=["Characters"])
 
 
-@router.get("/api/group/{id}")
+@router.get("/api/groups/{id}")
 def show_group(request: Request, response: Response, id, metadata=False):
     """
     Get a group from the database.
