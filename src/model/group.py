@@ -8,9 +8,9 @@ Defines the Group model and related functions.
 from pydantic import BaseModel, ValidationError
 from sqlalchemy import text
 
-from src.controller.characters.characters_controller import get_character_by_id
 from src.controller.database_connection import get_query_result
 from src.model.ApiObject import ApiObject
+from src.model.characters import Character
 
 
 def get_group_name_by_id(id: int) -> str:
@@ -34,7 +34,35 @@ def get_group_name_by_id(id: int) -> str:
         {"id": id},
     )
     query_result = query_execution.mappings().all()
-    return str(query_result[0]["name"])
+    try:
+        return str(query_result[0]["name"])
+    except IndexError:
+        return None
+
+
+def get_group_image_by_id(id: int, base_url) -> str:
+    """
+    Retrieve the image of a group from the database by its ID.
+
+    Args:
+        id (int): The ID of the group to retrieve.
+        base_url (str): The base URL used to create the links
+
+    Returns:
+        str: The image of the group.
+
+    """
+    query_execution = get_query_result(
+        text(
+            """
+                SELECT image FROM public.groups
+                where "ID" = :id
+            """
+        ),
+        {"id": id},
+    )
+    query_result = query_execution.mappings().all()
+    return base_url + str(query_result[0]["image"])
 
 
 class Group(BaseModel, ApiObject):
@@ -55,7 +83,8 @@ class Group(BaseModel, ApiObject):
 
     id: int
     name: str
-    known_members: list[dict]
+    image: str
+    known_members: list[dict] | list
 
     def __init__(self, id: int, rows: list, base_url: str = "") -> "Group":
         """
@@ -74,12 +103,14 @@ class Group(BaseModel, ApiObject):
         known_members = []
         try:
             known_members.extend(
-                get_character_by_id(int(row[0]), add_url=True, base_url=base_url)
-                for row in rows
+                Character(row).toJSON(compacted=True, base_url=base_url) for row in rows
             )
+            if known_members == []:
+                known_members = ["NO KNOWN MEMBERS"]
             data = {
                 "id": id,
                 "name": get_group_name_by_id(id),
+                "image": get_group_image_by_id(id, base_url),
                 "known_members": known_members,
             }
             super().__init__(**data)
@@ -98,4 +129,11 @@ class Group(BaseModel, ApiObject):
             dict: The dictionary representation of the Group object.
 
         """
-        return self.model_dump()
+        if not metadata:
+            return self.model_dump()
+        else:
+            result = dict()
+            result["group"] = self.model_dump()
+            result["metadata"] = dict()
+            result["metadata"]["total_groups_in_database"] = total_results
+            return result
