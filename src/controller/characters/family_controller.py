@@ -74,11 +74,7 @@ def get_random_family(base_url="") -> dict:
                         ORDER BY RANDOM()
                         LIMIT 1
                     )
-                    SELECT c.id,
-                        c.name,
-                        f.name AS family_name,
-                        f.images,
-                        f.id
+                    SELECT f.name,f.images,c.*
                     FROM public.characters c
                     JOIN public.families f ON c.family = f.id
                     WHERE (c.family = (SELECT id FROM random_family))
