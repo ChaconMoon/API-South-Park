@@ -36,19 +36,27 @@ class Song(BaseModel, ApiObject):
     lyrics: str
     song_url: str
 
-    def toJSON(self, metadata: bool = False, total_results: int = 0) -> dict:
+    def toJSON(
+        self, metadata: bool = False, total_results: int = 0, compacted=False, base_url=""
+    ) -> dict:
         """
         Convert the Song object to a JSON-compatible dictionary.
 
         Args:
-            metadata (bool): Whether to include metadata in the response
-            total_results (int): Total number of songs in database
+            metadata (bool): Whether to include metadata in the response.
+            total_results (int): Total number of songs in database.
+            compacted (bool): If the json response must be compacted.
+            base_url (str): The URL used to create the url in response.
 
         Returns:
-            dict: JSON-compatible dictionary with song data
+            dict: JSON-compatible dictionary with song data.
 
         """
-        result = dict()
+        if compacted:
+            return {
+                "name": self.model_dump()["name"],
+                "url": f"{base_url}api/songs/{self.model_dump()['id']}",
+            }
         if not metadata:
             return self.model_dump()
         else:
@@ -56,7 +64,7 @@ class Song(BaseModel, ApiObject):
             result["song"] = self.model_dump()
             result["metadata"] = dict()
             result["metadata"]["total_songs_in_database"] = total_results
-        return result
+            return result
 
     def __init__(self, row: list, base_url: str = "") -> "Song":
         """
