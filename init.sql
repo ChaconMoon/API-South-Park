@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict C4vax66NwljKJDKhCMB43eZvGpPdNW76wEcNOxKpTbKWhFTMf5XDbJUXGLbhliN
+\restrict eHqMg0egUzW8KidhdlPXwI4OGLyH2LxK0fwhd9SgzVWJQsqGDS6ZO47bBrey1By
 
 -- Dumped from database version 15.15 (Debian 15.15-1.pgdg13+1)
 -- Dumped by pg_dump version 15.15 (Debian 15.15-1.pgdg13+1)
@@ -919,11 +919,11 @@ COPY public.characters (id, name, family, birthday, age, religion, first_apperan
 596	Diana, Princess of Wales	\N	July 1st	36	{"Church of England"}	46	{/img/characters/show/Princess_Diana.png}	t
 618	Donna Reed	\N	January 27th	64	{Methodist}	29	{/img/characters/show/Donna_Reed.png}	t
 577	Dean Martin	\N	June 7th	78	\N	57	{/img/characters/show/Dean_Martin.png}	t
+616	Donald Trump	74	June 14th	79	{Presbyterian}	76	{/img/characters/show/President_Trump.png,/img/characters/show/President_Trump_Old.png}	t
+617	Donald Trump Jr.	74	December 31th	47	\N	326	{/img/characters/show/Donald_Trump_Jr.png}	t
 604	DJ AM	\N	August 28th	36	\N	189	{/img/characters/show/DJ_AM.png}	t
 602	Dio	\N	\N	\N	\N	43	{/img/characters/show/Dio.png}	t
 610	Dom DeLuise	\N	August 1st	75	{"Roman Catholic"}	189	{/img/characters/show/Dom_Deluise.png}	t
-617	Donald Trump Jr.	\N	December 31th	47	\N	326	{/img/characters/show/Donald_Trump_Jr.png}	t
-616	Donald Trump	\N	June 14th	79	{Presbyterian}	76	{/img/characters/show/President_Trump.png,/img/characters/show/President_Trump_Old.png}	t
 615	Donald Rumsfeld	\N	July 9th	88	{Presbyterian}	91	{/img/characters/show/Donald_Rumsfeld.png}	t
 613	Don King	\N	August 20th	94	{Baptist}	10	{/img/characters/show/Don_King.png}	t
 640	Dr. Phil	\N	September 1st	75	{Christian}	210	{/img/characters/show/Dr_Phil.png}	t
@@ -2097,6 +2097,7 @@ COPY public.families (id, name, images) FROM stdin;
 54	The Varcas	{img/families/The_Varcas.png}
 58	The Clintons	{img/families/The_Clintons.png}
 73	The McDonalds	{img/families/The_McDonalds.png}
+74	The Trumps	{img/families/The_Trumps.png}
 \.
 
 
@@ -2442,5 +2443,5 @@ ALTER TABLE ONLY public.alter_ego
 -- PostgreSQL database dump complete
 --
 
-\unrestrict C4vax66NwljKJDKhCMB43eZvGpPdNW76wEcNOxKpTbKWhFTMf5XDbJUXGLbhliN
+\unrestrict eHqMg0egUzW8KidhdlPXwI4OGLyH2LxK0fwhd9SgzVWJQsqGDS6ZO47bBrey1By
 
