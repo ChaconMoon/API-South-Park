@@ -90,13 +90,20 @@ class Character(BaseModel, ApiObject):
     alter_egos: Optional[dict] = None
     famous_guest: bool
 
-    def toJSON(self, metadata: bool = False, total_results: int = 0) -> dict:
+    def toJSON(
+        self, metadata: bool = False, total_results: int = 0, compacted=False, base_url=""
+    ) -> dict:
         """
         Convert the Character object to a JSON-compatible dictionary.
 
         Args:
             metadata (bool): Whether to include metadata in the response
             total_results (int): Total number of characters in database
+
+            If is compacted.
+
+            compacted (bool): Return object compacted.
+            base_url (str): Url needed to create the url of the compact object.
 
         Returns:
             dict: JSON-compatible dictionary with character data
@@ -105,6 +112,11 @@ class Character(BaseModel, ApiObject):
         # Create API Response
 
         # Add Character Data to Response
+        if compacted:
+            return {
+                "name": self.name,
+                "url": f"{base_url}api/characters/{self.id}",
+            }
         if not metadata:
             return self.model_dump()
         else:
