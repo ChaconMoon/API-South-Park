@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict nNCRJk6BRKt0pB13rIgjChbZPpWQWd56iPmvfASseS1yhZ94qStQGKUI1d0dfir
+\restrict CUNSRBbZGBMutsJDZOCwlpPe4GWCHZmFkiEEcBBYciznG8bol9lHw3k3l37VuJb
 
 -- Dumped from database version 15.15 (Debian 15.15-1.pgdg13+1)
 -- Dumped by pg_dump version 15.15 (Debian 15.15-1.pgdg13+1)
@@ -118,7 +118,6 @@ ALTER TABLE public.alter_ego OWNER TO southpark;
 CREATE TABLE public.characters (
     id integer NOT NULL,
     name text NOT NULL,
-    friend_group integer,
     family integer,
     birthday text,
     age integer,
@@ -130,6 +129,18 @@ CREATE TABLE public.characters (
 
 
 ALTER TABLE public.characters OWNER TO southpark;
+
+--
+-- Name: characters_group; Type: TABLE; Schema: public; Owner: southpark
+--
+
+CREATE TABLE public.characters_group (
+    id_character integer NOT NULL,
+    id_group integer NOT NULL
+);
+
+
+ALTER TABLE public.characters_group OWNER TO southpark;
 
 --
 -- Name: characters_id_seq; Type: SEQUENCE; Schema: public; Owner: southpark
@@ -280,6 +291,19 @@ ALTER TABLE public.games_id_seq OWNER TO southpark;
 
 ALTER SEQUENCE public.games_id_seq OWNED BY public.games.id;
 
+
+--
+-- Name: groups; Type: TABLE; Schema: public; Owner: southpark
+--
+
+CREATE TABLE public.groups (
+    "ID" integer NOT NULL,
+    name text NOT NULL,
+    image text
+);
+
+
+ALTER TABLE public.groups OWNER TO southpark;
 
 --
 -- Name: specials; Type: TABLE; Schema: public; Owner: southpark
@@ -556,748 +580,1121 @@ COPY public.alter_ego (id, original_character, name, images) FROM stdin;
 -- Data for Name: characters; Type: TABLE DATA; Schema: public; Owner: southpark
 --
 
-COPY public.characters (id, name, friend_group, family, birthday, age, religion, first_apperance, images, famous_guest) FROM stdin;
-2	Eric Theodore Cartman	1	2	July 1st	10	{"Roman Catholicism","Blaintologistism (Temporary)","Judaism (Post-Covid)"}	1	{/img/characters/show/Eric_Cartman.png}	f
-3	Kyle Broflovski	1	1	May 26th	10	{Judaism,"Christianity (Temporary)","Blaintologist (Temporary)","Atheistism (Temporary)"}	1	{/img/characters/show/Kyle_Broflovski.png}	f
-5	Sir Ike Moisha Broflovski	\N	1	December 17th	3	{Judaism}	1	{/img/characters/show/Ike_Broflovski.png}	f
-6	Jerome McElroy "The Chef"	\N	27	\N	\N	{Christianity,"Islam (Temporary)"}	1	{/img/characters/show/Chef.png}	f
-7	Herbert Garrison	\N	16	\N	41	{"Roman Catholic","Atheist (Temporary)"}	1	{/img/characters/show/Herbert_Garrison.png}	f
-8	Kathie Lee Gifford	\N	\N	August 16th	71	{Evangelicalism}	2	{/img/characters/show/Kathie_Lee.png}	t
-9	Geraldo Rivera	\N	\N	July 4th	82	{"Reform Judaism"}	2	{/img/characters/show/Geraldo_Rivera.png}	t
-239	Ali Khamenei	\N	\N	July 16th	86	{"Shia Islam"}	243	{/img/characters/show/Ali_Khamenei.png}	t
-243	Allen Ginsberg	\N	\N	June 23rd	70	{Buddhist}	57	{/img/characters/show/Allen_Ginsberg.png}	t
-274	"Ash Ketchum"	\N	\N	\N	10	\N	42	{/img/characters/show/Ash_Ketchum.png}	t
-276	Aslan the Lion	\N	\N	\N	\N	\N	77	{/img/characters/show/Aslan.png}	t
-651	Dramatic Look Gopher	\N	\N	\N	\N	\N	171	{/img/characters/show/Dramatic_Look_Gopher.png}	t
-652	Drew Carey	\N	\N	May 23rd	67	\N	66	{/img/characters/show/Drew_Carey.png}	t
-655	Dwight Schultz	\N	\N	\N	\N	\N	16	{/img/characters/show/Dwight_Schultz.png}	t
-658	E.T.	\N	\N	\N	\N	\N	88	{/img/characters/show/ET.png}	t
-671	Ellen DeGeneres	\N	\N	January 26th	67	{Christian}	186	{/img/characters/show/Ellen_Degeneres.png}	t
-20	Patrick Duffy	\N	\N	March 17th	76	{Buddhism}	3	{/img/characters/show/Patrick_Duffy.png}	t
-692	Eugene Levy	\N	\N	December 17th	78	\N	211	{/img/characters/show/Eugene_Levy.png}	t
-695	Bluey Heeler	\N	\N	\N	\N	\N	329	{/img/characters/show/Bluey.png}	t
-696	Droopy Dog (Cartoon)	\N	\N	\N	\N	\N	329	{/img/characters/show/Droop_Dog_Cartoon.png}	t
-595	Dick Dastardly	\N	\N	\N	\N	\N	251	{/img/characters/show/Dick_Dastardly.png}	t
-600	Diego Márquez	\N	\N	\N	\N	\N	323	{/img/characters/show/Diego_(Dora).png}	t
-619	Dora Márquez	\N	\N	\N	\N	\N	242	{/img/characters/show/Dora.png}	t
-11	Mr. Hat	\N	16	\N	\N	\N	1	{/img/characters/show/Mr_Hat.png}	f
-74	Rosie O'Donnell	\N	6	March 21st	63	{"Roman Catholic"}	60	{/img/characters/show/Rosie_Odonnell.png}	t
-221	Agent Fields	\N	\N	\N	\N	\N	44	{/img/characters/show/Agent_Fields.png}	f
-193	Satan	\N	42	\N	\N	{Satanism}	10	{/img/characters/show/Satan.png}	f
-213	Aaron Hagen	\N	51	\N	7	\N	239	{/img/characters/show/Aaron_Hagen.png}	f
-214	Abraham Lincoln	\N	\N	February 12th	56	\N	135	{/img/characters/show/Abraham_Lincoln.png}	t
-217	Adams County Pee-Wee Hockey Team	\N	\N	\N	6	\N	153	{/img/characters/show/Adams_County_Pee_Wee_Hockey_Team.png}	f
-218	Adolf Hitler	\N	52	April 20th	56	\N	7	{/img/characters/show/Adolf_Hitler.png}	t
-220	Agent Connelly	\N	\N	\N	\N	\N	44	{/img/characters/show/Agent_Connelly.png}	f
-172	Thumper	\N	36	\N	\N	\N	170	{/img/characters/show/Thumper.png}	f
-222	"Agent" Tucker	\N	\N	\N	\N	\N	102	{/img/characters/show/Agent_Tucker.png}	f
-223	Aging Hippie Liberal Douche	\N	\N	\N	\N	\N	118	{/img/characters/show/AGING_HIPPIE_LIBERAL_DOUCHE.png}	f
-228	Al Pacino	\N	\N	April 25th	85	{Catholic}	257	{/img/characters/show/Al_Pacino.png}	t
-229	Albert Lincoln Roker Jr	\N	\N	August 20th	71	\N	197	{/img/characters/show/Al_Roker.png}	t
-231	Alan the Security Guard	\N	\N	\N	\N	\N	41	{/img/characters/show/Alan_The_Security_Guard.png}	f
-232	Alana "Honey Boo Boo" Thompson	\N	\N	August 28th	7	{Christian}	232	{/img/characters/show/Honey_Boo_Boo.png}	t
-233	Alanis Morissette	\N	\N	June 1st	51	{Buddhist}	27	{/img/characters/show/Alanis_Morissette.png}	t
-234	Alcoholics Anonymous Boy	\N	\N	\N	\N	\N	139	{/img/characters/show/Alcoholics_Anonymous_Boy.png}	f
-236	Alex Glick	\N	\N	\N	\N	\N	103	{/img/characters/show/Alex_Glick.png}	t
-238	Alexa	\N	\N	\N	\N	\N	278	{/img/characters/show/Alexa.png}	t
-249	Alois and Klara Hitler	\N	\N	\N	\N	\N	46	{/img/characters/show/Hitler_Parents.png}	t
-250	Alton Crawford Brown Jr	\N	\N	July 30th	63	\N	209	{/img/characters/show/Alton_Brown.png}	t
-219	Afro Ninja	\N	\N	\N	\N	\N	171	{/img/characters/show/Afro_Ninja.png}	t
-215	Adam Borque	\N	\N	\N	\N	\N	281	{/img/characters/show/Adam_Borque.png}	f
-224	Airport Security Guard	\N	\N	\N	\N	\N	76	{/img/characters/show/Airport_Security_Guard.png}	f
-211	A 34-Year-Old Asian Man Who Looks Strikingly Similar to Ricardo Montalbán	\N	\N	\N	34	\N	24	{/img/characters/show/23_Year_Asian_Reporter.png}	f
-306	Beth (Dawg's Bitch)	\N	\N	\N	\N	\N	149	{/img/characters/show/Beth_Bitch.png}	f
-307	Betsy ("D-Yikes!")	\N	\N	\N	\N	\N	159	{/img/characters/show/Betsy_D_Yikes.png}	f
-308	Betsy MacIntosh	\N	\N	\N	\N	\N	214	{/img/characters/show/Betsy_MacIntosh.png}	f
-309	Betsy	\N	\N	\N	10	\N	309	{/img/characters/show/Betsy_Labubu_Girl.png}	f
-310	Big Black Scary Monster	\N	\N	\N	\N	\N	20	{/img/characters/show/The_Big_Black_Scary_Monster.png}	f
-311	Big Gay Al	\N	49	\N	\N	\N	4	{/img/characters/show/Big_Gay_Al.png}	f
-313	Biggest Douche in the Universe Committee	\N	\N	\N	\N	\N	94	{/img/characters/show/Biggest_Douche_Judges.png}	f
-259	Angela Merkel	\N	\N	July 17th	71	{Lutheran}	187	{/img/characters/show/Angela_Merkel.png}	t
-260	Angelina Jolie	\N	\N	June 4th	50	{"Former Roman Catholic"}	156	{/img/characters/show/Angelina_Jolie_Voight.png}	t
-261	Angus T. Jones	\N	\N	October 8th	31	{Adventist}	203	{/img/characters/show/Angus_T_Jones.png}	t
-263	Ann Curry	\N	\N	November 19th	68	\N	197	{/img/characters/show/Ann_Curry.png}	t
-272	Archangel Michael	\N	\N	\N	\N	\N	129	{/img/characters/show/Archangel_Michael.png}	f
-355	Bobby	\N	\N	\N	\N	\N	226	{/img/characters/show/Bobby.png}	f
-273	Arnold Schwarzenegger	\N	\N	July 30th	78	{"Roman Catholic"}	204	{/img/characters/show/Arnold_Schwarzenegger.png}	t
-212	Aaron Brown	\N	\N	November 10th	76	\N	118	{/img/characters/show/Aaron_brown.png}	t
-216	Adam Sandler	\N	\N	September 9th	58	{Judaism}	211	{/img/characters/show/Adam_Sandler.png}	t
-227	Al-Qaeda	\N	\N	\N	\N	\N	74	{/img/characters/show/Al_Qaeda.png}	t
-230	Alan Jackson	\N	\N	Octuber 17th	66	{Christian}	91	{/img/characters/show/Al_Jackson.png}	t
-278	Baby Cows	\N	\N	\N	\N	\N	83	{/img/characters/show/Baby_Cows.png}	f
-279	Kevern Zaksor (Baby Fark McGee-zax)	\N	\N	\N	\N	\N	187	{/img/characters/show/Kevern_Zaksor.png}	f
-280	Grogu (Baby Yoda)	\N	\N	\N	\N	\N	306	{/img/characters/show/Grogu.png}	t
-281	Babylonians	\N	\N	\N	\N	\N	15	{/img/characters/show/Babylonians.png}	f
-282	Bakery Napoleon Bakers	\N	\N	\N	\N	\N	150	{/img/characters/show/Bakery_Napoleon_Bakers.png}	f
-284	Barbara Garthunk	\N	\N	\N	\N	\N	75	{/img/characters/show/Barbara_Garthunk.png}	f
-286	Barkley	\N	\N	\N	\N	\N	226	{/img/characters/show/Barkley.png}	f
-287	Barky	\N	\N	\N	\N	\N	14	{/img/characters/show/Barky.png}	f
-290	Bartender	\N	\N	\N	\N	\N	4	{/img/characters/show/Bartender.png}	f
-291	Bartles	\N	\N	\N	\N	\N	25	{/img/characters/show/Bartles.png}	f
-292	Basketball Coach	\N	\N	\N	\N	\N	126	{/img/characters/show/Basketball_Coach.png}	f
-294	Beach Family ("Insecurity")	\N	\N	\N	\N	\N	233	{/img/characters/show/Beach_Family.png}	f
-295	Beast	\N	\N	\N	\N	\N	299	{/img/characters/show/Beast.png}	t
-296	Beatrice McGullicutty	\N	\N	\N	\N	{"Roman Catholic"}	282	{/img/characters/show/Beatrice_McGullicutty.png}	f
-297	Belarusian Farmers	\N	\N	\N	\N	\N	236	{/img/characters/show/Belarusian_Farmers.png}	f
-298	Ben ("Blizzard" Staff)	\N	\N	\N	\N	\N	147	{/img/characters/show/Ben_Blizzard.png}	f
-302	Benny	\N	\N	\N	\N	\N	184	{/img/characters/show/Benny.png}	f
-304	Best Buy President	\N	\N	\N	\N	\N	210	{/img/characters/show/Best_Buy_President.png}	f
-305	Beth	\N	\N	\N	10	\N	123	{/img/characters/show/Beth.png}	f
-314	Bill Allen	\N	\N	\N	10	\N	4	{/img/characters/show/Bill_Allen.png}	f
-226	Al Gore	\N	\N	March 31st	77	{Baptist}	45	{/img/characters/show/Al_Gore.png}	t
-317	Bill Cosby (BSM-471)	\N	\N	\N	\N	\N	60	{/img/characters/show/Bill_Cosby_BSM_471.png}	f
-318	Bill Denkins	\N	\N	\N	\N	\N	1	{/img/characters/show/Bill_Denkins.png}	f
-321	Bill Norman	\N	\N	\N	\N	\N	264	{/img/characters/show/Bill_Norman.png}	f
-324	Bill Stewart	\N	\N	\N	\N	\N	106	{/img/characters/show/Bill_Stewart.png}	f
-325	Bill Yellow Hawk	\N	\N	\N	\N	\N	280	{/img/characters/show/Bill_Yellow_Hawk.png}	f
-326	Billy (Kindergartner)	\N	\N	\N	\N	\N	60	{/img/characters/show/Kindergartener_Billy.png}	f
-327	Billy ("Sons A Witches")	\N	\N	\N	10	\N	283	{/img/characters/show/Billy_Sons_A_Witches.png}	f
-329	Billy Circlovich	\N	\N	\N	\N	\N	49	{/img/characters/show/Billy_Circlovich.png}	f
-330	Billy Harris	\N	\N	\N	\N	\N	60	{/img/characters/show/Billy_Harris.png}	f
-331	Billy Martin	\N	\N	\N	10	\N	122	{/img/characters/show/Billy_Martin.png}	f
-333	Billy Miller	\N	\N	\N	\N	\N	198	{/img/characters/show/Billy_Miller.png}	f
-334	Billy Thompson	\N	\N	\N	10	\N	205	{/img/characters/show/Billy_Thompson.png}	f
-335	Billy Turner	\N	\N	\N	9	\N	132	{/img/characters/show/Billy_Turner.png}	f
-336	Birthday Party Parents	\N	\N	\N	\N	\N	255	{/img/characters/show/Birthday_Party_Parents.png}	f
-337	Bishop of Banff	\N	\N	\N	\N	\N	212	{/img/characters/show/Bishop_Of_Banff.png}	f
-338	Black-Haired Scientist	\N	\N	\N	\N	\N	164	{/img/characters/show/Black_Haired_Scientist.png}	f
-339	Black Panther	\N	\N	\N	\N	\N	299	{/img/characters/show/Black_Panther.png}	t
-341	Blaze	\N	\N	\N	\N	\N	102	{/img/characters/show/Blaze.png}	f
-342	Blink-182	\N	\N	\N	\N	\N	105	{/img/characters/show/Blink_182.png}	t
-343	Blinky's Airsoft Referee	\N	\N	\N	\N	\N	314	{/img/characters/show/Blinky's_Airsoft_Referee.png}	f
-344	Blockbuster Employee's Ghost	\N	\N	\N	\N	\N	235	{/img/characters/show/Blockbuster_Employee's_Ghost.png}	f
-345	Blonde-Haired Girl ("Erection Day")	\N	\N	\N	\N	\N	132	{/img/characters/show/Blonde-Haired_Girl.png}	f
-347	Bloody Sunday: The Dangers of Memeing narrator	\N	\N	\N	\N	\N	226	{/img/characters/show/Bloody_Sunday_The_Dangers_of_Memeing_narrator.png}	f
-350	Bob Ferrin	\N	\N	\N	\N	\N	78	{/img/characters/show/Bob_Ferrin.png}	f
-351	Bob Johnson	\N	\N	\N	\N	\N	2	{/img/characters/show/Bob_Johnson.png}	f
-353	Bob Summers	\N	\N	\N	\N	\N	169	{/img/characters/show/Bob_Summers.png}	f
-354	Bob Thomas	\N	\N	\N	\N	\N	18	{/img/characters/show/Bob_Thomas.png}	f
-356	Bobby ("Cartman Joins NAMBLA")	\N	\N	\N	\N	\N	53	{/img/characters/show/Bobby_Nambla.png}	f
-358	Bobby Palmer	\N	60	\N	\N	\N	176	{/img/characters/show/Bobby_Palmer.png}	f
-360	Bono's Butler	\N	\N	\N	\N	\N	162	{/img/characters/show/Bono's_Butler.png}	f
-361	Book Mobile Driver	\N	\N	\N	\N	\N	17	{/img/characters/show/Booktastic_Bus_Driver.png}	f
-362	Boom Microphone Operator	\N	\N	\N	\N	\N	2	{/img/characters/show/Boom_Microphone_Operator.png}	f
-364	Boston	\N	\N	\N	\N	\N	269	{/img/characters/show/Boston.png}	t
-365	Boy in Finn Costume	\N	\N	\N	\N	\N	235	{/img/characters/show/Boy_in_Finn_Costume.png}	f
-366	Quest for Ratings	\N	\N	\N	\N	\N	122	{/img/characters/show/Boy_with_Blond_Hair.png}	f
-367	Boy with Brown Hair	\N	\N	\N	\N	\N	223	{/img/characters/show/Boy_with_Brown_Hair.png}	f
-368	Boy with Brown Hair and Red Shirt	\N	\N	\N	\N	\N	122	{/img/characters/show/Boy_with_Brown_Hair_and_Red_Shirt.png}	f
-346	Bloods (Gang)	\N	\N	\N	\N	\N	98	{/img/characters/show/The_Bloods.png}	f
-369	Boy with C Cap	\N	\N	\N	\N	\N	34	{/img/characters/show/Boy_with_C_Cap.png}	f
-370	Boy with Dark Green Shirt and Glasses	\N	\N	\N	\N	\N	36	{/img/characters/show/Boy_with_Dark_Green_Shirt_and_Glasses.png}	f
-371	Boy with Earmuffs	\N	\N	\N	\N	\N	36	{/img/characters/show/Boy_with_Earmuffs.png}	f
-372	Boy with Green Shirt	\N	\N	\N	\N	\N	226	{/img/characters/show/Boy_with_Green_Shirt.png}	f
-373	Boy with Huge Glasses	\N	\N	\N	\N	\N	58	{/img/characters/show/Boy_with_Huge_Glasses.png}	f
-374	Boy with Olive Shirt and Black Pants	\N	\N	\N	\N	\N	9	{/img/characters/show/Boy_with_olive_shirt_andb_lack_pants.png}	f
-375	Boy with Orange Shirt	\N	\N	\N	\N	\N	122	{/img/characters/show/Boy_with_orange_shirt.png}	f
-376	Boy with Red Shirt	\N	\N	\N	\N	\N	20	{/img/characters/show/Boy_with_red_shirt.png}	f
-377	Boy with Red Shirt and Blue Pants	\N	\N	\N	\N	\N	136	{/img/characters/show/Boy_with_red_shirt_blue_pants.png}	f
-378	Brad	\N	\N	\N	\N	\N	258	{/img/characters/show/Brad.png}	f
-382	Bradley	\N	\N	\N	\N	\N	155	{/img/characters/show/Bradley.png}	f
-383	Brandon Carlile	\N	\N	\N	\N	\N	250	{/img/characters/show/Brandon_Carlile.png}	f
-384	Brett	\N	\N	\N	\N	\N	166	{/img/characters/show/Brett.png}	f
-385	Brett Favre	\N	\N	\N	\N	\N	21	{/img/characters/show/Brett_Favre.png}	f
-386	Brian	\N	\N	\N	\N	\N	143	{/img/characters/show/Brian.png}	f
-387	Brian ("Free Willzyx")	\N	\N	\N	\N	\N	138	{/img/characters/show/Brian_Willzyx.png}	f
-388	Brian ("The Losing Edge")	\N	\N	\N	\N	\N	130	{/img/characters/show/Brian_The_Losing_Edge.png}	f
-390	Brian Boyant	\N	\N	\N	\N	\N	265	{/img/characters/show/Brian_Boyant.png}	f
-392	Brian Griffin	\N	\N	\N	8	\N	142	{/img/characters/show/Brian_Griffin.png}	t
-393	Brian Jeffries	\N	\N	\N	\N	\N	157	{/img/characters/show/Brian_Jeffries.png}	f
-394	Brian Thompson-Jarvis	\N	\N	\N	\N	\N	141	{/img/characters/show/Brian_Thompson-Jarvis.png}	f
-395	Brimmy	\N	\N	\N	10	\N	1	{/img/characters/show/Brimmy.png}	f
-398	Brobee	\N	\N	\N	\N	\N	242	{/img/characters/show/Brobee.png}	f
-399	Bruce	\N	\N	\N	\N	\N	65	{/img/characters/show/Bruce.png}	f
-400	Brunette Nurse	\N	\N	\N	\N	\N	89	{/img/characters/show/Brunette_Nurse.png}	f
-402	Bubb Rubb	\N	\N	\N	47	\N	171	{/img/characters/show/Bubb_Rubb.jpg}	t
-403	Buck	\N	61	\N	\N	\N	31	{/img/characters/show/Buck.png}	f
-404	Buck Jr	\N	\N	\N	13	\N	31	{/img/characters/show/Buck_Jr.png}	f
-405	Bucky Bailey	\N	\N	\N	\N	\N	228	{/img/characters/show/Bucky_Bailey.png}	f
-406	Buddha	\N	\N	\N	2574	\N	68	{/img/characters/show/Buddha.png}	t
-408	Busy Beaver Truck Driver	\N	\N	\N	\N	\N	79	{/img/characters/show/Busy_Beaver_Truck_Driver.png}	f
-409	Butt Out!	\N	\N	\N	\N	\N	109	{/img/characters/show/Butt_Out.png}	f
-410	Buzz Lightyear	\N	\N	\N	\N	\N	299	{/img/characters/show/Buzz_Lightyear.png}	t
-412	Brendan Carr	\N	\N	January 5th	46	\N	326	{/img/characters/show/Brendan_Carr.png}	t
-312	Big Mesquite Murph	\N	\N	\N	\N	\N	300	{/img/characters/show/Big_Mesquite_Murph.png}	f
-1	Kenneth "Kenny" McCormick	1	4	March 22nd	9	{Christianity,"Blaintologist (Temporary)"}	1	{/img/characters/show/Kenny_McCormick.png}	f
-257	Anderson Cooper	\N	\N	June 3rd	58	\N	243	{/img/characters/show/Anderson_Cooper.png}	t
-283	Barack Hussein Obama II	\N	55	August 4th	64	{Protestant}	169	{/img/characters/show/Barack_Obama.png}	t
-285	Barbra Streisand	\N	\N	April 24th	83	{Judaism}	12	{/img/characters/show/Barbra_Streisand.png}	t
-288	Barry Bonds	\N	\N	July 24th	61	\N	113	{/img/characters/show/Barry_Bonds.png}	t
-289	Bartholomew "Bart" JoJo Simpson	\N	56	April 1st	10	{Christian}	143	{/img/characters/show/Bart_Simpson.png}	t
-293	Beatrice Arthur	\N	\N	May 13th	86	{Judaism}	189	{/img/characters/show/Beatrice_Arthur.png}	t
-380	Brad Morgan	\N	\N	\N	\N	\N	118	{/img/characters/show/Brad_Morgan.png}	f
-299	Benjamin Géza Affleck-Boldt	\N	57	August 15th	53	{Methodist}	75	{/img/characters/show/Ben_Affleck.png}	t
-300	Ben Roethlisberger	\N	\N	March 2nd	43	{Methodist}	196	{/img/characters/show/Ben_Roethlisberger.png}	t
-301	Benjamin Franklin	\N	\N	January 17th	84	{Deist}	100	{/img/characters/show/Benjamin_Franklin.png}	t
-303	Benny Hill	\N	\N	January 21st	68	\N	78	{/img/characters/show/Benny_Hill.png}	t
-315	William Jefferson "Bill" Clinton	\N	58	August 19th	79	{Baptist}	15	{/img/characters/show/Bill_Clinton.png}	t
-316	Bill Cosby	\N	\N	July 12th	88	{Protestant}	77	{/img/characters/show/Bill_Cosby.png}	t
-319	Bill Donohue	\N	\N	July 18th	78	{"Roman Catholic"}	158	{/img/characters/show/Bill_Donahue.png}	t
-320	Bill Gates	\N	\N	October 28th	69	{"Roman Catholic"}	76	{/img/characters/show/Bill_Gates.png}	t
-322	Bill O'Reilly	\N	\N	September 10th	76	{"Roman Catholic"}	118	{/img/characters/show/Bill_Oreilly.png}	t
-323	William Forrester Owens	\N	\N	October 22nd	74	\N	88	{/img/characters/show/Bill_Owens.png}	t
-328	Billy Bob Thornton	\N	\N	August 4th	70	{Agnostic}	196	{/img/characters/show/Billy_Bob_Thornton.png}	t
-332	William Darrell "Billy" Mays Jr	\N	\N	July 20th	50	{Christian}	189	{/img/characters/show/Billy_Mays.png}	t
-340	Blanket Jackson	\N	59	February 21st	2	\N	117	{/img/characters/show/Blanket_Jackson.png}	t
-348	Bob Denver	\N	\N	January 9th	70	\N	19	{/img/characters/show/Bob_Denver.png}	t
-349	Bob Dole	\N	\N	July 22nd	98	{Methodist}	33	{/img/characters/show/Bob_Dole.jpg}	t
-352	Bob Saget	\N	\N	January 9th	65	{Judaism}	13	{/img/characters/show/Bob_Saget.png}	f
-357	Robert William Flay	\N	\N	December 10th	60	{Catholic}	209	{/img/characters/show/Bobby_Flay.png}	t
-359	Bono	\N	\N	May 10th	65	{Christian}	162	{/img/characters/show/Bono.png}	t
-363	Boris Johnson	\N	\N	June 19th	61	{"'Church of England'"}	275	{/img/characters/show/Boris_Johnson.png}	t
-379	Brad Davis	\N	\N	July 20th	\N	\N	179	{/img/characters/show/Brad_Davis.png}	t
-381	Brad Paisley	\N	\N	October 28th	52	\N	230	{/img/characters/show/Brad_Paisley.png}	t
-389	Brian Boitano	\N	\N	October 22nd	61	\N	4	{/img/characters/show/Brian_Boitano.png}	t
-391	Brian Dennehy	\N	\N	July 9th	81	{"Roman Catholic"}	200	{/img/characters/show/Brian_Dennehy.png}	t
-396	Britney Spears	\N	\N	December 2nd	43	{Baptist}	34	{/img/characters/show/Britney_Spears.png}	t
-397	Brooke Shields	\N	\N	May 31st	60	{"Roman Catholic"}	200	{/img/characters/show/Brooke_Shields.png}	t
-401	Bryan Adams	\N	\N	November 5th	65	\N	212	{/img/characters/show/Bryan_Adams.png}	t
-407	Buddy Ebsen	\N	\N	April 2nd	95	\N	24	{/img/characters/show/Buddy_Ebsen.png}	t
-411	Benjamin Netanyahu	\N	\N	October 21st	75	{Judaism}	326	{/img/characters/show/Benjamin_Netanyahu.png}	t
-418	Calvin	\N	61	\N	8	\N	31	{/img/characters/show/Calvin.png}	f
-417	Cajun Shrimp Merchant	\N	\N	\N	\N	\N	206	{/img/characters/show/Cajun_Shrimp_Merchant.png}	f
-416	Caitlyn Jenner	\N	\N	October 28th	75	{Christianity}	197	{/img/characters/show/Caitlyn_Jenner.png}	t
-414	Cable Company President	\N	\N	\N	\N	\N	239	{/img/characters/show/Cable_Company_President.png}	f
-413	Cab Driver ("Erection Day")	\N	\N	\N	\N	\N	54	{/img/characters/show/Cab_Driver.png}	f
-426	Canadian Judge	\N	\N	\N	\N	\N	14	{/img/characters/show/Canadian_Judge.png}	f
-425	Canadian Gynecologist	\N	\N	\N	\N	\N	185	{/img/characters/show/Canadian_Gynecologist.png}	f
-424	Canadian Door Guard	\N	\N	\N	\N	\N	111	{/img/characters/show/Canadian_Door_Guard.png}	f
-423	Canadian Commander	\N	\N	\N	\N	\N	185	{/img/characters/show/Canadian_Commander.png}	f
-422	Canadian Border Wall Guard	\N	\N	\N	\N	\N	259	{/img/characters/show/Canadian_Border_Wall_Guard.png}	f
-421	Canadian Bishop	\N	\N	\N	\N	\N	185	{/img/characters/show/Canadian_Bishop.png}	f
-420	Cameron	\N	\N	\N	\N	\N	26	{/img/characters/show/Cameron.png}	f
-419	Cameraman	\N	\N	\N	\N	\N	15	{/img/characters/show/Cameraman.png}	f
-429	Canadian Minister of Sports	\N	\N	\N	\N	\N	185	{/img/characters/show/Canadian_Minister_of_Sports.png}	f
-428	Canadian Minister of Streaming	\N	\N	\N	\N	\N	286	{/img/characters/show/Canadian_Minister_of_Movies.png}	f
-427	Canadian Minister of Mobile Gaming / Canadian Devil	\N	\N	\N	\N	\N	253	{/img/characters/show/Canadian_Minister_of_Mobile_Gaming.png,/img/characters/show/Canadian_Devil.png}	f
-461	Charles Kincade	\N	\N	\N	\N	\N	166	{/img/characters/show/Charles_Kincaid.png}	f
-460	Chantal	\N	62	\N	0	\N	82	{/img/characters/show/Chantal.png}	f
-459	Chamber of Commerce Representative	\N	\N	\N	\N	\N	123	{/img/characters/show/Chamber_of_Commerce_Representative.png}	f
-458	Chad	\N	\N	\N	\N	\N	63	{/img/characters/show/Chad.png}	f
-457	Cesar Millan	\N	\N	August 27th	55	\N	146	{/img/characters/show/Cesar_Milan.png}	t
-415	Caine	\N	\N	\N	\N	\N	184	{/img/characters/show/Caine.png}	f
-456	Celine Dion	\N	33	March 30th	57	{"Roman Catholic"}	14	{/img/characters/show/Celine_Dion.png}	t
-455	Cee Lo Green	\N	\N	May 30th	51	{Christian}	231	{/img/characters/show/Cee_Lo_Green.png}	t
-454	Catholic Cleanup Crew	\N	\N	\N	\N	\N	289	{/img/characters/show/Catholic_Cleanup_Crew.png}	f
-453	Catatafish	\N	\N	\N	\N	\N	93	{/img/characters/show/Catatafish.png}	f
-452	Catamount Pictures Producers	\N	\N	\N	\N	\N	66	{/img/characters/show/Catamount_Pictures_Producers.png}	f
-451	Cash For Gold Sign Holders	\N	\N	\N	\N	\N	225	{/img/characters/show/Cash_For_gold_Group.png}	f
-450	Casey Miller	\N	\N	\N	9	\N	194	{/img/characters/show/Casey_Miller.png}	f
-449	Casa Bonita Band	\N	\N	\N	\N	\N	107	{/img/characters/show/Casa_Bonita_band.png}	f
-448	Cartman Impostor	\N	\N	\N	9	\N	63	{/img/characters/show/Kenny_Impostor.png,/img/characters/show/Cartman_Impostor.png}	f
-447	Caroline Manzo	\N	\N	August 23rd	64	\N	204	{/img/characters/show/Caroline_Manzo.png}	t
-446	Carrot Top	\N	\N	February 25th	60	\N	20	{/img/characters/show/Carrot_Top.png}	t
-445	Carlos Mencia	\N	\N	October 22nd	57	{"Roman Catholic"}	186	{/img/characters/show/Carlos_Mencia.png}	t
-443	Carl	\N	\N	\N	\N	\N	4	{/img/characters/show/Carl.png}	f
-442	Cardinal Roger Mahony	\N	\N	February 27th	89	\N	150	{/img/characters/show/Cardinal_Mahoney.png}	t
-441	Captain Taylor and Captain Gabriel	\N	\N	\N	\N	\N	177	{/img/characters/show/Captain_Taylor_and_Captain_Gabriel.png}	f
-440	Captain Marvel	\N	\N	\N	\N	\N	299	{/img/characters/show/Capitain_Marvel.png}	t
-439	Captain Hook	\N	\N	\N	\N	\N	165	{/img/characters/show/Capitain_Hook.png}	t
-438	Captain Hindsight	\N	\N	\N	\N	\N	206	{/img/characters/show/Captain_Hindsight.png}	f
-437	Captain America	\N	\N	\N	\N	\N	299	{/img/characters/show/Capitain_America.png}	t
-436	Cannabis Farmers Panelist	\N	\N	\N	\N	\N	311	{/img/characters/show/Cannabis_Farmers_Panelist.png}	f
-435	Candice	\N	\N	\N	\N	\N	168	{/img/characters/show/Candice.png}	f
-434	Canadian Therapist	\N	\N	\N	\N	\N	242	{/img/characters/show/Canadian_Therapist.png}	f
-433	Canadian Reporter	\N	\N	\N	\N	\N	253	{/img/characters/show/Canadian_Reporter.png}	f
-432	Canadian Prime Minister ("Sermon on the 'Mount")	\N	\N	\N	\N	\N	237	{/img/characters/show/Canadian_Prime_Minister_Sermon_on_the_Mount.png}	f
-431	Canadian Prime Minister ("Original")	\N	\N	\N	\N	\N	212	{/img/characters/show/Canadian_Prime_Minister_Original.png}	f
-430	Canadian President	\N	\N	\N	\N	\N	259	{/img/characters/show/Canadian_President.png}	f
-479	Chinese Customs Officers	\N	\N	\N	\N	\N	299	{/img/characters/show/Chinese_Customs_Officers.png}	f
-478	Chinese Court Judges	\N	\N	\N	\N	\N	299	{/img/characters/show/Chinese_Court_Judges.png}	f
-477	Chinese Commentators	\N	\N	\N	\N	\N	18	{/img/characters/show/Chinese_Commentators.png}	f
-476	Chinese Book Reader	\N	\N	\N	\N	\N	197	{/img/characters/show/Chinese_Book_Reader.png}	f
-475	Chief Stevens	\N	\N	\N	\N	\N	29	{/img/characters/show/Chief_Stevens.png}	f
-474	Chief Runs With Premise's Wife	\N	64	\N	\N	\N	103	{/img/characters/show/Chief_Runs_With_Premise_Wife.png}	f
-473	Chief Runs With Premise	\N	64	\N	\N	\N	103	{/img/characters/show/Chief_Runs_With_Premise.png}	f
-472	Chief Running Water	\N	\N	\N	\N	\N	13	{/img/characters/show/Chief_Running_Water.png}	f
-471	Chief Joe	\N	\N	\N	\N	\N	238	{/img/characters/show/Chief_Joe.png}	f
-470	Chet	\N	\N	\N	\N	\N	118	{/img/characters/show/Chet.png}	f
-469	Cher	\N	\N	May 20th	79	{Buddhism}	70	{/img/characters/show/Cher.png}	t
-468	Chef Aid Host	\N	\N	\N	\N	\N	27	{/img/characters/show/Chef_Aid_Host.png}	f
-467	Cheesing King	\N	\N	\N	\N	\N	170	{/img/characters/show/Cheesing_King.png}	f
-466	Cheech and Chong	\N	\N	\N	\N	\N	54	{/img/characters/show/Cheech_and_Chong.png}	t
-465	Chase	\N	\N	\N	\N	\N	213	{/img/characters/show/Chase.png}	f
-464	Charlie Sheen	\N	\N	September 3rd	60	{"Devout Catholic"}	196	{/img/characters/show/Charlie_Sheen.png}	t
-463	Charlie Rose	\N	\N	January 5th	83	{"Roman Catholic"}	51	{/img/characters/show/Charlie_Rose.png}	t
-462	Charlie/Marcus Andrews and his Superior Officer	\N	\N	\N	\N	\N	218	{/img/characters/show/Charlie_Marcus_Andrews_and_his_Superior_Officer.png}	f
-490	Chris Donnely	\N	\N	\N	10	\N	244	{/img/characters/show/Chris_Donnely.png}	f
-489	Chris Crocker	\N	\N	December 7th	37	\N	171	{/img/characters/show/Chris_Crocker.png}	t
-488	Chris Christie	\N	\N	September 6th	63	\N	268	{/img/characters/show/Chris_Christie.png}	t
-487	Chris Allen	\N	\N	\N	\N	\N	310	{/img/characters/show/Chris_Allen.png}	f
-486	Chris ("Britney's New Look")	\N	\N	\N	\N	\N	169	{/img/characters/show/Chris_Britney.webp}	f
-485	Chris	\N	\N	\N	29	{"Roman Catholic"}	57	{/img/characters/show/Chris.png}	f
-484	Chip Duncan	\N	\N	\N	\N	\N	283	{/img/characters/show/Chip_Duncan_Witch.png,/img/characters/show/Chip_Duncan_Human.png}	f
-483	Chinese Shopkeeper	\N	\N	\N	\N	\N	299	{/img/characters/show/Chinese_Shopkeeper.png}	f
-482	Chinese Mafia	\N	\N	\N	\N	\N	128	{/img/characters/show/Chinese_Mafia.png}	f
-481	Chinese Family	\N	\N	\N	\N	\N	175	{/img/characters/show/Chinese_Family.png}	f
-480	Chinese Dodgeball Players	\N	\N	\N	\N	\N	18	{/img/characters/show/Chinese_Dodgeball_Payers.png}	f
-500	Christine Jonez	\N	\N	\N	\N	\N	80	{/img/characters/show/Christine_Jonez.png}	f
-499	Christine	\N	65	\N	\N	\N	160	{/img/characters/show/Christine.png}	f
-498	Christina Nylon	\N	\N	\N	\N	\N	118	{"/img/characters/show/Christina Nylon.png"}	f
-497	Christina Aguilera	\N	\N	December 18th	44	\N	51	{/img/characters/show/Christina_Aguilera.png}	t
-496	Christian Wulff	\N	\N	June 19th	66	{"Roman Catholic"}	211	{/img/characters/show/Christian_Wulff.png}	t
-495	Chris Swollenballs	\N	\N	\N	\N	\N	27	{/img/characters/show/Chris_Swollenballs.png}	f
-494	Chris Peterson	\N	\N	\N	\N	\N	9	{/img/characters/show/Chris_Peterson.png}	f
-493	Chris Martin	\N	\N	\N	\N	\N	263	{/img/characters/show/Chris_Martin.png}	f
-492	Chris Holt	\N	\N	\N	\N	\N	73	{/img/characters/show/Chris_Holt.png}	f
-491	Chris Hansen	\N	\N	September 13th	66	\N	161	{/img/characters/show/Chris_Hansen.png}	t
-501	Christophe	\N	66	\N	9	{Misotheism}	39	{/img/characters/show/Christophe_Mole.png}	f
-507	Citizen with Blond Hair and Blue Shirt	\N	\N	\N	\N	\N	6	{/img/characters/show/Guy_With_Blonde_Hair.png}	f
-506	Cindy McCain	\N	67	May 20th	71	\N	179	{/img/characters/show/Cindy_McCain.png}	t
-504	Chuck E. Cheese	\N	\N	\N	\N	\N	282	{/img/characters/show/Chuck_E_Cheese.png}	t
-502	Christopher Reeve	\N	\N	September 25th	52	{"Unitarian Universalist"}	98	{/img/characters/show/Christopher_Reeve.png}	t
-508	Clark	\N	\N	\N	11	\N	132	{/img/characters/show/Clark_Erection_Day.png}	f
-509	Classi	\N	\N	\N	\N	\N	267	{/img/characters/show/Classi.png}	f
-510	Cleo Broflovski	\N	\N	\N	71	{Judaism}	41	{/img/characters/show/Cleo_Broflovski.png}	f
-511	Cliff Barackman	\N	\N	November 28th	54	\N	227	{/img/characters/show/Cliff_Barackman.png}	t
-512	Clucky	\N	\N	\N	\N	\N	225	{/img/characters/show/Clucky.png}	f
-513	Clyde Frog	\N	\N	\N	\N	\N	13	{/img/characters/show/Clyde_Frog.png}	f
-503	Christopher Wallace (Biggie Smalls)	\N	\N	May 21st	24	\N	150	{/img/characters/show/Bigee_Smalls.png}	t
-526	Construction Workers	\N	\N	\N	\N	\N	32	{/img/characters/show/Builders.png}	f
-525	Connor	\N	\N	\N	10	\N	104	{/img/characters/show/Connor.png}	f
-524	Conner Davis	\N	\N	\N	6	\N	255	{/img/characters/show/Conner.png}	f
-523	Condoleezza Rice	\N	\N	November 14th	70	{Presbyterian}	91	{/img/characters/show/Condoleezza_Rice.png}	t
-522	Conan O'Brien	\N	\N	April 18th	62	{"Roman Catholic"}	57	{/img/characters/show/Conan_O'brien.png}	t
-521	Colorado Avalanche	\N	\N	\N	\N	\N	153	{/img/characters/show/Colorado_Avalance.png}	f
-520	Colonel Sanders	\N	\N	December 9th	90	{"Disciples of Christ"}	198	{/img/characters/show/Harlan_Sanders.png}	t
-519	Colin Kaepernick	\N	\N	November 3rd	37	{Christianity}	268	{/img/characters/show/Colin_Kaepernick.png}	t
-518	Colette Francis	\N	\N	\N	10	\N	113	{/img/characters/show/Colette_Francis.png}	f
-517	Cody	\N	\N	\N	\N	\N	242	{/img/characters/show/Cody.png}	f
-516	Cock Magic Promoter	\N	\N	\N	\N	\N	255	{/img/characters/show/Cock_Magic_Promoter.png}	f
-515	Cock Magic Ring Announcer	\N	\N	\N	\N	\N	255	{/img/characters/show/Cock_Magic_Announcer.png}	f
-505	Cinderella	\N	\N	\N	\N	\N	163	{/img/characters/show/Cinderella.png}	t
-527	Corey Hart	\N	\N	May 31st	63	{Christianity}	212	{/img/characters/show/Cory_Hart.png}	t
-530	Costa Rican President	\N	\N	\N	\N	\N	32	{/img/characters/show/Costa_rican_President.png}	f
-529	Cosette	\N	\N	\N	\N	\N	24	{/img/characters/show/Cosette.png}	f
-528	Corey Lanskin	\N	\N	\N	\N	\N	239	{/img/characters/show/Corey_Lanskin.png}	f
-514	Coach Miles	\N	\N	\N	\N	\N	241	{/img/characters/show/Coach_Miles.png}	f
-210	Charlie Brown	\N	63	October 30th	10	\N	65	{/img/characters/show/Charlie_Brown.png}	t
-4	Stanley "Stan" Marsh	1	3	October 19th	9	{Christian,"Atheist (Temporariry)","Mormon (Temporariry)","Scientologist (Temporariry)","Blaintologist (Temporarily)"}	1	{/img/characters/show/Stan_Marsh.png}	f
-542	Cupid Me	\N	\N	\N	\N	\N	230	{/img/characters/show/Cupid_Me.png,/img/characters/show/Cupid_Ye.png}	f
-568	David Quincy	\N	\N	May 22nd	\N	\N	179	{/img/characters/show/David_Quincy.png}	t
-544	Dale Earnhardt Jr.	\N	\N	October 10th	51	\N	203	{/img/characters/show/Dale_Earnhardt_Jr.png}	t
-543	Dairy Gold Milk Company President	\N	\N	\N	\N	\N	75	{/img/characters/show/Dairy_Gold_Milk_Company_president.png}	f
-551	Danica Patrick	\N	\N	March 25th	43	\N	203	{/img/characters/show/Danica_Patrick.png}	t
-550	Dane Cook	\N	\N	March 18th	53	\N	211	{/img/characters/show/Dane_Cook.png}	t
-549	Dan Snyder	\N	\N	November 23rd	60	{Judaism}	248	{/img/characters/show/Dan_Snyder.png}	t
-554	Danielle Staub	\N	\N	July 29th	63	\N	204	{/img/characters/show/Danielle_Staub.png}	t
-571	David Spade	\N	\N	July 22nd	61	\N	211	{/img/characters/show/David_Spade.png}	t
-569	David Satcher	\N	\N	March 2nd	84	\N	87	{/img/characters/show/David_Satcher.png}	t
-567	David Perry	\N	\N	\N	\N	\N	304	{/img/characters/show/David_Perry.png}	f
-566	David Palmer	\N	\N	April 15th	46	\N	174	{/img/characters/show/David_Palmer.png}	f
-565	David Letterman	\N	\N	April 12th	78	{Lutheran}	186	{/img/characters/show/David_Letterman.png}	t
-564	David Hasselhoff	\N	\N	July 17th	73	{Lutheran}	11	{/img/characters/show/David_Haselhoff.png}	t
-563	David Duchovny	\N	\N	August 7th	65	{Judaism}	196	{/img/characters/show/David_Duchovny.png}	t
-562	David Carradine	\N	\N	December 8th	72	{Scientology}	189	{/img/characters/show/David_Carradine.png}	t
-561	David Blaine	\N	\N	April 4th	52	{"Blaintology (South Park)","Judaism (real life)"}	68	{/img/characters/show/Blaine.png}	t
-579	Deborah Carroll	\N	\N	December 1st	61	\N	146	{/img/characters/show/Deborah_Carroll.png}	t
-598	Dick Cheney	\N	\N	January 30th	84	{Methodist}	91	{/img/characters/show/Dick_Cheney.png}	t
-596	Diana, Princess of Wales	\N	\N	July 1st	36	{"Church of England"}	46	{/img/characters/show/Princess_Diana.png}	t
-618	Donna Reed	\N	\N	January 27th	64	{Methodist}	29	{/img/characters/show/Donna_Reed.png}	t
-577	Dean Martin	\N	\N	June 7th	78	\N	57	{/img/characters/show/Dean_Martin.png}	t
-604	DJ AM	\N	\N	August 28th	36	\N	189	{/img/characters/show/DJ_AM.png}	t
-602	Dio	\N	\N	\N	\N	\N	43	{/img/characters/show/Dio.png}	t
-610	Dom DeLuise	\N	\N	August 1st	75	{"Roman Catholic"}	189	{/img/characters/show/Dom_Deluise.png}	t
-617	Donald Trump Jr.	\N	\N	December 31th	47	\N	326	{/img/characters/show/Donald_Trump_Jr.png}	t
-616	Donald Trump	\N	\N	June 14th	79	{Presbyterian}	76	{/img/characters/show/President_Trump.png,/img/characters/show/President_Trump_Old.png}	t
-615	Donald Rumsfeld	\N	\N	July 9th	88	{Presbyterian}	91	{/img/characters/show/Donald_Rumsfeld.png}	t
-613	Don King	\N	\N	August 20th	94	{Baptist}	10	{/img/characters/show/Don_King.png}	t
-640	Dr. Phil	\N	\N	September 1st	75	{Christian}	210	{/img/characters/show/Dr_Phil.png}	t
-637	Dr. Mehmet Oz	\N	\N	June 11th	65	{Islam}	228	{/img/characters/show/Dr_Oz.png}	t
-657	Dan Scavino	\N	\N	January 14th	49	\N	328	{/img/characters/show/Dan_Scavino.png}	t
-661	Edge	\N	\N	October 30th	52	{Christian}	191	{/img/characters/show/Edge.png}	t
-660	Edgar Allan Poe	\N	\N	January 19th	40	{Christian}	241	{/img/characters/show/Edgar_Allen_Poe.png}	t
-659	Ed McMahon	\N	\N	March 6th	86	{Catholic}	189	{/img/characters/show/Ed_McMahon.png}	t
-676	Elvis Presley	\N	\N	January 8th	42	{Pentecostal}	234	{/img/characters/show/Elvis.png}	t
-675	Elton John	\N	\N	March 25th	78	\N	5	{/img/characters/show/Elton_John_New.png,/img/characters/show/Elton_John_Old.png}	t
-673	Elon Musk	\N	\N	June 28th	54	{Agnostic}	251	{/img/characters/show/Elon_Musk_New.png,/img/characters/show/Elon_Musk_Old.png}	t
-668	Eliot Spitzer	\N	\N	June 10th	66	\N	196	{/img/characters/show/Eliot_Spitzer.png}	t
-667	Elin Nordegren	\N	\N	January 1st	45	\N	196	{/img/characters/show/Elin_Nordegren.png}	t
-684	Emperor Hirohito	\N	72	January 7th	87	{Shinto}	42	{/img/characters/show/Emperor_Hirohito_Uniform.png,/img/characters/show/Emperor_Hirohito_Armor.png}	t
-683	Emperor Akihito	\N	72	December 23rd	91	{Shinto}	192	{/img/characters/show/Emperor_Akihito.png}	t
-680	Emmett Hollis	\N	71	\N	\N	\N	187	{/img/characters/show/Emmett_Hollis.png}	f
-679	Emmanuel Lewis	\N	\N	March 9th	54	\N	193	{/img/characters/show/Emmanuel_Lewis.png}	t
-687	Eric Roberts	\N	\N	April 18th	69	{Christian}	15	{/img/characters/show/Eric_Roberts.png}	t
-685	Enchorito Mark	\N	\N	\N	\N	\N	93	{/img/characters/show/Enchorito_Mark.png}	f
-686	Enrique	\N	\N	\N	\N	\N	4	{/img/characters/show/Enrique.png}	f
-706	Felipe Calderón	\N	\N	August 18th	63	\N	187	{/img/characters/show/Felipe_Calderon.png}	t
-666	Elderly Woman with Blue-Gray Blouse	\N	\N	\N	\N	\N	290	{/img/characters/show/Un-named-townsfolk-elderly-grocery-shopper-female.png}	f
-665	Elderly Woman in Wheelchair	\N	\N	\N	\N	\N	309	{/img/characters/show/Elderly_Extortionist.png}	f
-711	Fidel Castro	\N	\N	August 13th	90	{Atheism}	64	{/img/characters/show/Fidel_Castro.png}	t
-725	Francis Ford Coppola	\N	\N	April 7th	86	\N	88	{/img/characters/show/Francis_Ford_Coppola.png}	t
-728	Frank Sinatra	\N	\N	December 12th	82	{"Roman Catholic"}	57	{/img/characters/show/Frank_Sinatra.png}	t
-10	Jimbo Kern	\N	3	\N	\N	{"Roman Catholic"}	2	{/img/characters/show/Jimbo_Kern.png}	f
-12	Great-Great-Grandpa Marsh	\N	3	\N	\N	\N	6	{/img/characters/show/Great_Great_Grandpa_Marsh.png}	f
-13	Flo Kimble	\N	3	\N	\N	\N	28	{/img/characters/show/Flo_Kimble.png}	f
-14	Marvin Marsh	\N	3	\N	102	{"Roman Catholic"}	6	{/img/characters/show/Marvin_Marsh.png}	f
-15	Roy	\N	3	\N	\N	\N	25	{/img/characters/show/Roy.png}	f
-16	Sharon Marsh	\N	3	December 16th	\N	{Christian,"Atheist (Temporariry)","Mormon (Temporariry)"}	5	{/img/characters/show/Sharon_Marsh.png}	f
-17	Shelley Marsh	\N	3	November 24th	13	{Christian,"Atheist (Temporariry)","Mormon (Temporariry)"}	5	{/img/characters/show/Shelley_Marsh.png}	f
-18	Fluffy	\N	2	\N	\N	\N	5	{/img/characters/show/Fluffy.png}	f
-19	Randy Marsh	\N	3	March 1st	45	{Christian,"Atheist (Temporariry)","Mormon (Temporariry)"}	3	{/img/characters/show/Randy_Marsh.png}	f
-21	Ned Gerblanski	\N	\N	\N	\N	{"Roman Catholic"}	3	{/img/characters/show/Ned_Gerblanski.png}	f
-22	Scuzzlebutt	\N	\N	\N	\N	\N	3	{/img/characters/show/Scuzzlebutt.png}	f
-23	Murrey Broflovski	\N	1	\N	\N	{Judaism}	16	{/img/characters/show/Murrey_Broflovski.png}	f
-24	Sheila Broflovski	\N	1	\N	\N	{Judaism}	6	{/img/characters/show/Sheila_Broflovski.png}	f
-25	Gerald Broflovski	\N	1	\N	\N	{Judaism}	9	{/img/characters/show/Gerald_Broflovski.png}	f
-26	Clone Stan Marsh	\N	3	\N	0	\N	5	{/img/characters/show/Clone_Stan_Marsh.png}	f
-27	Sparky	\N	3	\N	\N	\N	4	{/img/characters/show/Sparky.png}	f
-28	Howard Cartman	\N	2	\N	\N	{"Roman Catholic"}	29	{/img/characters/show/Howard_Cartman.png}	f
-29	"Eric's Unnamed Uncle"	\N	2	\N	\N	{"Roman Catholic"}	29	{/img/characters/show/Uncle_Cartman.png}	f
-715	Foghorn Leghorn	\N	\N	\N	\N	\N	202	{/img/characters/show/Foghorn_Leghorn.png}	f
-714	Fluffy ("Cock Magic")	\N	\N	\N	\N	\N	255	{/img/characters/show/Fluffy_(Cock_Magic).png}	f
-30	Stinky Cartman	\N	2	\N	\N	{"Roman Catholic"}	29	{/img/characters/show/Stinky_Cartman.png}	f
-31	Mabel Louise Cartman	\N	2	\N	\N	{"Roman Catholic"}	24	{/img/characters/show/Mabel_Cartman.png}	f
-32	Harold Cartman	\N	2	\N	\N	{"Roman Catholic"}	29	{/img/characters/show/Harold_Cartman.png}	f
-33	Liane Cartman	\N	2	\N	\N	{"Roman Catholic"}	1	{/img/characters/show/Liane_Cartman.png}	f
-34	Fred Cartman	\N	2	\N	\N	{"Roman Catholic"}	29	{/img/characters/show/Fred_Cartman.png}	f
-35	Elvin Cartman	\N	2	\N	\N	{"Roman Catholic"}	29	{/img/characters/show/Elvin_Cartman.png}	f
-36	Alexandra Cartman	\N	2	\N	\N	{"Roman Catholic"}	29	{/img/characters/show/Alexandra_Cartman.png}	f
-37	Eric's Unnamed Aunt	\N	2	\N	\N	{"Roman Catholic"}	29	{/img/characters/show/Aunt_Cartman.png}	f
-38	Lisa Cartman	\N	2	\N	\N	{"Roman Catholic"}	29	{/img/characters/show/Lisa_Cartman.png}	f
-39	Stuart McCormick	\N	4	\N	\N	{"Roman Catholic","Cult of Cthulhu (Formerly)"}	8	{/img/characters/show/Stuart_McCormick.png}	f
-40	Mr. Kitty	\N	2	\N	\N	\N	1	{/img/characters/show/Mr_Kitty.png}	f
-41	Florence Cartman	\N	2	\N	\N	{"Roman Catholic"}	29	{/img/characters/show/Florence_Cartman.png}	f
-42	Leopold "Butters" Stotch	\N	34	September 11th	9	{"Roman Catholic","Blaintology (Temporarily)"}	25	{/img/characters/show/Butters_Stotch.png}	f
-43	Kevin McCormick	\N	4	\N	\N	{"Roman Catholic"}	8	{/img/characters/show/Kevin_McCormick.png}	f
-96	Mrs. Daniels	\N	13	\N	\N	\N	230	{/img/characters/show/Mrs_Daniels.png}	f
-44	Carol McCormick	\N	4	\N	\N	{"Roman Catholic","Cult of Cthulhu (Formerly)"}	8	{/img/characters/show/Carol_McCormick.png}	f
-45	Nellie Stotch	\N	34	\N	\N	\N	116	{/img/characters/show/Nellie_Stotch.png}	f
-46	Bud Stotch	\N	34	\N	\N	\N	116	{/img/characters/show/Bud_Stotch.png}	f
-47	Grandma Stotch	\N	34	\N	\N	\N	228	{/img/characters/show/Grandma_Stotch.png}	f
-48	Linda Stotch	\N	34	\N	\N	{"Roman Catholic"}	64	{/img/characters/show/Linda_Stotch.png}	f
-49	Stephen Willis Stotch	\N	34	\N	\N	{"Roman Catholic"}	17	{/img/characters/show/Stephen_Stotch.png}	f
-51	Richard Tweak	\N	48	\N	\N	{Buddhist,"Roman Catholic (Formerly)","Atheist (Formerly)"}	30	{/img/characters/show/Richard_Tweak.png}	f
-52	Tweek Tweak	\N	48	\N	10	{Buddhist,"Roman Catholic (Formerly)","Atheist (Formerly)"}	30	{/img/characters/show/Tweek_Tweak.png}	f
-53	Stripe	\N	43	\N	\N	\N	36	{/img/characters/show/Stripe.png}	f
-54	Tricia Tucker	\N	43	\N	\N	{"Roman Catholic"}	36	{/img/characters/show/Tricia_Tucker.png}	f
-55	Laura Tucker	\N	43	\N	\N	{"Roman Catholic"}	36	{/img/characters/show/Laura_Tucker.png}	f
-56	Thomas Tucker	\N	43	\N	\N	{"Roman Catholic"}	36	{/img/characters/show/Thomas_Tucker.png}	f
-57	Grandma Tucker	\N	43	\N	\N	\N	178	{/img/characters/show/Grandma_Tucker.png}	f
-59	Manuela Tweak	\N	48	\N	\N	{Buddhist,"Roman Catholic (Formerly)","Atheist (Formerly)"}	30	{/img/characters/show/Manuela_Tweak.png}	f
-60	Grandma Tweak	\N	48	\N	\N	\N	312	{/img/characters/show/Grandma_Tweak.png}	f
-61	Kyle Schwartz	\N	1	\N	10	{Judaism}	76	{/img/characters/show/Kyle_Schwartz.png}	f
-62	Kyle's Elephant	\N	1	\N	\N	\N	5	{/img/characters/show/Kyle_Elephant.png}	f
-63	Spookyfish	\N	3	\N	\N	\N	28	{/img/characters/show/Spookyfish.png}	f
-64	Grandpa McCormick	\N	4	\N	\N	\N	63	{/img/characters/show/Grandpa_McCormick.png}	f
-65	Bradley Biggle	\N	8	\N	10	\N	46	{/img/characters/show/Bradley_Biggle.png}	f
-66	Harriet Biggle	\N	8	\N	\N	\N	110	{/img/characters/show/Mrs_Biggle.png}	f
-67	Mr. Biggle	\N	8	\N	\N	\N	241	{/img/characters/show/Mr_Biggle.png}	f
-68	Barney	\N	7	\N	\N	\N	264	{/img/characters/show/Barney.png}	f
-69	Mrs. Barbrady	\N	7	\N	\N	\N	264	{/img/characters/show/Mrs_Barbrady.png}	f
-70	Officer Barbrady	\N	7	\N	\N	{"Roman Catholic"}	1	{/img/characters/show/Officer_Barbrady.png}	f
-71	Mike Makowski	\N	5	\N	11	\N	181	{/img/characters/show/Mike_Makowski.png}	f
-72	Mr. Adams	\N	5	\N	\N	\N	223	{/img/characters/show/Mr_Adams.png}	f
-73	Henrietta Biggle	\N	8	\N	11	{Satanism,"Cult of Cthulhu (Formerly)"}	110	{/img/characters/show/Henrietta_Biggle.png}	f
-75	Filmore Anderson	\N	6	\N	\N	\N	60	{/img/characters/show/Filmore_Anderson.png}	f
-76	Mrs. Anderson	\N	6	\N	\N	\N	64	{/img/characters/show/Mrs_Anderson.png}	f
-77	Millard Anderson	\N	6	\N	\N	\N	90	{/img/characters/show/Millard_Anderson.png}	f
-78	Tolkien Black	\N	9	\N	10	{"Roman Catholic"}	36	{/img/characters/show/Tolkien_Black.png}	f
-79	Linda Black	\N	9	\N	\N	{"Roman Catholic"}	50	{/img/characters/show/Linda_Black.png}	f
-80	Steve Black	\N	9	\N	\N	{"Roman Catholic"}	50	{/img/characters/show/Steve_Black.png}	f
-81	Gobbles	\N	10	\N	\N	\N	61	{/img/characters/show/Gobbles.png}	f
-82	Timothy "Timmy" Burch	\N	10	\N	10	\N	49	{/img/characters/show/Timmy_Burch.png}	f
-83	Helen Burch	\N	10	\N	\N	\N	51	{/img/characters/show/Helen_Burch.png}	f
-84	Richard Burch	\N	10	\N	\N	\N	51	{/img/characters/show/Richard_Burch.png}	f
-85	Charlotte's Grandmother	\N	11	\N	\N	\N	259	{/img/characters/show/Charlottes_Grandma.png}	f
-86	Charlotte's Siste	\N	11	\N	\N	\N	259	{/img/characters/show/Charlottes_Sister.png}	f
-87	Charlotte's Brother	\N	11	\N	\N	\N	259	{/img/characters/show/Charlottes_Brother.png}	f
-88	Charlotte	\N	11	\N	10	\N	259	{/img/characters/show/Charlotte.png}	f
-89	Charlotte's Mother	\N	11	\N	\N	\N	259	{/img/characters/show/Charlottes_Mother.png}	f
-90	Thomas (Charlotte's Father)	\N	11	\N	\N	\N	259	{/img/characters/show/Charlottes_Father.png}	f
-91	Rebecca Cotswolds	\N	12	\N	9	\N	43	{/img/characters/show/Rebecca_Cotswolds.png}	f
-92	Mark Cotswolds	\N	12	\N	10	\N	43	{/img/characters/show/Mark_Cotswolds.png}	f
-93	Mrs. Cotswolds	\N	12	\N	\N	\N	43	{/img/characters/show/Mrs_Cotswolds.png}	f
-94	Mr. Cotswolds	\N	12	\N	\N	\N	43	{/img/characters/show/Mr_Cotswolds.png}	f
-95	Nichole Daniels	\N	13	\N	10	{"Roman Catholic"}	230	{/img/characters/show/Nichole_Daniels.png}	f
-50	Karen McCormick	\N	4	\N	6	{"Roman Catholic"}	129	{/img/characters/show/Karen_McCormick.png}	f
-97	William Daniels	\N	13	\N	\N	\N	230	{/img/characters/show/William_Daniels.png}	f
-98	Rex	\N	14	\N	\N	\N	4	{/img/characters/show/Rex.png}	f
-99	Clyde Donovan	\N	14	April 10th	10	{"Roman Catholic"}	2	{/img/characters/show/Clyde_Donovan.png}	f
-100	Betsy Donovan	\N	14	\N	\N	{"Roman Catholic"}	136	{/img/characters/show/Betsy_Donovan.png}	f
-101	Roger Donovan	\N	14	\N	\N	{"Roman Catholic"}	87	{/img/characters/show/Roger_Donovan.png}	f
-102	Larry Feegan	\N	15	\N	13	\N	220	{/img/characters/show/Larry_Feegan.png}	f
-103	Mrs. Feegan	\N	15	\N	\N	\N	220	{/img/characters/show/Mrs_Feegan.png}	f
-104	Mr. Feegan	\N	15	\N	\N	\N	220	{/img/characters/show/Mr_Feegan.png}	f
-105	Mrs. Garrison Senior	\N	16	\N	\N	\N	48	{/img/characters/show/Mrs_Garrison.png}	f
-106	Mr. Garrison Senior	\N	16	\N	\N	\N	48	{/img/characters/show/Mr_Garrison.png}	f
-107	Sophie Gray	\N	17	\N	10	\N	306	{/img/characters/show/Sophie_Gray.png}	f
-108	Mrs. Gray	\N	17	\N	\N	\N	306	{/img/characters/show/Mrs_Gray.png}	f
-109	Mr. Hakeem	\N	50	\N	\N	{Islam}	157	{/img/characters/show/Mr_Hakeem.png}	f
-110	Bridon Gueermo	\N	18	\N	9	\N	180	{/img/characters/show/Bridon_Gueermo.png}	f
-111	Mrs. Gueermo	\N	18	\N	\N	\N	180	{/img/characters/show/Mrs_Gueermo.png}	f
-112	Mr. Gueermo	\N	18	\N	\N	\N	180	{/img/characters/show/Mr_Gueermo.png}	f
-113	Baahir Hassan Abdul Hakeem	\N	50	\N	8	{Islam}	157	{/img/characters/show/Baahir.png}	f
-114	Mrs. Hakeem	\N	50	\N	\N	{Islam}	157	{/img/characters/show/Mrs_Hakeem.png}	f
-115	Simon Hankey	\N	19	\N	\N	\N	65	{/img/characters/show/Simon_Hankey.png}	f
-116	Amber Hankey	\N	19	\N	\N	\N	65	{/img/characters/show/Amber_Hankey.png}	f
-117	Cornwallis Hankey	\N	19	\N	\N	\N	65	{/img/characters/show/Cornwallis_Hankey.png}	f
-118	Autumn Hankey	\N	19	\N	\N	\N	65	{/img/characters/show/Autumn_Hankey.png}	f
-119	Mr. Hankey	\N	19	\N	\N	\N	9	{/img/characters/show/Mr_Hankey.png}	f
-122	Mrs. Handler	\N	21	\N	\N	{Judaism}	22	{/img/characters/show/Mrs_Handler.png}	f
-123	Mr. Handler	\N	21	\N	\N	{Judaism}	66	{/img/characters/show/Mr_Handler.png}	f
-124	Amanda Harrison	\N	20	\N	\N	{Mormon}	108	{/img/characters/show/Amanda_Harrison.png}	f
-125	Dave Harrison	\N	20	\N	\N	{Mormon}	108	{/img/characters/show/Dave_Harrison.png}	f
-126	Jenny Harrison	\N	20	\N	\N	{Mormon}	108	{/img/characters/show/Jenny_Harrison.png}	f
-127	Gary Harrison	\N	20	\N	10	{Mormon}	108	{/img/characters/show/Gary_Harrison.png}	f
-128	Mark Harrison	\N	20	\N	\N	{Mormon}	108	{/img/characters/show/Mark_Harrison.png}	f
-129	Mrs. Harrison	\N	20	\N	\N	{Mormon}	108	{/img/characters/show/Mrs_Harrison.png}	f
-130	Mr. Harrison	\N	20	\N	\N	{Mormon}	108	{/img/characters/show/Mr_Harrison.png}	f
-131	Mrs. Larsen	\N	26	\N	\N	{"Roman Catholic"}	77	{/img/characters/show/Mrs_Larsen.png}	f
-132	Flora Larsen	\N	26	\N	5	{"Roman Catholic"}	60	{/img/characters/show/Flora_Larsen.png}	f
-133	Millie Larsen	\N	26	\N	10	{"Roman Catholic"}	77	{/img/characters/show/Millie_Larsen.png}	f
-134	Mrs. Knitts	\N	22	\N	\N	{"Roman Catholic"}	123	{/img/characters/show/Mrs_Knitts.png}	f
-135	Annie Knitts	\N	22	\N	10	{"Roman Catholic"}	36	{/img/characters/show/Annie_Knitts.png}	f
-136	Mr. Mackey Senior	\N	25	\N	\N	\N	313	{/img/characters/show/Mrs_Mackey_Senior.png}	f
-137	Mrs. Mackey Senior	\N	25	\N	\N	\N	90	{/img/characters/show/Mr_Mackey_Senior.png}	f
-138	Mr. Mackey	\N	25	\N	50	{"Roman Catholic"}	9	{/img/characters/show/Mr_Mackey.png}	f
-139	Clark Malkinson	\N	24	\N	\N	\N	306	{/img/characters/show/Clark_Malkinson.png}	f
-140	Ellen Malkinson	\N	24	\N	\N	\N	306	{/img/characters/show/Ellen_Malkinson.png}	f
-141	Scott Malkinson	\N	24	\N	10	\N	117	{/img/characters/show/Scott_Malkinson.png}	f
-142	Michael's Mom	\N	29	\N	\N	\N	241	{/img/characters/show/Michael_Dad.png}	f
-143	Michael	\N	29	\N	11	{Unconfirmed,"Cult of Cthulhu (Formerly)"}	110	{/img/characters/show/Michael.png}	f
-144	Dr. Alphonse Mephesto	\N	30	\N	\N	\N	5	{/img/characters/show/Dr_Mephesto.png}	f
-145	Kevin Mephesto	\N	30	\N	\N	\N	5	{/img/characters/show/Kevin_Mephesto.png}	f
-146	Terrance Mephesto	\N	30	\N	9	\N	5	{/img/characters/show/Terrance_Mephesto.png}	f
-147	Thomas McElroy	\N	27	\N	\N	\N	34	{/img/characters/show/Thomas_McElroy.png}	f
-148	Nellie McElroy	\N	27	\N	\N	\N	34	{/img/characters/show/Nellie_McElroy.png}	f
-149	Mr. McArthur	\N	23	\N	\N	{"Roman Catholic"}	184	{/img/characters/show/Mr_McArthur.png}	f
-121	Louis Handler	\N	21	\N	10	{Judaism}	42	{/img/characters/show/Louis_Handler.png}	f
-150	Moira McArthur	\N	23	\N	\N	{"Roman Catholic"}	177	{/img/characters/show/Moira_McArthur.png}	f
-151	Red McArthur	\N	23	\N	10	{"Roman Catholic"}	10	{/img/characters/show/Red_McArthur.png}	f
-152	Nelly's Mom	\N	28	\N	\N	{"Roman Catholic"}	240	{/img/characters/show/Nelly_Dad.png}	f
-153	Nelly	\N	28	\N	10	{"Roman Catholic"}	167	{/img/characters/show/Nelly.png}	f
-154	Michael's Dad	\N	29	\N	\N	\N	241	{/img/characters/show/Michael_Mom.png}	f
-155	Margaret Nelson	\N	32	June 18th	35	{"Roman Catholic"}	260	{/img/characters/show/Liza_Nelson.png}	f
-156	Liza Nelson	\N	32	\N	10	{"Roman Catholic"}	260	{/img/characters/show/Margaret_Nelson.png}	f
-157	Matt	\N	28	\N	\N	{"Roman Catholic"}	215	{/img/characters/show/Nelly_Mom.png}	f
-158	Riley	\N	31	\N	0	\N	290	{/img/characters/show/Riley.png}	f
-159	Bailey	\N	31	\N	0	\N	290	{/img/characters/show/Bailey.png}	f
-160	Harper	\N	31	\N	0	\N	290	{/img/characters/show/Harper.png}	f
-161	Emory	\N	31	\N	0	\N	290	{/img/characters/show/Emory.png}	f
-162	River	\N	31	\N	0	\N	290	{/img/characters/show/River.png}	f
-164	Peter "PC Principal" Charles	\N	31	\N	\N	{Christian}	258	{/img/characters/show/PC_Principal.png}	f
-165	DogPoo Petuski	\N	38	\N	10	\N	85	{/img/characters/show/Dog_Poo.png}	f
-166	Mrs. Petuski	\N	38	\N	\N	\N	33	{/img/characters/show/Mrs_Petuski.png}	f
-167	Mr. Petuski	\N	38	\N	\N	\N	9	{/img/characters/show/Mr_Petuski.png}	f
-168	David Rodriguez	\N	37	\N	10	\N	261	{/img/characters/show/David_Rodriguez.png}	f
-169	Mrs. Rodriguez	\N	37	\N	\N	\N	261	{/img/characters/show/Mrs_Rodriguez.png}	f
-170	Mr. Rodriguez	\N	37	\N	\N	\N	261	{/img/characters/show/Mr_Rodriguez.png}	f
-175	Kevin Stoley	\N	35	\N	10	{"Roman Catholic"}	18	{/img/characters/show/Kevin_Stoley.png}	f
-176	Mrs. Stoley	\N	35	\N	\N	{"Roman Catholic"}	95	{/img/characters/show/Mrs_Stoley.png}	f
-177	Mr. Stoley	\N	35	\N	\N	{"Roman Catholic"}	95	{/img/characters/show/Mr_Stoley.png}	f
-178	Chaos Hamsters	\N	34	\N	\N	\N	85	{/img/characters/show/Chaos_Hamsters.png}	f
-179	Terrance Henry Stoot	\N	33	Octuber 20th	54	\N	6	{/img/characters/show/Terrance.png}	f
-180	Sally Dion	\N	33	\N	\N	\N	14	{/img/characters/show/Sally_Dion.png}	f
-181	Katie Queef	\N	33	\N	\N	\N	185	{/img/characters/show/Katie_Queef.png}	f
-182	Streibel Daughters	\N	39	\N	\N	\N	99	{/img/characters/show/Streibel_Daughters.png}	f
-183	Mrs. Streibel	\N	39	\N	\N	\N	99	{/img/characters/show/Mrs_Streibel.png}	f
-184	Mr. Streibel	\N	39	\N	\N	\N	99	{/img/characters/show/Mr_Streibel.png}	f
-185	Scott Tenorman	\N	40	\N	15	\N	69	{/img/characters/show/Scott_Tenorman.png}	f
-186	Mrs. Tenorman	\N	40	\N	41	\N	69	{/img/characters/show/Mrs_Tenorman.png}	f
-187	Jack Tenorman	\N	40	\N	43	\N	69	{/img/characters/show/Jack_Tenorman.png}	f
-188	Wendy Testaburger	\N	41	\N	10	\N	1	{/img/characters/show/Wendy_Testaburger.png}	f
-189	Grandma Testaburger	\N	41	\N	\N	\N	176	{/img/characters/show/Grandma_Testaburger.png}	f
-190	Alexis Testaburger	\N	41	\N	\N	\N	89	{/img/characters/show/Alexis_Testaburger.png}	f
-191	Mr. Testaburger	\N	41	\N	\N	\N	123	{/img/characters/show/Mr_Testaburger.png}	f
-192	Damien Thorn	\N	42	\N	9	{Satanism}	10	{/img/characters/show/Damien_Thorn.png}	f
-194	Heidi Turner	\N	44	\N	10	{Christian}	32	{/img/characters/show/Heidi_Turner.png}	f
-195	Robby	\N	44	\N	\N	{Christian}	61	{/img/characters/show/Robby.png}	f
-196	Nancy Turner	\N	44	\N	\N	{"Roman Catholic"}	58	{/img/characters/show/Nancy_Turner.png}	f
-197	Thomas Turner	\N	44	\N	\N	{Christian}	58	{/img/characters/show/Thomas_Turner.png}	f
-198	Ryan Valmer	\N	47	\N	\N	\N	98	{/img/characters/show/Ryan_Valmer.png}	f
-199	Jimmy Valmer	\N	47	\N	10	\N	67	{/img/characters/show/Jimmy_Valmer.png}	f
-200	Sarah Valmer	\N	47	\N	\N	\N	98	{/img/characters/show/Sarah_Valmer.png}	f
-201	Larry Zewiski	\N	45	\N	10	\N	296	{/img/characters/show/Larry_Zewiski.png}	f
-202	Mrs. Zewiski	\N	45	\N	\N	\N	297	{/img/characters/show/Mrs_Zewiski.png}	f
-203	Mr. Zewiski	\N	45	\N	\N	\N	296	{/img/characters/show/Mr_Zewiski.png}	f
-204	Panamanian Padengo Pequeño	\N	46	\N	4	\N	303	{/img/characters/show/Panamanian_Padengo_Pequeño.png}	f
-205	Alejandro	\N	46	\N	\N	\N	303	{/img/characters/show/Alejandro_White.png}	f
-206	Crystal White	\N	46	\N	5	\N	287	{/img/characters/show/Crystal_White.png}	f
-207	Jason White	\N	46	\N	10	\N	5	{/img/characters/show/Jason_White.png}	f
-208	Mrs. White	\N	46	\N	\N	\N	287	{/img/characters/show/Mrs_White.png}	f
-209	Bob White	\N	46	\N	\N	\N	287	{/img/characters/show/Bob_White.png}	f
-237	Alex Hart	\N	\N	\N	\N	\N	166	{/img/characters/show/Alex_Hart.png}	f
-240	Alice	\N	53	\N	\N	\N	63	{/img/characters/show/Alice.png}	f
-241	Alice's Parents	\N	53	\N	\N	\N	63	{/img/characters/show/Alice's_Parents.png}	f
-242	Alinicia	\N	\N	\N	\N	\N	61	{/img/characters/show/Alinicia.png}	f
-244	Allen Varcas	\N	54	\N	10	\N	130	{/img/characters/show/Allen_Varcas.png}	f
-245	Allie Nelson	\N	\N	\N	10	\N	167	{/img/characters/show/Allie_Nelson.png}	f
-246	Allied Atheist Alliance (AAA)	\N	\N	\N	\N	\N	151	{/img/characters/show/Allied_Atheist_Alliance.png}	f
-247	Allison	\N	\N	\N	\N	\N	159	{/img/characters/show/Allison.png}	f
-248	Allison Mertz	\N	\N	\N	6	\N	181	{/img/characters/show/Allison_Mertz.png}	f
-251	Amanda	\N	\N	\N	\N	\N	49	{/img/characters/show/Amanda.png}	f
-252	Ambassador of Humans	\N	\N	\N	\N	\N	226	{/img/characters/show/Ambassador_of_Humans.png}	f
-253	America's Most Wanted Actors	\N	\N	\N	\N	\N	15	{/img/characters/show/America's_Most_Wanted.png}	f
-254	American Association of Retired Persons	\N	\N	\N	\N	\N	106	{/img/characters/show/American_Association_of_Retired_Persons.png}	f
-255	Amir	\N	\N	\N	13	\N	173	{/img/characters/show/Amir.png}	f
-256	Anchorman	\N	\N	\N	\N	\N	46	{/img/characters/show/Anchorman.png}	f
-258	Andrew Sutherland	\N	\N	\N	\N	\N	176	{/img/characters/show/Andrew_Sutherland.png}	f
-444	Carlos	\N	\N	\N	\N	\N	95	{/img/characters/show/Carlos.png}	f
-262	Animal Liberation Front	\N	\N	\N	\N	\N	138	{/img/characters/show/ALF_Members.png}	f
-264	Annie Bartlett	\N	\N	\N	11	\N	181	{/img/characters/show/Annie_Bartlett.png}	f
-265	Anonymous821	\N	\N	\N	\N	\N	271	{/img/characters/show/Anonymous821.png}	f
-266	Anthony Fauci	\N	\N	December 24th	84	\N	308	{/img/characters/show/Anthony_Fauci.png}	f
-267	Anthony Webster	\N	\N	\N	\N	\N	271	{/img/characters/show/Anthony_Webster.png}	f
-268	Anthropologist	\N	\N	\N	\N	\N	12	{/img/characters/show/Anthropologist.png}	f
-269	Anti-Christ	\N	\N	\N	\N	{Satanism}	125	{/img/characters/show/Anti_Christ.png}	f
-270	Apple Replacement Friend	\N	\N	\N	\N	\N	210	{/img/characters/show/Apple_Replacement_Friend.png}	f
-271	Dr. Apu Nahasapeemapetilon, Ph.D. Jr.	\N	\N	\N	38	{Hinduism}	290	{/img/characters/show/Apu.png}	f
-275	Ashley	\N	\N	\N	10	\N	190	{/img/characters/show/Ashley.png}	f
-277	Aunt Jemima	\N	\N	\N	\N	\N	249	{/img/characters/show/Aunt_Jemima.png}	f
-225	Airsoft Armory Salesman	\N	\N	\N	\N	\N	314	{/img/characters/show/Airsoft_Armory_Salesman.png}	f
-235	Alec Vaughn	\N	\N	\N	\N	\N	294	{/img/characters/show/Alec_Vaughn.png}	f
-163	Strong Christian Woman	\N	31	\N	\N	\N	286	{/img/characters/show/Strong_Woman.png,/img/characters/show/Strong_Christian_Woman.png}	f
-58	Craig Tucker	\N	43	Octuber 23rd	10	{"Roman Catholic"}	9	{/img/characters/show/Craig_Tucker.png}	f
-539	Crips (Gang)	\N	\N	\N	\N	\N	98	{/img/characters/show/Crips.png}	f
-538	Crippled Girl with Brown Hair	\N	\N	\N	\N	\N	113	{/img/characters/show/Crippled_Girl_with_Brown_Hair.png}	f
-537	Crack Babies	\N	\N	\N	\N	\N	214	{/img/characters/show/Crab_People.png}	f
-536	Crab People	\N	\N	\N	\N	\N	104	{/img/characters/show/Crab_People.png}	f
-541	Cthulhu Cult Leader	\N	\N	\N	\N	{"Cult of Cthulhu"}	207	{/img/characters/show/Jim_Mcelroy.png}	f
-535	CPS Agents	\N	\N	\N	\N	\N	180	{/img/characters/show/CPS_Agents.png}	f
-534	Coyote Brown	\N	\N	\N	\N	\N	154	{/img/characters/show/Coyote_Brown.png}	f
-533	Cows	\N	\N	\N	\N	\N	1	{/img/characters/show/Cows.png}	f
-540	Cthulhu	\N	\N	\N	\N	{"Cult of Cthulhu"}	206	{/img/characters/show/Cthulu.png}	t
-532	Cowboy Doctors	\N	\N	\N	\N	\N	300	{/img/characters/show/Cowboy_Doctors.png}	f
-531	Count Ravyncrowe	\N	\N	\N	\N	\N	181	{/img/characters/show/Rayvencrowe.png}	f
-120	Chad Handler	\N	21	\N	10	{Judaism}	113	{/img/characters/show/Chad_Handler.png}	f
-552	Daniel Tanner	\N	\N	\N	\N	\N	176	{/img/characters/show/Daniel_Tanner.png}	f
-548	Dan Banks	\N	\N	\N	\N	\N	184	{/img/characters/show/Dan_Banks.png}	f
-547	Dan ("Sarcastaball")	\N	\N	\N	\N	\N	231	{/img/characters/show/Dan_Sarcastaball.png}	f
-546	Damla Jones	\N	\N	\N	\N	\N	82	{/img/characters/show/Dalma_Jones.png}	f
-545	Dallas Cowboys	\N	\N	\N	\N	\N	248	{/img/characters/show/Dallas_Cowboys.png}	f
-560	Davey Solokov	\N	69	\N	\N	\N	313	{/img/characters/show/Davey_Solokov.png}	f
-559	Dave Fitzsimmons	\N	68	\N	\N	\N	278	{/img/characters/show/Dave_Fitzsimmons.png}	f
-558	Dave Beckett	\N	\N	\N	\N	\N	277	{/img/characters/show/Dave_Beckett.png}	f
-557	Darryl Weathers	\N	\N	\N	\N	\N	118	{/img/characters/show/Darryl_Weathers.png}	f
-556	Danny Ray Johnson	\N	\N	\N	\N	\N	300	{/img/characters/show/Danny_Ray_Johnson.png}	f
-555	Danny Ganz	\N	\N	\N	\N	\N	39	{/img/characters/show/Danny_Ganz.png}	f
-553	Daniel ("T.M.I.")	\N	\N	\N	\N	\N	213	{/img/characters/show/Daniel_T_M_I.png}	f
-580	Delivery Express Man	\N	\N	\N	\N	\N	308	{/img/characters/show/Delivery_Express_Man.png}	f
-578	Death	\N	\N	\N	\N	\N	6	{/img/characters/show/Death.png}	f
-576	Dean Howland	\N	\N	\N	\N	\N	214	{/img/characters/show/Dean_Howland.png}	f
-575	Dean	\N	\N	\N	\N	\N	225	{/img/characters/show/Dean.png}	f
-574	DEA Agents	\N	\N	\N	\N	\N	170	{/img/characters/show/DEA_Agents.png}	f
-573	Davin Miller	\N	\N	\N	\N	\N	243	{/img/characters/show/Davin_Miller.png}	f
-572	David Weatherhead	\N	70	\N	10	{Agnostic}	223	{/img/characters/show/David_Weatherhead.png}	f
-570	David Sawitzky	\N	\N	\N	\N	\N	222	{/img/characters/show/David_Sawitsky.png}	f
-590	Derek Smalls	\N	\N	\N	\N	\N	29	{/img/characters/show/Derek_Smalls.png}	f
-589	Denver Sea Park Security Guard	\N	\N	\N	\N	\N	138	{/img/characters/show/Denver_Sea_Park_security_guard.png}	f
-588	Denver Sea Park Boss	\N	\N	\N	\N	\N	138	{/img/characters/show/Denver_Sea_Park_Boss.png}	f
-587	Denver Nuggets	\N	\N	\N	\N	\N	230	{/img/characters/show/Denver_Nuggets.png}	f
-586	Denver Broncos	\N	\N	\N	\N	\N	13	{/img/characters/show/Denver_Broncos.png}	f
-585	Denver Archbishop	\N	\N	\N	\N	\N	289	{/img/characters/show/Denver_Archbishop.png}	f
-584	Dental Floss	\N	\N	\N	\N	\N	212	{/img/characters/show/Dental_Floss.png}	f
-583	Dennis Murray	\N	\N	\N	8	\N	113	{/img/characters/show/Dennis_Murray.png}	f
-582	Dennis ("Night of the Living Homeless")	\N	\N	\N	\N	\N	160	{/img/characters/show/Denis_Homeless.png}	f
-581	Dennis	\N	\N	\N	\N	\N	191	{/img/characters/show/Dennis.png}	f
-599	Diego	\N	\N	\N	\N	\N	159	{/img/characters/show/Diego.png}	f
-597	Diane Choksondik	\N	\N	\N	\N	\N	59	{/img/characters/show/Diane_Chokdondik.png}	f
-594	Devitzen's Tolerance Camp Warden	\N	\N	\N	\N	\N	93	{/img/characters/show/Devitzen's_Tolerance_Camp_Warden.png}	f
-593	Detroit Red Wings	\N	\N	\N	\N	\N	153	{/img/characters/show/Detroit_Redwings.png}	f
-592	Detective Jarvis	\N	\N	\N	\N	\N	140	{/img/characters/show/Detective_Jarvis.png}	f
-591	Detectives Hyde and Richardson	\N	\N	\N	\N	\N	98	{/img/characters/show/Detectives_Hyde_and_Richardson.png}	f
-608	Doctor Tom	\N	\N	\N	\N	\N	11	{/img/characters/show/Doctor_Tom.png}	f
-607	Doctor Lindsay	\N	\N	\N	\N	\N	131	{/img/characters/show/Doctor_Lindsay.png}	f
-606	DMV Workers	\N	\N	\N	\N	\N	238	{/img/characters/show/DMV_Workers.png}	f
-605	DJ Hippo	\N	\N	\N	\N	\N	102	{/img/characters/show/Hippo_DJ.png}	f
-603	DJ ("Korn's Groovy Pirate Ghost Mystery")	\N	\N	\N	\N	\N	41	{/img/characters/show/Korn_DJ.png}	f
-601	Dildo Shwaggins	\N	\N	\N	\N	\N	271	{/img/characters/show/Dildo_Schwaggins.png}	f
-609	DOI Agents	\N	\N	\N	\N	\N	35	{/img/characters/show/DOI_Workers.png}	f
-628	Dr. David Nelson	\N	\N	\N	\N	\N	154	{/img/characters/show/David_Nelson.png}	f
-627	Dr. Cornwallis	\N	\N	\N	\N	\N	119	{/img/characters/show/Dr_Cornwalis.png}	f
-626	Dr. Chinstrap	\N	\N	\N	\N	\N	205	{/img/characters/show/Dr_Chinstrap.png}	f
-625	Dr. Carroll	\N	\N	\N	\N	\N	168	{/img/characters/show/Doctor_Carrol.png}	f
-624	Dr. Biber	\N	\N	\N	\N	\N	126	{/img/characters/show/Dr_Biber.png}	f
-623	Douglas	\N	\N	\N	10	{"Roman Catholic"}	176	{/img/characters/show/Douglas.png}	f
-622	Dougie O'Connell	\N	\N	\N	8	\N	39	{/img/characters/show/Dougie.png}	f
-621	Dotty Applegate	\N	\N	\N	\N	\N	251	{/img/characters/show/Miss_Applegate.png}	f
-620	Dorky Girl	\N	\N	\N	\N	\N	81	{/img/characters/show/Dorky_Girl.png}	f
-614	Donald	\N	\N	\N	\N	\N	25	{/img/characters/show/Donald.png}	f
-612	Don Heisman	\N	\N	\N	\N	\N	128	{/img/characters/show/Don_Heisman.png}	f
-611	Domino	\N	\N	\N	\N	\N	174	{/img/characters/show/Domino.png}	f
-643	Dr. Roberts	\N	\N	\N	\N	\N	49	{/img/characters/show/Dr_Roberts.png}	f
-642	Dr. Pinkerton	\N	\N	\N	\N	\N	205	{/img/characters/show/Dr_Pinkerton.png}	f
-641	Dr. Phillips	\N	\N	\N	\N	\N	189	{/img/characters/show/Dr_Phillips.png}	f
-639	Dr. Pal	\N	\N	\N	\N	\N	132	{/img/characters/show/Dr_Pal.png}	f
-638	Dr. Neeland	\N	\N	\N	\N	\N	140	{/img/characters/show/Dr_Neeland.png}	f
-636	Dr. Matlock	\N	\N	\N	\N	\N	168	{/img/characters/show/Dr_Matlock.png}	f
-635	Dr. Lout	\N	\N	\N	\N	\N	34	{/img/characters/show/Dr_Lout.png}	f
-634	Dr. Larry	\N	\N	\N	\N	\N	78	{/img/characters/show/Dr_Larry.png}	f
-633	Dr. Land	\N	\N	\N	\N	\N	189	{/img/characters/show/Dr_Land.png}	f
-632	Dr. Katz	\N	\N	\N	\N	\N	21	{/img/characters/show/Dr_Jonathan_Katz.png}	f
-631	Dr. Hallis	\N	\N	\N	\N	\N	89	{/img/characters/show/Dr_Hallis.png}	f
-629	Dr. Doctor	\N	\N	\N	\N	\N	15	{/img/characters/show/Dr_Doctor.png}	f
-647	Dr. Spookalot	\N	\N	\N	\N	\N	41	{/img/characters/show/Dr_Spookalot.png}	f
-646	Dr. Sheltair	\N	\N	\N	\N	\N	318	{/img/characters/show/Dr_Sheltair.png}	f
-645	Dr. Shay	\N	\N	\N	\N	\N	51	{/img/characters/show/Dr_Shay.png}	f
-644	Dr. Schwartz	\N	\N	\N	\N	{Judaism}	16	{/img/characters/show/Rabbi_Schwartz.png}	f
-630	Dr. Gauche	\N	\N	\N	\N	\N	286	{/img/characters/show/Dr_Gauche.png}	f
-648	Dr. Tristan Adams	\N	\N	\N	\N	\N	24	{/img/characters/show/Tristan_Adams.png}	f
-649	Dr. Wayne Schroeder	\N	\N	\N	\N	\N	269	{/img/characters/show/Dr_Wayne_Schroeder.png}	f
-650	Dr. Zonder	\N	\N	\N	\N	\N	161	{/img/characters/show/Dr_Zonder.png}	f
-653	Droopy Dog	\N	\N	\N	\N	\N	202	{/img/characters/show/Droopy_Dog.png}	f
-654	Duck President	\N	\N	\N	\N	\N	216	{/img/characters/show/Duck_President.png}	f
-656	Dylan and Sarah	\N	\N	\N	\N	\N	142	{/img/characters/show/Dylan_and_Sarah.png}	f
-678	Emir Hadi	\N	\N	\N	\N	\N	159	{/img/characters/show/Emir_Hadi.png}	f
-664	Elaine	\N	\N	\N	\N	\N	76	{/img/characters/show/Elaine.png}	f
-663	El Pollo Loco Workers	\N	\N	\N	\N	\N	218	{/img/characters/show/El_Pollo_Loco_Workers.png}	f
-662	Eduardo Hernandez	\N	\N	\N	\N	\N	275	{/img/characters/show/Eduardo_Hernandez.png}	f
-674	Elsa	\N	\N	\N	\N	\N	299	{/img/characters/show/Elsa.png}	f
-672	Elmer Fudd	\N	\N	\N	\N	\N	202	{/img/characters/show/Elmer_Fudd.png}	f
-670	Elise Gintz	\N	\N	\N	\N	\N	111	{/img/characters/show/Elise_Gintz.png}	f
-669	Elise Garrett	\N	\N	\N	\N	\N	41	{/img/characters/show/Elise_garrett.png}	f
-682	Emo Kids	\N	\N	\N	\N	\N	241	{/img/characters/show/Emo_Kids.png}	f
-681	Emily Marx	\N	\N	\N	9	\N	134	{/img/characters/show/Emily_Marx.png}	f
-694	Excalibur Sorcerer	\N	\N	\N	\N	\N	66	{/img/characters/show/Excalibur_Sorcerer.png}	f
-693	Excalibur Barker	\N	\N	\N	\N	\N	66	{/img/characters/show/Excalibur_Barker.png}	f
-691	Ethiopian Tribe	\N	\N	\N	\N	\N	8	{/img/characters/show/Ethiopians.png}	f
-690	Esther	\N	\N	\N	10	{"Roman Catholic"}	32	{/img/characters/show/Esther.png}	f
-689	Estella Havisham	\N	\N	\N	10	\N	62	{/img/characters/show/Estella.png}	f
-688	Escaped Convict	\N	\N	\N	\N	\N	62	{/img/characters/show/Escaped_Convict.png}	f
-171	Bebe Stevens	\N	36	August 13th	10	{"Roman Catholic"}	2	{/img/characters/show/Bebe_Stevens.png}	f
-173	Mrs. Stevens	\N	36	\N	\N	{"Roman Catholic"}	16	{/img/characters/show/Mrs_Stevens.png}	f
-174	Mr. Stevens	\N	36	\N	\N	{"Roman Catholic"}	123	{/img/characters/show/Mr_Stevens.png}	f
-705	Felipe	\N	\N	\N	\N	\N	95	{/img/characters/show/Felipe.png}	f
-704	Federal Bureau of Investigation	\N	\N	\N	\N	\N	8	{/img/characters/show/FBI_Agents.png}	f
-703	Father Maxi	\N	\N	\N	\N	\N	9	{/img/characters/show/Father_Maxi.png}	f
-702	Father and Handicapped Daughter	\N	\N	\N	\N	\N	273	{/img/characters/show/Fortcollins_Mann_And_Daughter.png}	f
-701	Fat Abbott	\N	\N	\N	\N	\N	25	{/img/characters/show/Fat_Abbott.png}	f
-700	Fast Food Executives	\N	\N	\N	\N	\N	217	{/img/characters/show/Fast_food_executives.png}	f
-699	Farty O'Cool	\N	\N	\N	\N	\N	315	{/img/characters/show/Farty_O'Cool.png}	f
-698	Faith Records CEO	\N	\N	\N	\N	\N	105	{/img/characters/show/Faith_Records_CEO.png}	f
-697	The "FAGS" Boys	\N	\N	\N	\N	\N	191	{/img/characters/show/FAGS_boys.png}	f
-677	Elvis Presley Hologram	\N	\N	\N	\N	\N	257	{/img/characters/show/Elvis_Presley_Hologram.png}	t
-713	Firkle Smith	\N	\N	\N	\N	\N	110	{/img/characters/show/Firkle.png}	f
-712	Fifi	\N	\N	\N	\N	\N	4	{/img/characters/show/Fifi.png}	f
-710	Ferrari	\N	\N	\N	10	\N	110	{/img/characters/show/Ferrari_Raisins.png}	f
-709	Fenton Hardly	\N	\N	\N	\N	\N	148	{/img/characters/show/Fenton_Hardly.png}	f
-708	Female Thief	\N	\N	\N	\N	\N	174	{/img/characters/show/Female_Thief.png}	f
-707	Female QAnon Tutor	\N	\N	\N	\N	\N	309	{/img/characters/show/Female_QAnon_Tutor.png}	f
-724	Francis (Special Kid)	\N	\N	\N	\N	\N	113	{/img/characters/show/Francis_(Special_Kid).png}	f
-723	Francis (4th Grade)	\N	\N	\N	\N	\N	58	{/img/characters/show/Francis_(4th_Grade).png}	f
-722	Frances Velman	\N	\N	\N	\N	\N	86	{/img/characters/show/Frances_Velman.png}	f
-721	Four-Assed Monkey	\N	\N	\N	\N	\N	5	{/img/characters/show/Four_Assed_Monkey.png}	f
-720	Fosse McDonald	\N	73	\N	9	\N	4	{/img/characters/show/Fossie_Mcdonald.png}	f
-719	Foreman	\N	\N	\N	\N	\N	32	{/img/characters/show/Rainforest_Logger.png}	f
-718	Foofa	\N	\N	\N	\N	\N	242	{/img/characters/show/Foofa.png}	f
-717	Fonics Monkey	\N	\N	\N	\N	\N	43	{/img/characters/show/Fonics_Monkey.png}	f
-716	The Foley Kids	\N	\N	\N	8	\N	136	{/img/characters/show/The_Foley_Kids.png}	f
-735	French Canadian Mime	\N	\N	\N	\N	\N	111	{/img/characters/show/French_Canadian_Mime.png}	f
-734	Freja Ollegard	\N	\N	\N	\N	\N	269	{/img/characters/show/Freja_Ollegard.png}	f
-733	Frederick Johnson	\N	\N	\N	\N	\N	90	{/img/characters/show/Frederick_Johnson.png}	f
-730	Franz	\N	\N	\N	\N	\N	174	{/img/characters/show/Franz.png}	f
-729	Frank Waters	\N	\N	\N	\N	\N	157	{/img/characters/show/Frank_Waters.png}	f
-727	Frank Hammond and Phil	\N	\N	\N	\N	\N	4	{/img/characters/show/Frank_Hammond_And_Phil.png}	f
-726	Frank Fun	\N	\N	\N	\N	\N	71	{/img/characters/show/Frank_Foon.png}	f
-741	Future Stan	\N	\N	\N	\N	\N	95	{/img/characters/show/Stan_Fake_Future.png}	f
-740	Future Humans	\N	\N	\N	\N	\N	118	{/img/characters/show/Goobacks.png}	f
-739	Future Butters	\N	\N	\N	\N	\N	95	{/img/characters/show/Butters_Fake_Future.png}	f
-738	Funnybot	\N	\N	\N	\N	\N	211	{/img/characters/show/Funnybot.png}	f
-737	Frog King	\N	\N	\N	\N	\N	93	{/img/characters/show/Frog_King.png}	f
-736	Frida	\N	\N	\N	\N	\N	23	{/img/characters/show/Frida.png}	f
-731	Fred Savage	\N	\N	July 9th	49	{Judaism}	22	{/img/characters/show/Fred_Savage.png}	t
-732	Freddy Krueger	\N	\N	\N	\N	\N	164	{/img/characters/show/Freddy_Krueger.png}	t
+COPY public.characters (id, name, family, birthday, age, religion, first_apperance, images, famous_guest) FROM stdin;
+2	Eric Theodore Cartman	2	July 1st	10	{"Roman Catholicism","Blaintologistism (Temporary)","Judaism (Post-Covid)"}	1	{/img/characters/show/Eric_Cartman.png}	f
+3	Kyle Broflovski	1	May 26th	10	{Judaism,"Christianity (Temporary)","Blaintologist (Temporary)","Atheistism (Temporary)"}	1	{/img/characters/show/Kyle_Broflovski.png}	f
+5	Sir Ike Moisha Broflovski	1	December 17th	3	{Judaism}	1	{/img/characters/show/Ike_Broflovski.png}	f
+6	Jerome McElroy "The Chef"	27	\N	\N	{Christianity,"Islam (Temporary)"}	1	{/img/characters/show/Chef.png}	f
+7	Herbert Garrison	16	\N	41	{"Roman Catholic","Atheist (Temporary)"}	1	{/img/characters/show/Herbert_Garrison.png}	f
+8	Kathie Lee Gifford	\N	August 16th	71	{Evangelicalism}	2	{/img/characters/show/Kathie_Lee.png}	t
+9	Geraldo Rivera	\N	July 4th	82	{"Reform Judaism"}	2	{/img/characters/show/Geraldo_Rivera.png}	t
+239	Ali Khamenei	\N	July 16th	86	{"Shia Islam"}	243	{/img/characters/show/Ali_Khamenei.png}	t
+243	Allen Ginsberg	\N	June 23rd	70	{Buddhist}	57	{/img/characters/show/Allen_Ginsberg.png}	t
+274	"Ash Ketchum"	\N	\N	10	\N	42	{/img/characters/show/Ash_Ketchum.png}	t
+276	Aslan the Lion	\N	\N	\N	\N	77	{/img/characters/show/Aslan.png}	t
+651	Dramatic Look Gopher	\N	\N	\N	\N	171	{/img/characters/show/Dramatic_Look_Gopher.png}	t
+652	Drew Carey	\N	May 23rd	67	\N	66	{/img/characters/show/Drew_Carey.png}	t
+655	Dwight Schultz	\N	\N	\N	\N	16	{/img/characters/show/Dwight_Schultz.png}	t
+658	E.T.	\N	\N	\N	\N	88	{/img/characters/show/ET.png}	t
+671	Ellen DeGeneres	\N	January 26th	67	{Christian}	186	{/img/characters/show/Ellen_Degeneres.png}	t
+20	Patrick Duffy	\N	March 17th	76	{Buddhism}	3	{/img/characters/show/Patrick_Duffy.png}	t
+692	Eugene Levy	\N	December 17th	78	\N	211	{/img/characters/show/Eugene_Levy.png}	t
+695	Bluey Heeler	\N	\N	\N	\N	329	{/img/characters/show/Bluey.png}	t
+696	Droopy Dog (Cartoon)	\N	\N	\N	\N	329	{/img/characters/show/Droop_Dog_Cartoon.png}	t
+595	Dick Dastardly	\N	\N	\N	\N	251	{/img/characters/show/Dick_Dastardly.png}	t
+600	Diego Márquez	\N	\N	\N	\N	323	{/img/characters/show/Diego_(Dora).png}	t
+619	Dora Márquez	\N	\N	\N	\N	242	{/img/characters/show/Dora.png}	t
+748	Gary Nelson	\N	\N	\N	\N	136	{/img/characters/show/Gary_Nelson.png}	f
+747	Gary Condit	\N	April 21st	77	\N	79	{/img/characters/show/Gary_Condit.png}	t
+746	Gary Coleman	\N	February 8th	42	{"Roman Catholic"}	143	{/img/characters/show/Gary_Coleman.png}	t
+745	Gary Borkovec	\N	\N	10	\N	279	{/img/characters/show/Gary_Borkovec.png}	f
+744	Garth	\N	\N	\N	\N	40	{/img/characters/show/Garth.png}	f
+743	Gandalf the Grey	\N	\N	\N	\N	164	{/img/characters/show/Gandalf.png}	t
+742	Gadnuk, Breaker of Worlds	\N	\N	\N	\N	255	{/img/characters/show/Gadnuk.png}	f
+751	Gay Cowboys	\N	\N	\N	\N	22	{/img/characters/show/Gay_Cowboys.png}	f
+750	Gavin Throttle	\N	\N	10	\N	153	{/img/characters/show/Gavin.png}	f
+749	Gary Nelson (Ginger Kid)	\N	\N	10	\N	136	{/img/characters/show/Gary_Nelson_(Ginger_Kid).png}	f
+761	General Store Clerk	\N	\N	\N	\N	33	{/img/characters/show/General_Store_Clerk.png}	f
+760	General Revaur	\N	\N	\N	\N	240	{/img/characters/show/General_Revaur.png}	f
+759	General Plymkin	\N	\N	\N	\N	74	{/img/characters/show/General_Plymkin.png}	f
+758	General Deckter	\N	\N	\N	\N	163	{/img/characters/show/Gen_Deckter.png}	f
+757	General Davis	\N	\N	\N	\N	177	{/img/characters/show/General_Davis.png}	f
+756	Gene Siskel	\N	February 20th	53	{Judaism}	46	{/img/characters/show/Gene_Siskel.png}	t
+755	Gene Hackman	\N	January 30th	95	\N	98	{/img/characters/show/Gene_Hackman.png}	t
+754	Gems Wholesale Clerks	\N	\N	\N	\N	225	{/img/characters/show/Clerks.png}	f
+11	Mr. Hat	16	\N	\N	\N	1	{/img/characters/show/Mr_Hat.png}	f
+753	Gelgameks	\N	\N	\N	\N	87	{/img/characters/show/Gelgameks.png}	f
+752	Geldon	\N	\N	\N	\N	66	{/img/characters/show/Geldon.png}	f
+771	George Washington	67	February 22nd	\N	\N	291	{/img/characters/show/George_Washington.png}	t
+770	George W. Bush	76	July 6th	79	{Methodist}	68	{/img/characters/show/George_W_Bush.png}	t
+769	George R. R. Martin	\N	September 20th	77	{Agnostic}	245	{/img/characters/show/George_R._R._Martin.png}	t
+768	George Lucas	\N	May 14th	81	{"Buddhist Methodist"}	88	{/img/characters/show/George_Lucas.png}	t
+767	George Clooney	\N	May 6th	64	{Agnostic}	141	{/img/characters/show/George_Clooney.png}	t
+766	George Burns	\N	January 20th	100	{"Non-Observant Judaism"}	57	{/img/characters/show/George_Burns.png}	t
+765	Geological Survey Supervisor	\N	\N	\N	\N	179	{/img/characters/show/Geological_Boss.png}	f
+764	Geoff Hamill	75	\N	\N	\N	203	{/img/characters/show/Jeff_Hamill.png}	f
+763	Genie	\N	\N	\N	\N	299	{/img/characters/show/Genie.png}	t
+762	General Tso	\N	\N	\N	\N	237	{/img/characters/show/General_Tso.png}	f
+783	Girls' Volleyball Coach	\N	\N	\N	\N	255	{/img/characters/show/Girls_Volley_Ball_Coach.png}	f
+782	Girl with Pink Coat	\N	\N	10	\N	72	{/img/characters/show/Girl_with_Pink_Coat.png}	f
+781	Girl with Ear Infection	\N	\N	\N	\N	156	{/img/characters/show/Girl_with_Ear_Infection.png}	f
+780	Girl with Brown Coat	\N	\N	10	\N	213	{/img/characters/show/Girl_With_Brown_Coat.png}	f
+779	Girl with Blonde Hair	77	\N	10	\N	167	{/img/characters/show/Blonde_Girl.png}	f
+778	Gino	\N	\N	\N	\N	102	{/img/characters/show/Gino.png}	f
+777	Ginger Cow	\N	\N	\N	\N	243	{/img/characters/show/Ginger_Cow.png}	f
+776	Giant Douche	\N	\N	\N	\N	119	{/img/characters/show/Douche.png}	f
+775	Giada De Laurentiis	\N	August 22nd	55	\N	209	{/img/characters/show/Giada_De_Laurentiis.png}	t
+774	Ghost Hunters	\N	\N	\N	\N	189	{/img/characters/show/The_Ghost_Hunters.png}	t
+772	Gerald Ford	\N	July 14th	93	{Episcopalian}	70	{/img/characters/show/Gerald_ford.jpg}	t
+773	German Band	\N	\N	\N	\N	310	{/img/characters/show/German_Band.png}	f
+791	Gordon Ramsay	\N	November 8th	58	{Protestant}	209	{/img/characters/show/Gordon_Ramsay.png}	t
+790	Gordon Brown	\N	February 20th	74	{"Church of Scotland"}	171	{/img/characters/show/Gordon_Brown.png}	t
+789	God	78	\N	\N	{Buddhist,"Roman Catholic",Christianity,Judaism,Islam}	47	{/img/characters/show/God.png}	f
+788	Goat People	\N	\N	\N	\N	70	{/img/characters/show/Goat_People.png}	f
+787	Gloria Allred	\N	July 3rd	84	{Judaism}	67	{/img/characters/show/Gloria_Allred.png}	t
+786	Glinda the Good Witch	\N	\N	\N	\N	165	{/img/characters/show/Glinda.png}	t
+785	Glen Dumont	\N	\N	\N	\N	83	{/img/characters/show/Glen_Dumont.png}	f
+784	Glen	\N	\N	\N	\N	160	{/img/characters/show/Glen.png}	f
+792	Gordon Stoltski	\N	\N	8	\N	136	{/img/characters/show/Gordon_Stoltski.png}	f
+796	Guy Fieri	\N	January 22nd	57	{Agnostic}	209	{/img/characters/show/Guy_Fieri.png}	t
+795	Guinea Creatures	\N	\N	\N	\N	177	{/img/characters/show/Guinea_Pigs.png}	f
+794	GS-401	\N	\N	\N	\N	73	{/img/characters/show/Gary.png}	f
+793	Gretchen	\N	\N	\N	\N	159	{/img/characters/show/Gretchen.png}	f
+74	Rosie O'Donnell	6	March 21st	63	{"Roman Catholic"}	60	{/img/characters/show/Rosie_Odonnell.png}	t
+221	Agent Fields	\N	\N	\N	\N	44	{/img/characters/show/Agent_Fields.png}	f
+193	Satan	42	\N	\N	{Satanism}	10	{/img/characters/show/Satan.png}	f
+213	Aaron Hagen	51	\N	7	\N	239	{/img/characters/show/Aaron_Hagen.png}	f
+214	Abraham Lincoln	\N	February 12th	56	\N	135	{/img/characters/show/Abraham_Lincoln.png}	t
+217	Adams County Pee-Wee Hockey Team	\N	\N	6	\N	153	{/img/characters/show/Adams_County_Pee_Wee_Hockey_Team.png}	f
+218	Adolf Hitler	52	April 20th	56	\N	7	{/img/characters/show/Adolf_Hitler.png}	t
+220	Agent Connelly	\N	\N	\N	\N	44	{/img/characters/show/Agent_Connelly.png}	f
+172	Thumper	36	\N	\N	\N	170	{/img/characters/show/Thumper.png}	f
+222	"Agent" Tucker	\N	\N	\N	\N	102	{/img/characters/show/Agent_Tucker.png}	f
+223	Aging Hippie Liberal Douche	\N	\N	\N	\N	118	{/img/characters/show/AGING_HIPPIE_LIBERAL_DOUCHE.png}	f
+228	Al Pacino	\N	April 25th	85	{Catholic}	257	{/img/characters/show/Al_Pacino.png}	t
+229	Albert Lincoln Roker Jr	\N	August 20th	71	\N	197	{/img/characters/show/Al_Roker.png}	t
+231	Alan the Security Guard	\N	\N	\N	\N	41	{/img/characters/show/Alan_The_Security_Guard.png}	f
+232	Alana "Honey Boo Boo" Thompson	\N	August 28th	7	{Christian}	232	{/img/characters/show/Honey_Boo_Boo.png}	t
+233	Alanis Morissette	\N	June 1st	51	{Buddhist}	27	{/img/characters/show/Alanis_Morissette.png}	t
+234	Alcoholics Anonymous Boy	\N	\N	\N	\N	139	{/img/characters/show/Alcoholics_Anonymous_Boy.png}	f
+236	Alex Glick	\N	\N	\N	\N	103	{/img/characters/show/Alex_Glick.png}	t
+238	Alexa	\N	\N	\N	\N	278	{/img/characters/show/Alexa.png}	t
+249	Alois and Klara Hitler	\N	\N	\N	\N	46	{/img/characters/show/Hitler_Parents.png}	t
+250	Alton Crawford Brown Jr	\N	July 30th	63	\N	209	{/img/characters/show/Alton_Brown.png}	t
+219	Afro Ninja	\N	\N	\N	\N	171	{/img/characters/show/Afro_Ninja.png}	t
+215	Adam Borque	\N	\N	\N	\N	281	{/img/characters/show/Adam_Borque.png}	f
+224	Airport Security Guard	\N	\N	\N	\N	76	{/img/characters/show/Airport_Security_Guard.png}	f
+211	A 34-Year-Old Asian Man Who Looks Strikingly Similar to Ricardo Montalbán	\N	\N	34	\N	24	{/img/characters/show/23_Year_Asian_Reporter.png}	f
+306	Beth (Dawg's Bitch)	\N	\N	\N	\N	149	{/img/characters/show/Beth_Bitch.png}	f
+307	Betsy ("D-Yikes!")	\N	\N	\N	\N	159	{/img/characters/show/Betsy_D_Yikes.png}	f
+308	Betsy MacIntosh	\N	\N	\N	\N	214	{/img/characters/show/Betsy_MacIntosh.png}	f
+309	Betsy	\N	\N	10	\N	309	{/img/characters/show/Betsy_Labubu_Girl.png}	f
+310	Big Black Scary Monster	\N	\N	\N	\N	20	{/img/characters/show/The_Big_Black_Scary_Monster.png}	f
+311	Big Gay Al	49	\N	\N	\N	4	{/img/characters/show/Big_Gay_Al.png}	f
+313	Biggest Douche in the Universe Committee	\N	\N	\N	\N	94	{/img/characters/show/Biggest_Douche_Judges.png}	f
+259	Angela Merkel	\N	July 17th	71	{Lutheran}	187	{/img/characters/show/Angela_Merkel.png}	t
+260	Angelina Jolie	\N	June 4th	50	{"Former Roman Catholic"}	156	{/img/characters/show/Angelina_Jolie_Voight.png}	t
+261	Angus T. Jones	\N	October 8th	31	{Adventist}	203	{/img/characters/show/Angus_T_Jones.png}	t
+263	Ann Curry	\N	November 19th	68	\N	197	{/img/characters/show/Ann_Curry.png}	t
+272	Archangel Michael	\N	\N	\N	\N	129	{/img/characters/show/Archangel_Michael.png}	f
+355	Bobby	\N	\N	\N	\N	226	{/img/characters/show/Bobby.png}	f
+273	Arnold Schwarzenegger	\N	July 30th	78	{"Roman Catholic"}	204	{/img/characters/show/Arnold_Schwarzenegger.png}	t
+212	Aaron Brown	\N	November 10th	76	\N	118	{/img/characters/show/Aaron_brown.png}	t
+216	Adam Sandler	\N	September 9th	58	{Judaism}	211	{/img/characters/show/Adam_Sandler.png}	t
+227	Al-Qaeda	\N	\N	\N	\N	74	{/img/characters/show/Al_Qaeda.png}	t
+230	Alan Jackson	\N	Octuber 17th	66	{Christian}	91	{/img/characters/show/Al_Jackson.png}	t
+278	Baby Cows	\N	\N	\N	\N	83	{/img/characters/show/Baby_Cows.png}	f
+279	Kevern Zaksor (Baby Fark McGee-zax)	\N	\N	\N	\N	187	{/img/characters/show/Kevern_Zaksor.png}	f
+280	Grogu (Baby Yoda)	\N	\N	\N	\N	306	{/img/characters/show/Grogu.png}	t
+281	Babylonians	\N	\N	\N	\N	15	{/img/characters/show/Babylonians.png}	f
+282	Bakery Napoleon Bakers	\N	\N	\N	\N	150	{/img/characters/show/Bakery_Napoleon_Bakers.png}	f
+284	Barbara Garthunk	\N	\N	\N	\N	75	{/img/characters/show/Barbara_Garthunk.png}	f
+286	Barkley	\N	\N	\N	\N	226	{/img/characters/show/Barkley.png}	f
+287	Barky	\N	\N	\N	\N	14	{/img/characters/show/Barky.png}	f
+290	Bartender	\N	\N	\N	\N	4	{/img/characters/show/Bartender.png}	f
+291	Bartles	\N	\N	\N	\N	25	{/img/characters/show/Bartles.png}	f
+292	Basketball Coach	\N	\N	\N	\N	126	{/img/characters/show/Basketball_Coach.png}	f
+294	Beach Family ("Insecurity")	\N	\N	\N	\N	233	{/img/characters/show/Beach_Family.png}	f
+295	Beast	\N	\N	\N	\N	299	{/img/characters/show/Beast.png}	t
+296	Beatrice McGullicutty	\N	\N	\N	{"Roman Catholic"}	282	{/img/characters/show/Beatrice_McGullicutty.png}	f
+297	Belarusian Farmers	\N	\N	\N	\N	236	{/img/characters/show/Belarusian_Farmers.png}	f
+298	Ben ("Blizzard" Staff)	\N	\N	\N	\N	147	{/img/characters/show/Ben_Blizzard.png}	f
+302	Benny	\N	\N	\N	\N	184	{/img/characters/show/Benny.png}	f
+304	Best Buy President	\N	\N	\N	\N	210	{/img/characters/show/Best_Buy_President.png}	f
+305	Beth	\N	\N	10	\N	123	{/img/characters/show/Beth.png}	f
+314	Bill Allen	\N	\N	10	\N	4	{/img/characters/show/Bill_Allen.png}	f
+226	Al Gore	\N	March 31st	77	{Baptist}	45	{/img/characters/show/Al_Gore.png}	t
+317	Bill Cosby (BSM-471)	\N	\N	\N	\N	60	{/img/characters/show/Bill_Cosby_BSM_471.png}	f
+318	Bill Denkins	\N	\N	\N	\N	1	{/img/characters/show/Bill_Denkins.png}	f
+321	Bill Norman	\N	\N	\N	\N	264	{/img/characters/show/Bill_Norman.png}	f
+324	Bill Stewart	\N	\N	\N	\N	106	{/img/characters/show/Bill_Stewart.png}	f
+325	Bill Yellow Hawk	\N	\N	\N	\N	280	{/img/characters/show/Bill_Yellow_Hawk.png}	f
+326	Billy (Kindergartner)	\N	\N	\N	\N	60	{/img/characters/show/Kindergartener_Billy.png}	f
+327	Billy ("Sons A Witches")	\N	\N	10	\N	283	{/img/characters/show/Billy_Sons_A_Witches.png}	f
+329	Billy Circlovich	\N	\N	\N	\N	49	{/img/characters/show/Billy_Circlovich.png}	f
+330	Billy Harris	\N	\N	\N	\N	60	{/img/characters/show/Billy_Harris.png}	f
+331	Billy Martin	\N	\N	10	\N	122	{/img/characters/show/Billy_Martin.png}	f
+333	Billy Miller	\N	\N	\N	\N	198	{/img/characters/show/Billy_Miller.png}	f
+334	Billy Thompson	\N	\N	10	\N	205	{/img/characters/show/Billy_Thompson.png}	f
+335	Billy Turner	\N	\N	9	\N	132	{/img/characters/show/Billy_Turner.png}	f
+336	Birthday Party Parents	\N	\N	\N	\N	255	{/img/characters/show/Birthday_Party_Parents.png}	f
+337	Bishop of Banff	\N	\N	\N	\N	212	{/img/characters/show/Bishop_Of_Banff.png}	f
+338	Black-Haired Scientist	\N	\N	\N	\N	164	{/img/characters/show/Black_Haired_Scientist.png}	f
+339	Black Panther	\N	\N	\N	\N	299	{/img/characters/show/Black_Panther.png}	t
+341	Blaze	\N	\N	\N	\N	102	{/img/characters/show/Blaze.png}	f
+342	Blink-182	\N	\N	\N	\N	105	{/img/characters/show/Blink_182.png}	t
+343	Blinky's Airsoft Referee	\N	\N	\N	\N	314	{/img/characters/show/Blinky's_Airsoft_Referee.png}	f
+344	Blockbuster Employee's Ghost	\N	\N	\N	\N	235	{/img/characters/show/Blockbuster_Employee's_Ghost.png}	f
+345	Blonde-Haired Girl ("Erection Day")	\N	\N	\N	\N	132	{/img/characters/show/Blonde-Haired_Girl.png}	f
+347	Bloody Sunday: The Dangers of Memeing narrator	\N	\N	\N	\N	226	{/img/characters/show/Bloody_Sunday_The_Dangers_of_Memeing_narrator.png}	f
+350	Bob Ferrin	\N	\N	\N	\N	78	{/img/characters/show/Bob_Ferrin.png}	f
+351	Bob Johnson	\N	\N	\N	\N	2	{/img/characters/show/Bob_Johnson.png}	f
+353	Bob Summers	\N	\N	\N	\N	169	{/img/characters/show/Bob_Summers.png}	f
+354	Bob Thomas	\N	\N	\N	\N	18	{/img/characters/show/Bob_Thomas.png}	f
+356	Bobby ("Cartman Joins NAMBLA")	\N	\N	\N	\N	53	{/img/characters/show/Bobby_Nambla.png}	f
+358	Bobby Palmer	60	\N	\N	\N	176	{/img/characters/show/Bobby_Palmer.png}	f
+360	Bono's Butler	\N	\N	\N	\N	162	{/img/characters/show/Bono's_Butler.png}	f
+361	Book Mobile Driver	\N	\N	\N	\N	17	{/img/characters/show/Booktastic_Bus_Driver.png}	f
+362	Boom Microphone Operator	\N	\N	\N	\N	2	{/img/characters/show/Boom_Microphone_Operator.png}	f
+364	Boston	\N	\N	\N	\N	269	{/img/characters/show/Boston.png}	t
+365	Boy in Finn Costume	\N	\N	\N	\N	235	{/img/characters/show/Boy_in_Finn_Costume.png}	f
+366	Quest for Ratings	\N	\N	\N	\N	122	{/img/characters/show/Boy_with_Blond_Hair.png}	f
+367	Boy with Brown Hair	\N	\N	\N	\N	223	{/img/characters/show/Boy_with_Brown_Hair.png}	f
+368	Boy with Brown Hair and Red Shirt	\N	\N	\N	\N	122	{/img/characters/show/Boy_with_Brown_Hair_and_Red_Shirt.png}	f
+346	Bloods (Gang)	\N	\N	\N	\N	98	{/img/characters/show/The_Bloods.png}	f
+369	Boy with C Cap	\N	\N	\N	\N	34	{/img/characters/show/Boy_with_C_Cap.png}	f
+370	Boy with Dark Green Shirt and Glasses	\N	\N	\N	\N	36	{/img/characters/show/Boy_with_Dark_Green_Shirt_and_Glasses.png}	f
+371	Boy with Earmuffs	\N	\N	\N	\N	36	{/img/characters/show/Boy_with_Earmuffs.png}	f
+372	Boy with Green Shirt	\N	\N	\N	\N	226	{/img/characters/show/Boy_with_Green_Shirt.png}	f
+373	Boy with Huge Glasses	\N	\N	\N	\N	58	{/img/characters/show/Boy_with_Huge_Glasses.png}	f
+374	Boy with Olive Shirt and Black Pants	\N	\N	\N	\N	9	{/img/characters/show/Boy_with_olive_shirt_andb_lack_pants.png}	f
+375	Boy with Orange Shirt	\N	\N	\N	\N	122	{/img/characters/show/Boy_with_orange_shirt.png}	f
+376	Boy with Red Shirt	\N	\N	\N	\N	20	{/img/characters/show/Boy_with_red_shirt.png}	f
+377	Boy with Red Shirt and Blue Pants	\N	\N	\N	\N	136	{/img/characters/show/Boy_with_red_shirt_blue_pants.png}	f
+378	Brad	\N	\N	\N	\N	258	{/img/characters/show/Brad.png}	f
+382	Bradley	\N	\N	\N	\N	155	{/img/characters/show/Bradley.png}	f
+383	Brandon Carlile	\N	\N	\N	\N	250	{/img/characters/show/Brandon_Carlile.png}	f
+384	Brett	\N	\N	\N	\N	166	{/img/characters/show/Brett.png}	f
+385	Brett Favre	\N	\N	\N	\N	21	{/img/characters/show/Brett_Favre.png}	f
+386	Brian	\N	\N	\N	\N	143	{/img/characters/show/Brian.png}	f
+387	Brian ("Free Willzyx")	\N	\N	\N	\N	138	{/img/characters/show/Brian_Willzyx.png}	f
+388	Brian ("The Losing Edge")	\N	\N	\N	\N	130	{/img/characters/show/Brian_The_Losing_Edge.png}	f
+390	Brian Boyant	\N	\N	\N	\N	265	{/img/characters/show/Brian_Boyant.png}	f
+392	Brian Griffin	\N	\N	8	\N	142	{/img/characters/show/Brian_Griffin.png}	t
+393	Brian Jeffries	\N	\N	\N	\N	157	{/img/characters/show/Brian_Jeffries.png}	f
+394	Brian Thompson-Jarvis	\N	\N	\N	\N	141	{/img/characters/show/Brian_Thompson-Jarvis.png}	f
+395	Brimmy	\N	\N	10	\N	1	{/img/characters/show/Brimmy.png}	f
+398	Brobee	\N	\N	\N	\N	242	{/img/characters/show/Brobee.png}	f
+399	Bruce	\N	\N	\N	\N	65	{/img/characters/show/Bruce.png}	f
+400	Brunette Nurse	\N	\N	\N	\N	89	{/img/characters/show/Brunette_Nurse.png}	f
+402	Bubb Rubb	\N	\N	47	\N	171	{/img/characters/show/Bubb_Rubb.jpg}	t
+403	Buck	61	\N	\N	\N	31	{/img/characters/show/Buck.png}	f
+404	Buck Jr	\N	\N	13	\N	31	{/img/characters/show/Buck_Jr.png}	f
+405	Bucky Bailey	\N	\N	\N	\N	228	{/img/characters/show/Bucky_Bailey.png}	f
+406	Buddha	\N	\N	2574	\N	68	{/img/characters/show/Buddha.png}	t
+408	Busy Beaver Truck Driver	\N	\N	\N	\N	79	{/img/characters/show/Busy_Beaver_Truck_Driver.png}	f
+409	Butt Out!	\N	\N	\N	\N	109	{/img/characters/show/Butt_Out.png}	f
+410	Buzz Lightyear	\N	\N	\N	\N	299	{/img/characters/show/Buzz_Lightyear.png}	t
+412	Brendan Carr	\N	January 5th	46	\N	326	{/img/characters/show/Brendan_Carr.png}	t
+312	Big Mesquite Murph	\N	\N	\N	\N	300	{/img/characters/show/Big_Mesquite_Murph.png}	f
+1	Kenneth "Kenny" McCormick	4	March 22nd	9	{Christianity,"Blaintologist (Temporary)"}	1	{/img/characters/show/Kenny_McCormick.png}	f
+257	Anderson Cooper	\N	June 3rd	58	\N	243	{/img/characters/show/Anderson_Cooper.png}	t
+283	Barack Hussein Obama II	55	August 4th	64	{Protestant}	169	{/img/characters/show/Barack_Obama.png}	t
+285	Barbra Streisand	\N	April 24th	83	{Judaism}	12	{/img/characters/show/Barbra_Streisand.png}	t
+288	Barry Bonds	\N	July 24th	61	\N	113	{/img/characters/show/Barry_Bonds.png}	t
+289	Bartholomew "Bart" JoJo Simpson	56	April 1st	10	{Christian}	143	{/img/characters/show/Bart_Simpson.png}	t
+293	Beatrice Arthur	\N	May 13th	86	{Judaism}	189	{/img/characters/show/Beatrice_Arthur.png}	t
+380	Brad Morgan	\N	\N	\N	\N	118	{/img/characters/show/Brad_Morgan.png}	f
+299	Benjamin Géza Affleck-Boldt	57	August 15th	53	{Methodist}	75	{/img/characters/show/Ben_Affleck.png}	t
+300	Ben Roethlisberger	\N	March 2nd	43	{Methodist}	196	{/img/characters/show/Ben_Roethlisberger.png}	t
+301	Benjamin Franklin	\N	January 17th	84	{Deist}	100	{/img/characters/show/Benjamin_Franklin.png}	t
+303	Benny Hill	\N	January 21st	68	\N	78	{/img/characters/show/Benny_Hill.png}	t
+315	William Jefferson "Bill" Clinton	58	August 19th	79	{Baptist}	15	{/img/characters/show/Bill_Clinton.png}	t
+316	Bill Cosby	\N	July 12th	88	{Protestant}	77	{/img/characters/show/Bill_Cosby.png}	t
+319	Bill Donohue	\N	July 18th	78	{"Roman Catholic"}	158	{/img/characters/show/Bill_Donahue.png}	t
+320	Bill Gates	\N	October 28th	69	{"Roman Catholic"}	76	{/img/characters/show/Bill_Gates.png}	t
+322	Bill O'Reilly	\N	September 10th	76	{"Roman Catholic"}	118	{/img/characters/show/Bill_Oreilly.png}	t
+323	William Forrester Owens	\N	October 22nd	74	\N	88	{/img/characters/show/Bill_Owens.png}	t
+328	Billy Bob Thornton	\N	August 4th	70	{Agnostic}	196	{/img/characters/show/Billy_Bob_Thornton.png}	t
+332	William Darrell "Billy" Mays Jr	\N	July 20th	50	{Christian}	189	{/img/characters/show/Billy_Mays.png}	t
+340	Blanket Jackson	59	February 21st	2	\N	117	{/img/characters/show/Blanket_Jackson.png}	t
+348	Bob Denver	\N	January 9th	70	\N	19	{/img/characters/show/Bob_Denver.png}	t
+349	Bob Dole	\N	July 22nd	98	{Methodist}	33	{/img/characters/show/Bob_Dole.jpg}	t
+352	Bob Saget	\N	January 9th	65	{Judaism}	13	{/img/characters/show/Bob_Saget.png}	f
+357	Robert William Flay	\N	December 10th	60	{Catholic}	209	{/img/characters/show/Bobby_Flay.png}	t
+359	Bono	\N	May 10th	65	{Christian}	162	{/img/characters/show/Bono.png}	t
+363	Boris Johnson	\N	June 19th	61	{"'Church of England'"}	275	{/img/characters/show/Boris_Johnson.png}	t
+379	Brad Davis	\N	July 20th	\N	\N	179	{/img/characters/show/Brad_Davis.png}	t
+381	Brad Paisley	\N	October 28th	52	\N	230	{/img/characters/show/Brad_Paisley.png}	t
+389	Brian Boitano	\N	October 22nd	61	\N	4	{/img/characters/show/Brian_Boitano.png}	t
+391	Brian Dennehy	\N	July 9th	81	{"Roman Catholic"}	200	{/img/characters/show/Brian_Dennehy.png}	t
+396	Britney Spears	\N	December 2nd	43	{Baptist}	34	{/img/characters/show/Britney_Spears.png}	t
+397	Brooke Shields	\N	May 31st	60	{"Roman Catholic"}	200	{/img/characters/show/Brooke_Shields.png}	t
+401	Bryan Adams	\N	November 5th	65	\N	212	{/img/characters/show/Bryan_Adams.png}	t
+407	Buddy Ebsen	\N	April 2nd	95	\N	24	{/img/characters/show/Buddy_Ebsen.png}	t
+411	Benjamin Netanyahu	\N	October 21st	75	{Judaism}	326	{/img/characters/show/Benjamin_Netanyahu.png}	t
+418	Calvin	61	\N	8	\N	31	{/img/characters/show/Calvin.png}	f
+417	Cajun Shrimp Merchant	\N	\N	\N	\N	206	{/img/characters/show/Cajun_Shrimp_Merchant.png}	f
+416	Caitlyn Jenner	\N	October 28th	75	{Christianity}	197	{/img/characters/show/Caitlyn_Jenner.png}	t
+414	Cable Company President	\N	\N	\N	\N	239	{/img/characters/show/Cable_Company_President.png}	f
+413	Cab Driver ("Erection Day")	\N	\N	\N	\N	54	{/img/characters/show/Cab_Driver.png}	f
+426	Canadian Judge	\N	\N	\N	\N	14	{/img/characters/show/Canadian_Judge.png}	f
+425	Canadian Gynecologist	\N	\N	\N	\N	185	{/img/characters/show/Canadian_Gynecologist.png}	f
+424	Canadian Door Guard	\N	\N	\N	\N	111	{/img/characters/show/Canadian_Door_Guard.png}	f
+423	Canadian Commander	\N	\N	\N	\N	185	{/img/characters/show/Canadian_Commander.png}	f
+422	Canadian Border Wall Guard	\N	\N	\N	\N	259	{/img/characters/show/Canadian_Border_Wall_Guard.png}	f
+421	Canadian Bishop	\N	\N	\N	\N	185	{/img/characters/show/Canadian_Bishop.png}	f
+420	Cameron	\N	\N	\N	\N	26	{/img/characters/show/Cameron.png}	f
+419	Cameraman	\N	\N	\N	\N	15	{/img/characters/show/Cameraman.png}	f
+429	Canadian Minister of Sports	\N	\N	\N	\N	185	{/img/characters/show/Canadian_Minister_of_Sports.png}	f
+428	Canadian Minister of Streaming	\N	\N	\N	\N	286	{/img/characters/show/Canadian_Minister_of_Movies.png}	f
+427	Canadian Minister of Mobile Gaming / Canadian Devil	\N	\N	\N	\N	253	{/img/characters/show/Canadian_Minister_of_Mobile_Gaming.png,/img/characters/show/Canadian_Devil.png}	f
+461	Charles Kincade	\N	\N	\N	\N	166	{/img/characters/show/Charles_Kincaid.png}	f
+460	Chantal	62	\N	0	\N	82	{/img/characters/show/Chantal.png}	f
+459	Chamber of Commerce Representative	\N	\N	\N	\N	123	{/img/characters/show/Chamber_of_Commerce_Representative.png}	f
+458	Chad	\N	\N	\N	\N	63	{/img/characters/show/Chad.png}	f
+457	Cesar Millan	\N	August 27th	55	\N	146	{/img/characters/show/Cesar_Milan.png}	t
+415	Caine	\N	\N	\N	\N	184	{/img/characters/show/Caine.png}	f
+456	Celine Dion	33	March 30th	57	{"Roman Catholic"}	14	{/img/characters/show/Celine_Dion.png}	t
+455	Cee Lo Green	\N	May 30th	51	{Christian}	231	{/img/characters/show/Cee_Lo_Green.png}	t
+454	Catholic Cleanup Crew	\N	\N	\N	\N	289	{/img/characters/show/Catholic_Cleanup_Crew.png}	f
+453	Catatafish	\N	\N	\N	\N	93	{/img/characters/show/Catatafish.png}	f
+452	Catamount Pictures Producers	\N	\N	\N	\N	66	{/img/characters/show/Catamount_Pictures_Producers.png}	f
+451	Cash For Gold Sign Holders	\N	\N	\N	\N	225	{/img/characters/show/Cash_For_gold_Group.png}	f
+450	Casey Miller	\N	\N	9	\N	194	{/img/characters/show/Casey_Miller.png}	f
+449	Casa Bonita Band	\N	\N	\N	\N	107	{/img/characters/show/Casa_Bonita_band.png}	f
+448	Cartman Impostor	\N	\N	9	\N	63	{/img/characters/show/Kenny_Impostor.png,/img/characters/show/Cartman_Impostor.png}	f
+447	Caroline Manzo	\N	August 23rd	64	\N	204	{/img/characters/show/Caroline_Manzo.png}	t
+446	Carrot Top	\N	February 25th	60	\N	20	{/img/characters/show/Carrot_Top.png}	t
+445	Carlos Mencia	\N	October 22nd	57	{"Roman Catholic"}	186	{/img/characters/show/Carlos_Mencia.png}	t
+443	Carl	\N	\N	\N	\N	4	{/img/characters/show/Carl.png}	f
+442	Cardinal Roger Mahony	\N	February 27th	89	\N	150	{/img/characters/show/Cardinal_Mahoney.png}	t
+441	Captain Taylor and Captain Gabriel	\N	\N	\N	\N	177	{/img/characters/show/Captain_Taylor_and_Captain_Gabriel.png}	f
+440	Captain Marvel	\N	\N	\N	\N	299	{/img/characters/show/Capitain_Marvel.png}	t
+439	Captain Hook	\N	\N	\N	\N	165	{/img/characters/show/Capitain_Hook.png}	t
+438	Captain Hindsight	\N	\N	\N	\N	206	{/img/characters/show/Captain_Hindsight.png}	f
+437	Captain America	\N	\N	\N	\N	299	{/img/characters/show/Capitain_America.png}	t
+436	Cannabis Farmers Panelist	\N	\N	\N	\N	311	{/img/characters/show/Cannabis_Farmers_Panelist.png}	f
+435	Candice	\N	\N	\N	\N	168	{/img/characters/show/Candice.png}	f
+434	Canadian Therapist	\N	\N	\N	\N	242	{/img/characters/show/Canadian_Therapist.png}	f
+433	Canadian Reporter	\N	\N	\N	\N	253	{/img/characters/show/Canadian_Reporter.png}	f
+432	Canadian Prime Minister ("Sermon on the 'Mount")	\N	\N	\N	\N	237	{/img/characters/show/Canadian_Prime_Minister_Sermon_on_the_Mount.png}	f
+431	Canadian Prime Minister ("Original")	\N	\N	\N	\N	212	{/img/characters/show/Canadian_Prime_Minister_Original.png}	f
+430	Canadian President	\N	\N	\N	\N	259	{/img/characters/show/Canadian_President.png}	f
+479	Chinese Customs Officers	\N	\N	\N	\N	299	{/img/characters/show/Chinese_Customs_Officers.png}	f
+478	Chinese Court Judges	\N	\N	\N	\N	299	{/img/characters/show/Chinese_Court_Judges.png}	f
+477	Chinese Commentators	\N	\N	\N	\N	18	{/img/characters/show/Chinese_Commentators.png}	f
+476	Chinese Book Reader	\N	\N	\N	\N	197	{/img/characters/show/Chinese_Book_Reader.png}	f
+475	Chief Stevens	\N	\N	\N	\N	29	{/img/characters/show/Chief_Stevens.png}	f
+474	Chief Runs With Premise's Wife	64	\N	\N	\N	103	{/img/characters/show/Chief_Runs_With_Premise_Wife.png}	f
+473	Chief Runs With Premise	64	\N	\N	\N	103	{/img/characters/show/Chief_Runs_With_Premise.png}	f
+472	Chief Running Water	\N	\N	\N	\N	13	{/img/characters/show/Chief_Running_Water.png}	f
+471	Chief Joe	\N	\N	\N	\N	238	{/img/characters/show/Chief_Joe.png}	f
+470	Chet	\N	\N	\N	\N	118	{/img/characters/show/Chet.png}	f
+469	Cher	\N	May 20th	79	{Buddhism}	70	{/img/characters/show/Cher.png}	t
+468	Chef Aid Host	\N	\N	\N	\N	27	{/img/characters/show/Chef_Aid_Host.png}	f
+467	Cheesing King	\N	\N	\N	\N	170	{/img/characters/show/Cheesing_King.png}	f
+466	Cheech and Chong	\N	\N	\N	\N	54	{/img/characters/show/Cheech_and_Chong.png}	t
+465	Chase	\N	\N	\N	\N	213	{/img/characters/show/Chase.png}	f
+464	Charlie Sheen	\N	September 3rd	60	{"Devout Catholic"}	196	{/img/characters/show/Charlie_Sheen.png}	t
+463	Charlie Rose	\N	January 5th	83	{"Roman Catholic"}	51	{/img/characters/show/Charlie_Rose.png}	t
+462	Charlie/Marcus Andrews and his Superior Officer	\N	\N	\N	\N	218	{/img/characters/show/Charlie_Marcus_Andrews_and_his_Superior_Officer.png}	f
+490	Chris Donnely	\N	\N	10	\N	244	{/img/characters/show/Chris_Donnely.png}	f
+489	Chris Crocker	\N	December 7th	37	\N	171	{/img/characters/show/Chris_Crocker.png}	t
+488	Chris Christie	\N	September 6th	63	\N	268	{/img/characters/show/Chris_Christie.png}	t
+487	Chris Allen	\N	\N	\N	\N	310	{/img/characters/show/Chris_Allen.png}	f
+486	Chris ("Britney's New Look")	\N	\N	\N	\N	169	{/img/characters/show/Chris_Britney.webp}	f
+485	Chris	\N	\N	29	{"Roman Catholic"}	57	{/img/characters/show/Chris.png}	f
+484	Chip Duncan	\N	\N	\N	\N	283	{/img/characters/show/Chip_Duncan_Witch.png,/img/characters/show/Chip_Duncan_Human.png}	f
+483	Chinese Shopkeeper	\N	\N	\N	\N	299	{/img/characters/show/Chinese_Shopkeeper.png}	f
+482	Chinese Mafia	\N	\N	\N	\N	128	{/img/characters/show/Chinese_Mafia.png}	f
+481	Chinese Family	\N	\N	\N	\N	175	{/img/characters/show/Chinese_Family.png}	f
+480	Chinese Dodgeball Players	\N	\N	\N	\N	18	{/img/characters/show/Chinese_Dodgeball_Payers.png}	f
+500	Christine Jonez	\N	\N	\N	\N	80	{/img/characters/show/Christine_Jonez.png}	f
+499	Christine	65	\N	\N	\N	160	{/img/characters/show/Christine.png}	f
+498	Christina Nylon	\N	\N	\N	\N	118	{"/img/characters/show/Christina Nylon.png"}	f
+497	Christina Aguilera	\N	December 18th	44	\N	51	{/img/characters/show/Christina_Aguilera.png}	t
+496	Christian Wulff	\N	June 19th	66	{"Roman Catholic"}	211	{/img/characters/show/Christian_Wulff.png}	t
+495	Chris Swollenballs	\N	\N	\N	\N	27	{/img/characters/show/Chris_Swollenballs.png}	f
+494	Chris Peterson	\N	\N	\N	\N	9	{/img/characters/show/Chris_Peterson.png}	f
+493	Chris Martin	\N	\N	\N	\N	263	{/img/characters/show/Chris_Martin.png}	f
+492	Chris Holt	\N	\N	\N	\N	73	{/img/characters/show/Chris_Holt.png}	f
+491	Chris Hansen	\N	September 13th	66	\N	161	{/img/characters/show/Chris_Hansen.png}	t
+501	Christophe	66	\N	9	{Misotheism}	39	{/img/characters/show/Christophe_Mole.png}	f
+507	Citizen with Blond Hair and Blue Shirt	\N	\N	\N	\N	6	{/img/characters/show/Guy_With_Blonde_Hair.png}	f
+506	Cindy McCain	67	May 20th	71	\N	179	{/img/characters/show/Cindy_McCain.png}	t
+504	Chuck E. Cheese	\N	\N	\N	\N	282	{/img/characters/show/Chuck_E_Cheese.png}	t
+502	Christopher Reeve	\N	September 25th	52	{"Unitarian Universalist"}	98	{/img/characters/show/Christopher_Reeve.png}	t
+508	Clark	\N	\N	11	\N	132	{/img/characters/show/Clark_Erection_Day.png}	f
+509	Classi	\N	\N	\N	\N	267	{/img/characters/show/Classi.png}	f
+510	Cleo Broflovski	\N	\N	71	{Judaism}	41	{/img/characters/show/Cleo_Broflovski.png}	f
+511	Cliff Barackman	\N	November 28th	54	\N	227	{/img/characters/show/Cliff_Barackman.png}	t
+512	Clucky	\N	\N	\N	\N	225	{/img/characters/show/Clucky.png}	f
+513	Clyde Frog	\N	\N	\N	\N	13	{/img/characters/show/Clyde_Frog.png}	f
+503	Christopher Wallace (Biggie Smalls)	\N	May 21st	24	\N	150	{/img/characters/show/Bigee_Smalls.png}	t
+526	Construction Workers	\N	\N	\N	\N	32	{/img/characters/show/Builders.png}	f
+525	Connor	\N	\N	10	\N	104	{/img/characters/show/Connor.png}	f
+524	Conner Davis	\N	\N	6	\N	255	{/img/characters/show/Conner.png}	f
+523	Condoleezza Rice	\N	November 14th	70	{Presbyterian}	91	{/img/characters/show/Condoleezza_Rice.png}	t
+522	Conan O'Brien	\N	April 18th	62	{"Roman Catholic"}	57	{/img/characters/show/Conan_O'brien.png}	t
+521	Colorado Avalanche	\N	\N	\N	\N	153	{/img/characters/show/Colorado_Avalance.png}	f
+520	Colonel Sanders	\N	December 9th	90	{"Disciples of Christ"}	198	{/img/characters/show/Harlan_Sanders.png}	t
+519	Colin Kaepernick	\N	November 3rd	37	{Christianity}	268	{/img/characters/show/Colin_Kaepernick.png}	t
+518	Colette Francis	\N	\N	10	\N	113	{/img/characters/show/Colette_Francis.png}	f
+517	Cody	\N	\N	\N	\N	242	{/img/characters/show/Cody.png}	f
+516	Cock Magic Promoter	\N	\N	\N	\N	255	{/img/characters/show/Cock_Magic_Promoter.png}	f
+515	Cock Magic Ring Announcer	\N	\N	\N	\N	255	{/img/characters/show/Cock_Magic_Announcer.png}	f
+505	Cinderella	\N	\N	\N	\N	163	{/img/characters/show/Cinderella.png}	t
+527	Corey Hart	\N	May 31st	63	{Christianity}	212	{/img/characters/show/Cory_Hart.png}	t
+530	Costa Rican President	\N	\N	\N	\N	32	{/img/characters/show/Costa_rican_President.png}	f
+529	Cosette	\N	\N	\N	\N	24	{/img/characters/show/Cosette.png}	f
+528	Corey Lanskin	\N	\N	\N	\N	239	{/img/characters/show/Corey_Lanskin.png}	f
+514	Coach Miles	\N	\N	\N	\N	241	{/img/characters/show/Coach_Miles.png}	f
+210	Charlie Brown	63	October 30th	10	\N	65	{/img/characters/show/Charlie_Brown.png}	t
+4	Stanley "Stan" Marsh	3	October 19th	9	{Christian,"Atheist (Temporariry)","Mormon (Temporariry)","Scientologist (Temporariry)","Blaintologist (Temporarily)"}	1	{/img/characters/show/Stan_Marsh.png}	f
+542	Cupid Me	\N	\N	\N	\N	230	{/img/characters/show/Cupid_Me.png,/img/characters/show/Cupid_Ye.png}	f
+568	David Quincy	\N	May 22nd	\N	\N	179	{/img/characters/show/David_Quincy.png}	t
+544	Dale Earnhardt Jr.	\N	October 10th	51	\N	203	{/img/characters/show/Dale_Earnhardt_Jr.png}	t
+543	Dairy Gold Milk Company President	\N	\N	\N	\N	75	{/img/characters/show/Dairy_Gold_Milk_Company_president.png}	f
+551	Danica Patrick	\N	March 25th	43	\N	203	{/img/characters/show/Danica_Patrick.png}	t
+550	Dane Cook	\N	March 18th	53	\N	211	{/img/characters/show/Dane_Cook.png}	t
+549	Dan Snyder	\N	November 23rd	60	{Judaism}	248	{/img/characters/show/Dan_Snyder.png}	t
+554	Danielle Staub	\N	July 29th	63	\N	204	{/img/characters/show/Danielle_Staub.png}	t
+571	David Spade	\N	July 22nd	61	\N	211	{/img/characters/show/David_Spade.png}	t
+569	David Satcher	\N	March 2nd	84	\N	87	{/img/characters/show/David_Satcher.png}	t
+567	David Perry	\N	\N	\N	\N	304	{/img/characters/show/David_Perry.png}	f
+566	David Palmer	\N	April 15th	46	\N	174	{/img/characters/show/David_Palmer.png}	f
+565	David Letterman	\N	April 12th	78	{Lutheran}	186	{/img/characters/show/David_Letterman.png}	t
+564	David Hasselhoff	\N	July 17th	73	{Lutheran}	11	{/img/characters/show/David_Haselhoff.png}	t
+563	David Duchovny	\N	August 7th	65	{Judaism}	196	{/img/characters/show/David_Duchovny.png}	t
+562	David Carradine	\N	December 8th	72	{Scientology}	189	{/img/characters/show/David_Carradine.png}	t
+561	David Blaine	\N	April 4th	52	{"Blaintology (South Park)","Judaism (real life)"}	68	{/img/characters/show/Blaine.png}	t
+579	Deborah Carroll	\N	December 1st	61	\N	146	{/img/characters/show/Deborah_Carroll.png}	t
+598	Dick Cheney	\N	January 30th	84	{Methodist}	91	{/img/characters/show/Dick_Cheney.png}	t
+596	Diana, Princess of Wales	\N	July 1st	36	{"Church of England"}	46	{/img/characters/show/Princess_Diana.png}	t
+618	Donna Reed	\N	January 27th	64	{Methodist}	29	{/img/characters/show/Donna_Reed.png}	t
+577	Dean Martin	\N	June 7th	78	\N	57	{/img/characters/show/Dean_Martin.png}	t
+616	Donald Trump	74	June 14th	79	{Presbyterian}	76	{/img/characters/show/President_Trump.png,/img/characters/show/President_Trump_Old.png}	t
+617	Donald Trump Jr.	74	December 31th	47	\N	326	{/img/characters/show/Donald_Trump_Jr.png}	t
+604	DJ AM	\N	August 28th	36	\N	189	{/img/characters/show/DJ_AM.png}	t
+602	Dio	\N	\N	\N	\N	43	{/img/characters/show/Dio.png}	t
+610	Dom DeLuise	\N	August 1st	75	{"Roman Catholic"}	189	{/img/characters/show/Dom_Deluise.png}	t
+615	Donald Rumsfeld	\N	July 9th	88	{Presbyterian}	91	{/img/characters/show/Donald_Rumsfeld.png}	t
+613	Don King	\N	August 20th	94	{Baptist}	10	{/img/characters/show/Don_King.png}	t
+640	Dr. Phil	\N	September 1st	75	{Christian}	210	{/img/characters/show/Dr_Phil.png}	t
+637	Dr. Mehmet Oz	\N	June 11th	65	{Islam}	228	{/img/characters/show/Dr_Oz.png}	t
+657	Dan Scavino	\N	January 14th	49	\N	328	{/img/characters/show/Dan_Scavino.png}	t
+661	Edge	\N	October 30th	52	{Christian}	191	{/img/characters/show/Edge.png}	t
+660	Edgar Allan Poe	\N	January 19th	40	{Christian}	241	{/img/characters/show/Edgar_Allen_Poe.png}	t
+659	Ed McMahon	\N	March 6th	86	{Catholic}	189	{/img/characters/show/Ed_McMahon.png}	t
+676	Elvis Presley	\N	January 8th	42	{Pentecostal}	234	{/img/characters/show/Elvis.png}	t
+675	Elton John	\N	March 25th	78	\N	5	{/img/characters/show/Elton_John_New.png,/img/characters/show/Elton_John_Old.png}	t
+673	Elon Musk	\N	June 28th	54	{Agnostic}	251	{/img/characters/show/Elon_Musk_New.png,/img/characters/show/Elon_Musk_Old.png}	t
+668	Eliot Spitzer	\N	June 10th	66	\N	196	{/img/characters/show/Eliot_Spitzer.png}	t
+667	Elin Nordegren	\N	January 1st	45	\N	196	{/img/characters/show/Elin_Nordegren.png}	t
+684	Emperor Hirohito	72	January 7th	87	{Shinto}	42	{/img/characters/show/Emperor_Hirohito_Uniform.png,/img/characters/show/Emperor_Hirohito_Armor.png}	t
+683	Emperor Akihito	72	December 23rd	91	{Shinto}	192	{/img/characters/show/Emperor_Akihito.png}	t
+680	Emmett Hollis	71	\N	\N	\N	187	{/img/characters/show/Emmett_Hollis.png}	f
+679	Emmanuel Lewis	\N	March 9th	54	\N	193	{/img/characters/show/Emmanuel_Lewis.png}	t
+687	Eric Roberts	\N	April 18th	69	{Christian}	15	{/img/characters/show/Eric_Roberts.png}	t
+685	Enchorito Mark	\N	\N	\N	\N	93	{/img/characters/show/Enchorito_Mark.png}	f
+686	Enrique	\N	\N	\N	\N	4	{/img/characters/show/Enrique.png}	f
+706	Felipe Calderón	\N	August 18th	63	\N	187	{/img/characters/show/Felipe_Calderon.png}	t
+666	Elderly Woman with Blue-Gray Blouse	\N	\N	\N	\N	290	{/img/characters/show/Un-named-townsfolk-elderly-grocery-shopper-female.png}	f
+665	Elderly Woman in Wheelchair	\N	\N	\N	\N	309	{/img/characters/show/Elderly_Extortionist.png}	f
+711	Fidel Castro	\N	August 13th	90	{Atheism}	64	{/img/characters/show/Fidel_Castro.png}	t
+725	Francis Ford Coppola	\N	April 7th	86	\N	88	{/img/characters/show/Francis_Ford_Coppola.png}	t
+728	Frank Sinatra	\N	December 12th	82	{"Roman Catholic"}	57	{/img/characters/show/Frank_Sinatra.png}	t
+10	Jimbo Kern	3	\N	\N	{"Roman Catholic"}	2	{/img/characters/show/Jimbo_Kern.png}	f
+12	Great-Great-Grandpa Marsh	3	\N	\N	\N	6	{/img/characters/show/Great_Great_Grandpa_Marsh.png}	f
+13	Flo Kimble	3	\N	\N	\N	28	{/img/characters/show/Flo_Kimble.png}	f
+14	Marvin Marsh	3	\N	102	{"Roman Catholic"}	6	{/img/characters/show/Marvin_Marsh.png}	f
+15	Roy	3	\N	\N	\N	25	{/img/characters/show/Roy.png}	f
+16	Sharon Marsh	3	December 16th	\N	{Christian,"Atheist (Temporariry)","Mormon (Temporariry)"}	5	{/img/characters/show/Sharon_Marsh.png}	f
+17	Shelley Marsh	3	November 24th	13	{Christian,"Atheist (Temporariry)","Mormon (Temporariry)"}	5	{/img/characters/show/Shelley_Marsh.png}	f
+18	Fluffy	2	\N	\N	\N	5	{/img/characters/show/Fluffy.png}	f
+19	Randy Marsh	3	March 1st	45	{Christian,"Atheist (Temporariry)","Mormon (Temporariry)"}	3	{/img/characters/show/Randy_Marsh.png}	f
+21	Ned Gerblanski	\N	\N	\N	{"Roman Catholic"}	3	{/img/characters/show/Ned_Gerblanski.png}	f
+22	Scuzzlebutt	\N	\N	\N	\N	3	{/img/characters/show/Scuzzlebutt.png}	f
+23	Murrey Broflovski	1	\N	\N	{Judaism}	16	{/img/characters/show/Murrey_Broflovski.png}	f
+24	Sheila Broflovski	1	\N	\N	{Judaism}	6	{/img/characters/show/Sheila_Broflovski.png}	f
+25	Gerald Broflovski	1	\N	\N	{Judaism}	9	{/img/characters/show/Gerald_Broflovski.png}	f
+26	Clone Stan Marsh	3	\N	0	\N	5	{/img/characters/show/Clone_Stan_Marsh.png}	f
+27	Sparky	3	\N	\N	\N	4	{/img/characters/show/Sparky.png}	f
+28	Howard Cartman	2	\N	\N	{"Roman Catholic"}	29	{/img/characters/show/Howard_Cartman.png}	f
+29	"Eric's Unnamed Uncle"	2	\N	\N	{"Roman Catholic"}	29	{/img/characters/show/Uncle_Cartman.png}	f
+715	Foghorn Leghorn	\N	\N	\N	\N	202	{/img/characters/show/Foghorn_Leghorn.png}	f
+714	Fluffy ("Cock Magic")	\N	\N	\N	\N	255	{/img/characters/show/Fluffy_(Cock_Magic).png}	f
+30	Stinky Cartman	2	\N	\N	{"Roman Catholic"}	29	{/img/characters/show/Stinky_Cartman.png}	f
+31	Mabel Louise Cartman	2	\N	\N	{"Roman Catholic"}	24	{/img/characters/show/Mabel_Cartman.png}	f
+32	Harold Cartman	2	\N	\N	{"Roman Catholic"}	29	{/img/characters/show/Harold_Cartman.png}	f
+33	Liane Cartman	2	\N	\N	{"Roman Catholic"}	1	{/img/characters/show/Liane_Cartman.png}	f
+34	Fred Cartman	2	\N	\N	{"Roman Catholic"}	29	{/img/characters/show/Fred_Cartman.png}	f
+35	Elvin Cartman	2	\N	\N	{"Roman Catholic"}	29	{/img/characters/show/Elvin_Cartman.png}	f
+36	Alexandra Cartman	2	\N	\N	{"Roman Catholic"}	29	{/img/characters/show/Alexandra_Cartman.png}	f
+37	Eric's Unnamed Aunt	2	\N	\N	{"Roman Catholic"}	29	{/img/characters/show/Aunt_Cartman.png}	f
+38	Lisa Cartman	2	\N	\N	{"Roman Catholic"}	29	{/img/characters/show/Lisa_Cartman.png}	f
+39	Stuart McCormick	4	\N	\N	{"Roman Catholic","Cult of Cthulhu (Formerly)"}	8	{/img/characters/show/Stuart_McCormick.png}	f
+40	Mr. Kitty	2	\N	\N	\N	1	{/img/characters/show/Mr_Kitty.png}	f
+41	Florence Cartman	2	\N	\N	{"Roman Catholic"}	29	{/img/characters/show/Florence_Cartman.png}	f
+42	Leopold "Butters" Stotch	34	September 11th	9	{"Roman Catholic","Blaintology (Temporarily)"}	25	{/img/characters/show/Butters_Stotch.png}	f
+43	Kevin McCormick	4	\N	\N	{"Roman Catholic"}	8	{/img/characters/show/Kevin_McCormick.png}	f
+96	Mrs. Daniels	13	\N	\N	\N	230	{/img/characters/show/Mrs_Daniels.png}	f
+44	Carol McCormick	4	\N	\N	{"Roman Catholic","Cult of Cthulhu (Formerly)"}	8	{/img/characters/show/Carol_McCormick.png}	f
+45	Nellie Stotch	34	\N	\N	\N	116	{/img/characters/show/Nellie_Stotch.png}	f
+46	Bud Stotch	34	\N	\N	\N	116	{/img/characters/show/Bud_Stotch.png}	f
+47	Grandma Stotch	34	\N	\N	\N	228	{/img/characters/show/Grandma_Stotch.png}	f
+48	Linda Stotch	34	\N	\N	{"Roman Catholic"}	64	{/img/characters/show/Linda_Stotch.png}	f
+49	Stephen Willis Stotch	34	\N	\N	{"Roman Catholic"}	17	{/img/characters/show/Stephen_Stotch.png}	f
+51	Richard Tweak	48	\N	\N	{Buddhist,"Roman Catholic (Formerly)","Atheist (Formerly)"}	30	{/img/characters/show/Richard_Tweak.png}	f
+52	Tweek Tweak	48	\N	10	{Buddhist,"Roman Catholic (Formerly)","Atheist (Formerly)"}	30	{/img/characters/show/Tweek_Tweak.png}	f
+53	Stripe	43	\N	\N	\N	36	{/img/characters/show/Stripe.png}	f
+54	Tricia Tucker	43	\N	\N	{"Roman Catholic"}	36	{/img/characters/show/Tricia_Tucker.png}	f
+55	Laura Tucker	43	\N	\N	{"Roman Catholic"}	36	{/img/characters/show/Laura_Tucker.png}	f
+56	Thomas Tucker	43	\N	\N	{"Roman Catholic"}	36	{/img/characters/show/Thomas_Tucker.png}	f
+57	Grandma Tucker	43	\N	\N	\N	178	{/img/characters/show/Grandma_Tucker.png}	f
+59	Manuela Tweak	48	\N	\N	{Buddhist,"Roman Catholic (Formerly)","Atheist (Formerly)"}	30	{/img/characters/show/Manuela_Tweak.png}	f
+60	Grandma Tweak	48	\N	\N	\N	312	{/img/characters/show/Grandma_Tweak.png}	f
+61	Kyle Schwartz	1	\N	10	{Judaism}	76	{/img/characters/show/Kyle_Schwartz.png}	f
+62	Kyle's Elephant	1	\N	\N	\N	5	{/img/characters/show/Kyle_Elephant.png}	f
+63	Spookyfish	3	\N	\N	\N	28	{/img/characters/show/Spookyfish.png}	f
+64	Grandpa McCormick	4	\N	\N	\N	63	{/img/characters/show/Grandpa_McCormick.png}	f
+65	Bradley Biggle	8	\N	10	\N	46	{/img/characters/show/Bradley_Biggle.png}	f
+66	Harriet Biggle	8	\N	\N	\N	110	{/img/characters/show/Mrs_Biggle.png}	f
+67	Mr. Biggle	8	\N	\N	\N	241	{/img/characters/show/Mr_Biggle.png}	f
+68	Barney	7	\N	\N	\N	264	{/img/characters/show/Barney.png}	f
+69	Mrs. Barbrady	7	\N	\N	\N	264	{/img/characters/show/Mrs_Barbrady.png}	f
+70	Officer Barbrady	7	\N	\N	{"Roman Catholic"}	1	{/img/characters/show/Officer_Barbrady.png}	f
+71	Mike Makowski	5	\N	11	\N	181	{/img/characters/show/Mike_Makowski.png}	f
+72	Mr. Adams	5	\N	\N	\N	223	{/img/characters/show/Mr_Adams.png}	f
+73	Henrietta Biggle	8	\N	11	{Satanism,"Cult of Cthulhu (Formerly)"}	110	{/img/characters/show/Henrietta_Biggle.png}	f
+75	Filmore Anderson	6	\N	\N	\N	60	{/img/characters/show/Filmore_Anderson.png}	f
+76	Mrs. Anderson	6	\N	\N	\N	64	{/img/characters/show/Mrs_Anderson.png}	f
+77	Millard Anderson	6	\N	\N	\N	90	{/img/characters/show/Millard_Anderson.png}	f
+78	Tolkien Black	9	\N	10	{"Roman Catholic"}	36	{/img/characters/show/Tolkien_Black.png}	f
+79	Linda Black	9	\N	\N	{"Roman Catholic"}	50	{/img/characters/show/Linda_Black.png}	f
+80	Steve Black	9	\N	\N	{"Roman Catholic"}	50	{/img/characters/show/Steve_Black.png}	f
+81	Gobbles	10	\N	\N	\N	61	{/img/characters/show/Gobbles.png}	f
+82	Timothy "Timmy" Burch	10	\N	10	\N	49	{/img/characters/show/Timmy_Burch.png}	f
+83	Helen Burch	10	\N	\N	\N	51	{/img/characters/show/Helen_Burch.png}	f
+84	Richard Burch	10	\N	\N	\N	51	{/img/characters/show/Richard_Burch.png}	f
+85	Charlotte's Grandmother	11	\N	\N	\N	259	{/img/characters/show/Charlottes_Grandma.png}	f
+86	Charlotte's Siste	11	\N	\N	\N	259	{/img/characters/show/Charlottes_Sister.png}	f
+87	Charlotte's Brother	11	\N	\N	\N	259	{/img/characters/show/Charlottes_Brother.png}	f
+88	Charlotte	11	\N	10	\N	259	{/img/characters/show/Charlotte.png}	f
+89	Charlotte's Mother	11	\N	\N	\N	259	{/img/characters/show/Charlottes_Mother.png}	f
+90	Thomas (Charlotte's Father)	11	\N	\N	\N	259	{/img/characters/show/Charlottes_Father.png}	f
+91	Rebecca Cotswolds	12	\N	9	\N	43	{/img/characters/show/Rebecca_Cotswolds.png}	f
+92	Mark Cotswolds	12	\N	10	\N	43	{/img/characters/show/Mark_Cotswolds.png}	f
+93	Mrs. Cotswolds	12	\N	\N	\N	43	{/img/characters/show/Mrs_Cotswolds.png}	f
+94	Mr. Cotswolds	12	\N	\N	\N	43	{/img/characters/show/Mr_Cotswolds.png}	f
+95	Nichole Daniels	13	\N	10	{"Roman Catholic"}	230	{/img/characters/show/Nichole_Daniels.png}	f
+50	Karen McCormick	4	\N	6	{"Roman Catholic"}	129	{/img/characters/show/Karen_McCormick.png}	f
+97	William Daniels	13	\N	\N	\N	230	{/img/characters/show/William_Daniels.png}	f
+98	Rex	14	\N	\N	\N	4	{/img/characters/show/Rex.png}	f
+99	Clyde Donovan	14	April 10th	10	{"Roman Catholic"}	2	{/img/characters/show/Clyde_Donovan.png}	f
+100	Betsy Donovan	14	\N	\N	{"Roman Catholic"}	136	{/img/characters/show/Betsy_Donovan.png}	f
+101	Roger Donovan	14	\N	\N	{"Roman Catholic"}	87	{/img/characters/show/Roger_Donovan.png}	f
+102	Larry Feegan	15	\N	13	\N	220	{/img/characters/show/Larry_Feegan.png}	f
+103	Mrs. Feegan	15	\N	\N	\N	220	{/img/characters/show/Mrs_Feegan.png}	f
+104	Mr. Feegan	15	\N	\N	\N	220	{/img/characters/show/Mr_Feegan.png}	f
+105	Mrs. Garrison Senior	16	\N	\N	\N	48	{/img/characters/show/Mrs_Garrison.png}	f
+106	Mr. Garrison Senior	16	\N	\N	\N	48	{/img/characters/show/Mr_Garrison.png}	f
+107	Sophie Gray	17	\N	10	\N	306	{/img/characters/show/Sophie_Gray.png}	f
+108	Mrs. Gray	17	\N	\N	\N	306	{/img/characters/show/Mrs_Gray.png}	f
+109	Mr. Hakeem	50	\N	\N	{Islam}	157	{/img/characters/show/Mr_Hakeem.png}	f
+110	Bridon Gueermo	18	\N	9	\N	180	{/img/characters/show/Bridon_Gueermo.png}	f
+111	Mrs. Gueermo	18	\N	\N	\N	180	{/img/characters/show/Mrs_Gueermo.png}	f
+112	Mr. Gueermo	18	\N	\N	\N	180	{/img/characters/show/Mr_Gueermo.png}	f
+113	Baahir Hassan Abdul Hakeem	50	\N	8	{Islam}	157	{/img/characters/show/Baahir.png}	f
+114	Mrs. Hakeem	50	\N	\N	{Islam}	157	{/img/characters/show/Mrs_Hakeem.png}	f
+115	Simon Hankey	19	\N	\N	\N	65	{/img/characters/show/Simon_Hankey.png}	f
+116	Amber Hankey	19	\N	\N	\N	65	{/img/characters/show/Amber_Hankey.png}	f
+117	Cornwallis Hankey	19	\N	\N	\N	65	{/img/characters/show/Cornwallis_Hankey.png}	f
+118	Autumn Hankey	19	\N	\N	\N	65	{/img/characters/show/Autumn_Hankey.png}	f
+119	Mr. Hankey	19	\N	\N	\N	9	{/img/characters/show/Mr_Hankey.png}	f
+122	Mrs. Handler	21	\N	\N	{Judaism}	22	{/img/characters/show/Mrs_Handler.png}	f
+123	Mr. Handler	21	\N	\N	{Judaism}	66	{/img/characters/show/Mr_Handler.png}	f
+124	Amanda Harrison	20	\N	\N	{Mormon}	108	{/img/characters/show/Amanda_Harrison.png}	f
+125	Dave Harrison	20	\N	\N	{Mormon}	108	{/img/characters/show/Dave_Harrison.png}	f
+126	Jenny Harrison	20	\N	\N	{Mormon}	108	{/img/characters/show/Jenny_Harrison.png}	f
+127	Gary Harrison	20	\N	10	{Mormon}	108	{/img/characters/show/Gary_Harrison.png}	f
+128	Mark Harrison	20	\N	\N	{Mormon}	108	{/img/characters/show/Mark_Harrison.png}	f
+129	Mrs. Harrison	20	\N	\N	{Mormon}	108	{/img/characters/show/Mrs_Harrison.png}	f
+130	Mr. Harrison	20	\N	\N	{Mormon}	108	{/img/characters/show/Mr_Harrison.png}	f
+131	Mrs. Larsen	26	\N	\N	{"Roman Catholic"}	77	{/img/characters/show/Mrs_Larsen.png}	f
+132	Flora Larsen	26	\N	5	{"Roman Catholic"}	60	{/img/characters/show/Flora_Larsen.png}	f
+133	Millie Larsen	26	\N	10	{"Roman Catholic"}	77	{/img/characters/show/Millie_Larsen.png}	f
+134	Mrs. Knitts	22	\N	\N	{"Roman Catholic"}	123	{/img/characters/show/Mrs_Knitts.png}	f
+135	Annie Knitts	22	\N	10	{"Roman Catholic"}	36	{/img/characters/show/Annie_Knitts.png}	f
+136	Mr. Mackey Senior	25	\N	\N	\N	313	{/img/characters/show/Mrs_Mackey_Senior.png}	f
+137	Mrs. Mackey Senior	25	\N	\N	\N	90	{/img/characters/show/Mr_Mackey_Senior.png}	f
+138	Mr. Mackey	25	\N	50	{"Roman Catholic"}	9	{/img/characters/show/Mr_Mackey.png}	f
+139	Clark Malkinson	24	\N	\N	\N	306	{/img/characters/show/Clark_Malkinson.png}	f
+140	Ellen Malkinson	24	\N	\N	\N	306	{/img/characters/show/Ellen_Malkinson.png}	f
+141	Scott Malkinson	24	\N	10	\N	117	{/img/characters/show/Scott_Malkinson.png}	f
+142	Michael's Mom	29	\N	\N	\N	241	{/img/characters/show/Michael_Dad.png}	f
+143	Michael	29	\N	11	{Unconfirmed,"Cult of Cthulhu (Formerly)"}	110	{/img/characters/show/Michael.png}	f
+144	Dr. Alphonse Mephesto	30	\N	\N	\N	5	{/img/characters/show/Dr_Mephesto.png}	f
+145	Kevin Mephesto	30	\N	\N	\N	5	{/img/characters/show/Kevin_Mephesto.png}	f
+146	Terrance Mephesto	30	\N	9	\N	5	{/img/characters/show/Terrance_Mephesto.png}	f
+147	Thomas McElroy	27	\N	\N	\N	34	{/img/characters/show/Thomas_McElroy.png}	f
+148	Nellie McElroy	27	\N	\N	\N	34	{/img/characters/show/Nellie_McElroy.png}	f
+149	Mr. McArthur	23	\N	\N	{"Roman Catholic"}	184	{/img/characters/show/Mr_McArthur.png}	f
+121	Louis Handler	21	\N	10	{Judaism}	42	{/img/characters/show/Louis_Handler.png}	f
+150	Moira McArthur	23	\N	\N	{"Roman Catholic"}	177	{/img/characters/show/Moira_McArthur.png}	f
+151	Red McArthur	23	\N	10	{"Roman Catholic"}	10	{/img/characters/show/Red_McArthur.png}	f
+152	Nelly's Mom	28	\N	\N	{"Roman Catholic"}	240	{/img/characters/show/Nelly_Dad.png}	f
+153	Nelly	28	\N	10	{"Roman Catholic"}	167	{/img/characters/show/Nelly.png}	f
+154	Michael's Dad	29	\N	\N	\N	241	{/img/characters/show/Michael_Mom.png}	f
+155	Margaret Nelson	32	June 18th	35	{"Roman Catholic"}	260	{/img/characters/show/Liza_Nelson.png}	f
+156	Liza Nelson	32	\N	10	{"Roman Catholic"}	260	{/img/characters/show/Margaret_Nelson.png}	f
+157	Matt	28	\N	\N	{"Roman Catholic"}	215	{/img/characters/show/Nelly_Mom.png}	f
+158	Riley	31	\N	0	\N	290	{/img/characters/show/Riley.png}	f
+159	Bailey	31	\N	0	\N	290	{/img/characters/show/Bailey.png}	f
+160	Harper	31	\N	0	\N	290	{/img/characters/show/Harper.png}	f
+161	Emory	31	\N	0	\N	290	{/img/characters/show/Emory.png}	f
+162	River	31	\N	0	\N	290	{/img/characters/show/River.png}	f
+164	Peter "PC Principal" Charles	31	\N	\N	{Christian}	258	{/img/characters/show/PC_Principal.png}	f
+165	DogPoo Petuski	38	\N	10	\N	85	{/img/characters/show/Dog_Poo.png}	f
+166	Mrs. Petuski	38	\N	\N	\N	33	{/img/characters/show/Mrs_Petuski.png}	f
+167	Mr. Petuski	38	\N	\N	\N	9	{/img/characters/show/Mr_Petuski.png}	f
+168	David Rodriguez	37	\N	10	\N	261	{/img/characters/show/David_Rodriguez.png}	f
+169	Mrs. Rodriguez	37	\N	\N	\N	261	{/img/characters/show/Mrs_Rodriguez.png}	f
+170	Mr. Rodriguez	37	\N	\N	\N	261	{/img/characters/show/Mr_Rodriguez.png}	f
+175	Kevin Stoley	35	\N	10	{"Roman Catholic"}	18	{/img/characters/show/Kevin_Stoley.png}	f
+176	Mrs. Stoley	35	\N	\N	{"Roman Catholic"}	95	{/img/characters/show/Mrs_Stoley.png}	f
+177	Mr. Stoley	35	\N	\N	{"Roman Catholic"}	95	{/img/characters/show/Mr_Stoley.png}	f
+178	Chaos Hamsters	34	\N	\N	\N	85	{/img/characters/show/Chaos_Hamsters.png}	f
+179	Terrance Henry Stoot	33	Octuber 20th	54	\N	6	{/img/characters/show/Terrance.png}	f
+180	Sally Dion	33	\N	\N	\N	14	{/img/characters/show/Sally_Dion.png}	f
+181	Katie Queef	33	\N	\N	\N	185	{/img/characters/show/Katie_Queef.png}	f
+182	Streibel Daughters	39	\N	\N	\N	99	{/img/characters/show/Streibel_Daughters.png}	f
+183	Mrs. Streibel	39	\N	\N	\N	99	{/img/characters/show/Mrs_Streibel.png}	f
+184	Mr. Streibel	39	\N	\N	\N	99	{/img/characters/show/Mr_Streibel.png}	f
+185	Scott Tenorman	40	\N	15	\N	69	{/img/characters/show/Scott_Tenorman.png}	f
+186	Mrs. Tenorman	40	\N	41	\N	69	{/img/characters/show/Mrs_Tenorman.png}	f
+187	Jack Tenorman	40	\N	43	\N	69	{/img/characters/show/Jack_Tenorman.png}	f
+188	Wendy Testaburger	41	\N	10	\N	1	{/img/characters/show/Wendy_Testaburger.png}	f
+189	Grandma Testaburger	41	\N	\N	\N	176	{/img/characters/show/Grandma_Testaburger.png}	f
+190	Alexis Testaburger	41	\N	\N	\N	89	{/img/characters/show/Alexis_Testaburger.png}	f
+191	Mr. Testaburger	41	\N	\N	\N	123	{/img/characters/show/Mr_Testaburger.png}	f
+192	Damien Thorn	42	\N	9	{Satanism}	10	{/img/characters/show/Damien_Thorn.png}	f
+194	Heidi Turner	44	\N	10	{Christian}	32	{/img/characters/show/Heidi_Turner.png}	f
+195	Robby	44	\N	\N	{Christian}	61	{/img/characters/show/Robby.png}	f
+196	Nancy Turner	44	\N	\N	{"Roman Catholic"}	58	{/img/characters/show/Nancy_Turner.png}	f
+197	Thomas Turner	44	\N	\N	{Christian}	58	{/img/characters/show/Thomas_Turner.png}	f
+198	Ryan Valmer	47	\N	\N	\N	98	{/img/characters/show/Ryan_Valmer.png}	f
+199	Jimmy Valmer	47	\N	10	\N	67	{/img/characters/show/Jimmy_Valmer.png}	f
+200	Sarah Valmer	47	\N	\N	\N	98	{/img/characters/show/Sarah_Valmer.png}	f
+201	Larry Zewiski	45	\N	10	\N	296	{/img/characters/show/Larry_Zewiski.png}	f
+202	Mrs. Zewiski	45	\N	\N	\N	297	{/img/characters/show/Mrs_Zewiski.png}	f
+203	Mr. Zewiski	45	\N	\N	\N	296	{/img/characters/show/Mr_Zewiski.png}	f
+204	Panamanian Padengo Pequeño	46	\N	4	\N	303	{/img/characters/show/Panamanian_Padengo_Pequeño.png}	f
+205	Alejandro	46	\N	\N	\N	303	{/img/characters/show/Alejandro_White.png}	f
+206	Crystal White	46	\N	5	\N	287	{/img/characters/show/Crystal_White.png}	f
+207	Jason White	46	\N	10	\N	5	{/img/characters/show/Jason_White.png}	f
+208	Mrs. White	46	\N	\N	\N	287	{/img/characters/show/Mrs_White.png}	f
+209	Bob White	46	\N	\N	\N	287	{/img/characters/show/Bob_White.png}	f
+237	Alex Hart	\N	\N	\N	\N	166	{/img/characters/show/Alex_Hart.png}	f
+240	Alice	53	\N	\N	\N	63	{/img/characters/show/Alice.png}	f
+241	Alice's Parents	53	\N	\N	\N	63	{/img/characters/show/Alice's_Parents.png}	f
+242	Alinicia	\N	\N	\N	\N	61	{/img/characters/show/Alinicia.png}	f
+244	Allen Varcas	54	\N	10	\N	130	{/img/characters/show/Allen_Varcas.png}	f
+245	Allie Nelson	\N	\N	10	\N	167	{/img/characters/show/Allie_Nelson.png}	f
+246	Allied Atheist Alliance (AAA)	\N	\N	\N	\N	151	{/img/characters/show/Allied_Atheist_Alliance.png}	f
+247	Allison	\N	\N	\N	\N	159	{/img/characters/show/Allison.png}	f
+248	Allison Mertz	\N	\N	6	\N	181	{/img/characters/show/Allison_Mertz.png}	f
+251	Amanda	\N	\N	\N	\N	49	{/img/characters/show/Amanda.png}	f
+252	Ambassador of Humans	\N	\N	\N	\N	226	{/img/characters/show/Ambassador_of_Humans.png}	f
+253	America's Most Wanted Actors	\N	\N	\N	\N	15	{/img/characters/show/America's_Most_Wanted.png}	f
+254	American Association of Retired Persons	\N	\N	\N	\N	106	{/img/characters/show/American_Association_of_Retired_Persons.png}	f
+255	Amir	\N	\N	13	\N	173	{/img/characters/show/Amir.png}	f
+256	Anchorman	\N	\N	\N	\N	46	{/img/characters/show/Anchorman.png}	f
+258	Andrew Sutherland	\N	\N	\N	\N	176	{/img/characters/show/Andrew_Sutherland.png}	f
+444	Carlos	\N	\N	\N	\N	95	{/img/characters/show/Carlos.png}	f
+262	Animal Liberation Front	\N	\N	\N	\N	138	{/img/characters/show/ALF_Members.png}	f
+264	Annie Bartlett	\N	\N	11	\N	181	{/img/characters/show/Annie_Bartlett.png}	f
+265	Anonymous821	\N	\N	\N	\N	271	{/img/characters/show/Anonymous821.png}	f
+266	Anthony Fauci	\N	December 24th	84	\N	308	{/img/characters/show/Anthony_Fauci.png}	f
+267	Anthony Webster	\N	\N	\N	\N	271	{/img/characters/show/Anthony_Webster.png}	f
+268	Anthropologist	\N	\N	\N	\N	12	{/img/characters/show/Anthropologist.png}	f
+269	Anti-Christ	\N	\N	\N	{Satanism}	125	{/img/characters/show/Anti_Christ.png}	f
+270	Apple Replacement Friend	\N	\N	\N	\N	210	{/img/characters/show/Apple_Replacement_Friend.png}	f
+271	Dr. Apu Nahasapeemapetilon, Ph.D. Jr.	\N	\N	38	{Hinduism}	290	{/img/characters/show/Apu.png}	f
+275	Ashley	\N	\N	10	\N	190	{/img/characters/show/Ashley.png}	f
+277	Aunt Jemima	\N	\N	\N	\N	249	{/img/characters/show/Aunt_Jemima.png}	f
+225	Airsoft Armory Salesman	\N	\N	\N	\N	314	{/img/characters/show/Airsoft_Armory_Salesman.png}	f
+235	Alec Vaughn	\N	\N	\N	\N	294	{/img/characters/show/Alec_Vaughn.png}	f
+163	Strong Christian Woman	31	\N	\N	\N	286	{/img/characters/show/Strong_Woman.png,/img/characters/show/Strong_Christian_Woman.png}	f
+58	Craig Tucker	43	Octuber 23rd	10	{"Roman Catholic"}	9	{/img/characters/show/Craig_Tucker.png}	f
+539	Crips (Gang)	\N	\N	\N	\N	98	{/img/characters/show/Crips.png}	f
+538	Crippled Girl with Brown Hair	\N	\N	\N	\N	113	{/img/characters/show/Crippled_Girl_with_Brown_Hair.png}	f
+537	Crack Babies	\N	\N	\N	\N	214	{/img/characters/show/Crab_People.png}	f
+536	Crab People	\N	\N	\N	\N	104	{/img/characters/show/Crab_People.png}	f
+541	Cthulhu Cult Leader	\N	\N	\N	{"Cult of Cthulhu"}	207	{/img/characters/show/Jim_Mcelroy.png}	f
+535	CPS Agents	\N	\N	\N	\N	180	{/img/characters/show/CPS_Agents.png}	f
+534	Coyote Brown	\N	\N	\N	\N	154	{/img/characters/show/Coyote_Brown.png}	f
+533	Cows	\N	\N	\N	\N	1	{/img/characters/show/Cows.png}	f
+540	Cthulhu	\N	\N	\N	{"Cult of Cthulhu"}	206	{/img/characters/show/Cthulu.png}	t
+532	Cowboy Doctors	\N	\N	\N	\N	300	{/img/characters/show/Cowboy_Doctors.png}	f
+531	Count Ravyncrowe	\N	\N	\N	\N	181	{/img/characters/show/Rayvencrowe.png}	f
+120	Chad Handler	21	\N	10	{Judaism}	113	{/img/characters/show/Chad_Handler.png}	f
+552	Daniel Tanner	\N	\N	\N	\N	176	{/img/characters/show/Daniel_Tanner.png}	f
+548	Dan Banks	\N	\N	\N	\N	184	{/img/characters/show/Dan_Banks.png}	f
+547	Dan ("Sarcastaball")	\N	\N	\N	\N	231	{/img/characters/show/Dan_Sarcastaball.png}	f
+546	Damla Jones	\N	\N	\N	\N	82	{/img/characters/show/Dalma_Jones.png}	f
+545	Dallas Cowboys	\N	\N	\N	\N	248	{/img/characters/show/Dallas_Cowboys.png}	f
+560	Davey Solokov	69	\N	\N	\N	313	{/img/characters/show/Davey_Solokov.png}	f
+559	Dave Fitzsimmons	68	\N	\N	\N	278	{/img/characters/show/Dave_Fitzsimmons.png}	f
+558	Dave Beckett	\N	\N	\N	\N	277	{/img/characters/show/Dave_Beckett.png}	f
+557	Darryl Weathers	\N	\N	\N	\N	118	{/img/characters/show/Darryl_Weathers.png}	f
+556	Danny Ray Johnson	\N	\N	\N	\N	300	{/img/characters/show/Danny_Ray_Johnson.png}	f
+555	Danny Ganz	\N	\N	\N	\N	39	{/img/characters/show/Danny_Ganz.png}	f
+553	Daniel ("T.M.I.")	\N	\N	\N	\N	213	{/img/characters/show/Daniel_T_M_I.png}	f
+580	Delivery Express Man	\N	\N	\N	\N	308	{/img/characters/show/Delivery_Express_Man.png}	f
+578	Death	\N	\N	\N	\N	6	{/img/characters/show/Death.png}	f
+576	Dean Howland	\N	\N	\N	\N	214	{/img/characters/show/Dean_Howland.png}	f
+575	Dean	\N	\N	\N	\N	225	{/img/characters/show/Dean.png}	f
+574	DEA Agents	\N	\N	\N	\N	170	{/img/characters/show/DEA_Agents.png}	f
+573	Davin Miller	\N	\N	\N	\N	243	{/img/characters/show/Davin_Miller.png}	f
+572	David Weatherhead	70	\N	10	{Agnostic}	223	{/img/characters/show/David_Weatherhead.png}	f
+570	David Sawitzky	\N	\N	\N	\N	222	{/img/characters/show/David_Sawitsky.png}	f
+590	Derek Smalls	\N	\N	\N	\N	29	{/img/characters/show/Derek_Smalls.png}	f
+589	Denver Sea Park Security Guard	\N	\N	\N	\N	138	{/img/characters/show/Denver_Sea_Park_security_guard.png}	f
+588	Denver Sea Park Boss	\N	\N	\N	\N	138	{/img/characters/show/Denver_Sea_Park_Boss.png}	f
+587	Denver Nuggets	\N	\N	\N	\N	230	{/img/characters/show/Denver_Nuggets.png}	f
+586	Denver Broncos	\N	\N	\N	\N	13	{/img/characters/show/Denver_Broncos.png}	f
+585	Denver Archbishop	\N	\N	\N	\N	289	{/img/characters/show/Denver_Archbishop.png}	f
+584	Dental Floss	\N	\N	\N	\N	212	{/img/characters/show/Dental_Floss.png}	f
+583	Dennis Murray	\N	\N	8	\N	113	{/img/characters/show/Dennis_Murray.png}	f
+582	Dennis ("Night of the Living Homeless")	\N	\N	\N	\N	160	{/img/characters/show/Denis_Homeless.png}	f
+581	Dennis	\N	\N	\N	\N	191	{/img/characters/show/Dennis.png}	f
+599	Diego	\N	\N	\N	\N	159	{/img/characters/show/Diego.png}	f
+597	Diane Choksondik	\N	\N	\N	\N	59	{/img/characters/show/Diane_Chokdondik.png}	f
+594	Devitzen's Tolerance Camp Warden	\N	\N	\N	\N	93	{/img/characters/show/Devitzen's_Tolerance_Camp_Warden.png}	f
+593	Detroit Red Wings	\N	\N	\N	\N	153	{/img/characters/show/Detroit_Redwings.png}	f
+592	Detective Jarvis	\N	\N	\N	\N	140	{/img/characters/show/Detective_Jarvis.png}	f
+591	Detectives Hyde and Richardson	\N	\N	\N	\N	98	{/img/characters/show/Detectives_Hyde_and_Richardson.png}	f
+608	Doctor Tom	\N	\N	\N	\N	11	{/img/characters/show/Doctor_Tom.png}	f
+607	Doctor Lindsay	\N	\N	\N	\N	131	{/img/characters/show/Doctor_Lindsay.png}	f
+606	DMV Workers	\N	\N	\N	\N	238	{/img/characters/show/DMV_Workers.png}	f
+605	DJ Hippo	\N	\N	\N	\N	102	{/img/characters/show/Hippo_DJ.png}	f
+603	DJ ("Korn's Groovy Pirate Ghost Mystery")	\N	\N	\N	\N	41	{/img/characters/show/Korn_DJ.png}	f
+601	Dildo Shwaggins	\N	\N	\N	\N	271	{/img/characters/show/Dildo_Schwaggins.png}	f
+609	DOI Agents	\N	\N	\N	\N	35	{/img/characters/show/DOI_Workers.png}	f
+628	Dr. David Nelson	\N	\N	\N	\N	154	{/img/characters/show/David_Nelson.png}	f
+627	Dr. Cornwallis	\N	\N	\N	\N	119	{/img/characters/show/Dr_Cornwalis.png}	f
+626	Dr. Chinstrap	\N	\N	\N	\N	205	{/img/characters/show/Dr_Chinstrap.png}	f
+625	Dr. Carroll	\N	\N	\N	\N	168	{/img/characters/show/Doctor_Carrol.png}	f
+624	Dr. Biber	\N	\N	\N	\N	126	{/img/characters/show/Dr_Biber.png}	f
+623	Douglas	\N	\N	10	{"Roman Catholic"}	176	{/img/characters/show/Douglas.png}	f
+622	Dougie O'Connell	\N	\N	8	\N	39	{/img/characters/show/Dougie.png}	f
+621	Dotty Applegate	\N	\N	\N	\N	251	{/img/characters/show/Miss_Applegate.png}	f
+620	Dorky Girl	\N	\N	\N	\N	81	{/img/characters/show/Dorky_Girl.png}	f
+614	Donald	\N	\N	\N	\N	25	{/img/characters/show/Donald.png}	f
+612	Don Heisman	\N	\N	\N	\N	128	{/img/characters/show/Don_Heisman.png}	f
+611	Domino	\N	\N	\N	\N	174	{/img/characters/show/Domino.png}	f
+643	Dr. Roberts	\N	\N	\N	\N	49	{/img/characters/show/Dr_Roberts.png}	f
+642	Dr. Pinkerton	\N	\N	\N	\N	205	{/img/characters/show/Dr_Pinkerton.png}	f
+641	Dr. Phillips	\N	\N	\N	\N	189	{/img/characters/show/Dr_Phillips.png}	f
+639	Dr. Pal	\N	\N	\N	\N	132	{/img/characters/show/Dr_Pal.png}	f
+638	Dr. Neeland	\N	\N	\N	\N	140	{/img/characters/show/Dr_Neeland.png}	f
+636	Dr. Matlock	\N	\N	\N	\N	168	{/img/characters/show/Dr_Matlock.png}	f
+635	Dr. Lout	\N	\N	\N	\N	34	{/img/characters/show/Dr_Lout.png}	f
+634	Dr. Larry	\N	\N	\N	\N	78	{/img/characters/show/Dr_Larry.png}	f
+633	Dr. Land	\N	\N	\N	\N	189	{/img/characters/show/Dr_Land.png}	f
+632	Dr. Katz	\N	\N	\N	\N	21	{/img/characters/show/Dr_Jonathan_Katz.png}	f
+631	Dr. Hallis	\N	\N	\N	\N	89	{/img/characters/show/Dr_Hallis.png}	f
+629	Dr. Doctor	\N	\N	\N	\N	15	{/img/characters/show/Dr_Doctor.png}	f
+647	Dr. Spookalot	\N	\N	\N	\N	41	{/img/characters/show/Dr_Spookalot.png}	f
+646	Dr. Sheltair	\N	\N	\N	\N	318	{/img/characters/show/Dr_Sheltair.png}	f
+645	Dr. Shay	\N	\N	\N	\N	51	{/img/characters/show/Dr_Shay.png}	f
+644	Dr. Schwartz	\N	\N	\N	{Judaism}	16	{/img/characters/show/Rabbi_Schwartz.png}	f
+630	Dr. Gauche	\N	\N	\N	\N	286	{/img/characters/show/Dr_Gauche.png}	f
+648	Dr. Tristan Adams	\N	\N	\N	\N	24	{/img/characters/show/Tristan_Adams.png}	f
+649	Dr. Wayne Schroeder	\N	\N	\N	\N	269	{/img/characters/show/Dr_Wayne_Schroeder.png}	f
+650	Dr. Zonder	\N	\N	\N	\N	161	{/img/characters/show/Dr_Zonder.png}	f
+653	Droopy Dog	\N	\N	\N	\N	202	{/img/characters/show/Droopy_Dog.png}	f
+654	Duck President	\N	\N	\N	\N	216	{/img/characters/show/Duck_President.png}	f
+656	Dylan and Sarah	\N	\N	\N	\N	142	{/img/characters/show/Dylan_and_Sarah.png}	f
+678	Emir Hadi	\N	\N	\N	\N	159	{/img/characters/show/Emir_Hadi.png}	f
+664	Elaine	\N	\N	\N	\N	76	{/img/characters/show/Elaine.png}	f
+663	El Pollo Loco Workers	\N	\N	\N	\N	218	{/img/characters/show/El_Pollo_Loco_Workers.png}	f
+662	Eduardo Hernandez	\N	\N	\N	\N	275	{/img/characters/show/Eduardo_Hernandez.png}	f
+674	Elsa	\N	\N	\N	\N	299	{/img/characters/show/Elsa.png}	f
+672	Elmer Fudd	\N	\N	\N	\N	202	{/img/characters/show/Elmer_Fudd.png}	f
+670	Elise Gintz	\N	\N	\N	\N	111	{/img/characters/show/Elise_Gintz.png}	f
+669	Elise Garrett	\N	\N	\N	\N	41	{/img/characters/show/Elise_garrett.png}	f
+682	Emo Kids	\N	\N	\N	\N	241	{/img/characters/show/Emo_Kids.png}	f
+681	Emily Marx	\N	\N	9	\N	134	{/img/characters/show/Emily_Marx.png}	f
+694	Excalibur Sorcerer	\N	\N	\N	\N	66	{/img/characters/show/Excalibur_Sorcerer.png}	f
+693	Excalibur Barker	\N	\N	\N	\N	66	{/img/characters/show/Excalibur_Barker.png}	f
+691	Ethiopian Tribe	\N	\N	\N	\N	8	{/img/characters/show/Ethiopians.png}	f
+690	Esther	\N	\N	10	{"Roman Catholic"}	32	{/img/characters/show/Esther.png}	f
+689	Estella Havisham	\N	\N	10	\N	62	{/img/characters/show/Estella.png}	f
+688	Escaped Convict	\N	\N	\N	\N	62	{/img/characters/show/Escaped_Convict.png}	f
+171	Bebe Stevens	36	August 13th	10	{"Roman Catholic"}	2	{/img/characters/show/Bebe_Stevens.png}	f
+173	Mrs. Stevens	36	\N	\N	{"Roman Catholic"}	16	{/img/characters/show/Mrs_Stevens.png}	f
+174	Mr. Stevens	36	\N	\N	{"Roman Catholic"}	123	{/img/characters/show/Mr_Stevens.png}	f
+705	Felipe	\N	\N	\N	\N	95	{/img/characters/show/Felipe.png}	f
+704	Federal Bureau of Investigation	\N	\N	\N	\N	8	{/img/characters/show/FBI_Agents.png}	f
+703	Father Maxi	\N	\N	\N	\N	9	{/img/characters/show/Father_Maxi.png}	f
+702	Father and Handicapped Daughter	\N	\N	\N	\N	273	{/img/characters/show/Fortcollins_Mann_And_Daughter.png}	f
+701	Fat Abbott	\N	\N	\N	\N	25	{/img/characters/show/Fat_Abbott.png}	f
+700	Fast Food Executives	\N	\N	\N	\N	217	{/img/characters/show/Fast_food_executives.png}	f
+699	Farty O'Cool	\N	\N	\N	\N	315	{/img/characters/show/Farty_O'Cool.png}	f
+698	Faith Records CEO	\N	\N	\N	\N	105	{/img/characters/show/Faith_Records_CEO.png}	f
+697	The "FAGS" Boys	\N	\N	\N	\N	191	{/img/characters/show/FAGS_boys.png}	f
+677	Elvis Presley Hologram	\N	\N	\N	\N	257	{/img/characters/show/Elvis_Presley_Hologram.png}	t
+713	Firkle Smith	\N	\N	\N	\N	110	{/img/characters/show/Firkle.png}	f
+712	Fifi	\N	\N	\N	\N	4	{/img/characters/show/Fifi.png}	f
+710	Ferrari	\N	\N	10	\N	110	{/img/characters/show/Ferrari_Raisins.png}	f
+709	Fenton Hardly	\N	\N	\N	\N	148	{/img/characters/show/Fenton_Hardly.png}	f
+708	Female Thief	\N	\N	\N	\N	174	{/img/characters/show/Female_Thief.png}	f
+707	Female QAnon Tutor	\N	\N	\N	\N	309	{/img/characters/show/Female_QAnon_Tutor.png}	f
+724	Francis (Special Kid)	\N	\N	\N	\N	113	{/img/characters/show/Francis_(Special_Kid).png}	f
+723	Francis (4th Grade)	\N	\N	\N	\N	58	{/img/characters/show/Francis_(4th_Grade).png}	f
+722	Frances Velman	\N	\N	\N	\N	86	{/img/characters/show/Frances_Velman.png}	f
+721	Four-Assed Monkey	\N	\N	\N	\N	5	{/img/characters/show/Four_Assed_Monkey.png}	f
+720	Fosse McDonald	73	\N	9	\N	4	{/img/characters/show/Fossie_Mcdonald.png}	f
+719	Foreman	\N	\N	\N	\N	32	{/img/characters/show/Rainforest_Logger.png}	f
+718	Foofa	\N	\N	\N	\N	242	{/img/characters/show/Foofa.png}	f
+717	Fonics Monkey	\N	\N	\N	\N	43	{/img/characters/show/Fonics_Monkey.png}	f
+735	French Canadian Mime	\N	\N	\N	\N	111	{/img/characters/show/French_Canadian_Mime.png}	f
+734	Freja Ollegard	\N	\N	\N	\N	269	{/img/characters/show/Freja_Ollegard.png}	f
+733	Frederick Johnson	\N	\N	\N	\N	90	{/img/characters/show/Frederick_Johnson.png}	f
+730	Franz	\N	\N	\N	\N	174	{/img/characters/show/Franz.png}	f
+729	Frank Waters	\N	\N	\N	\N	157	{/img/characters/show/Frank_Waters.png}	f
+727	Frank Hammond and Phil	\N	\N	\N	\N	4	{/img/characters/show/Frank_Hammond_And_Phil.png}	f
+726	Frank Fun	\N	\N	\N	\N	71	{/img/characters/show/Frank_Foon.png}	f
+741	Future Stan	\N	\N	\N	\N	95	{/img/characters/show/Stan_Fake_Future.png}	f
+740	Future Humans	\N	\N	\N	\N	118	{/img/characters/show/Goobacks.png}	f
+739	Future Butters	\N	\N	\N	\N	95	{/img/characters/show/Butters_Fake_Future.png}	f
+738	Funnybot	\N	\N	\N	\N	211	{/img/characters/show/Funnybot.png}	f
+737	Frog King	\N	\N	\N	\N	93	{/img/characters/show/Frog_King.png}	f
+736	Frida	\N	\N	\N	\N	23	{/img/characters/show/Frida.png}	f
+731	Fred Savage	\N	July 9th	49	{Judaism}	22	{/img/characters/show/Fred_Savage.png}	t
+732	Freddy Krueger	\N	\N	\N	\N	164	{/img/characters/show/Freddy_Krueger.png}	t
+716	The Foley Kids	77	\N	8	\N	136	{/img/characters/show/The_Foley_Kids.png}	f
+\.
+
+
+--
+-- Data for Name: characters_group; Type: TABLE DATA; Schema: public; Owner: southpark
+--
+
+COPY public.characters_group (id_character, id_group) FROM stdin;
+4	1
+3	1
+2	1
+1	1
+199	2
+99	2
+78	2
+58	2
+52	2
+156	3
+199	4
+82	4
+653	4
+73	6
+2	5
+99	5
+199	5
+199	12
+538	11
+518	11
+120	11
+724	11
+1	10
+143	9
+713	9
+73	9
+175	7
+622	7
+713	6
+42	18
+2	17
+3	17
+622	16
+42	16
+518	12
+538	12
+120	12
+724	12
+82	12
+58	19
+2	19
+248	18
+531	18
+264	18
+71	18
+99	19
+42	19
+3	19
+52	20
+99	20
+42	20
+2	20
+3	24
+716	23
+141	23
+2	23
+1	24
+5	24
+4	25
+3	25
+2	25
+1	25
+314	26
+78	26
+723	26
+58	26
+99	26
+188	26
+501	26
+42	26
+4	26
+3	26
+2	26
+65	26
+175	26
+151	26
+165	26
+146	26
+720	26
+133	26
+690	26
+135	26
+194	26
+133	27
+151	27
+42	27
+215	27
+185	27
+309	27
+99	27
+165	27
+99	28
+175	28
+42	28
+5	28
+2	28
+194	29
+690	29
+681	29
+135	29
+245	29
+171	29
+188	29
+1	31
+710	30
+151	29
+133	29
+168	31
+78	31
+42	31
+4	31
+3	31
+2	31
+199	31
+99	31
+1	33
+4	32
+3	32
+1	32
+42	32
+4	34
+3	34
+2	34
+1	34
+4	33
+3	33
+2	33
+33	33
+42	36
+4	36
+3	36
+2	36
+1	36
+58	37
+52	37
+78	37
+99	37
+4	37
+3	37
+1	37
+42	37
+121	37
+141	37
+207	37
+199	38
+78	38
+42	38
+4	38
+3	38
+2	38
+1	38
+185	42
+156	44
+1	44
+25	57
+2	57
+19	58
+14	58
+4	58
+3	58
+144	59
+19	60
+164	60
+24	67
+3	66
+324	61
+16	67
+33	67
+44	67
+4	68
+42	69
+209	69
+208	69
+309	69
+215	69
+185	69
+165	69
+151	69
+133	69
+99	69
+206	69
+145	71
+42	71
+1	73
+209	72
+206	72
+2	73
+3	73
+42	73
+1	74
+4	74
+42	74
+199	74
+78	75
+42	75
+2	75
+188	76
+42	76
+4	76
+3	76
+2	76
+1	76
+19	76
+199	76
+4	77
+3	77
+1	77
+687	79
+179	81
+306	80
+3	80
+2	80
+398	83
+718	83
+99	85
+175	85
+110	85
+5	84
+4	84
+207	85
+65	85
+78	85
+314	85
+724	85
+95	86
+188	86
+690	86
+194	86
+135	86
+151	86
+171	86
+165	87
+171	87
+175	87
+42	87
+99	87
+4	87
+3	87
+2	87
+1	87
+146	87
+720	87
+314	87
+135	87
+78	87
+171	88
+188	88
+151	87
+194	88
+95	88
+151	88
+99	89
+78	89
+4	89
+3	89
+2	89
+1	89
+1	90
+720	89
+314	89
+175	89
+1	91
+78	90
+199	90
+42	90
+4	90
+3	90
+2	90
+61	91
+199	91
+42	91
+52	91
+99	91
+58	91
+78	91
+4	91
+3	91
+2	91
+199	92
+175	92
+165	92
+207	92
+1	92
+99	92
+78	92
+58	92
+42	92
+4	92
+3	92
+2	92
+19	92
+58	93
+52	93
+99	93
+78	93
+4	93
+3	93
+2	93
+1	93
+48	94
+25	94
+207	93
+149	94
+351	94
+70	94
+198	94
+190	94
+138	94
+6	94
+276	95
 \.
 
 
@@ -1673,6 +2070,7 @@ COPY public.episodes (id, name, season, episode, realese_date, description, view
 327	Twisted Christian	28	1	2025-10-15	Cartman is possessed and may be the key to stopping the Antichrist.	https://www.southparkstudios.com/episodes/5yvj56/south-park-twisted-christian-season-28-ep-1	f	t	img/episodes/327.jpg
 328	The Woman In The Hat	28	2	2025-10-31	The White House deals with a disruptive spirit from the east wing. While Stan worries that South Park has become too political.	https://www.southparkstudios.com/episodes/xgd7ik/south-park-the-woman-in-the-hat-season-28-ep-2	f	t	img/episodes/328.jpg
 329	Sora Not Sorry	28	3	2025-11-13	Butters' AI revenge plan backfires, igniting an epidemic of fake videos at school that leaves Detective Harris struggling to tell fantasy from reality	https://www.southparkstudios.com/episodes/wqnkli/south-park-sora-not-sorry-season-28-ep-3	f	t	img/episodes/329.jpg
+330	Turkey Trot	28	4	2025-11-26	The town’s annual Turkey Trot turns chaotic when Cartman uses questionable cutting-edge science to win the race. 	The town’s annual Turkey Trot turns chaotic when Cartman uses questionable cutting-edge science to win the race. 	f	t	img/episodes/330.jpg
 \.
 
 
@@ -1754,6 +2152,11 @@ COPY public.families (id, name, images) FROM stdin;
 54	The Varcas	{img/families/The_Varcas.png}
 58	The Clintons	{img/families/The_Clintons.png}
 73	The McDonalds	{img/families/The_McDonalds.png}
+74	The Trumps	{img/families/The_Trumps.png}
+75	The Hamills	{img/families/The_Hamills.png}
+76	The Bushes	{img/families/The_Bushes.png}
+77	The Foley Family	{img/families/The_Foley_Family_1.png,img/families/The_Foley_Family_2.png}
+78	The God and The Son	{img/families/Jesus_And_God.png}
 \.
 
 
@@ -1795,6 +2198,110 @@ COPY public.games (id, name, developer, platforms, realese_date, images) FROM st
 31	Cartman's Escape Room (Chichago)	South Park Studios & Escape the Room	{"Escape Room"}	2019-05-15	{/img/games/Escape_Room.jpg}
 32	Cartman's Escape Room (San Diego Comic Con)	South Park Studios & Escape the Room	{"Escape Room"}	2018-07-20	{/img/games/Escape_Room.jpg}
 33	South Park: Snow Day!	Question LLC	{XSeries,PS5,PC,Switch}	2024-03-26	{/img/games/Snow_Day.jpg}
+\.
+
+
+--
+-- Data for Name: groups; Type: TABLE DATA; Schema: public; Owner: southpark
+--
+
+COPY public.groups ("ID", name, image) FROM stdin;
+1	The Boys	img/groups/The_Boys.png
+2	Craig's Gang	img/groups/Craig_Gang.png
+3	Asian Girls	img/groups/Asian_Girls.png
+4	Blue Team	img/groups/Blue_Team.png
+5	Cartman's New Bros	img/groups/Cartman_New_Bros.png
+6	Emo Kids	img/groups/Emo_Kids.png
+7	Federation Kids	img/groups/Federation_Kids.png
+8	Glee Club Kids	img/groups/Glee_Club_kinds.png
+9	Goth Kids	img/groups/Goth_Kids.png
+10	Purity Ring Kids	img/groups/Purity_Ring_Kids.png
+11	Red Team	img/groups/Red_Team.png
+12	Special Ed Kids	img/groups/Special_Ed_Kids.png
+13	Street Skater Boys	img/groups/Skater_boys.png
+14	The Afghan Boys	img/groups/Afghan_Boys.png
+15	The Evil Boys	img/groups/The_Evil_Boys.png
+16	The Melvins	img/groups/Melvins.png
+17	The Ugly Kids	img/groups/The_Ugly_Kids.png
+18	Vampire Kids	img/groups/Vampire_Kids.png
+19	Crack Baby Athletic Association (CBAA)	img/groups/CBAAGroup.png
+20	Cred Affinity Group	img/groups/Cred_Affinity_Group.png
+21	Distracted Driving Awareness	img/groups/Distracted_Driving_Awareness.png
+22	FBI Kids	img/groups/FBI_Kids.png
+23	Ginger Separatist Movement	img/groups/Ginger_Kids.png
+24	Jew Scouts	img/groups/Jew_Scouts.png
+25	Kommunity Kidz	img/groups/Kommunity_Kidz.png
+26	La Resistance	img/groups/La_Resistance.png
+27	Lil' Qties	img/groups/Lil_Qties.png
+28	Pirate Club	img/groups/Pirate_Club.png
+29	Pleases and Sparkles Club	img/groups/Pleases_Sparkles_Club.png
+30	Raisins Girls	img/groups/Raisins_Girls.png
+31	SoDoSoPa Ninjas	img/groups/Ninjas_Sodosopa.png
+32	South Park Compounding Pharmacy	img/groups/SouthPark_Compounding_Pharmacy.png
+33	South Park Crime Unit	img/groups/SouthPark_Junior_Detectives.png
+34	Super Awesome Talent Agency	img/groups/Super_Awesome_Talent_Agency.png
+35	Tourette's Tolerance and Understanding Foundation	img/groups/Tourettes_Kids.png
+36	Washington Redskins	img/groups/Washington_Redskins.png
+37	Wieners Out	img/groups/Weiners_Out.png
+38	Wrestling Takedown Federation	img/groups/World_Takedown_Federation.png
+39	Airsoft Teenagers	img/groups/Airsoft_Teenagers.png
+40	Jim Davis High School Students	img/groups/High_Schhol_Students.png
+41	Teenagers	img/groups/Teens.png
+42	The 9th Graders	img/groups/9th_grade_boys.png
+43	Tween Wave Fans	img/groups/Tween_Wave_Fans.png
+44	Child Labor Force	img/groups/Child_Labor.png
+45	Hopeful Hills Campers	img/groups/Fat_Camp_Kids.png
+46	Immigrant Kids	img/groups/Immigrant_Kids.png
+47	Porta-Potty Girls	img/groups/Porto_Potty_Girls.png
+48	Therapy Kids	img/groups/Therapy_Kids.png
+49	Chinese Clubbers	img/groups/Chinese_Clubbers.png
+50	City People	img/groups/City_People.png
+51	Homeless People	img/groups/Homeless_People.png
+52	Internet Refugees	img/groups/Internet_Refugees.png
+53	Mr. Garrison Senior's Drinking Buddies	img/groups/Mr._Garrison_Senior's_Drinking_Buddies.png
+54	Randy's Friends	img/groups/Randy's_Friends.png
+55	Sam, David, and Chris	img/groups/Sam_David_Chris.png
+56	Women With Fake Titties	img/groups/Women_With_Fake_Titties.png
+57	Yelpers	img/groups/Yelpers.png
+58	Hare Club for Men	img/groups/Hare_Club_For_Men.png
+59	North American Marlon Brando Look-Alikes	img/groups/Marlon_Brando_Look_Alikes.png
+60	PC Bros	img/groups/FC_Bros.png
+61	American Association of Retired Persons	img/groups/Aarp.png
+62	Animal Liberation Front	img/groups/ALF_Members.png
+63	Belarusian Farmers	img/groups/Farmers_Of_Belarus.png
+64	Earth Day Committee	img/groups/Earth_Day_Committee.png
+65	Hippies	img/groups/Hippies.png
+66	Millennials Against Canada	img/groups/Millenials_Against_Canada.png
+67	Mothers Against Canada	img/groups/Moms_Against_Canada.png
+68	People for the Ethical Treatment of Animals	img/groups/PETA.png
+69	QAnon	img/groups/QAnon.png
+70	Rob Reiner's Smoke Stoppers	img/groups/Smoke_Stoppers.png
+71	True Freaks Union	img/groups/True_Freaks_Union.png
+72	Tutornon	img/groups/Tutornon.png
+73	Barbershop Quartet	img/groups/Barbershop_Quartet.png
+74	Crimson Dawn	img/groups/Crimson_Dawn.png
+75	Faith + 1	img/groups/Faith_plus_1.png
+76	Fingerbang	img/groups/Fingerbang.png
+77	Moop	img/groups/Moop.png
+78	The Llama Brothers	img/groups/The_Llama_Brothers.png
+79	America's Most Wanted Actors	img/groups/America's_Most_Wanted.png
+80	Dawg's Crew	img/groups/Dawg's_Crew.png
+81	Terrance and Phillip	img/groups/Terrance_And_Philip.png
+82	Katherine and Katie Queef	img/groups/Queef_Sisters.png
+83	Yo Gabba Gabba!	img/groups/Yo_Gabba_Gabba.png
+84	Park County Pee-Wee Hockey Team	img/groups/Pee_Wee_Hocky_Team.png
+85	South Park Basketball Team	img/groups/Cows_Basketball.png
+86	South Park Cheerleading Squad	img/groups/Cows_Cheerleading.png
+87	South Park Dodgeball Team	img/groups/Cows_Dodgeball.png
+88	South Park Girls' Volleyball Team	img/groups/Cows_Volleyball.png
+89	South Park Football Team	img/groups/Cows_Football.png
+90	South Park Junior Wrestling Team	img/groups/South_Park_Wrestling.png
+91	South Park Little League Baseball Team	img/groups/South_Park_Baseball_Team.png
+92	South Park Sarcastaball Team	img/groups/Cows_Sarcastaball.png
+93	South Park Soccer Team	img/groups/Cows_Soccer.png
+94	City Council	img/groups/City_Council.png
+95	The Council of Nine	img/groups/The_Council_Of_Nine.png
+96	Woodland Critters	img/groups/Woodland_Critters.png
 \.
 
 
@@ -1872,6 +2379,14 @@ ALTER TABLE ONLY public.alter_ego
 
 
 --
+-- Name: characters_group characters_group_pkey; Type: CONSTRAINT; Schema: public; Owner: southpark
+--
+
+ALTER TABLE ONLY public.characters_group
+    ADD CONSTRAINT characters_group_pkey PRIMARY KEY (id_character, id_group);
+
+
+--
 -- Name: characters characters_pkey; Type: CONSTRAINT; Schema: public; Owner: southpark
 --
 
@@ -1909,6 +2424,14 @@ ALTER TABLE ONLY public.families
 
 ALTER TABLE ONLY public.games
     ADD CONSTRAINT games_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: groups groups_pkey; Type: CONSTRAINT; Schema: public; Owner: southpark
+--
+
+ALTER TABLE ONLY public.groups
+    ADD CONSTRAINT groups_pkey PRIMARY KEY ("ID");
 
 
 --
@@ -1952,6 +2475,22 @@ ALTER TABLE ONLY public.album_songs
 
 
 --
+-- Name: characters_group fk_character; Type: FK CONSTRAINT; Schema: public; Owner: southpark
+--
+
+ALTER TABLE ONLY public.characters_group
+    ADD CONSTRAINT fk_character FOREIGN KEY (id_character) REFERENCES public.characters(id);
+
+
+--
+-- Name: characters_group fk_group; Type: FK CONSTRAINT; Schema: public; Owner: southpark
+--
+
+ALTER TABLE ONLY public.characters_group
+    ADD CONSTRAINT fk_group FOREIGN KEY (id_group) REFERENCES public.groups("ID");
+
+
+--
 -- Name: alter_ego original_character_fkey; Type: FK CONSTRAINT; Schema: public; Owner: southpark
 --
 
@@ -1963,5 +2502,5 @@ ALTER TABLE ONLY public.alter_ego
 -- PostgreSQL database dump complete
 --
 
-\unrestrict nNCRJk6BRKt0pB13rIgjChbZPpWQWd56iPmvfASseS1yhZ94qStQGKUI1d0dfir
+\unrestrict CUNSRBbZGBMutsJDZOCwlpPe4GWCHZmFkiEEcBBYciznG8bol9lHw3k3l37VuJb
 
