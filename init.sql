@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict eHqMg0egUzW8KidhdlPXwI4OGLyH2LxK0fwhd9SgzVWJQsqGDS6ZO47bBrey1By
+\restrict CUNSRBbZGBMutsJDZOCwlpPe4GWCHZmFkiEEcBBYciznG8bol9lHw3k3l37VuJb
 
 -- Dumped from database version 15.15 (Debian 15.15-1.pgdg13+1)
 -- Dumped by pg_dump version 15.15 (Debian 15.15-1.pgdg13+1)
@@ -604,7 +604,62 @@ COPY public.characters (id, name, family, birthday, age, religion, first_apperan
 595	Dick Dastardly	\N	\N	\N	\N	251	{/img/characters/show/Dick_Dastardly.png}	t
 600	Diego Márquez	\N	\N	\N	\N	323	{/img/characters/show/Diego_(Dora).png}	t
 619	Dora Márquez	\N	\N	\N	\N	242	{/img/characters/show/Dora.png}	t
+748	Gary Nelson	\N	\N	\N	\N	136	{/img/characters/show/Gary_Nelson.png}	f
+747	Gary Condit	\N	April 21st	77	\N	79	{/img/characters/show/Gary_Condit.png}	t
+746	Gary Coleman	\N	February 8th	42	{"Roman Catholic"}	143	{/img/characters/show/Gary_Coleman.png}	t
+745	Gary Borkovec	\N	\N	10	\N	279	{/img/characters/show/Gary_Borkovec.png}	f
+744	Garth	\N	\N	\N	\N	40	{/img/characters/show/Garth.png}	f
+743	Gandalf the Grey	\N	\N	\N	\N	164	{/img/characters/show/Gandalf.png}	t
+742	Gadnuk, Breaker of Worlds	\N	\N	\N	\N	255	{/img/characters/show/Gadnuk.png}	f
+751	Gay Cowboys	\N	\N	\N	\N	22	{/img/characters/show/Gay_Cowboys.png}	f
+750	Gavin Throttle	\N	\N	10	\N	153	{/img/characters/show/Gavin.png}	f
+749	Gary Nelson (Ginger Kid)	\N	\N	10	\N	136	{/img/characters/show/Gary_Nelson_(Ginger_Kid).png}	f
+761	General Store Clerk	\N	\N	\N	\N	33	{/img/characters/show/General_Store_Clerk.png}	f
+760	General Revaur	\N	\N	\N	\N	240	{/img/characters/show/General_Revaur.png}	f
+759	General Plymkin	\N	\N	\N	\N	74	{/img/characters/show/General_Plymkin.png}	f
+758	General Deckter	\N	\N	\N	\N	163	{/img/characters/show/Gen_Deckter.png}	f
+757	General Davis	\N	\N	\N	\N	177	{/img/characters/show/General_Davis.png}	f
+756	Gene Siskel	\N	February 20th	53	{Judaism}	46	{/img/characters/show/Gene_Siskel.png}	t
+755	Gene Hackman	\N	January 30th	95	\N	98	{/img/characters/show/Gene_Hackman.png}	t
+754	Gems Wholesale Clerks	\N	\N	\N	\N	225	{/img/characters/show/Clerks.png}	f
 11	Mr. Hat	16	\N	\N	\N	1	{/img/characters/show/Mr_Hat.png}	f
+753	Gelgameks	\N	\N	\N	\N	87	{/img/characters/show/Gelgameks.png}	f
+752	Geldon	\N	\N	\N	\N	66	{/img/characters/show/Geldon.png}	f
+771	George Washington	67	February 22nd	\N	\N	291	{/img/characters/show/George_Washington.png}	t
+770	George W. Bush	76	July 6th	79	{Methodist}	68	{/img/characters/show/George_W_Bush.png}	t
+769	George R. R. Martin	\N	September 20th	77	{Agnostic}	245	{/img/characters/show/George_R._R._Martin.png}	t
+768	George Lucas	\N	May 14th	81	{"Buddhist Methodist"}	88	{/img/characters/show/George_Lucas.png}	t
+767	George Clooney	\N	May 6th	64	{Agnostic}	141	{/img/characters/show/George_Clooney.png}	t
+766	George Burns	\N	January 20th	100	{"Non-Observant Judaism"}	57	{/img/characters/show/George_Burns.png}	t
+765	Geological Survey Supervisor	\N	\N	\N	\N	179	{/img/characters/show/Geological_Boss.png}	f
+764	Geoff Hamill	75	\N	\N	\N	203	{/img/characters/show/Jeff_Hamill.png}	f
+763	Genie	\N	\N	\N	\N	299	{/img/characters/show/Genie.png}	t
+762	General Tso	\N	\N	\N	\N	237	{/img/characters/show/General_Tso.png}	f
+783	Girls' Volleyball Coach	\N	\N	\N	\N	255	{/img/characters/show/Girls_Volley_Ball_Coach.png}	f
+782	Girl with Pink Coat	\N	\N	10	\N	72	{/img/characters/show/Girl_with_Pink_Coat.png}	f
+781	Girl with Ear Infection	\N	\N	\N	\N	156	{/img/characters/show/Girl_with_Ear_Infection.png}	f
+780	Girl with Brown Coat	\N	\N	10	\N	213	{/img/characters/show/Girl_With_Brown_Coat.png}	f
+779	Girl with Blonde Hair	77	\N	10	\N	167	{/img/characters/show/Blonde_Girl.png}	f
+778	Gino	\N	\N	\N	\N	102	{/img/characters/show/Gino.png}	f
+777	Ginger Cow	\N	\N	\N	\N	243	{/img/characters/show/Ginger_Cow.png}	f
+776	Giant Douche	\N	\N	\N	\N	119	{/img/characters/show/Douche.png}	f
+775	Giada De Laurentiis	\N	August 22nd	55	\N	209	{/img/characters/show/Giada_De_Laurentiis.png}	t
+774	Ghost Hunters	\N	\N	\N	\N	189	{/img/characters/show/The_Ghost_Hunters.png}	t
+772	Gerald Ford	\N	July 14th	93	{Episcopalian}	70	{/img/characters/show/Gerald_ford.jpg}	t
+773	German Band	\N	\N	\N	\N	310	{/img/characters/show/German_Band.png}	f
+791	Gordon Ramsay	\N	November 8th	58	{Protestant}	209	{/img/characters/show/Gordon_Ramsay.png}	t
+790	Gordon Brown	\N	February 20th	74	{"Church of Scotland"}	171	{/img/characters/show/Gordon_Brown.png}	t
+789	God	78	\N	\N	{Buddhist,"Roman Catholic",Christianity,Judaism,Islam}	47	{/img/characters/show/God.png}	f
+788	Goat People	\N	\N	\N	\N	70	{/img/characters/show/Goat_People.png}	f
+787	Gloria Allred	\N	July 3rd	84	{Judaism}	67	{/img/characters/show/Gloria_Allred.png}	t
+786	Glinda the Good Witch	\N	\N	\N	\N	165	{/img/characters/show/Glinda.png}	t
+785	Glen Dumont	\N	\N	\N	\N	83	{/img/characters/show/Glen_Dumont.png}	f
+784	Glen	\N	\N	\N	\N	160	{/img/characters/show/Glen.png}	f
+792	Gordon Stoltski	\N	\N	8	\N	136	{/img/characters/show/Gordon_Stoltski.png}	f
+796	Guy Fieri	\N	January 22nd	57	{Agnostic}	209	{/img/characters/show/Guy_Fieri.png}	t
+795	Guinea Creatures	\N	\N	\N	\N	177	{/img/characters/show/Guinea_Pigs.png}	f
+794	GS-401	\N	\N	\N	\N	73	{/img/characters/show/Gary.png}	f
+793	Gretchen	\N	\N	\N	\N	159	{/img/characters/show/Gretchen.png}	f
 74	Rosie O'Donnell	6	March 21st	63	{"Roman Catholic"}	60	{/img/characters/show/Rosie_Odonnell.png}	t
 221	Agent Fields	\N	\N	\N	\N	44	{/img/characters/show/Agent_Fields.png}	f
 193	Satan	42	\N	\N	{Satanism}	10	{/img/characters/show/Satan.png}	f
@@ -1306,7 +1361,6 @@ COPY public.characters (id, name, family, birthday, age, religion, first_apperan
 719	Foreman	\N	\N	\N	\N	32	{/img/characters/show/Rainforest_Logger.png}	f
 718	Foofa	\N	\N	\N	\N	242	{/img/characters/show/Foofa.png}	f
 717	Fonics Monkey	\N	\N	\N	\N	43	{/img/characters/show/Fonics_Monkey.png}	f
-716	The Foley Kids	\N	\N	8	\N	136	{/img/characters/show/The_Foley_Kids.png}	f
 735	French Canadian Mime	\N	\N	\N	\N	111	{/img/characters/show/French_Canadian_Mime.png}	f
 734	Freja Ollegard	\N	\N	\N	\N	269	{/img/characters/show/Freja_Ollegard.png}	f
 733	Frederick Johnson	\N	\N	\N	\N	90	{/img/characters/show/Frederick_Johnson.png}	f
@@ -1322,6 +1376,7 @@ COPY public.characters (id, name, family, birthday, age, religion, first_apperan
 736	Frida	\N	\N	\N	\N	23	{/img/characters/show/Frida.png}	f
 731	Fred Savage	\N	July 9th	49	{Judaism}	22	{/img/characters/show/Fred_Savage.png}	t
 732	Freddy Krueger	\N	\N	\N	\N	164	{/img/characters/show/Freddy_Krueger.png}	t
+716	The Foley Kids	77	\N	8	\N	136	{/img/characters/show/The_Foley_Kids.png}	f
 \.
 
 
@@ -2098,6 +2153,10 @@ COPY public.families (id, name, images) FROM stdin;
 58	The Clintons	{img/families/The_Clintons.png}
 73	The McDonalds	{img/families/The_McDonalds.png}
 74	The Trumps	{img/families/The_Trumps.png}
+75	The Hamills	{img/families/The_Hamills.png}
+76	The Bushes	{img/families/The_Bushes.png}
+77	The Foley Family	{img/families/The_Foley_Family_1.png,img/families/The_Foley_Family_2.png}
+78	The God and The Son	{img/families/Jesus_And_God.png}
 \.
 
 
@@ -2443,5 +2502,5 @@ ALTER TABLE ONLY public.alter_ego
 -- PostgreSQL database dump complete
 --
 
-\unrestrict eHqMg0egUzW8KidhdlPXwI4OGLyH2LxK0fwhd9SgzVWJQsqGDS6ZO47bBrey1By
+\unrestrict CUNSRBbZGBMutsJDZOCwlpPe4GWCHZmFkiEEcBBYciznG8bol9lHw3k3l37VuJb
 
