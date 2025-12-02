@@ -66,7 +66,6 @@ class Character(BaseModel, ApiObject):
     Attributes:
         id (int): Unique identifier for the character
         name (str): Name of the character
-        friend_group (Optional[int]): ID of character's friend group
         family (Optional[int]): ID of character's family
         birthday (Optional[str]): Character's birthday
         age (Optional[int]): Character's age
@@ -80,7 +79,6 @@ class Character(BaseModel, ApiObject):
 
     id: int
     name: str
-    friend_group: Optional[int] = None
     family: Optional[dict] = None
     birthday: Optional[str] = None
     age: Optional[int] = None
