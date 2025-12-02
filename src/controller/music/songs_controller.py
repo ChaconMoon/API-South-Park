@@ -42,11 +42,7 @@ def get_all_songs_of_a_album(id: int, base_url="", add_url=False) -> dict:
         for row in query_result:
             song = Song(row, base_url)
             if add_url:
-                result[song_number] = dict()
-                result[song_number]["name"] = song.model_dump()["name"]
-                result[song_number]["url"] = (
-                    f"{base_url}api/songs/{song.model_dump()['id']}"
-                )
+                result[song_number] = song.toJSON(compacted=True, base_url=base_url)
             song_number += 1
         return result
     except Exception as e:

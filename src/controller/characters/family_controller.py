@@ -28,10 +28,12 @@ def get_family_by_id(id: int, url="", metadata=False) -> dict:
     try:
         # Get the result of the query to the databse.
         query_result = get_query_result(
-            text("""SELECT characters.id,characters.name,families.name, families.images
-                    FROM public.characters,public.families
-                    Where characters.family = families.id And families.id = :id
-                    order by characters.id asc"""),
+            text("""
+                    SELECT f.name,f.images,c.*
+                    FROM public.characters c ,public.families f
+                    Where c.family = f.id And f.id = :id
+                    order by c.id asc
+                """),
             {"id": id},
         )
 
@@ -72,11 +74,7 @@ def get_random_family(base_url="") -> dict:
                         ORDER BY RANDOM()
                         LIMIT 1
                     )
-                    SELECT c.id,
-                        c.name,
-                        f.name AS family_name,
-                        f.images,
-                        f.id
+                    SELECT f.name,f.images,c.*
                     FROM public.characters c
                     JOIN public.families f ON c.family = f.id
                     WHERE (c.family = (SELECT id FROM random_family))
