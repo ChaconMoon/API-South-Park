@@ -8,9 +8,9 @@ South Park family including its ID, name, members and associated images.
 
 from pydantic import BaseModel
 
-from src.controller.characters.characters_controller import get_character_by_id
 from src.controller.data_controller import parse_array_to_list
 from src.model.ApiObject import ApiObject
+from src.model.characters import Character
 
 
 class Family(BaseModel, ApiObject):
@@ -68,19 +68,22 @@ class Family(BaseModel, ApiObject):
             Family: New Family instance
 
         """
-        family_members = []
-        for row in rows:
-            family_members.append(
-                get_character_by_id(int(row[0]), add_url=True, base_url=base_url)
+        try:
+            family_members = []
+            family_members.extend(
+                Character(row[2:]).toJSON(compacted=True, base_url=base_url)
+                for row in rows
             )
 
             data = {
                 "id": id,
-                "name": str(rows[0][2]),
+                "name": str(rows[0][0]),
                 "images": [
                     f"{base_url}{image_url}"
-                    for image_url in parse_array_to_list(rows[0][3])
+                    for image_url in parse_array_to_list(rows[0][1])
                 ],
                 "members": family_members,
             }
-        return super().__init__(**data)
+            return super().__init__(**data)
+        except Exception as e:
+            raise ValueError(f"Error building Group: {str(e)}") from e
