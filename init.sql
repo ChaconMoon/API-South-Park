@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict CUNSRBbZGBMutsJDZOCwlpPe4GWCHZmFkiEEcBBYciznG8bol9lHw3k3l37VuJb
+\restrict pTCRfDuPYXtADSKm52GO9Sf9GWpNnN8z5VedfLUryx5P2g2FTYYZn2EWDWBLtsY
 
 -- Dumped from database version 15.15 (Debian 15.15-1.pgdg13+1)
 -- Dumped by pg_dump version 15.15 (Debian 15.15-1.pgdg13+1)
@@ -2070,7 +2070,7 @@ COPY public.episodes (id, name, season, episode, realese_date, description, view
 327	Twisted Christian	28	1	2025-10-15	Cartman is possessed and may be the key to stopping the Antichrist.	https://www.southparkstudios.com/episodes/5yvj56/south-park-twisted-christian-season-28-ep-1	f	t	img/episodes/327.jpg
 328	The Woman In The Hat	28	2	2025-10-31	The White House deals with a disruptive spirit from the east wing. While Stan worries that South Park has become too political.	https://www.southparkstudios.com/episodes/xgd7ik/south-park-the-woman-in-the-hat-season-28-ep-2	f	t	img/episodes/328.jpg
 329	Sora Not Sorry	28	3	2025-11-13	Butters' AI revenge plan backfires, igniting an epidemic of fake videos at school that leaves Detective Harris struggling to tell fantasy from reality	https://www.southparkstudios.com/episodes/wqnkli/south-park-sora-not-sorry-season-28-ep-3	f	t	img/episodes/329.jpg
-330	Turkey Trot	28	4	2025-11-26	The town’s annual Turkey Trot turns chaotic when Cartman uses questionable cutting-edge science to win the race. 	The town’s annual Turkey Trot turns chaotic when Cartman uses questionable cutting-edge science to win the race. 	f	t	img/episodes/330.jpg
+330	Turkey Trot	28	4	2025-11-26	The town’s annual Turkey Trot turns chaotic when Cartman uses questionable cutting-edge science to win the race. 	https://www.southparkstudios.com/episodes/o1a4x8/south-park-turkey-trot-season-28-ep-4	f	t	img/episodes/330.jpg
 \.
 
 
@@ -2502,5 +2502,5 @@ ALTER TABLE ONLY public.alter_ego
 -- PostgreSQL database dump complete
 --
 
-\unrestrict CUNSRBbZGBMutsJDZOCwlpPe4GWCHZmFkiEEcBBYciznG8bol9lHw3k3l37VuJb
+\unrestrict pTCRfDuPYXtADSKm52GO9Sf9GWpNnN8z5VedfLUryx5P2g2FTYYZn2EWDWBLtsY
 
