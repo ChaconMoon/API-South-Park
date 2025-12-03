@@ -8,10 +8,12 @@ and retrieve lists of characters.
 
 import logging
 
-from sqlalchemy import text
+from sqlalchemy import func, text
 
+from src.controller import database_connection
 from src.controller.database_connection import get_query_result
 from src.model.characters import Character
+from src.model.ORM.characters_db import CharacterDB
 
 
 def get_characters_by_search(
@@ -111,22 +113,20 @@ def get_character_by_id(
 
     """
     try:
-        query_result = get_query_result(
-            text("SELECT * FROM public.characters Where id=:id"), {"id": id}
+        character = Character(
+            (
+                database_connection.get_database_session()
+                .query(CharacterDB)
+                .filter(CharacterDB.id == id)
+                .first()
+            ),
+            base_url,
         )
-
-        if query_result is None:
-            return {"error": "Database not available", "status": "failed"}
-        elif query_result.rowcount == 0:
-            return {"error": "Character not found", "status": "failed"}
-
-        for row in query_result:
-            character = Character(row, base_url)
 
         if add_url:
             return {
                 "name": character.model_dump()["name"],
-                "url": f"{base_url}api/characters/{row[0]}",
+                "url": f"{base_url}api/characters/{character.id}",
             }
 
         query_result = get_query_result(text("SELECT * FROM public.characters"))
@@ -219,20 +219,25 @@ def get_random_character(exclude_famous_guests: bool = False, base_url: str = ""
         dict: JSON response with character data or error
 
     """
-    query_result = get_query_result(
-        text("""
-                    SELECT * FROM public.characters
-                    WHERE (not :exclude_famous_guests OR famous_guest = false)
-                    ORDER BY RANDOM()
-                    Limit 1
-            """),
-        {"exclude_famous_guests": exclude_famous_guests},
-    )
-
-    if query_result is None:
-        return {"error": "Database not available", "status": "failed"}
-    elif query_result.rowcount == 0:
-        return {"error": "Character not found", "status": "failed"}
-    for row in query_result:
-        character = Character(row, base_url)
+    if exclude_famous_guests:
+        character = Character(
+            (
+                database_connection.get_database_session()
+                .query(CharacterDB)
+                .filter(CharacterDB.famous_guest is False)
+                .order_by(func.random())
+                .first()
+            ),
+            base_url,
+        )
+    else:
+        character = Character(
+            (
+                database_connection.get_database_session()
+                .query(CharacterDB)
+                .order_by(func.random())
+                .first()
+            ),
+            base_url,
+        )
     return character.toJSON()
