@@ -17,6 +17,7 @@ from src.controller.characters.characters_controller import (
     get_all_characters_with_alterego,
     get_character_by_id,
     get_characters_by_search,
+    get_characters_list,
     get_random_character,
 )
 from src.controller.characters.family_controller import (
@@ -194,13 +195,12 @@ def show_all_alteregos(id: int, request: Request, response: Response) -> dict:
     return json
 
 
-@router.get("/api/search/characters/{search_param}")
-def search_character(
+@router.get("/api/characters")
+def show_character_list(
     response: Response,
     request: Request,
-    search_param: str,
-    metadata: bool = False,
-    limit: int = 10,
+    search: str = "",
+    limit: int = 0,
 ) -> dict:
     """
     Search for characters by name.
@@ -208,7 +208,7 @@ def search_character(
     Args:
         response (Response): FastAPI response object
         request (Request): FastAPI request object
-        search_param (str): Search query string
+        search (str): Search query string
         metadata (bool): Whether to include metadata
         limit (int): Maximum number of results to return
 
@@ -221,11 +221,14 @@ def search_character(
         500: Database error
 
     """
-    json = get_characters_by_search(
-        search_param=search_param,
-        base_url=str(request.base_url),
-        limit=limit,
-    )
+    if search != "":
+        if limit == 0:
+            limit = 10
+        json = get_characters_by_search(
+            search_param=search, base_url=str(request.base_url), limit=limit
+        )
+    else:
+        json = get_characters_list(base_url=str(request.base_url), limit=limit)
     if "error" in json:
         if json["error"] == "Character not found":
             response.status_code = status.HTTP_404_NOT_FOUND

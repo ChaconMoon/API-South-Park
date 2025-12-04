@@ -16,6 +16,38 @@ from src.model.characters import Character
 from src.model.ORM.characters_db import CharacterDB
 
 
+def get_characters_list(base_url: str = "", limit: int = 0) -> dict:
+    """
+    Return a list of all characters, ordered by ID.
+
+    Args:
+        base_url (str): The base URL for generating resource URLs.
+        limit (int): The maximum number of characters to return. 0 means no limit.
+
+    Returns:
+        dict: A dictionary containing the list of characters.
+
+    """
+    try:
+        session = database_connection.get_database_session()
+        query_characters = session.query(CharacterDB).order_by(CharacterDB.id)
+
+        if limit > 0:
+            characters_list = query_characters.limit(limit).all()
+        else:
+            characters_list = query_characters.all()
+
+        result = {"characters": {}}
+        for index, character_db in enumerate(characters_list):
+            character = Character(character_db, base_url)
+            result["characters"][index] = character.model_dump()
+        session.close()
+        return result
+    except Exception as e:
+        logging.error(e)
+        return {"error": str(e), "status": "failed"}
+
+
 def get_characters_by_search(
     search_param: str, base_url: str = "", limit: int = 10
 ) -> dict:
@@ -50,23 +82,18 @@ def get_characters_by_search(
 
     """
     try:
-        query_result = get_query_result(
-            text(
-                """SELECT * FROM public.characters
-                 where name ilike :search_param limit :limit"""
-            ),
-            {"search_param": f"%{search_param}%", "limit": limit},
+        session = database_connection.get_database_session()
+        character_list = (
+            session.query(CharacterDB)
+            .filter(CharacterDB.name.ilike(f"%{search_param}%"))
+            .limit(limit)
+            .all()
         )
-
-        if query_result is None:
-            return {"error": "Database not available", "status": "failed"}
-        elif query_result.rowcount == 0:
-            return {"error": "Character not found", "status": "failed"}
-
         result = {"characters": {}}
-        for index, row in enumerate(query_result):
-            character = Character(row, base_url)
+        for index, character_db in enumerate(character_list):
+            character = Character(character_db, base_url)
             result["characters"][index] = character.model_dump()
+        session.close()
         return result
 
     except Exception as e:
@@ -135,8 +162,9 @@ def get_character_by_id(
     except Exception as e:
         return {"error": str(e), "status": "failed"}
 
-
-def get_character_list(ids: list[int], add_url: bool = False, base_url: str = "") -> dict:
+    # def get_specific_character_list(
+    #    ids: list[int], add_url: bool = False, base_url: str = ""
+    # ) -> dict:
     """
     Retrieve a list of characters by their IDs.
 
@@ -156,12 +184,14 @@ def get_character_list(ids: list[int], add_url: bool = False, base_url: str = ""
             }
 
     """
-    result = {"characters": {}}
-    for index, character_id in enumerate(ids):
-        result["characters"][index] = get_character_by_id(
-            character_id, base_url=base_url, metadata=False
-        )
-    return result
+
+
+#    result = {"characters": {}}
+#    for index, character_id in enumerate(ids):
+#        result["characters"][index] = get_character_by_id(
+#            character_id, base_url=base_url, metadata=False
+#        )
+#    return result
 
 
 def get_all_characters_with_alterego(base_url: str = ""):
@@ -219,25 +249,23 @@ def get_random_character(exclude_famous_guests: bool = False, base_url: str = ""
         dict: JSON response with character data or error
 
     """
-    if exclude_famous_guests:
-        character = Character(
-            (
-                database_connection.get_database_session()
-                .query(CharacterDB)
-                .filter(CharacterDB.famous_guest is False)
-                .order_by(func.random())
-                .first()
-            ),
-            base_url,
-        )
-    else:
-        character = Character(
-            (
-                database_connection.get_database_session()
-                .query(CharacterDB)
-                .order_by(func.random())
-                .first()
-            ),
-            base_url,
-        )
-    return character.toJSON()
+    try:
+        session = database_connection.get_database_session()
+        query = session.query(CharacterDB)
+
+        if exclude_famous_guests:
+            query = query.filter(CharacterDB.famous_guest.is_(False))
+
+        character_db = query.order_by(func.random()).first()
+
+        if character_db is None:
+            return {
+                "error": "No character found matching the criteria.",
+                "status": "failed",
+            }
+
+        character = Character(character_db, base_url)
+        return character.toJSON()
+    except Exception as e:
+        logging.error(e)
+        return {"error": str(e), "status": "failed"}

@@ -10,12 +10,15 @@ import os
 import time
 
 from dotenv import load_dotenv
-from sqlalchemy import create_engine
+from sqlalchemy import Table, create_engine
 from sqlalchemy.orm import sessionmaker
+
+from src.controller.database_base import Base
 
 # Global connection variables
 _connection = None
 _localSesion = None
+character_group = None
 
 
 def get_database_connection():
@@ -36,8 +39,11 @@ def get_database_connection():
         pool_timeout: Maximum time to wait for connection
 
     """
-    global _connection, _localSesion
+    global _connection, _localSesion, character_group
     load_dotenv()
+
+    if _connection:
+        return _connection
 
     _connection = create_engine(
         os.getenv("SOUTHPARK_DATABASE_URL"),
@@ -47,9 +53,29 @@ def get_database_connection():
         pool_pre_ping=True,
         pool_timeout=30,
     )
+    character_group = Table(
+        "characters_group",
+        Base.metadata,
+        autoload_with=_connection,  # lee la estructura existente de PostgreSQL
+    )
 
     _localSesion = sessionmaker(autocommit=False, autoflush=False, bind=_connection)
     return _connection
+
+
+def get_character_group_table():
+    """
+    Devuelve el objeto Table de SQLAlchemy para 'character_group'.
+
+    Inicializa la conexión a la base de datos si es necesario.
+
+    Returns:
+        SQLAlchemy Table: Objeto que representa la tabla 'character_group'.
+
+    """
+    if character_group is None:
+        get_database_connection()
+    return character_group
 
 
 def get_database_session():

@@ -9,7 +9,7 @@ based on those inputs.
 import logging
 from enum import Enum
 
-from src.controller.characters.characters_controller import get_character_list
+# from src.controller.characters.characters_controller import get_specific_character_list
 
 
 class EasterEggType(Enum):
@@ -88,7 +88,7 @@ def get_easter_egg(name: str, base_url: str) -> dict:
     logging.info(type.value)
     match type:
         case EasterEggType.CHARACTERS:
-            return get_character_list(ids=items, base_url=base_url)
+            return None  # get_specific_character_list(ids=items, base_url=base_url)
         case EasterEggType.EPISODES:
             pass
         case EasterEggType.CUSTOM:

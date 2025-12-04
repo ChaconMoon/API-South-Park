@@ -23,6 +23,8 @@ class FamilyDB(Base):
     """
 
     __tablename__ = "families"
+    __table_args__ = {"extend_existing": True}
+
     id = Column(Integer, primary_key=True)
     name = Column(Text, nullable=False, unique=True)
     images = Column(ARRAY(Text))
