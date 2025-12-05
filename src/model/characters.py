@@ -13,9 +13,6 @@ from typing import List, Optional
 from pydantic import BaseModel, ValidationError
 from sqlalchemy import text
 
-from src.controller.characters.alter_ego_controller import (
-    get_all_alteregos_of_a_character,
-)
 from src.controller.database_connection import get_query_result
 from src.model.ApiObject import ApiObject
 from src.model.ORM.characters_db import CharacterDB
@@ -166,9 +163,15 @@ class Character(BaseModel, ApiObject):
                     }
                 ),
                 "images": [base_url.strip("/") + x for x in db_character.images],
-                "alter_egos": get_all_alteregos_of_a_character(
-                    int(db_character.id), add_url=True, base_url=base_url
-                ),
+                "alter_egos": {
+                    str(index): {
+                        "name": alter_ego.name,
+                        "url": f"{base_url}api/characters/{db_character.id}/alteregos/{alter_ego.id}",  # noqa: E501
+                    }
+                    for index, alter_ego in enumerate(db_character.alteregos)
+                }
+                if db_character.alteregos
+                else None,
                 "famous_guest": db_character.famous_guest
                 if db_character.famous_guest is not None
                 else False,
