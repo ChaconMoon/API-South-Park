@@ -22,6 +22,8 @@ from src.controller.characters.characters_controller import (
 )
 from src.controller.characters.family_controller import (
     get_family_by_id,
+    get_family_list,
+    get_family_search,
     get_random_family,
 )
 from src.controller.characters.groups_controller import get_group_by_id, get_random_group
@@ -237,6 +239,27 @@ def show_character_list(
     else:
         response.status_code = status.HTTP_200_OK
     return json
+
+
+@router.get("/api/families")
+def show_family_list(response: Response, request: Request, search="", limit=0):
+    """
+    Return a Family list.
+
+    :param response: the object that contains the response to the API.
+    :type response: Response
+    :param request: The Object that contains the request to the API.
+    :type request: Request
+    :param search: The param used to search family.
+    :type search: str
+    :param limit: The numbers of families returned.
+    :type limit: int
+    """
+    if search == "":
+        result = get_family_list(base_url=str(request.base_url), limit=limit)
+    else:
+        result = get_family_search(search, limit, base_url=str(request.base_url))
+    return result
 
 
 @router.get("/api/families/random")
