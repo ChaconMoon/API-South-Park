@@ -13,6 +13,7 @@ from sqlalchemy import func, text
 from src.controller import database_connection
 from src.controller.database_connection import get_query_result
 from src.model.characters import Character
+from src.model.ORM.alter_ego_db import AlterEgoDB
 from src.model.ORM.characters_db import CharacterDB
 
 
@@ -198,43 +199,44 @@ def get_all_characters_with_alterego(base_url: str = ""):
     """
     Return characters that have at least one alter ego.
 
-    Queries the alter_ego table for distinct original_character IDs (ascending)
-    and returns each character using get_character_by_id(..., add_url=True).
+    This optimized version uses a JOIN to fetch all relevant characters
+    in a single database query.
 
     Args:
         base_url (str): Optional base URL to prepend to character URLs.
 
     Returns:
         dict: On success: {"characters_with_alterego": [ ... ]}.
-              On error: {"error": str, "status": "failed"} or {"message": "error"}.
+              On error: {"error": str, "status": "failed"}.
 
     """
     try:
-        # Get the result of the query
-        query_result = get_query_result(
-            text(
-                """SELECT original_character FROM public.alter_ego
-                    group by original_character
-                    ORDER BY original_character ASC"""
-            )
+        session = database_connection.get_database_session()
+
+        # Query CharacterDB directly, joining with AlterEgoDB to find characters
+        # that appear as an 'original_character'.
+        # .distinct() ensures we get each character only once.
+        characters_with_alterego = (
+            session.query(CharacterDB)
+            .join(AlterEgoDB, CharacterDB.id == AlterEgoDB.original_character)
+            .distinct()
+            .order_by(CharacterDB.id.asc())
+            .all()
         )
 
-        # If the number of alter egos is 0 return a empty object
-        if query_result is None:
-            return {"error": "Database not available", "status": "failed"}
-        elif query_result.rowcount == 0:
-            return {"error": "Query error. No Alteregos in database", "status": "failed"}
-        result = dict()
-        result["characters_with_alterego"] = list()
-
-        for _row in query_result:
-            result["characters_with_alterego"].append(
-                get_character_by_id(int(_row[0]), add_url=True, base_url=base_url)
-            )
+        # The query now returns a list of CharacterDB objects directly.
+        # We can format them into the desired response.
+        result = {
+            "characters_with_alterego": [
+                Character(char, base_url).toJSON(compacted=True, base_url=base_url)
+                for char in characters_with_alterego
+            ]
+        }
+        session.close()
         return result
     except Exception as e:
         logging.error(e)
-        return {"message": "error"}
+        return {"error": str(e), "status": "failed"}
 
 
 def get_random_character(exclude_famous_guests: bool = False, base_url: str = "") -> dict:
