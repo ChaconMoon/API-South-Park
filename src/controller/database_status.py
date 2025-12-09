@@ -5,9 +5,9 @@ This module provides functionality to check the database connection status
 and retrieve the PostgreSQL version information.
 """
 
-from sqlalchemy import text
+from sqlalchemy import func
 
-from src.controller.database_connection import get_query_result
+from src.controller import database_connection
 
 
 def get_database_status() -> dict:
@@ -40,13 +40,13 @@ def get_database_status() -> dict:
             }
 
     """
-    rows = dict()
+    session = database_connection.get_database_session()
     try:
-        query_result = get_query_result(text("SELECT version()"))
-        for row in query_result:
-            rows["version"] = str(row[0])
-            rows["status"] = "connected"
+        # Use SQLAlchemy's func.version() to get the database version
+        version_string = session.query(func.version()).scalar()
+        return {"version": version_string, "status": "connected"}
     except Exception as e:
-        rows["error"] = str(e)
-        rows["status"] = "failed"
-    return rows
+        return {"error": str(e), "status": "failed"}
+    finally:
+        if session:
+            session.close()
