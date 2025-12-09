@@ -7,9 +7,45 @@ It provides routes to access information about South Park video games.
 
 from fastapi import APIRouter, Request, Response, status
 
-from src.controller.games.game_controller import get_game_by_id, get_random_game
+from src.controller.games.game_controller import (
+    get_game_by_id,
+    get_game_list,
+    get_game_list_by_search,
+    get_random_game,
+)
 
 router = APIRouter(tags=["Games"])
+
+
+@router.get("/api/games")
+def show_game_list(
+    request: Request, response: Response, limit: int = 0, search: str = ""
+) -> dict:
+    """
+    Get a list of South Park games, with optional search and limit.
+
+    Args:
+        request (Request): FastAPI request object containing base URL.
+        response (Response): FastAPI response object for status codes.
+        limit (int): The maximum number of games to return. If 0, No limit
+        search (str): A search term to filter games by name. If empty No search
+
+    Returns:
+        dict: JSON response containing the list of games.
+
+    Response Codes:
+        200: Games found and returned successfully.
+        404: No games found for the given search criteria.
+        500: Internal server error.
+
+    """
+    if search != "":
+        json = get_game_list_by_search(
+            search, base_url=str(request.base_url), limit=limit
+        )
+    else:
+        json = get_game_list(base_url=str(request.base_url), limit=limit)
+    return json
 
 
 @router.get("/api/games/random")

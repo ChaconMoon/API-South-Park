@@ -75,6 +75,6 @@ class AlterEgo(BaseModel, ApiObject):
                 "url": f"{base_url}api/characters/{alterego_db.original_character}",
             },
             "name": alterego_db.name,
-            "images": [base_url + x for x in alterego_db.images],
+            "images": [base_url.strip("/") + x for x in alterego_db.images],
         }
         return super().__init__(**data)

@@ -5,10 +5,11 @@ This module handles database operations for retrieving South Park game informati
 It provides functions to fetch specific games by ID and lists of games from the database.
 """
 
-from sqlalchemy import text
+from sqlalchemy import func
 
-from src.controller.database_connection import get_query_result
+from src.controller import database_connection
 from src.model.game import Game
+from src.model.ORM.games_db import GameDB
 
 
 def get_random_game(base_url="") -> dict:
@@ -20,21 +21,11 @@ def get_random_game(base_url="") -> dict:
     Retruns:
     A dict with the response.
     """
-    query_result = get_query_result(
-        text(
-            """
-        SELECT * FROM public.games
-        ORDER BY RANDOM()
-        limit 1
-        """
-        ),
-    )
-    if query_result is None:
-        return {"error": "Database not available", "status": "failed"}
-    elif query_result.rowcount == 0:
-        return {"error": "Game not found", "status": "failed"}
-    for row in query_result:
-        game = Game(row, base_url)
+    session = database_connection.get_database_session()
+
+    game_db = session.query(GameDB).order_by(func.random()).first()
+
+    game = Game(game_db, base_url)
 
     return game.toJSON()
 
@@ -81,32 +72,23 @@ def get_game_by_id(
 
     """
     try:
-        query_result = get_query_result(
-            text("SELECT * FROM public.games where id = :id"), {"id": id}
-        )
+        session = database_connection.get_database_session()
 
-        if query_result is None:
-            return {"error": "Database not available", "status": "failed"}
-        elif query_result.rowcount == 0:
-            return {"error": "Game not found", "status": "failed"}
-
-        for row in query_result:
-            game = Game(row, base_url)
+        game_db = session.query(GameDB).filter(GameDB.id == id).first()
+        game = Game(game_db, base_url)
 
         if add_url:
             return {
                 "name": game.model_dump()["name"],
-                "url": f"{base_url}api/games/{row[0]}",
+                "url": f"{base_url}api/games/{id}",
             }
-
-        query_result = get_query_result(text("SELECT * FROM public.games"))
-        return game.toJSON(metadata, query_result.rowcount)
+        return game.toJSON()
 
     except Exception as e:
         return {"error": str(e), "status": "failed"}
 
 
-def get_game_list(ids: list[int], add_url: bool = False, base_url: str = "") -> dict:
+def get_game_list(add_url: bool = False, base_url: str = "", limit: int = 0) -> dict:
     """
     Retrieve a list of games by their IDs.
 
@@ -114,6 +96,7 @@ def get_game_list(ids: list[int], add_url: bool = False, base_url: str = "") -> 
         ids (list[int]): List of game IDs to retrieve
         add_url (bool): Whether to include API URLs in the response
         base_url (str): The base URL for API endpoints
+        limit (int): The number of the games returned, if 0 no limit.
 
     Returns:
         dict: JSON response containing:
@@ -126,10 +109,40 @@ def get_game_list(ids: list[int], add_url: bool = False, base_url: str = "") -> 
             }
 
     """
+    session = database_connection.get_database_session()
+    game_query = session.query(GameDB).order_by(GameDB.id)
+    if limit != 0:
+        game_query = game_query.limit(limit)
+    game_list = game_query.all()
     result = {"games": {}}
 
-    for index, game_id in enumerate(ids):
-        result["games"][index] = get_game_by_id(
-            game_id, base_url=base_url, metadata=False
-        )
+    for index, game_id in enumerate(game_list):
+        result["games"][index] = Game(game_id, base_url).toJSON()
+    return result
+
+
+def get_game_list_by_search(search: str = "", base_url: str = "", limit: int = 0) -> dict:
+    """
+    Search for games by name using a partial, case-insensitive match.
+
+    Args:
+        search (str): The search term to match against game names.
+        base_url (str): The base URL for generating resource URLs.
+        limit (int): The maximum number of games to return. If 0, no limit.
+
+    Returns:
+        dict: A dictionary containing the list of matching games.
+
+    """
+    session = database_connection.get_database_session()
+    game_query = (
+        session.query(GameDB).filter(GameDB.name.ilike(f"%{search}%")).order_by(GameDB.id)
+    )
+    if limit != 0:
+        game_query = game_query.limit(limit)
+    game_list = game_query.all()
+    result = {"games": {}}
+
+    for index, game_id in enumerate(game_list):
+        result["games"][index] = Game(game_id, base_url).toJSON()
     return result
