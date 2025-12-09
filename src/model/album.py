@@ -6,10 +6,12 @@ in the API responses. Each Album instance contains information about a specific
 South Park album including its ID, name, release date, cover images, songs and URL.
 """
 
+import datetime
+
 from pydantic import BaseModel
 
-from src.controller.music.songs_controller import get_all_songs_of_a_album
 from src.model.ApiObject import ApiObject
+from src.model.ORM.album_db import AlbumDB
 
 
 class Album(BaseModel, ApiObject):
@@ -33,7 +35,7 @@ class Album(BaseModel, ApiObject):
 
     id: int
     name: str
-    release_date: str
+    release_date: datetime.date
     album_cover: str
     web_album_cover: str
     songs: dict
@@ -60,27 +62,31 @@ class Album(BaseModel, ApiObject):
             result["metadata"]["total_albums_in_database"] = total_results
         return result
 
-    def __init__(self, row: list, base_url: str = "") -> "Album":
+    def __init__(self, album_db: AlbumDB, base_url: str = "") -> "Album":
         """
         Initialize an Album instance from database row data.
 
         Args:
-            row (list): Database row containing album data
+            album_db (SQL Alchemy Object): Database object containing album data
             base_url (str): Base URL for image paths
 
         Returns:
             Album: New Album instance
 
         """
-        cover_url = str(row[3]) if row[3] is not None else ""
-        web_cover_url = str(row[5]) if row[5] is not None else ""
         data = {
-            "id": int(row[0]) if row[0] is not None else 0,
-            "name": str(row[1]) if row[1] is not None else "",
-            "release_date": str(row[2]) if row[2] is not None else None,
-            "album_cover": base_url + cover_url,
-            "web_album_cover": base_url + web_cover_url,
-            "songs": get_all_songs_of_a_album(int(row[0]), base_url, add_url=True),
-            "album_url": str(row[4]) if row[4] is not None else "",
+            "id": album_db.id,
+            "name": album_db.name,
+            "release_date": album_db.release_date,
+            "album_cover": base_url + album_db.album_cover,
+            "web_album_cover": base_url + album_db.web_album_cover,
+            "songs": {
+                str(index): {
+                    "name": song.name,
+                    "url": f"{base_url}api/songs/{song.id}",  # noqa: E501
+                }
+                for index, song in enumerate(album_db.songs)
+            },
+            "album_url": album_db.album_url,
         }
         super().__init__(**data)

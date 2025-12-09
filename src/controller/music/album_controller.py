@@ -6,11 +6,64 @@ make the query to the API and return the result.
 """
 
 # Import SQLAlquemy to make the query
-from sqlalchemy import text
+from sqlalchemy import func
 
 # Internal inputs
-from src.controller.database_connection import get_query_result
+from src.controller import database_connection
 from src.model.album import Album
+from src.model.ORM.album_db import AlbumDB
+
+
+def get_album_list_by_search(base_url="", search_param="", limit: int = 0):
+    """
+    Search for albums by name using a partial, case-insensitive match.
+
+    Args:
+        base_url (str): The base URL for generating resource URLs.
+        search_param (str): The search term to match against album names.
+        limit (int): The maximum number of albums to return. If 0, no limit.
+
+    Returns:
+        dict: A dictionary containing the list of matching albums.
+
+    """
+    session = database_connection.get_database_session()
+    album_query = session.query(AlbumDB).filter(AlbumDB.name.ilike(f"%{search_param}%"))
+    if limit != 0:
+        album_query = album_query.limit(limit)
+    album_db_list = album_query.all()
+    result = dict()
+    result = {"albums": {}}
+    for index, album_db in enumerate(album_db_list):
+        album = Album(album_db, base_url)
+        result["albums"][index] = album.toJSON()
+    return result
+
+
+def get_album_list(base_url="", limit: int = 0):
+    """
+    Get a list of all albums.
+
+    Args:
+        base_url (str): The base URL for generating resource URLs.
+        limit (int): The maximum number of albums to return. If 0, no limit.
+
+    Returns:
+        dict: A dictionary containing the list of albums.
+
+    """
+    session = database_connection.get_database_session()
+
+    album_query = session.query(AlbumDB)
+    if limit != 0:
+        album_query = album_query.limit(limit)
+    album_db_list = album_query.all()
+    result = dict()
+    result = {"albums": {}}
+    for index, album_db in enumerate(album_db_list):
+        album = Album(album_db, base_url)
+        result["albums"][index] = album.toJSON()
+    return result
 
 
 def get_random_album(base_url="", exclude_not_available: bool = False):
@@ -26,25 +79,13 @@ def get_random_album(base_url="", exclude_not_available: bool = False):
 
     """
     try:
-        query_result = get_query_result(
-            text("""
-                SELECT * FROM public.albums
-                WHERE (not :exclude_not_available OR album_url != 'NOT AVAILABLE')
-                ORDER BY RANDOM()
-                Limit 1
-                """),
-            {"exclude_not_available": exclude_not_available},
-        )
+        session = database_connection.get_database_session()
 
-        # If the is a error in the query returns the error
-        if query_result is None:
-            return {"error": "Database not available", "status": "failed"}
-        if query_result.rowcount == 0:
-            return {"error": "Album not found", "status": "failed"}
-        # Control exceptions
-
-        for row in query_result:
-            album = Album(row, base_url)
+        album_query = session.query(AlbumDB)
+        if exclude_not_available:
+            album_query = album_query.filter(AlbumDB.album_url != "NOT AVAILABLE")
+        album_db = album_query.order_by(func.random()).first()
+        album = Album(album_db, base_url)
         return album.toJSON()
     except TypeError as e:
         return {"error": str(e), "status": "failed"}
@@ -65,34 +106,11 @@ def get_album_by_id(id: int, add_url=False, base_url="", metadata=False) -> dict
 
     """
     try:
-        # Make the query to the Database
-        query_result = get_query_result(
-            text("""
-                SELECT * FROM public.albums where id = :id"""),
-            {"id": id},
-        )
+        session = database_connection.get_database_session()
 
-        # If the is a error in the query returns the error
-        if query_result is None:
-            return {"error": "Database not available", "status": "failed"}
-        if query_result.rowcount == 0:
-            return {"error": "Album not found", "status": "failed"}
-
-        # Create a objet with the result of the query
-        for row in query_result:
-            album = Album(row, base_url)
-
-        # Create the object with the URL
-        if add_url:
-            result = dict()
-            result["name"] = album["name"]
-            result["url"] = f"{base_url}api/albums/{album['id']}"
-            return result
-
-        # Create the complete object with the metadata
-        query_result = get_query_result(text("SELECT * FROM public.albums"))
-        return album.toJSON(metadata, query_result.rowcount)
-
+        album_db = session.query(AlbumDB).filter(AlbumDB.id == id).first()
+        album = Album(album_db, base_url)
+        return album.toJSON()
     # Control exceptions
     except TypeError as e:
         return {"error": str(e), "status": "failed"}

@@ -4,10 +4,15 @@ Module writted by Carlos Chacón.
 Define the Album table model.
 """
 
+from typing import TYPE_CHECKING
+
 from sqlalchemy import Column, Date, Integer, Text
 from sqlalchemy.orm import relationship
 
 from src.controller.database_base import Base
+
+if TYPE_CHECKING:
+    from src.model.ORM.album_songs_db import AlbumSongDB  # noqa: F401
 
 
 class AlbumDB(Base):

@@ -4,11 +4,15 @@ Module writted by Carlos Chacón.
 Define the songs in album table model and relationships.
 """
 
+from typing import TYPE_CHECKING
+
 from sqlalchemy import Column, ForeignKey, Integer, Text
 from sqlalchemy.orm import relationship
 
 from src.controller.database_base import Base
-from src.model.ORM.album_db import AlbumDB  # noqa: F401
+
+if TYPE_CHECKING:
+    from src.model.ORM.album_db import AlbumDB  # noqa: F401
 
 
 class AlbumSongDB(Base):
@@ -28,10 +32,12 @@ class AlbumSongDB(Base):
 
     __tablename__ = "album_songs"
     __table_args__ = {"extend_existing": True}
+
     id = Column(Integer, primary_key=True)
-    name = Column(Text, nullable=False, unique=True)
-    album_id = Column(Integer, ForeignKey("albums.id"), nullable=False)
+    name = Column(Text, nullable=False)
+    album_id = Column(Integer, ForeignKey("albums.id"))
     lyrics = Column(Text)
     song_url = Column(Text)
 
+    # Use strings for relationship definitions
     album = relationship("AlbumDB", back_populates="songs")
