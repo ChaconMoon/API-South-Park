@@ -10,6 +10,8 @@ from fastapi import APIRouter, Request, Response, status
 
 from src.controller.tvshow.episodes_controller import (
     get_episode_by_id,
+    get_episode_list,
+    get_episode_list_by_search,
     get_last_episode,
     get_random_episode,
 )
@@ -21,8 +23,37 @@ from src.controller.tvshow.specials_controller import (
 router = APIRouter(tags=["TV Show"])
 
 
+@router.get("/api/episodes")
+def show_episode_list(
+    response: Response, request: Request, search: str = "", limit: int = 0
+) -> dict:
+    """
+    Get a list of South Park episodes, with optional search and limit.
+
+    Args:
+        response (Response): FastAPI response object for status codes.
+        request (Request): FastAPI request object containing base URL.
+        search (str): A search term to filter episodes by name (If is not empty).
+        limit (int): The maximum number of episodes to return (if is not 0).
+
+    Returns:
+        dict: JSON response containing the list of episodes.
+
+    Response Codes:
+        200: Episodes found and returned successfully.
+        404: No episodes found for the given search criteria.
+        500: Internal server error.
+
+    """
+    if search != "":
+        json = get_episode_list_by_search(search, limit, base_url=str(request.base_url))
+    else:
+        json = get_episode_list(base_url=str(request.base_url), limit=limit)
+    return json
+
+
 @router.get("/api/lastepisode")
-def get_the_last_episode(response: Response) -> dict:
+def get_the_last_episode(response: Response, request: Request) -> dict:
     """
     Get the most recent episode of South Park.
 
@@ -30,7 +61,7 @@ def get_the_last_episode(response: Response) -> dict:
         dict: JSON response containing the latest episode data
 
     """
-    json = get_last_episode()
+    json = get_last_episode(str(request.base_url))
     if "error" in json:
         if json["error"] == "Episode not found":
             response.status_code = status.HTTP_404_NOT_FOUND
@@ -97,8 +128,8 @@ def show_random_episode(
 
     """
     json = get_random_episode(
-        paramount_plus_exclusive=exclude_paramount_plus,
-        censored=exclude_censored,
+        exclude_paramount_plus=exclude_paramount_plus,
+        exclude_censored=exclude_censored,
         base_url=str(request.base_url),
     )
     if "error" in json:
