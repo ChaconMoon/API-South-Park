@@ -26,10 +26,46 @@ from src.controller.characters.family_controller import (
     get_family_search,
     get_random_family,
 )
-from src.controller.characters.groups_controller import get_group_by_id, get_random_group
+from src.controller.characters.groups_controller import (
+    get_group_by_id,
+    get_group_list,
+    get_group_list_by_search,
+    get_random_group,
+)
 from src.controller.date_controller import get_today_birthday_character
 
 router = APIRouter(tags=["Characters"])
+
+
+@router.get("/api/groups")
+def show_group_list(
+    request: Request, response: Response, search: str = "", limit: int = 0
+):
+    """
+    Get a list of character groups, with optional search and limit.
+
+    Args:
+        request (Request): FastAPI request object containing base URL.
+        response (Response): FastAPI response object for status codes.
+        search (str): A search term to filter groups by name.
+        limit (int): The maximum number of groups to return.
+
+    Returns:
+        dict: JSON response containing the list of groups.
+
+    Response Codes:
+        200: Groups found and returned successfully.
+        404: No groups found for the given search criteria.
+        500: Internal server error.
+
+    """
+    if search != "":
+        json = get_group_list_by_search(
+            base_url=str(request.base_url), limit=limit, search=search
+        )
+    else:
+        json = get_group_list(base_url=str(request.base_url), limit=limit)
+    return json
 
 
 @router.get("/api/groups/random")

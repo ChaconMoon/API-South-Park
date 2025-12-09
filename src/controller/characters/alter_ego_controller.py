@@ -5,10 +5,9 @@ This module get the param of the API in the get alter ego operations,
 make the query to the API and return the result.
 """
 
-from sqlalchemy import func, text
+from sqlalchemy import func
 
 from src.controller import database_connection
-from src.controller.database_connection import get_query_result
 from src.model.alter_ego import AlterEgo
 from src.model.ORM.alter_ego_db import AlterEgoDB
 
@@ -52,15 +51,8 @@ def get_alter_ego_by_character_and_id(
                 f"{base_url}api/characters/{id_character}/alteregos/{id_alter_ego}"
             )
             return result
-        # Return Alter_Ego Info
-        query_result = get_query_result(
-            text("""
-                        SELECT * FROM public.alter_ego
-                        where original_character = :id_character"""),
-            {"id_character": id_character},
-        )
 
-        return alter_ego.toJSON(metadata, query_result.rowcount)
+        return alter_ego.toJSON()
     # Control exceptions
     except Exception as e:
         return {"error": str(e), "status": "failed"}

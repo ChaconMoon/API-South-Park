@@ -11,43 +11,9 @@ appearances, and alternate personas.
 from typing import List, Optional
 
 from pydantic import BaseModel, ValidationError
-from sqlalchemy import text
 
-from src.controller.database_connection import get_query_result
 from src.model.ApiObject import ApiObject
 from src.model.ORM.characters_db import CharacterDB
-
-
-def get_compact_family(id: int, base_url: str = "") -> dict:
-    """
-    Retrieve a compact representation of a family from the database.
-
-    Args:
-        id (int): The unique identifier for the family.
-        base_url (str): The base URL to construct the API URL for the family.
-
-    Returns:
-        dict: A dictionary containing the family's name and URL, or an error
-              dictionary if the query fails.
-
-    """
-    try:
-        # Get the result of the query to the databse.
-        query_execution = get_query_result(
-            text("""
-                SELECT f.name from public.families f
-                Where f.id=:id
-                """),
-            {"id": id},
-        )
-        query_result = query_execution.mappings().all()
-        return {
-            "name": str(query_result[0]["name"]),
-            "url": f"{base_url}api/families/{id}",
-        }
-    # Control exceptions
-    except Exception as e:
-        return {"error": str(e), "status": "failed"}
 
 
 # Create Character class

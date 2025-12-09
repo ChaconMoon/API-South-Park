@@ -6,47 +6,13 @@ make the query to the API and return the result.
 """
 
 # Import SQLAlchemy
-from sqlalchemy import text
+from sqlalchemy import func
+
+from src.controller import database_connection
 
 # Internal Imports
-from src.controller.database_connection import get_query_result
+from src.model.ORM.album_songs_db import AlbumSongDB
 from src.model.song import Song
-
-
-# Get all the songs of the same album
-def get_all_songs_of_a_album(id: int, base_url="", add_url=False) -> dict:
-    """
-    Return a dict with all the songs of a specific album.
-
-    Params:
-        id (int): The ID of the album.
-        base_url (str): The base URL to create the reference URL.
-        add_url (bool): If the result must contain the URL.
-
-    Returns:
-        A dict with all the songs of the album.
-
-    """
-    # Create the object to store the result
-    result = dict()
-    try:
-        # Make the query to the database.
-        query_result = get_query_result(
-            text("""
-                SELECT * FROM public.album_songs where album = :id order by id asc"""),
-            {"id": id},
-        )
-        song_number = 1
-
-        # Create the response to the API and return it.
-        for row in query_result:
-            song = Song(row, base_url)
-            if add_url:
-                result[song_number] = song.toJSON(compacted=True, base_url=base_url)
-            song_number += 1
-        return result
-    except Exception as e:
-        return {"error": str(e), "status": "failed"}
 
 
 # Get one song data
@@ -65,24 +31,10 @@ def get_song_by_id(id: int, add_url=False, base_url="", metadata=False):
     """
     # Get the query result
     try:
-        # Make the query to the Database
-        query_result = get_query_result(
-            text("""
-                SELECT * FROM public.album_songs where id = :id"""),
-            {"id": id},
-        )
-        # If the is a error in the query returns the error
-        if query_result is None:
-            return {"error": "Database not available", "status": "failed"}
-        elif query_result.rowcount == 0:
-            return {"error": "Song not found", "status": "failed"}
-
-        # Create a objet with the result of the query
-        for row in query_result:
-            # Replace literal \n with actual newlines in lyrics
-            song = Song(row, base_url)
-        query_result = get_query_result(text("SELECT * FROM public.album_songs"))
-        return song.toJSON(metadata, query_result.rowcount)
+        session = database_connection.get_database_session()
+        song_db = session.query(AlbumSongDB).filter(AlbumSongDB.id == id).first()
+        song = Song(song_db, base_url)
+        return song.toJSON()
 
     # Control exceptions
     except Exception as e:
@@ -104,23 +56,16 @@ def get_random_song(exclude_not_available: bool = False, base_url="") -> dict:
 
     """
     try:
-        query_result = get_query_result(
-            text("""
-            SELECT * FROM public.album_songs
-            WHERE (not :exclude_not_available OR song_url != '[NOT AVAILABLE IN STREAMING SERVICES]')
-            ORDER BY RANDOM()
-            Limit 1
-            """),  # noqa: E501
-            {"exclude_not_available": exclude_not_available},
-        )
-        # If the is a error in the query returns the error
-        if query_result is None:
-            return {"error": "Database not available", "status": "failed"}
-        elif query_result.rowcount == 0:
-            return {"error": "Song not found", "status": "failed"}
+        session = database_connection.get_database_session()
+        song_query = session.query(AlbumSongDB)
 
-        for row in query_result:
-            song = Song(row, base_url)
+        if exclude_not_available:
+            song_query = song_query.filter(
+                AlbumSongDB.song_url != "[NOT AVAILABLE IN STREAMING SERVICES]"
+            )
+        song_db = song_query.order_by(func.random()).first()
+        song = Song(song_db, base_url)
+        return song.toJSON()
     # Control exceptions
     except Exception as e:
         return {"error": str(e), "status": "failed"}

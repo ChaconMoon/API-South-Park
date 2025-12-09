@@ -8,10 +8,9 @@ and retrieve lists of characters.
 
 import logging
 
-from sqlalchemy import func, text
+from sqlalchemy import func
 
 from src.controller import database_connection
-from src.controller.database_connection import get_query_result
 from src.model.characters import Character
 from src.model.ORM.alter_ego_db import AlterEgoDB
 from src.model.ORM.characters_db import CharacterDB
@@ -157,8 +156,7 @@ def get_character_by_id(
                 "url": f"{base_url}api/characters/{character.id}",
             }
 
-        query_result = get_query_result(text("SELECT * FROM public.characters"))
-        return character.toJSON(metadata, query_result.rowcount)
+        return character.toJSON()
 
     except Exception as e:
         return {"error": str(e), "status": "failed"}
