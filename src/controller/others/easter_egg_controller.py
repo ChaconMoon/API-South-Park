@@ -9,6 +9,11 @@ based on those inputs.
 import logging
 from enum import Enum
 
+from src.controller import database_connection
+from src.model.characters import Character
+from src.model.ORM.characters_db import CharacterDB
+from src.model.ORM.episode_db import EpisodeDB
+
 # from src.controller.characters.characters_controller import get_specific_character_list
 
 
@@ -76,6 +81,7 @@ def get_easter_egg(name: str, base_url: str) -> dict:
     """
     items = list()
     type = EasterEggType.NONE
+    session = database_connection.get_database_session()
     match name.upper():
         case EasterEggName.IHAVEDIABETES.name:
             items = [141, 107]
@@ -88,9 +94,20 @@ def get_easter_egg(name: str, base_url: str) -> dict:
     logging.info(type.value)
     match type:
         case EasterEggType.CHARACTERS:
-            return None  # get_specific_character_list(ids=items, base_url=base_url)
+            result = {"characters": {}}
+            easter_egg_characters = (
+                session.query(CharacterDB).filter(CharacterDB.id.in_(items)).all()
+            )
+            for index, character in enumerate(easter_egg_characters):
+                result["characters"][index] = Character(character, base_url).toJSON()
+            return result
         case EasterEggType.EPISODES:
-            pass
+            result = {"episodes": {}}
+            easter_egg_characters = (
+                session.query(EpisodeDB).filter(CharacterDB.id.in_(items)).all()
+            )
+            for index, character in enumerate(easter_egg_characters):
+                result["episodes"][index] = Character(character, base_url).toJSON()
         case EasterEggType.CUSTOM:
             pass
     return {"message": "No Easter Egg Found"}
