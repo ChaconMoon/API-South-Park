@@ -303,6 +303,12 @@ def show_family_list(response: Response, request: Request, search="", limit=0):
         result = get_family_list(base_url=str(request.base_url), limit=limit)
     else:
         result = get_family_search(search, limit, base_url=str(request.base_url))
+
+    if "error" in result:
+        if result["status"] == "Not Found":
+            response.status_code = status.HTTP_404_NOT_FOUND
+        if result["status"] == "Database Not Available":
+            response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
     return result
 
 
@@ -325,9 +331,9 @@ def show_random_family(response: Response, request: Request):
     """
     json = get_random_family(base_url=str(request.base_url))
     if "error" in json:
-        if json["error"] == "Family not found":
+        if json["status"] == "Family not found":
             response.status_code = status.HTTP_404_NOT_FOUND
-        elif json["error"] == "Database not available":
+        elif json["status"] == "Database Not Available":
             response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
         else:
             response.status_code = status.HTTP_200_OK
@@ -390,12 +396,10 @@ def show_family(
     base_url = str(request.base_url)
     json = get_family_by_id(id, url=base_url, metadata=metadata)
     if "error" in json:
-        if json["error"] == "Family not found":
+        if json["status"] == "Not Family Found":
             response.status_code = status.HTTP_404_NOT_FOUND
-        elif json["error"] == "Database not available":
+        if json["status"] == "Database Not Available":
             response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
-        elif "family" in json:
-            response.status_code = status.HTTP_200_OK
     return json
 
 

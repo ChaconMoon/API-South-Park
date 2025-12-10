@@ -7,6 +7,7 @@ make the query to the API and return the result.
 
 # Import SQLAlchemy
 from sqlalchemy import func
+from sqlalchemy.exc import DataError, OperationalError
 
 from src.controller import database_connection
 from src.model.family import Family
@@ -28,22 +29,31 @@ def get_family_list(limit: int = 0, base_url="") -> dict:
     :return: A dict with the families.
     :rtype: dict
     """
+    session = database_connection.get_database_session()
     try:
-        session = database_connection.get_database_session()
         if limit != 0:
             family_list = session.query(FamilyDB).limit(limit).all()
         else:
             family_list = session.query(FamilyDB).all()
 
+        if family_list == []:
+            raise DataError("No Families Found")
         result = dict()
         result["families"] = []
         result["families"].extend(
             Family(family_db, base_url=base_url) for family_db in family_list
         )
-
         return result
+
+    except DataError as e:
+        return {"error": str(e), "status": "Not Found"}
+    except OperationalError as e:
+        return {"error": str(e), "status": "Database Not Available"}
+
     except Exception as e:
         return {"error": str(e), "status": "failed"}
+    finally:
+        session.close()
 
 
 def get_family_search(search: str, limit: int = 0, base_url="") -> dict:
@@ -62,20 +72,14 @@ def get_family_search(search: str, limit: int = 0, base_url="") -> dict:
     :rtype: dict
 
     """
+    session = database_connection.get_database_session()
+    family_query = session.query(FamilyDB).filter(FamilyDB.name.ilike((f"%{search}%")))
     try:
-        session = database_connection.get_database_session()
         if limit != 0:
-            family_list = (
-                session.query(FamilyDB)
-                .filter(FamilyDB.name.ilike((f"%{search}%")))
-                .limit(limit)
-                .all()
-            )
-        else:
-            family_list = (
-                session.query(FamilyDB).filter(FamilyDB.name.ilike((f"%{search}%"))).all()
-            )
-
+            family_query.limit(limit)
+        family_list = family_query.all()
+        if family_list == []:
+            raise ValueError("Not families found")
         result = dict()
         result["families"] = []
         result["families"].extend(
@@ -83,8 +87,14 @@ def get_family_search(search: str, limit: int = 0, base_url="") -> dict:
         )
 
         return result
+    except ValueError as e:
+        return {"error": str(e), "status": "Not Found"}
+    except OperationalError as e:
+        return {"error": str(e), "status": "Database Not Available"}
     except Exception as e:
         return {"error": str(e), "status": "failed"}
+    finally:
+        session.close()
 
 
 # Connection with the database
@@ -98,14 +108,12 @@ def get_family_by_id(id: int, url="", metadata=False) -> dict:
     Retruns:
         A dict with the data of the family.
     """
-    # Create variable to store the result data.
+    session = database_connection.get_database_session()
     try:
-        # Get the result of the query to the databse.
-        session = database_connection.get_database_session()
-
-        family = Family(
-            session.query(FamilyDB).filter(FamilyDB.id == id).first(), base_url=url
-        )
+        family_db = session.query(FamilyDB).filter(FamilyDB.id == id).first()
+        if family_db is None:
+            raise ValueError("Family not found")
+        family = Family(family_db, base_url=url)
 
         # Get the result of the query to the databse.
         total_families = session.query(func.count(FamilyDB.id)).scalar()
@@ -113,8 +121,14 @@ def get_family_by_id(id: int, url="", metadata=False) -> dict:
         return family.toJSON(metadata, total_results=total_families)
 
     # Control exceptions
+    except ValueError as e:
+        return {"error": str(e), "status": "Not Family Found"}
+    except OperationalError as e:
+        return {"error": str(e), "status": "Database Not Available"}
     except Exception as e:
         return {"error": str(e), "status": "failed"}
+    finally:
+        session.close()
 
 
 def get_random_family(base_url="") -> dict:
@@ -127,15 +141,17 @@ def get_random_family(base_url="") -> dict:
         A dict with the data of the family.
     """
     # Create variable to store the result data.
+    session = database_connection.get_database_session()
     try:
         # Get the result of the query to the databse.
-        session = database_connection.get_database_session()
         family = Family(
             session.query(FamilyDB).order_by(func.random()).first(), base_url=base_url
         )
 
         return family.toJSON()
 
+    except OperationalError as e:
+        return {"error": str(e), "status": "Database Not Available"}
     # Control exceptions
     except Exception as e:
         return {"error": str(e), "status": "failed"}
