@@ -6,6 +6,7 @@ make the query to the API and return the result.
 """
 
 from sqlalchemy import func
+from sqlalchemy.exc import OperationalError
 
 from src.controller import database_connection
 from src.model.alter_ego import AlterEgo
@@ -30,9 +31,8 @@ def get_alter_ego_by_character_and_id(
         The JSON Response
 
     """
+    session = database_connection.get_database_session()
     try:
-        session = database_connection.get_database_session()
-
         alterego_db = (
             session.query(AlterEgoDB)
             .filter(
@@ -41,6 +41,8 @@ def get_alter_ego_by_character_and_id(
             )
             .first()
         )
+        if alterego_db is None:
+            raise ValueError("AlterEgo Not Found")
         alter_ego = AlterEgo(alterego_db, base_url)
 
         # Return the result with the URL
@@ -52,10 +54,22 @@ def get_alter_ego_by_character_and_id(
             )
             return result
 
-        return alter_ego.toJSON()
+        alter_ego_count = (
+            session.query(AlterEgoDB)
+            .filter(AlterEgoDB.original_character == id_character)
+            .count()
+        )
+
+        return alter_ego.toJSON(metadata, alter_ego_count)
     # Control exceptions
+    except ValueError as e:
+        return {"error": str(e), "status": "Not Found"}
+    except OperationalError as e:
+        return {"error": str(e), "status": "Database Not Available"}
     except Exception as e:
         return {"error": str(e), "status": "failed"}
+    finally:
+        session.close()
 
 
 # Get all the alter egos of a character
@@ -72,9 +86,8 @@ def get_all_alteregos_of_a_character(id_character: int, add_url=False, base_url=
         The JSON Response
 
     """
+    session = database_connection.get_database_session()
     try:
-        session = database_connection.get_database_session()
-
         alterego_list_db = (
             session.query(AlterEgoDB)
             .filter(AlterEgoDB.original_character == id_character)
@@ -82,14 +95,21 @@ def get_all_alteregos_of_a_character(id_character: int, add_url=False, base_url=
         )
 
         result = dict()
-        result["alteregos"] = []
+        if alterego_list_db == []:
+            raise ValueError("AlterEgos Not Found")
         result["alteregos"].extend(
             AlterEgo(alterego_db, base_url) for alterego_db in alterego_list_db
         )
         return result
     # Control exceptions
-    except Exception:
-        return {"message": "error"}
+    except ValueError as e:
+        return {"error": str(e), "status": "Not Found"}
+    except OperationalError as e:
+        return {"error": str(e), "status": "Database Not Available"}
+    except Exception as e:
+        return {"error": str(e), "status": "failed"}
+    finally:
+        session.close()
 
 
 def get_random_alterego(character: int = 0, base_url=""):
@@ -105,14 +125,21 @@ def get_random_alterego(character: int = 0, base_url=""):
 
     """
     session = database_connection.get_database_session()
-    if character != 0:
-        alterego_db = (
-            session.query(AlterEgoDB)
-            .filter(AlterEgoDB.original_character == character)
-            .order_by(func.random())
-            .first()
-        )
-    else:
-        alterego_db = session.query(AlterEgoDB).order_by(func.random()).first()
-    alterego = AlterEgo(alterego_db, base_url)
-    return alterego.toJSON()
+    try:
+        if character != 0:
+            alterego_db = (
+                session.query(AlterEgoDB)
+                .filter(AlterEgoDB.original_character == character)
+                .order_by(func.random())
+                .first()
+            )
+        else:
+            alterego_db = session.query(AlterEgoDB).order_by(func.random()).first()
+        alterego = AlterEgo(alterego_db, base_url)
+        return alterego.toJSON()
+    except OperationalError as e:
+        return {"error": str(e), "status": "Database Not Available"}
+    except Exception as e:
+        return {"error": str(e), "status": "failed"}
+    finally:
+        session.close()
