@@ -7,7 +7,6 @@ implements connection pooling and retry logic for improved reliability.
 """
 
 import os
-import time
 
 from dotenv import load_dotenv
 from sqlalchemy import Table, create_engine
@@ -92,40 +91,3 @@ def get_database_session():
     if _localSesion is None:
         get_database_connection()
     return _localSesion()
-
-
-def get_query_result(statement: str, params: dict = None):  # Investigate B006
-    """
-    Execute a database query with retry logic.
-
-    Args:
-        statement (str): SQL query statement to execute
-        params (dict): Query parameters for parameterized queries
-
-    Returns:
-        SQLAlchemy Result: Query result if successful
-        None: If query fails after retry
-
-    Behavior:
-        - Attempts query execution
-        - On failure, waits 1 second and retries once
-        - Always closes session after execution
-
-    """
-    if params is None:
-        params = dict()
-    session = get_database_session()
-    try:
-        query_result = session.execute(statement, params)
-        session.close()
-        return query_result
-    except Exception:
-        time.sleep(1)
-        try:
-            query_result = session.execute(statement, params)
-            session.close()
-            return query_result
-        except Exception:
-            return None
-    finally:
-        session.close()
