@@ -65,6 +65,14 @@ def show_group_list(
         )
     else:
         json = get_group_list(base_url=str(request.base_url), limit=limit)
+
+    if "error" in json:
+        if json["status"] == "Not found":
+            response.status_code = status.HTTP_404_NOT_FOUND
+        else:
+            response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
+    else:
+        response.status_code = status.HTTP_200_OK
     return json
 
 
@@ -86,7 +94,7 @@ def show_random_group(request: Request, response: Response, metadata=False):
     json = get_random_group(str(request.base_url))
 
     if "error" in json:
-        if json["error"] == "Database not available":
+        if json["status"] == "Database Not Available":
             response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
     else:
         response.status_code = status.HTTP_200_OK
@@ -112,9 +120,9 @@ def show_group(request: Request, response: Response, id, metadata=False):
     json = get_group_by_id(id, str(request.base_url), metadata)
 
     if "error" in json:
-        if json["error"] == "Group not found":
+        if json["status"] == "Not Found a group with this ID":
             response.status_code = status.HTTP_404_NOT_FOUND
-        elif json["error"] == "Database not available":
+        if json["status"] == "Database Not Available":
             response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
     else:
         response.status_code = status.HTTP_200_OK

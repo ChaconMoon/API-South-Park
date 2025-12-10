@@ -5,6 +5,12 @@ This module define the methods used to create the response of a Group item
 """
 
 from sqlalchemy import func
+from sqlalchemy.exc import (
+    DataError,
+    InvalidRequestError,
+    OperationalError,
+    ProgrammingError,
+)
 
 from src.controller import database_connection
 from src.model.group import Group
@@ -25,22 +31,32 @@ def get_group_list_by_search(base_url: str, limit: int = 0, search: str = ""):
 
     """
     session = database_connection.get_database_session()
-    group_query = (
-        session.query(GroupDB)
-        .filter(GroupDB.name.ilike(f"%{search}%"))
-        .order_by(GroupDB.id)
-    )
-    if limit != 0:
-        group_query = group_query.limit(limit)
-    group_list = group_query.all()
+    try:
+        group_query = (
+            session.query(GroupDB)
+            .filter(GroupDB.name.ilike(f"%{search}%"))
+            .order_by(GroupDB.id)
+        )
+        if limit != 0:
+            group_query = group_query.limit(limit)
+        group_list = group_query.all()
 
-    result = {"groups": {}}
+        result = {"groups": {}}
 
-    for index, group_db in enumerate(group_list):
-        group = Group(group_db, base_url)
-        result["groups"][index] = group
-
-    return result
+        for index, group_db in enumerate(group_list):
+            group = Group(group_db, base_url)
+            result["groups"][index] = group
+        if result == {"groups": {}}:
+            raise ValueError("Not groups found with this value")
+        return result
+    except (OperationalError, ProgrammingError, InvalidRequestError, DataError) as e:
+        return {"error": str(e), "status": "Database query error"}
+    except (TypeError, AttributeError) as e:
+        return {"error": str(e), "status": "Error processing group data"}
+    except ValueError as e:
+        return {"error": str(e), "status": "Not found"}
+    finally:
+        session.close()
 
 
 def get_group_list(base_url: str, limit: int = 0):
@@ -56,18 +72,25 @@ def get_group_list(base_url: str, limit: int = 0):
 
     """
     session = database_connection.get_database_session()
-    group_query = session.query(GroupDB).order_by(GroupDB.id)
-    if limit != 0:
-        group_query = group_query.limit(limit)
-    group_list = group_query.all()
+    try:
+        group_query = session.query(GroupDB).order_by(GroupDB.id)
+        if limit != 0:
+            group_query = group_query.limit(limit)
+        group_list = group_query.all()
 
-    result = {"groups": {}}
+        result = {"groups": {}}
 
-    for index, group_db in enumerate(group_list):
-        group = Group(group_db, base_url)
-        result["groups"][index] = group
+        for index, group_db in enumerate(group_list):
+            group = Group(group_db, base_url)
+            result["groups"][index] = group
 
-    return result
+        return result
+    except (OperationalError, ProgrammingError, InvalidRequestError, DataError) as e:
+        return {"error": str(e), "status": "Database query error"}
+    except (TypeError, AttributeError) as e:
+        return {"error": str(e), "status": "Error processing group data"}
+    finally:
+        session.close()
 
 
 def get_group_by_id(id, base_url: str = "", metadata=False):
@@ -84,11 +107,23 @@ def get_group_by_id(id, base_url: str = "", metadata=False):
 
     """
     session = database_connection.get_database_session()
-    group_db = session.query(GroupDB).filter(GroupDB.id == id).first()
+    try:
+        group_db = session.query(GroupDB).filter(GroupDB.id == id).first()
 
-    group = Group(group_db, base_url)
+        if group_db is None:
+            raise TypeError("Group Not Found")
 
-    return group.toJSON()
+        group = Group(group_db, base_url)
+
+        groups_count = session.query(GroupDB).count()
+        return group.toJSON(metadata, groups_count)
+
+    except TypeError as e:
+        return {"error": str(e), "status": "Not Found a group with this ID"}
+    except OperationalError as e:
+        return {"error": str(e), "status": "Database Not Available"}
+    except Exception as e:
+        return {"error": str(e), "status": "failed"}
 
 
 def get_random_group(base_url: str = ""):
@@ -103,8 +138,11 @@ def get_random_group(base_url: str = ""):
 
     """
     session = database_connection.get_database_session()
-    group_db = session.query(GroupDB).order_by(func.random()).first()
+    try:
+        group_db = session.query(GroupDB).order_by(func.random()).first()
 
-    group = Group(group_db, base_url)
+        group = Group(group_db, base_url)
 
-    return group.toJSON()
+        return group.toJSON()
+    except OperationalError as e:
+        return {"error": str(e), "status": "Database Not Available"}
