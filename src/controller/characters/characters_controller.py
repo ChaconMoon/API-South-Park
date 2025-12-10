@@ -9,6 +9,7 @@ and retrieve lists of characters.
 import logging
 
 from sqlalchemy import func
+from sqlalchemy.exc import OperationalError
 
 from src.controller import database_connection
 from src.model.characters import Character
@@ -28,8 +29,8 @@ def get_characters_list(base_url: str = "", limit: int = 0) -> dict:
         dict: A dictionary containing the list of characters.
 
     """
+    session = database_connection.get_database_session()
     try:
-        session = database_connection.get_database_session()
         query_characters = session.query(CharacterDB).order_by(CharacterDB.id)
 
         if limit > 0:
@@ -41,11 +42,14 @@ def get_characters_list(base_url: str = "", limit: int = 0) -> dict:
         for index, character_db in enumerate(characters_list):
             character = Character(character_db, base_url)
             result["characters"][index] = character.model_dump()
-        session.close()
         return result
+    except OperationalError as e:
+        return {"error": str(e), "status": "Database Not Available"}
     except Exception as e:
         logging.error(e)
         return {"error": str(e), "status": "failed"}
+    finally:
+        session.close()
 
 
 def get_characters_by_search(
@@ -81,8 +85,8 @@ def get_characters_by_search(
             }
 
     """
+    session = database_connection.get_database_session()
     try:
-        session = database_connection.get_database_session()
         character_list = (
             session.query(CharacterDB)
             .filter(CharacterDB.name.ilike(f"%{search_param}%"))
@@ -94,11 +98,19 @@ def get_characters_by_search(
             character = Character(character_db, base_url)
             result["characters"][index] = character.model_dump()
         session.close()
+        if result == {"characters": {}}:
+            raise ValueError("Not characters found with this value")
         return result
 
+    except ValueError as e:
+        return {"error": str(e), "status": "No characters found"}
+    except OperationalError as e:
+        return {"error": str(e), "status": "Database Not Available"}
     except Exception as e:
         logging.error(e)
         return {"error": str(e), "status": "failed"}
+    finally:
+        session.close()
 
 
 def get_character_by_id(
@@ -139,14 +151,13 @@ def get_character_by_id(
             }
 
     """
+    session = database_connection.get_database_session()
     try:
+        character_db = session.query(CharacterDB).filter(CharacterDB.id == id).first()
+        if character_db is None:
+            raise TypeError("Not Found a character with this ID")
         character = Character(
-            (
-                database_connection.get_database_session()
-                .query(CharacterDB)
-                .filter(CharacterDB.id == id)
-                .first()
-            ),
+            character_db,
             base_url,
         )
 
@@ -155,42 +166,16 @@ def get_character_by_id(
                 "name": character.model_dump()["name"],
                 "url": f"{base_url}api/characters/{character.id}",
             }
-
-        return character.toJSON()
-
+        character_count = session.query(CharacterDB).count()
+        return character.toJSON(metadata, character_count)
+    except TypeError as e:
+        return {"error": str(e), "status": "Character Not Found"}
+    except OperationalError as e:
+        return {"error": str(e), "status": "Database Not Available"}
     except Exception as e:
         return {"error": str(e), "status": "failed"}
-
-    # def get_specific_character_list(
-    #    ids: list[int], add_url: bool = False, base_url: str = ""
-    # ) -> dict:
-    """
-    Retrieve a list of characters by their IDs.
-
-    Args:
-        ids (list[int]): List of character IDs to retrieve
-        add_url (bool): Whether to include API URLs in response
-        base_url (str): Base URL for API endpoints
-
-    Returns:
-        dict: JSON response containing:
-            {
-                "characters": {
-                    0: {character_data},
-                    1: {character_data},
-                    ...
-                }
-            }
-
-    """
-
-
-#    result = {"characters": {}}
-#    for index, character_id in enumerate(ids):
-#        result["characters"][index] = get_character_by_id(
-#            character_id, base_url=base_url, metadata=False
-#        )
-#    return result
+    finally:
+        session.close()
 
 
 def get_all_characters_with_alterego(base_url: str = ""):
@@ -211,9 +196,6 @@ def get_all_characters_with_alterego(base_url: str = ""):
     try:
         session = database_connection.get_database_session()
 
-        # Query CharacterDB directly, joining with AlterEgoDB to find characters
-        # that appear as an 'original_character'.
-        # .distinct() ensures we get each character only once.
         characters_with_alterego = (
             session.query(CharacterDB)
             .join(AlterEgoDB, CharacterDB.id == AlterEgoDB.original_character)
@@ -221,17 +203,20 @@ def get_all_characters_with_alterego(base_url: str = ""):
             .order_by(CharacterDB.id.asc())
             .all()
         )
-
-        # The query now returns a list of CharacterDB objects directly.
-        # We can format them into the desired response.
         result = {
             "characters_with_alterego": [
                 Character(char, base_url).toJSON(compacted=True, base_url=base_url)
                 for char in characters_with_alterego
             ]
         }
+        if result["characters_with_alterego"] == []:
+            raise TypeError("Not values found in Alterego Table")
         session.close()
         return result
+    except TypeError as e:
+        return {"error": str(e), "status": "Not Found"}
+    except OperationalError as e:
+        return {"error": str(e), "status": "Database Not Available"}
     except Exception as e:
         logging.error(e)
         return {"error": str(e), "status": "failed"}

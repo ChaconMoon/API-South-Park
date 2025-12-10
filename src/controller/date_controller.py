@@ -9,6 +9,8 @@ their birthday on the current date.
 import logging
 from datetime import datetime
 
+from sqlalchemy.exc import OperationalError
+
 from src.controller import database_connection
 from src.model.ORM.characters_db import CharacterDB
 
@@ -86,7 +88,7 @@ def get_today_birthday_character(base_url: str = "") -> dict:
         )
 
         if not birthay_characters_list:
-            return {"message": "No one has their birthday today", "status": "failed"}
+            return {"message": "No one has their birthday today", "status": "Not Found"}
 
         result = {"characters": []}
         for birthday_character in birthay_characters_list:
@@ -98,7 +100,8 @@ def get_today_birthday_character(base_url: str = "") -> dict:
             )
 
         return result
-
+    except OperationalError as e:
+        return {"error": str(e), "status": "Database Not Available"}
     except Exception as e:
         logging.error(e)
         return {"error": str(e), "status": "failed"}

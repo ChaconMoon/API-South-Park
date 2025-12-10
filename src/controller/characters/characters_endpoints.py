@@ -276,10 +276,10 @@ def show_character_list(
     else:
         json = get_characters_list(base_url=str(request.base_url), limit=limit)
     if "error" in json:
-        if json["error"] == "Character not found":
-            response.status_code = status.HTTP_404_NOT_FOUND
-        elif json["error"] == "Database not available":
+        if json["status"] == "Database Not Available":
             response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
+        if json["status"] == "No characters found":
+            response.status_code = status.HTTP_404_NOT_FOUND
     else:
         response.status_code = status.HTTP_200_OK
     return json
@@ -425,9 +425,9 @@ async def show_character(
     base_url = str(request.base_url)
     json = get_character_by_id(id, base_url=base_url, metadata=metadata)
     if "error" in json:
-        if json["error"] == "Character not found":
+        if json["status"] == "Character Not Found":
             response.status_code = status.HTTP_404_NOT_FOUND
-        elif json["error"] == "Database not available":
+        elif json["status"] == "Database Not Available":
             response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
     else:
         response.status_code = status.HTTP_200_OK
@@ -454,7 +454,7 @@ def get_characters_with_birthday_today(request: Request, response: Response) -> 
     """
     json = get_today_birthday_character(base_url=str(request.base_url))
     if "error" in json:
-        if json["error"] == "Database not available":
+        if json["status"] == "Database Not Available":
             response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
     elif "message" in json:
         if json["message"] == "No one has their birthday today":
@@ -484,9 +484,9 @@ def get_characters_on_alterego_table(request: Request, response: Response) -> di
     """
     json = get_all_characters_with_alterego(base_url=str(request.base_url))
     if "error" in json:
-        if json["error"] == "Query error. No Alteregos in database":
+        if json["status"] == "Not Found":
             response.status_code = status.HTTP_404_NOT_FOUND
-        elif json["error"] == "Database not available":
+        elif json["status"] == "Database Not Available":
             response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
     else:
         response.status_code = status.HTTP_200_OK
