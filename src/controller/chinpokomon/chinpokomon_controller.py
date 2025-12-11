@@ -31,7 +31,7 @@ def get_chinpokomon_list(limit: int = 0, base_url: str = "") -> dict:
         if limit != 0:
             chinpokomon_query = chinpokomon_query.limit(limit)
         chinpokomon_list_db = chinpokomon_query.all()
-        if chinpokomon_list_db is None:
+        if chinpokomon_list_db == []:
             raise AttributeError("Chinpokomon Not Found")
         result = {"chinpokomons": {}}
         for index, chinpokomon_db in enumerate(chinpokomon_list_db):
@@ -73,7 +73,7 @@ def get_chinpokomon_list_by_search(
         if limit != 0:
             chinpokomon_query = chinpokomon_query.limit(limit)
         chinpokomon_list_db = chinpokomon_query.all()
-        if chinpokomon_list_db is None:
+        if chinpokomon_list_db == []:
             raise AttributeError("Chinpokomon Not Found")
         result = {"chinpokomons": {}}
         for index, chinpokomon_db in enumerate(chinpokomon_list_db):
