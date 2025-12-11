@@ -45,6 +45,11 @@ def show_game_list(
         )
     else:
         json = get_game_list(base_url=str(request.base_url), limit=limit)
+    if "error" in json:
+        if json["status"] == "Not Found":
+            response.status_code = status.HTTP_404_NOT_FOUND
+        if json["status"] == "Database Not Available":
+            response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
     return json
 
 
@@ -71,12 +76,10 @@ def show_random_Game(request: Request, response: Response) -> dict:
     base_url = str(request.base_url)
     json = get_random_game(base_url)
     if "error" in json:
-        if json["error"] == "Game not found":
+        if json["status"] == "Not Found":
             response.status_code = status.HTTP_404_NOT_FOUND
-        elif json["error"] == "Database not available":
+        if json["status"] == "Database Not Available":
             response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
-        elif "game" in json:
-            response.status_code = status.HTTP_200_OK
     return json
 
 
@@ -109,10 +112,8 @@ def show_game(
     if json is None:
         json = {"error": "Game not found", "status": "failed"}
     if "error" in json:
-        if json["error"] == "Game not found":
+        if json["status"] == "Not Found":
             response.status_code = status.HTTP_404_NOT_FOUND
-        elif json["error"] == "Database not available":
+        if json["status"] == "Database Not Available":
             response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
-        elif "game" in json:
-            response.status_code = status.HTTP_200_OK
     return json
