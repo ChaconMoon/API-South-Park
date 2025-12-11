@@ -7,6 +7,7 @@ make the query to the API and return the result.
 
 # Import SQLAlchemy
 from sqlalchemy import func
+from sqlalchemy.exc import OperationalError
 
 from src.controller import database_connection
 
@@ -33,10 +34,15 @@ def get_song_by_id(id: int, add_url=False, base_url="", metadata=False):
     session = database_connection.get_database_session()
     try:
         song_db = session.query(AlbumSongDB).filter(AlbumSongDB.id == id).first()
+        if song_db is None:
+            raise TypeError("Song Not Found")
         song = Song(song_db, base_url)
         return song.toJSON()
 
-    # Control exceptions
+    except TypeError as e:
+        return {"error": str(e), "status": "Not Found"}
+    except OperationalError as e:
+        return {"error": str(e), "status": "Database Not Available"}
     except Exception as e:
         return {"error": str(e), "status": "failed"}
     finally:
@@ -68,6 +74,11 @@ def get_random_song(exclude_not_available: bool = False, base_url="") -> dict:
         song_db = song_query.order_by(func.random()).first()
         song = Song(song_db, base_url)
         return song.toJSON()
+
+    except TypeError as e:
+        return {"error": str(e), "status": "Not Found"}
+    except OperationalError as e:
+        return {"error": str(e), "status": "Database Not Available"}
     except Exception as e:
         return {"error": str(e), "status": "failed"}
     finally:

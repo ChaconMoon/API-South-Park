@@ -7,6 +7,7 @@ make the query to the API and return the result.
 
 # Import SQLAlquemy to make the query
 from sqlalchemy import func
+from sqlalchemy.exc import OperationalError
 
 # Internal inputs
 from src.controller import database_connection
@@ -40,7 +41,13 @@ def get_album_list_by_search(base_url="", search_param="", limit: int = 0):
         for index, album_db in enumerate(album_db_list):
             album = Album(album_db, base_url)
             result["albums"][index] = album.toJSON()
+        if result == {"albums": {}}:
+            raise TypeError("Album Not Found")
         return result
+    except TypeError as e:
+        return {"error": str(e), "status": "Not Found"}
+    except OperationalError as e:
+        return {"error": str(e), "status": "Database Not Available"}
     except Exception as e:
         return {"error": str(e), "status": "failed"}
     finally:
@@ -70,7 +77,13 @@ def get_album_list(base_url="", limit: int = 0):
         for index, album_db in enumerate(album_db_list):
             album = Album(album_db, base_url)
             result["albums"][index] = album.toJSON()
+        if result == {"albums": {}}:
+            raise TypeError("Album Not Found")
         return result
+    except TypeError as e:
+        return {"error": str(e), "status": "Not Found"}
+    except OperationalError as e:
+        return {"error": str(e), "status": "Database Not Available"}
     except Exception as e:
         return {"error": str(e), "status": "failed"}
     finally:
@@ -95,8 +108,14 @@ def get_random_album(base_url="", exclude_not_available: bool = False):
         if exclude_not_available:
             album_query = album_query.filter(AlbumDB.album_url != "NOT AVAILABLE")
         album_db = album_query.order_by(func.random()).first()
+        if album_db is None:
+            raise TypeError("Album Not Found")
         album = Album(album_db, base_url)
         return album.toJSON()
+    except TypeError as e:
+        return {"error": str(e), "status": "Not Found"}
+    except OperationalError as e:
+        return {"error": str(e), "status": "Database Not Available"}
     except Exception as e:
         return {"error": str(e), "status": "failed"}
     finally:
@@ -120,9 +139,15 @@ def get_album_by_id(id: int, add_url=False, base_url="", metadata=False) -> dict
     session = database_connection.get_database_session()
     try:
         album_db = session.query(AlbumDB).filter(AlbumDB.id == id).first()
+        if album_db is None:
+            raise TypeError("Album Not Found")
         album = Album(album_db, base_url)
         album_count = session.query(AlbumDB).count()
         return album.toJSON(metadata, album_count)
+    except TypeError as e:
+        return {"error": str(e), "status": "Not Found"}
+    except OperationalError as e:
+        return {"error": str(e), "status": "Database Not Available"}
     except Exception as e:
         return {"error": str(e), "status": "failed"}
     finally:
