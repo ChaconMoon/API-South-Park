@@ -28,16 +28,23 @@ def get_album_list_by_search(base_url="", search_param="", limit: int = 0):
 
     """
     session = database_connection.get_database_session()
-    album_query = session.query(AlbumDB).filter(AlbumDB.name.ilike(f"%{search_param}%"))
-    if limit != 0:
-        album_query = album_query.limit(limit)
-    album_db_list = album_query.all()
-    result = dict()
-    result = {"albums": {}}
-    for index, album_db in enumerate(album_db_list):
-        album = Album(album_db, base_url)
-        result["albums"][index] = album.toJSON()
-    return result
+    try:
+        album_query = session.query(AlbumDB).filter(
+            AlbumDB.name.ilike(f"%{search_param}%")
+        )
+        if limit != 0:
+            album_query = album_query.limit(limit)
+        album_db_list = album_query.all()
+        result = dict()
+        result = {"albums": {}}
+        for index, album_db in enumerate(album_db_list):
+            album = Album(album_db, base_url)
+            result["albums"][index] = album.toJSON()
+        return result
+    except Exception as e:
+        return {"error": str(e), "status": "failed"}
+    finally:
+        session.close()
 
 
 def get_album_list(base_url="", limit: int = 0):
@@ -53,17 +60,21 @@ def get_album_list(base_url="", limit: int = 0):
 
     """
     session = database_connection.get_database_session()
-
-    album_query = session.query(AlbumDB)
-    if limit != 0:
-        album_query = album_query.limit(limit)
-    album_db_list = album_query.all()
-    result = dict()
-    result = {"albums": {}}
-    for index, album_db in enumerate(album_db_list):
-        album = Album(album_db, base_url)
-        result["albums"][index] = album.toJSON()
-    return result
+    try:
+        album_query = session.query(AlbumDB)
+        if limit != 0:
+            album_query = album_query.limit(limit)
+        album_db_list = album_query.all()
+        result = dict()
+        result = {"albums": {}}
+        for index, album_db in enumerate(album_db_list):
+            album = Album(album_db, base_url)
+            result["albums"][index] = album.toJSON()
+        return result
+    except Exception as e:
+        return {"error": str(e), "status": "failed"}
+    finally:
+        session.close()
 
 
 def get_random_album(base_url="", exclude_not_available: bool = False):
@@ -78,17 +89,18 @@ def get_random_album(base_url="", exclude_not_available: bool = False):
         A dict with the response or a dict with the error.
 
     """
+    session = database_connection.get_database_session()
     try:
-        session = database_connection.get_database_session()
-
         album_query = session.query(AlbumDB)
         if exclude_not_available:
             album_query = album_query.filter(AlbumDB.album_url != "NOT AVAILABLE")
         album_db = album_query.order_by(func.random()).first()
         album = Album(album_db, base_url)
         return album.toJSON()
-    except TypeError as e:
+    except Exception as e:
         return {"error": str(e), "status": "failed"}
+    finally:
+        session.close()
 
 
 # Get album by this id
@@ -105,12 +117,13 @@ def get_album_by_id(id: int, add_url=False, base_url="", metadata=False) -> dict
         A dict with the response or a dict with the error.
 
     """
+    session = database_connection.get_database_session()
     try:
-        session = database_connection.get_database_session()
-
         album_db = session.query(AlbumDB).filter(AlbumDB.id == id).first()
         album = Album(album_db, base_url)
-        return album.toJSON()
-    # Control exceptions
-    except TypeError as e:
+        album_count = session.query(AlbumDB).count()
+        return album.toJSON(metadata, album_count)
+    except Exception as e:
         return {"error": str(e), "status": "failed"}
+    finally:
+        session.close()

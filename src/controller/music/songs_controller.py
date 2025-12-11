@@ -30,8 +30,8 @@ def get_song_by_id(id: int, add_url=False, base_url="", metadata=False):
 
     """
     # Get the query result
+    session = database_connection.get_database_session()
     try:
-        session = database_connection.get_database_session()
         song_db = session.query(AlbumSongDB).filter(AlbumSongDB.id == id).first()
         song = Song(song_db, base_url)
         return song.toJSON()
@@ -39,6 +39,8 @@ def get_song_by_id(id: int, add_url=False, base_url="", metadata=False):
     # Control exceptions
     except Exception as e:
         return {"error": str(e), "status": "failed"}
+    finally:
+        session.close()
 
 
 def get_random_song(exclude_not_available: bool = False, base_url="") -> dict:
@@ -55,8 +57,8 @@ def get_random_song(exclude_not_available: bool = False, base_url="") -> dict:
             - Error message if not found or database error
 
     """
+    session = database_connection.get_database_session()
     try:
-        session = database_connection.get_database_session()
         song_query = session.query(AlbumSongDB)
 
         if exclude_not_available:
@@ -66,7 +68,7 @@ def get_random_song(exclude_not_available: bool = False, base_url="") -> dict:
         song_db = song_query.order_by(func.random()).first()
         song = Song(song_db, base_url)
         return song.toJSON()
-    # Control exceptions
     except Exception as e:
         return {"error": str(e), "status": "failed"}
-    return song.toJSON()
+    finally:
+        session.close()

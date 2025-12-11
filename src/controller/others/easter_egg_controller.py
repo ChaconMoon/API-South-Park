@@ -7,49 +7,14 @@ based on those inputs.
 """
 
 import logging
-from enum import Enum
 
 from src.controller import database_connection
+
+# from src.controller.characters.characters_controller import get_specific_character_list
+from src.controller.others.easter_egg_enums import EasterEggName, EasterEggType
 from src.model.characters import Character
 from src.model.ORM.characters_db import CharacterDB
 from src.model.ORM.episode_db import EpisodeDB
-
-# from src.controller.characters.characters_controller import get_specific_character_list
-
-
-class EasterEggType(Enum):
-    """
-    Enumeration of possible easter egg response types.
-
-    Values:
-        NONE (0): No easter egg found
-        CHARACTERS (1): Return character-based easter egg
-        EPISODES (2): Return episode-based easter egg
-        CUSTOM (3): Return custom json response easter egg
-
-    """
-
-    NONE = 0
-    CHARACTERS = 1
-    EPISODES = 2
-    CUSTOM = 3
-
-
-class EasterEggName(Enum):
-    """
-    Enumeration of the available easteregg with their ID.
-
-    Values:
-        IHAVEDIABETES (0): Returns the two kids of the school that have diabetes:
-        (Scott Malkinson and Sophie Gray)
-
-        THEWHITEHOUSE (1): Returns all the characters that are
-        in the White House at the moment
-    """
-
-    IHAVEDIABETES = 0
-    THEWHITEHOUSE = 1
-    # OTHER = 2
 
 
 def get_easter_egg(name: str, base_url: str) -> dict:

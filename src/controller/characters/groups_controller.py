@@ -124,6 +124,8 @@ def get_group_by_id(id, base_url: str = "", metadata=False):
         return {"error": str(e), "status": "Database Not Available"}
     except Exception as e:
         return {"error": str(e), "status": "failed"}
+    finally:
+        session.close()
 
 
 def get_random_group(base_url: str = ""):
@@ -146,3 +148,5 @@ def get_random_group(base_url: str = ""):
         return group.toJSON()
     except OperationalError as e:
         return {"error": str(e), "status": "Database Not Available"}
+    finally:
+        session.close()

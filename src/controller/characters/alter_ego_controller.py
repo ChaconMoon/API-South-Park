@@ -94,7 +94,7 @@ def get_all_alteregos_of_a_character(id_character: int, add_url=False, base_url=
             .all()
         )
 
-        result = dict()
+        result = {"alteregos": []}
         if alterego_list_db == []:
             raise ValueError("AlterEgos Not Found")
         result["alteregos"].extend(
