@@ -6,6 +6,7 @@ It provides functions to fetch specific Chinpokomon by ID from the database.
 """
 
 from sqlalchemy import func
+from sqlalchemy.exc import OperationalError
 
 from src.controller import database_connection
 from src.model.chinpokomon import Chinpokomon
@@ -25,15 +26,26 @@ def get_chinpokomon_list(limit: int = 0, base_url: str = "") -> dict:
 
     """
     session = database_connection.get_database_session()
-    chinpokomon_query = session.query(ChinpokomonDB).order_by(ChinpokomonDB.id)
-    if limit != 0:
-        chinpokomon_query = chinpokomon_query.limit(limit)
-    chinpokomon_list_db = chinpokomon_query.all()
-    result = {"chinpokomons": {}}
-    for index, chinpokomon_db in enumerate(chinpokomon_list_db):
-        chinpokomon = Chinpokomon(chinpokomon_db, base_url)
-        result["chinpokomons"][index] = chinpokomon.toJSON()
-    return result
+    try:
+        chinpokomon_query = session.query(ChinpokomonDB).order_by(ChinpokomonDB.id)
+        if limit != 0:
+            chinpokomon_query = chinpokomon_query.limit(limit)
+        chinpokomon_list_db = chinpokomon_query.all()
+        if chinpokomon_list_db is None:
+            raise AttributeError("Chinpokomon Not Found")
+        result = {"chinpokomons": {}}
+        for index, chinpokomon_db in enumerate(chinpokomon_list_db):
+            chinpokomon = Chinpokomon(chinpokomon_db, base_url)
+            result["chinpokomons"][index] = chinpokomon.toJSON()
+        return result
+    except AttributeError as e:
+        return {"error": str(e), "status": "Not Found"}
+    except OperationalError as e:
+        return {"error": str(e), "status": "Database Not Available"}
+    except Exception as e:
+        return {"error": str(e), "status": "failed"}
+    finally:
+        session.close()
 
 
 def get_chinpokomon_list_by_search(
@@ -52,19 +64,30 @@ def get_chinpokomon_list_by_search(
 
     """
     session = database_connection.get_database_session()
-    chinpokomon_query = (
-        session.query(ChinpokomonDB)
-        .filter(ChinpokomonDB.name.ilike(f"%{search}%"))
-        .order_by(ChinpokomonDB.id)
-    )
-    if limit != 0:
-        chinpokomon_query = chinpokomon_query.limit(limit)
-    chinpokomon_list_db = chinpokomon_query.all()
-    result = {"chinpokomons": {}}
-    for index, chinpokomon_db in enumerate(chinpokomon_list_db):
-        chinpokomon = Chinpokomon(chinpokomon_db, base_url)
-        result["chinpokomons"][index] = chinpokomon.toJSON()
-    return result
+    try:
+        chinpokomon_query = (
+            session.query(ChinpokomonDB)
+            .filter(ChinpokomonDB.name.ilike(f"%{search}%"))
+            .order_by(ChinpokomonDB.id)
+        )
+        if limit != 0:
+            chinpokomon_query = chinpokomon_query.limit(limit)
+        chinpokomon_list_db = chinpokomon_query.all()
+        if chinpokomon_list_db is None:
+            raise AttributeError("Chinpokomon Not Found")
+        result = {"chinpokomons": {}}
+        for index, chinpokomon_db in enumerate(chinpokomon_list_db):
+            chinpokomon = Chinpokomon(chinpokomon_db, base_url)
+            result["chinpokomons"][index] = chinpokomon.toJSON()
+        return result
+    except AttributeError as e:
+        return {"error": str(e), "status": "Not Found"}
+    except OperationalError as e:
+        return {"error": str(e), "status": "Database Not Available"}
+    except Exception as e:
+        return {"error": str(e), "status": "failed"}
+    finally:
+        session.close()
 
 
 def get_chinpokomon_by_id(
@@ -105,21 +128,30 @@ def get_chinpokomon_by_id(
             }
 
     """
+    session = database_connection.get_database_session()
     try:
-        session = database_connection.get_database_session()
-        chinpokomon = Chinpokomon(
-            session.query(ChinpokomonDB).filter(ChinpokomonDB.id == id).first(), base_url
+        chinpokomon_db = (
+            session.query(ChinpokomonDB).filter(ChinpokomonDB.id == id).first()
         )
+        if chinpokomon_db is None:
+            raise AttributeError("Chinpokomon Not Found")
+        chinpokomon = Chinpokomon(chinpokomon_db, base_url)
+
         if add_url:
             return {
                 "name": chinpokomon.model_dump()["name"],
                 "url": f"{base_url}api/chinpokomons/{id}",
             }
-
-        return chinpokomon.toJSON()
-
+        chinpokomon_count = session.query(ChinpokomonDB).count()
+        return chinpokomon.toJSON(metadata, chinpokomon_count)
+    except AttributeError as e:
+        return {"error": str(e), "status": "Not Found"}
+    except OperationalError as e:
+        return {"error": str(e), "status": "Database Not Available"}
     except Exception as e:
         return {"error": str(e), "status": "failed"}
+    finally:
+        session.close()
 
 
 def get_random_chinpokomon(base_url=""):
@@ -150,11 +182,18 @@ def get_random_chinpokomon(base_url=""):
             }
 
     """
+    session = database_connection.get_database_session()
     try:
-        session = database_connection.get_database_session()
-        chinpokomon = Chinpokomon(
-            session.query(ChinpokomonDB).order_by(func.random()).first(), base_url
-        )
+        chinpokomon_db = session.query(ChinpokomonDB).order_by(func.random()).first()
+        if chinpokomon_db is None:
+            raise AttributeError("Chinpokomon Not Found")
+        chinpokomon = Chinpokomon(chinpokomon_db, base_url)
         return chinpokomon.toJSON()
+    except AttributeError as e:
+        return {"error": str(e), "status": "Not Found"}
+    except OperationalError as e:
+        return {"error": str(e), "status": "Database Not Available"}
     except Exception as e:
         return {"error": str(e), "status": "failed"}
+    finally:
+        session.close()
