@@ -7,6 +7,7 @@ This module get the param of the API in the get special operations,
 
 # Import SQLAlchemy
 from sqlalchemy import func
+from sqlalchemy.exc import OperationalError
 
 from src.controller import database_connection
 
@@ -29,17 +30,22 @@ def get_special_by_id(id: int, add_url=False, base_url="", metadata=False):
         A dict with the response or a dict with the error.
 
     """
+    session = database_connection.get_database_session()
     try:
-        session = database_connection.get_database_session()
+        special_db = session.query(SpecialDB).filter(SpecialDB.id == id).first()
+        special = Special(special_db, base_url)
 
-        special = Special(
-            session.query(SpecialDB).filter(SpecialDB.id == id).first(), base_url
-        )
-        return special.toJSON()
+        special_count = session.query(SpecialDB).count()
+        return special.toJSON(metadata, special_count)
 
-    # Control exceptions
+    except AttributeError as e:
+        return {"error": str(e), "status": "Not Found"}
+    except OperationalError as e:
+        return {"error": str(e), "status": "Database Not Available"}
     except Exception as e:
         return {"error": str(e), "status": "failed"}
+    finally:
+        session.close()
 
 
 def get_random_special(base_url=""):
@@ -53,13 +59,17 @@ def get_random_special(base_url=""):
         A dict with the response or a dict with the error.
 
     """
+    session = database_connection.get_database_session()
     try:
-        session = database_connection.get_database_session()
-
-        special = Special(
-            session.query(SpecialDB).order_by(func.random()).first(), base_url
-        )
+        special_db = session.query(SpecialDB).order_by(func.random()).first()
+        special = Special(special_db, base_url)
         return special.toJSON()
     # Control exceptions
+    except AttributeError as e:
+        return {"error": str(e), "status": "Not Found"}
+    except OperationalError as e:
+        return {"error": str(e), "status": "Database Not Available"}
     except Exception as e:
         return {"error": str(e), "status": "failed"}
+    finally:
+        session.close()

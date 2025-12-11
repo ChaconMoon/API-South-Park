@@ -7,6 +7,7 @@ from the database.
 """
 
 from sqlalchemy import func
+from sqlalchemy.exc import OperationalError
 
 from src.controller import database_connection
 from src.model.episode import Episode
@@ -40,7 +41,16 @@ def get_episode_list_by_search(search: str = "", limit: int = 0, base_url: str =
         result = {"episodes": {}}
         for index, episode in enumerate(episode_list):
             result["episodes"][index] = Episode(episode, base_url).toJSON()
+
+        if result == {"episodes": {}}:
+            raise ValueError("Episode Not Found")
         return result
+    except ValueError as e:
+        return {"error": str(e), "status": "Not Found"}
+    except OperationalError as e:
+        return {"error": str(e), "status": "Database Not Available"}
+    except Exception as e:
+        return {"error": str(e), "status": "failed"}
     finally:
         session.close()
 
@@ -68,6 +78,12 @@ def get_episode_list(limit: int = 0, base_url: str = ""):
         for index, episode in enumerate(episode_list):
             result["episodes"][index] = Episode(episode, base_url).toJSON()
         return result
+    except ValueError as e:
+        return {"error": str(e), "status": "Not Found"}
+    except OperationalError as e:
+        return {"error": str(e), "status": "Database Not Available"}
+    except Exception as e:
+        return {"error": str(e), "status": "failed"}
     finally:
         session.close()
 
@@ -100,9 +116,11 @@ def get_episode_by_id(
             {"error": str, "status": "failed"}
 
     """
+    session = database_connection.get_database_session()
     try:
-        session = database_connection.get_database_session()
         episode_db = session.query(EpisodeDB).filter(EpisodeDB.id == id).first()
+        if episode_db is None:
+            raise AttributeError("Episode Not Found")
         episode = Episode(episode_db, base_url)
 
         if add_url:
@@ -111,12 +129,18 @@ def get_episode_by_id(
                 "url": f"{base_url}api/episodes/{id}",
             }
 
-        total_episodes = session.query(func.count(EpisodeDB.id)).scalar()
+        total_episodes = session.query(EpisodeDB).count()
         session.close()
         return episode.toJSON(metadata, total_episodes)
 
+    except AttributeError as e:
+        return {"error": str(e), "status": "Not Found"}
+    except OperationalError as e:
+        return {"error": str(e), "status": "Database Not Available"}
     except Exception as e:
         return {"error": str(e), "status": "failed"}
+    finally:
+        session.close()
 
 
 def get_last_episode(base_url: str = "") -> dict:
@@ -139,13 +163,21 @@ def get_last_episode(base_url: str = "") -> dict:
     try:
         session = database_connection.get_database_session()
         episode_db = session.query(EpisodeDB).order_by(EpisodeDB.id.desc()).first()
+        if episode_db is None:
+            raise AttributeError("Episode Not Found")
         episode = Episode(episode_db, base_url)
 
         session.close()
         return episode.toJSON()
 
+    except AttributeError as e:
+        return {"error": str(e), "status": "Not Found"}
+    except OperationalError as e:
+        return {"error": str(e), "status": "Database Not Available"}
     except Exception as e:
         return {"error": str(e), "status": "failed"}
+    finally:
+        session.close()
 
 
 def get_random_episode(
@@ -174,10 +206,22 @@ def get_random_episode(
 
     """
     session = database_connection.get_database_session()
-    query = session.query(EpisodeDB)
-    if exclude_paramount_plus:
-        query.filter(EpisodeDB.paramount_plus_exclusive is False)
-    if exclude_censored:
-        query.filter(EpisodeDB.censored is False)
-    episode = Episode(query.order_by(func.random()).first(), base_url=base_url)
-    return episode.toJSON()
+    try:
+        query = session.query(EpisodeDB)
+        if exclude_paramount_plus:
+            query.filter(EpisodeDB.paramount_plus_exclusive is False)
+        if exclude_censored:
+            query.filter(EpisodeDB.censored is False)
+        episode_db = query.order_by(func.random()).first()
+        if episode_db is None:
+            raise AttributeError("Episode Not Found")
+        episode = Episode(episode_db, base_url=base_url)
+        return episode.toJSON()
+    except AttributeError as e:
+        return {"error": str(e), "status": "Not Found"}
+    except OperationalError as e:
+        return {"error": str(e), "status": "Database Not Available"}
+    except Exception as e:
+        return {"error": str(e), "status": "failed"}
+    finally:
+        session.close()

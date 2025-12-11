@@ -49,6 +49,11 @@ def show_episode_list(
         json = get_episode_list_by_search(search, limit, base_url=str(request.base_url))
     else:
         json = get_episode_list(base_url=str(request.base_url), limit=limit)
+    if "error" in json:
+        if json["status"] == "Not Found":
+            response.status_code = status.HTTP_404_NOT_FOUND
+        if json["status"] == "Database Not Available":
+            response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
     return json
 
 
@@ -63,12 +68,10 @@ def get_the_last_episode(response: Response, request: Request) -> dict:
     """
     json = get_last_episode(str(request.base_url))
     if "error" in json:
-        if json["error"] == "Episode not found":
+        if json["status"] == "Not Found":
             response.status_code = status.HTTP_404_NOT_FOUND
-        elif json["error"] == "Database not available":
+        if json["status"] == "Database Not Available":
             response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
-    elif "episode" in json:
-        response.status_code = status.HTTP_200_OK
     return json
 
 
@@ -92,12 +95,10 @@ def show_random_special(request: Request, response: Response):
     """
     json = get_random_special(base_url=str(request.base_url))
     if "error" in json:
-        if json["error"] == "Special not found":
+        if json["status"] == "Not Found":
             response.status_code = status.HTTP_404_NOT_FOUND
-        elif json["error"] == "Database not available":
+        if json["status"] == "Database Not Available":
             response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
-    else:
-        response.status_code = status.HTTP_200_OK
     return json
 
 
@@ -133,12 +134,10 @@ def show_random_episode(
         base_url=str(request.base_url),
     )
     if "error" in json:
-        if json["error"] == "Episode not found":
+        if json["status"] == "Not Found":
             response.status_code = status.HTTP_404_NOT_FOUND
-        elif json["error"] == "Database not available":
+        if json["status"] == "Database Not Available":
             response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
-    else:
-        response.status_code = status.HTTP_200_OK
     return json
 
 
@@ -167,12 +166,12 @@ def show_special(
     base_url = str(request.base_url)
     json = get_special_by_id(id, base_url=base_url, metadata=metadata)
     if "error" in json:
-        if json["error"] == "Special not found":
+        if json["status"] == "Not Found":
             response.status_code = status.HTTP_404_NOT_FOUND
-        elif json["error"] == "Database not available":
+        if json["status"] == "Database Not Available":
             response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
-    elif "special" in json:
-        response.status_code = status.HTTP_200_OK
+    return json
+
     return json
 
 
@@ -200,10 +199,8 @@ def show_episode(
     """
     json = get_episode_by_id(id, base_url=str(request.base_url), metadata=metadata)
     if "error" in json:
-        if json["error"] == "Episode not found":
+        if json["status"] == "Not Found":
             response.status_code = status.HTTP_404_NOT_FOUND
-        elif json["error"] == "Database not available":
+        if json["status"] == "Database Not Available":
             response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
-    elif "episode" in json:
-        response.status_code = status.HTTP_200_OK
     return json
