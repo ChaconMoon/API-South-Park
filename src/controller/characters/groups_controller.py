@@ -86,9 +86,9 @@ def get_group_list(base_url: str, limit: int = 0):
 
         return result
     except (OperationalError, ProgrammingError, InvalidRequestError, DataError) as e:
-        return {"error": str(e), "status": "Database query error"}
+        return {"error": str(e), "status": "Database Not Available"}
     except (TypeError, AttributeError) as e:
-        return {"error": str(e), "status": "Error processing group data"}
+        return {"error": str(e), "status": "Not Found"}
     finally:
         session.close()
 
@@ -119,7 +119,7 @@ def get_group_by_id(id, base_url: str = "", metadata=False):
         return group.toJSON(metadata, groups_count)
 
     except TypeError as e:
-        return {"error": str(e), "status": "Not Found a group with this ID"}
+        return {"error": str(e), "status": "Not Found"}
     except OperationalError as e:
         return {"error": str(e), "status": "Database Not Available"}
     except Exception as e:

@@ -34,7 +34,7 @@ def test_song_database_correct():
 
 def test_song_object_not_found():
     """Test a not found Response in Episode Endpoint."""
-    fake_response = {"error": "Song not found", "status": "failed"}
+    fake_response = {"error": "Song not found", "status": "Not Found"}
     with patch(
         "src.controller.music.music_endpoints.get_song_by_id"
     ) as database_response:
@@ -46,7 +46,10 @@ def test_song_object_not_found():
 
 def test_song_database_not_available():
     """Test a not available Response in Episode Endpoint."""
-    fake_response = {"error": "Database not available", "status": "failed"}
+    fake_response = {
+        "error": "Database not available",
+        "status": "Database Not Available",
+    }
     with patch(
         "src.controller.music.music_endpoints.get_song_by_id"
     ) as database_response:

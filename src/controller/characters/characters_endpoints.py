@@ -67,7 +67,7 @@ def show_group_list(
         json = get_group_list(base_url=str(request.base_url), limit=limit)
 
     if "error" in json:
-        if json["status"] == "Not found":
+        if json["status"] == "Not Found":
             response.status_code = status.HTTP_404_NOT_FOUND
         else:
             response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
@@ -120,7 +120,7 @@ def show_group(request: Request, response: Response, id, metadata=False):
     json = get_group_by_id(id, str(request.base_url), metadata)
 
     if "error" in json:
-        if json["status"] == "Not Found a group with this ID":
+        if json["status"] == "Not Found":
             response.status_code = status.HTTP_404_NOT_FOUND
         if json["status"] == "Database Not Available":
             response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
@@ -158,9 +158,9 @@ def show_random_character(
         exclude_famous_guests=exclude_famous_guests, base_url=str(request.base_url)
     )
     if "error" in json:
-        if json["error"] == "Character not found":
+        if json["status"] == "Not Found":
             response.status_code = status.HTTP_404_NOT_FOUND
-        elif json["error"] == "Database not available":
+        elif json["status"] == "Database Not Available":
             response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
     else:
         response.status_code = status.HTTP_200_OK
@@ -329,7 +329,7 @@ def show_random_family(response: Response, request: Request):
     """
     json = get_random_family(base_url=str(request.base_url))
     if "error" in json:
-        if json["status"] == "Family not found":
+        if json["status"] == "Not Found":
             response.status_code = status.HTTP_404_NOT_FOUND
         elif json["status"] == "Database Not Available":
             response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
@@ -359,9 +359,9 @@ def show_random_alterego(request: Request, response: Response, character: int = 
     base_url = str(request.base_url)
     json = get_random_alterego(character, base_url)
     if "error" in json:
-        if json["error"] == "Alter Ego not found":
+        if json["status"] == "Not Found":
             response.status_code = status.HTTP_404_NOT_FOUND
-        elif json["error"] == "Database Not Available":
+        elif json["status"] == "Database Not Available":
             response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
         else:
             response.status_code = status.HTTP_200_OK
@@ -394,7 +394,7 @@ def show_family(
     base_url = str(request.base_url)
     json = get_family_by_id(id, url=base_url, metadata=metadata)
     if "error" in json:
-        if json["status"] == "Not Family Found":
+        if json["status"] == "Not Found":
             response.status_code = status.HTTP_404_NOT_FOUND
         if json["status"] == "Database Not Available":
             response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
@@ -427,7 +427,7 @@ async def show_character(
     base_url = str(request.base_url)
     json = get_character_by_id(id, base_url=base_url, metadata=metadata)
     if "error" in json:
-        if json["status"] == "Character Not Found":
+        if json["status"] == "Not Found":
             response.status_code = status.HTTP_404_NOT_FOUND
         elif json["status"] == "Database Not Available":
             response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR

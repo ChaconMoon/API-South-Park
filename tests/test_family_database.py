@@ -41,7 +41,7 @@ def test_family_database_correct():
 
 def test_family_object_not_found():
     """Test A Not Found Response in Special Endpoint."""
-    fake_response = {"error": "Family not found", "status": "failed"}
+    fake_response = {"error": "Family not found", "status": "Not Found"}
     with patch(
         "src.controller.characters.characters_endpoints.get_family_by_id"
     ) as database_response:
@@ -53,7 +53,10 @@ def test_family_object_not_found():
 
 def test_family_database_not_available():
     """Test A Not Available Response in Special Endpoint."""
-    fake_response = {"error": "Database not available", "status": "failed"}
+    fake_response = {
+        "error": "Database not available",
+        "status": "Database Not Available",
+    }
     with patch(
         "src.controller.characters.characters_endpoints.get_family_by_id"
     ) as database_response:
