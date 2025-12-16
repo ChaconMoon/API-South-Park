@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict SfcoKgjG4BsO1u7XMkGoq5KByRQ5VNNEvwrPSNSUn89OI1fsX8Xo4q3N3V1HAmt
+\restrict zFGty3aWpP0onpbylp6GaS9Wr8GiQdU6hXZki0ReOGju7ndixJdf6wdxe0CQDLd
 
 -- Dumped from database version 15.15 (Debian 15.15-1.pgdg13+1)
 -- Dumped by pg_dump version 15.15 (Debian 15.15-1.pgdg13+1)
@@ -713,7 +713,7 @@ COPY public.characters (id, name, family_id, birthday, age, religion, debut_epis
 172	Thumper	36	\N	\N	\N	170	{/img/characters/show/Thumper.png}	f
 836	Hippies	\N	\N	\N	\N	127	{/img/characters/show/Hippies.png}	f
 835	Hillbilly Brigade	\N	\N	\N	\N	154	{/img/characters/show/Farmers-rednecks-skeeter-eddie-friend.png}	f
-880	Howard Stern	\N	January 12th	71	{Judaism}	63	{/img/characters/show/Howard_Stern.png}	t
+847	Howard Stern	\N	January 12th	71	{Judaism}	63	{/img/characters/show/Howard_Stern.png}	t
 222	"Agent" Tucker	\N	\N	\N	\N	102	{/img/characters/show/Agent_Tucker.png}	f
 223	Aging Hippie Liberal Douche	\N	\N	\N	\N	118	{/img/characters/show/AGING_HIPPIE_LIBERAL_DOUCHE.png}	f
 228	Al Pacino	\N	April 25th	85	{Catholic}	257	{/img/characters/show/Al_Pacino.png}	t
@@ -724,16 +724,10 @@ COPY public.characters (id, name, family_id, birthday, age, religion, debut_epis
 234	Alcoholics Anonymous Boy	\N	\N	\N	\N	139	{/img/characters/show/Alcoholics_Anonymous_Boy.png}	f
 236	Alex Glick	\N	\N	\N	\N	103	{/img/characters/show/Alex_Glick.png}	t
 238	Alexa	\N	\N	\N	\N	278	{/img/characters/show/Alexa.png}	t
-881	Howard Flannigan	81	\N	\N	\N	241	{/img/characters/show/Howard_Flannigan.png}	f
-843	Horace Sanders	80	\N	\N	\N	63	{/img/characters/show/Horace_Sanders.png}	f
 249	Alois and Klara Hitler	\N	\N	\N	\N	46	{/img/characters/show/Hitler_Parents.png}	t
 250	Alton Crawford Brown Jr	\N	July 30th	63	\N	209	{/img/characters/show/Alton_Brown.png}	t
-882	Hopkins	\N	\N	\N	\N	102	{/img/characters/show/Hopkins.png}	f
 841	Homeless People	\N	\N	\N	\N	160	{/img/characters/show/Homeless_People.png}	f
-849	Human Pete Puma	\N	\N	\N	\N	202	{/img/characters/show/Pete_Puma.png}	f
-848	Human Beaky Buzzard	\N	\N	\N	\N	202	{/img/characters/show/Buzzard_Kid.png}	f
-847	Hugh	\N	\N	\N	\N	288	{/img/characters/show/Hugh.png}	t
-846	Hu Jintao	\N	December 21st	82	{Atheism}	187	{/img/characters/show/Wen_Jiabao.png}	t
+842	Horace Sanders	80	\N	\N	\N	63	{/img/characters/show/Horace_Sanders.png}	f
 219	Afro Ninja	\N	\N	\N	\N	171	{/img/characters/show/Afro_Ninja.png}	t
 215	Adam Borque	\N	\N	\N	\N	281	{/img/characters/show/Adam_Borque.png}	f
 224	Airport Security Guard	\N	\N	\N	\N	76	{/img/characters/show/Airport_Security_Guard.png}	f
@@ -746,9 +740,15 @@ COPY public.characters (id, name, family_id, birthday, age, religion, debut_epis
 311	Big Gay Al	49	\N	\N	\N	4	{/img/characters/show/Big_Gay_Al.png}	f
 313	Biggest Douche in the Universe Committee	\N	\N	\N	\N	94	{/img/characters/show/Biggest_Douche_Judges.png}	f
 259	Angela Merkel	\N	July 17th	71	{Lutheran}	187	{/img/characters/show/Angela_Merkel.png}	t
+843	Hu Jintao	\N	December 21st	82	{Atheism}	187	{/img/characters/show/Wen_Jiabao.png}	t
 260	Angelina Jolie	\N	June 4th	50	{"Former Roman Catholic"}	156	{/img/characters/show/Angelina_Jolie_Voight.png}	t
 261	Angus T. Jones	\N	October 8th	31	{Adventist}	203	{/img/characters/show/Angus_T_Jones.png}	t
+844	Hugh	\N	\N	\N	\N	288	{/img/characters/show/Hugh.png}	t
 263	Ann Curry	\N	November 19th	68	\N	197	{/img/characters/show/Ann_Curry.png}	t
+845	Human Beaky Buzzard	\N	\N	\N	\N	202	{/img/characters/show/Buzzard_Kid.png}	f
+846	Human Pete Puma	\N	\N	\N	\N	202	{/img/characters/show/Pete_Puma.png}	f
+848	Howard Flannigan	81	\N	\N	\N	241	{/img/characters/show/Howard_Flannigan.png}	f
+849	Hopkins	\N	\N	\N	\N	102	{/img/characters/show/Hopkins.png}	f
 272	Archangel Michael	\N	\N	\N	\N	129	{/img/characters/show/Archangel_Michael.png}	f
 355	Bobby	\N	\N	\N	\N	226	{/img/characters/show/Bobby.png}	f
 273	Arnold Schwarzenegger	\N	July 30th	78	{"Roman Catholic"}	204	{/img/characters/show/Arnold_Schwarzenegger.png}	t
@@ -2559,5 +2559,5 @@ ALTER TABLE ONLY public.alter_ego
 -- PostgreSQL database dump complete
 --
 
-\unrestrict SfcoKgjG4BsO1u7XMkGoq5KByRQ5VNNEvwrPSNSUn89OI1fsX8Xo4q3N3V1HAmt
+\unrestrict zFGty3aWpP0onpbylp6GaS9Wr8GiQdU6hXZki0ReOGju7ndixJdf6wdxe0CQDLd
 
