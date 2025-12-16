@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict pTCRfDuPYXtADSKm52GO9Sf9GWpNnN8z5VedfLUryx5P2g2FTYYZn2EWDWBLtsY
+\restrict MF59YN1gKzVWqbcMj0jYHIH075K9DgMQDRenc3SKWwV7eMTYoR5wq7os09zuCq9
 
 -- Dumped from database version 15.15 (Debian 15.15-1.pgdg13+1)
 -- Dumped by pg_dump version 15.15 (Debian 15.15-1.pgdg13+1)
@@ -29,7 +29,7 @@ SET default_table_access_method = heap;
 CREATE TABLE public.album_songs (
     id integer NOT NULL,
     name text NOT NULL,
-    album integer NOT NULL,
+    album_id integer NOT NULL,
     lyrics text,
     song_url text
 );
@@ -104,7 +104,7 @@ ALTER SEQUENCE public.albums_id_seq OWNED BY public.albums.id;
 CREATE TABLE public.alter_ego (
     id integer NOT NULL,
     original_character integer NOT NULL,
-    name text,
+    name text NOT NULL,
     images text[]
 );
 
@@ -118,11 +118,11 @@ ALTER TABLE public.alter_ego OWNER TO southpark;
 CREATE TABLE public.characters (
     id integer NOT NULL,
     name text NOT NULL,
-    family integer,
+    family_id integer,
     birthday text,
     age integer,
     religion text[],
-    first_apperance integer NOT NULL,
+    debut_episode integer NOT NULL,
     images text[],
     famous_guest boolean
 );
@@ -186,9 +186,9 @@ CREATE TABLE public.episodes (
     name text NOT NULL,
     season integer NOT NULL,
     episode integer NOT NULL,
-    realese_date date,
+    release_date date,
     description text,
-    view_on_website text,
+    website_url text,
     censored boolean DEFAULT false,
     paramount_plus_exclusive boolean DEFAULT false,
     image text
@@ -263,7 +263,7 @@ CREATE TABLE public.games (
     name text NOT NULL,
     developer text,
     platforms text[],
-    realese_date date,
+    release_date date,
     images text[]
 );
 
@@ -297,7 +297,7 @@ ALTER SEQUENCE public.games_id_seq OWNED BY public.games.id;
 --
 
 CREATE TABLE public.groups (
-    "ID" integer NOT NULL,
+    id integer NOT NULL,
     name text NOT NULL,
     image text
 );
@@ -360,7 +360,7 @@ ALTER TABLE ONLY public.games ALTER COLUMN id SET DEFAULT nextval('public.games_
 -- Data for Name: album_songs; Type: TABLE DATA; Schema: public; Owner: southpark
 --
 
-COPY public.album_songs (id, name, album, lyrics, song_url) FROM stdin;
+COPY public.album_songs (id, name, album_id, lyrics, song_url) FROM stdin;
 1	South Park Theme	1	I'm goin' down to South Park, gonna have myself a time\nFriendly faces everywhere humble folks without temptations\n\nGoing down to South Park, gonna leave my woes behind\nAmple parking day or night, people spouting: Howdy, Neighbor\n\nI'm heading down to South Park, gonna see if I can unwind\nI like girls with big vagina, I like girls with big fat titties\nSo coming down to South Park, and meet some fiends' mine	https://music.youtube.com/watch?v=b7uJyw6eXzg
 2	Nowhere to Run	1	Fuck that shit, you know what I'm sayin'?\nI'm a give a shout out to my niggas\nI ain't givin' a shout to no-fuckin'-body, fuck that\nBig Baby Jesus in the mother fucking house\nKnow what I'm sayin'?\nUnh, come on\nI don't walk, I stalk, livin' foul like pork\nShuttin' down underground streets of New York\nHawk is what them niggas call me, 'cause they all be\nSuckin' my dick and on my mother fucking balls, G\nI know the half, so I laugh wit' 'em\nBlood bath went I let the fuckin' rap hit 'em\nFull clip, but only half did 'em\nThat's all it took, another crook\nTaken out over a dirty look\nI bag game with niggas I leave shot dead\nYou're only taken a piss from me with hot led\nYou know my style faggot, 'cause I'm always schemin'\nIn jail, niggas holdin' a sink screamin'\nPolice, but you got no peace\nYo, was that you big man, and alot mo' grease\nAll I gets is pounds, you ain't want none of this\nBack streets are like track meets 'cause I be runnin' this\nAin't nowhere to run ('cause I be runnin' this)\nAin't nowhere to hide (come on)\nAin't nowhere to go ('cause I be runnin' this)\nReaper saved your soul (come on)\nSurroned by the colors, I see crimson, black and blue (come on)\nLocking open doors again, I'm still afraid of you\n(straight up, mother fucker)\nLight to dark, then light again, I always thought I knew (come on)\nYoung to old and young again, what's left for me to do? (straight up)\nCenter of the universe, collecting me in time (come on)\nI'm falling down upon the earth, and singing truth in rhyme (come on)\nIf I was a rolling stone, I'd roll until I'm through (come on)\nAnd if I was a garden I would bloom in black for you\n(Dirt Dog in effect)\nAin't nowhere to run ('cause I be runnin' this)\nAin't nowhere to hide (come on)\nAin't nowhere to go ('cause I be runnin' this)\nReaper saved your soul (come on)\nahhhh, yi yi yi yi (come on)\nAin't nowhere to run ('cause I be runnin' this)\nAin't nowhere to hide (come on)\nAin't nowhere to go ('cause I be runnin' this)\nReaper saved your soul (come on)\nha ha ha ha ha ha ha\nWhat you mother fuckers invented\nIs the craziest nigga that ever been invented\nha ha ha ha ha\nMost know, don't front on Ol' Dity Bastard\nha ha ha ha\nI call on Jesus\nThere's no obstacles that you have to jump\nThere's no walls that you have to climb\nThis is real, this is elementary dear\nElementary, Watson, Elementary\nahhhhh\nI ain't no pictue on your fore wall, necklace wearin' beard\nYou don't want this money till it's rich\nBuy my album, coded by Dirty, set you free\nGo against the grain, I got the p\nI know you don't recognize me now\nI dunked your tongue\nHow many lightening bulbs do it take to light up a fuck mode?\nBrothers, people, you'd better get the fuck off of me\nWe don't need it, it gets more ugly\nFools tryin' to bust their ass\nTryin' to get away from me when I said my real name\nI call myself in the niggas butthole\nAll the same, all the same, all the same\nAin't nowhere to run\nAin't nowhere to hide\nAin't nowhere to go\nReaper saved your soul\nahhh yi yi yi yi\nWhat, mother fucker?\nDon't try to psychology my shit, mother fucker\n'cause you'll never psychology it, mother fucker\nNever, never, never, mother fucker, never	https://music.youtube.com/watch?v=pSXty-BZ7kc
 6	Kenny's Dead	1	This is Master P, I'm down here in South Park\nAnd I just put a million dollar reward up for any information or anybody who knows who killed Kenny, ya heard!?\n\n[Kenny's Dead] We got to ride tonight\nMy little homie, Kenny died tonight\n[That's What I Said] We got to ride tonight\nMy little homie, Kenny died tonight\n[Kenny's Dead] We got to ride tonight\nMy little homie, Kenny died tonight\n[That's what I said] We got to ride tonight\nMy little homie, Kenny died tonight\n\nKenny started messing up, hanging with the thugs\nCutting class in the fast section, ecstasy, weed and drugs\nAnd I guess that's how it is, when the ghetto's got you trapped\nBut Kenny ain't scared, he seen his pops get his neck snapped\nPeople lie and they cheat on South Park streets\nWhere the hoes chill and everybody run from the police\nBut what I liked about Kenny, he wasn't no Crip or no Blood\nAnd he mumbled when he talked, but he loved that bud..\n\n[Kenny's Dead] We got to ride tonight\nMy little homie, Kenny died tonight\n[That's What I Said] We got to ride tonight\nMy little homie, Kenny died tonight\n[Kenny's Dead] We got to ride tonight\nMy little homie, Kenny died tonight\n[That's what I said] We got to ride tonight\nMy little homie, Kenny died tonight\n\nAlotta hopeless nights chasin' nickels and dimes\nKenny rode the yellow bus to school, but at night he did crimes\n211, 187, it's like a hobby\nKenny slowed his roll, he did 3 years for a robbery\nSome say Kenny was the poorest kid on the street\nBut picture this, Kenny with about 10 Gs and a couple of keys\nServing the dope fiends, standing on the corner\nMoved and worked from New Orleans to Arizona\nBut it was a trip, Kenny I was wondering how you would die\nWould it be a car crash, a plane, a gun, or suicide?!\nHe knew one day that the rats would come\nBut he didn't know they was gonna scream 'bout it!'\nAnd hit him with a shotgun\n\n[Kenny's Dead] We got to ride tonight\nMy little homie, Kenny died tonight\n[That's What I Said] We got to ride tonight\nMy little homie, Kenny died tonight\n[Kenny's Dead] We got to ride tonight\nMy little homie, Kenny died tonight\n[That's what I said] We got to ride tonight\nMy little homie, Kenny died tonight\n\nA lot of wasted deaths\nA lot of senseless crime\nBut everybody think about what you do out there\nBecause uh, Judgment Day is for everybody\nJust remember that we can't take none of this with us\nAnd it's real out here on these streets\nI'd love to live like Kenny\nDie these days, ain't no coming back\nHombre, Master P, no limit to the world, baby\nIt don't get no realer than this	https://music.youtube.com/watch?v=eFQhSRbUYQQ
@@ -580,7 +580,7 @@ COPY public.alter_ego (id, original_character, name, images) FROM stdin;
 -- Data for Name: characters; Type: TABLE DATA; Schema: public; Owner: southpark
 --
 
-COPY public.characters (id, name, family, birthday, age, religion, first_apperance, images, famous_guest) FROM stdin;
+COPY public.characters (id, name, family_id, birthday, age, religion, debut_episode, images, famous_guest) FROM stdin;
 2	Eric Theodore Cartman	2	July 1st	10	{"Roman Catholicism","Blaintologistism (Temporary)","Judaism (Post-Covid)"}	1	{/img/characters/show/Eric_Cartman.png}	f
 3	Kyle Broflovski	1	May 26th	10	{Judaism,"Christianity (Temporary)","Blaintologist (Temporary)","Atheistism (Temporary)"}	1	{/img/characters/show/Kyle_Broflovski.png}	f
 5	Sir Ike Moisha Broflovski	1	December 17th	3	{Judaism}	1	{/img/characters/show/Ike_Broflovski.png}	f
@@ -1740,7 +1740,7 @@ COPY public.chinpokomon (id, name, image) FROM stdin;
 -- Data for Name: episodes; Type: TABLE DATA; Schema: public; Owner: southpark
 --
 
-COPY public.episodes (id, name, season, episode, realese_date, description, view_on_website, censored, paramount_plus_exclusive, image) FROM stdin;
+COPY public.episodes (id, name, season, episode, release_date, description, website_url, censored, paramount_plus_exclusive, image) FROM stdin;
 17	Chickenlover	2	4	1998-05-27	When Barbrady resigns, anarchy ensues and the boys pitch in to help.	https://www.southparkstudios.com/episodes/c1m717/south-park-chickenlover-season-2-ep-4	f	f	img/episodes/17.jpg
 20	City on the Edge of Forever (Flashbacks)	2	7	1998-06-17	A freak accident leaves the South Park Elementary School Bus teetering precariously on the edge of a cliff.	https://www.southparkstudios.com/episodes/k5278s/south-park-city-on-the-edge-of-forever-season-2-ep-7	f	f	img/episodes/20.jpg
 21	Summer Sucks	2	8	1998-06-24	The entire town is gearing up for the annual 4 July celebration when a ban on fireworks is imposed.	https://www.southparkstudios.com/episodes/3wdzae/south-park-summer-sucks-season-2-ep-8	f	f	img/episodes/21.jpg
@@ -2164,7 +2164,7 @@ COPY public.families (id, name, images) FROM stdin;
 -- Data for Name: games; Type: TABLE DATA; Schema: public; Owner: southpark
 --
 
-COPY public.games (id, name, developer, platforms, realese_date, images) FROM stdin;
+COPY public.games (id, name, developer, platforms, release_date, images) FROM stdin;
 13	South Park (Gameboy Prototype)	Crawfish Interactive	{GBC}	\N	{/img/games/Gameboy_Game.webp}
 1	South Park Imaginationland	Mr. Goodliving	{IOS}	2008-07-10	{/img/games/ImaginationlandGame.jpg}
 2	South Park (Videogame)	Appaloosa Interactive	{PS1}	1999-09-30	{/img/games/SouthParkTheGame.jpg}
@@ -2205,7 +2205,7 @@ COPY public.games (id, name, developer, platforms, realese_date, images) FROM st
 -- Data for Name: groups; Type: TABLE DATA; Schema: public; Owner: southpark
 --
 
-COPY public.groups ("ID", name, image) FROM stdin;
+COPY public.groups (id, name, image) FROM stdin;
 1	The Boys	img/groups/The_Boys.png
 2	Craig's Gang	img/groups/Craig_Gang.png
 3	Asian Girls	img/groups/Asian_Girls.png
@@ -2431,7 +2431,7 @@ ALTER TABLE ONLY public.games
 --
 
 ALTER TABLE ONLY public.groups
-    ADD CONSTRAINT groups_pkey PRIMARY KEY ("ID");
+    ADD CONSTRAINT groups_pkey PRIMARY KEY (id);
 
 
 --
@@ -2455,7 +2455,7 @@ ALTER TABLE ONLY public.specials
 --
 
 ALTER TABLE ONLY public.characters
-    ADD CONSTRAINT episode_debut_fkey FOREIGN KEY (first_apperance) REFERENCES public.episodes(id) NOT VALID;
+    ADD CONSTRAINT episode_debut_fkey FOREIGN KEY (debut_episode) REFERENCES public.episodes(id) NOT VALID;
 
 
 --
@@ -2463,7 +2463,7 @@ ALTER TABLE ONLY public.characters
 --
 
 ALTER TABLE ONLY public.characters
-    ADD CONSTRAINT family_fkey FOREIGN KEY (family) REFERENCES public.families(id) NOT VALID;
+    ADD CONSTRAINT family_fkey FOREIGN KEY (family_id) REFERENCES public.families(id) NOT VALID;
 
 
 --
@@ -2471,7 +2471,7 @@ ALTER TABLE ONLY public.characters
 --
 
 ALTER TABLE ONLY public.album_songs
-    ADD CONSTRAINT fk_album FOREIGN KEY (album) REFERENCES public.albums(id) NOT VALID;
+    ADD CONSTRAINT fk_album FOREIGN KEY (album_id) REFERENCES public.albums(id) NOT VALID;
 
 
 --
@@ -2487,7 +2487,7 @@ ALTER TABLE ONLY public.characters_group
 --
 
 ALTER TABLE ONLY public.characters_group
-    ADD CONSTRAINT fk_group FOREIGN KEY (id_group) REFERENCES public.groups("ID");
+    ADD CONSTRAINT fk_group FOREIGN KEY (id_group) REFERENCES public.groups(id);
 
 
 --
@@ -2502,5 +2502,5 @@ ALTER TABLE ONLY public.alter_ego
 -- PostgreSQL database dump complete
 --
 
-\unrestrict pTCRfDuPYXtADSKm52GO9Sf9GWpNnN8z5VedfLUryx5P2g2FTYYZn2EWDWBLtsY
+\unrestrict MF59YN1gKzVWqbcMj0jYHIH075K9DgMQDRenc3SKWwV7eMTYoR5wq7os09zuCq9
 

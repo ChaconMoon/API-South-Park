@@ -5,10 +5,12 @@ This module get the param of the API in the get alter ego operations,
 make the query to the API and return the result.
 """
 
-from sqlalchemy import text
+from sqlalchemy import func
+from sqlalchemy.exc import OperationalError
 
-from src.controller.database_connection import get_query_result
+from src.controller import database_connection
 from src.model.alter_ego import AlterEgo
+from src.model.ORM.alter_ego_db import AlterEgoDB
 
 
 # Get one Alter Ego by the character and id
@@ -29,25 +31,19 @@ def get_alter_ego_by_character_and_id(
         The JSON Response
 
     """
+    session = database_connection.get_database_session()
     try:
-        # Get Query result
-        query_result = get_query_result(
-            text("""
-                        SELECT alter_ego.id,characters.name,alter_ego.name as alter_ego,
-                         alter_ego.images FROM public.alter_ego, public.characters
-                        where characters.id = alter_ego.original_character
-                         and characters.id = :id_character
-                         AND alter_ego.id = :id_alter_ego"""),
-            {"id_character": id_character, "id_alter_ego": id_alter_ego},
+        alterego_db = (
+            session.query(AlterEgoDB)
+            .filter(
+                AlterEgoDB.id == id_alter_ego,
+                AlterEgoDB.original_character == id_character,
+            )
+            .first()
         )
-        if query_result is None:
-            return {"error": "Database not available", "status": "failed"}
-        elif query_result.rowcount == 0:
-            return {"error": "Alter Ego not found", "status": "failed"}
-
-        # Get Alter Ego data
-        for row in query_result:
-            alter_ego = AlterEgo(row, base_url)
+        if alterego_db is None:
+            raise ValueError("AlterEgo Not Found")
+        alter_ego = AlterEgo(alterego_db, base_url)
 
         # Return the result with the URL
         if add_url:
@@ -57,18 +53,23 @@ def get_alter_ego_by_character_and_id(
                 f"{base_url}api/characters/{id_character}/alteregos/{id_alter_ego}"
             )
             return result
-        # Return Alter_Ego Info
-        query_result = get_query_result(
-            text("""
-                        SELECT * FROM public.alter_ego
-                        where original_character = :id_character"""),
-            {"id_character": id_character},
+
+        alter_ego_count = (
+            session.query(AlterEgoDB)
+            .filter(AlterEgoDB.original_character == id_character)
+            .count()
         )
 
-        return alter_ego.toJSON(metadata, query_result.rowcount)
+        return alter_ego.toJSON(metadata, alter_ego_count)
     # Control exceptions
+    except ValueError as e:
+        return {"error": str(e), "status": "Not Found"}
+    except OperationalError as e:
+        return {"error": str(e), "status": "Database Not Available"}
     except Exception as e:
         return {"error": str(e), "status": "failed"}
+    finally:
+        session.close()
 
 
 # Get all the alter egos of a character
@@ -85,41 +86,30 @@ def get_all_alteregos_of_a_character(id_character: int, add_url=False, base_url=
         The JSON Response
 
     """
+    session = database_connection.get_database_session()
     try:
-        # Get the result of the query
-        query_result = get_query_result(
-            text(
-                """SELECT * FROM public.alter_ego
-                 where original_character = :id_character order by id asc"""
-            ),
-            {"id_character": id_character},
+        alterego_list_db = (
+            session.query(AlterEgoDB)
+            .filter(AlterEgoDB.original_character == id_character)
+            .all()
         )
 
-        # Get number of alteregos
-        number_of_alter_egos = query_result.rowcount
-
-        # If the number of alter egos is 0 return a empty object
-        if query_result is None:
-            return {"error": "Database not available", "status": "failed"}
-        elif query_result.rowcount == 0:
-            return None
-
-        # Return the list of the alter ego
-        alter_ego_id = 1
-        result = dict()
-        result["alteregos"] = dict()
-        while alter_ego_id != number_of_alter_egos + 1:
-            result["alteregos"][alter_ego_id - 1] = get_alter_ego_by_character_and_id(
-                id_alter_ego=alter_ego_id,
-                id_character=id_character,
-                base_url=base_url,
-                add_url=True,
-            )
-            alter_ego_id += 1
+        result = {"alteregos": []}
+        if alterego_list_db == []:
+            raise ValueError("AlterEgos Not Found")
+        result["alteregos"].extend(
+            AlterEgo(alterego_db, base_url) for alterego_db in alterego_list_db
+        )
         return result
     # Control exceptions
-    except Exception:
-        return {"message": "error"}
+    except ValueError as e:
+        return {"error": str(e), "status": "Not Found"}
+    except OperationalError as e:
+        return {"error": str(e), "status": "Database Not Available"}
+    except Exception as e:
+        return {"error": str(e), "status": "failed"}
+    finally:
+        session.close()
 
 
 def get_random_alterego(character: int = 0, base_url=""):
@@ -134,25 +124,22 @@ def get_random_alterego(character: int = 0, base_url=""):
         The JSON Response
 
     """
-    query_result = get_query_result(
-        text("""
-                SELECT *
-                FROM public.alter_ego
-                WHERE original_character = :character
-                OR NOT EXISTS (
-                    SELECT 1 FROM public.alter_ego WHERE original_character = :character
-                    )
-                ORDER BY RANDOM()
-                LIMIT 1;
-                """),
-        {"character": character},
-    )
-    if query_result is None:
-        return {"error": "Database not available", "status": "failed"}
-    elif query_result.rowcount == 0:
-        return {"error": "Alter Ego not found", "status": "failed"}
-
-    # Add all the family members to the array.
-    for row in query_result:
-        alterego = AlterEgo(row, base_url)
-    return alterego.toJSON()
+    session = database_connection.get_database_session()
+    try:
+        if character != 0:
+            alterego_db = (
+                session.query(AlterEgoDB)
+                .filter(AlterEgoDB.original_character == character)
+                .order_by(func.random())
+                .first()
+            )
+        else:
+            alterego_db = session.query(AlterEgoDB).order_by(func.random()).first()
+        alterego = AlterEgo(alterego_db, base_url)
+        return alterego.toJSON()
+    except OperationalError as e:
+        return {"error": str(e), "status": "Database Not Available"}
+    except Exception as e:
+        return {"error": str(e), "status": "failed"}
+    finally:
+        session.close()

@@ -53,18 +53,18 @@ def test_if_image_exist_in_characters():
         raise requests.RequestException("API Not Available Error")
     for character in list_characters_with_alteregos:
         logging.info(f"Actual Character: {character}")
-        actual_character = requests.get(
+        response = requests.get(
             f"{os.getenv('TESTING_SOUTH_PARK_API_URL')}/api/characters/{character}/alteregos",
             timeout=10,
-        ).json()["alteregos"]
+        )
+        response.raise_for_status()
+        alter_egos_list = response.json()["alteregos"]
 
-        for alter_ego_number in range(0, len(actual_character), 1):
-            alter_ego_images = requests.get(
-                actual_character[str(alter_ego_number)]["url"], timeout=10
-            ).json()["images"]
-            for image in alter_ego_images:
-                if requests.get(image, timeout=10).status_code != 200:
+        for alter_ego in alter_egos_list:
+            alter_ego_name = alter_ego["name"]
+            for image_url in alter_ego["images"]:
+                if requests.get(image_url, timeout=10).status_code != 200:
                     raise requests.RequestException(
-                        f"""Character: {character} Image: {alter_ego_number},
-                        URL: {image} NOT AVAILABLE """
+                        f"""Character: {character}, Alter Ego: {alter_ego_name},
+                        URL: {image_url} NOT AVAILABLE """
                     )

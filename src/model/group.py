@@ -6,63 +6,9 @@ Defines the Group model and related functions.
 """
 
 from pydantic import BaseModel, ValidationError
-from sqlalchemy import text
 
-from src.controller.database_connection import get_query_result
 from src.model.ApiObject import ApiObject
-from src.model.characters import Character
-
-
-def get_group_name_by_id(id: int) -> str:
-    """
-    Retrieve the name of a group from the database by its ID.
-
-    Args:
-        id (int): The ID of the group to retrieve.
-
-    Returns:
-        str: The name of the group.
-
-    """
-    query_execution = get_query_result(
-        text(
-            """
-                SELECT name FROM public.groups
-                where "ID" = :id
-                """
-        ),
-        {"id": id},
-    )
-    query_result = query_execution.mappings().all()
-    try:
-        return str(query_result[0]["name"])
-    except IndexError:
-        return None
-
-
-def get_group_image_by_id(id: int, base_url) -> str:
-    """
-    Retrieve the image of a group from the database by its ID.
-
-    Args:
-        id (int): The ID of the group to retrieve.
-        base_url (str): The base URL used to create the links
-
-    Returns:
-        str: The image of the group.
-
-    """
-    query_execution = get_query_result(
-        text(
-            """
-                SELECT image FROM public.groups
-                where "ID" = :id
-            """
-        ),
-        {"id": id},
-    )
-    query_result = query_execution.mappings().all()
-    return base_url + str(query_result[0]["image"])
+from src.model.ORM.groups_db import GroupDB
 
 
 class Group(BaseModel, ApiObject):
@@ -86,13 +32,13 @@ class Group(BaseModel, ApiObject):
     image: str
     known_members: list[dict] | list
 
-    def __init__(self, id: int, rows: list, base_url: str = "") -> "Group":
+    def __init__(self, group_db: GroupDB, base_url: str = "") -> "Group":
         """
         Initialize a Group object.
 
         Args:
             id (int): The ID of the group.
-            rows (list): A list of rows from the database containing member IDs.
+            group_db (GroupDB): The ORM object from the database.
             base_url (str, optional): The base URL for generating character links.
 
         Raises:
@@ -100,17 +46,23 @@ class Group(BaseModel, ApiObject):
             If there is an error building the Group object due to validation issues.
 
         """
-        known_members = []
         try:
-            known_members.extend(
-                Character(row).toJSON(compacted=True, base_url=base_url) for row in rows
-            )
-            if known_members == []:
+            # Use a list comprehension to build the list of member dictionaries
+            known_members = [
+                {
+                    "name": character.name,
+                    "url": f"{base_url}api/characters/{character.id}",
+                }
+                for character in group_db.characters
+            ]
+
+            if not known_members:
                 known_members = ["NO KNOWN MEMBERS"]
+
             data = {
-                "id": id,
-                "name": get_group_name_by_id(id),
-                "image": get_group_image_by_id(id, base_url),
+                "id": group_db.id,
+                "name": group_db.name,
+                "image": base_url + group_db.image if group_db.image else None,
                 "known_members": known_members,
             }
             super().__init__(**data)

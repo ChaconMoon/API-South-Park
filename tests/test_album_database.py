@@ -39,7 +39,7 @@ def test_album_database_correct():
 
 def test_album_object_not_found():
     """Test A Not Found Response in Album Endpoint."""
-    fake_response = {"error": "Album not found", "status": "failed"}
+    fake_response = {"error": "Album not found", "status": "Not Found"}
     with patch(
         "src.controller.music.music_endpoints.get_album_by_id"
     ) as database_response:
@@ -52,7 +52,10 @@ def test_album_object_not_found():
 
 def test_album_database_not_available():
     """Test A Not Available Response in Album Endpoint."""
-    fake_response = {"error": "Database not available", "status": "failed"}
+    fake_response = {
+        "error": "Database not available",
+        "status": "Database Not Available",
+    }
     with patch(
         "src.controller.music.music_endpoints.get_album_by_id"
     ) as database_response:

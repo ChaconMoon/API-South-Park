@@ -11,47 +11,9 @@ appearances, and alternate personas.
 from typing import List, Optional
 
 from pydantic import BaseModel, ValidationError
-from sqlalchemy import text
 
-from src.controller.characters.alter_ego_controller import (
-    get_all_alteregos_of_a_character,
-)
-from src.controller.data_controller import parse_array_to_list
-from src.controller.database_connection import get_query_result
-from src.controller.tvshow.episodes_controller import get_episode_by_id
 from src.model.ApiObject import ApiObject
-
-
-def get_compact_family(id: int, base_url: str = "") -> dict:
-    """
-    Retrieve a compact representation of a family from the database.
-
-    Args:
-        id (int): The unique identifier for the family.
-        base_url (str): The base URL to construct the API URL for the family.
-
-    Returns:
-        dict: A dictionary containing the family's name and URL, or an error
-              dictionary if the query fails.
-
-    """
-    try:
-        # Get the result of the query to the databse.
-        query_execution = get_query_result(
-            text("""
-                SELECT f.name from public.families f
-                Where f.id=:id
-                """),
-            {"id": id},
-        )
-        query_result = query_execution.mappings().all()
-        return {
-            "name": str(query_result[0]["name"]),
-            "url": f"{base_url}api/families/{id}",
-        }
-    # Control exceptions
-    except Exception as e:
-        return {"error": str(e), "status": "failed"}
+from src.model.ORM.characters_db import CharacterDB
 
 
 # Create Character class
@@ -71,7 +33,7 @@ class Character(BaseModel, ApiObject):
         age (Optional[int]): Character's age
         religion (Optional[List[str]]): Character's religious affiliations
         images (list[str]): List of URLs to character images
-        first_apperance (dict): Details about character's first episode
+        debut (dict): Details about character's first episode
         alter_egos (Optional[dict]): Character's alternate personas
         famous_guest (bool): Whether character is based on a celebrity
 
@@ -84,7 +46,7 @@ class Character(BaseModel, ApiObject):
     age: Optional[int] = None
     religion: Optional[List[str]] = None
     images: list[str]
-    first_apperance: dict
+    debut: dict
     alter_egos: Optional[dict] = None
     famous_guest: bool
 
@@ -126,7 +88,7 @@ class Character(BaseModel, ApiObject):
             result["metadata"]["total_characters_in_database"] = total_results
         return result
 
-    def __init__(self, row: list, base_url: str = "", id: int = 0) -> "Character":
+    def __init__(self, db_character: CharacterDB, base_url="") -> "Character":
         """
         Initialize a Character instance from database row data.
 
@@ -134,6 +96,7 @@ class Character(BaseModel, ApiObject):
             row (list): Database row containing character data
             base_url (str): Base URL for image paths
             id (int): Character identifier (optional)
+            db_character: The Character object from the database.
 
         Returns:
             Character: New Character instance
@@ -144,22 +107,40 @@ class Character(BaseModel, ApiObject):
         """
         try:
             data = {
-                "id": int(row[0]) if row[0] is not None else 0,
-                "name": str(row[1]) if row[1] is not None else "",
-                "family": get_compact_family(int(row[2]), base_url)
-                if row[2] is not None
+                "id": db_character.id if db_character.id is not None else 0,
+                "name": db_character.name if db_character.name is not None else "",
+                "family": (
+                    {
+                        "name": db_character.family.name,
+                        "url": f"{base_url}api/families/{db_character.family_id}",
+                    }
+                    if db_character.family_id is not None
+                    else None
+                ),
+                "birthday": db_character.birthday
+                if db_character.birthday is not None
                 else None,
-                "birthday": str(row[3]) if row[3] is not None else None,
-                "age": int(row[4]) if row[4] is not None else None,
-                "religion": parse_array_to_list(row[5]),
-                "first_apperance": get_episode_by_id(
-                    int(row[6]), add_url=True, base_url=base_url
+                "age": db_character.age if db_character.age is not None else None,
+                "religion": db_character.religion,
+                "debut": (
+                    {
+                        "name": db_character.debut.name,
+                        "url": f"{base_url}api/episode/{db_character.debut_episode}",
+                    }
                 ),
-                "images": parse_array_to_list(row[7], is_url=True, base_url=base_url),
-                "alter_egos": get_all_alteregos_of_a_character(
-                    int(row[0]), add_url=True, base_url=base_url
-                ),
-                "famous_guest": bool(row[8]) if row[8] is not None else False,
+                "images": [base_url.strip("/") + x for x in db_character.images],
+                "alter_egos": {
+                    str(index): {
+                        "name": alter_ego.name,
+                        "url": f"{base_url}api/characters/{db_character.id}/alteregos/{alter_ego.id}",  # noqa: E501
+                    }
+                    for index, alter_ego in enumerate(db_character.alteregos)
+                }
+                if db_character.alteregos
+                else None,
+                "famous_guest": db_character.famous_guest
+                if db_character.famous_guest is not None
+                else False,
             }
             return super().__init__(**data)
         except ValidationError as e:

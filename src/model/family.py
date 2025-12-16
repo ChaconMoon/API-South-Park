@@ -8,9 +8,8 @@ South Park family including its ID, name, members and associated images.
 
 from pydantic import BaseModel
 
-from src.controller.data_controller import parse_array_to_list
 from src.model.ApiObject import ApiObject
-from src.model.characters import Character
+from src.model.ORM.families_db import FamilyDB
 
 
 class Family(BaseModel, ApiObject):
@@ -55,35 +54,39 @@ class Family(BaseModel, ApiObject):
             result["metadata"]["total_families_in_database"] = total_results
         return result
 
-    def __init__(self, rows: list, base_url: str = "", id: int = 1) -> "Family":
+    def __init__(
+        self,
+        family_db: FamilyDB,
+        base_url: str = "",
+    ) -> "Family":
         """
         Initialize a Family instance from database rows data.
 
         Args:
             rows (list): Database rows containing family members data
+            family_db (FamilyDB) : The result of the family query
             base_url (str): Base URL for image paths
-            id (int): Family identifier
 
         Returns:
             Family: New Family instance
 
         """
         try:
-            family_members = []
-            family_members.extend(
-                Character(row[2:]).toJSON(compacted=True, base_url=base_url)
-                for row in rows
-            )
+            family_members = [
+                {
+                    "name": character.name,
+                    "url": f"{base_url}api/characters/{character.id}",
+                }
+                for character in family_db.characters
+            ]
 
             data = {
-                "id": id,
-                "name": str(rows[0][0]),
-                "images": [
-                    f"{base_url}{image_url}"
-                    for image_url in parse_array_to_list(rows[0][1])
-                ],
+                "id": family_db.id,
+                "name": family_db.name,
+                "images": [base_url + x for x in family_db.images],
                 "members": family_members,
             }
+
             return super().__init__(**data)
         except Exception as e:
-            raise ValueError(f"Error building Group: {str(e)}") from e
+            raise ValueError(f"Error building Family: {str(e)}") from e

@@ -6,10 +6,13 @@ This module get the param of the API in the get special operations,
 """
 
 # Import SQLAlchemy
-from sqlalchemy import text
+from sqlalchemy import func
+from sqlalchemy.exc import OperationalError
+
+from src.controller import database_connection
 
 # Internal Inputs
-from src.controller.database_connection import get_query_result
+from src.model.ORM.special_db import SpecialDB
 from src.model.specials import Special
 
 
@@ -27,40 +30,22 @@ def get_special_by_id(id: int, add_url=False, base_url="", metadata=False):
         A dict with the response or a dict with the error.
 
     """
+    session = database_connection.get_database_session()
     try:
-        # Make the query to the Database
-        query_result = get_query_result(
-            text("""
-                SELECT id,title,release_date,description,link,poster FROM public.specials
-                where id = :id
-                """),
-            {"id": id},
-        )
+        special_db = session.query(SpecialDB).filter(SpecialDB.id == id).first()
+        special = Special(special_db, base_url)
 
-        # If the is a error in the query returns the error
-        if query_result is None:
-            return {"error": "Database not available", "status": "failed"}
-        if query_result.rowcount == 0:
-            return {"error": "Special not found", "status": "failed"}
+        special_count = session.query(SpecialDB).count()
+        return special.toJSON(metadata, special_count)
 
-        # Create a objet with the result of the query
-        for row in query_result:
-            special = Special(row, base_url)
-
-        # Create the object with the URL
-        if add_url:
-            result = dict()
-            result["name"] = special.model_dump()["name"]
-            result["url"] = f"{base_url}api/specials/{row[0]}"
-            return result
-
-        # Create the complete object with the metadata
-        query_result = get_query_result(text("SELECT * FROM public.specials"))
-        return special.toJSON(metadata, query_result.rowcount)
-
-    # Control exceptions
+    except AttributeError as e:
+        return {"error": str(e), "status": "Not Found"}
+    except OperationalError as e:
+        return {"error": str(e), "status": "Database Not Available"}
     except Exception as e:
         return {"error": str(e), "status": "failed"}
+    finally:
+        session.close()
 
 
 def get_random_special(base_url=""):
@@ -74,23 +59,17 @@ def get_random_special(base_url=""):
         A dict with the response or a dict with the error.
 
     """
+    session = database_connection.get_database_session()
     try:
-        # Make the query to the Database
-        query_result = get_query_result(
-            text("""
-                    SELECT * FROM public.specials
-                    ORDER BY RANDOM()
-                    limit 1
-                """)
-        )
-        # If the is a error in the query returns the error
-        if query_result is None:
-            return {"error": "Database not available", "status": "failed"}
-        if query_result.rowcount == 0:
-            return {"error": "Special not found", "status": "failed"}
-        for row in query_result:
-            special = Special(row, base_url)
+        special_db = session.query(SpecialDB).order_by(func.random()).first()
+        special = Special(special_db, base_url)
         return special.toJSON()
     # Control exceptions
+    except AttributeError as e:
+        return {"error": str(e), "status": "Not Found"}
+    except OperationalError as e:
+        return {"error": str(e), "status": "Database Not Available"}
     except Exception as e:
         return {"error": str(e), "status": "failed"}
+    finally:
+        session.close()
