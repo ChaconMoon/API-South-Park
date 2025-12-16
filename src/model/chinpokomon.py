@@ -9,6 +9,7 @@ Chinpokomon including its ID, name, and associated image.
 from pydantic import BaseModel
 
 from src.model.ApiObject import ApiObject
+from src.model.ORM.chinpokomon_db import ChinpokomonDB
 
 
 class Chinpokomon(BaseModel, ApiObject):
@@ -51,12 +52,14 @@ class Chinpokomon(BaseModel, ApiObject):
             result["metadata"]["total_chinpokomons_in_database"] = total_results
             return result
 
-    def __init__(self, row: list, base_url: str = "") -> "Chinpokomon":
+    def __init__(
+        self, chinpokomon_db: ChinpokomonDB, base_url: str = ""
+    ) -> "Chinpokomon":
         """
         Initialize a Chinpokomon instance from database row data.
 
         Args:
-            row (list): Database row containing Chinpokomon data
+            chinpokomon_db (SQLAchemy ORM Table): Database object with Chinpokomon data
             base_url (str): Base URL for image paths
 
         Returns:
@@ -64,8 +67,8 @@ class Chinpokomon(BaseModel, ApiObject):
 
         """
         data = {
-            "id": int(row[0]) if row[0] is not None else 0,
-            "name": str(row[1]) if row[1] is not None else "",
-            "image": (base_url + str(row[2])) if row[1] is not None else "",
+            "id": chinpokomon_db.id,
+            "name": chinpokomon_db.name,
+            "image": base_url + chinpokomon_db.image,
         }
         return super().__init__(**data)

@@ -31,7 +31,7 @@ def test_random_chinopokon_database_correct():
 
 def test_random_chinpokomon_object_not_found():
     """Test a not found Response in Episode Endpoint."""
-    fake_response = {"error": "Chinpokomon not found", "status": "failed"}
+    fake_response = {"error": "Chinpokomon not found", "status": "Not Found"}
     with patch(
         "src.controller.chinpokomon.chinpokomon_endpoints.get_chinpokomon_by_id"
     ) as database_response:
@@ -43,7 +43,10 @@ def test_random_chinpokomon_object_not_found():
 
 def test_random_chinpokomon_database_not_available():
     """Test a not available Response in Episode Endpoint."""
-    fake_response = {"error": "Database not available", "status": "failed"}
+    fake_response = {
+        "error": "Database not available",
+        "status": "Database Not Available",
+    }
     with patch(
         "src.controller.chinpokomon.chinpokomon_endpoints.get_chinpokomon_by_id"
     ) as database_response:

@@ -33,7 +33,7 @@ def test_game_database_correct():
 
 def test_game_database_not_found():
     """Test a not found response in Game Endpont."""
-    fake_response = {"error": "Game not found", "status": "failed"}
+    fake_response = {"error": "Game not found", "status": "Not Found"}
     with patch("src.controller.games.games_endpoint.get_game_by_id") as database_response:
         database_response.return_value = fake_response
         response = client.get("api/games/28")
@@ -43,7 +43,10 @@ def test_game_database_not_found():
 
 def test_game_database_not_available():
     """Test a not available response in Game Endpont."""
-    fake_response = {"error": "Database not available", "status": "failed"}
+    fake_response = {
+        "error": "Database not available",
+        "status": "Database Not Available",
+    }
     with patch("src.controller.games.games_endpoint.get_game_by_id") as database_response:
         database_response.return_value = fake_response
         response = client.get("api/games/28")

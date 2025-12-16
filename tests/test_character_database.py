@@ -63,7 +63,7 @@ def test_character_database_correct():
 
 def test_character_object_not_found():
     """Test A Not Found Response in Character Endpoint."""
-    fake_response = {"error": "Character not found", "status": "failed"}
+    fake_response = {"error": "Character not found", "status": "Not Found"}
     with patch(
         "src.controller.characters.characters_endpoints.get_character_by_id"
     ) as database_response:
@@ -75,7 +75,10 @@ def test_character_object_not_found():
 
 def test_character_database_not_available():
     """Test A Not Available Response in Character Endpoint."""
-    fake_response = {"error": "Database not available", "status": "failed"}
+    fake_response = {
+        "error": "Database not available",
+        "status": "Database Not Available",
+    }
     with patch(
         "src.controller.characters.characters_endpoints.get_character_by_id"
     ) as database_response:

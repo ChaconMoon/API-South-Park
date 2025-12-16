@@ -39,7 +39,7 @@ def test_alterego_database_correct():
 
 def test_alterego_object_not_found():
     """Test A Not Found Response in Alter Ego Endpoint."""
-    fake_response = {"error": "Alter Ego not found", "status": "failed"}
+    fake_response = {"error": "Alter Ego not found", "status": "Not Found"}
     with patch(
         "src.controller.characters.characters_endpoints.get_alter_ego_by_character_and_id"
     ) as database_response:
@@ -51,7 +51,10 @@ def test_alterego_object_not_found():
 
 def test_alterego_database_not_available():
     """Test A Not Available Response in Alter Ego Endpoint."""
-    fake_response = {"error": "Database not available", "status": "failed"}
+    fake_response = {
+        "error": "Database not available",
+        "status": "Database Not Available",
+    }
     with patch(
         "src.controller.characters.characters_endpoints.get_alter_ego_by_character_and_id"
     ) as database_response:
@@ -92,7 +95,7 @@ def test_all_alteregos_database_correct():
 
 def test_all_alteregos_object_not_found():
     """Test a not found response in complete Response in Alter Ego Endpoint."""
-    fake_response = {"error": "Alter Egos not found", "status": "failed"}
+    fake_response = {"error": "Alter Egos not found", "status": "Not Found"}
     with patch(
         "src.controller.characters.characters_endpoints.get_all_alteregos_of_a_character"
     ) as database_response:
@@ -104,7 +107,10 @@ def test_all_alteregos_object_not_found():
 
 def test_all_alteregos_database_not_available():
     """Test a not available response in complete Response in Alter Ego Endpoint."""
-    fake_response = {"error": "Database not available", "status": "failed"}
+    fake_response = {
+        "error": "Database not available",
+        "status": "Database Not Available",
+    }
     with patch(
         "src.controller.characters.characters_endpoints.get_all_alteregos_of_a_character"
     ) as database_response:
