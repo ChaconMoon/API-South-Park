@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict MF59YN1gKzVWqbcMj0jYHIH075K9DgMQDRenc3SKWwV7eMTYoR5wq7os09zuCq9
+\restrict 0aU4NMlNZaue1PTyh4DLHYmUH2MlbrEfEVR6N37mdtTWiuqfbJSjvCcRva31rVL
 
 -- Dumped from database version 15.15 (Debian 15.15-1.pgdg13+1)
 -- Dumped by pg_dump version 15.15 (Debian 15.15-1.pgdg13+1)
@@ -662,6 +662,7 @@ COPY public.characters (id, name, family_id, birthday, age, religion, debut_epis
 793	Gretchen	\N	\N	\N	\N	159	{/img/characters/show/Gretchen.png}	f
 74	Rosie O'Donnell	6	March 21st	63	{"Roman Catholic"}	60	{/img/characters/show/Rosie_Odonnell.png}	t
 221	Agent Fields	\N	\N	\N	\N	44	{/img/characters/show/Agent_Fields.png}	f
+797	The Antichrist	42	December 25th	0	\N	331	{/img/characters/show/The_Antichrist_1.png,/img/characters/show/The_Antichrist_2.png}	f
 193	Satan	42	\N	\N	{Satanism}	10	{/img/characters/show/Satan.png}	f
 213	Aaron Hagen	51	\N	7	\N	239	{/img/characters/show/Aaron_Hagen.png}	f
 214	Abraham Lincoln	\N	February 12th	56	\N	135	{/img/characters/show/Abraham_Lincoln.png}	t
@@ -2071,6 +2072,7 @@ COPY public.episodes (id, name, season, episode, release_date, description, webs
 328	The Woman In The Hat	28	2	2025-10-31	The White House deals with a disruptive spirit from the east wing. While Stan worries that South Park has become too political.	https://www.southparkstudios.com/episodes/xgd7ik/south-park-the-woman-in-the-hat-season-28-ep-2	f	t	img/episodes/328.jpg
 329	Sora Not Sorry	28	3	2025-11-13	Butters' AI revenge plan backfires, igniting an epidemic of fake videos at school that leaves Detective Harris struggling to tell fantasy from reality	https://www.southparkstudios.com/episodes/wqnkli/south-park-sora-not-sorry-season-28-ep-3	f	t	img/episodes/329.jpg
 330	Turkey Trot	28	4	2025-11-26	The town’s annual Turkey Trot turns chaotic when Cartman uses questionable cutting-edge science to win the race. 	https://www.southparkstudios.com/episodes/o1a4x8/south-park-turkey-trot-season-28-ep-4	f	t	img/episodes/330.jpg
+331	The Crap Out	28	5	2025-12-10	Satan’s due, Stan’s praying, and only a Christmas miracle can deliver the Antichrist on time.	https://www.southparkstudios.com/episodes/ow42kg/south-park-the-crap-out-season-28-ep-5	f	t	img/episodes/331.jpg
 \.
 
 
@@ -2502,5 +2504,5 @@ ALTER TABLE ONLY public.alter_ego
 -- PostgreSQL database dump complete
 --
 
-\unrestrict MF59YN1gKzVWqbcMj0jYHIH075K9DgMQDRenc3SKWwV7eMTYoR5wq7os09zuCq9
+\unrestrict 0aU4NMlNZaue1PTyh4DLHYmUH2MlbrEfEVR6N37mdtTWiuqfbJSjvCcRva31rVL
 
