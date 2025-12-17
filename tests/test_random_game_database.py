@@ -35,7 +35,7 @@ def test_random_game_database_correct():
 
 def test_random_game_database_not_found():
     """Test a not found response in Random Game Endpont."""
-    fake_response = {"error": "Game not found", "status": "failed"}
+    fake_response = {"error": "Game not found", "status": "Not Found"}
     with patch(
         "src.controller.games.games_endpoint.get_random_game"
     ) as database_response:
@@ -47,7 +47,10 @@ def test_random_game_database_not_found():
 
 def test_random_game_database_not_available():
     """Test a not available response in Random Game Endpont."""
-    fake_response = {"error": "Database not available", "status": "failed"}
+    fake_response = {
+        "error": "Database not available",
+        "status": "Database Not Available",
+    }
     with patch(
         "src.controller.games.games_endpoint.get_random_game"
     ) as database_response:

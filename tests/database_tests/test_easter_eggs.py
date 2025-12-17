@@ -11,7 +11,7 @@ import os
 import requests
 from dotenv import load_dotenv
 
-from src.controller.others.easter_egg_controller import EasterEggName
+from src.controller.others.easter_egg_enums import EasterEggName
 
 
 def test_easter_eggs():

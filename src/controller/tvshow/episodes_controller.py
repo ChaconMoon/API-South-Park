@@ -6,10 +6,86 @@ It provides functions to fetch specific episodes by ID and get the latest episod
 from the database.
 """
 
-from sqlalchemy import text
+from sqlalchemy import func
+from sqlalchemy.exc import OperationalError
 
-from src.controller.database_connection import get_query_result
+from src.controller import database_connection
 from src.model.episode import Episode
+from src.model.ORM.episode_db import EpisodeDB
+
+
+def get_episode_list_by_search(search: str = "", limit: int = 0, base_url: str = ""):
+    """
+    Search for episodes by name using a partial, case-insensitive match.
+
+    Args:
+        search (str): The search term to match against episode names.
+        limit (int): The maximum number of episodes to return. If 0, no limit.
+        base_url (str): The base URL for generating resource URLs.
+
+    Returns:
+        dict: A dictionary containing the list of matching episodes.
+
+    """
+    session = database_connection.get_database_session()
+    try:
+        query_episodes = (
+            session.query(EpisodeDB)
+            .filter(EpisodeDB.name.ilike(f"%{search}%"))
+            .order_by(EpisodeDB.id.asc())
+        )
+
+        if limit != 0:
+            query_episodes = query_episodes.limit(limit)
+        episode_list = query_episodes.all()
+        result = {"episodes": {}}
+        for index, episode in enumerate(episode_list):
+            result["episodes"][index] = Episode(episode, base_url).toJSON()
+
+        if result == {"episodes": {}}:
+            raise ValueError("Episode Not Found")
+        return result
+    except ValueError as e:
+        return {"error": str(e), "status": "Not Found"}
+    except OperationalError as e:
+        return {"error": str(e), "status": "Database Not Available"}
+    except Exception as e:
+        return {"error": str(e), "status": "failed"}
+    finally:
+        session.close()
+
+
+def get_episode_list(limit: int = 0, base_url: str = ""):
+    """
+    Get a list of all episodes, ordered by ID.
+
+    Args:
+        limit (int): The maximum number of episodes to return. If 0, no limit.
+        base_url (str): The base URL for generating resource URLs.
+
+    Returns:
+        dict: A dictionary containing the list of episodes.
+
+    """
+    session = database_connection.get_database_session()
+    try:
+        query_episodes = session.query(EpisodeDB).order_by(EpisodeDB.id.asc())
+
+        if limit != 0:
+            query_episodes = query_episodes.limit(limit)
+        episode_list = query_episodes.all()
+        result = {"episodes": {}}
+        for index, episode in enumerate(episode_list):
+            result["episodes"][index] = Episode(episode, base_url).toJSON()
+        return result
+    except ValueError as e:
+        return {"error": str(e), "status": "Not Found"}
+    except OperationalError as e:
+        return {"error": str(e), "status": "Database Not Available"}
+    except Exception as e:
+        return {"error": str(e), "status": "failed"}
+    finally:
+        session.close()
 
 
 def get_episode_by_id(
@@ -40,32 +116,34 @@ def get_episode_by_id(
             {"error": str, "status": "failed"}
 
     """
+    session = database_connection.get_database_session()
     try:
-        query_result = get_query_result(
-            text("SELECT * FROM public.episodes where id=:id"), {"id": id}
-        )
-        if query_result is None:
-            return {"error": "Database not available", "status": "failed"}
-        elif query_result.rowcount == 0:
-            return {"error": "Episode not found", "status": "failed"}
-
-        for row in query_result:
-            episode = Episode(row, base_url)
+        episode_db = session.query(EpisodeDB).filter(EpisodeDB.id == id).first()
+        if episode_db is None:
+            raise AttributeError("Episode Not Found")
+        episode = Episode(episode_db, base_url)
 
         if add_url:
             return {
                 "name": episode.model_dump()["name"],
-                "url": f"{base_url}api/episodes/{row[0]}",
+                "url": f"{base_url}api/episodes/{id}",
             }
 
-        query_result = get_query_result(text("SELECT * FROM public.episodes"))
-        return episode.toJSON(metadata, query_result.rowcount)
+        total_episodes = session.query(EpisodeDB).count()
+        session.close()
+        return episode.toJSON(metadata, total_episodes)
 
+    except AttributeError as e:
+        return {"error": str(e), "status": "Not Found"}
+    except OperationalError as e:
+        return {"error": str(e), "status": "Database Not Available"}
     except Exception as e:
         return {"error": str(e), "status": "failed"}
+    finally:
+        session.close()
 
 
-def get_last_episode() -> dict:
+def get_last_episode(base_url: str = "") -> dict:
     """
     Retrieve the most recent episode from the database.
 
@@ -82,15 +160,28 @@ def get_last_episode() -> dict:
             {"error": str, "status": "failed"}
 
     """
-    query_result = get_query_result(text("SELECT * FROM public.episodes"))
-    if query_result is None:
-        return {"error": "Database not available", "status": "failed"}
-    episode_id = query_result.rowcount
-    return get_episode_by_id(episode_id)
+    try:
+        session = database_connection.get_database_session()
+        episode_db = session.query(EpisodeDB).order_by(EpisodeDB.id.desc()).first()
+        if episode_db is None:
+            raise AttributeError("Episode Not Found")
+        episode = Episode(episode_db, base_url)
+
+        session.close()
+        return episode.toJSON()
+
+    except AttributeError as e:
+        return {"error": str(e), "status": "Not Found"}
+    except OperationalError as e:
+        return {"error": str(e), "status": "Database Not Available"}
+    except Exception as e:
+        return {"error": str(e), "status": "failed"}
+    finally:
+        session.close()
 
 
 def get_random_episode(
-    paramount_plus_exclusive: bool = False, censored: bool = False, base_url=""
+    exclude_paramount_plus: bool = False, exclude_censored: bool = False, base_url=""
 ):
     """
     Get a random episode.
@@ -98,8 +189,8 @@ def get_random_episode(
     Args:
         response (Response): FastAPI response object for status codes.
         request (Request): FastAPI request object containing base URL.
-        paramount_plus_exclusive (Boolean): If True excludes the Paramount+ episodes.
-        censored (Boolean): If True excludes the censored episodes.
+        exclude_paramount_plus (Boolean): If True excludes the Paramount+ episodes.
+        exclude_censored (Boolean): If True excludes the censored episodes.
         base_url (str): The base URL for API endpoints
 
     Returns:
@@ -114,17 +205,23 @@ def get_random_episode(
             {"error": str, "status": "failed"}
 
     """
-    query_result = get_query_result(
-        text("""
-            SELECT *
-            FROM public.episodes
-            WHERE (not :censored OR censored = false)
-            AND (not :paramount_plus OR paramount_plus_exclusive = false)
-            ORDER BY RANDOM()
-            LIMIT 1;"""),
-        {"censored": censored, "paramount_plus": paramount_plus_exclusive},
-    )
-
-    for row in query_result:
-        episode = Episode(row, base_url=base_url)
-    return episode.toJSON()
+    session = database_connection.get_database_session()
+    try:
+        query = session.query(EpisodeDB)
+        if exclude_paramount_plus:
+            query.filter(EpisodeDB.paramount_plus_exclusive is False)
+        if exclude_censored:
+            query.filter(EpisodeDB.censored is False)
+        episode_db = query.order_by(func.random()).first()
+        if episode_db is None:
+            raise AttributeError("Episode Not Found")
+        episode = Episode(episode_db, base_url=base_url)
+        return episode.toJSON()
+    except AttributeError as e:
+        return {"error": str(e), "status": "Not Found"}
+    except OperationalError as e:
+        return {"error": str(e), "status": "Database Not Available"}
+    except Exception as e:
+        return {"error": str(e), "status": "failed"}
+    finally:
+        session.close()

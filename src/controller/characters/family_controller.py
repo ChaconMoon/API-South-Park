@@ -6,11 +6,95 @@ make the query to the API and return the result.
 """
 
 # Import SQLAlchemy
-from sqlalchemy import text
+from sqlalchemy import func
+from sqlalchemy.exc import DataError, OperationalError
+
+from src.controller import database_connection
+from src.model.family import Family
 
 # Interal Inputs
-from src.controller.database_connection import get_query_result
-from src.model.family import Family
+from src.model.ORM.families_db import FamilyDB
+
+
+def get_family_list(limit: int = 0, base_url="") -> dict:
+    """
+    Return a list of families.
+
+    :param limit: The number of families returned
+    :type limit: int
+
+    :param base_url: The URL used to create the absolute URL in response.
+    :type base_url: str
+
+    :return: A dict with the families.
+    :rtype: dict
+    """
+    session = database_connection.get_database_session()
+    try:
+        if limit != 0:
+            family_list = session.query(FamilyDB).limit(limit).all()
+        else:
+            family_list = session.query(FamilyDB).all()
+
+        if family_list == []:
+            raise DataError("No Families Found")
+        result = dict()
+        result["families"] = []
+        result["families"].extend(
+            Family(family_db, base_url=base_url) for family_db in family_list
+        )
+        return result
+
+    except DataError as e:
+        return {"error": str(e), "status": "Not Found"}
+    except OperationalError as e:
+        return {"error": str(e), "status": "Database Not Available"}
+
+    except Exception as e:
+        return {"error": str(e), "status": "failed"}
+    finally:
+        session.close()
+
+
+def get_family_search(search: str, limit: int = 0, base_url="") -> dict:
+    """
+    Retiurn the result of a family search.
+
+    :param search: The param used in the search.
+    :type search: str
+
+    :param limit: The number of families returned.
+    :type limit: int
+
+    :param base_url: The URL used to create the absolute URL.
+    :type base_url: str
+    :return: A dict with the families
+    :rtype: dict
+
+    """
+    session = database_connection.get_database_session()
+    family_query = session.query(FamilyDB).filter(FamilyDB.name.ilike((f"%{search}%")))
+    try:
+        if limit != 0:
+            family_query.limit(limit)
+        family_list = family_query.all()
+        if family_list == []:
+            raise ValueError("Not families found")
+        result = dict()
+        result["families"] = []
+        result["families"].extend(
+            Family(family_db, base_url=base_url) for family_db in family_list
+        )
+
+        return result
+    except ValueError as e:
+        return {"error": str(e), "status": "Not Found"}
+    except OperationalError as e:
+        return {"error": str(e), "status": "Database Not Available"}
+    except Exception as e:
+        return {"error": str(e), "status": "failed"}
+    finally:
+        session.close()
 
 
 # Connection with the database
@@ -24,34 +108,27 @@ def get_family_by_id(id: int, url="", metadata=False) -> dict:
     Retruns:
         A dict with the data of the family.
     """
-    # Create variable to store the result data.
+    session = database_connection.get_database_session()
     try:
-        # Get the result of the query to the databse.
-        query_result = get_query_result(
-            text("""
-                    SELECT f.name,f.images,c.*
-                    FROM public.characters c ,public.families f
-                    Where c.family = f.id And f.id = :id
-                    order by c.id asc
-                """),
-            {"id": id},
-        )
-
-        # Get all the rows of the query result.
-        rows = query_result.fetchall()
-
-        # Add all the family members to the array.
-        for _row in rows:
-            family = Family(rows, url, id)
+        family_db = session.query(FamilyDB).filter(FamilyDB.id == id).first()
+        if family_db is None:
+            raise ValueError("Family not found")
+        family = Family(family_db, base_url=url)
 
         # Get the result of the query to the databse.
-        query_result = get_query_result(text("""SELECT * FROM public.families"""))
+        total_families = session.query(func.count(FamilyDB.id)).scalar()
 
-        return family.toJSON(metadata, total_results=query_result.rowcount)
+        return family.toJSON(metadata, total_results=total_families)
 
     # Control exceptions
+    except ValueError as e:
+        return {"error": str(e), "status": "Not Family Found"}
+    except OperationalError as e:
+        return {"error": str(e), "status": "Database Not Available"}
     except Exception as e:
         return {"error": str(e), "status": "failed"}
+    finally:
+        session.close()
 
 
 def get_random_family(base_url="") -> dict:
@@ -64,39 +141,17 @@ def get_random_family(base_url="") -> dict:
         A dict with the data of the family.
     """
     # Create variable to store the result data.
+    session = database_connection.get_database_session()
     try:
         # Get the result of the query to the databse.
-        query_result = get_query_result(
-            text("""
-                    WITH random_family AS (
-                        SELECT id
-                        FROM public.families
-                        ORDER BY RANDOM()
-                        LIMIT 1
-                    )
-                    SELECT f.name,f.images,c.*
-                    FROM public.characters c
-                    JOIN public.families f ON c.family = f.id
-                    WHERE (c.family = (SELECT id FROM random_family))
-                    OR NOT EXISTS (
-                            SELECT 1
-                            FROM public.characters
-                            WHERE family = (SELECT id FROM random_family)
-                        )
-                    ORDER BY c.id ASC;
-                """)
+        family = Family(
+            session.query(FamilyDB).order_by(func.random()).first(), base_url=base_url
         )
-
-        # Get all the rows of the query result.
-        rows = query_result.fetchall()
-
-        # Add all the family members to the array.
-        for _row in rows:
-            id = rows[0][4]
-            family = Family(rows, base_url, id)
 
         return family.toJSON()
 
+    except OperationalError as e:
+        return {"error": str(e), "status": "Database Not Available"}
     # Control exceptions
     except Exception as e:
         return {"error": str(e), "status": "failed"}

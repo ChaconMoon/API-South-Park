@@ -39,7 +39,7 @@ def test_random_alterego_database_correct():
 
 def test_random_alterego_object_not_found():
     """Test A Not Found Response in Alter Ego Endpoint."""
-    fake_response = {"error": "Alter Ego not found", "status": "failed"}
+    fake_response = {"error": "Alter Ego not found", "status": "Not Found"}
     with patch(
         "src.controller.characters.characters_endpoints.get_random_alterego"
     ) as database_response:
@@ -51,7 +51,10 @@ def test_random_alterego_object_not_found():
 
 def test_random_alterego_database_not_available():
     """Test A Not Available Response in Alter Ego Endpoint."""
-    fake_response = {"error": "Database not available", "status": "failed"}
+    fake_response = {
+        "error": "Database not available",
+        "status": "Database Not Available",
+    }
     with patch(
         "src.controller.characters.characters_endpoints.get_random_alterego"
     ) as database_response:

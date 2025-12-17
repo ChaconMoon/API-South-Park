@@ -7,10 +7,53 @@ It provides routes to access albums and songs from the South Park series.
 
 from fastapi import APIRouter, Request, Response, status
 
-from src.controller.music.album_controller import get_album_by_id, get_random_album
+from src.controller.music.album_controller import (
+    get_album_by_id,
+    get_album_list,
+    get_album_list_by_search,
+    get_random_album,
+)
 from src.controller.music.songs_controller import get_random_song, get_song_by_id
 
 router = APIRouter(tags=["Music"])
+
+
+@router.get("/api/albums")
+def show_album_list(
+    request: Request, response: Response, search: str = "", limit: int = 0
+):
+    """
+    Get a list of South Park albums, with optional search and limit.
+
+    Args:
+        request (Request): FastAPI request object containing base URL.
+        response (Response): FastAPI response object for status codes.
+        search (str): A search term to filter albums by name.
+        limit (int): The maximum number of albums to return.
+
+    Returns:
+        dict: JSON response containing the list of albums.
+
+    Response Codes:
+        200: Albums found and returned successfully.
+        404: No albums found for the given search criteria.
+        500: Internal server error.
+
+    """
+    if search != "":
+        json = get_album_list_by_search(
+            base_url=str(request.base_url), search_param=search, limit=limit
+        )
+    else:
+        json = get_album_list(base_url=str(request.base_url), limit=limit)
+    if "error" in json:
+        if json["status"] == "Not Found":
+            response.status_code = status.HTTP_404_NOT_FOUND
+        if json["status"] == "Database Not Available":
+            response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
+    elif "album" in json:
+        response.status_code = status.HTTP_200_OK
+    return json
 
 
 @router.get("/api/albums/random")
@@ -39,11 +82,11 @@ def show_random_album(
     base_url = str(request.base_url)
     json = get_random_album(base_url, exclude_not_available)
     if "error" in json:
-        if json["error"] == "Album not found":
+        if json["status"] == "Not Found":
             response.status_code = status.HTTP_404_NOT_FOUND
-        if json["error"] == "Database not available":
+        if json["status"] == "Database Not Available":
             response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
-    else:
+    elif "album" in json:
         response.status_code = status.HTTP_200_OK
     return json
 
@@ -75,9 +118,9 @@ def show_album(
     base_url = str(request.base_url)
     json = get_album_by_id(id, base_url=base_url, metadata=metadata)
     if "error" in json:
-        if json["error"] == "Album not found":
+        if json["status"] == "Not Found":
             response.status_code = status.HTTP_404_NOT_FOUND
-        if json["error"] == "Database not available":
+        if json["status"] == "Database Not Available":
             response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
     elif "album" in json:
         response.status_code = status.HTTP_200_OK
@@ -110,11 +153,11 @@ def show_random_song(
     base_url = str(request.base_url)
     json = get_random_song(exclude_not_available, base_url)
     if "error" in json:
-        if json["error"] == "Song not found":
+        if json["status"] == "Not Found":
             response.status_code = status.HTTP_404_NOT_FOUND
-        elif json["error"] == "Database not available":
+        if json["status"] == "Database Not Available":
             response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
-    else:
+    elif "album" in json:
         response.status_code = status.HTTP_200_OK
     return json
 
@@ -146,10 +189,10 @@ def show_song(
     base_url = str(request.base_url)
     json = get_song_by_id(id, base_url=base_url, metadata=metadata)
     if "error" in json:
-        if json["error"] == "Song not found":
+        if json["status"] == "Not Found":
             response.status_code = status.HTTP_404_NOT_FOUND
-        elif json["error"] == "Database not available":
+        if json["status"] == "Database Not Available":
             response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
-    elif "song" in json:
+    elif "album" in json:
         response.status_code = status.HTTP_200_OK
     return json

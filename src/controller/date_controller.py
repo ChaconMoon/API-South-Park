@@ -9,10 +9,10 @@ their birthday on the current date.
 import logging
 from datetime import datetime
 
-from sqlalchemy import text
+from sqlalchemy.exc import OperationalError
 
-from src.controller.database_connection import get_query_result
-from src.model.characters import Character
+from src.controller import database_connection
+from src.model.ORM.characters_db import CharacterDB
 
 
 def get_today_birthday() -> str:
@@ -80,23 +80,28 @@ def get_today_birthday_character(base_url: str = "") -> dict:
 
     """
     try:
-        query_result = get_query_result(
-            text("SELECT * FROM public.characters where birthday =:birthday"),
-            {"birthday": get_today_birthday()},
+        birthay_characters_list = (
+            database_connection.get_database_session()
+            .query(CharacterDB)
+            .filter(CharacterDB.birthday == get_today_birthday())
+            .all()
         )
 
-        if query_result is None:
-            return {"error": "Database not available", "status": "failed"}
-        elif query_result.rowcount == 0:
-            return {"message": "No one has their birthday today", "status": "failed"}
+        if not birthay_characters_list:
+            return {"message": "No one has their birthday today", "status": "Not Found"}
 
         result = {"characters": []}
-        for row in query_result:
-            character = Character(row, base_url)
-            result["characters"].append(character.model_dump())
+        for birthday_character in birthay_characters_list:
+            result["characters"].append(
+                {
+                    "name": birthday_character.name,
+                    "url": f"{base_url}api/characters/{birthday_character.id}",
+                }
+            )
 
         return result
-
+    except OperationalError as e:
+        return {"error": str(e), "status": "Database Not Available"}
     except Exception as e:
         logging.error(e)
         return {"error": str(e), "status": "failed"}
