@@ -39,4 +39,5 @@ class EasterEggName(Enum):
 
     IHAVEDIABETES = 0
     THEWHITEHOUSE = 1
+    THEEPSTEINFILES = 2
     # OTHER = 2
