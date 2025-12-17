@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict pTCRfDuPYXtADSKm52GO9Sf9GWpNnN8z5VedfLUryx5P2g2FTYYZn2EWDWBLtsY
+\restrict RbMmEhp3snV94uqGpCghMVgUeU1bT1YGp5c5fNh5A4dJAl186x8rWbxgNi8g2b2
 
 -- Dumped from database version 15.15 (Debian 15.15-1.pgdg13+1)
 -- Dumped by pg_dump version 15.15 (Debian 15.15-1.pgdg13+1)
@@ -29,7 +29,7 @@ SET default_table_access_method = heap;
 CREATE TABLE public.album_songs (
     id integer NOT NULL,
     name text NOT NULL,
-    album integer NOT NULL,
+    album_id integer NOT NULL,
     lyrics text,
     song_url text
 );
@@ -104,7 +104,7 @@ ALTER SEQUENCE public.albums_id_seq OWNED BY public.albums.id;
 CREATE TABLE public.alter_ego (
     id integer NOT NULL,
     original_character integer NOT NULL,
-    name text,
+    name text NOT NULL,
     images text[]
 );
 
@@ -118,11 +118,11 @@ ALTER TABLE public.alter_ego OWNER TO southpark;
 CREATE TABLE public.characters (
     id integer NOT NULL,
     name text NOT NULL,
-    family integer,
+    family_id integer,
     birthday text,
     age integer,
     religion text[],
-    first_apperance integer NOT NULL,
+    debut_episode integer NOT NULL,
     images text[],
     famous_guest boolean
 );
@@ -186,9 +186,9 @@ CREATE TABLE public.episodes (
     name text NOT NULL,
     season integer NOT NULL,
     episode integer NOT NULL,
-    realese_date date,
+    release_date date,
     description text,
-    view_on_website text,
+    website_url text,
     censored boolean DEFAULT false,
     paramount_plus_exclusive boolean DEFAULT false,
     image text
@@ -263,7 +263,7 @@ CREATE TABLE public.games (
     name text NOT NULL,
     developer text,
     platforms text[],
-    realese_date date,
+    release_date date,
     images text[]
 );
 
@@ -297,7 +297,7 @@ ALTER SEQUENCE public.games_id_seq OWNED BY public.games.id;
 --
 
 CREATE TABLE public.groups (
-    "ID" integer NOT NULL,
+    id integer NOT NULL,
     name text NOT NULL,
     image text
 );
@@ -360,7 +360,7 @@ ALTER TABLE ONLY public.games ALTER COLUMN id SET DEFAULT nextval('public.games_
 -- Data for Name: album_songs; Type: TABLE DATA; Schema: public; Owner: southpark
 --
 
-COPY public.album_songs (id, name, album, lyrics, song_url) FROM stdin;
+COPY public.album_songs (id, name, album_id, lyrics, song_url) FROM stdin;
 1	South Park Theme	1	I'm goin' down to South Park, gonna have myself a time\nFriendly faces everywhere humble folks without temptations\n\nGoing down to South Park, gonna leave my woes behind\nAmple parking day or night, people spouting: Howdy, Neighbor\n\nI'm heading down to South Park, gonna see if I can unwind\nI like girls with big vagina, I like girls with big fat titties\nSo coming down to South Park, and meet some fiends' mine	https://music.youtube.com/watch?v=b7uJyw6eXzg
 2	Nowhere to Run	1	Fuck that shit, you know what I'm sayin'?\nI'm a give a shout out to my niggas\nI ain't givin' a shout to no-fuckin'-body, fuck that\nBig Baby Jesus in the mother fucking house\nKnow what I'm sayin'?\nUnh, come on\nI don't walk, I stalk, livin' foul like pork\nShuttin' down underground streets of New York\nHawk is what them niggas call me, 'cause they all be\nSuckin' my dick and on my mother fucking balls, G\nI know the half, so I laugh wit' 'em\nBlood bath went I let the fuckin' rap hit 'em\nFull clip, but only half did 'em\nThat's all it took, another crook\nTaken out over a dirty look\nI bag game with niggas I leave shot dead\nYou're only taken a piss from me with hot led\nYou know my style faggot, 'cause I'm always schemin'\nIn jail, niggas holdin' a sink screamin'\nPolice, but you got no peace\nYo, was that you big man, and alot mo' grease\nAll I gets is pounds, you ain't want none of this\nBack streets are like track meets 'cause I be runnin' this\nAin't nowhere to run ('cause I be runnin' this)\nAin't nowhere to hide (come on)\nAin't nowhere to go ('cause I be runnin' this)\nReaper saved your soul (come on)\nSurroned by the colors, I see crimson, black and blue (come on)\nLocking open doors again, I'm still afraid of you\n(straight up, mother fucker)\nLight to dark, then light again, I always thought I knew (come on)\nYoung to old and young again, what's left for me to do? (straight up)\nCenter of the universe, collecting me in time (come on)\nI'm falling down upon the earth, and singing truth in rhyme (come on)\nIf I was a rolling stone, I'd roll until I'm through (come on)\nAnd if I was a garden I would bloom in black for you\n(Dirt Dog in effect)\nAin't nowhere to run ('cause I be runnin' this)\nAin't nowhere to hide (come on)\nAin't nowhere to go ('cause I be runnin' this)\nReaper saved your soul (come on)\nahhhh, yi yi yi yi (come on)\nAin't nowhere to run ('cause I be runnin' this)\nAin't nowhere to hide (come on)\nAin't nowhere to go ('cause I be runnin' this)\nReaper saved your soul (come on)\nha ha ha ha ha ha ha\nWhat you mother fuckers invented\nIs the craziest nigga that ever been invented\nha ha ha ha ha\nMost know, don't front on Ol' Dity Bastard\nha ha ha ha\nI call on Jesus\nThere's no obstacles that you have to jump\nThere's no walls that you have to climb\nThis is real, this is elementary dear\nElementary, Watson, Elementary\nahhhhh\nI ain't no pictue on your fore wall, necklace wearin' beard\nYou don't want this money till it's rich\nBuy my album, coded by Dirty, set you free\nGo against the grain, I got the p\nI know you don't recognize me now\nI dunked your tongue\nHow many lightening bulbs do it take to light up a fuck mode?\nBrothers, people, you'd better get the fuck off of me\nWe don't need it, it gets more ugly\nFools tryin' to bust their ass\nTryin' to get away from me when I said my real name\nI call myself in the niggas butthole\nAll the same, all the same, all the same\nAin't nowhere to run\nAin't nowhere to hide\nAin't nowhere to go\nReaper saved your soul\nahhh yi yi yi yi\nWhat, mother fucker?\nDon't try to psychology my shit, mother fucker\n'cause you'll never psychology it, mother fucker\nNever, never, never, mother fucker, never	https://music.youtube.com/watch?v=pSXty-BZ7kc
 6	Kenny's Dead	1	This is Master P, I'm down here in South Park\nAnd I just put a million dollar reward up for any information or anybody who knows who killed Kenny, ya heard!?\n\n[Kenny's Dead] We got to ride tonight\nMy little homie, Kenny died tonight\n[That's What I Said] We got to ride tonight\nMy little homie, Kenny died tonight\n[Kenny's Dead] We got to ride tonight\nMy little homie, Kenny died tonight\n[That's what I said] We got to ride tonight\nMy little homie, Kenny died tonight\n\nKenny started messing up, hanging with the thugs\nCutting class in the fast section, ecstasy, weed and drugs\nAnd I guess that's how it is, when the ghetto's got you trapped\nBut Kenny ain't scared, he seen his pops get his neck snapped\nPeople lie and they cheat on South Park streets\nWhere the hoes chill and everybody run from the police\nBut what I liked about Kenny, he wasn't no Crip or no Blood\nAnd he mumbled when he talked, but he loved that bud..\n\n[Kenny's Dead] We got to ride tonight\nMy little homie, Kenny died tonight\n[That's What I Said] We got to ride tonight\nMy little homie, Kenny died tonight\n[Kenny's Dead] We got to ride tonight\nMy little homie, Kenny died tonight\n[That's what I said] We got to ride tonight\nMy little homie, Kenny died tonight\n\nAlotta hopeless nights chasin' nickels and dimes\nKenny rode the yellow bus to school, but at night he did crimes\n211, 187, it's like a hobby\nKenny slowed his roll, he did 3 years for a robbery\nSome say Kenny was the poorest kid on the street\nBut picture this, Kenny with about 10 Gs and a couple of keys\nServing the dope fiends, standing on the corner\nMoved and worked from New Orleans to Arizona\nBut it was a trip, Kenny I was wondering how you would die\nWould it be a car crash, a plane, a gun, or suicide?!\nHe knew one day that the rats would come\nBut he didn't know they was gonna scream 'bout it!'\nAnd hit him with a shotgun\n\n[Kenny's Dead] We got to ride tonight\nMy little homie, Kenny died tonight\n[That's What I Said] We got to ride tonight\nMy little homie, Kenny died tonight\n[Kenny's Dead] We got to ride tonight\nMy little homie, Kenny died tonight\n[That's what I said] We got to ride tonight\nMy little homie, Kenny died tonight\n\nA lot of wasted deaths\nA lot of senseless crime\nBut everybody think about what you do out there\nBecause uh, Judgment Day is for everybody\nJust remember that we can't take none of this with us\nAnd it's real out here on these streets\nI'd love to live like Kenny\nDie these days, ain't no coming back\nHombre, Master P, no limit to the world, baby\nIt don't get no realer than this	https://music.youtube.com/watch?v=eFQhSRbUYQQ
@@ -580,7 +580,7 @@ COPY public.alter_ego (id, original_character, name, images) FROM stdin;
 -- Data for Name: characters; Type: TABLE DATA; Schema: public; Owner: southpark
 --
 
-COPY public.characters (id, name, family, birthday, age, religion, first_apperance, images, famous_guest) FROM stdin;
+COPY public.characters (id, name, family_id, birthday, age, religion, debut_episode, images, famous_guest) FROM stdin;
 2	Eric Theodore Cartman	2	July 1st	10	{"Roman Catholicism","Blaintologistism (Temporary)","Judaism (Post-Covid)"}	1	{/img/characters/show/Eric_Cartman.png}	f
 3	Kyle Broflovski	1	May 26th	10	{Judaism,"Christianity (Temporary)","Blaintologist (Temporary)","Atheistism (Temporary)"}	1	{/img/characters/show/Kyle_Broflovski.png}	f
 5	Sir Ike Moisha Broflovski	1	December 17th	3	{Judaism}	1	{/img/characters/show/Ike_Broflovski.png}	f
@@ -662,13 +662,58 @@ COPY public.characters (id, name, family, birthday, age, religion, first_apperan
 793	Gretchen	\N	\N	\N	\N	159	{/img/characters/show/Gretchen.png}	f
 74	Rosie O'Donnell	6	March 21st	63	{"Roman Catholic"}	60	{/img/characters/show/Rosie_Odonnell.png}	t
 221	Agent Fields	\N	\N	\N	\N	44	{/img/characters/show/Agent_Fields.png}	f
+797	The Antichrist	42	December 25th	0	\N	331	{/img/characters/show/The_Antichrist_1.png,/img/characters/show/The_Antichrist_2.png}	f
 193	Satan	42	\N	\N	{Satanism}	10	{/img/characters/show/Satan.png}	f
+807	Handicapped Girl with Light Brown Hair	\N	\N	\N	\N	113	{/img/characters/show/Handicapped_Girl_With__Light_Brown_Hair.png}	f
+806	Handicapped Girl with Brown Hair	\N	\N	\N	\N	113	{/img/characters/show/Handicapped_Girl_With_Brown_Hair.png}	f
+805	Handicapped Girl with Big Chin	\N	\N	\N	\N	113	{/img/characters/show/Handicapped_Girl_With_Big_Chin.png}	f
+804	Handicapped Fat Boy with Light Brown Hair	\N	\N	\N	\N	113	{/img/characters/show/Handicapped_Boy_With_Light_Brown_Hair.png}	f
+803	Handicapped Boy with Brown Hair	\N	\N	\N	\N	113	{/img/characters/show/Handicapped_Boy_With_Brown_Hair.png}	f
+802	Handicapped Boy with Blue Jumpsuit	\N	\N	10	\N	113	{/img/characters/show/Handicapped_Boy_With_Blue_Jumpsuit.png}	f
+801	Han Seung-soo	\N	December 28th	88	{"Roman Catholic"}	187	{/img/characters/show/Han_Seung.png}	t
+800	Haman	\N	\N	\N	\N	40	{/img/characters/show/Haman.png}	t
+799	Halfy	\N	\N	43	\N	9	{/img/characters/show/Halfie.png}	f
+798	Hakeem Korashki	\N	\N	\N	\N	11	{/img/characters/show/Hakeem_Korashki.png}	f
+820	Hazmat Workers	\N	\N	\N	\N	249	{/img/characters/show/Hazmat_Investigators.png}	f
+819	Hat McCullough	\N	\N	\N	\N	88	{/img/characters/show/Hat_Mccullough.png}	f
+818	Harvey Brown	\N	\N	\N	\N	120	{/img/characters/show/Harvey_Brown.png}	f
+817	Harry Potter Kids	\N	\N	\N	\N	92	{/img/characters/show/Harry_Potter_Kids.png}	f
+816	Harry Gintz	\N	\N	\N	\N	111	{/img/characters/show/Harry_Gintz.png}	f
+815	Harry	\N	\N	\N	\N	139	{/img/characters/show/Harry.png}	f
+814	Harrison Yates	\N	\N	\N	\N	105	{/img/characters/show/Mitch_Harris.png}	f
+813	Harrison Moore	\N	\N	\N	\N	118	{/img/characters/show/Harrison_Moore.png}	f
+812	Harley Riders	\N	\N	\N	\N	193	{/img/characters/show/Harley_Riders.png}	f
+811	Hardly Boys	\N	\N	\N	\N	148	{/img/characters/show/Hardly_boys.png}	f
+810	Haps Bar Bartender	\N	\N	\N	\N	16	{/img/characters/show/Haps_Bar_Bartender.png}	f
+809	Hansen	\N	\N	\N	\N	59	{/img/characters/show/Rescuer_Hansen.png}	f
+808	Hannah Williams	\N	\N	6	\N	132	{/img/characters/show/Hannah_Williams.png}	f
+834	Hillary Clinton	58	October 26th	78	{Methodist}	49	{/img/characters/show/Hillary_Clinton.png}	t
+833	Herbert Pocket	\N	\N	9	\N	62	{/img/characters/show/Pocket.png}	f
+832	Henry Winkler	\N	October 30th	80	{Judaism}	20	{/img/characters/show/Fonz.png}	t
+831	Henry Kline	\N	\N	10	\N	279	{/img/characters/show/Henry_Kline.png}	f
+830	Helen	\N	\N	\N	\N	33	{/img/characters/show/Helen.png}	f
+829	Heidi's Mother ("Dead Celebrities")	79	\N	\N	\N	189	{/img/characters/show/Heidi's_Mom_Dead_Celebrities.png}	f
+828	Heidi (Simply Heidi)	\N	\N	\N	\N	270	{/img/characters/show/Simply_Heidi.png}	f
+827	Heidi ("Dead Celebrities")	79	\N	\N	\N	189	{/img/characters/show/Heidi_Dead_Celebrities.png}	f
+826	Heather Williams	\N	\N	\N	\N	310	{/img/characters/show/Heather_Williams.png}	f
+825	Heather Swanson	\N	\N	\N	\N	304	{/img/characters/show/Heather_Swanson.png}	f
+824	Heather Conduct	\N	\N	\N	\N	286	{/img/characters/show/Heather_Conduct.png}	f
+823	Heather ("Asspen")	\N	\N	\N	\N	81	{/img/characters/show/Heather_Asspen.png}	f
+822	HBC Producer	\N	\N	\N	\N	66	{/img/characters/show/HBC_Producer.png}	f
+821	HBC Head of Programming	\N	\N	\N	\N	104	{/img/characters/show/HBC_Head_of_Programming.png}	f
+840	Homeless Advisor	\N	\N	\N	\N	160	{/img/characters/show/Homeless_Advisor.png}	f
+839	Hoffman and Turk Attorney	\N	\N	\N	\N	224	{/img/characters/show/Hoffman_And_Turk_Attorney.png}	f
+838	Hobby Enthusiast Clerk	\N	\N	\N	\N	252	{/img/characters/show/Hobby_Enthusiast_Clerk.png}	f
+837	Hispanic Boy with Olive Vest	\N	\N	\N	\N	309	{/img/characters/show/Hispanic_Boy_Wit_Olive_Vest.png}	f
 213	Aaron Hagen	51	\N	7	\N	239	{/img/characters/show/Aaron_Hagen.png}	f
 214	Abraham Lincoln	\N	February 12th	56	\N	135	{/img/characters/show/Abraham_Lincoln.png}	t
 217	Adams County Pee-Wee Hockey Team	\N	\N	6	\N	153	{/img/characters/show/Adams_County_Pee_Wee_Hockey_Team.png}	f
 218	Adolf Hitler	52	April 20th	56	\N	7	{/img/characters/show/Adolf_Hitler.png}	t
 220	Agent Connelly	\N	\N	\N	\N	44	{/img/characters/show/Agent_Connelly.png}	f
 172	Thumper	36	\N	\N	\N	170	{/img/characters/show/Thumper.png}	f
+836	Hippies	\N	\N	\N	\N	127	{/img/characters/show/Hippies.png}	f
+835	Hillbilly Brigade	\N	\N	\N	\N	154	{/img/characters/show/Farmers-rednecks-skeeter-eddie-friend.png}	f
+847	Howard Stern	\N	January 12th	71	{Judaism}	63	{/img/characters/show/Howard_Stern.png}	t
 222	"Agent" Tucker	\N	\N	\N	\N	102	{/img/characters/show/Agent_Tucker.png}	f
 223	Aging Hippie Liberal Douche	\N	\N	\N	\N	118	{/img/characters/show/AGING_HIPPIE_LIBERAL_DOUCHE.png}	f
 228	Al Pacino	\N	April 25th	85	{Catholic}	257	{/img/characters/show/Al_Pacino.png}	t
@@ -681,6 +726,8 @@ COPY public.characters (id, name, family, birthday, age, religion, first_apperan
 238	Alexa	\N	\N	\N	\N	278	{/img/characters/show/Alexa.png}	t
 249	Alois and Klara Hitler	\N	\N	\N	\N	46	{/img/characters/show/Hitler_Parents.png}	t
 250	Alton Crawford Brown Jr	\N	July 30th	63	\N	209	{/img/characters/show/Alton_Brown.png}	t
+841	Homeless People	\N	\N	\N	\N	160	{/img/characters/show/Homeless_People.png}	f
+842	Horace Sanders	80	\N	\N	\N	63	{/img/characters/show/Horace_Sanders.png}	f
 219	Afro Ninja	\N	\N	\N	\N	171	{/img/characters/show/Afro_Ninja.png}	t
 215	Adam Borque	\N	\N	\N	\N	281	{/img/characters/show/Adam_Borque.png}	f
 224	Airport Security Guard	\N	\N	\N	\N	76	{/img/characters/show/Airport_Security_Guard.png}	f
@@ -693,14 +740,25 @@ COPY public.characters (id, name, family, birthday, age, religion, first_apperan
 311	Big Gay Al	49	\N	\N	\N	4	{/img/characters/show/Big_Gay_Al.png}	f
 313	Biggest Douche in the Universe Committee	\N	\N	\N	\N	94	{/img/characters/show/Biggest_Douche_Judges.png}	f
 259	Angela Merkel	\N	July 17th	71	{Lutheran}	187	{/img/characters/show/Angela_Merkel.png}	t
+843	Hu Jintao	\N	December 21st	82	{Atheism}	187	{/img/characters/show/Wen_Jiabao.png}	t
 260	Angelina Jolie	\N	June 4th	50	{"Former Roman Catholic"}	156	{/img/characters/show/Angelina_Jolie_Voight.png}	t
 261	Angus T. Jones	\N	October 8th	31	{Adventist}	203	{/img/characters/show/Angus_T_Jones.png}	t
+844	Hugh	\N	\N	\N	\N	288	{/img/characters/show/Hugh.png}	t
 263	Ann Curry	\N	November 19th	68	\N	197	{/img/characters/show/Ann_Curry.png}	t
+845	Human Beaky Buzzard	\N	\N	\N	\N	202	{/img/characters/show/Buzzard_Kid.png}	f
+846	Human Pete Puma	\N	\N	\N	\N	202	{/img/characters/show/Pete_Puma.png}	f
+848	Howard Flannigan	81	\N	\N	\N	241	{/img/characters/show/Howard_Flannigan.png}	f
+849	Hopkins	\N	\N	\N	\N	102	{/img/characters/show/Hopkins.png}	f
 272	Archangel Michael	\N	\N	\N	\N	129	{/img/characters/show/Archangel_Michael.png}	f
 355	Bobby	\N	\N	\N	\N	226	{/img/characters/show/Bobby.png}	f
 273	Arnold Schwarzenegger	\N	July 30th	78	{"Roman Catholic"}	204	{/img/characters/show/Arnold_Schwarzenegger.png}	t
+860	Inuit	\N	\N	\N	\N	212	{/img/characters/show/Inuit.png}	f
+859	Internet Scientists	\N	\N	\N	\N	173	{/img/characters/show/Internet_Scientists.png}	f
+858	Internet Refugees	\N	\N	\N	\N	173	{/img/characters/show/Internet_Refugees.png}	f
+857	Internet Refugee Camp Volunteers	\N	\N	\N	\N	173	{/img/characters/show/Internet_Refugee_Camp_volunteers.png}	f
 212	Aaron Brown	\N	November 10th	76	\N	118	{/img/characters/show/Aaron_brown.png}	t
 216	Adam Sandler	\N	September 9th	58	{Judaism}	211	{/img/characters/show/Adam_Sandler.png}	t
+856	Intergalactic Police	\N	\N	\N	\N	187	{/img/characters/show/Intergalactic_Police.png}	f
 227	Al-Qaeda	\N	\N	\N	\N	74	{/img/characters/show/Al_Qaeda.png}	t
 230	Alan Jackson	\N	Octuber 17th	66	{Christian}	91	{/img/characters/show/Al_Jackson.png}	t
 278	Baby Cows	\N	\N	\N	\N	83	{/img/characters/show/Baby_Cows.png}	f
@@ -797,7 +855,9 @@ COPY public.characters (id, name, family, birthday, age, religion, first_apperan
 410	Buzz Lightyear	\N	\N	\N	\N	299	{/img/characters/show/Buzz_Lightyear.png}	t
 412	Brendan Carr	\N	January 5th	46	\N	326	{/img/characters/show/Brendan_Carr.png}	t
 312	Big Mesquite Murph	\N	\N	\N	\N	300	{/img/characters/show/Big_Mesquite_Murph.png}	f
+855	Injured Thief	\N	\N	\N	\N	174	{/img/characters/show/Injured_thief.png}	f
 1	Kenneth "Kenny" McCormick	4	March 22nd	9	{Christianity,"Blaintologist (Temporary)"}	1	{/img/characters/show/Kenny_McCormick.png}	f
+854	InfoWars Hostess	\N	\N	\N	\N	316	{/img/characters/show/InfoWars_Hostess.png}	f
 257	Anderson Cooper	\N	June 3rd	58	\N	243	{/img/characters/show/Anderson_Cooper.png}	t
 283	Barack Hussein Obama II	55	August 4th	64	{Protestant}	169	{/img/characters/show/Barack_Obama.png}	t
 285	Barbra Streisand	\N	April 24th	83	{Judaism}	12	{/img/characters/show/Barbra_Streisand.png}	t
@@ -805,6 +865,8 @@ COPY public.characters (id, name, family, birthday, age, religion, first_apperan
 289	Bartholomew "Bart" JoJo Simpson	56	April 1st	10	{Christian}	143	{/img/characters/show/Bart_Simpson.png}	t
 293	Beatrice Arthur	\N	May 13th	86	{Judaism}	189	{/img/characters/show/Beatrice_Arthur.png}	t
 380	Brad Morgan	\N	\N	\N	\N	118	{/img/characters/show/Brad_Morgan.png}	f
+853	Indiana Jones	\N	July 1st	\N	\N	88	{/img/characters/show/Indiana_Jones.png}	t
+852	India Manufacturing Inc. Workers	\N	\N	\N	\N	225	{/img/characters/show/Indian_Workers.png}	f
 299	Benjamin Géza Affleck-Boldt	57	August 15th	53	{Methodist}	75	{/img/characters/show/Ben_Affleck.png}	t
 300	Ben Roethlisberger	\N	March 2nd	43	{Methodist}	196	{/img/characters/show/Ben_Roethlisberger.png}	t
 301	Benjamin Franklin	\N	January 17th	84	{Deist}	100	{/img/characters/show/Benjamin_Franklin.png}	t
@@ -945,10 +1007,20 @@ COPY public.characters (id, name, family, birthday, age, religion, first_apperan
 516	Cock Magic Promoter	\N	\N	\N	\N	255	{/img/characters/show/Cock_Magic_Promoter.png}	f
 515	Cock Magic Ring Announcer	\N	\N	\N	\N	255	{/img/characters/show/Cock_Magic_Announcer.png}	f
 505	Cinderella	\N	\N	\N	\N	163	{/img/characters/show/Cinderella.png}	t
+851	IHOP Customer	\N	\N	\N	\N	310	{/img/characters/show/IHOP_Customer.png}	f
+850	Iggy Azalea	\N	June 7th	35	\N	256	{/img/characters/show/Iggy_Azalea.png}	t
+868	Isla	\N	\N	10	\N	134	{/img/characters/show/Isla.png}	f
+867	ISIS	\N	\N	\N	\N	248	{/img/characters/show/Isis.png}	t
 527	Corey Hart	\N	May 31st	63	{Christianity}	212	{/img/characters/show/Cory_Hart.png}	t
 530	Costa Rican President	\N	\N	\N	\N	32	{/img/characters/show/Costa_rican_President.png}	f
 529	Cosette	\N	\N	\N	\N	24	{/img/characters/show/Cosette.png}	f
 528	Corey Lanskin	\N	\N	\N	\N	239	{/img/characters/show/Corey_Lanskin.png}	f
+866	Isayah Zordon	\N	\N	\N	{Judaism}	199	{/img/characters/show/Isiah_Jordan.png}	f
+865	IRS Agents	\N	\N	\N	\N	71	{/img/characters/show/IRS_Agents.png}	f
+864	Iron Man	\N	\N	\N	\N	299	{/img/characters/show/IronMan.png}	t
+863	Irish Band	\N	\N	\N	\N	296	{/img/characters/show/Irish_Band.png}	f
+862	Irene	\N	\N	\N	\N	107	{/img/characters/show/Irene.png}	f
+861	Iranian News Reporter	\N	\N	\N	\N	243	{/img/characters/show/Iranian_Reporter.png}	f
 514	Coach Miles	\N	\N	\N	\N	241	{/img/characters/show/Coach_Miles.png}	f
 210	Charlie Brown	63	October 30th	10	\N	65	{/img/characters/show/Charlie_Brown.png}	t
 4	Stanley "Stan" Marsh	3	October 19th	9	{Christian,"Atheist (Temporariry)","Mormon (Temporariry)","Scientologist (Temporariry)","Blaintologist (Temporarily)"}	1	{/img/characters/show/Stan_Marsh.png}	f
@@ -1740,7 +1812,7 @@ COPY public.chinpokomon (id, name, image) FROM stdin;
 -- Data for Name: episodes; Type: TABLE DATA; Schema: public; Owner: southpark
 --
 
-COPY public.episodes (id, name, season, episode, realese_date, description, view_on_website, censored, paramount_plus_exclusive, image) FROM stdin;
+COPY public.episodes (id, name, season, episode, release_date, description, website_url, censored, paramount_plus_exclusive, image) FROM stdin;
 17	Chickenlover	2	4	1998-05-27	When Barbrady resigns, anarchy ensues and the boys pitch in to help.	https://www.southparkstudios.com/episodes/c1m717/south-park-chickenlover-season-2-ep-4	f	f	img/episodes/17.jpg
 20	City on the Edge of Forever (Flashbacks)	2	7	1998-06-17	A freak accident leaves the South Park Elementary School Bus teetering precariously on the edge of a cliff.	https://www.southparkstudios.com/episodes/k5278s/south-park-city-on-the-edge-of-forever-season-2-ep-7	f	f	img/episodes/20.jpg
 21	Summer Sucks	2	8	1998-06-24	The entire town is gearing up for the annual 4 July celebration when a ban on fireworks is imposed.	https://www.southparkstudios.com/episodes/3wdzae/south-park-summer-sucks-season-2-ep-8	f	f	img/episodes/21.jpg
@@ -2071,6 +2143,7 @@ COPY public.episodes (id, name, season, episode, realese_date, description, view
 328	The Woman In The Hat	28	2	2025-10-31	The White House deals with a disruptive spirit from the east wing. While Stan worries that South Park has become too political.	https://www.southparkstudios.com/episodes/xgd7ik/south-park-the-woman-in-the-hat-season-28-ep-2	f	t	img/episodes/328.jpg
 329	Sora Not Sorry	28	3	2025-11-13	Butters' AI revenge plan backfires, igniting an epidemic of fake videos at school that leaves Detective Harris struggling to tell fantasy from reality	https://www.southparkstudios.com/episodes/wqnkli/south-park-sora-not-sorry-season-28-ep-3	f	t	img/episodes/329.jpg
 330	Turkey Trot	28	4	2025-11-26	The town’s annual Turkey Trot turns chaotic when Cartman uses questionable cutting-edge science to win the race. 	https://www.southparkstudios.com/episodes/o1a4x8/south-park-turkey-trot-season-28-ep-4	f	t	img/episodes/330.jpg
+331	The Crap Out	28	5	2025-12-10	Satan’s due, Stan’s praying, and only a Christmas miracle can deliver the Antichrist on time.	https://www.southparkstudios.com/episodes/ow42kg/south-park-the-crap-out-season-28-ep-5	f	t	img/episodes/331.jpg
 \.
 
 
@@ -2157,6 +2230,9 @@ COPY public.families (id, name, images) FROM stdin;
 76	The Bushes	{img/families/The_Bushes.png}
 77	The Foley Family	{img/families/The_Foley_Family_1.png,img/families/The_Foley_Family_2.png}
 78	The God and The Son	{img/families/Jesus_And_God.png}
+79	Heidi (Dead Celebrities) Family	{img/families/Heidi_(Dead_Celebrities)_Family.png}
+80	The Sanders	{img/families/The_Sanders.png}
+81	The Flannigans	{img/families/The_Flannigans.png}
 \.
 
 
@@ -2164,7 +2240,7 @@ COPY public.families (id, name, images) FROM stdin;
 -- Data for Name: games; Type: TABLE DATA; Schema: public; Owner: southpark
 --
 
-COPY public.games (id, name, developer, platforms, realese_date, images) FROM stdin;
+COPY public.games (id, name, developer, platforms, release_date, images) FROM stdin;
 13	South Park (Gameboy Prototype)	Crawfish Interactive	{GBC}	\N	{/img/games/Gameboy_Game.webp}
 1	South Park Imaginationland	Mr. Goodliving	{IOS}	2008-07-10	{/img/games/ImaginationlandGame.jpg}
 2	South Park (Videogame)	Appaloosa Interactive	{PS1}	1999-09-30	{/img/games/SouthParkTheGame.jpg}
@@ -2205,7 +2281,7 @@ COPY public.games (id, name, developer, platforms, realese_date, images) FROM st
 -- Data for Name: groups; Type: TABLE DATA; Schema: public; Owner: southpark
 --
 
-COPY public.groups ("ID", name, image) FROM stdin;
+COPY public.groups (id, name, image) FROM stdin;
 1	The Boys	img/groups/The_Boys.png
 2	Craig's Gang	img/groups/Craig_Gang.png
 3	Asian Girls	img/groups/Asian_Girls.png
@@ -2431,7 +2507,7 @@ ALTER TABLE ONLY public.games
 --
 
 ALTER TABLE ONLY public.groups
-    ADD CONSTRAINT groups_pkey PRIMARY KEY ("ID");
+    ADD CONSTRAINT groups_pkey PRIMARY KEY (id);
 
 
 --
@@ -2455,7 +2531,7 @@ ALTER TABLE ONLY public.specials
 --
 
 ALTER TABLE ONLY public.characters
-    ADD CONSTRAINT episode_debut_fkey FOREIGN KEY (first_apperance) REFERENCES public.episodes(id) NOT VALID;
+    ADD CONSTRAINT episode_debut_fkey FOREIGN KEY (debut_episode) REFERENCES public.episodes(id) NOT VALID;
 
 
 --
@@ -2463,7 +2539,7 @@ ALTER TABLE ONLY public.characters
 --
 
 ALTER TABLE ONLY public.characters
-    ADD CONSTRAINT family_fkey FOREIGN KEY (family) REFERENCES public.families(id) NOT VALID;
+    ADD CONSTRAINT family_fkey FOREIGN KEY (family_id) REFERENCES public.families(id) NOT VALID;
 
 
 --
@@ -2471,7 +2547,7 @@ ALTER TABLE ONLY public.characters
 --
 
 ALTER TABLE ONLY public.album_songs
-    ADD CONSTRAINT fk_album FOREIGN KEY (album) REFERENCES public.albums(id) NOT VALID;
+    ADD CONSTRAINT fk_album FOREIGN KEY (album_id) REFERENCES public.albums(id) NOT VALID;
 
 
 --
@@ -2487,7 +2563,7 @@ ALTER TABLE ONLY public.characters_group
 --
 
 ALTER TABLE ONLY public.characters_group
-    ADD CONSTRAINT fk_group FOREIGN KEY (id_group) REFERENCES public.groups("ID");
+    ADD CONSTRAINT fk_group FOREIGN KEY (id_group) REFERENCES public.groups(id);
 
 
 --
@@ -2502,5 +2578,5 @@ ALTER TABLE ONLY public.alter_ego
 -- PostgreSQL database dump complete
 --
 
-\unrestrict pTCRfDuPYXtADSKm52GO9Sf9GWpNnN8z5VedfLUryx5P2g2FTYYZn2EWDWBLtsY
+\unrestrict RbMmEhp3snV94uqGpCghMVgUeU1bT1YGp5c5fNh5A4dJAl186x8rWbxgNi8g2b2
 
