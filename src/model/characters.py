@@ -48,6 +48,7 @@ class Character(BaseModel, ApiObject):
     images: list[str]
     debut: dict
     alter_egos: Optional[dict] = None
+    groups: Optional[dict] = None
     famous_guest: bool
 
     def toJSON(
@@ -137,6 +138,15 @@ class Character(BaseModel, ApiObject):
                     for index, alter_ego in enumerate(db_character.alteregos)
                 }
                 if db_character.alteregos
+                else None,
+                "groups": {
+                    str(index): {
+                        "name": group.name,
+                        "url": f"http://localhost:8000/api/groups/{group.id}",
+                    }
+                    for index, group in enumerate(db_character.groups)
+                }
+                if db_character.groups
                 else None,
                 "famous_guest": db_character.famous_guest
                 if db_character.famous_guest is not None
