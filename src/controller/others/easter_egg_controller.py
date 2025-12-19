@@ -54,6 +54,9 @@ def get_easter_egg(name: str, base_url: str) -> dict:
         case EasterEggName.THEWHITEHOUSE.name:
             items = [616, 617, 412, 657, 193]
             type = EasterEggType.CHARACTERS
+        case EasterEggName.THEEPSTEINFILES.name:
+            items = [797]
+            type = EasterEggType.CHARACTERS
 
     logging.info(items)
     logging.info(type.value)
