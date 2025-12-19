@@ -4,10 +4,93 @@ Module written by Carlos Chacón.
 This module define the methods used to create the response of a Group item
 """
 
-from sqlalchemy import text
+from sqlalchemy import func
+from sqlalchemy.exc import (
+    DataError,
+    InvalidRequestError,
+    OperationalError,
+    ProgrammingError,
+)
 
-from src.controller.database_connection import get_query_result
-from src.model.group import Group, get_group_name_by_id
+from src.controller import database_connection
+from src.model.group import Group
+from src.model.ORM.groups_db import GroupDB
+
+
+def get_group_list_by_search(base_url: str, limit: int = 0, search: str = ""):
+    """
+    Search for groups by name using a partial, case-insensitive match.
+
+    Args:
+        base_url (str): The base URL for generating resource URLs.
+        limit (int): The maximum number of groups to return. If 0, no limit.
+        search (str): The search term to match against group names.
+
+    Returns:
+        dict: A dictionary containing the list of matching groups.
+
+    """
+    session = database_connection.get_database_session()
+    try:
+        group_query = (
+            session.query(GroupDB)
+            .filter(GroupDB.name.ilike(f"%{search}%"))
+            .order_by(GroupDB.id)
+        )
+        if limit != 0:
+            group_query = group_query.limit(limit)
+        group_list = group_query.all()
+
+        result = {"groups": {}}
+
+        for index, group_db in enumerate(group_list):
+            group = Group(group_db, base_url)
+            result["groups"][index] = group
+        if result == {"groups": {}}:
+            raise ValueError("Not groups found with this value")
+        return result
+    except (OperationalError, ProgrammingError, InvalidRequestError, DataError) as e:
+        return {"error": str(e), "status": "Database query error"}
+    except (TypeError, AttributeError) as e:
+        return {"error": str(e), "status": "Error processing group data"}
+    except ValueError as e:
+        return {"error": str(e), "status": "Not found"}
+    finally:
+        session.close()
+
+
+def get_group_list(base_url: str, limit: int = 0):
+    """
+    Get a list of all groups, ordered by ID.
+
+    Args:
+        base_url (str): The base URL for generating resource URLs.
+        limit (int): The maximum number of groups to return. If 0, no limit.
+
+    Returns:
+        dict: A dictionary containing the list of groups.
+
+    """
+    session = database_connection.get_database_session()
+    try:
+        group_query = session.query(GroupDB).order_by(GroupDB.id)
+        if limit != 0:
+            group_query = group_query.limit(limit)
+        group_list = group_query.all()
+
+        result = {"groups": {}}
+
+        for index, group_db in enumerate(group_list):
+            group = Group(group_db, base_url)
+            result["groups"][index] = group
+
+        return result
+    except (OperationalError, ProgrammingError, InvalidRequestError, DataError) as e:
+        return {"error": str(e), "status": "Database Not Available"}
+    except (TypeError, AttributeError) as e:
+        return {"error": str(e), "status": "Not Found"}
+    finally:
+        session.close()
 
 
 def get_group_by_id(id, base_url: str = "", metadata=False):
@@ -23,28 +106,26 @@ def get_group_by_id(id, base_url: str = "", metadata=False):
         dict JSON-serializable representation of the Group.
 
     """
-    query_result = get_query_result(
-        text(
-            """
-            SELECT c.*
-            FROM public.characters_group cg join public.characters c
-            ON cg.id_character = c.id
-            where cg.id_group = :id
-            ORDER BY id_character ASC
-            """
-        ),
-        {"id": id},
-    )
-    if query_result is None:
-        return {"error": "Database not available", "status": "failed"}
-    elif query_result.rowcount == 0 and get_group_name_by_id(id) is None:
-        return {"error": "Group not found", "status": "failed"}
+    session = database_connection.get_database_session()
+    try:
+        group_db = session.query(GroupDB).filter(GroupDB.id == id).first()
 
-    group = Group(id, query_result, base_url)
+        if group_db is None:
+            raise TypeError("Group Not Found")
 
-    query_result = get_query_result(text("""SELECT * FROM public.groups"""))
+        group = Group(group_db, base_url)
 
-    return group.toJSON(metadata, total_results=query_result.rowcount)
+        groups_count = session.query(GroupDB).count()
+        return group.toJSON(metadata, groups_count)
+
+    except TypeError as e:
+        return {"error": str(e), "status": "Not Found"}
+    except OperationalError as e:
+        return {"error": str(e), "status": "Database Not Available"}
+    except Exception as e:
+        return {"error": str(e), "status": "failed"}
+    finally:
+        session.close()
 
 
 def get_random_group(base_url: str = ""):
@@ -58,42 +139,14 @@ def get_random_group(base_url: str = ""):
         dict JSON-serializable representation of the Group.
 
     """
-    # 1. Get a random group ID from groups that have members
-    id_query_result = get_query_result(
-        text(
-            """
-            SELECT "ID" FROM public.groups
-            ORDER BY RANDOM()
-            LIMIT 1
-            """
-        )
-    )
+    session = database_connection.get_database_session()
+    try:
+        group_db = session.query(GroupDB).order_by(func.random()).first()
 
-    if id_query_result is None:
-        return {"error": "Database not available", "status": "failed"}
-    if id_query_result.rowcount == 0:
-        return {"error": "No groups with characters found", "status": "failed"}
+        group = Group(group_db, base_url)
 
-    id = id_query_result.scalar_one()
-
-    # 2. Get all characters for that specific group ID
-    characters_query_result = get_query_result(
-        text(
-            """
-            SELECT c.*
-            FROM public.characters_group cg JOIN public.characters c
-            ON cg.id_character = c.id
-            WHERE cg.id_group = :id
-            ORDER BY id_character ASC
-            """
-        ),
-        {"id": id},
-    )
-
-    if characters_query_result is None:
-        return {"error": "Database not available", "status": "failed"}
-
-    # 3. Create the Group object with the full result set
-    group = Group(id, characters_query_result, base_url)
-
-    return group.toJSON()
+        return group.toJSON()
+    except OperationalError as e:
+        return {"error": str(e), "status": "Database Not Available"}
+    finally:
+        session.close()

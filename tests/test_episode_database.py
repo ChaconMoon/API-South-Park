@@ -40,7 +40,7 @@ def test_episode_database_correct():
 
 def test_episode_object_not_found():
     """Test A Not Found Response in Episode Endpoint."""
-    fake_response = {"error": "Episode not found", "status": "failed"}
+    fake_response = {"error": "Episode not found", "status": "Not Found"}
     with patch(
         "src.controller.tvshow.tv_show_endpoints.get_episode_by_id"
     ) as database_response:
@@ -52,7 +52,10 @@ def test_episode_object_not_found():
 
 def test_episode_database_not_available():
     """Test A Not Available Response in Episode Endpoint."""
-    fake_response = {"error": "Database not available", "status": "failed"}
+    fake_response = {
+        "error": "Database not available",
+        "status": "Database Not Available",
+    }
     with patch(
         "src.controller.tvshow.tv_show_endpoints.get_episode_by_id"
     ) as database_response:

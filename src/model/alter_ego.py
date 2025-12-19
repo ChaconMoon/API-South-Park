@@ -8,8 +8,8 @@ about a specific alternate persona including its ID, original character, name an
 
 from pydantic import BaseModel
 
-from src.controller.data_controller import parse_array_to_list
 from src.model.ApiObject import ApiObject
+from src.model.ORM.alter_ego_db import AlterEgoDB
 
 
 class AlterEgo(BaseModel, ApiObject):
@@ -29,7 +29,7 @@ class AlterEgo(BaseModel, ApiObject):
     """
 
     id: int
-    original_character: str
+    original_character: dict
     name: str
     images: list[str]
 
@@ -56,12 +56,12 @@ class AlterEgo(BaseModel, ApiObject):
             )
         return result
 
-    def __init__(self, row: list, base_url: str = "") -> "AlterEgo":
+    def __init__(self, alterego_db=AlterEgoDB, base_url: str = "") -> "AlterEgo":
         """
         Initialize an AlterEgo instance from database row data.
 
         Args:
-            row (list): Database row containing alter ego data
+            alterego_db (AlterEgoDB): The AlterEgo Object from the database.
             base_url (str): Base URL for image paths
 
         Returns:
@@ -69,9 +69,12 @@ class AlterEgo(BaseModel, ApiObject):
 
         """
         data = {
-            "id": int(row[0]) if row[0] is not None else 0,
-            "original_character": str(row[1]) if row[1] is not None else "",
-            "name": str(row[2]) if row[2] is not None else "",
-            "images": parse_array_to_list(row[3], is_url=True, base_url=base_url),
+            "id": alterego_db.id,
+            "original_character": {
+                "name": alterego_db.character.name,
+                "url": f"{base_url}api/characters/{alterego_db.original_character}",
+            },
+            "name": alterego_db.name,
+            "images": [base_url.strip("/") + x for x in alterego_db.images],
         }
         return super().__init__(**data)

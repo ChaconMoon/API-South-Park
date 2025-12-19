@@ -63,7 +63,7 @@ def test_character_database_correct():
 
 def test_character_object_not_found():
     """Test A Not Found Response in Character Endpoint."""
-    fake_response = {"message": "No one has their birthday today", "status": "failed"}
+    fake_response = {"message": "No one has their birthday today", "status": "Not Found"}
     with patch(
         "src.controller.characters.characters_endpoints.get_today_birthday_character"
     ) as database_response:
@@ -75,7 +75,10 @@ def test_character_object_not_found():
 
 def test_character_database_not_available():
     """Test A Not Available Response in Character Endpoint."""
-    fake_response = {"error": "Database not available", "status": "failed"}
+    fake_response = {
+        "error": "Database not available",
+        "status": "Database Not Available",
+    }
     with patch(
         "src.controller.characters.characters_endpoints.get_today_birthday_character"
     ) as database_response:

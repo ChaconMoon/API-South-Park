@@ -15,7 +15,7 @@ from src.main import app
 client = TestClient(app)
 
 
-def test_album_database_correct():
+def test_group_database_correct():
     """Test A Correct Response in Group Endpoint."""
     fake_response = {
         "group": {
@@ -53,9 +53,9 @@ def test_album_database_correct():
             raise RequestException("Expected Found Response")
 
 
-def test_album_object_not_found():
+def test_group_object_not_found():
     """Test A Not Found Response in Group Endpoint."""
-    fake_response = {"error": "Group not found", "status": "failed"}
+    fake_response = {"error": "Group not found", "status": "Not Found"}
     with patch(
         "src.controller.characters.characters_endpoints.get_group_by_id"
     ) as database_response:
@@ -66,9 +66,12 @@ def test_album_object_not_found():
             raise RequestException("Expected Not Found Response")
 
 
-def test_album_database_not_available():
+def test_group_database_not_available():
     """Test A Not Available Response in Group Endpoint."""
-    fake_response = {"error": "Database not available", "status": "failed"}
+    fake_response = {
+        "error": "Database not available",
+        "status": "Database Not Available",
+    }
     with patch(
         "src.controller.characters.characters_endpoints.get_group_by_id"
     ) as database_response:

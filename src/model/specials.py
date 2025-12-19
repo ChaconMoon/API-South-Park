@@ -7,9 +7,12 @@ South Park special episode including its ID, title, release date, description,
 external link and poster image.
 """
 
+import datetime
+
 from pydantic import BaseModel
 
 from src.model.ApiObject import ApiObject
+from src.model.ORM.special_db import SpecialDB
 
 
 class Special(BaseModel, ApiObject):
@@ -32,7 +35,7 @@ class Special(BaseModel, ApiObject):
 
     id: int
     title: str
-    release_date: str
+    release_date: datetime.date
     description: str
     link: str
     poster: str
@@ -58,12 +61,12 @@ class Special(BaseModel, ApiObject):
             result["metadata"]["total_specials_in_database"] = total_results
         return result
 
-    def __init__(self, row: list, base_url: str = "") -> "Special":
+    def __init__(self, special_db: SpecialDB, base_url: str = "") -> "Special":
         """
         Initialize a Special instance from database row data.
 
         Args:
-            row (list): Database row containing special data
+            special_db (Special Databse item): Database object with special data
             base_url (str): Base URL for poster image paths
 
         Returns:
@@ -71,11 +74,11 @@ class Special(BaseModel, ApiObject):
 
         """
         data = {
-            "id": int(row[0]) if row[0] is not None else 0,
-            "title": str(row[1]) if row[1] is not None else "",
-            "release_date": str(row[2]) if row[2] is not None else "",
-            "description": str(row[3]) if row[3] is not None else "",
-            "link": str(row[4]) if row[4] is not None else "",
-            "poster": f"{base_url}{str(row[5])}" if row[5] is not None else "",
+            "id": special_db.id,
+            "title": special_db.title,
+            "release_date": special_db.release_date,
+            "description": special_db.description,
+            "link": special_db.link,
+            "poster": base_url + special_db.poster,
         }
         return super().__init__(**data)

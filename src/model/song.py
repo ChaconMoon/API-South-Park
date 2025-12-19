@@ -11,6 +11,7 @@ from typing import Optional
 from pydantic import BaseModel
 
 from src.model.ApiObject import ApiObject
+from src.model.ORM.album_songs_db import AlbumSongDB
 
 
 class Song(BaseModel, ApiObject):
@@ -66,12 +67,12 @@ class Song(BaseModel, ApiObject):
             result["metadata"]["total_songs_in_database"] = total_results
             return result
 
-    def __init__(self, row: list, base_url: str = "") -> "Song":
+    def __init__(self, song_db=AlbumSongDB, base_url: str = "") -> "Song":
         """
         Initialize a Song instance from database row data.
 
         Args:
-            row (list): Database row containing song data
+            song_db (SQLAlchemy Object ORM): Database object with song data
             base_url (str): Base URL for song URLs (optional)
 
         Returns:
@@ -79,10 +80,10 @@ class Song(BaseModel, ApiObject):
 
         """
         data = {
-            "id": int(row[0]) if row[0] is not None else 0,
-            "name": str(row[1]) if row[1] is not None else "",
-            "album_number": int(row[2]) if row[2] is not None else None,
-            "lyrics": str(row[3]) if row[3] is not None else "",
-            "song_url": str(row[4]) if row[4] is not None else "",
+            "id": song_db.id,
+            "name": song_db.name,
+            "album_number": song_db.album_id,
+            "lyrics": song_db.lyrics,
+            "song_url": song_db.song_url,
         }
         return super().__init__(**data)

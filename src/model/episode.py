@@ -7,9 +7,12 @@ South Park episode including its ID, name, numbering, release date, description,
 website availability and thumbnail image.
 """
 
+import datetime
+
 from pydantic import BaseModel
 
 from src.model.ApiObject import ApiObject
+from src.model.ORM.episode_db import EpisodeDB
 
 
 class Episode(BaseModel, ApiObject):
@@ -34,7 +37,7 @@ class Episode(BaseModel, ApiObject):
     id: int
     name: str
     episode_numbering: dict
-    realese_date: str  # Note: Typo in field name
+    realese_date: datetime.date  # Note: Typo in field name
     description: str
     episode_in_website: dict
     episode_thumbnail: str
@@ -60,12 +63,12 @@ class Episode(BaseModel, ApiObject):
             result["metadata"]["total_episodes_in_database"] = total_results
         return result
 
-    def __init__(self, row: list, base_url: str = "") -> "Episode":
+    def __init__(self, episode_db: EpisodeDB, base_url: str = "") -> "Episode":
         """
         Initialize an Episode instance from database row data.
 
         Args:
-            row (list): Database row containing episode data
+            episode_db: Database object with episode data
             base_url (str): Base URL for thumbnail image paths
 
         Returns:
@@ -73,22 +76,22 @@ class Episode(BaseModel, ApiObject):
 
         """
         data = {
-            "id": int(row[0]) if row[0] is not None else 0,
-            "name": str(row[1]) if row[1] is not None else "",
+            "id": episode_db.id,
+            "name": episode_db.name,
             "episode_numbering": {
-                "season": int(row[2]) if row[2] is not None else "",
-                "episode": int(row[3]) if row[3] is not None else "",
+                "season": episode_db.season,
+                "episode": episode_db.episode,
             },
-            "realese_date": str(row[4]) if row[4] is not None else "",
-            "description": str(row[5]) if row[5] is not None else "",
+            "realese_date": episode_db.release_date,
+            "description": episode_db.description,
             "episode_in_website": {
                 "status": "EXCLUSIVE ON PARAMOUNT PLUS"
-                if bool(row[8])
+                if episode_db.paramount_plus_exclusive
                 else "AVAILABLE ON WEBSITE"
-                if bool(row[7]) is not True
+                if not episode_db.censored
                 else "CENSORED",
-                "website_url": str(row[6]) if row[6] is not None else "",
+                "website_url": episode_db.website_url,
             },
-            "episode_thumbnail": base_url + str(row[9]) if row[9] is not None else "",
+            "episode_thumbnail": base_url + episode_db.image,
         }
         return super().__init__(**data)

@@ -7,44 +7,14 @@ based on those inputs.
 """
 
 import logging
-from enum import Enum
 
-from src.controller.characters.characters_controller import get_character_list
+from src.controller import database_connection
 
-
-class EasterEggType(Enum):
-    """
-    Enumeration of possible easter egg response types.
-
-    Values:
-        NONE (0): No easter egg found
-        CHARACTERS (1): Return character-based easter egg
-        EPISODES (2): Return episode-based easter egg
-        CUSTOM (3): Return custom json response easter egg
-
-    """
-
-    NONE = 0
-    CHARACTERS = 1
-    EPISODES = 2
-    CUSTOM = 3
-
-
-class EasterEggName(Enum):
-    """
-    Enumeration of the available easteregg with their ID.
-
-    Values:
-        IHAVEDIABETES (0): Returns the two kids of the school that have diabetes:
-        (Scott Malkinson and Sophie Gray)
-
-        THEWHITEHOUSE (1): Returns all the characters that are
-        in the White House at the moment
-    """
-
-    IHAVEDIABETES = 0
-    THEWHITEHOUSE = 1
-    # OTHER = 2
+# from src.controller.characters.characters_controller import get_specific_character_list
+from src.controller.others.easter_egg_enums import EasterEggName, EasterEggType
+from src.model.characters import Character
+from src.model.ORM.characters_db import CharacterDB
+from src.model.ORM.episode_db import EpisodeDB
 
 
 def get_easter_egg(name: str, base_url: str) -> dict:
@@ -76,6 +46,7 @@ def get_easter_egg(name: str, base_url: str) -> dict:
     """
     items = list()
     type = EasterEggType.NONE
+    session = database_connection.get_database_session()
     match name.upper():
         case EasterEggName.IHAVEDIABETES.name:
             items = [141, 107]
@@ -83,14 +54,28 @@ def get_easter_egg(name: str, base_url: str) -> dict:
         case EasterEggName.THEWHITEHOUSE.name:
             items = [616, 617, 412, 657, 193]
             type = EasterEggType.CHARACTERS
+        case EasterEggName.THEEPSTEINFILES.name:
+            items = [797]
+            type = EasterEggType.CHARACTERS
 
     logging.info(items)
     logging.info(type.value)
     match type:
         case EasterEggType.CHARACTERS:
-            return get_character_list(ids=items, base_url=base_url)
+            result = {"characters": {}}
+            easter_egg_characters = (
+                session.query(CharacterDB).filter(CharacterDB.id.in_(items)).all()
+            )
+            for index, character in enumerate(easter_egg_characters):
+                result["characters"][index] = Character(character, base_url).toJSON()
+            return result
         case EasterEggType.EPISODES:
-            pass
+            result = {"episodes": {}}
+            easter_egg_characters = (
+                session.query(EpisodeDB).filter(CharacterDB.id.in_(items)).all()
+            )
+            for index, character in enumerate(easter_egg_characters):
+                result["episodes"][index] = Character(character, base_url).toJSON()
         case EasterEggType.CUSTOM:
             pass
     return {"message": "No Easter Egg Found"}
