@@ -20,6 +20,7 @@ services:
 
   pgadmin:
     image: dpage/pgadmin4:9.10
+    user: "${UID}:${GID}"
     environment:
       PGADMIN_DEFAULT_EMAIL: admin@southparkapi.com
       PGADMIN_DEFAULT_PASSWORD: admin123
