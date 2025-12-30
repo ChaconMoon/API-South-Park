@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict RbMmEhp3snV94uqGpCghMVgUeU1bT1YGp5c5fNh5A4dJAl186x8rWbxgNi8g2b2
+\restrict elI5u196PnbXGC8WXTKougOlaXGRlottYCj929ksxdwx2L5gF4ACBF6z1l33b1N
 
 -- Dumped from database version 15.15 (Debian 15.15-1.pgdg13+1)
 -- Dumped by pg_dump version 15.15 (Debian 15.15-1.pgdg13+1)
@@ -689,6 +689,7 @@ COPY public.characters (id, name, family_id, birthday, age, religion, debut_epis
 808	Hannah Williams	\N	\N	6	\N	132	{/img/characters/show/Hannah_Williams.png}	f
 834	Hillary Clinton	58	October 26th	78	{Methodist}	49	{/img/characters/show/Hillary_Clinton.png}	t
 833	Herbert Pocket	\N	\N	9	\N	62	{/img/characters/show/Pocket.png}	f
+461	Charles Kincade	\N	\N	\N	\N	166	{/img/characters/show/Charles_Kincaid.png}	f
 832	Henry Winkler	\N	October 30th	80	{Judaism}	20	{/img/characters/show/Fonz.png}	t
 831	Henry Kline	\N	\N	10	\N	279	{/img/characters/show/Henry_Kline.png}	f
 830	Helen	\N	\N	\N	\N	33	{/img/characters/show/Helen.png}	f
@@ -841,7 +842,6 @@ COPY public.characters (id, name, family_id, birthday, age, religion, debut_epis
 392	Brian Griffin	\N	\N	8	\N	142	{/img/characters/show/Brian_Griffin.png}	t
 393	Brian Jeffries	\N	\N	\N	\N	157	{/img/characters/show/Brian_Jeffries.png}	f
 394	Brian Thompson-Jarvis	\N	\N	\N	\N	141	{/img/characters/show/Brian_Thompson-Jarvis.png}	f
-395	Brimmy	\N	\N	10	\N	1	{/img/characters/show/Brimmy.png}	f
 398	Brobee	\N	\N	\N	\N	242	{/img/characters/show/Brobee.png}	f
 399	Bruce	\N	\N	\N	\N	65	{/img/characters/show/Bruce.png}	f
 400	Brunette Nurse	\N	\N	\N	\N	89	{/img/characters/show/Brunette_Nurse.png}	f
@@ -911,7 +911,6 @@ COPY public.characters (id, name, family_id, birthday, age, religion, debut_epis
 429	Canadian Minister of Sports	\N	\N	\N	\N	185	{/img/characters/show/Canadian_Minister_of_Sports.png}	f
 428	Canadian Minister of Streaming	\N	\N	\N	\N	286	{/img/characters/show/Canadian_Minister_of_Movies.png}	f
 427	Canadian Minister of Mobile Gaming / Canadian Devil	\N	\N	\N	\N	253	{/img/characters/show/Canadian_Minister_of_Mobile_Gaming.png,/img/characters/show/Canadian_Devil.png}	f
-461	Charles Kincade	\N	\N	\N	\N	166	{/img/characters/show/Charles_Kincaid.png}	f
 460	Chantal	62	\N	0	\N	82	{/img/characters/show/Chantal.png}	f
 459	Chamber of Commerce Representative	\N	\N	\N	\N	123	{/img/characters/show/Chamber_of_Commerce_Representative.png}	f
 458	Chad	\N	\N	\N	\N	63	{/img/characters/show/Chad.png}	f
@@ -1023,6 +1022,7 @@ COPY public.characters (id, name, family_id, birthday, age, religion, debut_epis
 861	Iranian News Reporter	\N	\N	\N	\N	243	{/img/characters/show/Iranian_Reporter.png}	f
 514	Coach Miles	\N	\N	\N	\N	241	{/img/characters/show/Coach_Miles.png}	f
 210	Charlie Brown	63	October 30th	10	\N	65	{/img/characters/show/Charlie_Brown.png}	t
+107	Sophie Gray	17	\N	10	\N	306	{/img/characters/show/Sophie_Gray.png}	f
 4	Stanley "Stan" Marsh	3	October 19th	9	{Christian,"Atheist (Temporariry)","Mormon (Temporariry)","Scientologist (Temporariry)","Blaintologist (Temporarily)"}	1	{/img/characters/show/Stan_Marsh.png}	f
 542	Cupid Me	\N	\N	\N	\N	230	{/img/characters/show/Cupid_Me.png,/img/characters/show/Cupid_Ye.png}	f
 568	David Quincy	\N	May 22nd	\N	\N	179	{/img/characters/show/David_Quincy.png}	t
@@ -1118,6 +1118,7 @@ COPY public.characters (id, name, family_id, birthday, age, religion, debut_epis
 47	Grandma Stotch	34	\N	\N	\N	228	{/img/characters/show/Grandma_Stotch.png}	f
 48	Linda Stotch	34	\N	\N	{"Roman Catholic"}	64	{/img/characters/show/Linda_Stotch.png}	f
 49	Stephen Willis Stotch	34	\N	\N	{"Roman Catholic"}	17	{/img/characters/show/Stephen_Stotch.png}	f
+108	Mrs. Gray	17	\N	\N	\N	306	{/img/characters/show/Mrs_Gray.png}	f
 51	Richard Tweak	48	\N	\N	{Buddhist,"Roman Catholic (Formerly)","Atheist (Formerly)"}	30	{/img/characters/show/Richard_Tweak.png}	f
 52	Tweek Tweak	48	\N	10	{Buddhist,"Roman Catholic (Formerly)","Atheist (Formerly)"}	30	{/img/characters/show/Tweek_Tweak.png}	f
 53	Stripe	43	\N	\N	\N	36	{/img/characters/show/Stripe.png}	f
@@ -1172,8 +1173,6 @@ COPY public.characters (id, name, family_id, birthday, age, religion, debut_epis
 104	Mr. Feegan	15	\N	\N	\N	220	{/img/characters/show/Mr_Feegan.png}	f
 105	Mrs. Garrison Senior	16	\N	\N	\N	48	{/img/characters/show/Mrs_Garrison.png}	f
 106	Mr. Garrison Senior	16	\N	\N	\N	48	{/img/characters/show/Mr_Garrison.png}	f
-107	Sophie Gray	17	\N	10	\N	306	{/img/characters/show/Sophie_Gray.png}	f
-108	Mrs. Gray	17	\N	\N	\N	306	{/img/characters/show/Mrs_Gray.png}	f
 109	Mr. Hakeem	50	\N	\N	{Islam}	157	{/img/characters/show/Mr_Hakeem.png}	f
 110	Bridon Gueermo	18	\N	9	\N	180	{/img/characters/show/Bridon_Gueermo.png}	f
 111	Mrs. Gueermo	18	\N	\N	\N	180	{/img/characters/show/Mrs_Gueermo.png}	f
@@ -1343,6 +1342,7 @@ COPY public.characters (id, name, family_id, birthday, age, religion, debut_epis
 582	Dennis ("Night of the Living Homeless")	\N	\N	\N	\N	160	{/img/characters/show/Denis_Homeless.png}	f
 581	Dennis	\N	\N	\N	\N	191	{/img/characters/show/Dennis.png}	f
 599	Diego	\N	\N	\N	\N	159	{/img/characters/show/Diego.png}	f
+688	Escaped Convict	\N	\N	\N	\N	62	{/img/characters/show/Escaped_Convict.png}	f
 597	Diane Choksondik	\N	\N	\N	\N	59	{/img/characters/show/Diane_Chokdondik.png}	f
 594	Devitzen's Tolerance Camp Warden	\N	\N	\N	\N	93	{/img/characters/show/Devitzen's_Tolerance_Camp_Warden.png}	f
 593	Detroit Red Wings	\N	\N	\N	\N	153	{/img/characters/show/Detroit_Redwings.png}	f
@@ -1397,7 +1397,6 @@ COPY public.characters (id, name, family_id, birthday, age, religion, debut_epis
 674	Elsa	\N	\N	\N	\N	299	{/img/characters/show/Elsa.png}	f
 672	Elmer Fudd	\N	\N	\N	\N	202	{/img/characters/show/Elmer_Fudd.png}	f
 670	Elise Gintz	\N	\N	\N	\N	111	{/img/characters/show/Elise_Gintz.png}	f
-669	Elise Garrett	\N	\N	\N	\N	41	{/img/characters/show/Elise_garrett.png}	f
 682	Emo Kids	\N	\N	\N	\N	241	{/img/characters/show/Emo_Kids.png}	f
 681	Emily Marx	\N	\N	9	\N	134	{/img/characters/show/Emily_Marx.png}	f
 694	Excalibur Sorcerer	\N	\N	\N	\N	66	{/img/characters/show/Excalibur_Sorcerer.png}	f
@@ -1405,7 +1404,6 @@ COPY public.characters (id, name, family_id, birthday, age, religion, debut_epis
 691	Ethiopian Tribe	\N	\N	\N	\N	8	{/img/characters/show/Ethiopians.png}	f
 690	Esther	\N	\N	10	{"Roman Catholic"}	32	{/img/characters/show/Esther.png}	f
 689	Estella Havisham	\N	\N	10	\N	62	{/img/characters/show/Estella.png}	f
-688	Escaped Convict	\N	\N	\N	\N	62	{/img/characters/show/Escaped_Convict.png}	f
 171	Bebe Stevens	36	August 13th	10	{"Roman Catholic"}	2	{/img/characters/show/Bebe_Stevens.png}	f
 173	Mrs. Stevens	36	\N	\N	{"Roman Catholic"}	16	{/img/characters/show/Mrs_Stevens.png}	f
 174	Mr. Stevens	36	\N	\N	{"Roman Catholic"}	123	{/img/characters/show/Mr_Stevens.png}	f
@@ -1449,6 +1447,137 @@ COPY public.characters (id, name, family_id, birthday, age, religion, debut_epis
 731	Fred Savage	\N	July 9th	49	{Judaism}	22	{/img/characters/show/Fred_Savage.png}	t
 732	Freddy Krueger	\N	\N	\N	\N	164	{/img/characters/show/Freddy_Krueger.png}	t
 716	The Foley Kids	77	\N	8	\N	136	{/img/characters/show/The_Foley_Kids.png}	f
+669	Elise Garrett	82	\N	\N	\N	41	{/img/characters/show/Elise_garrett.png}	f
+877	Jakartha	\N	\N	\N	\N	135	{/img/characters/show/Jakartha.png}	f
+876	Jafar	\N	\N	\N	\N	299	{/img/characters/show/Jafar.png}	t
+875	Jada Pinkett Smith	83	September 18th	54	{Scientology}	77	{/img/characters/show/Pinkett_Smith.png}	t
+874	Jacob Hallery	\N	\N	\N	\N	223	{/img/characters/show/Jacob_Hallery.png}	f
+873	Jack Sparrow	\N	\N	\N	\N	299	{/img/characters/show/Jack_Sparrow.png}	t
+872	Jack Garrett	82	\N	\N	\N	4	{/img/characters/show/Jack_Garrett.png}	f
+871	Jack Farlis	\N	\N	\N	\N	70	{/img/characters/show/Jack_Farlis.png}	f
+870	J.J. Watt	\N	March 22nd	36	\N	257	{/img/characters/show/J_J_Watt.png}	t
+869	J.J. Abrams	\N	June 27th	59	{Judaism}	268	{/img/characters/show/J_J_Abrams.png}	t
+878	Jake	\N	\N	9	\N	32	{/img/characters/show/JakeGGWK.png}	\N
+890	Janet Spears	\N	\N	\N	\N	304	{/img/characters/show/Janet_Spears.png}	f
+889	Janet Reno	\N	July 21st	78	\N	52	{/img/characters/show/Janet_Reno.png}	t
+888	Janet Fitzsimmons	68	\N	\N	\N	278	{/img/characters/show/Janet_Fitzsimmons.png}	f
+887	Jamie Oliver	\N	May 27th	50	\N	209	{/img/characters/show/Jamie_Oliver.png}	t
+886	James Taylor	\N	March 12th	77	{Agnostic}	63	{/img/characters/show/James_Taylor.png}	t
+885	James Harden	\N	August 26th	36	{Christian}	299	{/img/characters/show/James_Harden.png}	t
+884	James Cameron	\N	August 16th	71	{Atheist}	232	{/img/characters/show/James_Cameron.png}	t
+883	James (Build-A-Bear)	\N	\N	\N	\N	308	{/img/characters/show/James_Build_a_Bear.png}	f
+882	Jambu	\N	\N	\N	\N	138	{/img/characters/show/Willzyx.png}	f
+881	Jakovasaur	\N	\N	\N	\N	35	{/img/characters/show/Jakovasaurs.png}	f
+880	Jake Jabs	\N	November 23rd	95	\N	166	{/img/characters/show/Jake_Jabs.png}	t
+879	Jake Angeli	\N	\N	\N	\N	309	{/img/characters/show/Qanon_Bisonhat_Guy.png}	t
+901	Jason Voorhees	\N	\N	\N	\N	164	{/img/characters/show/Jason_Voorhees.png}	t
+900	Jason Giambi	\N	January 8th	54	\N	113	{/img/characters/show/Jason_Giambi.png}	t
+899	Jason Bell	\N	\N	\N	\N	99	{/img/characters/show/Jason_Bell.png}	f
+898	Jasmine	\N	\N	\N	\N	299	{/img/characters/show/Jasmine.png}	t
+897	Jared Fogle	\N	August 23	48	{Judaism}	80	{/img/characters/show/Jared_Subway.png}	t
+896	Japanese Toilet Delivery Men	\N	\N	\N	\N	318	{/img/characters/show/Japanese_Toilet_Delivery_Men.png}	f
+895	Japanese Singer	\N	\N	\N	\N	12	{/img/characters/show/Japanese_Singer.png}	f
+894	Japanese News Reporters	\N	\N	\N	\N	243	{/img/characters/show/NHK_reporters.png}	f
+893	Janson	\N	\N	\N	\N	198	{/img/characters/show/Janson_Mayor_Aid.png}	f
+892	Janis Joplin	\N	January 19th	27	{"Churches of Christ"}	27	{/img/characters/show/Joplin.jpeg}	t
+891	Janice	\N	\N	\N	\N	119	{/img/characters/show/Janice.png}	f
+913	Jeffrey Epstein	\N	January 20th	66	{Judaism}	309	{/img/characters/show/Jeffrey_Epstein.png}	t
+912	Jeffrey Dahmer	\N	May 21st	34	{Christianity}	46	{/img/characters/show/Jeffrey_Dahmer.png}	t
+911	Jefferson Davis (Played by Stan Marsh)	\N	June 3rd	81	{Episcopal}	45	{/img/characters/show/Jefferson_Davis_Stan.png}	t
+910	Jeff White	\N	\N	\N	\N	249	{/img/characters/show/Jeff_White.png}	f
+909	Jeff Gordon	\N	August 4th	54	{Christian}	203	{/img/characters/show/Jeff_Gordon.png}	t
+908	Jeff Goldblum	\N	October 22nd	73	{Judaism}	97	{/img/characters/show/Jeff_Ggoldblum.png}	t
+907	Jeff Corrigan	\N	\N	\N	\N	298	{/img/characters/show/Jeff_Corrigen.png}	f
+906	Jeff Bezos	\N	January 12th	61	\N	296	{/img/characters/show/Jeff_Bezos.png}	t
+905	Jeff Arrando	\N	\N	\N	\N	76	{/img/characters/show/Jeff_Armando.png}	f
+904	JD Vance	\N	August 2nd	41	\N	323	{/img/characters/show/JD_Vance.png}	t
+903	Jay Leno	\N	April 28th	75	\N	20	{/img/characters/show/Jay_Leno.png}	t
+902	Jay Cutler	\N	April 29th	42	\N	166	{/img/characters/show/Jay_Cutler.png}	t
+925	Jerry Garcia	\N	August 1st	53	\N	57	{/img/characters/show/Jerry_Garcia.png}	t
+924	Jenny's Parents	84	\N	\N	\N	64	{/img/characters/show/Jennys_Parents.png}	f
+923	Jenny Simons	\N	\N	10	\N	167	{/img/characters/show/Jenny.png}	f
+922	Jenny (Kindergartner)	84	\N	5	\N	60	{/img/characters/show/Kindergarden_Jenny.png}	f
+921	Jennifer Love Hewitt	\N	\N	\N	\N	26	{/img/characters/show/Jennifer_Love_Hewitt.png}	f
+920	Jennifer Lopez	\N	July 24th	56	{"Roman Catholic"}	101	{/img/characters/show/Jennifer_Llopez.png}	t
+919	Jenkins	\N	\N	\N	\N	102	{/img/characters/show/Jenkins.png}	f
+918	Jenkins (WOW)	\N	\N	\N	\N	147	{/img/characters/show/Leroy_Jenkins.png}	f
+917	Jehovah's Witnesses	\N	\N	\N	\N	238	{/img/characters/show/Jehovahs_Witnesses_Women.png}	f
+916	Jeffy's Farmer	\N	\N	\N	\N	115	{/img/characters/show/Dancing_Duck_Farmer.png}	f
+915	Jeffy	\N	\N	\N	\N	115	{/img/characters/show/Jeffy.png}	f
+914	Geoffrey Maynard	\N	\N	\N	\N	61	{/img/characters/show/Geoffrey_Maynard.png}	f
+936	Jesus Christ	\N	\N	\N	{"Roman Catholic"}	4	{/img/characters/show/Jesus_Christ.png}	f
+935	Jesus and Pals Producer	\N	\N	\N	{Christian}	19	{/img/characters/show/Jesus_n_Pals_Producer.png}	f
+934	Jessie ("Medicinal Fried Chicken")	\N	\N	\N	\N	198	{/img/characters/show/Jessie_4th_Grade.png}	f
+933	Jessie	\N	\N	\N	\N	123	{/img/characters/show/Jessie.png}	f
+932	Jessica Pinkerton	\N	\N	\N	\N	223	{/img/characters/show/Jessica_Pinkerton.png}	f
+931	Jesse Jackson	\N	October 8th	84	{Baptist}	60	{/img/characters/show/Jesse_Jackson.png}	t
+930	Jesse	\N	\N	\N	\N	233	{/img/characters/show/Jesse.png}	f
+929	Jerusalem News Correspondent	\N	\N	\N	\N	243	{/img/characters/show/Jerusalem_News_Correspondent.png}	f
+928	Jerry Springer	\N	February 13th	79	{Judaism}	14	{/img/characters/show/Jerry_Springer.png}	t
+927	Jerry Sanders	\N	July 14th	75	\N	228	{/img/characters/show/Jerry_Sanders.png}	t
+926	Jerry Jones	\N	October 13th	83	{Christian}	248	{/img/characters/show/Jerry_Jones.png}	t
+947	Jimmy Buffett	\N	December 25th	76	\N	168	{/img/characters/show/Jimmy_Buffet.png}	t
+946	Jimmie Walker	\N	June 25th	78	\N	97	{/img/characters/show/Jimmie_Walker.png}	t
+395	Brimmy	84	\N	10	\N	1	{/img/characters/show/Brimmy.png}	f
+945	Jimmie Johnson	\N	September 17th	50	\N	203	{/img/characters/show/Jimmie_Johnson.png}	t
+944	Jim Rome	\N	October 14th	61	\N	231	{/img/characters/show/Jim_Rome.png}	t
+943	Jim Lehrer	\N	May 19th	85	{Letsism}	84	{/img/characters/show/Jim__ehrer.png}	t
+942	Jim Kimble	\N	\N	\N	\N	294	{/img/characters/show/Jim_Kimble.png}	f
+941	Jim Carrey	\N	January 17th	63	{Christian}	216	{/img/characters/show/Jim_Carrey.png}	t
+940	Jim Brown-ish	\N	\N	\N	\N	124	{/img/characters/show/Jim_Brown.png}	f
+939	Jim Bob	\N	\N	\N	\N	278	{/img/characters/show/Jim_Bob.png}	f
+938	Jewpacabra	\N	\N	\N	{Judaism}	227	{/img/characters/show/Jewpacabra.png}	f
+937	Jewbots	\N	\N	\N	\N	186	{/img/characters/show/Robots_Jewbots.png}	f
+950	Jimmy Stewart	\N	May 20th	89	{Presbyterian}	29	{/img/characters/show/Jimmy_Stewart_as_George_Bailey.png}	t
+949	Jimmy Kimmel	\N	November 13th	58	{"Roman Catholic"}	186	{/img/characters/show/Jimmy_Kimmel.png}	t
+948	Jimmy Cartman	2	\N	\N	\N	29	{/img/characters/show/Jimmy_Cartman.png}	f
+951	Jo Frost	\N	June 27th	55	\N	146	{/img/characters/show/Super_Nanny.png}	t
+952	Job	\N	\N	\N	{Judaism,Christianity,Islam}	71	{/img/characters/show/Job.png}	t
+953	Joe Gargery	85	\N	\N	\N	62	{/img/characters/show/Joe_Gargery.png}	f
+954	Joe Strummer	\N	August 21st 	50	\N	27	{/img/characters/show/Joe_strummer.png}	t
+955	Joe and Teresa Giudice	\N	\N	\N	{"Roman Catholic"}	204	{/img/characters/show/Joe_and_Teresa_Giudice.png}	t
+956	John Adams	\N	October 30th	90	{"Unitarian Christian"}	100	{/img/characters/show/John_Adams.png}	t
+957	John Aspinal	\N	\N	\N	\N	310	{/img/characters/show/Realtor_John.png}	f
+958	John Cena	\N	April 23rd	48	{"Roman Catholic"}	191	{/img/characters/show/John_Cena.png}	t
+970	John Walsh	\N	December 26th	80	{"Roman Catholic"}	15	{/img/characters/show/John_Walsh.png}	t
+969	John Travolta	\N	February 18th	71	{Scientology}	76	{/img/characters/show/John_Travolta.png}	t
+968	John Postum	\N	\N	\N	\N	30	{/img/characters/show/John_Postem.png}	f
+967	John McCain	87	August 29th	81	{Baptist}	179	{/img/characters/show/John_Mccain.png}	t
+966	John Howard	\N	July 26th	86	{Anglican}	187	{/img/characters/show/John_Howard.png}	t
+965	John Hancock	\N	January 23rd	56	\N	100	{/img/characters/show/John_Hancock.png}	t
+964	John F. Kennedy Jr.	86	November 25th	38	{"Roman Catholic"}	46	{/img/characters/show/John_F_Kennedy_Jr.png}	t
+963	John F. Kennedy	86	May 29th	46	{"Roman Catholic"}	46	{/img/characters/show/John_F_Kennedy.png}	t
+962	John Elway	\N	June 28th	65	\N	13	{/img/characters/show/John_Elway.png}	t
+961	John Edward	\N	October 19th	56	{"Roman Catholic"}	94	{/img/characters/show/John_Edward.png}	t
+960	John Dickinson	\N	November 20th	75	{Quaker}	100	{/img/characters/show/John_Dickenson.png}	t
+959	John D'Aquino	\N	April 14th	67	\N	68	{/img/characters/show/Politics_Larry.png}	t
+982	Jonas Brothers	\N	\N	\N	\N	182	{/img/characters/show/Jonas_Brothers.png}	t
+981	JonBenét Ramsey	88	August 6th	6	\N	58	{/img/characters/show/JonBenét_Ramsey.png}	t
+980	Jon Cryer	\N	April 16th	60	{Judaism}	203	{/img/characters/show/Jon_Cryer.png}	t
+979	Joline	62	\N	\N	\N	82	{/img/characters/show/Joline.png}	f
+978	Johnny Manymoons	\N	\N	\N	\N	103	{/img/characters/show/Jonny_manymoons.png}	f
+977	Johnny Knoxville	\N	March 11th	54	\N	63	{/img/characters/show/Johnny_Knoxville.png}	t
+976	Johnnie Cochran	\N	October 2nd	67	{Christian}	27	{/img/characters/show/Johnnie_Cochran.png}	t
+975	John Garner	\N	\N	\N	\N	249	{/img/characters/show/John_Garner.png}	f
+974	John and Patricia Ramsey	88	\N	\N	\N	79	{/img/characters/show/John_And_Patricia_Ramsey.png}	t
+973	John Wilkes Booth	\N	May 10th	26	\N	68	{/img/characters/show/John_Wilkes_Booth.png}	t
+972	John Wayne Gacy	\N	March 17th	52	{"Roman Catholic"}	150	{/img/characters/show/John_Wayne_Gacy.png}	t
+971	John Warsog	\N	\N	\N	\N	6	{/img/characters/show/John_Warzog.png}	f
+994	Junichi Takiyama	\N	\N	\N	\N	210	{/img/characters/show/Junichi_Takiyama.png}	f
+993	June Shannon	89	August 10th	46	\N	232	{/img/characters/show/June_Shannon.png}	t
+992	Judge Moses	\N	\N	\N	\N	27	{/img/characters/show/Judge_Moses.png}	f
+991	Judge Julie	\N	\N	\N	\N	37	{/img/characters/show/Judge_Julie.png}	f
+990	Josh Myers	\N	\N	\N	\N	99	{/img/characters/show/Josh_Myers.png}	f
+989	Josh Cashner	\N	\N	\N	\N	95	{/img/characters/show/Josh_Cashner.png}	f
+988	Josh Carter	\N	\N	\N	\N	296	{/img/characters/show/Josh_Package.png}	f
+987	Josh ("Margaritaville")	\N	\N	\N	\N	184	{/img/characters/show/Josh_Margaritaville.png}	f
+986	Joseph Smith	\N	Decembder 23	38	{Mormonism}	68	{/img/characters/show/Joseph_Smith.png}	t
+985	Jose Venezuela	\N	\N	\N	\N	93	{/img/characters/show/Mr_Venezuela.png}	f
+984	Joozians	\N	\N	\N	\N	97	{/img/characters/show/Joozians.png}	f
+983	Jonesy	\N	\N	\N	\N	25	{/img/characters/show/Jonesy.png}	f
+997	Justin Trudeau	\N	December 25th	53	{"Roman Catholic"}	287	{/img/characters/show/Justin_Trudeau.png}	t
+996	Justin Timberlake	\N	January 31st	44	\N	116	{/img/characters/show/Justin_Timberlake.png}	t
+995	Justin Bieber	\N	March 1st	16	{Christian}	208	{/img/characters/show/Justin_Bieber.png}	t
 \.
 
 
@@ -2233,6 +2362,14 @@ COPY public.families (id, name, images) FROM stdin;
 79	Heidi (Dead Celebrities) Family	{img/families/Heidi_(Dead_Celebrities)_Family.png}
 80	The Sanders	{img/families/The_Sanders.png}
 81	The Flannigans	{img/families/The_Flannigans.png}
+82	The Garretts	\N
+83	The (Will) Smith Family 	\N
+84	Jenny & Brimmy Family	\N
+85	Pip Family	\N
+86	The Kennedys	\N
+87	The McCains	\N
+88	The Ramseys	\N
+89	Honey Boo Boo Family	\N
 \.
 
 
@@ -2578,5 +2715,5 @@ ALTER TABLE ONLY public.alter_ego
 -- PostgreSQL database dump complete
 --
 
-\unrestrict RbMmEhp3snV94uqGpCghMVgUeU1bT1YGp5c5fNh5A4dJAl186x8rWbxgNi8g2b2
+\unrestrict elI5u196PnbXGC8WXTKougOlaXGRlottYCj929ksxdwx2L5gF4ACBF6z1l33b1N
 
