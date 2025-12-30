@@ -6,6 +6,8 @@ It provides routes to access information about characters, their alter egos,
 families, and birthday events.
 """
 
+from typing import Annotated
+
 from fastapi import APIRouter, Query, Request, Response, status
 from fastapi.responses import StreamingResponse
 
@@ -35,7 +37,6 @@ from src.controller.characters.groups_controller import (
     get_random_group,
 )
 from src.controller.date_controller import get_today_birthday_character
-from typing import Annotated
 
 router = APIRouter(tags=["Characters"])
 

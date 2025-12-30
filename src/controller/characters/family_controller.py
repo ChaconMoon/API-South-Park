@@ -39,21 +39,24 @@ def get_family_image(family_id: int, image_id : int, size: str) -> StreamingResp
         "medium": (960,540),
         "small": (640, 480)
     }
-    session = database_connection.get_database_session()
-
-    family_db = session.query(FamilyDB).filter(FamilyDB.id == family_id).first()
-    if family_db is None:
-        return Response(status_code=404)
     try:
-        image = Image.open("./"+family_db.images[image_id-1])
-    except IndexError:
-        return Response(status_code=404)
-    if size != "original":
-        image.thumbnail(sizes[size])
-    buffer = io.BytesIO()
-    image.save(buffer,format="PNG")
-    buffer.seek(0)
-    return StreamingResponse(buffer, media_type="image/png", status_code=200)
+        session = database_connection.get_database_session()
+
+        family_db = session.query(FamilyDB).filter(FamilyDB.id == family_id).first()
+        if family_db is None:
+            return Response(status_code=404)
+        try:
+            image = Image.open("./"+family_db.images[image_id-1])
+        except IndexError:
+            return Response(status_code=404)
+        if size != "original":
+            image.thumbnail(sizes[size])
+        buffer = io.BytesIO()
+        image.save(buffer,format="PNG")
+        buffer.seek(0)
+        return StreamingResponse(buffer, media_type="image/png", status_code=200)
+    finally:
+        session.close()
 
 def get_family_list(limit: int = 0, base_url="") -> dict:
     """
