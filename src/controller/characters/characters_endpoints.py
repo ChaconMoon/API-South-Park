@@ -6,7 +6,8 @@ It provides routes to access information about characters, their alter egos,
 families, and birthday events.
 """
 
-from fastapi import APIRouter, Request, Response, status
+from fastapi import APIRouter, Query, Request, Response, status
+from fastapi.responses import StreamingResponse
 
 from src.controller.characters.alter_ego_controller import (
     get_all_alteregos_of_a_character,
@@ -22,6 +23,7 @@ from src.controller.characters.characters_controller import (
 )
 from src.controller.characters.family_controller import (
     get_family_by_id,
+    get_family_image,
     get_family_list,
     get_family_search,
     get_random_family,
@@ -33,6 +35,7 @@ from src.controller.characters.groups_controller import (
     get_random_group,
 )
 from src.controller.date_controller import get_today_birthday_character
+from typing import Annotated
 
 router = APIRouter(tags=["Characters"])
 
@@ -366,6 +369,29 @@ def show_random_alterego(request: Request, response: Response, character: int = 
         else:
             response.status_code = status.HTTP_200_OK
     return json
+
+# Create the endpoint to get the family images.
+@router.get("/api/families/{id}/image/{image_id}")
+def show_family_image(
+    id: int, image_id: int,
+    size: Annotated[str, Query(regex="^(original|small|medium|large)$")] = "original"
+) -> StreamingResponse:
+    """
+    Get the image of a family.
+
+    :param id: The id of the family.
+    :type id: int
+    :param image_id: The id of the image [Starts in 1].
+    :type image_id: int
+    :param size: The size of the image
+    [original (1920x1080), small (640x480), medium (960x540), large (1280x720)].
+    :type size: Annotated[str, Query(regex="(original|small|medium|large)$")]
+    :return: The image of the family.
+    :rtype: StreamingResponse
+    """
+    return get_family_image(family_id=id,image_id=image_id, size=size)
+
+
 
 
 # Create the endpoint to get the families.
