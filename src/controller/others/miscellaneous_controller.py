@@ -17,6 +17,7 @@ def get_butters_punishment_by_id(id: int, base_url: str, metadata = False) -> di
     Args:
         id (int): Unique identifier for the punishment
         base_url (str): Base URL of the API
+        metadata (bool): Flag to include metadata in the response
 
     Returns:
         dict: JSON response containing the Butters'
