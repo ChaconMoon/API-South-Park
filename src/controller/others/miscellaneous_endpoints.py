@@ -14,14 +14,15 @@ from src.controller.others.miscellaneous_controller import get_butters_punishmen
 router = APIRouter(tags=["Others"])
 
 @router.get("/api/butterspunishments/{id}")
-def show_butters_punishment(id: int, request: Request) -> JSONResponse:
+def show_butters_punishment(id: int, request: Request,
+                             metadata: bool = False) -> JSONResponse:
     """
     Retrieve a Butters' punishment entry by its unique ID.
 
     Args:
         id (int): Unique identifier for the punishment
         request (Request): FastAPI request object containing base URL
-        response (Response): FastAPI response object
+        metadata (bool): Flag to include metadata in the response
 
     Returns:
         dict: JSON response containing the Butters'
@@ -29,7 +30,7 @@ def show_butters_punishment(id: int, request: Request) -> JSONResponse:
 
     """
     base_url = str(request.base_url)
-    response = get_butters_punishment_by_id(id=id, base_url=base_url)
+    response = get_butters_punishment_by_id(id=id, base_url=base_url, metadata=metadata)
 
     if "error" in response:
         if response["error"] == f"Butters' punishment with ID {id} not found.":

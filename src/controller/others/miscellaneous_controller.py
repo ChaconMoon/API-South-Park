@@ -10,7 +10,7 @@ from src.model.butters_punishments import ButtersPunishments
 from src.model.ORM.butters_punishments_db import ButtersPunishmentsDB
 
 
-def get_butters_punishment_by_id(id: int, base_url: str) -> dict:
+def get_butters_punishment_by_id(id: int, base_url: str, metadata = False) -> dict:
     """
     Retrieve a Butters' punishment entry by its unique ID.
 
@@ -34,7 +34,8 @@ def get_butters_punishment_by_id(id: int, base_url: str) -> dict:
                 }
 
         punishment = ButtersPunishments(db_object=punishment_db, base_url=base_url)
-        return punishment.toJSON()
+        return punishment.toJSON(metadata=metadata,
+                                  total_results=session.query(ButtersPunishmentsDB).count())
     except Exception as e:
             return {
                     "error": "An error occurred while retrieving the punishment.",
