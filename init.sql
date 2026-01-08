@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict elI5u196PnbXGC8WXTKougOlaXGRlottYCj929ksxdwx2L5gF4ACBF6z1l33b1N
+\restrict MbzTp4fnkpwUEWZNPOANWMF7tDZ1gOTUU4JDw4RQbewarK0zHC1rT3XagsgWh3s
 
 -- Dumped from database version 15.15 (Debian 15.15-1.pgdg13+1)
 -- Dumped by pg_dump version 15.15 (Debian 15.15-1.pgdg13+1)
@@ -110,6 +110,19 @@ CREATE TABLE public.alter_ego (
 
 
 ALTER TABLE public.alter_ego OWNER TO southpark;
+
+--
+-- Name: butters_punishments; Type: TABLE; Schema: public; Owner: southpark
+--
+
+CREATE TABLE public.butters_punishments (
+    id integer NOT NULL,
+    episode integer NOT NULL,
+    reason_of_punishment text
+);
+
+
+ALTER TABLE public.butters_punishments OWNER TO southpark;
 
 --
 -- Name: characters; Type: TABLE; Schema: public; Owner: southpark
@@ -577,6 +590,35 @@ COPY public.alter_ego (id, original_character, name, images) FROM stdin;
 
 
 --
+-- Data for Name: butters_punishments; Type: TABLE DATA; Schema: public; Owner: southpark
+--
+
+COPY public.butters_punishments (id, episode, reason_of_punishment) FROM stdin;
+1	75	Make a stupid face for the school photo.
+2	80	Get liposuction done at home.
+11	165	Being in Imaginationland instead of helping his mother clean the basement.
+10	165	In Imaginationland, he imagines his father punishing him.
+9	150	Don't go to sleep because Biggie Smalls is after you
+8	139	Wanting to commit suicide by jumping off a building.
+7	123	Fleeing from Paris Hilton and causing her parents to lose $250 million.
+6	123	Dating Paris Hilton
+5	99	To plead guilty to a crime he did not commit.
+4	82	Appearing on the Maury Povich show with testicles on his chin.
+3	80	Skipping punishment for liposuction, masturbating, calling his father a faggot, and insulting his mother (Performed by Eric Cartman)
+20	254	Hitting his father in the testicles, stealing a car, driving like a maniac, and trying to rob a prostitute.
+19	234	(Possibility) Aggressive behavior at school.
+18	231	Selling and promoting the consumption of his semen.
+17	215	Start an Asian territorial war.
+16	181	(Again) Having a messy pantry.
+15	181	(Ungroundable) Give Eric Cartman a hickey
+14	181	(Ungroundable) To ignore their parents and dye their hair black.
+13	181	Having a messy pantry.
+12	167	(Possibility) He would have been punished if he was the ugliest child in his class.
+21	281	Using the internet to commit online hate crimes and spreading fake news for profit.
+\.
+
+
+--
 -- Data for Name: characters; Type: TABLE DATA; Schema: public; Owner: southpark
 --
 
@@ -720,7 +762,6 @@ COPY public.characters (id, name, family_id, birthday, age, religion, debut_epis
 228	Al Pacino	\N	April 25th	85	{Catholic}	257	{/img/characters/show/Al_Pacino.png}	t
 229	Albert Lincoln Roker Jr	\N	August 20th	71	\N	197	{/img/characters/show/Al_Roker.png}	t
 231	Alan the Security Guard	\N	\N	\N	\N	41	{/img/characters/show/Alan_The_Security_Guard.png}	f
-232	Alana "Honey Boo Boo" Thompson	\N	August 28th	7	{Christian}	232	{/img/characters/show/Honey_Boo_Boo.png}	t
 233	Alanis Morissette	\N	June 1st	51	{Buddhist}	27	{/img/characters/show/Alanis_Morissette.png}	t
 234	Alcoholics Anonymous Boy	\N	\N	\N	\N	139	{/img/characters/show/Alcoholics_Anonymous_Boy.png}	f
 236	Alex Glick	\N	\N	\N	\N	103	{/img/characters/show/Alex_Glick.png}	t
@@ -1542,7 +1583,6 @@ COPY public.characters (id, name, family_id, birthday, age, religion, debut_epis
 970	John Walsh	\N	December 26th	80	{"Roman Catholic"}	15	{/img/characters/show/John_Walsh.png}	t
 969	John Travolta	\N	February 18th	71	{Scientology}	76	{/img/characters/show/John_Travolta.png}	t
 968	John Postum	\N	\N	\N	\N	30	{/img/characters/show/John_Postem.png}	f
-967	John McCain	87	August 29th	81	{Baptist}	179	{/img/characters/show/John_Mccain.png}	t
 966	John Howard	\N	July 26th	86	{Anglican}	187	{/img/characters/show/John_Howard.png}	t
 965	John Hancock	\N	January 23rd	56	\N	100	{/img/characters/show/John_Hancock.png}	t
 964	John F. Kennedy Jr.	86	November 25th	38	{"Roman Catholic"}	46	{/img/characters/show/John_F_Kennedy_Jr.png}	t
@@ -1552,19 +1592,18 @@ COPY public.characters (id, name, family_id, birthday, age, religion, debut_epis
 960	John Dickinson	\N	November 20th	75	{Quaker}	100	{/img/characters/show/John_Dickenson.png}	t
 959	John D'Aquino	\N	April 14th	67	\N	68	{/img/characters/show/Politics_Larry.png}	t
 982	Jonas Brothers	\N	\N	\N	\N	182	{/img/characters/show/Jonas_Brothers.png}	t
-981	JonBenét Ramsey	88	August 6th	6	\N	58	{/img/characters/show/JonBenét_Ramsey.png}	t
 980	Jon Cryer	\N	April 16th	60	{Judaism}	203	{/img/characters/show/Jon_Cryer.png}	t
 979	Joline	62	\N	\N	\N	82	{/img/characters/show/Joline.png}	f
 978	Johnny Manymoons	\N	\N	\N	\N	103	{/img/characters/show/Jonny_manymoons.png}	f
 977	Johnny Knoxville	\N	March 11th	54	\N	63	{/img/characters/show/Johnny_Knoxville.png}	t
 976	Johnnie Cochran	\N	October 2nd	67	{Christian}	27	{/img/characters/show/Johnnie_Cochran.png}	t
 975	John Garner	\N	\N	\N	\N	249	{/img/characters/show/John_Garner.png}	f
-974	John and Patricia Ramsey	88	\N	\N	\N	79	{/img/characters/show/John_And_Patricia_Ramsey.png}	t
 973	John Wilkes Booth	\N	May 10th	26	\N	68	{/img/characters/show/John_Wilkes_Booth.png}	t
 972	John Wayne Gacy	\N	March 17th	52	{"Roman Catholic"}	150	{/img/characters/show/John_Wayne_Gacy.png}	t
 971	John Warsog	\N	\N	\N	\N	6	{/img/characters/show/John_Warzog.png}	f
 994	Junichi Takiyama	\N	\N	\N	\N	210	{/img/characters/show/Junichi_Takiyama.png}	f
-993	June Shannon	89	August 10th	46	\N	232	{/img/characters/show/June_Shannon.png}	t
+981	JonBenét Ramsey	87	August 6th	6	\N	58	{/img/characters/show/JonBenét_Ramsey.png}	t
+974	John and Patricia Ramsey	87	\N	\N	\N	79	{/img/characters/show/John_And_Patricia_Ramsey.png}	t
 992	Judge Moses	\N	\N	\N	\N	27	{/img/characters/show/Judge_Moses.png}	f
 991	Judge Julie	\N	\N	\N	\N	37	{/img/characters/show/Judge_Julie.png}	f
 990	Josh Myers	\N	\N	\N	\N	99	{/img/characters/show/Josh_Myers.png}	f
@@ -1578,6 +1617,9 @@ COPY public.characters (id, name, family_id, birthday, age, religion, debut_epis
 997	Justin Trudeau	\N	December 25th	53	{"Roman Catholic"}	287	{/img/characters/show/Justin_Trudeau.png}	t
 996	Justin Timberlake	\N	January 31st	44	\N	116	{/img/characters/show/Justin_Timberlake.png}	t
 995	Justin Bieber	\N	March 1st	16	{Christian}	208	{/img/characters/show/Justin_Bieber.png}	t
+967	John McCain	67	August 29th	81	{Baptist}	179	{/img/characters/show/John_Mccain.png}	t
+993	June Shannon	88	August 10th	46	\N	232	{/img/characters/show/June_Shannon.png}	t
+232	Alana "Honey Boo Boo" Thompson	88	August 28th	7	{Christian}	232	{/img/characters/show/Honey_Boo_Boo.png}	t
 \.
 
 
@@ -2362,14 +2404,13 @@ COPY public.families (id, name, images) FROM stdin;
 79	Heidi (Dead Celebrities) Family	{img/families/Heidi_(Dead_Celebrities)_Family.png}
 80	The Sanders	{img/families/The_Sanders.png}
 81	The Flannigans	{img/families/The_Flannigans.png}
-82	The Garretts	\N
-83	The (Will) Smith Family 	\N
-84	Jenny & Brimmy Family	\N
-85	Pip Family	\N
-86	The Kennedys	\N
-87	The McCains	\N
-88	The Ramseys	\N
-89	Honey Boo Boo Family	\N
+82	The Garretts	{img/families/The_Garretts.png}
+83	The (Will) Smith Family 	{img/families/Will_Smith_Family.jpeg}
+84	Jenny & Brimmy Family	{img/families/Brimmy_And_His_Mother.png,img/families/Jenny_And_Her_Parents.png}
+85	Pip Family	{img/families/Pip_Family.png}
+86	The Kennedys	{img/families/The_Kennedys.png}
+87	The Ramseys	{img/families/The_Ramseys.png}
+88	Honey Boo Boo Family	{img/families/Honey_Boo_Boo_Family.png}
 \.
 
 
@@ -2592,6 +2633,14 @@ ALTER TABLE ONLY public.alter_ego
 
 
 --
+-- Name: butters_punishments butters_punisments_pkey; Type: CONSTRAINT; Schema: public; Owner: southpark
+--
+
+ALTER TABLE ONLY public.butters_punishments
+    ADD CONSTRAINT butters_punisments_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: characters_group characters_group_pkey; Type: CONSTRAINT; Schema: public; Owner: southpark
 --
 
@@ -2664,6 +2713,14 @@ ALTER TABLE ONLY public.specials
 
 
 --
+-- Name: butters_punishments episode of pusisment; Type: FK CONSTRAINT; Schema: public; Owner: southpark
+--
+
+ALTER TABLE ONLY public.butters_punishments
+    ADD CONSTRAINT "episode of pusisment" FOREIGN KEY (episode) REFERENCES public.episodes(id);
+
+
+--
 -- Name: characters episode_debut_fkey; Type: FK CONSTRAINT; Schema: public; Owner: southpark
 --
 
@@ -2715,5 +2772,5 @@ ALTER TABLE ONLY public.alter_ego
 -- PostgreSQL database dump complete
 --
 
-\unrestrict elI5u196PnbXGC8WXTKougOlaXGRlottYCj929ksxdwx2L5gF4ACBF6z1l33b1N
+\unrestrict MbzTp4fnkpwUEWZNPOANWMF7tDZ1gOTUU4JDw4RQbewarK0zHC1rT3XagsgWh3s
 
