@@ -92,6 +92,6 @@ class Episode(BaseModel, ApiObject):
                 else "CENSORED",
                 "website_url": episode_db.website_url,
             },
-            "episode_thumbnail": base_url + episode_db.image,
+            "episode_thumbnail": base_url + f"api/episodes/{episode_db.id}/thumbnail",
         }
         return super().__init__(**data)

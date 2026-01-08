@@ -6,10 +6,13 @@ episodes and specials. It provides routes to fetch the latest episode, specific 
 and special episodes from the South Park API.
 """
 
-from fastapi import APIRouter, Request, Response, status
+from fastapi import APIRouter, Query, Request, Response, status
+from fastapi.responses import StreamingResponse
+from typing_extensions import Annotated
 
 from src.controller.tvshow.episodes_controller import (
     get_episode_by_id,
+    get_episode_images_by_id_,
     get_episode_list,
     get_episode_list_by_search,
     get_last_episode,
@@ -23,6 +26,29 @@ from src.controller.tvshow.specials_controller import (
 router = APIRouter(tags=["TV Show"])
 
 
+@router.get("/api/episodes/{epsiode_id}/thumbnail")
+def get_episode_image(epsiode_id: int,
+    size: Annotated[str, Query(regex="^(original|small|medium|large)$")] = "original"
+    ) -> StreamingResponse:
+    """
+    Get a specific image for a South Park episode by episode ID and image ID.
+
+    Args:
+        epsiode_id (int): The ID of the episode.
+        id (int): The ID of the image.
+        size (str): The desired size of the image
+          ("original", "large", "medium", "small").
+
+    Returns:
+        StreamingResponse: The image file as a streaming response.
+
+    Response Codes:
+        200: Image found and returned successfully.
+        404: Image not found.
+        500: Internal server error.
+
+    """
+    return get_episode_images_by_id_(epsiode_id, id, size)
 @router.get("/api/episodes")
 def show_episode_list(
     response: Response, request: Request, search: str = "", limit: int = 0

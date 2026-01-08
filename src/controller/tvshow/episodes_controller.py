@@ -6,6 +6,10 @@ It provides functions to fetch specific episodes by ID and get the latest episod
 from the database.
 """
 
+import io
+
+from fastapi.responses import StreamingResponse
+from PIL import Image
 from sqlalchemy import func
 from sqlalchemy.exc import OperationalError
 
@@ -13,6 +17,44 @@ from src.controller import database_connection
 from src.model.episode import Episode
 from src.model.ORM.episode_db import EpisodeDB
 
+
+def get_episode_images_by_id_(episode_id: int, image_id: int
+                              , size: str) -> StreamingResponse:
+    """
+    Retrieve a specific image for a South Park episode by episode ID and image ID.
+
+    Args:
+        episode_id (int): The ID of the episode.
+        image_id (int): The ID of the image.
+        size (str): The desired size of the image
+          ("original", "large", "medium", "small").
+
+    Returns:
+        StreamingResponse: The image file as a streaming response.
+
+    """
+    sizes = {
+        "large": (1280,720),
+        "medium": (960,540),
+        "small": (640, 480)
+    }
+    session = database_connection.get_database_session()
+    try:
+        episode_db = session.query(EpisodeDB).filter(EpisodeDB.id == episode_id).first()
+        if episode_db is None:
+            raise AttributeError("Episode Not Found")
+
+        episode_image = Image.open("./"+episode_db.image)
+        session.close()
+        if size != "original":
+            episode_image.thumbnail(sizes[size])
+        buffer = io.BytesIO()
+        episode_image.save(buffer, format='PNG')
+        buffer.seek(0)
+        return StreamingResponse(buffer, media_type="image/png", status_code=200)
+    except AttributeError:
+        return StreamingResponse(io.BytesIO(b"Episode Not Found"), media_type="text/plain"
+                                 , status_code=404)
 
 def get_episode_list_by_search(search: str = "", limit: int = 0, base_url: str = ""):
     """
