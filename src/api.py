@@ -27,6 +27,7 @@ from src.controller.handlers.not_found_handler import custom_404_handler
 from src.controller.iframes import iframes_endpoints
 from src.controller.music import music_endpoints
 from src.controller.others import easter_egg_endpoint
+from src.controller.others import miscellaneous_endpoints
 from src.controller.structure import (
     blog_endpoints,
     health_check_endpoints,
@@ -106,6 +107,7 @@ app.include_router(music_endpoints.router)
 app.include_router(easter_egg_endpoint.router)
 app.include_router(health_check_endpoints.router)
 app.include_router(tv_show_endpoints.router)
+app.include_router(miscellaneous_endpoints.router)
 
 # Configure custom 404 handler
 app.add_exception_handler(404, custom_404_handler)

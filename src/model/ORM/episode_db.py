@@ -46,3 +46,8 @@ class EpisodeDB(Base):
     paramount_plus_exclusive = Column(Boolean)
     image = Column(Text)
     debut_characters = relationship("CharacterDB", back_populates="debut")
+    butters_punishments = relationship(
+        "ButtersPunishmentsDB",
+        back_populates="episode_ref",
+        cascade="all, delete-orphan"
+    )
