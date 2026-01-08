@@ -83,7 +83,10 @@ class Family(BaseModel, ApiObject):
             data = {
                 "id": family_db.id,
                 "name": family_db.name,
-                "images": [base_url + x for x in family_db.images],
+                "images": [
+                    f"{base_url}api/families/{family_db.id}/image/{index}"
+                    for index, _ in enumerate(family_db.images, start=1)
+                ],
                 "members": family_members,
             }
 
