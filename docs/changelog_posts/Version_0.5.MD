@@ -31,7 +31,7 @@ Example: `http://localhost:8000/api/characters?limit=50` returns the first 50 ch
 
 - Added Character 797 ([The Antichrist](/api/characters/797)) `/api/characters/797`
 
-__*Project Director's note about this update: In the wikis I use for this API, the Satan baby (The Antichrist) is not counted as a character. It is the first case in the show where a character dies before being born (excluding the N**i fetus from Stick of Truth). I have investigated this, and in the USA, a dead fetus is considered a stillbirth at the twentieth week, but it is not a legal person. Nevertheless, this status of stillbirth made me feel like I should include it in the API, with the particularity that its age is 0. I was thinking about setting the age to -1, but this could crash some software if there is a negative number in the age field.*__
+__*Project Director's note about this update: In the wikis I use for this API, the Satan baby (The Antichrist) is not counted as a character. It is the first case in the show where a character dies before being born (excluding the N/*/*i fetus from Stick of Truth). I have investigated this, and in the USA, a dead fetus is considered a stillbirth at the twentieth week, but it is not a legal person. Nevertheless, this status of stillbirth made me feel like I should include it in the API, with the particularity that its age is 0. I was thinking about setting the age to -1, but this could crash some software if there is a negative number in the age field.*__
 
 ### Added Characters whose names start with H and I {.blog_subtitle}
 
