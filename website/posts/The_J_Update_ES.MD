@@ -6,7 +6,7 @@ Bienvenidos a la primera actualización del año 2026, la actualización J o ver
 ## Añadidos a la API {.blog_title}
 
 ### Nuevos personajes {.blog_subtitle}
-La principal novedad de esta actualización son todos los personajes del juego cuyo nombre empieza por J: desde el Personaje 869 [J.J Abrams] [/api/characters/869](/api/characters/869) hasta [Justin Trudeau] [/api/characters/997](/api/characters/997). Ya estamos a punto de llegar a los 1000 personajes en la API; llevo más de la mitad del progreso, puede que termine pronto. Jeje.
+La principal novedad de esta actualización son todos los personajes de la serie cuyo nombre empieza por J: desde el Personaje 869 [J.J Abrams] [/api/characters/869](/api/characters/869) hasta [Justin Trudeau] [/api/characters/997](/api/characters/997). Ya estamos a punto de llegar a los 1000 personajes en la API; llevo más de la mitad del progreso, puede que termine pronto. Jeje.
 
 ### Nuevo Endpoint (Castigos de Butters) {.blog_subtitle}
 Se ha añadido un nuevo endpoint 'butterspunishments', que contiene un listado de los castigos que ha sufrido Butters a lo largo de la serie. Aunque puede que se me haya pasado alguno, si es así lo añadiré.
@@ -23,7 +23,7 @@ Este endpoint puede devolver metadatos, pero aún no puede mostrar el listado co
 Se ha cambiado la forma en que se devuelven las imágenes de las familias y los episodios. Los enlaces de las categorías ahora tienen un formato similar a este:
 
 - [/api/episodes/1/thumbnail](/api/episodes/1/thumbnail) Imágenes de los episodios.
-- [/api/episodes/1/thumbnail](/api/episodes/1/thumbnail) Imagen 1 de la familia 1.
+- [/families/1/image/1](/families/1/image/1) Imagen 1 de la familia 1.
 
 Ahora, en lugar de acceder directamente al fichero dentro del servidor, el archivo se genera y se modifica antes de ser enviado, permitiendo enviar alteraciones por parámetros.
 

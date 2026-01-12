@@ -14,7 +14,7 @@ A new endpoint 'butterspunishments' has been added, which contains a list of pun
 For example:
 
 - [/api/butterspunishments/1](/api/butterspunishments/1) Butters is punished for making a face in the school photo.
-- [/api/butterspunishments/1](/api/butterspunishments/15) Butters is punished for giving Cartman a hickey.
+- [/api/butterspunishments/15](/api/butterspunishments/15) Butters is punished for giving Cartman a hickey.
 
 This endpoint can return metadata, but it cannot yet show the complete list.
 
@@ -23,7 +23,7 @@ This endpoint can return metadata, but it cannot yet show the complete list.
 The way images for families and episodes are returned has changed. The category links now have a format similar to this:
 
 - [/api/episodes/1/thumbnail](/api/episodes/1/thumbnail) Episode images.
-- [/families/1/image/1] Image 1 of family 1.
+- [/families/1/image/1](/families/1/image/1) Image 1 of family 1.
 
 Now, instead of accessing the file directly on the server, the file is generated and modified before being sent, allowing alterations to be sent via parameters.
 
