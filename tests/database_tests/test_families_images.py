@@ -36,7 +36,7 @@ def test_if_images_exists_in_families():
         ).json()["images"]
 
         for _family_image in family_images:
-            logging.info(f"Testing: {_family_image}")
-            family_image_request = requests.get(_family_image, timeout=5)
+            logging.info(f"Testing: {_family_image+"?size=small"}")
+            family_image_request = requests.get(_family_image+"?size=small", timeout=5)
         if family_image_request.status_code != 200:
             raise requests.RequestException(f"Family {i} not found")

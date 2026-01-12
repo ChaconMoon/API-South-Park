@@ -33,14 +33,15 @@ def test_if_exists_image_in_episode():
     logging.info(f"\n\nCharacters to test: {total_episodes}")
 
     for i in range(1, total_episodes + 1, 1):
-        logging.info(f"Testing Family: {i}")
+        logging.info(f"Testing Episodes: {i}")
 
         episode_thumbnail_url = requests.get(
             f"{os.getenv('TESTING_SOUTH_PARK_API_URL')}/api/episodes/{i}", timeout=5
         ).json()["episode_thumbnail"]
 
-        logging.info(f"Testing: {episode_thumbnail_url}")
+        logging.info(f"Testing: {episode_thumbnail_url+"?size=small"}")
 
-        episode_thumbnail_request = requests.get(episode_thumbnail_url, timeout=5)
+        episode_thumbnail_request = requests.get(episode_thumbnail_url+"?size=small",
+                                                  timeout=5)
         if episode_thumbnail_request.status_code != 200:
             raise requests.RequestException(f"Image of episode {i} not found")
