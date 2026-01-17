@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict dHACa59hIztRAxWjpr0PuDx2FdRhJmMuccYTOm3OHuPWFS6ALbVX7uqSu2IpWGv
+\restrict VNvjvsqwTatqPYB7itkEYQhFfLa9GHscoYDuh8k1Vy0htUfcaNnjBb5hxh0ahpc
 
 -- Dumped from database version 15.15 (Debian 15.15-1.pgdg13+1)
 -- Dumped by pg_dump version 15.15 (Debian 15.15-1.pgdg13+1)
@@ -2517,7 +2517,6 @@ COPY public.fortnite_cosmetics (id, name, type, rarity, price, images, notes) FR
 9	Princess Kenny's Royal Scepter	2	3	500	{img/characters/fortnite/pickaxe/Princess_Kenny's_Royal_Scepter.webp}	\N
 7	Alien Experiment	4	2	400	{img/characters/fortnite/emote/Alien_Experiment.webp}	\N
 27	Rest Well, Kenny!	6	2	0	{img/characters/fortnite/emojis/Rest_Well,_Kenny.webp}	Free on Born in Chaos Minipass (At Launch)
-26	Towelie!	6	2	0	{img/characters/fortnite/emojis/}	Free on Born in Chaos Minipass (At Launch)
 25	Awesom-O Reveal	7	4	0	{img/characters/fortnite/sprays/AWESOM-O_Attack.webp}	Free on Born in Chaos Minipass (At Launch)
 24	Awesom-O Attack	7	4	0	{img/characters/fortnite/sprays/AWESOM-O_Reveal.webp}	Free on Born in Chaos Minipass (At Launch)
 23	Born in Chaos	9	2	0	{img/characters/fortnite/loading_screen/BORN_IN_CHAOS.webp}	Free on Born in Chaos Minipass (At Launch)
@@ -2526,11 +2525,12 @@ COPY public.fortnite_cosmetics (id, name, type, rarity, price, images, notes) FR
 13	Terrance and Phillip	2	3	0	{img/characters/fortnite/pickaxe/Terrance_and_Phillip.webp}	Free on Born in Chaos Minipass (At Launch)
 8	Chessy Poofs Rocketship	4	3	0	{img/characters/fortnite/emote/Chessy_Poofs_Rocket.webp}	Free on Born in Chaos Minipass (At Launch)
 6	The Bus Stop	4	2	400	{img/characters/fortnite/emote/The_Bus_Stop.webp}	Emote for 1-4 Players
-5	Kyle Broflovski	1	4	1500	{img/characters/fortnite/skin/Kyle.webp}	Include backpack "Kyle Warrior Wings" ID 20
-4	Stan Marsh	1	4	1500	{img/characters/fortnite/skin/Stan.webp}	Include backpack "Stan Derby Entry" ID 19
-3	Eric Cartman	1	4	1500	{img/characters/fortnite/skin/Eric.webp}	Include backpack "Cartman's Frog" ID 18
-1	Kenny McCormick	1	4	1500	{img/characters/fortnite/skin/Kenny.webp}	Include backpack "Princess Kenny's Bearicorn" ID 16
-2	Butters Stotch	1	4	1500	{img/characters/fortnite/skin/Butters.webp}	Include backpack "Professor Chaos' Cape" ID 15
+4	Stan Marsh	1	4	1500	{img/characters/fortnite/skins/Stan.webp}	Include backpack "Stan Derby Entry" ID 19
+1	Kenny McCormick	1	4	1500	{img/characters/fortnite/skins/Kenny.webp}	Include backpack "Princess Kenny's Bearicorn" ID 16
+2	Butters Stotch	1	4	1500	{img/characters/fortnite/skins/Butters.webp}	Include backpack "Professor Chaos' Cape" ID 15
+3	Eric Cartman	1	4	1500	{img/characters/fortnite/skins/Eric.webp}	Include backpack "Cartman's Frog" ID 18
+5	Kyle Broflovski	1	4	1500	{img/characters/fortnite/skins/Kyle.webp}	Include backpack "Kyle Warrior Wings" ID 20
+26	Towelie!	6	2	0	{img/characters/fortnite/emojis/Towelie!.webp}	Free on Born in Chaos Minipass (At Launch)
 \.
 
 
@@ -2875,11 +2875,11 @@ ALTER TABLE ONLY public.specials
 
 
 --
--- Name: fortnite_cosmetics cosmetic_rarity; Type: FK CONSTRAINT; Schema: public; Owner: southpark
+-- Name: fortnite_cosmetics cosmetic_rarities; Type: FK CONSTRAINT; Schema: public; Owner: southpark
 --
 
 ALTER TABLE ONLY public.fortnite_cosmetics
-    ADD CONSTRAINT cosmetic_rarity FOREIGN KEY (rarity) REFERENCES public.fortnite_cosmetic_rarities(id);
+    ADD CONSTRAINT cosmetic_rarities FOREIGN KEY (rarity) REFERENCES public.fortnite_cosmetic_rarities(id) NOT VALID;
 
 
 --
@@ -2950,5 +2950,5 @@ ALTER TABLE ONLY public.alter_ego
 -- PostgreSQL database dump complete
 --
 
-\unrestrict dHACa59hIztRAxWjpr0PuDx2FdRhJmMuccYTOm3OHuPWFS6ALbVX7uqSu2IpWGv
+\unrestrict VNvjvsqwTatqPYB7itkEYQhFfLa9GHscoYDuh8k1Vy0htUfcaNnjBb5hxh0ahpc
 
