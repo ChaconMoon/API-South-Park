@@ -3,6 +3,7 @@ Module writted by Carlos Chacón.
 
 Define the FortniteCosmeticsRarity table model.
 """
+
 from pydantic import BaseModel
 
 from src.model.ApiObject import ApiObject
@@ -29,8 +30,8 @@ class FortniteItem(BaseModel, ApiObject):
     name: str
     image: str
     effect: str
-    def __init__(self, db_object: FortniteItemsDB, base_url: str = ""
-                ) -> "FortniteItem":
+
+    def __init__(self, db_object: FortniteItemsDB, base_url: str = "") -> "FortniteItem":
         """
         Initialize a FortniteItem instance from a database object.
 
@@ -45,10 +46,11 @@ class FortniteItem(BaseModel, ApiObject):
         data = {
             "id": db_object.id,
             "name": db_object.name,
-            "image": f"{base_url}{db_object.image}",
-            "effect": db_object.effect
+            "image": f"{base_url}api/fortnite/item/{db_object.id}/image",
+            "effect": db_object.effect,
         }
         super().__init__(**data)
+
     def toJSON(self, metadata: bool = False, total_results: int = 0) -> dict:
         """
         Convert the FortniteItem object to a JSON-compatible dictionary.

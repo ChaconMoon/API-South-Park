@@ -3,6 +3,7 @@ Module writted by Carlos Chacón.
 
 Define the FortniteCosmetics model.
 """
+
 from typing import Optional
 
 from pydantic import BaseModel
@@ -30,14 +31,15 @@ class FortniteCosmetic(BaseModel, ApiObject):
 
     """
 
-    id : int
-    name : str
-    type : str
-    rarity : str
-    price : int
-    image : str
-    notes : Optional[str] = None
-    def toJSON(self, metadata = False, total_results = 0):
+    id: int
+    name: str
+    type: str
+    rarity: str
+    price: int
+    image: str
+    notes: Optional[str] = None
+
+    def toJSON(self, metadata=False, total_results=0):
         """
         Docstring for toJSON.
 
@@ -54,8 +56,9 @@ class FortniteCosmetic(BaseModel, ApiObject):
             result["metadata"]["total_fortnite_cosmetics_in_database"] = total_results
         return result
 
-    def __init__(self, db_object: FortniteCosmeticDB, base_url: str = ""
-                ) -> "FortniteCosmetic":
+    def __init__(
+        self, db_object: FortniteCosmeticDB, base_url: str = ""
+    ) -> "FortniteCosmetic":
         """
         Initialize a FortniteCosmetic instance from a database object.
 
@@ -72,7 +75,7 @@ class FortniteCosmetic(BaseModel, ApiObject):
             "type": db_object.type_ref.type,
             "rarity": db_object.rarity_ref.name,
             "price": db_object.price,
-            "image": base_url + db_object.images[0] if db_object.images else "",
+            "image": f"{base_url}api/fortnite/cosmetic/{db_object.id}/image",
             "notes": db_object.notes,
         }
         super().__init__(**data)

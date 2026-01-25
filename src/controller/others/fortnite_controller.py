@@ -5,13 +5,100 @@ This module defines the fortnite controllers for the South Park API.
 It provides functions to retrieve Fortnite-related content.
 """
 
+import io
 import logging
+
+from fastapi.responses import StreamingResponse
+from PIL import Image
 
 from src.controller import database_connection
 from src.model.fortnite_cosmetics import FortniteCosmetic
 from src.model.fortnite_items import FortniteItem
 from src.model.ORM.fortnite_cosmetics_db import FortniteCosmeticDB
 from src.model.ORM.fortnite_items_db import FortniteItemsDB
+
+
+def get_fortnite_item_image_by_id(item_id: int, image_size: str) -> StreamingResponse:
+    """
+    Docstring for get_fortnite_cosmetic_item_by_id.
+
+    :param item_id: Description
+    :type item_id: int
+    :param image_size: Description
+    :type image_size: str
+    :return: Description
+    :rtype: StreamingResponse
+    """
+    sizes = {"large": 0.7, "medium": 0.5, "small": 0.3}
+    session = database_connection.get_database_session()
+
+    try:
+        fortnite_item_db = (
+            session.query(FortniteItemsDB).filter(FortniteItemsDB.id == item_id).first()
+        )
+        item_image = Image.open("./" + fortnite_item_db.image)
+        session.close()
+        if image_size != "original":
+            item_image.thumbnail(
+                size=[
+                    item_image.width * sizes[image_size],
+                    item_image.height * sizes[image_size],
+                ]
+            )
+        buffer = io.BytesIO()
+        item_image.save(buffer, format="WEBP")
+        buffer.seek(0)
+        return StreamingResponse(buffer, media_type="image/webp", status_code=200)
+    except AttributeError as e:
+        print(e)
+        return StreamingResponse(
+            io.BytesIO(b"Item Not Found"),
+            media_type="text/plain",
+            status_code=404,
+        )
+
+
+def get_fortnite_cosmetic_image_by_id(
+    cosmetic_id: str, image_size: str
+) -> StreamingResponse:
+    """
+    Docstring for get_fortnite_cosmetic_image_by_id.
+
+    :param cosmetic_id: Description
+    :type cosmetic_id: int
+    :param image_size: Description
+    :type image_size: str
+    :return: Description
+    :rtype: StreamingResponse
+    """
+    sizes = {"large": 0.7, "medium": 0.5, "small": 0.3}
+    session = database_connection.get_database_session()
+    try:
+        cosmetic_image_db = (
+            session.query(FortniteCosmeticDB)
+            .filter(FortniteCosmeticDB.id == cosmetic_id)
+            .first()
+        )
+        cosmetic_image = Image.open("./" + cosmetic_image_db.images[0])
+        session.close()
+        if image_size != "original":
+            cosmetic_image.thumbnail(
+                size=[
+                    cosmetic_image.width * sizes[image_size],
+                    cosmetic_image.height * sizes[image_size],
+                ]
+            )
+        buffer = io.BytesIO()
+        cosmetic_image.save(buffer, format="WEBP")
+        buffer.seek(0)
+        return StreamingResponse(buffer, media_type="image/webp", status_code=200)
+    except AttributeError as e:
+        print(e)
+        return StreamingResponse(
+            io.BytesIO(b"Cosmetic Not Found"),
+            media_type="text/plain",
+            status_code=404,
+        )
 
 
 def get_fortnite_item(item_id: str, base_url: str) -> dict:
@@ -44,7 +131,9 @@ def get_fortnite_item(item_id: str, base_url: str) -> dict:
     """
     session = database_connection.get_database_session()
     try:
-        fortnite_item_db = session.query(FortniteItemsDB).filter(FortniteItemsDB.id == item_id).first()
+        fortnite_item_db = (
+            session.query(FortniteItemsDB).filter(FortniteItemsDB.id == item_id).first()
+        )
         if fortnite_item_db is None:
             raise AttributeError("Fortnite Item Not Found")
         fortnite_item = FortniteItem(fortnite_item_db, base_url)
@@ -55,6 +144,7 @@ def get_fortnite_item(item_id: str, base_url: str) -> dict:
         return {"error": str(e), "status": "failed"}
     finally:
         session.close()
+
 
 def get_fortnite_cosmetic(cosmetic_id: str, base_url: str) -> dict:
     """
@@ -89,8 +179,12 @@ def get_fortnite_cosmetic(cosmetic_id: str, base_url: str) -> dict:
     """
     session = database_connection.get_database_session()
     try:
-        print(f"Queried Fortnite Cosmetic DB: {cosmetic_id}")
-        fortnite_cosmetic_db = session.query(FortniteCosmeticDB).filter(FortniteCosmeticDB.id == cosmetic_id).first()
+        logging.info(f"Queried Fortnite Cosmetic DB: {cosmetic_id}")
+        fortnite_cosmetic_db = (
+            session.query(FortniteCosmeticDB)
+            .filter(FortniteCosmeticDB.id == cosmetic_id)
+            .first()
+        )
         if fortnite_cosmetic_db is None:
             raise AttributeError("Fortnite Cosmetic Not Found")
         fortnite_cosmetic = FortniteCosmetic(fortnite_cosmetic_db, base_url)
