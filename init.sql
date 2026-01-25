@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict VNvjvsqwTatqPYB7itkEYQhFfLa9GHscoYDuh8k1Vy0htUfcaNnjBb5hxh0ahpc
+\restrict 95Ztvz4mhptKkqBc652DFazOqzvRmNgNdNt6d4dyUOouAhxK8gXZILsLhxrRkCQ
 
 -- Dumped from database version 15.15 (Debian 15.15-1.pgdg13+1)
 -- Dumped by pg_dump version 15.15 (Debian 15.15-1.pgdg13+1)
@@ -2540,7 +2540,7 @@ COPY public.fortnite_cosmetics (id, name, type, rarity, price, images, notes) FR
 
 COPY public.fortnite_items (id, name, image, effect) FROM stdin;
 2	Stick of Truth	img/characters/fortnite/items/Stick_of_Truth.webp	Upon usage, the Stick of Truth will set a small beacon at the user's location. After a few seconds, the storm will immediately start closing at the beacon with a 3:20 timer. The circle is invisible to others.
-1	Kenny’s Respawn Token	img/characters/fortnite/items/Kenny’s_Respawn_Token.webp	Immediate revival upon elimination. Can only be used once.
+1	Kenny’s Respawn Token	img/characters/fortnite/items/Kenny_Respawn_Token.webp	Immediate revival upon elimination. Can only be used once.
 \.
 
 
@@ -2950,5 +2950,5 @@ ALTER TABLE ONLY public.alter_ego
 -- PostgreSQL database dump complete
 --
 
-\unrestrict VNvjvsqwTatqPYB7itkEYQhFfLa9GHscoYDuh8k1Vy0htUfcaNnjBb5hxh0ahpc
+\unrestrict 95Ztvz4mhptKkqBc652DFazOqzvRmNgNdNt6d4dyUOouAhxK8gXZILsLhxrRkCQ
 
