@@ -19,7 +19,7 @@ from src.controller.others.fortnite_controller import (
 router = APIRouter(tags=["Others"])
 
 
-@router.get("/api/fortnite/item/{item_id}/image")
+@router.get("/api/fortnite/items/{item_id}/image")
 def return_fornite_item(
     item_id: str,
     size: Annotated[str, Query(regex="^(original|small|medium|large)$")] = "original",
@@ -37,8 +37,10 @@ def return_fornite_item(
     return get_fortnite_item_image_by_id(item_id=item_id, image_size=size)
 
 
-@router.get("/api/fortnite/item/{item_id}")
-def return_fortnite_item(item_id: str, request: Request, response: Response) -> dict:
+@router.get("/api/fortnite/items/{item_id}")
+def return_fortnite_item(
+    item_id: str, request: Request, response: Response, metadata: bool = False
+) -> dict:
     """
     Return Fortnite item details based on the provided item ID.
 
@@ -46,6 +48,7 @@ def return_fortnite_item(item_id: str, request: Request, response: Response) -> 
         item_id (str): Unique identifier for the Fortnite item
         request (Request): FastAPI request object containing base URL
         response (Response): FastAPI response object
+        metadata (bool): If the response must contain metadata.
 
     Returns:
         dict: JSON response containing either:
@@ -71,7 +74,15 @@ def return_fortnite_item(item_id: str, request: Request, response: Response) -> 
 
     """
     base_url = str(request.base_url)
-    return get_fortnite_item(item_id=item_id, base_url=base_url)
+    fortnite_item = get_fortnite_item(
+        item_id=item_id, base_url=base_url, metadata=metadata
+    )
+    if "error" in fortnite_item:
+        if fortnite_item["status"] == "Not Found":
+            response.status_code = 404
+        if fortnite_item["status"] == "failed":
+            response.status_code = 500
+    return fortnite_item
 
 
 @router.get("/api/fortnite/cosmetics/{cosmetic_id}/image")
@@ -100,7 +111,7 @@ def get_fortnite_cosmetic_image(
 
 @router.get("/api/fortnite/cosmetics/{cosmetic_id}")
 def return_fortnite_cosmetic(
-    cosmetic_id: str, request: Request, response: Response
+    cosmetic_id: str, request: Request, response: Response, metadata: bool = False
 ) -> dict:
     """
     Return Fortnite cosmetic details based on the provided cosmetic ID.
@@ -109,6 +120,7 @@ def return_fortnite_cosmetic(
         cosmetic_id (str): Unique identifier for the Fortnite cosmetic
         request (Request): FastAPI request object containing base URL
         response (Response): FastAPI response object
+        metadata (bool): If the response must contain metadata.
 
     Returns:
         dict: JSON response containing either:
@@ -135,4 +147,13 @@ def return_fortnite_cosmetic(
     """
     base_url = str(request.base_url)
 
-    return get_fortnite_cosmetic(cosmetic_id=cosmetic_id, base_url=base_url)
+    fortnite_cosmetic = get_fortnite_cosmetic(
+        cosmetic_id=cosmetic_id, base_url=base_url, metadata=metadata
+    )
+    if "error" in fortnite_cosmetic:
+        if fortnite_cosmetic["status"] == "Not Found":
+            response.status_code = 404
+        if fortnite_cosmetic["status"] == "failed":
+            response.status_code = 500
+
+    return fortnite_cosmetic

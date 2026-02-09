@@ -49,8 +49,7 @@ def get_fortnite_item_image_by_id(item_id: int, image_size: str) -> StreamingRes
         item_image.save(buffer, format="WEBP")
         buffer.seek(0)
         return StreamingResponse(buffer, media_type="image/webp", status_code=200)
-    except AttributeError as e:
-        print(e)
+    except AttributeError:
         return StreamingResponse(
             io.BytesIO(b"Item Not Found"),
             media_type="text/plain",
@@ -92,8 +91,7 @@ def get_fortnite_cosmetic_image_by_id(
         cosmetic_image.save(buffer, format="WEBP")
         buffer.seek(0)
         return StreamingResponse(buffer, media_type="image/webp", status_code=200)
-    except AttributeError as e:
-        print(e)
+    except AttributeError:
         return StreamingResponse(
             io.BytesIO(b"Cosmetic Not Found"),
             media_type="text/plain",
@@ -101,13 +99,14 @@ def get_fortnite_cosmetic_image_by_id(
         )
 
 
-def get_fortnite_item(item_id: str, base_url: str) -> dict:
+def get_fortnite_item(item_id: str, base_url: str, metadata: bool) -> dict:
     """
     Retrieve Fortnite item details based on the provided item ID.
 
     Args:
         item_id (str): Unique identifier for the Fortnite item
         base_url (str): Base URL of the API
+        metadata (bool): If the response must return metadata
 
     Returns:
         dict: JSON response containing either:
@@ -137,6 +136,9 @@ def get_fortnite_item(item_id: str, base_url: str) -> dict:
         if fortnite_item_db is None:
             raise AttributeError("Fortnite Item Not Found")
         fortnite_item = FortniteItem(fortnite_item_db, base_url)
+        if metadata:
+            item_count = session.query(FortniteItemsDB).count()
+            return fortnite_item.toJSON(metadata=metadata, total_results=item_count)
         return fortnite_item.toJSON()
     except AttributeError as e:
         return {"error": str(e), "status": "Not Found"}
@@ -146,13 +148,14 @@ def get_fortnite_item(item_id: str, base_url: str) -> dict:
         session.close()
 
 
-def get_fortnite_cosmetic(cosmetic_id: str, base_url: str) -> dict:
+def get_fortnite_cosmetic(cosmetic_id: str, base_url: str, metadata: bool) -> dict:
     """
     Retrieve Fortnite cosmetic details based on the provided cosmetic ID.
 
     Args:
         cosmetic_id (str): Unique identifier for the Fortnite cosmetic
         base_url (str): Base URL of the API
+        metadata (bool): If the response must return metadata
 
     Returns:
         dict: JSON response containing either:
@@ -188,6 +191,11 @@ def get_fortnite_cosmetic(cosmetic_id: str, base_url: str) -> dict:
         if fortnite_cosmetic_db is None:
             raise AttributeError("Fortnite Cosmetic Not Found")
         fortnite_cosmetic = FortniteCosmetic(fortnite_cosmetic_db, base_url)
+        if metadata:
+            cosmetic_count = session.query(FortniteCosmeticDB).count()
+            return fortnite_cosmetic.toJSON(
+                metadata=metadata, total_results=cosmetic_count
+            )
         return fortnite_cosmetic.toJSON()
     except AttributeError as e:
         return {"error": str(e), "status": "Not Found"}
