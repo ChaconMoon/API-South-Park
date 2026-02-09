@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict 95Ztvz4mhptKkqBc652DFazOqzvRmNgNdNt6d4dyUOouAhxK8gXZILsLhxrRkCQ
+\restrict kJN6ZKCfJmfUsYjuiPah6O63Dv5SdfvXevseSpjqrT6xs5Y6pFLuiMC2QDrWhUm
 
 -- Dumped from database version 15.15 (Debian 15.15-1.pgdg13+1)
 -- Dumped by pg_dump version 15.15 (Debian 15.15-1.pgdg13+1)
@@ -2496,6 +2496,7 @@ COPY public.fortnite_cosmetic_types (id, type) FROM stdin;
 3	Backpack
 2	Pickaxe
 1	Skin
+10	Vehicule decal
 \.
 
 
@@ -2520,7 +2521,6 @@ COPY public.fortnite_cosmetics (id, name, type, rarity, price, images, notes) FR
 25	Awesom-O Reveal	7	4	0	{img/characters/fortnite/sprays/AWESOM-O_Attack.webp}	Free on Born in Chaos Minipass (At Launch)
 24	Awesom-O Attack	7	4	0	{img/characters/fortnite/sprays/AWESOM-O_Reveal.webp}	Free on Born in Chaos Minipass (At Launch)
 23	Born in Chaos	9	2	0	{img/characters/fortnite/loading_screen/BORN_IN_CHAOS.webp}	Free on Born in Chaos Minipass (At Launch)
-22	Towelie	8	2	1500	{img/characters/fortnite/sidekick/Towelie_Sidekick.webp}	Dialogues only dubed to English
 17	Backpack of Cred	3	5	0	{img/characters/fortnite/backpacks/Backpack_of_CRED.webp}	Free on Born in Chaos Minipass (At Launch)
 13	Terrance and Phillip	2	3	0	{img/characters/fortnite/pickaxe/Terrance_and_Phillip.webp}	Free on Born in Chaos Minipass (At Launch)
 8	Chessy Poofs Rocketship	4	3	0	{img/characters/fortnite/emote/Chessy_Poofs_Rocket.webp}	Free on Born in Chaos Minipass (At Launch)
@@ -2531,6 +2531,13 @@ COPY public.fortnite_cosmetics (id, name, type, rarity, price, images, notes) FR
 3	Eric Cartman	1	4	1500	{img/characters/fortnite/skins/Eric.webp}	Include backpack "Cartman's Frog" ID 18
 5	Kyle Broflovski	1	4	1500	{img/characters/fortnite/skins/Kyle.webp}	Include backpack "Kyle Warrior Wings" ID 20
 26	Towelie!	6	2	0	{img/characters/fortnite/emojis/Towelie!.webp}	Free on Born in Chaos Minipass (At Launch)
+22	Towelie	8	2	1500	{img/characters/fortnite/sidekick/Towelie_Sidekick.webp}	\N
+33	Cheesy Poofs (Vehicule decal)	10	2	2000	{img/characters/fortnite/decals/Cheesy_Poofs_Decal.png}	Free via Rocket League event
+32	Butters Stotch (Vehicule decal)	10	2	2000	{img/characters/fortnite/decals/Butters_Decal.png}	Included in Stampede x South Park Bundle (AVAILABLE ON ROCKET LEAGUE)
+31	Kenny McCormick (Vehicule decal)	10	2	2000	{img/characters/fortnite/decals/Kenny_Decal.png}	Included in Stampede x South Park Bundle (AVAILABLE ON ROCKET LEAGUE)
+30	Eric Cartman (Vehicule decal)	10	2	2000	{img/characters/fortnite/decals/Cartman_Decal.png}	Included in Stampede x South Park Bundle (AVAILABLE ON ROCKET LEAGUE)
+29	Kyle Broflovski (Vehicule decal)	10	2	2000	{img/characters/fortnite/decals/Kyle_Decal.png}	Included in Stampede x South Park Bundle (AVAILABLE ON ROCKET LEAGUE)
+28	Stan Marsh (Vehicule decal)	10	2	2000	{img/characters/fortnite/decals/Stan_Decal.png}	Included in Stampede x South Park Bundle (AVAILABLE ON ROCKET LEAGUE)
 \.
 
 
@@ -2950,5 +2957,5 @@ ALTER TABLE ONLY public.alter_ego
 -- PostgreSQL database dump complete
 --
 
-\unrestrict 95Ztvz4mhptKkqBc652DFazOqzvRmNgNdNt6d4dyUOouAhxK8gXZILsLhxrRkCQ
+\unrestrict kJN6ZKCfJmfUsYjuiPah6O63Dv5SdfvXevseSpjqrT6xs5Y6pFLuiMC2QDrWhUm
 

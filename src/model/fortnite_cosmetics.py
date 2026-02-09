@@ -75,7 +75,7 @@ class FortniteCosmetic(BaseModel, ApiObject):
             "type": db_object.type_ref.type,
             "rarity": db_object.rarity_ref.name,
             "price": db_object.price,
-            "image": f"{base_url}api/fortnite/cosmetic/{db_object.id}/image",
+            "image": f"{base_url}api/fortnite/cosmetics/{db_object.id}/image",
             "notes": db_object.notes,
         }
         super().__init__(**data)
