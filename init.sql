@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict kJN6ZKCfJmfUsYjuiPah6O63Dv5SdfvXevseSpjqrT6xs5Y6pFLuiMC2QDrWhUm
+\restrict gcy1qekC7bVEcwjjrWVbWs9KJGmrSPUyE30KtLRScP6hCrpck1KJOxXkMrOefus
 
 -- Dumped from database version 15.15 (Debian 15.15-1.pgdg13+1)
 -- Dumped by pg_dump version 15.15 (Debian 15.15-1.pgdg13+1)
@@ -2517,7 +2517,6 @@ COPY public.fortnite_cosmetics (id, name, type, rarity, price, images, notes) FR
 10	Butters' Hammer of Chaos	2	3	500	{img/characters/fortnite/pickaxe/Butters'_Hammer_of_Chaos.webp}	\N
 9	Princess Kenny's Royal Scepter	2	3	500	{img/characters/fortnite/pickaxe/Princess_Kenny's_Royal_Scepter.webp}	\N
 7	Alien Experiment	4	2	400	{img/characters/fortnite/emote/Alien_Experiment.webp}	\N
-27	Rest Well, Kenny!	6	2	0	{img/characters/fortnite/emojis/Rest_Well,_Kenny.webp}	Free on Born in Chaos Minipass (At Launch)
 25	Awesom-O Reveal	7	4	0	{img/characters/fortnite/sprays/AWESOM-O_Attack.webp}	Free on Born in Chaos Minipass (At Launch)
 24	Awesom-O Attack	7	4	0	{img/characters/fortnite/sprays/AWESOM-O_Reveal.webp}	Free on Born in Chaos Minipass (At Launch)
 23	Born in Chaos	9	2	0	{img/characters/fortnite/loading_screen/BORN_IN_CHAOS.webp}	Free on Born in Chaos Minipass (At Launch)
@@ -2538,6 +2537,7 @@ COPY public.fortnite_cosmetics (id, name, type, rarity, price, images, notes) FR
 30	Eric Cartman (Vehicule decal)	10	2	2000	{img/characters/fortnite/decals/Cartman_Decal.png}	Included in Stampede x South Park Bundle (AVAILABLE ON ROCKET LEAGUE)
 29	Kyle Broflovski (Vehicule decal)	10	2	2000	{img/characters/fortnite/decals/Kyle_Decal.png}	Included in Stampede x South Park Bundle (AVAILABLE ON ROCKET LEAGUE)
 28	Stan Marsh (Vehicule decal)	10	2	2000	{img/characters/fortnite/decals/Stan_Decal.png}	Included in Stampede x South Park Bundle (AVAILABLE ON ROCKET LEAGUE)
+27	Rest Well, Kenny!	6	2	0	{img/characters/fortnite/emojis/Rest_Well_Kenny.webp}	Free on Born in Chaos Minipass (At Launch)
 \.
 
 
@@ -2957,5 +2957,5 @@ ALTER TABLE ONLY public.alter_ego
 -- PostgreSQL database dump complete
 --
 
-\unrestrict kJN6ZKCfJmfUsYjuiPah6O63Dv5SdfvXevseSpjqrT6xs5Y6pFLuiMC2QDrWhUm
+\unrestrict gcy1qekC7bVEcwjjrWVbWs9KJGmrSPUyE30KtLRScP6hCrpck1KJOxXkMrOefus
 
