@@ -5,7 +5,7 @@ Changes in Version 0.6
 
 ## Changes in project structure {.blog_title}
 
-### Nre Docker data folder. {.blog_subtitle}
+### New Docker data folder. {.blog_subtitle}
 
 Now the Docker data folder is located in __/var/lib/southpark-api/__ this is the recomendade route in Linux production systems, this route can been changed in the Docker Compose.
 

@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict MbzTp4fnkpwUEWZNPOANWMF7tDZ1gOTUU4JDw4RQbewarK0zHC1rT3XagsgWh3s
+\restrict gcy1qekC7bVEcwjjrWVbWs9KJGmrSPUyE30KtLRScP6hCrpck1KJOxXkMrOefus
 
 -- Dumped from database version 15.15 (Debian 15.15-1.pgdg13+1)
 -- Dumped by pg_dump version 15.15 (Debian 15.15-1.pgdg13+1)
@@ -266,6 +266,61 @@ ALTER TABLE public.family_id_seq OWNER TO southpark;
 
 ALTER SEQUENCE public.family_id_seq OWNED BY public.families.id;
 
+
+--
+-- Name: fortnite_cosmetic_rarities; Type: TABLE; Schema: public; Owner: southpark
+--
+
+CREATE TABLE public.fortnite_cosmetic_rarities (
+    id integer NOT NULL,
+    name text NOT NULL
+);
+
+
+ALTER TABLE public.fortnite_cosmetic_rarities OWNER TO southpark;
+
+--
+-- Name: fortnite_cosmetic_types; Type: TABLE; Schema: public; Owner: southpark
+--
+
+CREATE TABLE public.fortnite_cosmetic_types (
+    id integer NOT NULL,
+    type text NOT NULL
+);
+
+
+ALTER TABLE public.fortnite_cosmetic_types OWNER TO southpark;
+
+--
+-- Name: fortnite_cosmetics; Type: TABLE; Schema: public; Owner: southpark
+--
+
+CREATE TABLE public.fortnite_cosmetics (
+    id integer NOT NULL,
+    name text,
+    type integer NOT NULL,
+    rarity integer NOT NULL,
+    price integer NOT NULL,
+    images text[],
+    notes text
+);
+
+
+ALTER TABLE public.fortnite_cosmetics OWNER TO southpark;
+
+--
+-- Name: fortnite_items; Type: TABLE; Schema: public; Owner: southpark
+--
+
+CREATE TABLE public.fortnite_items (
+    id integer NOT NULL,
+    name text NOT NULL,
+    image text NOT NULL,
+    effect text
+);
+
+
+ALTER TABLE public.fortnite_items OWNER TO southpark;
 
 --
 -- Name: games; Type: TABLE; Schema: public; Owner: southpark
@@ -2415,6 +2470,88 @@ COPY public.families (id, name, images) FROM stdin;
 
 
 --
+-- Data for Name: fortnite_cosmetic_rarities; Type: TABLE DATA; Schema: public; Owner: southpark
+--
+
+COPY public.fortnite_cosmetic_rarities (id, name) FROM stdin;
+5	Legendary
+4	Epic
+3	Rare
+2	Uncommon
+1	Common
+\.
+
+
+--
+-- Data for Name: fortnite_cosmetic_types; Type: TABLE DATA; Schema: public; Owner: southpark
+--
+
+COPY public.fortnite_cosmetic_types (id, type) FROM stdin;
+9	Loading Screen
+8	Sidekick
+7	Spray
+6	Emote
+5	Glider
+4	Emote
+3	Backpack
+2	Pickaxe
+1	Skin
+10	Vehicule decal
+\.
+
+
+--
+-- Data for Name: fortnite_cosmetics; Type: TABLE DATA; Schema: public; Owner: southpark
+--
+
+COPY public.fortnite_cosmetics (id, name, type, rarity, price, images, notes) FROM stdin;
+21	Imaginationland Airship	5	4	0	{img/characters/fortnite/glider/Imaginationland_Airship.webp}	\N
+20	Kyle's Warrior Wings	3	5	300	{img/characters/fortnite/backpacks/Kyle's_Warrior_Wings.webp}	\N
+19	Stan's Derby Entry	3	5	300	{img/characters/fortnite/backpacks/Stan's_Derby_Entry.webp}	\N
+18	Cartman's Frog (Clyde Frog)	3	5	300	{img/characters/fortnite/backpacks/Cartman's_Frog.webp}	\N
+16	Princess Kenny's Bearicorn	3	5	300	{img/characters/fortnite/backpacks/Princess_Kenny's_Bearicorn.webp}	\N
+15	Professor Chaos' Cape	3	5	300	{img/characters/fortnite/backpacks/Professor_Chaos'_Cape.webp}	\N
+14	Kyle's Cardboard Sword	2	3	500	{img/characters/fortnite/pickaxe/Kyle's_Cardboard_Sword.webp}	\N
+12	Awesom-O Crowbar	2	3	500	{img/characters/fortnite/pickaxe/AWESOM-O_Crowbar.webp}	\N
+11	Stan's Bus Stop Sign	2	3	500	{img/characters/fortnite/pickaxe/Stan's_Bus_Stop_Sign.webp}	\N
+10	Butters' Hammer of Chaos	2	3	500	{img/characters/fortnite/pickaxe/Butters'_Hammer_of_Chaos.webp}	\N
+9	Princess Kenny's Royal Scepter	2	3	500	{img/characters/fortnite/pickaxe/Princess_Kenny's_Royal_Scepter.webp}	\N
+7	Alien Experiment	4	2	400	{img/characters/fortnite/emote/Alien_Experiment.webp}	\N
+25	Awesom-O Reveal	7	4	0	{img/characters/fortnite/sprays/AWESOM-O_Attack.webp}	Free on Born in Chaos Minipass (At Launch)
+24	Awesom-O Attack	7	4	0	{img/characters/fortnite/sprays/AWESOM-O_Reveal.webp}	Free on Born in Chaos Minipass (At Launch)
+23	Born in Chaos	9	2	0	{img/characters/fortnite/loading_screen/BORN_IN_CHAOS.webp}	Free on Born in Chaos Minipass (At Launch)
+17	Backpack of Cred	3	5	0	{img/characters/fortnite/backpacks/Backpack_of_CRED.webp}	Free on Born in Chaos Minipass (At Launch)
+13	Terrance and Phillip	2	3	0	{img/characters/fortnite/pickaxe/Terrance_and_Phillip.webp}	Free on Born in Chaos Minipass (At Launch)
+8	Chessy Poofs Rocketship	4	3	0	{img/characters/fortnite/emote/Chessy_Poofs_Rocket.webp}	Free on Born in Chaos Minipass (At Launch)
+6	The Bus Stop	4	2	400	{img/characters/fortnite/emote/The_Bus_Stop.webp}	Emote for 1-4 Players
+4	Stan Marsh	1	4	1500	{img/characters/fortnite/skins/Stan.webp}	Include backpack "Stan Derby Entry" ID 19
+1	Kenny McCormick	1	4	1500	{img/characters/fortnite/skins/Kenny.webp}	Include backpack "Princess Kenny's Bearicorn" ID 16
+2	Butters Stotch	1	4	1500	{img/characters/fortnite/skins/Butters.webp}	Include backpack "Professor Chaos' Cape" ID 15
+3	Eric Cartman	1	4	1500	{img/characters/fortnite/skins/Eric.webp}	Include backpack "Cartman's Frog" ID 18
+5	Kyle Broflovski	1	4	1500	{img/characters/fortnite/skins/Kyle.webp}	Include backpack "Kyle Warrior Wings" ID 20
+26	Towelie!	6	2	0	{img/characters/fortnite/emojis/Towelie!.webp}	Free on Born in Chaos Minipass (At Launch)
+22	Towelie	8	2	1500	{img/characters/fortnite/sidekick/Towelie_Sidekick.webp}	\N
+33	Cheesy Poofs (Vehicule decal)	10	2	2000	{img/characters/fortnite/decals/Cheesy_Poofs_Decal.png}	Free via Rocket League event
+32	Butters Stotch (Vehicule decal)	10	2	2000	{img/characters/fortnite/decals/Butters_Decal.png}	Included in Stampede x South Park Bundle (AVAILABLE ON ROCKET LEAGUE)
+31	Kenny McCormick (Vehicule decal)	10	2	2000	{img/characters/fortnite/decals/Kenny_Decal.png}	Included in Stampede x South Park Bundle (AVAILABLE ON ROCKET LEAGUE)
+30	Eric Cartman (Vehicule decal)	10	2	2000	{img/characters/fortnite/decals/Cartman_Decal.png}	Included in Stampede x South Park Bundle (AVAILABLE ON ROCKET LEAGUE)
+29	Kyle Broflovski (Vehicule decal)	10	2	2000	{img/characters/fortnite/decals/Kyle_Decal.png}	Included in Stampede x South Park Bundle (AVAILABLE ON ROCKET LEAGUE)
+28	Stan Marsh (Vehicule decal)	10	2	2000	{img/characters/fortnite/decals/Stan_Decal.png}	Included in Stampede x South Park Bundle (AVAILABLE ON ROCKET LEAGUE)
+27	Rest Well, Kenny!	6	2	0	{img/characters/fortnite/emojis/Rest_Well_Kenny.webp}	Free on Born in Chaos Minipass (At Launch)
+\.
+
+
+--
+-- Data for Name: fortnite_items; Type: TABLE DATA; Schema: public; Owner: southpark
+--
+
+COPY public.fortnite_items (id, name, image, effect) FROM stdin;
+2	Stick of Truth	img/characters/fortnite/items/Stick_of_Truth.webp	Upon usage, the Stick of Truth will set a small beacon at the user's location. After a few seconds, the storm will immediately start closing at the beacon with a 3:20 timer. The circle is invisible to others.
+1	Kenny’s Respawn Token	img/characters/fortnite/items/Kenny_Respawn_Token.webp	Immediate revival upon elimination. Can only be used once.
+\.
+
+
+--
 -- Data for Name: games; Type: TABLE DATA; Schema: public; Owner: southpark
 --
 
@@ -2681,6 +2818,38 @@ ALTER TABLE ONLY public.families
 
 
 --
+-- Name: fortnite_cosmetic_rarities fortnite_cosmetic_rarities_pkey; Type: CONSTRAINT; Schema: public; Owner: southpark
+--
+
+ALTER TABLE ONLY public.fortnite_cosmetic_rarities
+    ADD CONSTRAINT fortnite_cosmetic_rarities_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: fortnite_cosmetic_types fortnite_cosmetic_types_pkey; Type: CONSTRAINT; Schema: public; Owner: southpark
+--
+
+ALTER TABLE ONLY public.fortnite_cosmetic_types
+    ADD CONSTRAINT fortnite_cosmetic_types_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: fortnite_cosmetics fortnite_cosmetics_pkey; Type: CONSTRAINT; Schema: public; Owner: southpark
+--
+
+ALTER TABLE ONLY public.fortnite_cosmetics
+    ADD CONSTRAINT fortnite_cosmetics_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: fortnite_items fortnite_items_pkey; Type: CONSTRAINT; Schema: public; Owner: southpark
+--
+
+ALTER TABLE ONLY public.fortnite_items
+    ADD CONSTRAINT fortnite_items_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: games games_pkey; Type: CONSTRAINT; Schema: public; Owner: southpark
 --
 
@@ -2710,6 +2879,22 @@ ALTER TABLE ONLY public.album_songs
 
 ALTER TABLE ONLY public.specials
     ADD CONSTRAINT specials_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: fortnite_cosmetics cosmetic_rarities; Type: FK CONSTRAINT; Schema: public; Owner: southpark
+--
+
+ALTER TABLE ONLY public.fortnite_cosmetics
+    ADD CONSTRAINT cosmetic_rarities FOREIGN KEY (rarity) REFERENCES public.fortnite_cosmetic_rarities(id) NOT VALID;
+
+
+--
+-- Name: fortnite_cosmetics cosmetic_type; Type: FK CONSTRAINT; Schema: public; Owner: southpark
+--
+
+ALTER TABLE ONLY public.fortnite_cosmetics
+    ADD CONSTRAINT cosmetic_type FOREIGN KEY (type) REFERENCES public.fortnite_cosmetic_types(id);
 
 
 --
@@ -2772,5 +2957,5 @@ ALTER TABLE ONLY public.alter_ego
 -- PostgreSQL database dump complete
 --
 
-\unrestrict MbzTp4fnkpwUEWZNPOANWMF7tDZ1gOTUU4JDw4RQbewarK0zHC1rT3XagsgWh3s
+\unrestrict gcy1qekC7bVEcwjjrWVbWs9KJGmrSPUyE30KtLRScP6hCrpck1KJOxXkMrOefus
 
