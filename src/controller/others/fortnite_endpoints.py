@@ -27,9 +27,9 @@ def show_fortnite_cosmetics_list(
     response: Response,
     search: str = "",
     limit: int = 0,
-    rarity: str = "",
-    type: str = "",
-    price: int = -1,
+    rarity: str | None = None,
+    type: str | None = None,
+    price: int | None = None,
 ) -> dict:
     """
     Get a list of Fortnite cosmetics of South Park, with optional search and limit.

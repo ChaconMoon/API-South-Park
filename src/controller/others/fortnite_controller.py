@@ -20,14 +20,57 @@ from src.model.ORM.fortnite_cosmetics_db import FortniteCosmeticDB
 from src.model.ORM.fortnite_cosmetics_rarity_db import FortniteCosmeticsRarityDB
 from src.model.ORM.fortnite_items_db import FortniteItemsDB
 
+COSMETIC_FILTERS = [
+    (
+        "search_param",
+        lambda query, value: query.filter(FortniteCosmeticDB.name.ilike(f"%{value}%")),
+    ),
+    (
+        "rarity",
+        lambda query, value: query.join(FortniteCosmeticDB.rarity_ref).filter(
+            FortniteCosmeticsRarityDB.name.ilike(f"%{value}%")
+        ),
+    ),
+    (
+        "type",
+        lambda query, value: query.join(FortniteCosmeticDB.type_ref).filter(
+            FortniteCosmeticTypesDB.type.ilike(f"%{value}%")
+        ),
+    ),
+    (
+        "price",
+        lambda query, value: query.filter(FortniteCosmeticDB.price == value),
+    ),
+]
+
+
+def apply_cosmetic_filters(query, filters: dict):
+    """
+    Apply filters to a SQLAlchemy query for Fortnite cosmetics.
+
+    Args:
+        query: The initial SQLAlchemy query object.
+        filters: A dictionary of filter values where keys are filter names.
+
+    Returns:
+        The modified query object with filters applied.
+
+    """
+    for key, apply_fn in COSMETIC_FILTERS:
+        value = filters.get(key)
+        if value is not None:
+            query = apply_fn(query, value)
+    query = query.order_by(FortniteCosmeticDB.id.asc())
+    return query
+
 
 def get_fortnite_cosmetic_list(
-    search_param: str,
+    search_param: str | None = None,
     limit: int = 0,
-    base_url: str = "",
-    rarity: str = "",
-    type: str = "",
-    price: int = -1,
+    base_url: str | None = None,
+    rarity: str | None = None,
+    type: str | None = None,
+    price: int | None = None,
 ) -> dict:
     """
     Search for fortnite cosmetics using a partial, case-insensitive match.
@@ -48,26 +91,15 @@ def get_fortnite_cosmetic_list(
         session = database_connection.get_database_session()
 
         query_fortnite_cosmetics = session.query(FortniteCosmeticDB)
-        if search_param != "":
-            query_fortnite_cosmetics = query_fortnite_cosmetics.filter(
-                FortniteCosmeticDB.name.ilike(f"%{search_param}%")
-            )
-        if rarity != "":
-            query_fortnite_cosmetics = query_fortnite_cosmetics.join(
-                FortniteCosmeticDB.rarity_ref
-            ).filter(FortniteCosmeticsRarityDB.name.ilike(f"%{rarity}%"))
-        if type != "":
-            query_fortnite_cosmetics = query_fortnite_cosmetics.join(
-                FortniteCosmeticDB.type_ref
-            ).filter(FortniteCosmeticTypesDB.type.ilike(f"%{type}%"))
-        if price != -1:
-            query_fortnite_cosmetics = query_fortnite_cosmetics.filter(
-                FortniteCosmeticDB.price == price
-            )
-        query_fortnite_cosmetics = query_fortnite_cosmetics.order_by(
-            FortniteCosmeticDB.id.asc()
+        query_fortnite_cosmetics = apply_cosmetic_filters(
+            query_fortnite_cosmetics,
+            {
+                "search_param": search_param,
+                "rarity": rarity,
+                "type": type,
+                "price": price,
+            },
         )
-
         if limit != 0:
             query_fortnite_cosmetics = query_fortnite_cosmetics.limit(limit)
         fortnite_cosmetic_list = query_fortnite_cosmetics.all()
@@ -84,8 +116,6 @@ def get_fortnite_cosmetic_list(
         return {"error": str(e), "status": "Not Found"}
     except OperationalError as e:
         return {"error": str(e), "status": "Database Not Available"}
-    except Exception as e:
-        return {"error": str(e), "status": "failed"}
 
 
 def get_fortnite_item_list(search_param: str, limit: int = 0, base_url: str = "") -> dict:
