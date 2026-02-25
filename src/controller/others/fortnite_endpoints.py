@@ -12,6 +12,7 @@ from typing_extensions import Annotated
 from src.controller.others.fortnite_controller import (
     get_fortnite_cosmetic,
     get_fortnite_cosmetic_image_by_id,
+    get_fortnite_cosmetic_list,
     get_fortnite_item,
     get_fortnite_item_image_by_id,
     get_fortnite_item_list,
@@ -20,12 +21,54 @@ from src.controller.others.fortnite_controller import (
 router = APIRouter(tags=["Others"])
 
 
+@router.get("/api/fortnite/cosmetics/")
+def show_fortnite_cosmetics_list(
+    request: Request,
+    response: Response,
+    search: str = "",
+    limit: int = 0,
+    rarity: str = "",
+    type: str = "",
+    price: int = -1,
+) -> dict:
+    """
+    Get a list of Fortnite cosmetics of South Park, with optional search and limit.
+
+    Args:
+        response (Response): FastAPI response object for status codes.
+        request (Request): FastAPI request object containing base URL.
+        search (str): A search term to filter cosmetics by name (If is not empty).
+        limit (int): The maximum number of cosmetics to return (if is not 0).
+        rarity (str): A filter to return cosmetics of a specific rarity (if is not empty).
+        type (str): A filter to return cosmetics of a specific type (if is not empty).
+        price (int | None): A filter to return cosmetics of a specific price
+        (if is not None).
+
+    Returns:
+        dict: JSON response containing the list of cosmetics.
+
+    Response Codes:
+        200: Cosmetics found and returned successfully.
+        404: No episodes found for the given search criteria.
+        500: Internal server error.
+
+    """
+    return get_fortnite_cosmetic_list(
+        search_param=search,
+        base_url=str(request.base_url),
+        limit=limit,
+        rarity=rarity,
+        type=type,
+        price=price,
+    )
+
+
 @router.get("/api/fortnite/items/")
 def show_fortnite_items_list(
     request: Request, response: Response, search: str = "", limit: int = 0
 ) -> dict:
     """
-    Get a list of Fortnite items in the South Park collaboration, with optional search and limit.
+    Get a list of Fortnite items of South Park, with optional search and limit.
 
     Args:
         response (Response): FastAPI response object for status codes.
