@@ -14,9 +14,37 @@ from src.controller.others.fortnite_controller import (
     get_fortnite_cosmetic_image_by_id,
     get_fortnite_item,
     get_fortnite_item_image_by_id,
+    get_fortnite_item_list,
 )
 
 router = APIRouter(tags=["Others"])
+
+
+@router.get("/api/fortnite/items/")
+def show_fortnite_items_list(
+    request: Request, response: Response, search: str = "", limit: int = 0
+) -> dict:
+    """
+    Get a list of Fortnite items in the South Park collaboration, with optional search and limit.
+
+    Args:
+        response (Response): FastAPI response object for status codes.
+        request (Request): FastAPI request object containing base URL.
+        search (str): A search term to filter items by name (If is not empty).
+        limit (int): The maximum number of items to return (if is not 0).
+
+    Returns:
+        dict: JSON response containing the list of items.
+
+    Response Codes:
+        200: Items found and returned successfully.
+        404: No episodes found for the given search criteria.
+        500: Internal server error.
+
+    """
+    return get_fortnite_item_list(
+        search_param=search, base_url=str(request.base_url), limit=limit
+    )
 
 
 @router.get("/api/fortnite/items/{item_id}/image")

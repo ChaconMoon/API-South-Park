@@ -10,12 +10,55 @@ import logging
 
 from fastapi.responses import StreamingResponse
 from PIL import Image
+from sqlalchemy.exc import OperationalError
 
 from src.controller import database_connection
 from src.model.fortnite_cosmetics import FortniteCosmetic
 from src.model.fortnite_items import FortniteItem
 from src.model.ORM.fortnite_cosmetics_db import FortniteCosmeticDB
 from src.model.ORM.fortnite_items_db import FortniteItemsDB
+
+
+def get_fortnite_item_list(search_param: str, limit: int = 0, base_url: str = "") -> dict:
+    """
+    Search for fortnite items using a partial, case-insensitive match.
+
+    Args:
+        search_param (str): The search term to match against item names.
+        limit (int): The maximum number of items to return. If 0 no limit.
+        base_url (str): The base URL for generating resource URLs.
+
+    Returns:
+        dict: A dictionary containing the list of matching episodes.
+
+    """
+    try:
+        session = database_connection.get_database_session()
+
+        query_fortnite_items = session.query(FortniteItemsDB)
+        if search_param != "":
+            query_fortnite_items = query_fortnite_items.filter(
+                FortniteItemsDB.name.ilike(f"%{search_param}%")
+            )
+        query_fortnite_items = query_fortnite_items.order_by(FortniteItemsDB.id.asc())
+        if limit != 0:
+            query_fortnite_items = query_fortnite_items.limit(limit)
+        fortnite_item_list = query_fortnite_items.all()
+        session.close()
+        result = {"items": {}}
+        for index, item in enumerate(fortnite_item_list):
+            result["items"][index] = FortniteItem(item, base_url).toJSON()
+
+        if result == {"items": {}}:
+            raise ValueError("Item not Found")
+        return result
+
+    except ValueError as e:
+        return {"error": str(e), "status": "Not Found"}
+    except OperationalError as e:
+        return {"error": str(e), "status": "Database Not Available"}
+    except Exception as e:
+        return {"error": str(e), "status": "failed"}
 
 
 def get_fortnite_item_image_by_id(item_id: int, image_size: str) -> StreamingResponse:
