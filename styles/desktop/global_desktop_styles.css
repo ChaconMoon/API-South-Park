@@ -114,10 +114,11 @@
                 margin-top: 1vw;
                 text-decoration: none;
                 margin-right: 1vw;
-                margin-left: 90%;
+                margin-left: 85%;
                 border-radius: 8px;
                 font-family: "Waffle-Soft";
                 line-height: 2vw;
+                text-align: center;
         }
         div.menu_button {
                 border-radius: 16px;

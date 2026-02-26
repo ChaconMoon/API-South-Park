@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict dHACa59hIztRAxWjpr0PuDx2FdRhJmMuccYTOm3OHuPWFS6ALbVX7uqSu2IpWGv
+\restrict s0NPsqZCi56gziOYWGqanAihizSFtnt5n0uudomZ4tbMCyfPPZmhDUmgyKzCj0f
 
 -- Dumped from database version 15.15 (Debian 15.15-1.pgdg13+1)
 -- Dumped by pg_dump version 15.15 (Debian 15.15-1.pgdg13+1)
@@ -2496,6 +2496,7 @@ COPY public.fortnite_cosmetic_types (id, type) FROM stdin;
 3	Backpack
 2	Pickaxe
 1	Skin
+10	Vehicule decal
 \.
 
 
@@ -2516,21 +2517,27 @@ COPY public.fortnite_cosmetics (id, name, type, rarity, price, images, notes) FR
 10	Butters' Hammer of Chaos	2	3	500	{img/characters/fortnite/pickaxe/Butters'_Hammer_of_Chaos.webp}	\N
 9	Princess Kenny's Royal Scepter	2	3	500	{img/characters/fortnite/pickaxe/Princess_Kenny's_Royal_Scepter.webp}	\N
 7	Alien Experiment	4	2	400	{img/characters/fortnite/emote/Alien_Experiment.webp}	\N
-27	Rest Well, Kenny!	6	2	0	{img/characters/fortnite/emojis/Rest_Well,_Kenny.webp}	Free on Born in Chaos Minipass (At Launch)
-26	Towelie!	6	2	0	{img/characters/fortnite/emojis/}	Free on Born in Chaos Minipass (At Launch)
 25	Awesom-O Reveal	7	4	0	{img/characters/fortnite/sprays/AWESOM-O_Attack.webp}	Free on Born in Chaos Minipass (At Launch)
 24	Awesom-O Attack	7	4	0	{img/characters/fortnite/sprays/AWESOM-O_Reveal.webp}	Free on Born in Chaos Minipass (At Launch)
 23	Born in Chaos	9	2	0	{img/characters/fortnite/loading_screen/BORN_IN_CHAOS.webp}	Free on Born in Chaos Minipass (At Launch)
-22	Towelie	8	2	1500	{img/characters/fortnite/sidekick/Towelie_Sidekick.webp}	Dialogues only dubed to English
 17	Backpack of Cred	3	5	0	{img/characters/fortnite/backpacks/Backpack_of_CRED.webp}	Free on Born in Chaos Minipass (At Launch)
 13	Terrance and Phillip	2	3	0	{img/characters/fortnite/pickaxe/Terrance_and_Phillip.webp}	Free on Born in Chaos Minipass (At Launch)
 8	Chessy Poofs Rocketship	4	3	0	{img/characters/fortnite/emote/Chessy_Poofs_Rocket.webp}	Free on Born in Chaos Minipass (At Launch)
 6	The Bus Stop	4	2	400	{img/characters/fortnite/emote/The_Bus_Stop.webp}	Emote for 1-4 Players
-5	Kyle Broflovski	1	4	1500	{img/characters/fortnite/skin/Kyle.webp}	Include backpack "Kyle Warrior Wings" ID 20
-4	Stan Marsh	1	4	1500	{img/characters/fortnite/skin/Stan.webp}	Include backpack "Stan Derby Entry" ID 19
-3	Eric Cartman	1	4	1500	{img/characters/fortnite/skin/Eric.webp}	Include backpack "Cartman's Frog" ID 18
-1	Kenny McCormick	1	4	1500	{img/characters/fortnite/skin/Kenny.webp}	Include backpack "Princess Kenny's Bearicorn" ID 16
-2	Butters Stotch	1	4	1500	{img/characters/fortnite/skin/Butters.webp}	Include backpack "Professor Chaos' Cape" ID 15
+4	Stan Marsh	1	4	1500	{img/characters/fortnite/skins/Stan.webp}	Include backpack "Stan Derby Entry" ID 19
+1	Kenny McCormick	1	4	1500	{img/characters/fortnite/skins/Kenny.webp}	Include backpack "Princess Kenny's Bearicorn" ID 16
+2	Butters Stotch	1	4	1500	{img/characters/fortnite/skins/Butters.webp}	Include backpack "Professor Chaos' Cape" ID 15
+3	Eric Cartman	1	4	1500	{img/characters/fortnite/skins/Eric.webp}	Include backpack "Cartman's Frog" ID 18
+5	Kyle Broflovski	1	4	1500	{img/characters/fortnite/skins/Kyle.webp}	Include backpack "Kyle Warrior Wings" ID 20
+26	Towelie!	6	2	0	{img/characters/fortnite/emojis/Towelie!.webp}	Free on Born in Chaos Minipass (At Launch)
+22	Towelie	8	2	1500	{img/characters/fortnite/sidekick/Towelie_Sidekick.webp}	\N
+33	Cheesy Poofs (Vehicule decal)	10	2	2000	{img/characters/fortnite/decals/Cheesy_Poofs_Decal.png}	Free via Rocket League event
+32	Butters Stotch (Vehicule decal)	10	2	2000	{img/characters/fortnite/decals/Butters_Decal.png}	Included in Stampede x South Park Bundle (AVAILABLE ON ROCKET LEAGUE)
+31	Kenny McCormick (Vehicule decal)	10	2	2000	{img/characters/fortnite/decals/Kenny_Decal.png}	Included in Stampede x South Park Bundle (AVAILABLE ON ROCKET LEAGUE)
+30	Eric Cartman (Vehicule decal)	10	2	2000	{img/characters/fortnite/decals/Cartman_Decal.png}	Included in Stampede x South Park Bundle (AVAILABLE ON ROCKET LEAGUE)
+29	Kyle Broflovski (Vehicule decal)	10	2	2000	{img/characters/fortnite/decals/Kyle_Decal.png}	Included in Stampede x South Park Bundle (AVAILABLE ON ROCKET LEAGUE)
+28	Stan Marsh (Vehicule decal)	10	2	2000	{img/characters/fortnite/decals/Stan_Decal.png}	Included in Stampede x South Park Bundle (AVAILABLE ON ROCKET LEAGUE)
+27	Rest Well, Kenny!	6	2	0	{img/characters/fortnite/emojis/Rest_Well_Kenny.webp}	Free on Born in Chaos Minipass (At Launch)
 \.
 
 
@@ -2540,7 +2547,8 @@ COPY public.fortnite_cosmetics (id, name, type, rarity, price, images, notes) FR
 
 COPY public.fortnite_items (id, name, image, effect) FROM stdin;
 2	Stick of Truth	img/characters/fortnite/items/Stick_of_Truth.webp	Upon usage, the Stick of Truth will set a small beacon at the user's location. After a few seconds, the storm will immediately start closing at the beacon with a 3:20 timer. The circle is invisible to others.
-1	Kenny’s Respawn Token	img/characters/fortnite/items/Kenny’s_Respawn_Token.webp	Immediate revival upon elimination. Can only be used once.
+1	Kenny’s Respawn Token	img/characters/fortnite/items/Kenny_Respawn_Token.webp	Immediate revival upon elimination. Can only be used once.
+3	Cheesy Poofs	img/characters/fortnite/items/Cheesy_Poofs.webp	Cheesy Poofs are a hold-to-use item. It takes 2 seconds to start healing, then restores Health - Icon - Fortnite 10 Health per tick. Each tick takes 0.5 seconds, resulting in a total of 15 seconds to fully empty the item. Cheesy Poofs will stop healing once the item is depleted.
 \.
 
 
@@ -2875,11 +2883,11 @@ ALTER TABLE ONLY public.specials
 
 
 --
--- Name: fortnite_cosmetics cosmetic_rarity; Type: FK CONSTRAINT; Schema: public; Owner: southpark
+-- Name: fortnite_cosmetics cosmetic_rarities; Type: FK CONSTRAINT; Schema: public; Owner: southpark
 --
 
 ALTER TABLE ONLY public.fortnite_cosmetics
-    ADD CONSTRAINT cosmetic_rarity FOREIGN KEY (rarity) REFERENCES public.fortnite_cosmetic_rarities(id);
+    ADD CONSTRAINT cosmetic_rarities FOREIGN KEY (rarity) REFERENCES public.fortnite_cosmetic_rarities(id) NOT VALID;
 
 
 --
@@ -2950,5 +2958,5 @@ ALTER TABLE ONLY public.alter_ego
 -- PostgreSQL database dump complete
 --
 
-\unrestrict dHACa59hIztRAxWjpr0PuDx2FdRhJmMuccYTOm3OHuPWFS6ALbVX7uqSu2IpWGv
+\unrestrict s0NPsqZCi56gziOYWGqanAihizSFtnt5n0uudomZ4tbMCyfPPZmhDUmgyKzCj0f
 
