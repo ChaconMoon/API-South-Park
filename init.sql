@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict gcy1qekC7bVEcwjjrWVbWs9KJGmrSPUyE30KtLRScP6hCrpck1KJOxXkMrOefus
+\restrict s0NPsqZCi56gziOYWGqanAihizSFtnt5n0uudomZ4tbMCyfPPZmhDUmgyKzCj0f
 
 -- Dumped from database version 15.15 (Debian 15.15-1.pgdg13+1)
 -- Dumped by pg_dump version 15.15 (Debian 15.15-1.pgdg13+1)
@@ -2548,6 +2548,7 @@ COPY public.fortnite_cosmetics (id, name, type, rarity, price, images, notes) FR
 COPY public.fortnite_items (id, name, image, effect) FROM stdin;
 2	Stick of Truth	img/characters/fortnite/items/Stick_of_Truth.webp	Upon usage, the Stick of Truth will set a small beacon at the user's location. After a few seconds, the storm will immediately start closing at the beacon with a 3:20 timer. The circle is invisible to others.
 1	Kenny’s Respawn Token	img/characters/fortnite/items/Kenny_Respawn_Token.webp	Immediate revival upon elimination. Can only be used once.
+3	Cheesy Poofs	img/characters/fortnite/items/Cheesy_Poofs.webp	Cheesy Poofs are a hold-to-use item. It takes 2 seconds to start healing, then restores Health - Icon - Fortnite 10 Health per tick. Each tick takes 0.5 seconds, resulting in a total of 15 seconds to fully empty the item. Cheesy Poofs will stop healing once the item is depleted.
 \.
 
 
@@ -2957,5 +2958,5 @@ ALTER TABLE ONLY public.alter_ego
 -- PostgreSQL database dump complete
 --
 
-\unrestrict gcy1qekC7bVEcwjjrWVbWs9KJGmrSPUyE30KtLRScP6hCrpck1KJOxXkMrOefus
+\unrestrict s0NPsqZCi56gziOYWGqanAihizSFtnt5n0uudomZ4tbMCyfPPZmhDUmgyKzCj0f
 
