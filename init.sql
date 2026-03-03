@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict s0NPsqZCi56gziOYWGqanAihizSFtnt5n0uudomZ4tbMCyfPPZmhDUmgyKzCj0f
+\restrict xczGAUWExmtbxPd0zXMgZx0zDLnpqB8ajdTYEPBybo7HGcgTUHvrOeHZloXNCeC
 
 -- Dumped from database version 15.15 (Debian 15.15-1.pgdg13+1)
 -- Dumped by pg_dump version 15.15 (Debian 15.15-1.pgdg13+1)
@@ -1675,6 +1675,57 @@ COPY public.characters (id, name, family_id, birthday, age, religion, debut_epis
 967	John McCain	67	August 29th	81	{Baptist}	179	{/img/characters/show/John_Mccain.png}	t
 993	June Shannon	88	August 10th	46	\N	232	{/img/characters/show/June_Shannon.png}	t
 232	Alana "Honey Boo Boo" Thompson	88	August 28th	7	{Christian}	232	{/img/characters/show/Honey_Boo_Boo.png}	t
+1000	Kanye West	89	June 8th	48	{Christian}	182	{/img/characters/show/Kanye_West_Gay_Fish_Outfit.png,/img/characters/show/Kanye_West.png}	t
+999	Kal	\N	\N	10	\N	123	{/img/characters/show/Kal.png}	f
+998	K-10	\N	\N	\N	\N	152	{/img/characters/show/K-10.png}	f
+1025	Kevin ("Summer Sucks")	\N	\N	10	\N	21	{/img/characters/show/Kevin_Summer_Sucks.png}	f
+1024	Kevin ("Butters' Bottom Bitch")	\N	\N	21	\N	190	{/img/characters/show/Kevin_PC.png}	f
+1023	Kevin ("Best Friends Forever")	\N	\N	\N	{Satanism}	129	{/img/characters/show/Kevin_The_Demon.png}	f
+1022	Keshawn	\N	\N	\N	\N	190	{/img/characters/show/Keshawn.png}	f
+1021	Kenyan News Reporters	\N	\N	\N	\N	243	{/img/characters/show/Kenyan_news_reporters.png}	f
+1020	Kenny's Rats	\N	\N	\N	\N	1	{/img/characters/show/Kennys_Rats.png}	f
+1019	Kenny's Cat	\N	\N	\N	\N	170	{/img/characters/show/Kennys_Cat.png}	f
+1018	Kenny G	\N	June 5th	69	{Judaism}	48	{/img/characters/show/Kenny_G.png}	t
+1017	Kellyanne Conway	\N	January 20th	59	\N	268	{/img/characters/show/Kellyanne_Conway.png}	t
+1016	Kelly Turner	91	\N	\N	{"Roman Catholic"}	11	{/img/characters/show/Kelly_Turner.png}	f
+1015	Kelly Rutherford-Menskin	\N	\N	9	{"Roman Catholic"}	123	{/img/characters/show/Kelly44.png}	f
+1014	Kelly Ripa	\N	October 2nd	55	{Catholic}	185	{/img/characters/show/Kelly_Ripa.png}	t
+1013	Kelly Pinkerton-Tinfurter	\N	\N	10	\N	123	{/img/characters/show/Kelly_Pinkerton_Tinfurter.png}	f
+1012	Kelly P. Gardner	\N	\N	9	\N	192	{/img/characters/show/Kelly_Gardner.png}	f
+1011	Kelly Morris	\N	\N	10	\N	279	{/img/characters/show/Kelly_Morris.png}	f
+1010	Kelly Mayfield	\N	\N	\N	\N	156	{/img/characters/show/Lice_Kelly.png}	f
+1009	Kelly-Ann Barlow	\N	\N	9	\N	190	{/img/characters/show/Annie_Butters_Bottom_Bitch.png}	f
+1008	Kelly ("Breast Cancer Show Ever")	\N	\N	\N	\N	176	{/img/characters/show/Kelly_6th_grader.png}	f
+1007	Kelly ("Rainforest Shmainforest")	\N	\N	10	{"Roman Catholic"}	32	{/img/characters/show/Kelly_Scout.png}	f
+1006	Keenan Williams	\N	\N	\N	\N	141	{/img/characters/show/Keenan_Williams.png}	f
+1005	Keanu Reeves	\N	September 2nd	61	{Agnostic}	129	{/img/characters/show/Keanu_Reeves.png}	t
+1004	Katie Gelson	\N	\N	10	\N	181	{/img/characters/show/Bloodrayne.png}	f
+1003	Katie Foley	90	\N	\N	\N	182	{/img/characters/show/Katie_Foley.png}	f
+1002	Karoline Leavitt	\N	August 24th	28	\N	322	{/img/characters/show/Karoline_Leavitt.png}	t
+1001	Karate Instructor	\N	\N	\N	\N	139	{/img/characters/show/Karate_Instructor.png}	f
+1027	Kevin James	\N	April 26th	60	{Catholic}	211	{/img/characters/show/Kevin_James.png}	t
+1026	Kevin Harris	\N	\N	\N	\N	109	{/img/characters/show/Kevin_Harris.png}	f
+1029	Kim Jong-il	\N	February 16th	70	{"Atheist (Juche philosophy)"}	98	{/img/characters/show/Kim_Jong_Il.png}	t
+1028	Kid Rock	\N	January 17th	55	{Christian}	113	{/img/characters/show/Kid_Rock.png}	t
+1047	Kurt Russell	\N	March 17th	74	{Buddhist}	164	{/img/characters/show/Kurt_Russel.png}	t
+1046	Kurt Loder	\N	May 5th	80	\N	51	{/img/characters/show/Kurt_Loder.png}	t
+1045	Kurt Fuller	\N	September 16th	72	{Jewish}	68	{/img/characters/show/Karl_Fuller.png}	t
+1044	Kurt Cobain Hologram	\N	February 20th	27	{Atheism}	257	{/img/characters/show/Kurt_Cobain.png}	f
+1048	Kylo Ren	\N	\N	\N	\N	199	{/img/characters/show/Kylo_Ren.png}	t
+1043	Ku Klux Klan	\N	\N	\N	\N	7	{/img/characters/show/Kkk.png}	t
+1042	Krypto the Superdog	\N	\N	\N	\N	323	{/img/characters/show/Krypto_Super_Dog.png}	t
+1041	Kristi Noem	\N	November 30th	54	\N	323	{/img/characters/show/Kristi_Noem.png}	t
+1040	Kristen Miller	\N	August 20th	49	\N	68	{"/img/characters/show/Kristen _Miller.png"}	t
+1039	Krishna	\N	\N	5244	{Hinduism}	68	{/img/characters/show/Krishna.png}	t
+1038	Kris Jenner	89	Nevember 5th	70	{Christian}	197	{/img/characters/show/Kris_Jenner.png}	t
+1037	Korn	\N	\N	\N	\N	41	{/img/characters/show/Korn.png}	t
+1036	Kokujon Man	\N	\N	\N	\N	208	{/img/characters/show/Mintberrycrunch_Dad.png}	f
+1035	KOK-A-3	\N	\N	\N	\N	152	{/img/characters/show/Animals_kok_a_3.png}	f
+1034	Kobe Bryant	\N	August 23th	41	{"Roman Catholic"}	77	{/img/characters/show/Kobe_Bryant.png}	t
+1033	KIT-9	\N	\N	\N	\N	152	{/img/characters/show/Kit_9.png}	f
+1032	Kip Drordy	92	July 17th	8	\N	199	{/img/characters/show/Kip_Drordry.png}	f
+1031	Kindergartner with Cyan Hood	\N	\N	5	\N	60	{/img/characters/show/Kindergartner_CyanHood.png}	f
+1030	Kindergartner Girl with Brown Pigtails	\N	\N	6	\N	60	{/img/characters/show/Preschoolers_Brown_Haired_Pigtail_Girl.png}	f
 \.
 
 
@@ -2466,6 +2517,10 @@ COPY public.families (id, name, images) FROM stdin;
 86	The Kennedys	{img/families/The_Kennedys.png}
 87	The Ramseys	{img/families/The_Ramseys.png}
 88	Honey Boo Boo Family	{img/families/Honey_Boo_Boo_Family.png}
+89	West-Kardashian Family	\N
+90	The Foleys	\N
+91	The Turners	\N
+92	The Drodys	\N
 \.
 
 
@@ -2958,5 +3013,5 @@ ALTER TABLE ONLY public.alter_ego
 -- PostgreSQL database dump complete
 --
 
-\unrestrict s0NPsqZCi56gziOYWGqanAihizSFtnt5n0uudomZ4tbMCyfPPZmhDUmgyKzCj0f
+\unrestrict xczGAUWExmtbxPd0zXMgZx0zDLnpqB8ajdTYEPBybo7HGcgTUHvrOeHZloXNCeC
 
