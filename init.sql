@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict xczGAUWExmtbxPd0zXMgZx0zDLnpqB8ajdTYEPBybo7HGcgTUHvrOeHZloXNCeC
+\restrict FBhg9f7RpLIixgIGj19w18m1Fsfp6yUfsgqtydYc0JgKsFy59qAowRIcU5r4eCY
 
 -- Dumped from database version 15.15 (Debian 15.15-1.pgdg13+1)
 -- Dumped by pg_dump version 15.15 (Debian 15.15-1.pgdg13+1)
@@ -2517,10 +2517,10 @@ COPY public.families (id, name, images) FROM stdin;
 86	The Kennedys	{img/families/The_Kennedys.png}
 87	The Ramseys	{img/families/The_Ramseys.png}
 88	Honey Boo Boo Family	{img/families/Honey_Boo_Boo_Family.png}
-89	West-Kardashian Family	\N
-90	The Foleys	\N
-91	The Turners	\N
-92	The Drodys	\N
+89	West-Kardashian Family	{img/families/The_Kardashians.png}
+90	The Foleys	{"img/families/The Foleys.png"}
+91	The Turners	{img/families/Tommy_Sally_Family.png}
+92	The Drodys	{img/families/The_Drodys.png}
 \.
 
 
@@ -3013,5 +3013,5 @@ ALTER TABLE ONLY public.alter_ego
 -- PostgreSQL database dump complete
 --
 
-\unrestrict xczGAUWExmtbxPd0zXMgZx0zDLnpqB8ajdTYEPBybo7HGcgTUHvrOeHZloXNCeC
+\unrestrict FBhg9f7RpLIixgIGj19w18m1Fsfp6yUfsgqtydYc0JgKsFy59qAowRIcU5r4eCY
 
