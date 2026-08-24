@@ -142,7 +142,7 @@ class Character(BaseModel, ApiObject):
                 "groups": {
                     str(index): {
                         "name": group.name,
-                        "url": f"http://localhost:8000/api/groups/{group.id}",
+                        "url": f"{base_url}api/groups/{group.id}",
                     }
                     for index, group in enumerate(db_character.groups)
                 }
