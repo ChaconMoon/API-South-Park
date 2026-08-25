@@ -102,9 +102,19 @@ def get_intro_in_menu(file_name: str) -> str:
             file.readline()
             file.readline()
             rest = file.read()
-            # eliminar texto entre llaves {...}
+            # Delete markdown links [text](url)
+            rest = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", rest)
+            # Delete markdown images ![alt](url)
+            rest = re.sub(r"!\[([^\]]*)\]\(([^)]+)\)", "", rest)
+            # Delete markdown bold and italic **text** or *text*
+            rest = re.sub(r"(\*\*|\*)(.*?)\1", r"\2", rest)
+            # Delete _text_ for italic
+            rest = re.sub(r"_(.*?)_", r"\1", rest)
+            # Delete markdown headers # Header
+            rest = re.sub(r"#", "", rest)
+            # delete text between braces {...}
             cleaned = re.sub(r"\{[^}]*\}", "", rest)
-            # normalizar espacios y recortar
+            # Delte spaces and new lines
             cleaned = re.sub(r"\s+", " ", cleaned).strip()
             return cleaned[:300] + "..." if cleaned else ""
     except FileNotFoundError:

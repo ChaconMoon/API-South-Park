@@ -46,7 +46,7 @@ class FortniteItem(BaseModel, ApiObject):
         data = {
             "id": db_object.id,
             "name": db_object.name,
-            "image": f"{base_url}api/fortnite/item/{db_object.id}/image",
+            "image": f"{base_url}api/fortnite/items/{db_object.id}/image",
             "effect": db_object.effect,
         }
         super().__init__(**data)
