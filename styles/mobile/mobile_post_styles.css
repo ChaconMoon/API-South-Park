@@ -99,6 +99,11 @@
                 width: 80vw;
         }
 
+        .body_image_compacted {
+                margin: 0 auto;
+                width: 60vw;
+        }
+
         .blog_title {
                 font-size: 4vw;
                 font-family: "OpenSans-Bold";
