@@ -10,12 +10,154 @@ import logging
 
 from fastapi.responses import StreamingResponse
 from PIL import Image
+from sqlalchemy.exc import OperationalError
 
 from src.controller import database_connection
 from src.model.fortnite_cosmetics import FortniteCosmetic
 from src.model.fortnite_items import FortniteItem
+from src.model.ORM.fortnite_cosmetic_types_db import FortniteCosmeticTypesDB
 from src.model.ORM.fortnite_cosmetics_db import FortniteCosmeticDB
+from src.model.ORM.fortnite_cosmetics_rarity_db import FortniteCosmeticsRarityDB
 from src.model.ORM.fortnite_items_db import FortniteItemsDB
+
+COSMETIC_FILTERS = [
+    (
+        "search_param",
+        lambda query, value: query.filter(FortniteCosmeticDB.name.ilike(f"%{value}%")),
+    ),
+    (
+        "rarity",
+        lambda query, value: query.join(FortniteCosmeticDB.rarity_ref).filter(
+            FortniteCosmeticsRarityDB.name.ilike(f"%{value}%")
+        ),
+    ),
+    (
+        "type",
+        lambda query, value: query.join(FortniteCosmeticDB.type_ref).filter(
+            FortniteCosmeticTypesDB.type.ilike(f"%{value}%")
+        ),
+    ),
+    (
+        "price",
+        lambda query, value: query.filter(FortniteCosmeticDB.price == value),
+    ),
+]
+
+
+def apply_cosmetic_filters(query, filters: dict):
+    """
+    Apply filters to a SQLAlchemy query for Fortnite cosmetics.
+
+    Args:
+        query: The initial SQLAlchemy query object.
+        filters: A dictionary of filter values where keys are filter names.
+
+    Returns:
+        The modified query object with filters applied.
+
+    """
+    for key, apply_fn in COSMETIC_FILTERS:
+        value = filters.get(key)
+        if value is not None:
+            query = apply_fn(query, value)
+    query = query.order_by(FortniteCosmeticDB.id.asc())
+    return query
+
+
+def get_fortnite_cosmetic_list(
+    search_param: str | None = None,
+    limit: int = 0,
+    base_url: str | None = None,
+    rarity: str | None = None,
+    type: str | None = None,
+    price: int | None = None,
+) -> dict:
+    """
+    Search for fortnite cosmetics using a partial, case-insensitive match.
+
+    Args:
+        search_param (str): The search term to match against cosmetic names.
+        limit (int): The maximum number of cosmetics to return. If 0 no limit.
+        base_url (str): The base URL for generating resource URLs.
+        rarity (str): Filter cosmetics by rarity (if is not empty).
+        type (str): Filter cosmetics by type (if is not empty).
+        price (int): Filter cosmetics by price (if is not -1).
+
+    Returns:
+        dict: A dictionary containing the list of matching cosmetics.
+
+    """
+    try:
+        session = database_connection.get_database_session()
+
+        query_fortnite_cosmetics = session.query(FortniteCosmeticDB)
+        query_fortnite_cosmetics = apply_cosmetic_filters(
+            query_fortnite_cosmetics,
+            {
+                "search_param": search_param,
+                "rarity": rarity,
+                "type": type,
+                "price": price,
+            },
+        )
+        if limit != 0:
+            query_fortnite_cosmetics = query_fortnite_cosmetics.limit(limit)
+        fortnite_cosmetic_list = query_fortnite_cosmetics.all()
+        result = {"cosmetics": {}}
+        for index, cosmetic in enumerate(fortnite_cosmetic_list):
+            result["cosmetics"][index] = FortniteCosmetic(cosmetic, base_url).toJSON()
+
+        if result == {"cosmetics": {}}:
+            raise ValueError("Cosmetic not Found")
+        session.close()
+        return result
+
+    except ValueError as e:
+        return {"error": str(e), "status": "Not Found"}
+    except OperationalError as e:
+        return {"error": str(e), "status": "Database Not Available"}
+
+
+def get_fortnite_item_list(search_param: str, limit: int = 0, base_url: str = "") -> dict:
+    """
+    Search for fortnite items using a partial, case-insensitive match.
+
+    Args:
+        search_param (str): The search term to match against item names.
+        limit (int): The maximum number of items to return. If 0 no limit.
+        base_url (str): The base URL for generating resource URLs.
+
+    Returns:
+        dict: A dictionary containing the list of matching episodes.
+
+    """
+    try:
+        session = database_connection.get_database_session()
+
+        query_fortnite_items = session.query(FortniteItemsDB)
+        if search_param != "":
+            query_fortnite_items = query_fortnite_items.filter(
+                FortniteItemsDB.name.ilike(f"%{search_param}%")
+            )
+        query_fortnite_items = query_fortnite_items.order_by(FortniteItemsDB.id.asc())
+        if limit != 0:
+            query_fortnite_items = query_fortnite_items.limit(limit)
+        fortnite_item_list = query_fortnite_items.all()
+        session.close()
+        result = {"items": {}}
+        for index, item in enumerate(fortnite_item_list):
+            result["items"][index] = FortniteItem(item, base_url).toJSON()
+
+        if result == {"items": {}}:
+            raise ValueError("Item not Found")
+        return result
+
+    except ValueError as e:
+        return {"error": str(e), "status": "Not Found"}
+    except OperationalError as e:
+        return {"error": str(e), "status": "Database Not Available"}
+    except Exception as e:
+        return {"error": str(e), "status": "failed"}
 
 
 def get_fortnite_item_image_by_id(item_id: int, image_size: str) -> StreamingResponse:
