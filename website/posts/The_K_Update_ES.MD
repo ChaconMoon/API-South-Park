@@ -4,7 +4,7 @@
 Uf... Ha pasado mucho tiempo mas en concreto 5 mesecitos. La primera mitad de 2026, la vida a sido un poco loca, por lo menos para mi, empece a estudiar inglés me acabe sacando el B2 y luego me pose a dormarme como docente de programación en Formación Profesional en España, la de vueltas que da la vida, y de mientras estuve haciendo una web extrmadamente mal pagada no he tenido tiempo para ponerme con la API. Pero. He vuelto
 {.blog_intro}
 
-![Im Back](/blog/images/IM_BACK.gif)
+![Im Back](/blog/images/IM_BACK.gif){.body_image_compacted}
 
 ## Añadidos a la API {.blog_title}
 
