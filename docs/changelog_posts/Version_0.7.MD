@@ -1,31 +1,28 @@
-# Update 0.6.5 (Fortnite Update) {.blog_entry_title}
+# Update 0.7 (K Update) {.blog_entry_title}
 
-Changes in Version 0.6.5
+Changes in Version 0.7
 {.blog_intro}
 
-## New Endpoints {.blog_title}
+## New Characters {.blog_title}
 
-2 new endpoints have been added:  **"Fortnite Cosmetics" and "Fortnite Items"**
+49 new characters added.
 
-- Items: `http://<your-ip>/api/fortnite/items/<ID>` (1 or 2)
-- Cosmetics: `http://<your-ip>/api/fortnite/cosmetics/<ID>` (1 to 33)
+- characters from [Kanye West (character 1000)](/api/characters/1000) to [Kylo Ren (character 1048)](/api/characters/1048)
 
-_These endpoints don't support list view or the use of filters; this will be added in a future update._
+## Bug Fixes {.blog_title}
 
-## Changes in the database {.blog_title}
+- A spelling error regarding the word "item" was fixed: /api/fortnite/item/1/image -> /api/fortnite/items/1/image
+- The Fortnite item [Cheesy Poofs](/api/fortnite/items/3/) wasn't added in the original update.
 
-New tables in the database:
+## Changes to the Endpoints of the Fortnite Update {.blog_title}
 
-- Fortnite Cosmetic Rarities: Contains the rarities used by the cosmetics.
-- Fortnite Cosmetic Types: Contains the types of the cosmetics.
+- Filter by type. Example (skin): [/api/fortnite/cosmetics/?type=Skin](/api/fortnite/cosmetics/?type=Skin)
+- Filter by price. Example (1500 V-Bucks): [/api/fortnite/cosmetics/?price=1500](/api/fortnite/cosmetics/?price=1500)
+- Filter by rarity. Example (Epic): [/api/fortnite/cosmetics/?rarity=Epic](/api/fortnite/cosmetics/?rarity=Epic)
 
-(These two tables exist to be used in the future to filter the cosmetics)
+(These filters can be combined.)
 
-- Fortnite Cosmetics: Contains the cosmetics.
-- Fortnite Items: Contains the items that you can use in battle.
+Now, Fortnite cosmetics can be retrieved as a list: [/api/fortnite/cosmetics/](/api/fortnite/cosmetics/)
 
-(These tables are used by the endpoints)
-
-## Fixes {.blog_title}
-
-The changelog for version 0.6 wasn't on the index; this error has now been corrected.
+Now you can search the item database:
+[/api/fortnite/items/?search=Kenny](/api/fortnite/items/?search=Kenny)
