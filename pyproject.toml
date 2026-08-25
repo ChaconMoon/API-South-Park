@@ -1,6 +1,6 @@
 [project]
 name = "southpark-api"
-version = "0.6.5"
+version = "0.7"
 description = ""
 authors = [
     {name = "Carlos Chacón",email = "chaconmooncarlos@gmail.com"}

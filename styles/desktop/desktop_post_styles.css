@@ -28,6 +28,11 @@
                 width: 60vw;
         }
 
+        .body_image_compacted {
+                margin: 0 auto;
+                width: 30vw;
+        }
+
         .blog_title {
                 font-size: 2vw;
                 font-family: "OpenSans-Bold";

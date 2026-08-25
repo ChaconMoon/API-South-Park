@@ -20,20 +20,20 @@
                 gap: 1vw;
         }
 
-        #blog_post_containers ul p
-        {
+        #blog_post_containers ul p {
                 width: 60vw;
                 font-size: 3.5vw;
                 font-family: "OpenSans-Regular";
 
         }
+
         .blog_title {
                 display: block;
                 margin: 2vw;
                 margin-left: 3vw;
                 font-size: 5vw;
                 font-family: "OpenSans-Bold";
-                
+
         }
 
         #blog_post_containers p {
@@ -85,5 +85,10 @@
         .body_image {
                 margin: 0 auto;
                 width: 70vw;
+        }
+
+        .body_image_compacted {
+                margin: 0 auto;
+                width: 50vw;
         }
 }
