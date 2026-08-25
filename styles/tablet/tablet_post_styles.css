@@ -73,4 +73,9 @@
                 margin: 0 auto;
                 width: 80vw;
         }
+
+        .body_image_compacted {
+                margin: 0 auto;
+                width: 40vw;
+        }
 }
