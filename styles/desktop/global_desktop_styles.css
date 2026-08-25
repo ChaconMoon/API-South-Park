@@ -103,7 +103,8 @@
                 /* Ajusta este valor para cambiar el espacio entre elementos */
                 align-items: center;
         }
-        #version_text{
+
+        #version_text {
                 display: block;
                 position: absolute;
                 color: white;
@@ -114,12 +115,13 @@
                 margin-top: 1vw;
                 text-decoration: none;
                 margin-right: 1vw;
-                margin-left: 85%;
+                margin-left: 87%;
                 border-radius: 8px;
                 font-family: "Waffle-Soft";
                 line-height: 2vw;
                 text-align: center;
         }
+
         div.menu_button {
                 border-radius: 16px;
                 color: white;
