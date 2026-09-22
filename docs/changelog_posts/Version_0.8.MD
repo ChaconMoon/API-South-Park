@@ -1,4 +1,4 @@
-# Update 0.8 (E-bike Update){.blog_entry_title}
+# Update 0.8 (e-bike Update) {.blog_entry_title}
 
 Changes in Version 0.8
 {.blog_intro}
