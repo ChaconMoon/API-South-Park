@@ -24,6 +24,8 @@ class EpisodeDB(Base):
     website_url (SQLAlchemy Column [Text]) : The URL in South Park Website.
     censored (SQLAlchemy Column [Boolean]) : If the episode is censored.
     paramount_plus_exclusive (SQLAlchemy Column [Boolean]) :
+    has_website_url (SQLAlchemy Column [Boolean]):
+    If the episode has an entry on the oficial website
     If the episode is exclusive of Paramount Plus.
 
     image (SQLAlchemy Column [Text]) : The thumbnail of the episode.
@@ -41,13 +43,12 @@ class EpisodeDB(Base):
     episode = Column(Integer, nullable=False)
     release_date = Column(Date)
     description = Column(Text)
-    website_url = Column(Text)
+    website_url = Column(Text, nullable=True)
     censored = Column(Boolean)
     paramount_plus_exclusive = Column(Boolean)
+    has_website_url = Column(Boolean)
     image = Column(Text)
     debut_characters = relationship("CharacterDB", back_populates="debut")
     butters_punishments = relationship(
-        "ButtersPunishmentsDB",
-        back_populates="episode_ref",
-        cascade="all, delete-orphan"
+        "ButtersPunishmentsDB", back_populates="episode_ref", cascade="all, delete-orphan"
     )
