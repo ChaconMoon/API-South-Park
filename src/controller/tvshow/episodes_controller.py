@@ -222,7 +222,10 @@ def get_last_episode(base_url: str = "") -> dict:
 
 
 def get_random_episode(
-    exclude_paramount_plus: bool = False, exclude_censored: bool = False, base_url=""
+    exclude_paramount_plus: bool = False,
+    exclude_censored: bool = False,
+    exclude_not_available_on_website: bool = False,
+    base_url="",
 ):
     """
     Get a random episode.
@@ -232,6 +235,8 @@ def get_random_episode(
         request (Request): FastAPI request object containing base URL.
         exclude_paramount_plus (Boolean): If True excludes the Paramount+ episodes.
         exclude_censored (Boolean): If True excludes the censored episodes.
+        exclude_not_available_on_website (Boolean): Excludes episodes that don't
+        have a website entry on South Park Web
         base_url (str): The base URL for API endpoints
 
     Returns:
@@ -253,6 +258,8 @@ def get_random_episode(
             query.filter(EpisodeDB.paramount_plus_exclusive is False)
         if exclude_censored:
             query.filter(EpisodeDB.censored is False)
+        if exclude_not_available_on_website:
+            query.filter(EpisodeDB.has_website_url is False)
         episode_db = query.order_by(func.random()).first()
         if episode_db is None:
             raise AttributeError("Episode Not Found")

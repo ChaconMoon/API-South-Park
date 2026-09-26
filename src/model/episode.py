@@ -90,7 +90,9 @@ class Episode(BaseModel, ApiObject):
                 else "AVAILABLE ON WEBSITE"
                 if not episode_db.censored
                 else "CENSORED",
-                "website_url": episode_db.website_url,
+                "website_url": episode_db.website_url
+                if episode_db.has_website_url
+                else "NOT HAVE WEBSITE URL",
             },
             "episode_thumbnail": base_url + f"api/episodes/{episode_db.id}/thumbnail",
         }
